@@ -1,4 +1,6 @@
-import type { GatsbyConfig } from "gatsby"
+import type { GatsbyConfig } from 'gatsby';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -10,7 +12,6 @@ const config: GatsbyConfig = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
-    `gatsby-plugin-image`,
     {
       resolve: `gatsby-plugin-netlify`,
       options: {
@@ -34,7 +35,7 @@ const config: GatsbyConfig = {
       options: {
         accessToken: process.env.GATSBY_PREVIEW_STORYBLOK,
         version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
-        localAssets: true, // Optional parameter to download the images to use with Gatsby Image Plugin
+        region: 'us',
       }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
