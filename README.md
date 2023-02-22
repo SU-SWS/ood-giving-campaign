@@ -1,5 +1,7 @@
 # [Giving Campaign](https://github.com/SU-SWS/ood-giving-campaign)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/738e5599-7329-41a1-8429-82f8540636d9/deploy-status)](https://app.netlify.com/sites/giving-campaign/deploys)
+
 Description
 ---
 
@@ -21,6 +23,9 @@ If you can't find them, please ask another developer on the team.
 5. Then fire up your development server using Gatsby
 `npm run dev`
 
+We use the netlify-plugin-vault-variables to fetch the correct environment variables from the vault. For more information, please see:
+https://github.com/SU-SWS/netlify-plugin-vault-variables/#environment-variable-strategy-with-vault
+
 Using the Storyblok Editor on localhost
 ---
 
@@ -30,8 +35,11 @@ OSX:
 https://readwriteexercise.com/posts/trust-self-signed-certificates-macos/
 
 To start:
-```
-npm run dev
-npm run https-proxy-start
-```
 
+1. Do `npm run dev` in one terminal. You'll be able to view the development build in your browser at http://localhost:8000/
+
+2. In another terminal, do `npm run https-proxy-start`
+
+3. After that, you can go back to Storyblok and select the https://localhost:3010 URL in the visual editor. When you're doing this for the first time, you'll have to click the "Preview" button to pop the preview into its own tab out of the iframe and click past the browser warning to proceed to view the site.
+
+4. You can now go back to the Storyblok visual editor and hit the reload icon button (curved arrow) and preview the site in the iframe.
