@@ -4,14 +4,13 @@ import { storyblokInit, apiPlugin } from "gatsby-source-storyblok";
 import Teaser from './Teaser';
 import Grid from "./Grid";
 import Feature from "./Feature";
-//import configuration from '../../gatsby-config';
 
 type LayoutProps = {
   children: React.ReactNode,
 }
 
 storyblokInit({
-  accessToken: process.env.GATSBY_STORYBLOK_ACCESS_TOKEN,
+  accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
   apiOptions: {
     region: "us", // Pass this key/value if your space was created under US region
   },
