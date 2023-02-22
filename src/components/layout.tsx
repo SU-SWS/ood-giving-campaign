@@ -1,5 +1,4 @@
 import * as React from "react";
-//import PropTypes from "prop-types"
 import { storyblokInit, apiPlugin } from "gatsby-source-storyblok";
 import Teaser from './Teaser';
 import Grid from "./Grid";
@@ -29,9 +28,5 @@ const Layout = ({ children }: LayoutProps) => {
     </div>
   )
 };
-
-// Layout.propTypes = {
-//   children: PropTypes.node.isRequired,
-// }
 
 export default Layout;
