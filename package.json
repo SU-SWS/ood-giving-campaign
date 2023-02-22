@@ -18,9 +18,9 @@
     "not dead"
   ],
   "scripts": {
-    "develop": "gatsby develop",
-    "dev": "gatsby develop",
-    "start": "gatsby develop",
+    "develop": "ENABLE_GATSBY_REFRESH_ENDPOINT=true gatsby develop",
+    "dev": "ENABLE_GATSBY_REFRESH_ENDPOINT=true gatsby develop",
+    "start": "ENABLE_GATSBY_REFRESH_ENDPOINT=true gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",

@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import { StoryblokComponent, storyblokEditable, useStoryblokState } from "gatsby-source-storyblok";
 import Layout from "../components/layout";
 
-const IndexPage = ({ data }) => {
+const StoryblokEntry = ({ data }) => {
   let story = data.storyblokEntry;
   story = useStoryblokState(story);
 
@@ -19,11 +19,11 @@ const IndexPage = ({ data }) => {
   );
 };
 
-export default IndexPage;
+export default StoryblokEntry;
 
 export const query = graphql`
-  query HomeQuery {
-    storyblokEntry(full_slug: { eq: "home" }) {
+  query ($full_slug: String!) {
+    storyblokEntry(full_slug: { eq: $full_slug }) {
       content
       name
       full_slug
