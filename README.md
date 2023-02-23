@@ -1,49 +1,45 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby Minimal TypeScript Starter
-</h1>
+# [Giving Campaign](https://github.com/SU-SWS/ood-giving-campaign)
 
-## 🚀 Quick start
+[![Netlify Status](https://api.netlify.com/api/v1/badges/738e5599-7329-41a1-8429-82f8540636d9/deploy-status)](https://app.netlify.com/sites/giving-campaign/deploys)
 
-1.  **Create a Gatsby site.**
+Description
+---
 
-    Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
+Netlify hosted, Gatsby built, storyblok headless CMS site for Giving Campaign.
 
-    ```shell
-    # create a new Gatsby site using the minimal TypeScript starter
-    npm init gatsby -- -ts
-    ```
+Environment variable set up and installation
+---
 
-2.  **Start developing.**
+_Development_
 
-    Navigate into your new site’s directory and start it up.
+1. Create a new `.env` file by cloning the `example.env` file provided:
+`cp example.env .env`
+2. Manually find and add the `VAULT_ROLE_ID` and `VAULT_ROLE_ID` to `.env`. You can likely find those values in the Netlify environment variables UI.
+Or, you can retrieve the `VAULT_ROLE_ID` and `VAULT_ROLE_ID` by first running `netlify login` then `netlify link`, then use the `netlify env:get VAR_NAME` command. After that manually add them to `.env`
+If you can't find them, please ask another developer on the team.
+3. After the `VAULT_ROLE_ID` and `VAULT_SECRET_ID` environment variables have been added to .env, retrieve all other environment variables from the vault:
+`npm run vault:local`
+4. Install packages using `npm ci` or `npm install`
+5. Then fire up your development server using Gatsby
+`npm run dev`
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+We use the netlify-plugin-vault-variables to fetch the correct environment variables from the vault. For more information, please see:
+https://github.com/SU-SWS/netlify-plugin-vault-variables/#environment-variable-strategy-with-vault
 
-3.  **Open the code and start customizing!**
+Using the Storyblok Editor on localhost
+---
 
-    Your site is now running at http://localhost:8000!
+Currently Storyblok v2 doesn't allow accessing the environment with http, so to make it work, https has to be added to localhost. For your convenience we have created the certificate and key but your system may not trust this self signed cert. Once you have localhost up and running you can visit the url in the browser and proceed past the warning or you can add the certificate to your trusted list.
 
-    Edit `src/pages/index.tsx` to see your site update in real-time!
+OSX:
+https://readwriteexercise.com/posts/trust-self-signed-certificates-macos/
 
-4.  **Learn more**
+To start:
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+1. Do `npm run dev` in one terminal. You'll be able to view the development build in your browser at http://localhost:8000/
 
-## 🚀 Quick start (Netlify)
+2. In another terminal, do `npm run https-proxy-start`
 
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
+3. After that, you can go back to Storyblok and select the https://localhost:3010 URL in the visual editor. When you're doing this for the first time, you'll have to click the "Preview" button to pop the preview into its own tab out of the iframe and click past the browser warning to proceed to view the site.
 
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)
+4. You can now go back to the Storyblok visual editor and hit the reload icon button (curved arrow) and preview the site in the iframe.

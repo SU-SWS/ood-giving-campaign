@@ -1,7 +1,6 @@
 {
   "name": "ood-giving-campaign",
   "version": "0.0.1",
-  "private": true,
   "description": "Giving Campaign",
   "author": "Stanford University",
   "keywords": [
@@ -19,12 +18,14 @@
     "not dead"
   ],
   "scripts": {
-    "develop": "gatsby develop",
-    "dev": "gatsby develop",
-    "start": "gatsby develop",
+    "develop": "ENABLE_GATSBY_REFRESH_ENDPOINT=true gatsby develop",
+    "dev": "ENABLE_GATSBY_REFRESH_ENDPOINT=true gatsby develop",
+    "start": "ENABLE_GATSBY_REFRESH_ENDPOINT=true gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "vault": "netlify-plugin-vault-variables",
+    "vault:local": "NODE_ENV=development netlify-plugin-vault-variables",
     "typecheck": "tsc --noEmit",
     "tsc": "tsc",
     "https-proxy-start": "local-ssl-proxy --source 3010 --target 8000 --cert ./dev/localhost.pem --key ./dev/localhost-key.pem",
@@ -38,6 +39,8 @@
     "gatsby-source-filesystem": "^5.0.0",
     "gatsby-source-storyblok": "^5.0.0",
     "gatsby-transformer-sharp": "^5.0.0",
+    "netlify-plugin-vault-variables": "^1.0.7",
+    "node-vault": "^0.9.22",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
