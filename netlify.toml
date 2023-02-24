@@ -3,11 +3,6 @@
 [build]
   publish = "public"
 
-[dev]
-  publish = "public"
-  port = 64946
-  autolaunch = true
-
 # PLUGINS
 # ##############################################################################
 
