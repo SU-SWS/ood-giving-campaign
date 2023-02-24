@@ -32,6 +32,7 @@
     "hps": "local-ssl-proxy --cert ./dev/localhost.pem --key ./dev/localhost-key.pem"
   },
   "dependencies": {
+    "decanter": "^7.0.0-rc.2",
     "dotenv": "^16.0.3",
     "gatsby": "^5.7.0",
     "gatsby-plugin-manifest": "^5.7.0",
@@ -50,6 +51,7 @@
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",
+    "autoprefixer": "^10.4.13",
     "eslint": "^8.34.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -58,6 +60,9 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "gatsby-plugin-netlify": "^5.1.0",
+    "gatsby-plugin-postcss": "^6.7.0",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.7",
     "typescript": "^4.9.5"
   },
   "overrides": {
