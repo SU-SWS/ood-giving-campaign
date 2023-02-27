@@ -43,3 +43,12 @@ To start:
 3. After that, you can go back to Storyblok and select the https://localhost:3010 URL in the visual editor. When you're doing this for the first time, you'll have to click the "Preview" button to pop the preview into its own tab out of the iframe and click past the browser warning to proceed to view the site.
 
 4. You can now go back to the Storyblok visual editor and hit the reload icon button (curved arrow) and preview the site in the iframe.
+
+Linting
+---
+
+We use [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint) to enable ESLint to run on our TypeScript code. We also use [eslint-config-airbnb](https://www.npmjs.com/package/eslint-config-airbnb) and [eslint-config-airbnb-typescript](https://www.npmjs.com/package/eslint-config-airbnb-typescript) plus their dependencies for our configuration.
+
+To run ESLint:
+- `npm run lint` to check your .js, .jsx, .ts and .tsx files in the /src directory for warnings and errors.
+- `npm run lint:fix` to fix any fixable issues and displays the ones that need to be manually fixed.

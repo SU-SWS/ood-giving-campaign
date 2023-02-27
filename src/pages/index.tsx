@@ -1,13 +1,13 @@
-import * as React from "react";
-import { graphql } from "gatsby";
-import { StoryblokComponent, storyblokEditable, useStoryblokState } from "gatsby-source-storyblok";
-import Layout from "../components/layout";
+import * as React from 'react';
+import { graphql } from 'gatsby';
+import { StoryblokComponent, storyblokEditable, useStoryblokState } from 'gatsby-source-storyblok';
+import Layout from '../components/layout';
 
 const IndexPage = ({ data }) => {
   let story = data.storyblokEntry;
   story = useStoryblokState(story);
 
-  const components = story.content.body.map(blok => (<StoryblokComponent blok={blok} key={blok._uid} />));
+  const components = story.content.body.map((blok) => (<StoryblokComponent blok={blok} key={blok._uid} />));
 
   return (
     <Layout>
@@ -32,4 +32,4 @@ export const query = graphql`
       internalId
     }
   }
-`
+`;

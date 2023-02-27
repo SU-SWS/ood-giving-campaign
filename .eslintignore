@@ -1,0 +1,8 @@
+build/
+dist/
+static/
+node_modules/
+.cache/
+.snapshots/
+*.min.js
+*.test.js
