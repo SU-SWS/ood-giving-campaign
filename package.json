@@ -32,7 +32,7 @@
     "hps": "local-ssl-proxy --cert ./dev/localhost.pem --key ./dev/localhost-key.pem"
   },
   "dependencies": {
-    "decanter": "^7.0.0-rc.2",
+    "decanter": "^7.0.0-rc.3",
     "dotenv": "^16.0.3",
     "gatsby": "^5.7.0",
     "gatsby-plugin-manifest": "^5.7.0",
