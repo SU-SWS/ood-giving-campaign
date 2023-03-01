@@ -6,7 +6,6 @@ const path = require('path');
 const dir = path.resolve(__dirname, 'src/tailwind/plugins');
 
 module.exports = {
-  prefix: 'su-',
   presets: [
     require('decanter'),
   ],

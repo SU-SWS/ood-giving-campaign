@@ -32,7 +32,6 @@
     "hps": "local-ssl-proxy --cert ./dev/localhost.pem --key ./dev/localhost-key.pem"
   },
   "dependencies": {
-    "decanter": "^7.0.0-rc.3",
     "dotenv": "^16.0.3",
     "gatsby": "^5.7.0",
     "gatsby-plugin-manifest": "^5.7.0",
@@ -52,6 +51,7 @@
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",
     "autoprefixer": "^10.4.13",
+    "decanter": "^7.0.0-rc.3",
     "eslint": "^8.34.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
