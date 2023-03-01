@@ -12,7 +12,8 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <div {...storyblokEditable(story.content)}>
-        <h1>{story.name}</h1>
+        <h1 className="su-font-serif">{story.name}</h1>
+        <div className="su-logo su-text-20">Stanford</div>
         {components}
       </div>
     </Layout>
