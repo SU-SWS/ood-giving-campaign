@@ -1,0 +1,31 @@
+import {
+  ArrowUpIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  ArrowUpRightIcon,
+  ChevronDownIcon,
+  ChevronRightIcon,
+  EnvelopeIcon,
+  LinkIcon,
+  PlusIcon,
+  XMarkIcon,
+} from '@heroicons/react/24/outline';
+
+export const iconMap = {
+  action: ChevronRightIcon,
+  'arrow-right': ArrowRightIcon,
+  'arrow-left': ArrowLeftIcon,
+  'arrow-up': ArrowUpIcon,
+  back: ArrowLeftIcon,
+  'chevron-down': ChevronDownIcon,
+  'chevron-right': ChevronRightIcon,
+  close: XMarkIcon,
+  email: EnvelopeIcon,
+  external: ArrowUpRightIcon,
+  left: ArrowLeftIcon,
+  link: LinkIcon,
+  more: ArrowRightIcon,
+  plus: PlusIcon,
+  right: ArrowRightIcon,
+  up: ArrowUpIcon,
+};
