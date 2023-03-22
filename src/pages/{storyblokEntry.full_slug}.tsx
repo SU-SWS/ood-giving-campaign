@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 import { StoryblokComponent, storyblokEditable, useStoryblokState } from 'gatsby-source-storyblok';
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 
 const StoryblokEntry = ({ data }) => {
   let story = data.storyblokEntry;
