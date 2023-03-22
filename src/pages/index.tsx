@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
-import { StoryblokComponent, storyblokEditable, useStoryblokState } from 'gatsby-source-storyblok';
+import { StoryblokComponent, storyblokEditable } from 'gatsby-source-storyblok';
+import { useStoryblokState } from '../hooks/useStoryblokState';
 import Layout from '../components/Layout';
 
 const IndexPage = ({ data }) => {
