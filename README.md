@@ -52,3 +52,8 @@ We use [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/t
 To run ESLint:
 - `npm run lint` to check your .js, .jsx, .ts and .tsx files in the /src directory for warnings and errors.
 - `npm run lint:fix` to fix any fixable issues and displays the ones that need to be manually fixed.
+
+Components
+---
+
+All the React components in this projects can be found under the `src/components/` directory. Components that are connected to Storyblok are in the subdirectory `src/components/Storyblok'.
