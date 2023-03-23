@@ -21,14 +21,11 @@ export const RichText = ({
   wysiwyg,
   isDark,
   className,
-  linkColor,
 }: RichTextProps) => {
   let textColor = 'su-text-current';
-  let bodyLinkColor = '';
 
   if (isDark) {
     textColor = 'su-text-black-20 print:su-text-black';
-    bodyLinkColor = 'su-text-digital-red-xlight hocus:su-text-white';
   }
   const rendered = render(wysiwyg, {
     markResolvers: {
