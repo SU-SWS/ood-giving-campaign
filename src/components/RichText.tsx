@@ -1,17 +1,11 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
-import {
-  render,
-  MARK_STYLED,
-  MARK_BOLD,
-  MARK_ITALIC,
-  NODE_HEADING,
-} from 'storyblok-rich-text-react-renderer';
+import { render, StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { dcnb } from 'cnbuilder';
 import { Heading, Paragraph } from './Typography';
 
 export type RichTextProps = {
-  wysiwyg: React.ReactNode;
+  wysiwyg: StoryblokRichtext;
   isDark?: boolean;
   className?: string;
   linkColor?: string;
@@ -29,7 +23,7 @@ export const RichText = ({
   }
   const rendered = render(wysiwyg, {
     markResolvers: {
-      [MARK_STYLED]: (children, props) => React.createElement(
+      styled: (children, props) => React.createElement(
         'span',
         {
           // eslint-disable-next-line react/destructuring-assignment
@@ -37,11 +31,11 @@ export const RichText = ({
         },
         children,
       ),
-      [MARK_BOLD]: (children) => <strong>{children}</strong>,
-      [MARK_ITALIC]: (children) => <em>{children}</em>,
+      bold: (children) => <strong>{children}</strong>,
+      italic: (children) => <em>{children}</em>,
     },
     nodeResolvers: {
-      [NODE_HEADING]: (children, props) => {
+      heading: (children, props) => {
         const { level } = props;
         if (level > 1 && level < 6) {
           return (

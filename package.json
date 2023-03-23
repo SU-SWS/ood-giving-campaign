@@ -47,7 +47,7 @@
     "node-vault": "^0.9.22",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "storyblok-rich-text-react-renderer": "^2.6.1"
+    "storyblok-rich-text-react-renderer-ts": "^3.2.0"
   },
   "devDependencies": {
     "@types/node": "^18.14.1",
