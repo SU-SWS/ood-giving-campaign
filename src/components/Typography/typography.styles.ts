@@ -56,7 +56,3 @@ export const textVariants = {
 };
 
 export const iconStyle = 'su-inline-block su-shrink-0 su-w-[1.2em] su-mr-04em';
-
-export const linkedinWrapperStyle = 'su-relative su-pr-15 md:su-pr-18';
-
-export const linkedinIconStyle = 'su-relative su-w-15 md:su-w-18 su--ml-15 md:su--ml-18 su-translate-x-[2.1rem] md:su-translate-x-[2.4rem] su--translate-y-4';

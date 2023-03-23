@@ -1,6 +1,6 @@
 import React from 'react';
 import { ClassValue, dcnb } from 'cnbuilder';
-import * as styles from './Heroicon.styles';
+import * as styles from './HeroIcon.styles';
 
 export type IconType = keyof typeof styles.iconMap;
 

@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
 import { dcnb } from 'cnbuilder';
-import { HeroIcon, HeroIconProps, IconType } from '../HeroIcon';
+import { HeroIcon, HeroIconProps, IconType } from '../HeroIcon/HeroIcon';
 import * as styles from './typography.styles';
 import * as types from './typography.types';
 
 export type TypographyProps = {
-  as?: types.PolymorphicType;
+  as?: types.TextType;
   font?: types.FontStackType;
   size?: types.FontSizeType;
   weight?: types.FontWeightType;
@@ -22,12 +22,7 @@ export type TypographyProps = {
   children?: ReactNode;
 };
 
-// IntrinsicProps provides a union of all valid pairings of props and as.
-export type IntrinsicProps = {
-  [K in keyof JSX.IntrinsicElements]: JSX.IntrinsicElements[K] & { as?: K; }
-}[keyof JSX.IntrinsicElements];
-
-export type TextProps = TypographyProps & IntrinsicProps;
+export type TextProps = TypographyProps & React.HTMLAttributes<HTMLElement>;
 
 export const Text = ({
   as: AsComponent = 'div',
@@ -76,13 +71,7 @@ export const Text = ({
           {...iProps}
         />
       )}
-      {!isLinkedin && children}
-      {isLinkedin && (
-        <span className={linkedinWrapperStyle}>
-          { children }
-          <LinkedInIcon srText={linkedinSrText} className={linkedinIconStyle} />
-        </span>
-      )}
+      {children}
     </AsComponent>
   );
 };
