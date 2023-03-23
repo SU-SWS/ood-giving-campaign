@@ -46,33 +46,9 @@ export const RichText = ({
     nodeResolvers: {
       [NODE_HEADING]: (children, props) => {
         const { level } = props;
-        if (level === 2) {
+        if (level > 1 && level < 6) {
           return (
-            <Heading as="h2" font="serif" size={4}>
-              {children}
-            </Heading>
-          );
-        }
-
-        if (level === 3) {
-          return (
-            <Heading as="h3" font="serif" size={3}>
-              {children}
-            </Heading>
-          );
-        }
-
-        if (level === 4) {
-          return (
-            <Heading as="h4" font="serif" size={2}>
-              {children}
-            </Heading>
-          );
-        }
-
-        if (level === 5) {
-          return (
-            <Heading as="h5" font="serif" size={1}>
+            <Heading as={`h${level}`} font="serif">
               {children}
             </Heading>
           );
