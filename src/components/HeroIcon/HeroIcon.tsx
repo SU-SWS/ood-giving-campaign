@@ -1,35 +1,38 @@
 import React from 'react';
 import { ClassValue, dcnb } from 'cnbuilder';
-import { SrOnlyText } from '../Typography/SrOnlyText';
-import { iconMap } from './Heroicon.styles';
+import * as styles from './Heroicon.styles';
 
-export type IconType = keyof typeof iconMap;
+export type IconType = keyof typeof styles.iconMap;
 
-export type HeroIconProps = {
+export type HeroIconProps = React.ComponentProps<'svg'> & {
   icon?: IconType;
+  // Title for the SVG for accessibility
+  title?: string;
   noBaseStyle?: boolean;
-  srText?: string;
   className?: ClassValue;
 };
 
 export const HeroIcon = ({
   icon,
+  title,
   noBaseStyle,
-  srText,
   className,
   ...props
 }: HeroIconProps & React.ComponentProps<'svg'>) => {
-  const Icon = iconMap[icon];
+  const Icon = styles.iconMap[icon];
 
   // Set default base style so icon has reasonable size if used out of the box
   // noBaseStyle boolean allows for user to not attach any base styles if needed
-  const baseStyle = noBaseStyle ? '' : iconBaseStyle[icon] || iconBaseStyle.default;
+  const baseStyle = noBaseStyle ? '' : styles.iconBaseStyle[icon] || styles.iconBaseStyle.default;
   const heroIconStyle = dcnb('su-transition', baseStyle);
 
   return (
-    <>
-      <Icon aria-hidden className={dcnb(heroIconStyle, className)} {...props} />
-      {srText && <SrOnlyText>srText</SrOnlyText>}
-    </>
+    <Icon
+      title={title}
+      // If a title for the SVG is provided, unhide the SVG from screen readers
+      aria-hidden={!title}
+      className={dcnb(heroIconStyle, className)}
+      {...props}
+    />
   );
 };
