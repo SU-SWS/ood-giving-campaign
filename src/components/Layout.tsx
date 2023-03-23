@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { storyblokInit, apiPlugin } from 'gatsby-source-storyblok';
-import Teaser from './Teaser';
-import Grid from './Grid';
-import Feature from './Feature';
+import Teaser from './Storyblok/Teaser';
+import Grid from './Storyblok/Grid';
+import Feature from './Storyblok/Feature';
 
 type LayoutProps = {
   children: React.ReactNode,

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storyblokEditable } from 'gatsby-source-storyblok';
-import { Heading } from './Typography';
+import { Heading } from '../Typography';
 
 const Teaser = ({ blok }) => (
   <div {...storyblokEditable(blok)}>

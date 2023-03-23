@@ -1,8 +1,8 @@
 import React from 'react';
 import { dcnb } from 'cnbuilder';
 import { storyblokEditable } from 'gatsby-source-storyblok';
-import { HeroIcon } from './HeroIcon/HeroIcon';
-import { Heading, Paragraph } from './Typography';
+import { HeroIcon } from '../HeroIcon/HeroIcon';
+import { Heading, Paragraph } from '../Typography';
 
 const Feature = ({ blok }) => (
   <div {...storyblokEditable(blok)} key={blok._uid}>
