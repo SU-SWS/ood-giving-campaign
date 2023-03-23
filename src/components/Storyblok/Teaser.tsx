@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { storyblokEditable } from 'gatsby-source-storyblok';
+import { Heading } from '../Typography';
 
 const Teaser = ({ blok }) => (
   <div {...storyblokEditable(blok)}>
-    <h1 className="su-font-normal">{blok.headline}</h1>
+    <Heading as="h2" weight="normal">{blok.headline}</Heading>
   </div>
 );
 
