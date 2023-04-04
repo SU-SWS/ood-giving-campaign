@@ -1,4 +1,5 @@
 export const root = 'su-w-full su-basefont-20 su-rs-py-1 su-text-white su-bg-cardinal-red';
+export const outerWrapper = 'lg:su-flex-row';
 export const logoWrapper = 'su-text-center su-mt-5 su-mb-9';
 export const logo = 'su-type-3';
 export const contentWrapper = 'lg:su-pl-45 xl:su-pl-50 su-text-left sm:su-text-center lg:su-text-left su-grow';

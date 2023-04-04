@@ -16,7 +16,7 @@ const GlobalFooter = ({ className, ...rest }: GlobalFooterProps) => (
     className={dcnb(styles.root, className)}
     width="site"
   >
-    <FlexBox direction="col" className="lg:su-flex-row">
+    <FlexBox direction="col" className={styles.outerWrapper}>
       <div className={styles.logoWrapper}>
         <StanfordLogo isLink className={styles.logo} type="stacked" color="white" />
       </div>
