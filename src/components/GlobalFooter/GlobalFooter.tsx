@@ -10,22 +10,23 @@ type GlobalFooterProps = Omit<HTMLAttributes<HTMLDivElement>, 'className'> & {
   className?: string;
 };
 
-export const GlobalFooter = ({ className, ...rest }: GlobalFooterProps) => (
+const GlobalFooter = ({ className, ...rest }: GlobalFooterProps) => (
   <Container
     {...rest}
-    className={dcnb('su-basefont-20 su-rs-py-1 su-text-white su-bg-cardinal-red', className)}
+    className={dcnb(styles.root, className)}
     width="site"
   >
     <FlexBox direction="col" className="lg:su-flex-row">
-      <div className="su-text-center su-mt-5 su-mb-9">
-        <StanfordLogo isLink className="su-type-3" type="stacked" color="white" />
+      <div className={styles.logoWrapper}>
+        <StanfordLogo isLink className={styles.logo} type="stacked" color="white" />
       </div>
-      <div className="lg:su-pl-45 xl:su-pl-50 su-text-left sm:su-text-center lg:su-text-left su-grow">
-        <nav
+      <div className={styles.contentWrapper}>
+        <FlexBox
+          justifyContent="center"
           aria-label="global footer menu"
-          className="su-flex su-flex-row sm:su-flex-col su-justify-center sm:su-items-center lg:su-items-start su-mb-10"
+          className={styles.menusWrapper}
         >
-          <ul className="su-list-unstyled su-mb-10 sm:su-mb-4 su-mr-19 sm:su-mr-0 su-p-0 su-text-15 md:su-text-17 2xl:su-text-18 su-flex su-flex-col sm:su-flex-row">
+          <ul className={styles.stanfordMenu}>
             <li className={styles.listItem}>
               <a
                 href="https://www.stanford.edu"
@@ -63,7 +64,7 @@ export const GlobalFooter = ({ className, ...rest }: GlobalFooterProps) => (
               </a>
             </li>
           </ul>
-          <ul className="su-list-unstyled su-mb-10 sm:su-mb-0 su-ml-19 sm:su-ml-0 su-p-0 su-text-15 sm:su-text-14 md:su-text-15 xl:su-text-16 su-flex su-flex-col sm:su-flex-row sm:su-link-regular">
+          <ul className={styles.legalMenu}>
             <li className={styles.listItem}>
               <a
                 href="https://www.stanford.edu/site/terms/"
@@ -125,7 +126,7 @@ export const GlobalFooter = ({ className, ...rest }: GlobalFooterProps) => (
               </a>
             </li>
           </ul>
-        </nav>
+        </FlexBox>
         <div className={styles.copyright}>
           <span className={styles.copyrightText}>&copy; Stanford University.</span>
           <span className={styles.copyrightText}>&nbsp; Stanford, California 94305.</span>
@@ -134,3 +135,6 @@ export const GlobalFooter = ({ className, ...rest }: GlobalFooterProps) => (
     </FlexBox>
   </Container>
 );
+
+// Must use default export for Gatsby slice
+export default GlobalFooter;

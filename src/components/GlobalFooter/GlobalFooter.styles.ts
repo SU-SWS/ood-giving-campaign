@@ -1,3 +1,10 @@
+export const root = 'su-w-full su-basefont-20 su-rs-py-1 su-text-white su-bg-cardinal-red';
+export const logoWrapper = 'su-text-center su-mt-5 su-mb-9';
+export const logo = 'su-type-3';
+export const contentWrapper = 'lg:su-pl-45 xl:su-pl-50 su-text-left sm:su-text-center lg:su-text-left su-grow';
+export const menusWrapper = 'sm:su-flex-col sm:su-items-center lg:su-items-start su-mb-10';
+export const stanfordMenu = 'su-list-unstyled su-mb-10 sm:su-mb-4 su-mr-19 sm:su-mr-0 su-p-0 su-text-15 md:su-text-17 2xl:su-text-18 su-flex su-flex-col sm:su-flex-row';
+export const legalMenu = 'su-list-unstyled su-mb-10 sm:su-mb-0 su-ml-19 sm:su-ml-0 su-p-0 su-text-15 sm:su-text-14 md:su-text-15 xl:su-text-16 su-flex su-flex-col sm:su-flex-row sm:su-link-regular';
 export const listItem = 'sm:su-mr-10 md:su-mr-20 lg:su-mr-27';
 export const link = 'su-text-white su-no-underline hocus:su-underline hocus:su-text-white';
 export const copyright = 'su-text-13 sm:su-text-14 su-text-center lg:su-text-left';

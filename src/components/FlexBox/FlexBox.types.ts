@@ -1,6 +1,6 @@
 import * as styles from './FlexBox.styles';
 
-export type FlexElementType = 'div' | 'section' | 'article' | 'main' | 'footer' | 'aside' | 'header' | 'nav' | 'form' | 'button' | 'fieldset';
+export type FlexElementType = 'div' | 'section' | 'article' | 'main' | 'footer' | 'aside' | 'header' | 'nav' | 'form' | 'button' | 'fieldset' | 'ul' | 'ol' | 'li';
 
 export type FlexDirectionType = keyof typeof styles.flexDirection;
 
