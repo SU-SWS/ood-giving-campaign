@@ -41,7 +41,7 @@
     "gatsby-plugin-sharp": "^5.7.0",
     "gatsby-plugin-sitemap": "^6.8.0",
     "gatsby-source-filesystem": "^5.7.0",
-    "gatsby-source-storyblok": "^5.0.0",
+    "gatsby-source-storyblok": "^5.0.12",
     "gatsby-transformer-sharp": "^5.7.0",
     "netlify-plugin-vault-variables": "^1.0.7",
     "node-vault": "^0.9.22",
