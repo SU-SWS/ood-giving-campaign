@@ -4,7 +4,6 @@ import * as styles from './FlexBox.styles';
 import * as types from './FlexBox.types';
 
 type FlexBoxProps = HTMLAttributes<HTMLElement> & {
-  children?: ReactNode;
   as?: types.FlexElementType;
   direction?: types.FlexDirectionType;
   wrap?: types.FlexWrapType;
@@ -12,18 +11,19 @@ type FlexBoxProps = HTMLAttributes<HTMLElement> & {
   justifyContent?: types.FlexJustifyContentType;
   alignContent?: types.FlexAlignContentType;
   alignItems?: types.FlexAlignItemsType;
+  children?: ReactNode;
 };
 
 export const FlexBox = ({
   as: AsComponent = 'div',
   direction,
-  wrap,
   gap,
+  wrap,
   justifyContent,
   alignContent,
   alignItems,
-  className,
   children,
+  className,
   ...props
 }: FlexBoxProps) => (
   <AsComponent
