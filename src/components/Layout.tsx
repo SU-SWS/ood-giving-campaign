@@ -5,6 +5,7 @@ import { FlexBox } from './FlexBox';
 import Teaser from './Storyblok/Teaser';
 import Grid from './Storyblok/Grid';
 import Feature from './Storyblok/Feature';
+import SbSection from './Storyblok/SbSection';
 
 type LayoutProps = {
   children: React.ReactNode,
@@ -20,6 +21,7 @@ storyblokInit({
     teaser: Teaser,
     grid: Grid,
     feature: Feature,
+    sbSection: SbSection,
   },
 });
 
