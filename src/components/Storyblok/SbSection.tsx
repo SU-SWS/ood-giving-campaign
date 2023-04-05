@@ -2,7 +2,7 @@ import React from 'react';
 import { storyblokEditable } from 'gatsby-source-storyblok';
 import { CreateBloks } from '../CreateBloks';
 import { Heading, HeadingType } from '../Typography';
-import { Section } from '../Section';
+import { Section, BgColorType } from '../Section';
 
 type SbSectionProps = {
   blok: {
@@ -10,6 +10,7 @@ type SbSectionProps = {
     content: any[];
     heading: string;
     headingLevel: HeadingType;
+    bgColor: BgColorType;
   };
 };
 
@@ -19,10 +20,11 @@ const SbSection = ({
     content,
     heading,
     headingLevel,
+    bgColor,
   },
   blok,
 }: SbSectionProps) => (
-  <Section {...storyblokEditable(blok)} key={_uid}>
+  <Section {...storyblokEditable(blok)} key={_uid} bgColor={bgColor}>
     {heading && <Heading as={headingLevel} size={6}>{heading}</Heading>}
     <CreateBloks blokSection={content} />
   </Section>
