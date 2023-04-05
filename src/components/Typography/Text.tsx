@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { dcnb } from 'cnbuilder';
-import { HeroIcon, HeroIconProps, IconType } from '../HeroIcon/HeroIcon';
+import { HeroIcon, HeroIconProps, IconType } from '../HeroIcon';
 import * as styles from './typography.styles';
 import * as types from './typography.types';
 

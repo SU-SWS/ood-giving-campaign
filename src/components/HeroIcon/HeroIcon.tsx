@@ -1,15 +1,13 @@
 import React from 'react';
-import { ClassValue, dcnb } from 'cnbuilder';
+import { dcnb } from 'cnbuilder';
 import * as styles from './HeroIcon.styles';
 
-export type IconType = keyof typeof styles.iconMap;
-
 export type HeroIconProps = React.ComponentProps<'svg'> & {
-  icon?: IconType;
+  icon?: styles.IconType;
   // Title for the SVG for accessibility
   title?: string;
   noBaseStyle?: boolean;
-  className?: ClassValue;
+  className?: string;
 };
 
 export const HeroIcon = ({
@@ -18,7 +16,7 @@ export const HeroIcon = ({
   noBaseStyle,
   className,
   ...props
-}: HeroIconProps & React.ComponentProps<'svg'>) => {
+}: HeroIconProps) => {
   const Icon = styles.iconMap[icon];
 
   // Set default base style so icon has reasonable size if used out of the box

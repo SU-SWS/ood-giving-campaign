@@ -29,6 +29,7 @@ export const iconMap = {
   right: ArrowRightIcon,
   up: ArrowUpIcon,
 };
+export type IconType = keyof typeof iconMap;
 
 /**
  * Normalized base size and position of each icon (finetuned manually) for use in eg, buttons
