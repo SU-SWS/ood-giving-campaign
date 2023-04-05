@@ -1,5 +1,6 @@
 import React from 'react';
-import { StoryblokComponent, storyblokEditable } from 'gatsby-source-storyblok';
+import { storyblokEditable } from 'gatsby-source-storyblok';
+import { CreateBloks } from '../CreateBloks';
 import { Heading, HeadingType } from '../Typography';
 import { Section } from '../Section';
 
@@ -23,9 +24,7 @@ const SbSection = ({
 }: SbSectionProps) => (
   <Section {...storyblokEditable(blok)} key={_uid}>
     {heading && <Heading as={headingLevel} size={6}>{heading}</Heading>}
-    {content.map((contentBlok) => (
-      <StoryblokComponent blok={contentBlok} key={contentBlok._uid} />
-    ))}
+    <CreateBloks blokSection={content} />
   </Section>
 );
 
