@@ -1,5 +1,7 @@
 import * as React from 'react';
+import { Slice } from 'gatsby';
 import { storyblokInit, apiPlugin } from 'gatsby-source-storyblok';
+import { FlexBox } from './FlexBox';
 import Teaser from './Storyblok/Teaser';
 import Grid from './Storyblok/Grid';
 import Feature from './Storyblok/Feature';
@@ -22,9 +24,10 @@ storyblokInit({
 });
 
 const Layout = ({ children }: LayoutProps) => (
-  <div>
+  <FlexBox justifyContent="between" direction="col" className="su-min-h-screen">
     <main>{children}</main>
-  </div>
+    <Slice alias="global-footer" />
+  </FlexBox>
 );
 
 export default Layout;
