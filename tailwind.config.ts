@@ -27,6 +27,7 @@ export default {
     // Campaign themes extending our Decanter ones
     extend: {
       colors: require(`${dir}/theme/gc-colors.js`)(),
+      fontFamily: require(`${dir}/theme/gc-fontFamily.js`)(),
     },
   },
   plugins: [

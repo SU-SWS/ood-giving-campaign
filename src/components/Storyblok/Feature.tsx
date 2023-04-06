@@ -11,7 +11,7 @@ const Feature = ({ blok }) => (
   <div {...storyblokEditable(blok)} key={blok._uid}>
     <Heading
       as="h3"
-      className={dcnb('su-text-gc-electric-blue', blok.name.includes('2') ? 'su-bg-illuminating' : 'su-bg-spirited')}
+      className={dcnb('su-text-periwinkle', blok.name.includes('2') ? 'su-bg-lavender' : 'su-bg-flamingo')}
     >
       {blok.name}
       <HeroIcon icon="external" title="(some svg title test)" className="su-inline-block su-ml-02em" />

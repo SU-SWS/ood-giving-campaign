@@ -6,13 +6,17 @@ import * as types from './typography.types';
 
 export type TypographyProps = {
   as?: types.TextType;
-  font?: types.FontStackType;
+  font?: types.FontFamilyType;
   size?: types.FontSizeType;
   weight?: types.FontWeightType;
   align?: types.TextAlignType;
   color?: types.TextColorType;
   variant?: types.TextVariantType;
   leading?: types.FontLeadingType;
+  /**
+   * If true, use default tracking for the font - for Druk and Druk Wide
+   */
+  useDefaultTracking?: boolean;
   italic?: boolean;
   srOnly?: boolean;
   uppercase?: boolean;
@@ -33,6 +37,7 @@ export const Text = ({
   color = 'default',
   variant,
   leading,
+  useDefaultTracking = font === 'druk' || font === 'druk-wide',
   italic,
   srOnly,
   uppercase,
@@ -49,7 +54,7 @@ export const Text = ({
       {...rest}
       className={
         dcnb(
-          styles.fontStacks[font],
+          styles.fontFamilies[font],
           styles.fontSizes[size],
           styles.fontWeights[weight],
           styles.textAligns[align],
@@ -59,6 +64,7 @@ export const Text = ({
           italic ? 'su-italic' : '',
           srOnly ? 'su-sr-only' : '',
           uppercase ? 'su-uppercase' : '',
+          useDefaultTracking ? 'su-tracking-normal' : '',
           className,
         )
       }
