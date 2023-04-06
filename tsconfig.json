@@ -102,8 +102,10 @@
   "include": [
     "./src/**/*.ts",
     "./src/**/*.tsx",
-    "./gatsby-node.ts",
+    "./gatsby-browser.ts",
     "./gatsby-config.ts",
+    "./gatsby-node.ts",
+    "./tailwind.config.ts",
     "./plugins/**/*"
   ],
   "exclude": [
