@@ -25,7 +25,7 @@ const SbSection = ({
   blok,
 }: SbSectionProps) => (
   <Section {...storyblokEditable(blok)} key={_uid} bgColor={bgColor}>
-    {heading && <Heading as={headingLevel} size={9} uppercase font="druk" className="su-tracking-normal">{heading}</Heading>}
+    {heading && <Heading as={headingLevel} size={9} uppercase font="druk">{heading}</Heading>}
     <CreateBloks blokSection={content} />
   </Section>
 );
