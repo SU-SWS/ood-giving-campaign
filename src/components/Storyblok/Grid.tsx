@@ -1,14 +1,15 @@
 import React from 'react';
-import { StoryblokComponent, storyblokEditable } from 'gatsby-source-storyblok';
+import { storyblokEditable } from 'gatsby-source-storyblok';
+import { Grid } from '../Grid';
+import { CreateBloks } from '../CreateBloks';
 
-const Grid = ({ blok }) => (
-  <ul {...storyblokEditable(blok)} key={blok._uid} className="su-list-unstyled su-grid su-grid-gap md:su-grid-cols-3">
-    {blok.columns.map((columnBlok) => (
-      <li key={columnBlok._uid}>
-        <StoryblokComponent blok={columnBlok} />
-      </li>
-    ))}
-  </ul>
+/**
+ * TODO: This is a temporary component that comes with the starter and the file will be renamed.
+ */
+const SbGrid = ({ blok: { columns }, blok }) => (
+  <Grid {...storyblokEditable(blok)} key={blok._uid} gap className="md:su-grid-cols-3">
+    <CreateBloks blokSection={columns} />
+  </Grid>
 );
 
-export default Grid;
+export default SbGrid;
