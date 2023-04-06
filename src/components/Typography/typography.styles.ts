@@ -1,12 +1,15 @@
-export const fontStacks = {
+export const fontFamilies = {
   sans: 'su-font-sans',
   serif: 'su-font-serif',
+  druk: 'su-font-druk',
+  'druk-wide': 'su-font-druk-wide',
 };
 
 export const fontWeights = {
   normal: 'su-font-normal',
   semibold: 'su-font-semibold',
   bold: 'su-font-bold',
+  black: 'su-font-black', // 900, needed for Druk font
 };
 
 // Modular typography - already includes responsive font sizes
@@ -19,6 +22,8 @@ export const fontSizes = {
   5: 'su-type-5',
   6: 'su-type-6',
   7: 'su-type-7',
+  8: 'su-type-8',
+  9: 'su-type-9',
 };
 
 // Line heights

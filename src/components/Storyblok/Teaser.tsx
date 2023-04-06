@@ -6,7 +6,7 @@ import { hasRichText } from '../../utilities/hasRichText';
 
 const Teaser = ({ blok }) => (
   <div {...storyblokEditable(blok)}>
-    <Heading as="h2" weight="normal">{blok.headline}</Heading>
+    <Heading as="h2" size={5} font="druk-wide">{blok.headline}</Heading>
     {hasRichText(blok.description) && <RichText wysiwyg={blok.description} />}
   </div>
 );

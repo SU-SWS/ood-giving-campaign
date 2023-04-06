@@ -6,7 +6,7 @@ export type NonHeadingTypographyType = 'p' | 'span' | 'div' | 'label' | 'legend'
 
 export type TextType = HeadingType | NonHeadingTypographyType;
 
-export type FontStackType = keyof typeof styles.fontStacks;
+export type FontFamilyType = keyof typeof styles.fontFamilies;
 
 export type FontWeightType = keyof typeof styles.fontWeights;
 

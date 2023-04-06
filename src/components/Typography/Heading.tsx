@@ -10,6 +10,6 @@ export type HeadingProps = TypographyProps & React.HTMLAttributes<HTMLHeadingEle
 export const Heading = ({
   as = 'h2',
   font = 'serif',
-  weight = 'bold',
+  weight = font === 'druk' ? 'black' : 'bold',
   ...rest
 }: HeadingProps) => <Text {...rest} font={font} weight={weight} as={as} />;

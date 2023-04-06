@@ -1,5 +1,5 @@
 /**
- * SAA colors
+ * Giving Campaign colors
  */
 module.exports = function () {
   return {

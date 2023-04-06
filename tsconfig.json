@@ -105,6 +105,7 @@
     "./gatsby-browser.ts",
     "./gatsby-config.ts",
     "./gatsby-node.ts",
+    "./gatsby-ssr.tsx",
     "./tailwind.config.ts",
     "./plugins/**/*"
   ],

@@ -5,6 +5,18 @@
     font-weight: 300;
     font-display: swap;
 }
+@font-face {
+    font-family: "Druk LCG Web";
+    src: url("/fonts/Druk-Super-Web.woff2") format("truetype");
+    font-weight: 900;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Druk Wide LCG Web";
+    src: url("/fonts/DrukWide-Bold-Web.woff2") format("truetype");
+    font-weight: 700;
+    font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
