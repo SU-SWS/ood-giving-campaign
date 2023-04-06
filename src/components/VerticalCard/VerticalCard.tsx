@@ -43,15 +43,16 @@ export const VerticalCard = ({
     {heading && (
       <Heading
         as={headingLevel}
-        font="sans"
-        size={3}
-        className="su-mt-08em"
+        font="druk"
+        size={5}
+        leading="none"
+        className="su-mt-04em"
       >
         {heading}
       </Heading>
     )}
     {body && (
-      <Paragraph noMargin className="">{body}</Paragraph>
+      <Paragraph size={1} noMargin leading="snug">{body}</Paragraph>
     )}
   </FlexBox>
 );
