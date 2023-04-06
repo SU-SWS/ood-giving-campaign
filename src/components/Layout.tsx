@@ -3,7 +3,7 @@ import { Slice } from 'gatsby';
 import { storyblokInit, apiPlugin } from 'gatsby-source-storyblok';
 import { FlexBox } from './FlexBox';
 import Teaser from './Storyblok/Teaser';
-import Grid from './Storyblok/Grid';
+import SbGrid from './Storyblok/SbGrid';
 import Feature from './Storyblok/Feature';
 import SbSection from './Storyblok/SbSection';
 
@@ -19,7 +19,7 @@ storyblokInit({
   use: [apiPlugin],
   components: {
     teaser: Teaser,
-    grid: Grid,
+    sbGrid: SbGrid,
     feature: Feature,
     sbSection: SbSection,
   },
