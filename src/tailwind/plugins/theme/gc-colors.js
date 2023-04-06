@@ -3,9 +3,13 @@
  */
 module.exports = function () {
   return {
-    'gc-electric-blue': {
-      DEFAULT: '#505EEC',
-      light: '#6B77F5',
-    },
+    flamingo: '#ECC7CD',
+    fuchsia: '#E31C79',
+    lavender: '#C5B4E3',
+    lime: '#DBE442',
+    periwinkle: '#485CC7',
+    'robins-egg': '#77C5D5',
+    sapphire: '#005776',
+    slate: '#4E4B48',
   };
 };
