@@ -6,6 +6,7 @@ import Teaser from './Storyblok/Teaser';
 import Grid from './Storyblok/Grid';
 import Feature from './Storyblok/Feature';
 import SbSection from './Storyblok/SbSection';
+import SbVerticalCard from './Storyblok/SbVerticalCard';
 
 type LayoutProps = {
   children: React.ReactNode,
@@ -22,6 +23,7 @@ storyblokInit({
     grid: Grid,
     feature: Feature,
     sbSection: SbSection,
+    sbVerticalCard: SbVerticalCard,
   },
 });
 
