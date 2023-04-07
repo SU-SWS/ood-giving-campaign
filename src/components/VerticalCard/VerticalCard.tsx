@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react';
 import { dcnb } from 'cnbuilder';
-import { FlexBox } from '../FlexBox';
+import { Cta } from '../Cta';
 import { Heading, HeadingType, Paragraph } from '../Typography';
 import { TextColorType } from './VerticalCard.styles';
 import * as styles from './VerticalCard.styles';
@@ -13,6 +13,7 @@ type VerticalCardProps = HTMLAttributes<HTMLDivElement> & {
   imageFocus?: string;
   alt?: string;
   textColor?: TextColorType;
+  href?: string;
 };
 
 export const VerticalCard = ({
@@ -23,12 +24,12 @@ export const VerticalCard = ({
   imageFocus,
   alt,
   textColor = 'black',
+  href,
   className,
   ...props
 }: VerticalCardProps) => (
-  <FlexBox
-    direction="col"
-    className={dcnb(styles.textColors[textColor], className)}
+  <article
+    className={dcnb('su-relative su-z-10', styles.textColors[textColor], className)}
     {...props}
   >
     {imageSrc && (
@@ -46,13 +47,17 @@ export const VerticalCard = ({
         font="druk"
         size={5}
         leading="none"
-        className="su-mt-04em"
+        className="su-mt-04em su-mb-02em"
       >
         {heading}
       </Heading>
     )}
+    <div className="su-mb-06em">
+      <Cta href="/" className="su-z-20 su-relative" variant="chip">Taxonomy</Cta>
+    </div>
     {body && (
       <Paragraph size={1} noMargin leading="snug">{body}</Paragraph>
     )}
-  </FlexBox>
+    {href && <Cta href={href} uppercase className="su-stretched-link">Learn How</Cta>}
+  </article>
 );

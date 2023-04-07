@@ -2,7 +2,7 @@ import React from 'react';
 import { storyblokEditable } from 'gatsby-source-storyblok';
 import { HeadingType } from '../Typography';
 import { VerticalCard, TextColorType } from '../VerticalCard';
-import { SbImageType } from './Storyblok.types';
+import { SbImageType, SbLinkType } from './Storyblok.types';
 
 type SbVerticalCardProps = {
   blok: {
@@ -12,6 +12,7 @@ type SbVerticalCardProps = {
     body?: string;
     image?: SbImageType;
     textColor?: TextColorType;
+    link?: SbLinkType;
   };
 };
 
@@ -24,6 +25,7 @@ export const SbVerticalCard = ({
     // TODO: seperate alt as separate field
     image: { filename, focus, alt } = {},
     textColor,
+    link,
   },
   blok,
 }: SbVerticalCardProps) => (
@@ -37,5 +39,6 @@ export const SbVerticalCard = ({
     imageFocus={focus}
     alt={alt}
     textColor={textColor}
+    href={link?.cached_url || link?.url}
   />
 );
