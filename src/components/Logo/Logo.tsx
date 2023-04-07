@@ -30,8 +30,12 @@ export const Logo = ({
         color={color}
         className={styles.onPurpose(variant)}
       >
-        On<br className={variant === 'horizontal' ? 'su-hidden' : ''} />
-        <span className="su-ml-02em">Purpose</span>
+        <span className={styles.o(variant)}>O</span>
+        <span className={styles.iBefore(variant)} aria-hidden>i</span>
+        <span className={styles.n(variant)}>n</span>
+        <span className={styles.iAfter(variant)} aria-hidden>i</span>
+        <br className={styles.onSpace(variant)} />
+        <span className={styles.purpose(variant)}>Purpose</span>
       </Text>
     </Text>
   );

@@ -47,6 +47,8 @@ export const textColors = {
   default: '', // Interit from the base
   black: 'su-text-black',
   white: 'su-text-white',
+  'off-white': 'su-text-black-10',
+  'soft-black': 'su-text-black-90',
 };
 
 export const textVariants = {
