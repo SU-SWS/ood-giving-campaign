@@ -1,1 +1,1 @@
-export const logo = 'su-type-5';
+export const root = '';

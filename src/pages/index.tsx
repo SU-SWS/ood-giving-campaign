@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 import { StoryblokComponent, storyblokEditable } from 'gatsby-source-storyblok';
 import { useStoryblokState } from '../hooks/useStoryblokState';
 import Layout from '../components/Layout';
-import { Heading } from '../components/Typography';
 
 const IndexPage = ({ data }) => {
   let story = data.storyblokEntry;

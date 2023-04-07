@@ -1,26 +1,27 @@
 import React, { HTMLAttributes } from 'react';
 import { dcnb } from 'cnbuilder';
 import { Link } from 'gatsby';
-import { FlexBox } from '../FlexBox';
 import { StanfordLogo } from '../StanfordLogo';
-import { Text } from '../Typography';
+import { Text, FontSizeType } from '../Typography';
 import * as styles from './Logo.styles';
 
 type LogoProps = HTMLAttributes<HTMLElement> & {
-  color?: 'black' | 'white';
+  color?: styles.LogoColorType;
   variant?: styles.LogoVariantType;
+  size?: FontSizeType;
   isLink?: boolean;
 };
 
 export const Logo = ({
   color = 'black',
   variant = 'horizontal',
+  size = 5,
   isLink,
   className,
   ...rest
 }: LogoProps) => {
   const LogoText = (
-    <FlexBox>
+    <Text size={size} className={styles.textWrapper}>
       <StanfordLogo color={color} type="short" className={styles.stanford(variant)} />
       <Text
         font="druk"
@@ -32,7 +33,7 @@ export const Logo = ({
         On<br className={variant === 'horizontal' ? 'su-hidden' : ''} />
         <span className="su-ml-02em">Purpose</span>
       </Text>
-    </FlexBox>
+    </Text>
   );
 
   // Render logo as link if isLink is true

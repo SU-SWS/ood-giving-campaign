@@ -2,11 +2,11 @@ import * as React from 'react';
 import { Slice } from 'gatsby';
 import { storyblokInit, apiPlugin } from 'gatsby-source-storyblok';
 import { FlexBox } from './FlexBox';
-import { Logo } from './Logo';
 import { Masthead } from './Masthead';
 import Teaser from './Storyblok/Teaser';
 import SbGrid from './Storyblok/SbGrid';
 import Feature from './Storyblok/Feature';
+import SbLogo from './Storyblok/SbLogo';
 import SbSection from './Storyblok/SbSection';
 
 type LayoutProps = {
@@ -22,6 +22,7 @@ storyblokInit({
   components: {
     teaser: Teaser,
     sbGrid: SbGrid,
+    sbLogo: SbLogo,
     feature: Feature,
     sbSection: SbSection,
   },
