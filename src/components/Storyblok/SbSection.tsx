@@ -7,14 +7,14 @@ import { Section, BgColorType } from '../Section';
 type SbSectionProps = {
   blok: {
     _uid: string;
-    content: any[];
-    heading: string;
-    headingLevel: HeadingType;
-    bgColor: BgColorType;
+    content?: any[];
+    heading?: string;
+    headingLevel?: HeadingType;
+    bgColor?: BgColorType;
   };
 };
 
-const SbSection = ({
+export const SbSection = ({
   blok: {
     _uid,
     content,
@@ -33,5 +33,3 @@ const SbSection = ({
     <CreateBloks blokSection={content} />
   </Section>
 );
-
-export default SbSection;

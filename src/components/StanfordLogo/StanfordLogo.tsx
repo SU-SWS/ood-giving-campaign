@@ -10,7 +10,7 @@ type StanfordLogoProps = HTMLAttributes<HTMLElement> & {
 
 export const StanfordLogo = ({
   className,
-  color = 'cardinal-red',
+  color = 'black',
   type,
   isLink,
   ...rest

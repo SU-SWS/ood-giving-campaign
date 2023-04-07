@@ -34,6 +34,7 @@ export const fontLeadings = {
   snug: 'su-leading-snug', // 1.3
   cozy: 'su-leading-cozy', // 1.4
   normal: 'su-leading-normal', // 1.5
+  trim: 'su-leading-trim', // 0.75
 };
 
 export const textAligns = {
@@ -46,6 +47,8 @@ export const textColors = {
   default: '', // Interit from the base
   black: 'su-text-black',
   white: 'su-text-white',
+  'off-white': 'su-text-black-10',
+  'soft-black': 'su-text-black-90',
 };
 
 export const textVariants = {

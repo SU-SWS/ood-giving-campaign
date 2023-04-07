@@ -15,7 +15,7 @@ type SbVerticalCardProps = {
   };
 };
 
-const SbVerticalCard = ({
+export const SbVerticalCard = ({
   blok: {
     _uid,
     heading,
@@ -39,5 +39,3 @@ const SbVerticalCard = ({
     textColor={textColor}
   />
 );
-
-export default SbVerticalCard;
