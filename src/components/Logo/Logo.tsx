@@ -21,7 +21,7 @@ export const Logo = ({
   ...rest
 }: LogoProps) => {
   const LogoText = (
-    <Text size={size} className={styles.textWrapper}>
+    <Text size={size} className={styles.textWrapper(variant)}>
       <StanfordLogo color={color} type="short" className={styles.stanford(variant)} />
       <Text
         font="druk"
