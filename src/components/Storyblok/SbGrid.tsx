@@ -1,12 +1,10 @@
 import React from 'react';
-import { StoryblokComponent, storyblokEditable } from 'gatsby-source-storyblok';
+import { storyblokEditable } from 'gatsby-source-storyblok';
+import { Grid } from '../Grid';
+import { CreateBloks } from '../CreateBloks';
 
-export const SbGrid = ({ blok }) => (
-  <ul {...storyblokEditable(blok)} key={blok._uid} className="su-grid su-grid-gap md:su-grid-cols-3">
-    {blok.columns.map((columnBlok) => (
-      <li key={columnBlok._uid}>
-        <StoryblokComponent blok={columnBlok} />
-      </li>
-    ))}
-  </ul>
+export const SbGrid = ({ blok: { columns }, blok }) => (
+  <Grid md={2} xl={3} gap {...storyblokEditable(blok)} key={blok._uid}>
+    <CreateBloks blokSection={columns} />
+  </Grid>
 );

@@ -40,7 +40,7 @@ export const Text = ({
   useDefaultTracking = font === 'druk' || font === 'druk-wide',
   italic,
   srOnly,
-  uppercase,
+  uppercase = font === 'druk',
   icon,
   iconProps,
   className,

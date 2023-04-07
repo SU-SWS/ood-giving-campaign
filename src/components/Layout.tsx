@@ -8,6 +8,7 @@ import { SbGrid } from './Storyblok/SbGrid';
 import Feature from './Storyblok/Feature';
 import { SbLogo } from './Storyblok/SbLogo';
 import { SbSection } from './Storyblok/SbSection';
+import { SbVerticalCard } from './Storyblok/SbVerticalCard';
 
 type LayoutProps = {
   children: React.ReactNode,
@@ -25,6 +26,7 @@ storyblokInit({
     sbLogo: SbLogo,
     feature: Feature,
     sbSection: SbSection,
+    sbVerticalCard: SbVerticalCard,
   },
 });
 

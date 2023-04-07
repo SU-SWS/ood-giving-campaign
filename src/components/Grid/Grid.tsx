@@ -12,10 +12,10 @@ export type GridProps = HTMLAttributes<HTMLElement> & {
   lg?: types.GridNumColsType;
   xl?: types.GridNumColsType;
   xxl?: types.GridNumColsType;
-  justifyContent: types.GridJustifyContentType,
-  justifyItems: types.GridJustifyItemsType,
-  alignContent: types.GridAlignContentType,
-  alignItems: types.GridAlignItemsType,
+  justifyContent?: types.GridJustifyContentType,
+  justifyItems?: types.GridJustifyItemsType,
+  alignContent?: types.GridAlignContentType,
+  alignItems?: types.GridAlignItemsType,
   children: ReactNode,
 };
 

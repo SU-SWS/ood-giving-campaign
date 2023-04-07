@@ -4,7 +4,7 @@ import { getNumBloks } from './getNumBloks';
 /**
  * Returns a boolean if the Storyblok rich text field (wysiwyg) has any content.
  *
- * @param {object} section - The wysiwyg to check for content.
+ * @param {object} wysiwyg - The wysiwyg to check for content.
  * @returns {boolean} - Whether or not the wysiwyg has content.
  */
 
