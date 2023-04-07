@@ -34,6 +34,7 @@ export const fontLeadings = {
   snug: 'su-leading-snug', // 1.3
   cozy: 'su-leading-cozy', // 1.4
   normal: 'su-leading-normal', // 1.5
+  trim: 'su-leading-trim', // 0.75
 };
 
 export const textAligns = {
