@@ -1,7 +1,8 @@
 import React, { HTMLAttributes } from 'react';
 import { dcnb } from 'cnbuilder';
-import { Cta } from '../Cta';
+import { CtaLink } from '../Cta/CtaLink';
 import { Heading, HeadingType, Paragraph } from '../Typography';
+import { SbLinkType } from '../Storyblok/Storyblok.types';
 import { TextColorType } from './VerticalCard.styles';
 import * as styles from './VerticalCard.styles';
 
@@ -14,6 +15,7 @@ type VerticalCardProps = HTMLAttributes<HTMLDivElement> & {
   alt?: string;
   textColor?: TextColorType;
   href?: string;
+  link?: SbLinkType;
 };
 
 export const VerticalCard = ({
@@ -22,8 +24,9 @@ export const VerticalCard = ({
   body,
   imageSrc,
   imageFocus,
-  alt,
+  alt = '',
   textColor = 'black',
+  link,
   href,
   className,
   ...props
@@ -54,11 +57,22 @@ export const VerticalCard = ({
       </Heading>
     )}
     <div className="su-mb-06em">
-      <Cta href="/" className="su-z-20 su-relative" variant="chip">Taxonomy</Cta>
+      <CtaLink href="/about-test" className="su-z-20 su-relative" variant="chip">Taxonomy</CtaLink>
     </div>
     {body && (
       <Paragraph size={1} leading="snug">{body}</Paragraph>
     )}
-    {href && <Cta href={href} uppercase className="su-stretched-link">Learn How</Cta>}
+    {(href || link) && (
+      <CtaLink
+        icon="chevron-right"
+        animate="right"
+        sbLink={link}
+        href={href}
+        uppercase
+        className="su-stretched-link"
+      >
+        Learn How
+      </CtaLink>
+    )}
   </article>
 );

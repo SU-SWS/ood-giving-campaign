@@ -39,6 +39,6 @@ export const SbVerticalCard = ({
     imageFocus={focus}
     alt={alt}
     textColor={textColor}
-    href={link?.cached_url || link?.url}
+    link={link}
   />
 );

@@ -7,6 +7,8 @@ export const getCtaClasses = (variant, size, uppercase, className) => {
   switch (variant) {
     case 'primary':
     case 'secondary':
+      ctaSize = size || 'default';
+      break;
     case 'footer':
       ctaSize = size || 'footer';
       break;
@@ -32,11 +34,13 @@ export const getCtaClasses = (variant, size, uppercase, className) => {
       ctaSize = size;
   }
 
-  const levers: { [key: string]: string } = {};
-  levers.variant = styles.ctaVariants[variant];
-  levers.size = styles.ctaSizes[ctaSize];
-  levers.uppercase = uppercase ? 'su-uppercase' : '';
-  const ctaClasses = dcnb(styles.cta, levers.size, levers.variant, levers.uppercase, className);
+  const ctaClasses = dcnb(
+    styles.cta,
+    styles.ctaSizes[ctaSize],
+    styles.ctaVariants[variant],
+    uppercase ? 'su-uppercase' : '',
+    className,
+  );
 
   return ctaClasses;
 };

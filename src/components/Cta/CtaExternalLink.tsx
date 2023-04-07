@@ -2,20 +2,21 @@ import React from 'react';
 import { CtaContent } from './CtaContent';
 import { getCtaClasses } from './getCtaClasses';
 import { CtaCommonProps } from './Cta.types';
+import { SbLinkType } from '../Storyblok/Storyblok.types';
 
 export type CtaExternalLinkProps = React.ComponentPropsWithoutRef<'a'> & CtaCommonProps & {
+  sbLink?: SbLinkType;
   href?: string;
 };
 
 export const CtaExternalLink = React.forwardRef<HTMLAnchorElement, CtaExternalLinkProps>(
   (props, ref) => {
     const {
-      href,
       variant = 'link',
       size,
-      icon = 'external',
+      icon,
       iconPosition = 'right',
-      animate = 'top-right',
+      animate,
       iconProps,
       srText = '(external link)',
       uppercase,
@@ -28,7 +29,6 @@ export const CtaExternalLink = React.forwardRef<HTMLAnchorElement, CtaExternalLi
 
     return (
       <a
-        href={href}
         className={ctaClasses}
         ref={ref as React.ForwardedRef<HTMLAnchorElement>}
         {...rest}

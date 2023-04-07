@@ -1,17 +1,16 @@
 export const cta = 'su-group hocus:su-underline su-transition';
 
 export const ctaVariants = {
-  primary: 'su-font-normal su-no-underline su-leading-display su-bg-lagunita hover:su-bg-lagunita-dark focus-visible:su-bg-lagunita-dark active:su-bg-lagunita su-text-white hocus:su-text-white su-border su-rounded su-border-lagunita-light hocus:su-border-lagunita-light active:su-border-lagunita-light su-shadow hocus:su-shadow-md active:su-ring-2 focus:su-ring-2 active:su-ring-lagunita-light focus:su-ring-lagunita-light hocus:su-decoration-1 focus:su-outline-none',
-  secondary: 'su-font-normal su-no-underline su-leading-display su-bg-white hocus:su-bg-white su-text-lagunita hocus:su-text-lagunita-dark su-border hocus:su-border su-rounded su-border-lagunita-light hocus:su-border-lagunita-light active:su-border-lagunita-light su-shadow hover:su-shadow-md focus:su-ring-2 active:su-ring-2 focus:su-ring-lagunita-light active:su-ring-lagunita-light hocus:su-decoration-1 focus:su-outline-none',
+  primary: 'su-inline-block su-font-normal su-no-underline su-leading-display su-bg-lagunita hover:su-bg-lagunita-dark focus-visible:su-bg-lagunita-dark active:su-bg-lagunita su-text-white hocus:su-text-white su-border su-rounded su-border-lagunita-light hocus:su-border-lagunita-light active:su-border-lagunita-light su-shadow hocus:su-shadow-md active:su-ring-2 focus:su-ring-2 active:su-ring-lagunita-light focus:su-ring-lagunita-light hocus:su-decoration-1 focus:su-outline-none',
+  secondary: 'su-inline-block su-font-normal su-no-underline su-leading-display su-bg-white hocus:su-bg-white su-text-lagunita hocus:su-text-lagunita-dark su-border hocus:su-border su-rounded su-border-lagunita-light hocus:su-border-lagunita-light active:su-border-lagunita-light su-shadow hover:su-shadow-md focus:su-ring-2 active:su-ring-2 focus:su-ring-lagunita-light active:su-ring-lagunita-light hocus:su-decoration-1 focus:su-outline-none',
   chip: 'su-inline-block su-font-normal su-rounded-full su-text-white hover:su-shadow-md su-no-underline su-leading-display hocus:su-bg-periwinkle su-text-white hocus:su-text-white su-border su-border-white focus:su-ring-2 active:su-ring-2 focus:su-ring-lagunita-40 active:su-ring-lagunita-40 focus:su-outline-none  hocus:su-decoration-1',
-  link: 'su-font-normal su-underline su-leading-display su-text-white hocus:su-text-lime su-decoration-1 hocus:su-decoration-2 focus-visible:su-ring-2 focus-visible:su-ring-lagunita-light focus-visible:su-outline-none focus-visible:su-rounded',
-  back: 'su-font-normal su-no-underline su-leading-none group-hocus:su-underline su-text-black hocus:su-text-lagunita focus-visible:su-ring-2 focus-visible:su-ring-lagunita-light focus-visible:su-ring-offset-4 focus:su-outline-none su-rounded-[1px]',
-  masthead: 'su-font-normal su-no-underline su-text-white hocus:su-text-white md:su-text-black md:hocus:su-text-black focus:su-outline-none',
-  footer: 'su-font-normal su-leading-display su-underline-offset-[3px] su-text-black-20 hocus:su-text-black-20 su-decoration-digital-red-xlight hocus:su-decoration-digital-red-xlight',
-  'footer-featured': 'su-font-semibold su-leading-display su-no-underline su-underline-offset-[3px] su-text-black-20 hocus:su-text-black-20 su-decoration-digital-red-xlight hocus:su-decoration-digital-red-xlight',
-  close: 'su-font-semibold su-leading-none su-text-lagunita hocus:su-text-lagunita-dark focus:su-outline-none',
+  link: 'su-font-normal su-underline su-leading-display su-text-white hocus:su-text-lime su-decoration-1 hocus:su-decoration-2 focus-visible:su-ring-2 focus-visible:su-ring-lagunita-light focus-visible:su-outline-none focus-visible:su-rounded su-underline-offset-4',
+  back: 'su-inline-block su-font-normal su-no-underline su-leading-none group-hocus:su-underline su-text-black hocus:su-text-lagunita focus-visible:su-ring-2 focus-visible:su-ring-lagunita-light focus-visible:su-ring-offset-4 focus:su-outline-none su-rounded-[1px]',
+  masthead: 'su-inline-block su-font-normal su-no-underline su-text-white hocus:su-text-white md:su-text-black md:hocus:su-text-black focus:su-outline-none',
+  footer: 'su-inline-block su-font-normal su-leading-display su-underline-offset-[3px] su-text-black-20 hocus:su-text-black-20 su-decoration-digital-red-xlight hocus:su-decoration-digital-red-xlight',
+  close: 'su-inline-block su-font-semibold su-leading-none su-text-lagunita hocus:su-text-lagunita-dark focus:su-outline-none',
   'close-x': 'su-leading-none',
-  dismiss: 'su-font-bold su-uppercase su-tracking-widest su-leading-none su-text-black hocus:su-text-black focus:su-outline-none',
+  dismiss: 'su-inline-block su-font-bold su-uppercase su-tracking-widest su-leading-none su-text-black hocus:su-text-black focus:su-outline-none',
   unset: '',
 };
 export type CtaVariantType = keyof typeof ctaVariants;
@@ -25,7 +24,6 @@ export const ctaSizes = {
   card: 'su-ma-card',
   chip: 'su-text-15 su-pt-3 su-pb-4 su-px-10',
   back: 'su-text-16',
-  'text-18': 'su-text-18',
   close: 'su-text-18 md:su-text-21',
   dismiss: 'su-text-17',
   unset: '',

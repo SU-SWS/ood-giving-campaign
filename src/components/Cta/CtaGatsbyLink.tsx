@@ -4,13 +4,10 @@ import { CtaContent } from './CtaContent';
 import { getCtaClasses } from './getCtaClasses';
 import { CtaCommonProps } from './Cta.types';
 
-export type CtaGatsbyLinkProps = CtaCommonProps & GatsbyLinkProps<{}> & {
-  href?: string;
-};
+export type CtaGatsbyLinkProps = CtaCommonProps & GatsbyLinkProps<{}>;
 
 export const CtaGatsbyLink = (props) => {
   const {
-    href,
     variant = 'link',
     size,
     icon,
@@ -28,7 +25,6 @@ export const CtaGatsbyLink = (props) => {
 
   return (
     <Link
-      to={href}
       className={ctaClasses}
       {...rest}
     >

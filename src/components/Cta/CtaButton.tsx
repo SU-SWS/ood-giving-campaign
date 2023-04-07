@@ -3,9 +3,7 @@ import { CtaContent } from './CtaContent';
 import { getCtaClasses } from './getCtaClasses';
 import { CtaCommonProps } from './Cta.types';
 
-export type CtaButtonProps = React.ComponentPropsWithoutRef<'button'> & CtaCommonProps & {
-  href?: undefined;
-};
+export type CtaButtonProps = React.ComponentPropsWithoutRef<'button'> & CtaCommonProps;
 
 export const CtaButton = React.forwardRef<HTMLButtonElement, CtaButtonProps>(
   (props, ref) => {
@@ -18,7 +16,6 @@ export const CtaButton = React.forwardRef<HTMLButtonElement, CtaButtonProps>(
       animate,
       iconProps,
       srText,
-      disabled,
       uppercase,
       children,
       className,
@@ -29,9 +26,8 @@ export const CtaButton = React.forwardRef<HTMLButtonElement, CtaButtonProps>(
 
     return (
       <button
-        /* eslint-disable react/button-has-type */
+        // eslint-disable-next-line react/button-has-type
         type={type}
-        disabled={disabled}
         className={ctaClasses}
         ref={ref as React.ForwardedRef<HTMLButtonElement>}
         {...rest}
