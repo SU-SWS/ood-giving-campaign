@@ -10,7 +10,7 @@ type StanfordLogoProps = HTMLAttributes<HTMLElement> & {
 
 export const StanfordLogo = ({
   className,
-  color = 'cardinal-red',
+  color = 'black',
   type,
   isLink,
   ...rest
@@ -44,7 +44,7 @@ export const StanfordLogo = ({
       <a
         {...rest}
         href="https://www.stanford.edu"
-        className={dcnb('su-logo', color ? styles.logoColors[color] : '', className)}
+        className={dcnb('su-logo', styles.root, color ? styles.logoColors[color] : '', className)}
       >
         {logoText}
       </a>
@@ -52,7 +52,7 @@ export const StanfordLogo = ({
   }
 
   return (
-    <div {...rest} className={dcnb('su-logo', color ? styles.logoColors[color] : '', className)}>
+    <div {...rest} className={dcnb('su-logo', styles.root, color ? styles.logoColors[color] : '', className)}>
       {logoText}
     </div>
   );

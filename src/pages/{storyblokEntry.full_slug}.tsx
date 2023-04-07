@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 import { StoryblokComponent, storyblokEditable } from 'gatsby-source-storyblok';
 import { useStoryblokState } from '../hooks/useStoryblokState';
 import Layout from '../components/Layout';
-import { Heading } from '../components/Typography';
 
 const StoryblokEntry = ({ data }) => {
   let story = data.storyblokEntry;
@@ -14,7 +13,6 @@ const StoryblokEntry = ({ data }) => {
   return (
     <Layout>
       <div {...storyblokEditable(story.content)}>
-        <Heading as="h1">{story.name}</Heading>
         {components}
       </div>
     </Layout>
