@@ -41,13 +41,14 @@ export const VerticalCard = ({
         />
       </div>
     )}
+    <div aria-hidden className={styles.tab} />
     {heading && (
       <Heading
         as={headingLevel}
         font="druk"
         size={5}
         leading="none"
-        className="su-mt-04em su-mb-02em"
+        className="su-mt-01em su-mb-02em"
       >
         {heading}
       </Heading>
@@ -56,7 +57,7 @@ export const VerticalCard = ({
       <Cta href="/" className="su-z-20 su-relative" variant="chip">Taxonomy</Cta>
     </div>
     {body && (
-      <Paragraph size={1} noMargin leading="snug">{body}</Paragraph>
+      <Paragraph size={1} leading="snug">{body}</Paragraph>
     )}
     {href && <Cta href={href} uppercase className="su-stretched-link">Learn How</Cta>}
   </article>
