@@ -36,7 +36,7 @@ export const VerticalCard = ({
     {...props}
   >
     {imageSrc && (
-      <div className="su-transition-all su-aspect-w-1 su-aspect-h-1 su-rounded-none group-hover:su-rounded-tl-[10rem] group-hover:su-rounded-br-[10rem] su-overflow-hidden">
+      <div className="su-transition-all su-aspect-w-1 su-aspect-h-1 su-rounded-none group-hover:su-rounded-tl-[10rem] group-hover:su-rounded-br-[10rem] group-focus-within:su-rounded-tl-[10rem] group-focus-within:su-rounded-br-[10rem] su-overflow-hidden">
         <img
           src={imageSrc}
           alt={alt}
