@@ -12,9 +12,9 @@ export const Masthead = ({ className, ...props }: MastheadProps) => (
       <FlexBox
         justifyContent="between"
         alignItems="center"
-        className="su-rs-py-2"
+        className="su-rs-py-4"
       >
-        <Logo color="white" variant="horizontal" size={5} isLink />
+        <Logo color="white" variant="horizontal" size={4} isLink />
       </FlexBox>
     </Container>
   </div>

@@ -18,14 +18,14 @@ export const onPurpose = (variant: LogoVariantType) => dcnb('', {
   'su-ml-[0.15em] su-leading-[.7]': variant === 'horizontal',
 });
 
-export const iBefore = (variant: LogoVariantType) => (variant === 'stacked' ? 'su--ml-[0.025em]' : 'su-hidden');
+export const iBefore = (variant: LogoVariantType) => (variant === 'stacked' ? 'su--ml-[0.025em]' : '');
 
 export const o = (variant: LogoVariantType) => (variant === 'stacked' ? 'su-inline-block su-scale-x-95 su-origin-left' : '');
 
-export const iAfter = (variant: LogoVariantType) => (variant === 'stacked' ? 'su-inline-block su--ml-[0.28em] su-scale-x-75' : 'su-hidden');
+export const iAfter = (variant: LogoVariantType) => (variant === 'stacked' || variant === 'horizontal' ? 'su-inline-block su--ml-[0.28em] su-scale-x-75' : 'su-hidden');
 
-export const n = (variant: LogoVariantType) => (variant === 'stacked' ? 'su-inline-block su-scale-x-[0.65] su-origin-left su--ml-[0.148em]' : '');
+export const n = (variant: LogoVariantType) => (variant === 'stacked' || variant === 'horizontal' ? 'su-inline-block su-scale-x-[0.65] su-origin-left su--ml-[0.148em]' : '');
 
 export const onSpace = (variant: LogoVariantType) => (variant === 'horizontal' ? 'su-hidden' : '');
 
-export const purpose = (variant: LogoVariantType) => (variant === 'horizontal' ? 'su-ml-02em' : 'su-block su-mt-[.02em]');
+export const purpose = (variant: LogoVariantType) => (variant === 'horizontal' ? 'su-ml-[0.14em]' : 'su-block su-mt-[.02em]');
