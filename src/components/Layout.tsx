@@ -4,10 +4,10 @@ import { storyblokInit, apiPlugin } from 'gatsby-source-storyblok';
 import { FlexBox } from './FlexBox';
 import { Masthead } from './Masthead';
 import Teaser from './Storyblok/Teaser';
-import SbGrid from './Storyblok/SbGrid';
+import { SbGrid } from './Storyblok/SbGrid';
 import Feature from './Storyblok/Feature';
-import SbLogo from './Storyblok/SbLogo';
-import SbSection from './Storyblok/SbSection';
+import { SbLogo } from './Storyblok/SbLogo';
+import { SbSection } from './Storyblok/SbSection';
 
 type LayoutProps = {
   children: React.ReactNode,
@@ -28,12 +28,10 @@ storyblokInit({
   },
 });
 
-const Layout = ({ children }: LayoutProps) => (
+export const Layout = ({ children }: LayoutProps) => (
   <FlexBox justifyContent="between" direction="col" className="su-min-h-screen">
     <Masthead />
     <main>{children}</main>
     <Slice alias="global-footer" />
   </FlexBox>
 );
-
-export default Layout;

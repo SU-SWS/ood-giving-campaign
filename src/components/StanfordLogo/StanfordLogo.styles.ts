@@ -1,5 +1,3 @@
-export const root = 'su-leading-none';
-
 export const logoColors = {
   'cardinal-red': 'su-text-cardinal-red hocus:su-text-cardinal-red',
   'digital-red': 'su-text-digital-red hocus:su-text-digital-red',

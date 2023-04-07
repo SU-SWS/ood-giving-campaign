@@ -29,11 +29,12 @@ export const Logo = ({
         leading="trim"
         color={color}
         className={styles.onPurpose(variant)}
+        aria-label="On Purpose"
       >
         <span className={styles.o(variant)}>O</span>
         <span className={styles.iBefore(variant)} aria-hidden>i</span>
-        <span className={styles.n(variant)}>n</span>
-        <span className={styles.iAfter(variant)} aria-hidden>i</span>
+        <span className={styles.n}>n</span>
+        <span className={styles.iAfter} aria-hidden>i</span>
         <br className={styles.onSpace(variant)} />
         <span className={styles.purpose(variant)}>Purpose</span>
       </Text>

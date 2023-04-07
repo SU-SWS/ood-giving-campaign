@@ -14,7 +14,7 @@ type SbSectionProps = {
   };
 };
 
-const SbSection = ({
+export const SbSection = ({
   blok: {
     _uid,
     content,
@@ -29,5 +29,3 @@ const SbSection = ({
     <CreateBloks blokSection={content} />
   </Section>
 );
-
-export default SbSection;

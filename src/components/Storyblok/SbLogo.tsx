@@ -12,7 +12,7 @@ type SbLogoProps = {
   };
 };
 
-const SbLogo = ({
+export const SbLogo = ({
   blok: {
     _uid,
     type,
@@ -23,5 +23,3 @@ const SbLogo = ({
 }: SbLogoProps) => (
   <Logo {...storyblokEditable(blok)} key={_uid} variant={type} size={size} color={color} />
 );
-
-export default SbLogo;
