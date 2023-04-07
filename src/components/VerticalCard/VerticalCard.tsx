@@ -32,11 +32,11 @@ export const VerticalCard = ({
   ...props
 }: VerticalCardProps) => (
   <article
-    className={dcnb('su-relative su-z-10', styles.textColors[textColor], className)}
+    className={dcnb('su-group su-relative su-z-10', styles.textColors[textColor], className)}
     {...props}
   >
     {imageSrc && (
-      <div className="su-aspect-w-1 su-aspect-h-1">
+      <div className="su-transition-all su-aspect-w-1 su-aspect-h-1 su-rounded-none group-hover:su-rounded-tl-[10rem] group-hover:su-rounded-br-[10rem] su-overflow-hidden">
         <img
           src={imageSrc}
           alt={alt}
