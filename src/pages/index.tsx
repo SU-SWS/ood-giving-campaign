@@ -104,6 +104,57 @@ const IndexPage = ({ data }) => {
           >
             A button with a really long label
           </CtaLink>
+          <CtaLink
+            href="/about-test"
+            variant="primary"
+            icon="triangle-down"
+            animate="down"
+          >
+            Cardinal Red
+          </CtaLink>
+          <CtaLink
+            href="/about-test"
+            variant="primary"
+            icon="triangle-down"
+            animate="down"
+            uppercase
+          >
+            Cardinal Red
+          </CtaLink>
+          <CtaLink
+            href="/about-test"
+            variant="secondary"
+            icon="triangle-right"
+            animate="right"
+          >
+            Digital Red
+          </CtaLink>
+          <CtaLink
+            href="/about-test"
+            variant="secondary"
+            icon="triangle-right"
+            animate="right"
+            uppercase
+          >
+            Digital Red
+          </CtaLink>
+          <CtaLink
+            href="/about-test"
+            variant="secondary"
+            icon="triangle-right"
+            animate="right"
+          >
+            Digital Red with really long label
+          </CtaLink>
+          <CtaLink
+            href="/about-test"
+            variant="secondary"
+            icon="triangle-right"
+            animate="right"
+            uppercase
+          >
+            Digital Red with really long label
+          </CtaLink>
         </Grid>
       </Section>
       <Section bgColor="white">
@@ -210,6 +261,57 @@ const IndexPage = ({ data }) => {
             uppercase
           >
             A button with a really long label
+          </CtaLink>
+          <CtaLink
+            href="/about-test"
+            variant="primary"
+            icon="triangle-down"
+            animate="down"
+          >
+            Cardinal Red
+          </CtaLink>
+          <CtaLink
+            href="/about-test"
+            variant="primary"
+            icon="triangle-down"
+            animate="down"
+            uppercase
+          >
+            Cardinal Red
+          </CtaLink>
+          <CtaLink
+            href="/about-test"
+            variant="secondary"
+            icon="triangle-right"
+            animate="right"
+          >
+            Digital Red
+          </CtaLink>
+          <CtaLink
+            href="/about-test"
+            variant="secondary"
+            icon="triangle-right"
+            animate="right"
+            uppercase
+          >
+            Digital Red
+          </CtaLink>
+          <CtaLink
+            href="/about-test"
+            variant="secondary"
+            icon="triangle-right"
+            animate="right"
+          >
+            Digital Red with really long label
+          </CtaLink>
+          <CtaLink
+            href="/about-test"
+            variant="secondary"
+            icon="triangle-right"
+            animate="right"
+            uppercase
+          >
+            Digital Red with really long label
           </CtaLink>
         </Grid>
       </Section>

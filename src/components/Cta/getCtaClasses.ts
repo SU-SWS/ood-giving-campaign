@@ -6,6 +6,7 @@ export const getCtaClasses = (variant, color, size, uppercase, className) => {
 
   switch (variant) {
     case 'primary':
+    case 'secondary':
     case 'ghost':
     case 'ghostLeaf':
     case 'ghostSwipe':

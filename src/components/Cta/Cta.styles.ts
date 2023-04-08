@@ -1,7 +1,8 @@
 export const cta = 'su-group hocus:su-underline su-transition-all';
 
 export const ctaVariants = {
-  primary: 'su-inline-block su-font-normal su-no-underline su-leading-display su-bg-lagunita hover:su-bg-lagunita-dark focus-visible:su-bg-lagunita-dark active:su-bg-lagunita su-text-white hocus:su-text-white su-border su-rounded su-border-lagunita-light hocus:su-border-lagunita-light active:su-border-lagunita-light su-shadow hocus:su-shadow-md active:su-ring-2 focus:su-ring-2 active:su-ring-lagunita-light focus:su-ring-lagunita-light hocus:su-decoration-1 focus:su-outline-none',
+  primary: 'su-inline-block su-font-normal su-no-underline su-leading-display su-bg-cardinal-red hocus:su-bg-cardinal-red-dark su-text-white hocus:su-text-white su-border su-border-cardinal-red hocus:su-border-cardinal-red-dark hocus:su-decoration-1 focus:su-outline-none',
+  secondary: 'su-inline-block su-font-normal su-no-underline su-leading-display su-bg-digital-red hocus:su-bg-digital-red-dark su-text-white hocus:su-text-white su-border su-border-digital-red hocus:su-border-cardinal-red-dark hocus:su-decoration-1 focus:su-outline-none',
   ghost: 'su-inline-block su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none su-underline-offset-4 su-decoration-transparent hocus:su-decoration-current',
   ghostLeaf: 'su-inline-block su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none su-underline-offset-4 su-decoration-transparent hocus:su-decoration-current su-rounded-tl-[26px] su-rounded-br-[26px]',
   ghostSwipe: 'su-relative su-z-[10] su-inline-block su-no-underline hocus:su-no-underline su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none after:su-block after:su-content-[""] after:su-absolute after:su-top-0 after:su-left-0 after:su-w-[0] after:su-h-full after:su-bg-fuchsia after:su-transition-all after:su-z-[-1] hocus:after:su-w-full',
@@ -21,8 +22,8 @@ export type CtaVariantType = keyof typeof ctaVariants;
 export const ctaColors = {
   black: 'su-text-black',
   white: 'su-text-white',
-  digitalRed: 'su-text-digital-red',
-  cardinalRed: 'su-text-cardinal-red',
+  'digital-red': 'su-text-digital-red',
+  'cardinal-red': 'su-text-cardinal-red',
 };
 export type CtaColorType = keyof typeof ctaColors;
 
