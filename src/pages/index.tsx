@@ -25,7 +25,7 @@ const IndexPage = ({ data }) => {
             href="/about-test"
             variant="ghost"
             icon="triangle-down"
-            animate="right"
+            animate="down"
             className="hocus:su-bg-gradient-to-r hocus:su-from-periwinkle hocus:su-to-transparent"
           >
             Gradient fill
@@ -34,7 +34,7 @@ const IndexPage = ({ data }) => {
             href="/about-test"
             variant="ghost"
             icon="triangle-down"
-            animate="right"
+            animate="down"
             uppercase
             className="hocus:su-bg-gradient-to-r hocus:su-from-periwinkle hocus:su-to-transparent"
           >
