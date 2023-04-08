@@ -20,7 +20,6 @@ export const ctaVariants = {
   dismiss: 'su-inline-block su-font-bold su-uppercase su-tracking-widest su-leading-none su-text-black hocus:su-text-black focus:su-outline-none',
   unset: '',
 };
-export type CtaVariantType = keyof typeof ctaVariants;
 
 export const ctaColors = {
   black: 'su-text-black',
@@ -28,7 +27,6 @@ export const ctaColors = {
   'digital-red': 'su-text-digital-red',
   'cardinal-red': 'su-text-cardinal-red',
 };
-export type CtaColorType = keyof typeof ctaColors;
 
 export const ctaSizes = {
   default: 'su-px-20 su-py-12 md:su-px-30 xl:su-px-40 md:su-py-14 su-text-16 md:su-text-20',
@@ -43,7 +41,6 @@ export const ctaSizes = {
   dismiss: 'su-text-17',
   unset: '',
 };
-export type CtaSizeType = keyof typeof ctaSizes;
 
 export const ctaSizeMap = {
   primary: 'default',
@@ -80,7 +77,6 @@ export const iconAnimation = {
   right: 'group-hocus:su-translate-x-02em',
   left: 'group-hocus:su--translate-x-02em',
 };
-export type IconAnimationType = keyof typeof iconAnimation;
 
 // Leading icons have right margins
 // Only add to this map if right margin is different from default class su-mr-02em
