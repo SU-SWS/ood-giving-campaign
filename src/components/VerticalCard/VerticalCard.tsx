@@ -1,5 +1,5 @@
 import React, { HTMLAttributes, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useInView } from 'framer-motion';
 import { dcnb } from 'cnbuilder';
 import { CtaLink } from '../Cta/CtaLink';
 import { Heading, HeadingType, Paragraph } from '../Typography';
