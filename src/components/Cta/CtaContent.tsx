@@ -1,5 +1,6 @@
 import React from 'react';
 import { dcnb } from 'cnbuilder';
+import { FlexBox } from '../FlexBox';
 import { HeroIcon, IconType } from '../HeroIcon';
 import { SrOnlyText } from '../Typography';
 import * as styles from './Cta.styles';
@@ -50,7 +51,7 @@ export const CtaContent = (props) => {
   const { className: iconClasses, ...iProps } = iconProps || {};
 
   return (
-    <>
+    <FlexBox alignItems="center">
       {iconPosition === 'right' && children}
       {heroicon && (
         <HeroIcon
@@ -61,6 +62,6 @@ export const CtaContent = (props) => {
       )}
       {iconPosition !== 'right' && children}
       {srText && <SrOnlyText>{srText}</SrOnlyText>}
-    </>
+    </FlexBox>
   );
 };
