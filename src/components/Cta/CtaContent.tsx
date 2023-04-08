@@ -53,11 +53,11 @@ export const CtaContent = (props) => {
     <>
       {iconPosition === 'right' && children}
       {heroicon && (
-      <HeroIcon
-        icon={heroicon}
-        className={dcnb(styles.icon, iconStyle, iconAnimate, iconMarginLeft, iconMarginRight, iconClasses)}
-        {...iProps}
-      />
+        <HeroIcon
+          icon={heroicon}
+          className={dcnb(styles.icon, iconStyle, iconAnimate, iconMarginLeft, iconMarginRight, iconClasses)}
+          {...iProps}
+        />
       )}
       {iconPosition !== 'right' && children}
       {srText && <SrOnlyText>{srText}</SrOnlyText>}

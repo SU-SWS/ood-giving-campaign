@@ -10,6 +10,7 @@ export const CtaButton = React.forwardRef<HTMLButtonElement, CtaButtonProps>(
     const {
       type = 'button',
       variant = 'primary',
+      color = 'white',
       iconPosition = 'right',
       icon,
       size,
@@ -22,7 +23,7 @@ export const CtaButton = React.forwardRef<HTMLButtonElement, CtaButtonProps>(
       ...rest
     } = props;
 
-    const ctaClasses = getCtaClasses(variant, size, uppercase, className);
+    const ctaClasses = getCtaClasses(variant, color, size, uppercase, className);
 
     return (
       <button

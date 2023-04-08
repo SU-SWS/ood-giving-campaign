@@ -1,12 +1,15 @@
 import React from 'react';
 import { HeroIconProps, IconType } from '../HeroIcon';
-import { CtaVariantType, CtaSizeType, IconAnimationType } from './Cta.styles';
-import { CtaExternalLinkProps } from './CtaExternalLink';
-import { CtaButtonProps } from './CtaButton';
-import { CtaGatsbyLinkProps } from './CtaGatsbyLink';
+import {
+  CtaVariantType,
+  CtaSizeType,
+  IconAnimationType,
+  CtaColorType,
+} from './Cta.styles';
 
 export interface CtaCommonProps {
   variant?: CtaVariantType;
+  color?: CtaColorType;
   size?: CtaSizeType;
   srText?: string;
   icon?: IconType;
@@ -16,10 +19,3 @@ export interface CtaCommonProps {
   uppercase?: boolean;
   children?: React.ReactNode;
 }
-
-export type CtaProps = CtaButtonProps | CtaExternalLinkProps | CtaGatsbyLinkProps;
-
-// Type guards to branch our props union
-// CtaAnchor is for external/mailto/anchor links and CtaLink is for internal links (uses Next Link)
-// export const isAnchor = (props: CtaProps): props is CtaExternalLinkProps => !!props.href && !!props.link.url && (props.href.startsWith('http') || props.href.startsWith('mailto') || props.href.startsWith('#'));
-// export const isLink = (props: CtaProps): props is CtaGatsbyLinkProps => !!props.href && !(props.href.startsWith('http') && props.href.startsWith('mailto') && props.href.startsWith('#'));

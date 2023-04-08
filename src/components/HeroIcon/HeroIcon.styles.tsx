@@ -18,7 +18,9 @@ export const iconMap = {
   'arrow-up': ArrowUpIcon,
   back: ArrowLeftIcon,
   'chevron-down': ChevronDownIcon,
+  'triangle-down': ChevronDownIcon,
   'chevron-right': ChevronRightIcon,
+  'triangle-right': ChevronRightIcon,
   close: XMarkIcon,
   email: EnvelopeIcon,
   external: ArrowUpRightIcon,
@@ -30,6 +32,8 @@ export const iconMap = {
   up: ArrowUpIcon,
 };
 export type IconType = keyof typeof iconMap;
+
+export const triangleFill = 'su-fill-current su-stroke-0';
 
 /**
  * Normalized base size and position of each icon (finetuned manually) for use in eg, buttons
@@ -44,6 +48,8 @@ export const iconBaseStyle = {
   back: 'su-w-1em su--mt-02em',
   'chevron-right': 'su-w-1em su--mt-02em',
   'chevron-down': 'su-w-1em su--mt-01em',
+  'triangle-right': 'su-w-[1.1em] su--mt-01em',
+  'triangle-down': 'su-w-[1.1em] su--mt-01em',
   email: 'su-w-[1.2em]',
   external: 'su-w-08em',
   left: 'su-w-08em su--mt-02em',
