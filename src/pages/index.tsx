@@ -4,7 +4,7 @@ import { StoryblokComponent, storyblokEditable } from 'gatsby-source-storyblok';
 import { useStoryblokState } from '../hooks/useStoryblokState';
 import { Layout } from '../components/Layout';
 import { Section } from '../components/Section';
-import { CtaLink } from '../components/Cta';
+import { CtaLink, CtaButton } from '../components/Cta';
 import { Grid } from '../components/Grid';
 
 const IndexPage = ({ data }) => {

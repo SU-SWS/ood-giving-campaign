@@ -4,6 +4,9 @@ export const ctaVariants = {
   primary: 'su-inline-block su-font-normal su-no-underline su-leading-display su-bg-cardinal-red hocus:su-bg-cardinal-red-dark su-text-white hocus:su-text-white su-border su-border-cardinal-red hocus:su-border-cardinal-red-dark hocus:su-decoration-1 focus:su-outline-none su-underline-offset-4',
   secondary: 'su-inline-block su-font-normal su-no-underline su-leading-display su-bg-digital-red hocus:su-bg-digital-red-dark su-text-white hocus:su-text-white su-border su-border-digital-red hocus:su-border-cardinal-red-dark hocus:su-decoration-1 focus:su-outline-none su-underline-offset-4',
   ghost: 'su-inline-block su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none su-underline-offset-4 su-decoration-transparent hocus:su-decoration-current',
+  /**
+   * TODO: These ghost variants are just for giving Alexis and Kerri ideas. Will remove or update later.
+   */
   ghostLeaf: 'su-inline-block su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none su-underline-offset-4 su-decoration-transparent hocus:su-decoration-current su-rounded-tl-[26px] su-rounded-br-[26px]',
   ghostSwipe: 'su-relative su-z-[10] su-inline-block su-no-underline hocus:su-no-underline su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none after:su-block after:su-content-[""] after:su-absolute after:su-top-0 after:su-left-0 after:su-w-[0] after:su-h-full after:su-bg-fuchsia after:su-transition-all after:su-z-[-1] hocus:after:su-w-full',
   ghostSwipeDown: 'su-relative su-z-[10] su-inline-block su-no-underline hocus:su-no-underline su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none after:su-block after:su-content-[""] after:su-absolute after:su-top-0 after:su-right-0 after:su-h-[0] after:su-w-full after:su-bg-spirited after:su-transition-all after:su-z-[-1] hocus:after:su-h-full',
@@ -41,6 +44,23 @@ export const ctaSizes = {
   unset: '',
 };
 export type CtaSizeType = keyof typeof ctaSizes;
+
+export const ctaSizeMap = {
+  primary: 'default',
+  secondary: 'default',
+  ghost: 'default',
+  ghostLeaf: 'default',
+  ghostSwipe: 'default',
+  ghostSwipeDown: 'default',
+  footer: 'footer',
+  masthead: 'masthead',
+  link: 'unset',
+  dismiss: 'dismiss',
+  close: 'close',
+  back: 'back',
+  chip: 'chip',
+  unset: 'unset',
+};
 
 export const icon = 'su-inline-block su-shrink-0';
 
