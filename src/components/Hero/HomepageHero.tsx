@@ -5,6 +5,14 @@ import { Section } from '../Section';
 import { Heading } from '../Typography';
 
 export const HomepageHero = () => {
+  const lines: string[] = [
+    'Here and now',
+    'is where we',
+    'make the',
+    'world better.',
+    'On purpose.',
+  ];
+
   const parentVariants = {
     visible: {
       opacity: 1,
@@ -25,7 +33,7 @@ export const HomepageHero = () => {
   const itemVariants = {
     visible: {
       opacity: 1,
-      y: 0,
+      transform: 'translateY(0)',
       WebkitTextStroke: '0',
       color: '#fff',
       transition: {
@@ -36,7 +44,7 @@ export const HomepageHero = () => {
       opacity: 0.8,
       WebkitTextStroke: '2px #ddd',
       color: '#2F2D29',
-      y: 40,
+      transform: 'translateY(0.3em)',
     },
   };
 
@@ -49,21 +57,11 @@ export const HomepageHero = () => {
             initial="hidden"
             animate="visible"
           >
-            <motion.div variants={itemVariants} key="line1">
-              Here and now
-            </motion.div>
-            <motion.div variants={itemVariants} key="line2">
-              is where we
-            </motion.div>
-            <motion.div variants={itemVariants} key="line3">
-              make the
-            </motion.div>
-            <motion.div variants={itemVariants} key="line4">
-              world better.
-            </motion.div>
-            <motion.div variants={itemVariants} key="line5">
-              On purpose.
-            </motion.div>
+            {lines.map((text, index) => (
+              <motion.div variants={itemVariants} key={`line${index + 1}`}>
+                {text}
+              </motion.div>
+            ))}
           </motion.div>
         </Heading>
       </Section>
