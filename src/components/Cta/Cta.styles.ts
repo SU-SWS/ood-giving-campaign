@@ -1,9 +1,16 @@
-export const cta = 'su-group hocus:su-underline su-transition';
+export const cta = 'su-group hocus:su-underline su-transition-all';
 
 export const ctaVariants = {
-  primary: 'su-inline-block su-font-normal su-no-underline su-leading-display su-bg-lagunita hover:su-bg-lagunita-dark focus-visible:su-bg-lagunita-dark active:su-bg-lagunita su-text-white hocus:su-text-white su-border su-rounded su-border-lagunita-light hocus:su-border-lagunita-light active:su-border-lagunita-light su-shadow hocus:su-shadow-md active:su-ring-2 focus:su-ring-2 active:su-ring-lagunita-light focus:su-ring-lagunita-light hocus:su-decoration-1 focus:su-outline-none',
-  secondary: 'su-inline-block su-font-normal su-no-underline su-leading-display su-bg-white hocus:su-bg-white su-text-lagunita hocus:su-text-lagunita-dark su-border hocus:su-border su-rounded su-border-lagunita-light hocus:su-border-lagunita-light active:su-border-lagunita-light su-shadow hover:su-shadow-md focus:su-ring-2 active:su-ring-2 focus:su-ring-lagunita-light active:su-ring-lagunita-light hocus:su-decoration-1 focus:su-outline-none',
-  chip: 'su-inline-block su-font-normal su-rounded-full su-text-white hover:su-shadow-md su-no-underline su-leading-display hocus:su-bg-periwinkle su-text-white hocus:su-text-white su-border su-border-white focus:su-ring-2 active:su-ring-2 focus:su-ring-lagunita-40 active:su-ring-lagunita-40 focus:su-outline-none  hocus:su-decoration-1',
+  primary: 'su-inline-block su-font-normal su-no-underline su-leading-display su-bg-cardinal-red hocus:su-bg-cardinal-red-dark su-text-white hocus:su-text-white su-border su-border-cardinal-red hocus:su-border-cardinal-red-dark hocus:su-decoration-1 focus:su-outline-none su-underline-offset-4',
+  secondary: 'su-inline-block su-font-normal su-no-underline su-leading-display su-bg-digital-red hocus:su-bg-digital-red-dark su-text-white hocus:su-text-white su-border su-border-digital-red hocus:su-border-cardinal-red-dark hocus:su-decoration-1 focus:su-outline-none su-underline-offset-4',
+  ghost: 'su-inline-block su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none su-underline-offset-4 su-decoration-transparent hocus:su-decoration-current',
+  /**
+   * TODO: These ghost variants are just for giving Alexis and Kerri ideas. Will remove or update later.
+   */
+  ghostLeaf: 'su-inline-block su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none su-underline-offset-4 su-decoration-transparent hocus:su-decoration-current su-rounded-tl-[26px] su-rounded-br-[26px]',
+  ghostSwipe: 'su-relative su-z-[10] su-inline-block su-no-underline hocus:su-no-underline su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none after:su-block after:su-content-[""] after:su-absolute after:su-top-0 after:su-left-0 after:su-w-[0] after:su-h-full after:su-bg-fuchsia after:su-transition-all after:su-z-[-1] hocus:after:su-w-full',
+  ghostSwipeDown: 'su-relative su-z-[10] su-inline-block su-no-underline hocus:su-no-underline su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none after:su-block after:su-content-[""] after:su-absolute after:su-top-0 after:su-right-0 after:su-h-[0] after:su-w-full after:su-bg-spirited after:su-transition-all after:su-z-[-1] hocus:after:su-h-full',
+  chip: 'su-inline-block su-font-normal su-rounded-full su-text-white hover:su-shadow-md su-no-underline su-leading-display hocus:su-bg-periwinkle su-text-white hocus:su-text-white su-border su-border-white focus:su-ring-2 active:su-ring-2 focus:su-ring-lagunita-40 active:su-ring-lagunita-40 focus:su-outline-none hocus:su-decoration-1',
   link: 'su-font-normal su-underline su-leading-display su-text-white hocus:su-text-lime su-decoration-1 hocus:su-decoration-2 focus-visible:su-ring-2 focus-visible:su-ring-lagunita-light focus-visible:su-outline-none focus-visible:su-rounded su-underline-offset-4',
   back: 'su-inline-block su-font-normal su-no-underline su-leading-none group-hocus:su-underline su-text-black hocus:su-text-lagunita focus-visible:su-ring-2 focus-visible:su-ring-lagunita-light focus-visible:su-ring-offset-4 focus:su-outline-none su-rounded-[1px]',
   masthead: 'su-inline-block su-font-normal su-no-underline su-text-white hocus:su-text-white md:su-text-black md:hocus:su-text-black focus:su-outline-none',
@@ -13,10 +20,16 @@ export const ctaVariants = {
   dismiss: 'su-inline-block su-font-bold su-uppercase su-tracking-widest su-leading-none su-text-black hocus:su-text-black focus:su-outline-none',
   unset: '',
 };
-export type CtaVariantType = keyof typeof ctaVariants;
+
+export const ctaColors = {
+  black: 'su-text-black',
+  white: 'su-text-white',
+  'digital-red': 'su-text-digital-red',
+  'cardinal-red': 'su-text-cardinal-red',
+};
 
 export const ctaSizes = {
-  default: 'su-px-26 su-py-14 md:su-px-30 md:su-py-20 su-text-16 md:su-text-20',
+  default: 'su-px-20 su-py-12 md:su-px-30 xl:su-px-40 md:su-py-14 su-text-16 md:su-text-20',
   small: 'su-px-13 su-py-9 md:su-px-15 md:su-py-10 su-text-16',
   masthead: 'su-text-14 md:su-text-16',
   footer: '',
@@ -28,9 +41,25 @@ export const ctaSizes = {
   dismiss: 'su-text-17',
   unset: '',
 };
-export type CtaSizeType = keyof typeof ctaSizes;
 
-export const icon = 'su-inline-block';
+export const ctaSizeMap = {
+  primary: 'default',
+  secondary: 'default',
+  ghost: 'default',
+  ghostLeaf: 'default',
+  ghostSwipe: 'default',
+  ghostSwipeDown: 'default',
+  footer: 'footer',
+  masthead: 'masthead',
+  link: 'unset',
+  dismiss: 'dismiss',
+  close: 'close',
+  back: 'back',
+  chip: 'chip',
+  unset: 'unset',
+};
+
+export const icon = 'su-inline-block su-shrink-0';
 
 export const iconStyles = {
   masthead: 'su-text-white group-hocus:su-text-white md:su-text-digital-red md:group-hover:su-text-digital-red md:group-focus:su-text-digital-red',
@@ -48,7 +77,6 @@ export const iconAnimation = {
   right: 'group-hocus:su-translate-x-02em',
   left: 'group-hocus:su--translate-x-02em',
 };
-export type IconAnimationType = keyof typeof iconAnimation;
 
 // Leading icons have right margins
 // Only add to this map if right margin is different from default class su-mr-02em

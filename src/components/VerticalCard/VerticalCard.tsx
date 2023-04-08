@@ -64,7 +64,7 @@ export const VerticalCard = ({
     )}
     {(href || link) && (
       <CtaLink
-        icon="chevron-right"
+        icon="triangle-right"
         animate="right"
         sbLink={link}
         href={href}

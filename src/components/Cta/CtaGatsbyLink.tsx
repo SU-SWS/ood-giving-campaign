@@ -9,6 +9,7 @@ export type CtaGatsbyLinkProps = CtaCommonProps & GatsbyLinkProps<{}>;
 export const CtaGatsbyLink = (props) => {
   const {
     variant = 'link',
+    color = 'white',
     size,
     icon,
     iconPosition = 'right',
@@ -21,7 +22,7 @@ export const CtaGatsbyLink = (props) => {
     ...rest
   } = props;
 
-  const ctaClasses = getCtaClasses(variant, size, uppercase, className);
+  const ctaClasses = getCtaClasses(variant, color, size, uppercase, className);
 
   return (
     <Link
