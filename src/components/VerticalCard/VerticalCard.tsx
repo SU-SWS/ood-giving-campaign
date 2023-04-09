@@ -38,7 +38,7 @@ export const VerticalCard = ({
   return (
     <article
       style={{
-        transform: isInView ? 'none' : 'scale(0.9)',
+        transform: isInView ? 'none' : 'scale(0.8)',
         opacity: isInView ? 1 : 0.6,
         transition: 'all 1s cubic-bezier(0.17, 0.55, 0.55, 1) 0.2s',
       }}

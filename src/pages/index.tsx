@@ -17,6 +17,9 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <HomepageHero />
+      <div {...storyblokEditable(story.content)}>
+        {components}
+      </div>
       <Section bgColor="black">
         <Grid md={2} xl={3} xxl={4} gap alignItems="center" justifyItems="center">
           <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right">Learn More</CtaLink>
@@ -317,9 +320,6 @@ const IndexPage = ({ data }) => {
           </CtaLink>
         </Grid>
       </Section>
-      <div {...storyblokEditable(story.content)}>
-        {components}
-      </div>
     </Layout>
   );
 };
