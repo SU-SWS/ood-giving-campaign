@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Slice } from 'gatsby';
+import { useLocation } from '@reach/router';
+import { motion } from 'framer-motion';
 import { storyblokInit, apiPlugin } from 'gatsby-source-storyblok';
 import { FlexBox } from './FlexBox';
 import { Masthead } from './Masthead';
@@ -30,10 +32,27 @@ storyblokInit({
   },
 });
 
-export const Layout = ({ children }: LayoutProps) => (
-  <FlexBox justifyContent="between" direction="col" className="su-min-h-screen">
-    <Masthead />
-    <main>{children}</main>
-    <Slice alias="global-footer" />
-  </FlexBox>
-);
+export const Layout = ({ children }: LayoutProps) => {
+  const location = useLocation();
+
+  return (
+    <FlexBox justifyContent="between" direction="col" className="su-min-h-screen">
+      <motion.div
+        initial={{ opacity: 0, rotate: 10 }}
+        animate={{ opacity: 1, rotate: 0 }}
+        exit={{ opacity: 0, rotate: 0 }}
+        transition={{
+          type: 'spring',
+          mass: 0.35,
+          stiffness: 75,
+        }}
+      >
+        <Masthead className={location.pathname !== '/' ? '!su-relative !su-bg-black' : ''} />
+        <main>
+          {children}
+        </main>
+      </motion.div>
+      <Slice alias="global-footer" />
+    </FlexBox>
+  );
+};
