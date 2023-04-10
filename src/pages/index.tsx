@@ -7,6 +7,8 @@ import { Layout } from '../components/Layout';
 import { Section } from '../components/Section';
 import { CtaLink } from '../components/Cta';
 import { Grid } from '../components/Grid';
+import { Text } from '../components/Typography';
+import { Parallax } from '../components/Parallax/Parallax';
 
 const IndexPage = ({ data }) => {
   let story = data.storyblokEntry;
@@ -17,6 +19,15 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <HomepageHero />
+      <div className="su-h-400 lg:su-h-600 su-overflow-hidden su-relative">
+        <Parallax>
+          <div style={{ backgroundImage: 'url(https://www.space.com/images/i/000/082/219/original/VLT-Pano-MCloudsMilkyWay_6068-net.jpg?interpolation=lanczos-none&fit=around|1024:1024' }} className="su--mt-100 su-h-800 su-flex su-items-center su-justify-center su-bg-center su-bg-cover" />
+          <div className="su-absolute su-top-0 su-left-0 su-w-full su-h-full su-content-[''] su-block su-z-1 su-bg-black/40" />
+        </Parallax>
+        <div className="su-absolute su-top-[50%] su-left-[50%] su-translate-x-[-50%] su-translate-y-[-50%] su-text-shadow-lg su-z-10 su-max-w-800">
+          <Text leading="none" align="center" font="druk-wide" size={7} color="white" weight="bold" className="">To infinity and beyond</Text>
+        </div>
+      </div>
       <div {...storyblokEditable(story.content)}>
         {components}
       </div>
@@ -162,6 +173,17 @@ const IndexPage = ({ data }) => {
           </CtaLink>
         </Grid>
       </Section>
+      <div className="su-h-400 lg:su-h-600 su-overflow-hidden su-relative">
+        <Parallax offset={30}>
+          <div style={{ backgroundImage: 'url(https://www.space.com/images/i/000/082/219/original/VLT-Pano-MCloudsMilkyWay_6068-net.jpg?interpolation=lanczos-none&fit=around|1024:1024' }} className="su--mt-100 su-h-800 su-flex su-items-center su-justify-center su-bg-center su-bg-cover" />
+          <div className="su-absolute su-top-0 su-left-0 su-w-full su-h-full su-content-[''] su-block su-z-1 su-bg-black/40" />
+        </Parallax>
+        <div className="su-absolute su-top-[50%] su-left-[50%] su-translate-x-[-50%] su-translate-y-[-50%] su-text-shadow-lg su-z-10 su-max-w-800">
+          <Parallax offset={70}>
+            <Text leading="none" align="center" font="druk-wide" size={7} color="white" weight="bold" className="">To infinity and beyond</Text>
+          </Parallax>
+        </div>
+      </div>
       <Section bgColor="white">
         <Grid md={2} xl={3} xxl={4} gap alignItems="center" justifyItems="center">
           <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right" color="black">Learn More</CtaLink>
@@ -320,6 +342,22 @@ const IndexPage = ({ data }) => {
           </CtaLink>
         </Grid>
       </Section>
+      <div className="su-h-400 lg:su-h-600 su-overflow-hidden su-relative">
+        <Parallax>
+          <div style={{ backgroundImage: 'url(https://www.space.com/images/i/000/082/219/original/VLT-Pano-MCloudsMilkyWay_6068-net.jpg?interpolation=lanczos-none&fit=around|1024:1024' }} className="su--mt-100 su-h-800 su-flex su-items-center su-justify-center su-bg-center su-bg-cover" />
+          <div className="su-absolute su-top-0 su-left-0 su-w-full su-h-full su-content-[''] su-block su-z-1 su-bg-black/60" />
+        </Parallax>
+        <div className="su-absolute su-top-[50%] su-left-[50%] su-translate-x-[-50%] su-translate-y-[-50%] su-z-10">
+          <CtaLink
+            href="/about-test"
+            variant="ghostLeaf"
+            icon="triangle-right"
+            className="!su-rs-px-5 !su-rs-py-2 su-text-20 md:su-text-[4.6rem] !su-font-bold !su-text-white su-bg-black/60 hocus:su-rounded-tl-none hocus:su-rounded-br-none hocus:su-bg-periwinkle/40"
+          >
+            See our new initiative
+          </CtaLink>
+        </div>
+      </div>
     </Layout>
   );
 };
