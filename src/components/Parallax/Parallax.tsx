@@ -51,7 +51,7 @@ export const Parallax = ({ children, offset = 60 }: ParallaxProps) => {
 
   // Don't parallax if the user has "reduced motion" enabled
   if (prefersReducedMotion) {
-    return children;
+    return <div>children</div>;
   }
 
   return (
