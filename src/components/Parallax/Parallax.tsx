@@ -18,7 +18,10 @@ type ParallaxProps = {
   children: ReactNode;
 };
 
-export const Parallax = ({ children, offset = 60 }: ParallaxProps): JSX.Element => {
+/**
+ * Using guide from https://samuelkraft.com/blog/spring-parallax-framer-motion-guide
+ */
+export const Parallax = ({ children, offset = 60 }: ParallaxProps) => {
   const prefersReducedMotion = useReducedMotion();
   const [elementTop, setElementTop] = useState(0);
   const [clientHeight, setClientHeight] = useState(0);
@@ -48,7 +51,7 @@ export const Parallax = ({ children, offset = 60 }: ParallaxProps): JSX.Element 
 
   // Don't parallax if the user has "reduced motion" enabled
   if (prefersReducedMotion) {
-    return <>{children}</>;
+    return children;
   }
 
   return (
