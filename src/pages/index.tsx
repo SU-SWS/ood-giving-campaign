@@ -2,6 +2,7 @@ import * as React from 'react';
 import { graphql } from 'gatsby';
 import { StoryblokComponent, storyblokEditable } from 'gatsby-source-storyblok';
 import { useStoryblokState } from '../hooks/useStoryblokState';
+import { HomepageHero } from '../components/Hero/HomepageHero';
 import { Layout } from '../components/Layout';
 import { Section } from '../components/Section';
 import { CtaLink } from '../components/Cta';
@@ -15,6 +16,10 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
+      <HomepageHero />
+      <div {...storyblokEditable(story.content)}>
+        {components}
+      </div>
       <Section bgColor="black">
         <Grid md={2} xl={3} xxl={4} gap alignItems="center" justifyItems="center">
           <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right">Learn More</CtaLink>
@@ -315,9 +320,6 @@ const IndexPage = ({ data }) => {
           </CtaLink>
         </Grid>
       </Section>
-      <div {...storyblokEditable(story.content)}>
-        {components}
-      </div>
     </Layout>
   );
 };
