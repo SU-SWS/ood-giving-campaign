@@ -8,8 +8,9 @@ import { Section } from '../components/Section';
 import { CtaLink } from '../components/Cta';
 import { Grid } from '../components/Grid';
 import { Logo } from '../components/Logo';
-import { Text } from '../components/Typography';
+import { Heading, Text } from '../components/Typography';
 import { Parallax } from '../components/Parallax/Parallax';
+import { NumberCounter } from '../components/NumberCounter';
 
 const IndexPage = ({ data }) => {
   let story = data.storyblokEntry;
@@ -359,6 +360,14 @@ const IndexPage = ({ data }) => {
           >
             Digital Red with really long label
           </CtaLink>
+        </Grid>
+      </Section>
+      <Section>
+        <Heading size={7} font="sans">Animated counters</Heading>
+        <Grid md={3} gap alignItems="center" justifyItems="center">
+          <NumberCounter number={42} />
+          <NumberCounter number={9} afterText="K+" />
+          <NumberCounter number={120} />
         </Grid>
       </Section>
       <div className="su-h-400 lg:su-h-600 su-overflow-hidden su-relative">
