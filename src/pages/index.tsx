@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 import { StoryblokComponent, storyblokEditable } from 'gatsby-source-storyblok';
+import { useScroll, motion } from 'framer-motion';
 import { useStoryblokState } from '../hooks/useStoryblokState';
 import { HomepageHero } from '../components/Hero/HomepageHero';
 import { Layout } from '../components/Layout';
@@ -16,9 +17,14 @@ const IndexPage = ({ data }) => {
   story = useStoryblokState(story);
 
   const components = story.content.body.map((blok) => (<StoryblokComponent blok={blok} key={blok._uid} />));
+  const { scrollYProgress } = useScroll();
 
   return (
     <Layout>
+      <motion.div
+        className="su-w-10 su-fixed su-z-10 su-top-0 su-left-0 su-block su-bg-poppy su-h-screen su-origin-top"
+        style={{ scaleY: scrollYProgress }}
+      />
       <HomepageHero />
       <div className="su-h-400 lg:su-h-600 su-overflow-hidden su-relative">
         <Parallax>
