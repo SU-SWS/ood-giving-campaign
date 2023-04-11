@@ -90,6 +90,24 @@ const IndexPage = ({ data }) => {
           >
             Swipe right
           </CtaLink>
+          {/* Kerri's idea test */}
+          <CtaLink
+            href="/about-test"
+            variant="ghostSwipe"
+            icon="triangle-right"
+            className="hocus:su-rounded-br-[1.5em] su-overflow-hidden"
+          >
+            Swipe + rounded corner
+          </CtaLink>
+          <CtaLink
+            href="/about-test"
+            variant="ghostSwipe"
+            icon="triangle-right"
+            className="hocus:su-rounded-br-[1.5em] su-overflow-hidden"
+            uppercase
+          >
+            Swipe + rounded corner
+          </CtaLink>
           <CtaLink
             href="/about-test"
             variant="ghostSwipeDown"
@@ -352,7 +370,7 @@ const IndexPage = ({ data }) => {
             href="/about-test"
             variant="ghostLeaf"
             icon="triangle-right"
-            className="!su-rs-px-5 !su-rs-py-2 su-text-20 md:su-text-[4.6rem] !su-font-bold !su-text-white su-bg-black/60 hocus:su-rounded-tl-none hocus:su-rounded-br-none hocus:su-bg-periwinkle/40"
+            className="!su-rs-px-5 !su-rs-py-2 su-text-20 md:su-text-[4.6rem] !su-font-bold !su-text-white !su-bg-black/70 hocus:su-rounded-tl-none hocus:su-rounded-br-none hocus:su-bg-periwinkle/40"
           >
             See our new initiative
           </CtaLink>
