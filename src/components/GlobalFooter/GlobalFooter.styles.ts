@@ -1,4 +1,4 @@
-export const root = 'su-w-full su-basefont-20 su-rs-py-1 su-text-white su-bg-cardinal-red';
+export const root = 'su-w-full su-basefont-20 su-rs-py-1 su-text-white su-bg-digital-red';
 export const outerWrapper = 'lg:su-flex-row';
 export const logoWrapper = 'su-text-center su-mt-5 su-mb-9';
 export const logo = 'su-type-3';

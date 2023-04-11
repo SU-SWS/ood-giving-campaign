@@ -7,6 +7,7 @@ import { Layout } from '../components/Layout';
 import { Section } from '../components/Section';
 import { CtaLink } from '../components/Cta';
 import { Grid } from '../components/Grid';
+import { Logo } from '../components/Logo';
 import { Text } from '../components/Typography';
 import { Parallax } from '../components/Parallax/Parallax';
 
@@ -89,6 +90,24 @@ const IndexPage = ({ data }) => {
             uppercase
           >
             Swipe right
+          </CtaLink>
+          {/* Kerri's idea test */}
+          <CtaLink
+            href="/about-test"
+            variant="ghostSwipe"
+            icon="triangle-right"
+            className="hocus:su-rounded-br-[1.5em] su-overflow-hidden"
+          >
+            Swipe + rounded corner
+          </CtaLink>
+          <CtaLink
+            href="/about-test"
+            variant="ghostSwipe"
+            icon="triangle-right"
+            className="hocus:su-rounded-br-[1.5em] su-overflow-hidden"
+            uppercase
+          >
+            Swipe + rounded corner
           </CtaLink>
           <CtaLink
             href="/about-test"
@@ -175,12 +194,12 @@ const IndexPage = ({ data }) => {
       </Section>
       <div className="su-h-400 lg:su-h-600 su-overflow-hidden su-relative">
         <Parallax offset={30}>
-          <div style={{ backgroundImage: 'url(https://www.space.com/images/i/000/082/219/original/VLT-Pano-MCloudsMilkyWay_6068-net.jpg?interpolation=lanczos-none&fit=around|1024:1024' }} className="su--mt-100 su-h-800 su-flex su-items-center su-justify-center su-bg-center su-bg-cover" />
-          <div className="su-absolute su-top-0 su-left-0 su-w-full su-h-full su-content-[''] su-block su-z-1 su-bg-black/40" />
+          <div style={{ backgroundImage: 'url(https://s3-us-west-2.amazonaws.com/stanford-125/wp-content/uploads/2016/05/Dish-Star-2048x1365.jpg' }} className="su--mt-100 su-h-800 su-flex su-items-center su-justify-center su-bg-center su-bg-cover" />
+          <div className="su-absolute su-top-0 su-left-0 su-w-full su-h-full su-content-[''] su-block su-z-1 su-bg-black-true/30" />
         </Parallax>
-        <div className="su-absolute su-top-[50%] su-left-[50%] su-translate-x-[-50%] su-translate-y-[-50%] su-text-shadow-lg su-z-10 su-max-w-800">
+        <div className="su-absolute su-top-[50%] su-left-[50%] su-translate-x-[-50%] su-translate-y-[-50%] su-z-10 su-max-w-800">
           <Parallax offset={70}>
-            <Text leading="none" align="center" font="druk-wide" size={7} color="white" weight="bold" className="">To infinity and beyond</Text>
+            <Logo size={9} variant="stacked" color="white" />
           </Parallax>
         </div>
       </div>
@@ -344,15 +363,15 @@ const IndexPage = ({ data }) => {
       </Section>
       <div className="su-h-400 lg:su-h-600 su-overflow-hidden su-relative">
         <Parallax>
-          <div style={{ backgroundImage: 'url(https://www.space.com/images/i/000/082/219/original/VLT-Pano-MCloudsMilkyWay_6068-net.jpg?interpolation=lanczos-none&fit=around|1024:1024' }} className="su--mt-100 su-h-800 su-flex su-items-center su-justify-center su-bg-center su-bg-cover" />
-          <div className="su-absolute su-top-0 su-left-0 su-w-full su-h-full su-content-[''] su-block su-z-1 su-bg-black/60" />
+          <div style={{ backgroundImage: 'url(https://upload.wikimedia.org/wikipedia/commons/0/00/Crab_Nebula.jpg' }} className="su--mt-100 su-h-800 su-flex su-items-center su-justify-center su-bg-center su-bg-cover" />
+          <div className="su-absolute su-top-0 su-left-0 su-w-full su-h-full su-content-[''] su-block su-z-1 su-bg-black-true/40" />
         </Parallax>
         <div className="su-absolute su-top-[50%] su-left-[50%] su-translate-x-[-50%] su-translate-y-[-50%] su-z-10">
           <CtaLink
             href="/about-test"
             variant="ghostLeaf"
             icon="triangle-right"
-            className="!su-rs-px-5 !su-rs-py-2 su-text-20 md:su-text-[4.6rem] !su-font-bold !su-text-white su-bg-black/60 hocus:su-rounded-tl-none hocus:su-rounded-br-none hocus:su-bg-periwinkle/40"
+            className="!su-rs-px-5 !su-rs-py-2 su-text-20 md:su-text-[4.6rem] !su-font-bold !su-text-white !su-bg-black-true/40 hocus:su-rounded-tl-none hocus:su-rounded-br-none hocus:!su-bg-sapphire/80"
           >
             See our new initiative
           </CtaLink>
