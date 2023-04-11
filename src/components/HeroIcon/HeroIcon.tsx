@@ -2,7 +2,7 @@ import React from 'react';
 import { dcnb } from 'cnbuilder';
 import * as styles from './HeroIcon.styles';
 
-export type HeroIconProps = React.ComponentProps<'svg'> & {
+export type HeroIconProps = Omit<React.SVGProps<SVGSVGElement>, 'ref'> & {
   icon?: styles.IconType;
   // Title for the SVG for accessibility
   title?: string;
