@@ -7,6 +7,7 @@ import { Layout } from '../components/Layout';
 import { Section } from '../components/Section';
 import { CtaLink } from '../components/Cta';
 import { Grid } from '../components/Grid';
+import { Logo } from '../components/Logo';
 import { Text } from '../components/Typography';
 import { Parallax } from '../components/Parallax/Parallax';
 
@@ -196,11 +197,9 @@ const IndexPage = ({ data }) => {
           <div style={{ backgroundImage: 'url(https://s3-us-west-2.amazonaws.com/stanford-125/wp-content/uploads/2016/05/Dish-Star-2048x1365.jpg' }} className="su--mt-100 su-h-800 su-flex su-items-center su-justify-center su-bg-center su-bg-cover" />
           <div className="su-absolute su-top-0 su-left-0 su-w-full su-h-full su-content-[''] su-block su-z-1 su-bg-black-true/30" />
         </Parallax>
-        <div className="su-absolute su-top-[50%] su-left-[50%] su-translate-x-[-50%] su-translate-y-[-50%] su-text-shadow-lg su-z-10 su-max-w-800">
+        <div className="su-absolute su-top-[50%] su-left-[50%] su-translate-x-[-50%] su-translate-y-[-50%] su-z-10 su-max-w-800">
           <Parallax offset={70}>
-            <Text leading="none" align="center" font="druk-wide" size={7} color="white" weight="bold" className="">
-              Live long and prosper
-            </Text>
+            <Logo size={9} variant="stacked" color="white" />
           </Parallax>
         </div>
       </div>
