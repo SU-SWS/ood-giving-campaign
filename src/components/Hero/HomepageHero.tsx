@@ -64,7 +64,7 @@ export const HomepageHero = () => {
   };
 
   return (
-    <Container width="full">
+    <Container width="full" className="su-relative">
       <Section className="!su-rs-pb-7 !su-rs-pt-10" style={{ backgroundColor: '#2F2D29', backgroundImage: darkMesh5 }}>
         <Heading as="h1" size={9} leading="none" font="druk">
           <motion.div

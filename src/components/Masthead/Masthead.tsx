@@ -7,7 +7,7 @@ import { Logo } from '../Logo';
 type MastheadProps = HTMLAttributes<HTMLDivElement>;
 
 export const Masthead = ({ className, ...props }: MastheadProps) => (
-  <div className={dcnb('su-bg-transparent su-w-full su-absolute', className)} {...props}>
+  <div className={dcnb('su-bg-transparent su-w-full su-absolute su-z-10', className)} {...props}>
     <Container>
       <FlexBox
         justifyContent="between"

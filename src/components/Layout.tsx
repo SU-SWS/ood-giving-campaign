@@ -31,7 +31,7 @@ storyblokInit({
 });
 
 export const Layout = ({ children }: LayoutProps) => (
-  <FlexBox justifyContent="between" direction="col" className="su-min-h-screen">
+  <FlexBox justifyContent="between" direction="col" className="su-min-h-screen su-relative">
     <Masthead />
     <main>{children}</main>
     <Slice alias="global-footer" />
