@@ -12,8 +12,8 @@ export const getCtaClasses = (
   const ctaClasses = dcnb(
     styles.cta,
     styles.ctaSizes[size] || styles.ctaSizes[styles.ctaSizeMap[variant]],
-    styles.ctaVariants[variant],
-    styles.ctaColors[color],
+    variant ? styles.ctaVariants[variant] : '',
+    color ? styles.ctaColors[color] : '',
     uppercase ? 'su-uppercase' : '',
     className,
   );

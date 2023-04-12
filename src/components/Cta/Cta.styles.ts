@@ -84,8 +84,6 @@ export const iconRightMargin = {
   default: 'su-mr-02em',
   'arrow-left': 'su-mr-03em',
   back: 'su-mr-03em',
-  camera: 'su-mr-03em',
-  'user-circle': 'su-mr-04em',
 };
 
 // Trailing icons have left margins
@@ -94,5 +92,4 @@ export const iconLeftMargin = {
   default: 'su-ml-02em',
   'arrow-right': 'su-ml-03em',
   back: 'su-ml-03em',
-  'back-external': 'su-ml-03em',
 };
