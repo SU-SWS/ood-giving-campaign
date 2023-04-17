@@ -217,7 +217,8 @@ const IndexPage = ({ data }) => {
           <CtaLink href="/about-test" variant="ghostLeaf" icon="arrow-right" animate="right" color="black">Learn More</CtaLink>
           <CtaLink href="/about-test" variant="ghostLeaf" uppercase icon="arrow-right" animate="right" color="black">Learn More</CtaLink>
           <CtaLink
-            href="/about-test"
+            href="https://stanford.edu"
+            rel="nofollow"
             variant="ghost"
             color="black"
             icon="triangle-down"

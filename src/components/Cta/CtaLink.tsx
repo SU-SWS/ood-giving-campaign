@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { GatsbyLinkProps } from 'gatsby';
 import { CtaCommonProps } from './Cta.types';
@@ -21,17 +22,54 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
       ...rest
     } = props;
 
+    const {
+      id,
+      fieldtype,
+      linktype,
+      cached_url: cachedUrl,
+      url,
+      target,
+      anchor,
+      // External link in Storyblok can have additional custom attributes
+      ...sbLinkProps
+    } = sbLink || {};
+
     // Check for internal links
-    const isInternal = /^\/(?!\/)/.test(href) || sbLink?.linktype === 'story';
+    const isInternal = /^\/(?!\/)/.test(href) || linktype === 'story';
+
+    // Open internal links in new tab because passing target="_blank" to GatsbyLink doesn't work at the moment
+    const openGatsbyLinkInNewTab = () => {
+      if (target === '_blank') {
+        window.open(cachedUrl || href, '_blank');
+      }
+    };
 
     if (isInternal) {
+      let toLink: string = cachedUrl;
+
+      if (sbLink?.anchor) {
+        toLink = `${toLink}#${anchor}`;
+      }
+
       return (
-        <CtaGatsbyLink {...rest} to={sbLink?.cached_url || href} ref={ref} />
+        <CtaGatsbyLink
+          {...rest}
+          ref={ref}
+          to={toLink || href}
+          target={target || undefined}
+          onClick={openGatsbyLinkInNewTab}
+        />
       );
     }
 
     return (
-      <CtaExternalLink {...rest} href={sbLink?.url || sbLink?.cached_url || href} ref={ref} />
+      <CtaExternalLink
+        {...rest}
+        {...sbLinkProps}
+        ref={ref}
+        href={url || cachedUrl || href}
+        target={target || undefined}
+      />
     );
   },
 );
