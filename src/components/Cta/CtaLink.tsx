@@ -28,6 +28,7 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
       linktype,
       cached_url: cachedUrl,
       url,
+      email,
       target,
       anchor,
       // External link in Storyblok can have additional custom attributes
@@ -68,7 +69,7 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
         {...rest}
         {...sbLinkProps}
         ref={ref}
-        href={url || cachedUrl || href}
+        href={url || cachedUrl || `mailto:${email}` || href}
         target={target || undefined}
       />
     );
