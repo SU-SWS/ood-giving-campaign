@@ -5,6 +5,7 @@ import { CtaCommonProps } from './Cta.types';
 import { CtaExternalLink } from './CtaExternalLink';
 import { CtaGatsbyLink } from './CtaGatsbyLink';
 import { SbLinkType } from '../Storyblok/Storyblok.types';
+import { useAddUtmParams } from '../../hooks/useAddUtmParams';
 
 /**
  * Use this component for CTA links.
@@ -46,18 +47,27 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
       }
     };
 
+    let myLink: string = '';
+
     if (isInternal) {
-      let toLink: string = cachedUrl;
+      myLink = cachedUrl || href;
 
-      if (sbLink?.anchor) {
-        toLink = `${toLink}#${anchor}`;
+      if (anchor) {
+        myLink = `${myLink}#${anchor}`;
       }
+    } else {
+      myLink = url || cachedUrl || `mailto:${email}` || href;
+    }
 
+    // Add UTM params to internal links
+    const myLinkWithUtm = useAddUtmParams(myLink);
+
+    if (isInternal) {
       return (
         <CtaGatsbyLink
           {...rest}
           ref={ref}
-          to={toLink || href}
+          to={myLinkWithUtm}
           target={target || undefined}
           onClick={openGatsbyLinkInNewTab}
         />
@@ -69,7 +79,7 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
         {...rest}
         {...sbLinkProps}
         ref={ref}
-        href={url || cachedUrl || `mailto:${email}` || href}
+        href={myLinkWithUtm}
         target={target || undefined}
       />
     );

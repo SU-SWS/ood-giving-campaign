@@ -4,6 +4,7 @@ import { Link } from 'gatsby';
 import { StanfordLogo } from '../StanfordLogo';
 import { Text, FontSizeType } from '../Typography';
 import * as styles from './Logo.styles';
+import { useAddUtmParams } from '../../hooks/useAddUtmParams';
 
 type LogoProps = HTMLAttributes<HTMLElement> & {
   color?: styles.LogoColorType;
@@ -41,12 +42,14 @@ export const Logo = ({
     </Text>
   );
 
+  const homeLink = useAddUtmParams('/');
+
   // Render logo as link if isLink is true
   if (isLink) {
     return (
       <Link
         {...rest}
-        to="/"
+        to={homeLink}
         className={dcnb(styles.link, className)}
       >
         {LogoText}
