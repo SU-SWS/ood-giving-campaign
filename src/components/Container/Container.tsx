@@ -1,13 +1,11 @@
-import React, { ReactNode, HTMLAttributes } from 'react';
-import { dcnb, ClassValue } from 'cnbuilder';
+import React, { HTMLAttributes } from 'react';
+import { dcnb } from 'cnbuilder';
 import * as styles from './Container.styles';
 
 export type ContainerProps = HTMLAttributes<HTMLElement> & {
   as?: styles.ContainerElementType;
   width?: styles.ContainerWidthType;
-  children?: ReactNode;
   style?: React.CSSProperties;
-  className?: ClassValue;
 };
 
 export const Container = ({

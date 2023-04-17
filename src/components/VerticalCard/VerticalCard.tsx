@@ -5,6 +5,7 @@ import { CtaLink } from '../Cta/CtaLink';
 import { Heading, HeadingType, Paragraph } from '../Typography';
 import { SbLinkType } from '../Storyblok/Storyblok.types';
 import { TextColorType } from './VerticalCard.styles';
+import { getProcessedImage } from '../../utilities/getProcessedImage';
 import * as styles from './VerticalCard.styles';
 
 type VerticalCardProps = HTMLAttributes<HTMLDivElement> & {
@@ -49,7 +50,7 @@ export const VerticalCard = ({
       {imageSrc && (
         <div className="su-transition-all su-aspect-w-1 su-aspect-h-1 su-rounded-none group-hover:su-rounded-tl-[10rem] group-hover:su-rounded-br-[10rem] group-focus-within:su-rounded-tl-[10rem] group-focus-within:su-rounded-br-[10rem] su-overflow-hidden">
           <img
-            src={imageSrc}
+            src={getProcessedImage(imageSrc, '600x600', imageFocus)}
             alt={alt}
             className="su-object-cover su-w-full su-h-full"
           />

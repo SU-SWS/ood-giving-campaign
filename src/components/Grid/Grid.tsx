@@ -1,4 +1,4 @@
-import React, { ReactNode, HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 import { dcnb } from 'cnbuilder';
 import * as styles from './Grid.styles';
 import * as types from './Grid.types';
@@ -16,7 +16,6 @@ export type GridProps = HTMLAttributes<HTMLElement> & {
   justifyItems?: types.GridJustifyItemsType,
   alignContent?: types.GridAlignContentType,
   alignItems?: types.GridAlignItemsType,
-  children: ReactNode,
 };
 
 export const Grid = ({
