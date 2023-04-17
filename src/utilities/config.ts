@@ -7,4 +7,5 @@ export const config = {
       ? '/'
       : process.env.GATSBY_BASE_PATH,
   assetCdn: process.env.GATSBY_ASSET_CDN ?? 'https://assets.stanford.edu/',
+  imageService: 'https://a-us.storyblok.com/',
 };
