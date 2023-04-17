@@ -35,7 +35,7 @@
     "@heroicons/react": "^2.0.17",
     "cnbuilder": "^3.1.0",
     "dotenv": "^16.0.3",
-    "framer-motion": "^10.11.2",
+    "framer-motion": "^10.12.2",
     "gatsby": "^5.7.0",
     "gatsby-plugin-manifest": "^5.7.0",
     "gatsby-plugin-robots-txt": "^1.8.0",
