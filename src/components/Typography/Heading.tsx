@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, TypographyProps } from './Text';
 import * as types from './typography.types';
 
-export type HeadingProps = TypographyProps & React.HTMLAttributes<HTMLHeadingElement> & {
+type HeadingProps = Omit<TypographyProps, 'as'> & React.HTMLAttributes<HTMLHeadingElement> & {
   as?: types.HeadingType;
 };
 

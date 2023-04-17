@@ -54,13 +54,13 @@ export const Text = ({
       {...rest}
       className={
         dcnb(
-          styles.fontFamilies[font],
-          styles.fontSizes[size],
-          styles.fontWeights[weight],
-          styles.textAligns[align],
-          styles.textColors[color],
-          styles.textVariants[variant],
-          styles.fontLeadings[leading],
+          font ? styles.fontFamilies[font] : '',
+          size ? styles.fontSizes[size] : '',
+          weight ? styles.fontWeights[weight] : '',
+          align ? styles.textAligns[align] : '',
+          color ? styles.textColors[color] : '',
+          variant ? styles.textVariants[variant] : '',
+          leading ? styles.fontLeadings[leading] : '',
           italic ? 'su-italic' : '',
           srOnly ? 'su-sr-only' : '',
           uppercase ? 'su-uppercase' : '',

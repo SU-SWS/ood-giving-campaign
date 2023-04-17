@@ -2,7 +2,7 @@ import React from 'react';
 import { dcnb } from 'cnbuilder';
 import { Text, TypographyProps } from './Text';
 
-export type ParagraphProps = Omit<TypographyProps, 'className'> & React.HTMLAttributes<HTMLParagraphElement> & {
+type ParagraphProps = Omit<TypographyProps, 'className'> & React.HTMLAttributes<HTMLParagraphElement> & {
   noMargin?: boolean; // If true, remove the bottom margin from base styles
 };
 

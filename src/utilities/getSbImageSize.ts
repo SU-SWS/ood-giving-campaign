@@ -1,13 +1,13 @@
 /**
- *
- * @param {string} imageUrl - The URL of the Storyblok image.
- * @returns {object} The dimensions (width and height) of the image.
+ * Returns the dimensions (width and height) of a Storyblok image.
+ * @param imageSrc The URL of the Storyblok image.
+ * @returns An object containing the width and height of the image, or null if the URL is invalid.
  */
-export const getSbImageSize = (imageUrl) => {
-  if (imageUrl.startsWith('http')) {
+export const getSbImageSize = (imageSrc: string): { width: string, height: string } | null => {
+  if (imageSrc.startsWith('http')) {
     const imageSize = {
-      width: imageUrl.split('/')[5].split('x')[0],
-      height: imageUrl.split('/')[5].split('x')[1],
+      width: imageSrc.split('/')[5].split('x')[0],
+      height: imageSrc.split('/')[5].split('x')[1],
     };
 
     return imageSize;
