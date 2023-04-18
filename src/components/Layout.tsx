@@ -8,6 +8,7 @@ import { SbCta } from './Storyblok/SbCta';
 import { SbGrid } from './Storyblok/SbGrid';
 import { SbLogo } from './Storyblok/SbLogo';
 import { SbSection } from './Storyblok/SbSection';
+import { SbSplitPoster } from './Storyblok/SbSplitPoster';
 import { SbVerticalCard } from './Storyblok/SbVerticalCard';
 
 type LayoutProps = {
@@ -26,6 +27,7 @@ storyblokInit({
     sbGrid: SbGrid,
     sbLogo: SbLogo,
     sbSection: SbSection,
+    sbSplitPoster: SbSplitPoster,
     sbVerticalCard: SbVerticalCard,
   },
 });
