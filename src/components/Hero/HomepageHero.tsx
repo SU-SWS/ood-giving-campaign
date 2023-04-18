@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Container } from '../Container';
 import { Section } from '../Section';
 import { Heading } from '../Typography';
@@ -54,17 +54,17 @@ export const HomepageHero = () => {
     <Container width="full" className="su-relative">
       <Section className="!su-rs-pb-7 !su-rs-pt-10" style={{ backgroundColor: '#2F2D29', backgroundImage: darkMesh5 }}>
         <Heading as="h1" size={9} leading="none" font="druk">
-          <motion.div
+          <m.div
             variants={parentVariants}
             initial="hidden"
             animate="visible"
           >
             {lines.map((text, index) => (
-              <motion.div variants={itemVariants} key={`line${index + 1}`}>
+              <m.div variants={itemVariants} key={`line${index + 1}`}>
                 {text}
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Heading>
       </Section>
     </Container>

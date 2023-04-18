@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { m, useInView } from 'framer-motion';
 import { Text } from './Typography';
 
 /**
@@ -20,8 +20,8 @@ export const NumberCounter = ({ number, duration = 2500, afterText = '' }) => {
   }, [count, number, isInView, interval]);
 
   return (
-    <motion.span animate={{ opacity: count > 0 ? 1 : 0 }} ref={ref}>
+    <m.span animate={{ opacity: count > 0 ? 1 : 0 }} ref={ref}>
       <Text size={8} weight="bold" align="center" className="su-text-robins-egg">{count}{afterText}</Text>
-    </motion.span>
+    </m.span>
   );
 };
