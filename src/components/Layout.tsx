@@ -4,8 +4,8 @@ import { storyblokInit, apiPlugin } from 'gatsby-source-storyblok';
 import { FlexBox } from './FlexBox';
 import { Masthead } from './Masthead';
 import Teaser from './Storyblok/Teaser';
+import { SbCta } from './Storyblok/SbCta';
 import { SbGrid } from './Storyblok/SbGrid';
-import Feature from './Storyblok/Feature';
 import { SbLogo } from './Storyblok/SbLogo';
 import { SbSection } from './Storyblok/SbSection';
 import { SbVerticalCard } from './Storyblok/SbVerticalCard';
@@ -22,9 +22,9 @@ storyblokInit({
   use: [apiPlugin],
   components: {
     teaser: Teaser,
+    sbCta: SbCta,
     sbGrid: SbGrid,
     sbLogo: SbLogo,
-    feature: Feature,
     sbSection: SbSection,
     sbVerticalCard: SbVerticalCard,
   },
