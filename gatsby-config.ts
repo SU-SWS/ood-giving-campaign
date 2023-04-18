@@ -1,3 +1,9 @@
+// @ts-check
+
+/**
+ * @type {import('gatsby').GatsbyConfig}
+ */
+
 import type { GatsbyConfig } from 'gatsby';
 import * as dotenv from 'dotenv';
 
@@ -9,9 +15,8 @@ let siteUrl = 'http://localhost:8000';
 // Support for Production site builds.
 if (process.env.CONTEXT === 'production') {
   siteUrl = process.env.URL;
-}
-// Support for non-production netlify builds (branch/preview)
-else if (process.env.CONTEXT !== 'production' && process.env.NETLIFY) {
+} else if (process.env.CONTEXT !== 'production' && process.env.NETLIFY) {
+  // Support for non-production netlify builds (branch/preview)
   siteUrl = process.env.DEPLOY_PRIME_URL;
 }
 

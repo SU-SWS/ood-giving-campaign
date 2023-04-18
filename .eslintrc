@@ -17,7 +17,7 @@
         "arrays": "always-multiline",
         "imports": "always-multiline",
         "exports": "always-multiline",
-        "functions": "never"
+        "functions": "always-multiline"
         }],
       "max-len": ["warn", { "code": 120, "ignoreStrings": true }],
       "no-use-before-define": "off",

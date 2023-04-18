@@ -1,8 +1,14 @@
 import * as React from 'react';
+import { Slice } from 'gatsby';
 import { storyblokInit, apiPlugin } from 'gatsby-source-storyblok';
-import Teaser from './Teaser';
-import Grid from './Grid';
-import Feature from './Feature';
+import { FlexBox } from './FlexBox';
+import { Masthead } from './Masthead';
+import Teaser from './Storyblok/Teaser';
+import { SbGrid } from './Storyblok/SbGrid';
+import Feature from './Storyblok/Feature';
+import { SbLogo } from './Storyblok/SbLogo';
+import { SbSection } from './Storyblok/SbSection';
+import { SbVerticalCard } from './Storyblok/SbVerticalCard';
 
 type LayoutProps = {
   children: React.ReactNode,
@@ -16,15 +22,18 @@ storyblokInit({
   use: [apiPlugin],
   components: {
     teaser: Teaser,
-    grid: Grid,
+    sbGrid: SbGrid,
+    sbLogo: SbLogo,
     feature: Feature,
+    sbSection: SbSection,
+    sbVerticalCard: SbVerticalCard,
   },
 });
 
-const Layout = ({ children }: LayoutProps) => (
-  <div>
+export const Layout = ({ children }: LayoutProps) => (
+  <FlexBox justifyContent="between" direction="col" className="su-min-h-screen su-relative">
+    <Masthead />
     <main>{children}</main>
-  </div>
+    <Slice alias="global-footer" />
+  </FlexBox>
 );
-
-export default Layout;
