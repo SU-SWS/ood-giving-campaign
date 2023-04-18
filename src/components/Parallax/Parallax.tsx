@@ -2,7 +2,7 @@ import React, {
   useState, useRef, useLayoutEffect, ReactNode,
 } from 'react';
 import {
-  motion,
+  m,
   useScroll,
   useTransform,
   useSpring,
@@ -55,8 +55,8 @@ export const Parallax = ({ children, offset = 60 }: ParallaxProps) => {
   }
 
   return (
-    <motion.div ref={ref} style={{ y }}>
+    <m.div ref={ref} style={{ y }}>
       {children}
-    </motion.div>
+    </m.div>
   );
 };

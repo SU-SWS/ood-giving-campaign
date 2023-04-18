@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 import { StoryblokComponent, storyblokEditable } from 'gatsby-source-storyblok';
-import { useScroll, motion } from 'framer-motion';
+import { useScroll, m } from 'framer-motion';
 import { useStoryblokState } from '../hooks/useStoryblokState';
 import { HomepageHero } from '../components/Hero/HomepageHero';
 import { Layout } from '../components/Layout';
@@ -22,7 +22,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <motion.div
+      <m.div
         className="su-w-10 su-fixed su-z-10 su-top-0 su-left-0 su-block su-bg-poppy su-h-screen su-origin-top"
         style={{ scaleY: scrollYProgress }}
       />
