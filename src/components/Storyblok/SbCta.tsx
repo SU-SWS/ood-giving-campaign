@@ -1,6 +1,6 @@
 import React from 'react';
 import { storyblokEditable } from 'gatsby-source-storyblok';
-import { CtaLink, CtaVariantType } from '../Cta';
+import { CtaLink, CtaColorType, CtaVariantType } from '../Cta';
 import { SbLinkType } from './Storyblok.types';
 
 type SbCtaType = {
@@ -22,14 +22,25 @@ export const SbCta = ({
     variant,
   },
   blok,
-}: SbCtaType) => (
-  <CtaLink
-    {...storyblokEditable(blok)}
-    key={_uid}
-    sbLink={link}
-    variant={variant}
-    srText={srText}
-  >
-    {label}
-  </CtaLink>
-);
+}: SbCtaType) => {
+  let color: CtaColorType = '';
+
+  if (variant.includes('white')) {
+    color = 'white';
+  } else if (variant.includes('black')) {
+    color = 'black';
+  }
+
+  return (
+    <CtaLink
+      {...storyblokEditable(blok)}
+      key={_uid}
+      sbLink={link}
+      variant={variant}
+      color={color}
+      srText={srText}
+    >
+      {label}
+    </CtaLink>
+  );
+};

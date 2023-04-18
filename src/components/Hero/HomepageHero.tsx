@@ -2,7 +2,6 @@
 import React from 'react';
 import { m } from 'framer-motion';
 import { Container } from '../Container';
-import { Section } from '../Section';
 import { Heading } from '../Typography';
 import { darkMesh5 } from '../../utilities/gradients';
 
@@ -52,7 +51,7 @@ export const HomepageHero = () => {
 
   return (
     <Container width="full" className="su-relative">
-      <Section className="!su-rs-pb-7 !su-rs-pt-10" style={{ backgroundColor: '#2F2D29', backgroundImage: darkMesh5 }}>
+      <Container pt={10} pb={7} style={{ backgroundColor: '#2F2D29', backgroundImage: darkMesh5 }}>
         <Heading as="h1" size={9} leading="none" font="druk">
           <m.div
             variants={parentVariants}
@@ -66,7 +65,7 @@ export const HomepageHero = () => {
             ))}
           </m.div>
         </Heading>
-      </Section>
+      </Container>
     </Container>
   );
 };

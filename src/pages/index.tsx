@@ -5,13 +5,14 @@ import { useScroll, m } from 'framer-motion';
 import { useStoryblokState } from '../hooks/useStoryblokState';
 import { HomepageHero } from '../components/Hero/HomepageHero';
 import { Layout } from '../components/Layout';
-import { Section } from '../components/Section';
+import { Container } from '../components/Container';
 import { CtaLink } from '../components/Cta';
 import { Grid } from '../components/Grid';
 import { Logo } from '../components/Logo';
 import { Heading, Text } from '../components/Typography';
 import { Parallax } from '../components/Parallax/Parallax';
 import { NumberCounter } from '../components/NumberCounter';
+import { SplitPoster } from '../components/SplitPoster';
 
 const IndexPage = ({ data }) => {
   let story = data.storyblokEntry;
@@ -36,10 +37,11 @@ const IndexPage = ({ data }) => {
           <Text leading="none" align="center" font="druk-wide" size={7} color="white" weight="bold" className="">To infinity and beyond</Text>
         </div>
       </div>
+      <SplitPoster />
       <div {...storyblokEditable(story.content)}>
         {components}
       </div>
-      <Section bgColor="black">
+      <Container bgColor="black" py={9}>
         <Grid md={2} xl={3} xxl={4} gap alignItems="center" justifyItems="center">
           <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right">Learn More</CtaLink>
           <CtaLink href="/about-test" variant="ghost" uppercase icon="chevron-right" animate="right">Learn More</CtaLink>
@@ -198,7 +200,7 @@ const IndexPage = ({ data }) => {
             Digital Red with really long label
           </CtaLink>
         </Grid>
-      </Section>
+      </Container>
       <div className="su-h-400 lg:su-h-600 su-overflow-hidden su-relative">
         <Parallax offset={30}>
           <div style={{ backgroundImage: 'url(https://s3-us-west-2.amazonaws.com/stanford-125/wp-content/uploads/2016/05/Dish-Star-2048x1365.jpg' }} className="su--mt-100 su-h-800 su-flex su-items-center su-justify-center su-bg-center su-bg-cover" />
@@ -210,7 +212,7 @@ const IndexPage = ({ data }) => {
           </Parallax>
         </div>
       </div>
-      <Section bgColor="white">
+      <Container bgColor="white" py={9}>
         <Grid md={2} xl={3} xxl={4} gap alignItems="center" justifyItems="center">
           <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right" color="black">Learn More</CtaLink>
           <CtaLink href="/about-test" variant="ghost" uppercase icon="chevron-right" animate="right" color="black">Learn More</CtaLink>
@@ -368,15 +370,15 @@ const IndexPage = ({ data }) => {
             Digital Red with really long label
           </CtaLink>
         </Grid>
-      </Section>
-      <Section>
+      </Container>
+      <Container py={9} bgColor="black">
         <Heading size={7} font="sans">Animated counters</Heading>
         <Grid md={3} gap alignItems="center" justifyItems="center">
           <NumberCounter number={42} />
           <NumberCounter number={9} afterText="K+" />
           <NumberCounter number={120} />
         </Grid>
-      </Section>
+      </Container>
       <div className="su-h-400 lg:su-h-600 su-overflow-hidden su-relative">
         <Parallax>
           <div style={{ backgroundImage: 'url(https://upload.wikimedia.org/wikipedia/commons/0/00/Crab_Nebula.jpg' }} className="su--mt-100 su-h-800 su-flex su-items-center su-justify-center su-bg-center su-bg-cover" />
