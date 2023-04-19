@@ -12,7 +12,6 @@ import { Logo } from '../components/Logo';
 import { Heading, Text } from '../components/Typography';
 import { Parallax } from '../components/Parallax/Parallax';
 import { NumberCounter } from '../components/NumberCounter';
-import { SplitPoster } from '../components/SplitPoster';
 
 const IndexPage = ({ data }) => {
   let story = data.storyblokEntry;
@@ -37,7 +36,6 @@ const IndexPage = ({ data }) => {
           <Text leading="none" align="center" font="druk-wide" size={7} color="white" weight="bold" className="">To infinity and beyond</Text>
         </div>
       </div>
-      <SplitPoster />
       <div {...storyblokEditable(story.content)}>
         {components}
       </div>
