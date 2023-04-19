@@ -2,6 +2,7 @@ import { dcnb } from 'cnbuilder';
 
 export const bgColors = {
   black: 'su-bg-black su-text-white',
+  'black-70': 'su-bg-black-true/70 su-text-white',
   white: 'su-bg-white su-text-black',
 };
 export type BgColorType = keyof typeof bgColors;

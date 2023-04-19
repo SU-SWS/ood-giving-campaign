@@ -27,11 +27,11 @@ export const PosterContent = ({
   className,
   ...props
 }: PosterContentProps) => (
-  <FlexBox {...props} alignItems="end" className={dcnb('sm:su-max-w-[53rem] md:su-max-w-[60rem] lg:su-max-w-[75rem] su-relative su-px-60 2xl:su-px-126 su-min-h-[45rem] md:su-min-h-[60rem] xl:su-min-h-[84rem] su-pb-60 md:su-pb-100', contentAlign === 'right' ? 'xl:su-pb-[18rem]' : 'xl:su-pb-[11.8rem]', styles.bgColors[bgColor], className)}>
+  <FlexBox {...props} alignItems="end" className={dcnb('sm:su-max-w-[53rem] md:su-max-w-[60rem] lg:su-max-w-[75rem] su-relative su-px-20 sm:su-px-60 2xl:su-px-126 su-min-h-[45rem] md:su-min-h-[60rem] xl:su-min-h-[75rem] su-pb-60 md:su-pb-100', contentAlign === 'right' ? 'xl:su-pb-[18rem]' : 'xl:su-pb-[11.8rem]', styles.bgColors[bgColor], className)}>
     {imageSrc && (
       <img
         alt=""
-        src={getProcessedImage(imageSrc, '750x840', imageFocus)}
+        src={getProcessedImage(imageSrc, '750x750', imageFocus)}
         loading="lazy"
         className="su-absolute su-w-full su-h-full su-object-cover su-top-0 su-left-0"
       />

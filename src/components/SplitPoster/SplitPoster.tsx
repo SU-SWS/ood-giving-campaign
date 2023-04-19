@@ -59,40 +59,38 @@ export const SplitPoster = ({
 
   return (
     <Container {...props} width="full" className="su-bg-white su-bg-no-repeat su-bg-cover su-bg-top" style={bgStyle}>
-      <Container width="full">
-        <Grid xl={2}>
-          <div className={styles.panelLeft} style={bgImageLeftStyle}>
-            <PosterContent
-              headingLevel={headingLevel}
-              heading={headingLeft}
-              body={bodyLeft}
-              imageSrc={imageLeftSrc}
-              imageFocus={imageLeftFocus}
-              contentAlign="right"
-              bgColor={bgColorLeft}
-              className={dcnb(imageLeftSrc ? 'su-text-white' : 'su-text-black', 'su-rounded-tl-[20rem] lg:su-rounded-tl-[30rem] su-overflow-hidden su-border-t-2 su-border-l-2 su-border-white su-ml-20 sm:su-ml-auto xl:su-ml-100 3xl:su-ml-auto')}
-            >
-              <FlexBox direction="col" className="children:su-rs-mb-1 last:children:su-mb-0 su-mr-0">
-                {ctaLeft}
-              </FlexBox>
-            </PosterContent>
-          </div>
-          <div className={styles.panelRight} style={bgImageRightStyle}>
-            <PosterContent
-              headingLevel={headingLevel}
-              heading={headingRight}
-              body={bodyRight}
-              imageSrc={imageRightSrc}
-              imageFocus={imageRightFocus}
-              contentAlign="left"
-              bgColor={bgColorRight}
-              className={dcnb(imageRightSrc ? 'su-text-white' : 'su-text-black', 'su-rounded-br-[20rem] lg:su-rounded-br-[30rem] su-overflow-hidden su-border-r-2 su-border-b-2 su-border-white su-mr-20 sm:su-mr-auto xl:su-mr-100 3xl:su-mr-auto')}
-            >
-              {ctaRight}
-            </PosterContent>
-          </div>
-        </Grid>
-      </Container>
+      <Grid xl={2}>
+        <div className={styles.panelLeft} style={bgImageLeftStyle}>
+          <PosterContent
+            headingLevel={headingLevel}
+            heading={headingLeft}
+            body={bodyLeft}
+            imageSrc={imageLeftSrc}
+            imageFocus={imageLeftFocus}
+            contentAlign="right"
+            bgColor={bgColorLeft}
+            className={dcnb(imageLeftSrc ? 'su-text-white' : 'su-text-black', 'su-rounded-tl-[12rem] sm:su-rounded-tl-[20rem] lg:su-rounded-tl-[30rem] su-overflow-hidden su-border-t-2 su-border-l-2 su-border-white su-ml-20 sm:su-ml-auto xl:su-ml-100 3xl:su-ml-auto')}
+          >
+            <FlexBox direction="col" className="children:su-rs-mb-1 last:children:su-mb-0 su-mr-0">
+              {ctaLeft}
+            </FlexBox>
+          </PosterContent>
+        </div>
+        <div className={styles.panelRight} style={bgImageRightStyle}>
+          <PosterContent
+            headingLevel={headingLevel}
+            heading={headingRight}
+            body={bodyRight}
+            imageSrc={imageRightSrc}
+            imageFocus={imageRightFocus}
+            contentAlign="left"
+            bgColor={bgColorRight}
+            className={dcnb(imageRightSrc ? 'su-text-white' : 'su-text-black', 'su-rounded-br-[12rem] sm:su-rounded-br-[20rem] lg:su-rounded-br-[30rem] su-overflow-hidden su-border-r-2 su-border-b-2 su-border-white su-mr-20 sm:su-mr-auto xl:su-mr-100 3xl:su-mr-auto')}
+          >
+            {ctaRight}
+          </PosterContent>
+        </div>
+      </Grid>
     </Container>
   );
 };
