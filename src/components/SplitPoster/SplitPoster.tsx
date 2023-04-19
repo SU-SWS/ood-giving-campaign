@@ -1,9 +1,11 @@
 import React, { HTMLAttributes } from 'react';
 import { dcnb } from 'cnbuilder';
 import { Container } from '../Container';
+import { FlexBox } from '../FlexBox';
 import { Grid } from '../Grid';
 import { HeadingType } from '../Typography';
 import { PosterContent } from './PosterContent';
+import { getProcessedImage } from '../../utilities/getProcessedImage';
 import * as styles from './SplitPoster.styles';
 
 type SplitPosterProps = HTMLAttributes<HTMLDivElement> & {
@@ -50,37 +52,47 @@ export const SplitPoster = ({
   ctaRight,
   className,
   ...props
-}: SplitPosterProps) => (
-  <Container {...props} width="full" className="su-bg-black-true">
-    <Container>
-      <Grid xl={2}>
-        <div className="su-border-r-2 xl:su-border-r su-border-white su-pt-60">
-          <PosterContent
-            headingLevel={headingLevel}
-            heading={headingLeft}
-            body={bodyLeft}
-            imageSrc={imageLeftSrc}
-            imageFocus={imageLeftFocus}
-            contentAlign="right"
-            className={dcnb(imageLeftSrc ? 'su-text-white' : 'su-text-black', 'su-rounded-tl-[10rem] md:su-rounded-tl-[30rem] su-overflow-hidden su-border-t-2 su-border-l-2 su-border-white')}
-          >
-            {ctaLeft}
-          </PosterContent>
-        </div>
-        <div className="su-border-l-2 xl:su-border-l su-border-white su-pb-60">
-          <PosterContent
-            headingLevel={headingLevel}
-            heading={headingRight}
-            body={bodyRight}
-            imageSrc={imageRightSrc}
-            imageFocus={imageRightFocus}
-            contentAlign="left"
-            className={dcnb(imageRightSrc ? 'su-text-white' : 'su-text-black', 'su-rounded-br-[10rem] md:su-rounded-br-[30rem] su-overflow-hidden su-border-r-2 su-border-b-2 su-border-white')}
-          >
-            {ctaRight}
-          </PosterContent>
-        </div>
-      </Grid>
+}: SplitPosterProps) => {
+  const bgStyle = bgImageSrc ? { backgroundImage: `url('${getProcessedImage(bgImageSrc, '2000x0', bgImageFocus)}')` } : undefined;
+  const bgImageLeftStyle = bgImageLeftSrc ? { backgroundImage: `url('${getProcessedImage(bgImageLeftSrc, '1000x1000', bgImageLeftFocus)}')` } : undefined;
+  const bgImageRightStyle = bgImageRightSrc ? { backgroundImage: `url('${getProcessedImage(bgImageRightSrc, '1000x1000', bgImageRightFocus)}')` } : undefined;
+
+  return (
+    <Container {...props} width="full" className="su-bg-white su-bg-no-repeat su-bg-cover su-bg-top" style={bgStyle}>
+      <Container width="full">
+        <Grid xl={2}>
+          <div className={styles.panelLeft} style={bgImageLeftStyle}>
+            <PosterContent
+              headingLevel={headingLevel}
+              heading={headingLeft}
+              body={bodyLeft}
+              imageSrc={imageLeftSrc}
+              imageFocus={imageLeftFocus}
+              contentAlign="right"
+              bgColor={bgColorLeft}
+              className={dcnb(imageLeftSrc ? 'su-text-white' : 'su-text-black', 'su-rounded-tl-[20rem] lg:su-rounded-tl-[30rem] su-overflow-hidden su-border-t-2 su-border-l-2 su-border-white su-ml-20 sm:su-ml-auto xl:su-ml-100 3xl:su-ml-auto')}
+            >
+              <FlexBox direction="col" className="children:su-rs-mb-1 last:children:su-mb-0 su-mr-0">
+                {ctaLeft}
+              </FlexBox>
+            </PosterContent>
+          </div>
+          <div className={styles.panelRight} style={bgImageRightStyle}>
+            <PosterContent
+              headingLevel={headingLevel}
+              heading={headingRight}
+              body={bodyRight}
+              imageSrc={imageRightSrc}
+              imageFocus={imageRightFocus}
+              contentAlign="left"
+              bgColor={bgColorRight}
+              className={dcnb(imageRightSrc ? 'su-text-white' : 'su-text-black', 'su-rounded-br-[20rem] lg:su-rounded-br-[30rem] su-overflow-hidden su-border-r-2 su-border-b-2 su-border-white su-mr-20 sm:su-mr-auto xl:su-mr-100 3xl:su-mr-auto')}
+            >
+              {ctaRight}
+            </PosterContent>
+          </div>
+        </Grid>
+      </Container>
     </Container>
-  </Container>
-);
+  );
+};

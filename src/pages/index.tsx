@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 import { StoryblokComponent, storyblokEditable } from 'gatsby-source-storyblok';
-import { useScroll, m } from 'framer-motion';
+// import { useScroll, m } from 'framer-motion';
 import { useStoryblokState } from '../hooks/useStoryblokState';
 import { HomepageHero } from '../components/Hero/HomepageHero';
 import { Layout } from '../components/Layout';
@@ -18,19 +18,19 @@ const IndexPage = ({ data }) => {
   story = useStoryblokState(story);
 
   const components = story.content.body.map((blok) => (<StoryblokComponent blok={blok} key={blok._uid} />));
-  const { scrollYProgress } = useScroll();
+  // const { scrollYProgress } = useScroll();
 
   return (
     <Layout>
-      <m.div
+      {/* <m.div
         className="su-w-10 su-fixed su-z-10 su-top-0 su-left-0 su-block su-bg-poppy su-h-screen su-origin-top"
         style={{ scaleY: scrollYProgress }}
-      />
+      /> */}
       <HomepageHero />
       <div className="su-h-400 lg:su-h-600 su-overflow-hidden su-relative">
         <Parallax>
           <div style={{ backgroundImage: 'url(https://www.space.com/images/i/000/082/219/original/VLT-Pano-MCloudsMilkyWay_6068-net.jpg?interpolation=lanczos-none&fit=around|1024:1024' }} className="su--mt-100 su-h-800 su-flex su-items-center su-justify-center su-bg-center su-bg-cover" />
-          <div className="su-absolute su-top-0 su-left-0 su-w-full su-h-full su-content-[''] su-block su-z-1 su-bg-black/40" />
+          <div className="su-absolute su-top-0 su-left-0 su-w-full su-h-full su-block su-bg-black/40" />
         </Parallax>
         <div className="su-absolute su-top-[50%] su-left-[50%] su-translate-x-[-50%] su-translate-y-[-50%] su-text-shadow-lg su-z-10 su-max-w-800">
           <Text leading="none" align="center" font="druk-wide" size={7} color="white" weight="bold" className="">To infinity and beyond</Text>
@@ -202,7 +202,7 @@ const IndexPage = ({ data }) => {
       <div className="su-h-400 lg:su-h-600 su-overflow-hidden su-relative">
         <Parallax offset={30}>
           <div style={{ backgroundImage: 'url(https://s3-us-west-2.amazonaws.com/stanford-125/wp-content/uploads/2016/05/Dish-Star-2048x1365.jpg' }} className="su--mt-100 su-h-800 su-flex su-items-center su-justify-center su-bg-center su-bg-cover" />
-          <div className="su-absolute su-top-0 su-left-0 su-w-full su-h-full su-content-[''] su-block su-z-1 su-bg-black-true/30" />
+          <div className="su-absolute su-top-0 su-left-0 su-w-full su-h-full su-block su-bg-black-true/30" />
         </Parallax>
         <div className="su-absolute su-top-[50%] su-left-[50%] su-translate-x-[-50%] su-translate-y-[-50%] su-z-10 su-max-w-800">
           <Parallax offset={70}>
@@ -380,7 +380,7 @@ const IndexPage = ({ data }) => {
       <div className="su-h-400 lg:su-h-600 su-overflow-hidden su-relative">
         <Parallax>
           <div style={{ backgroundImage: 'url(https://upload.wikimedia.org/wikipedia/commons/0/00/Crab_Nebula.jpg' }} className="su--mt-100 su-h-800 su-flex su-items-center su-justify-center su-bg-center su-bg-cover" />
-          <div className="su-absolute su-top-0 su-left-0 su-w-full su-h-full su-content-[''] su-block su-z-1 su-bg-black-true/40" />
+          <div className="su-absolute su-top-0 su-left-0 su-w-full su-h-full su-block su-bg-black-true/40" />
         </Parallax>
         <div className="su-absolute su-top-[50%] su-left-[50%] su-translate-x-[-50%] su-translate-y-[-50%] su-z-10">
           <CtaLink

@@ -17,6 +17,10 @@ export const getProcessedImage = (
   focus: string = '',
   filters: string = '',
 ): string => {
+  if (!imageSrc) {
+    return undefined;
+  }
+
   const { imageService } = config;
 
   // Get the width and the height from the crop dimension
@@ -30,17 +34,19 @@ export const getProcessedImage = (
   // Start off the filters with a default image quality of 70% - works for webp
   let myFilters = '/filters:quality(70)';
 
-  if (crop && width !== '0' && height !== '0') {
+  if (crop) {
     myParams += `/${crop}`;
     /**
      * Handle focus only if a crop dimension is provided and it has both width and height
      * If a focal point is provided, add the focal point to the filters.
      * If no focal point is provided, activate the "smart" face detection feature.
      */
-    if (focus) {
-      myFilters += `:focal(${focus})`;
-    } else {
-      myParams += '/smart';
+    if (width !== '0' && height !== '0') {
+      if (focus) {
+        myFilters += `:focal(${focus})`;
+      } else {
+        myParams += '/smart';
+      }
     }
   }
 
