@@ -4,10 +4,11 @@ import { storyblokInit, apiPlugin } from 'gatsby-source-storyblok';
 import { FlexBox } from './FlexBox';
 import { Masthead } from './Masthead';
 import Teaser from './Storyblok/Teaser';
+import { SbCta } from './Storyblok/SbCta';
 import { SbGrid } from './Storyblok/SbGrid';
-import Feature from './Storyblok/Feature';
 import { SbLogo } from './Storyblok/SbLogo';
 import { SbSection } from './Storyblok/SbSection';
+import { SbSplitPoster } from './Storyblok/SbSplitPoster';
 import { SbVerticalCard } from './Storyblok/SbVerticalCard';
 
 type LayoutProps = {
@@ -22,10 +23,11 @@ storyblokInit({
   use: [apiPlugin],
   components: {
     teaser: Teaser,
+    sbCta: SbCta,
     sbGrid: SbGrid,
     sbLogo: SbLogo,
-    feature: Feature,
     sbSection: SbSection,
+    sbSplitPoster: SbSplitPoster,
     sbVerticalCard: SbVerticalCard,
   },
 });

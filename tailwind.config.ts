@@ -28,6 +28,7 @@ export default {
     extend: {
       colors: require(`${dir}/theme/gc-colors.js`)(),
       fontFamily: require(`${dir}/theme/gc-fontFamily.js`)(),
+      screens: require(`${dir}/theme/gc-screens.js`)(),
     },
   },
   plugins: [
