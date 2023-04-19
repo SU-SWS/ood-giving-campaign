@@ -1,5 +1,4 @@
 import React, { HTMLAttributes } from 'react';
-import { dcnb } from 'cnbuilder';
 import { Container } from '../Container';
 import { FlexBox } from '../FlexBox';
 import { Grid } from '../Grid';
@@ -57,12 +56,12 @@ export const SplitPoster = ({
   className,
   ...props
 }: SplitPosterProps) => {
-  const bgStyle = bgImageSrc ? { backgroundImage: `url('${getProcessedImage(bgImageSrc, '2000x0', bgImageFocus)}')` } : undefined;
+  const bgStyle = bgImageSrc ? { backgroundImage: `url('${getProcessedImage(bgImageSrc, '2000x0')}')` } : undefined;
   const bgImageLeftStyle = bgImageLeftSrc ? { backgroundImage: `url('${getProcessedImage(bgImageLeftSrc, '1000x1000', bgImageLeftFocus)}')` } : undefined;
   const bgImageRightStyle = bgImageRightSrc ? { backgroundImage: `url('${getProcessedImage(bgImageRightSrc, '1000x1000', bgImageRightFocus)}')` } : undefined;
 
   return (
-    <Container {...props} width="full" className="su-bg-white su-bg-no-repeat su-bg-cover su-bg-top" style={bgStyle}>
+    <Container {...props} width="full" className={styles.root} style={bgStyle}>
       <Grid xl={2}>
         <div className={styles.panelLeft} style={bgImageLeftStyle}>
           <PosterContent
@@ -74,9 +73,9 @@ export const SplitPoster = ({
             addImageOverlay={addImageOverlayLeft}
             contentAlign="right"
             bgColor={bgColorLeft}
-            className={dcnb(imageLeftSrc ? 'su-text-white' : 'su-text-black', 'su-rounded-tl-[12rem] sm:su-rounded-tl-[20rem] lg:su-rounded-tl-[30rem] su-overflow-hidden su-border-t-2 su-border-l-2 su-border-white su-ml-20 sm:su-ml-auto xl:su-ml-100 3xl:su-ml-auto')}
+            className={styles.posterContentLeft}
           >
-            <FlexBox direction="col" className="children:su-rs-mb-1 last:children:su-mb-0 su-mr-0">
+            <FlexBox direction="col" className={styles.ctaWrapper}>
               {ctaLeft}
             </FlexBox>
           </PosterContent>
@@ -91,7 +90,7 @@ export const SplitPoster = ({
             addImageOverlay={addImageOverlayRight}
             contentAlign="left"
             bgColor={bgColorRight}
-            className={dcnb(imageRightSrc ? 'su-text-white' : 'su-text-black', 'su-rounded-br-[12rem] sm:su-rounded-br-[20rem] lg:su-rounded-br-[30rem] su-overflow-hidden su-border-r-2 su-border-b-2 su-border-white su-mr-20 sm:su-mr-auto xl:su-mr-100 3xl:su-mr-auto')}
+            className={styles.posterContentRight}
           >
             {ctaRight}
           </PosterContent>
