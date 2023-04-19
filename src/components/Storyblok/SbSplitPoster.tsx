@@ -19,7 +19,9 @@ type SbSplitPosterProps = {
     bgColorLeft?: BgColorType;
     bgColorRight?: BgColorType;
     imageLeft?: SbImageType;
+    addImageOverlayLeft?: boolean;
     imageRight?: SbImageType;
+    addImageOverlayRight?: boolean;
     ctaLeft?: any[];
     ctaRight?: any[];
   };
@@ -40,6 +42,8 @@ export const SbSplitPoster = ({
     bgColorRight,
     imageLeft: { filename: imageLeftSrc, focus: imageLeftFocus } = {},
     imageRight: { filename: imageRightSrc, focus: imageRightFocus } = {},
+    addImageOverlayLeft,
+    addImageOverlayRight,
     ctaLeft,
     ctaRight,
   },
@@ -67,8 +71,10 @@ export const SbSplitPoster = ({
       bgColorRight={bgColorRight}
       imageLeftSrc={imageLeftSrc}
       imageLeftFocus={imageLeftFocus}
+      addImageOverlayLeft={addImageOverlayLeft}
       imageRightSrc={imageRightSrc}
       imageRightFocus={imageRightFocus}
+      addImageOverlayRight={addImageOverlayRight}
       ctaLeft={CtaLeft}
       ctaRight={CtaRight}
     />

@@ -24,8 +24,10 @@ type SplitPosterProps = HTMLAttributes<HTMLDivElement> & {
   bgColorRight?: styles.BgColorType;
   imageLeftSrc?: string;
   imageLeftFocus?: string;
+  addImageOverlayLeft?: boolean;
   imageRightSrc?: string;
   imageRightFocus?: string;
+  addImageOverlayRight?: boolean;
   ctaLeft?: React.ReactNode;
   ctaRight?: React.ReactNode;
 };
@@ -46,8 +48,10 @@ export const SplitPoster = ({
   bgColorRight,
   imageLeftSrc,
   imageLeftFocus,
+  addImageOverlayLeft,
   imageRightSrc,
   imageRightFocus,
+  addImageOverlayRight,
   ctaLeft,
   ctaRight,
   className,
@@ -67,6 +71,7 @@ export const SplitPoster = ({
             body={bodyLeft}
             imageSrc={imageLeftSrc}
             imageFocus={imageLeftFocus}
+            addImageOverlay={addImageOverlayLeft}
             contentAlign="right"
             bgColor={bgColorLeft}
             className={dcnb(imageLeftSrc ? 'su-text-white' : 'su-text-black', 'su-rounded-tl-[12rem] sm:su-rounded-tl-[20rem] lg:su-rounded-tl-[30rem] su-overflow-hidden su-border-t-2 su-border-l-2 su-border-white su-ml-20 sm:su-ml-auto xl:su-ml-100 3xl:su-ml-auto')}
@@ -83,6 +88,7 @@ export const SplitPoster = ({
             body={bodyRight}
             imageSrc={imageRightSrc}
             imageFocus={imageRightFocus}
+            addImageOverlay={addImageOverlayRight}
             contentAlign="left"
             bgColor={bgColorRight}
             className={dcnb(imageRightSrc ? 'su-text-white' : 'su-text-black', 'su-rounded-br-[12rem] sm:su-rounded-br-[20rem] lg:su-rounded-br-[30rem] su-overflow-hidden su-border-r-2 su-border-b-2 su-border-white su-mr-20 sm:su-mr-auto xl:su-mr-100 3xl:su-mr-auto')}
