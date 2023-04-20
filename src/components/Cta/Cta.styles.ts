@@ -11,7 +11,7 @@ export const ctaVariants = {
   ghostSwipe: 'su-relative su-z-[10] su-inline-block su-no-underline hocus:su-no-underline su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none after:su-block after:su-content-[""] after:su-absolute after:su-top-0 after:su-left-0 after:su-w-[0] after:su-h-full after:su-bg-fuchsia after:su-transition-all after:su-z-[-1] hocus:after:su-w-full',
   ghostSwipeDown: 'su-relative su-z-[10] su-inline-block su-no-underline hocus:su-no-underline su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none after:su-block after:su-content-[""] after:su-absolute after:su-top-0 after:su-right-0 after:su-h-[0] after:su-w-full after:su-bg-spirited after:su-transition-all after:su-z-[-1] hocus:after:su-h-full',
   chip: 'su-inline-block su-font-normal su-rounded-full su-text-white hover:su-shadow-md su-no-underline su-leading-display hocus:su-bg-periwinkle su-text-white hocus:su-text-white su-border su-border-white focus:su-ring-2 active:su-ring-2 focus:su-ring-lagunita-40 active:su-ring-lagunita-40 focus:su-outline-none hocus:su-decoration-1',
-  link: 'su-font-normal su-underline su-leading-display su-text-white hocus:su-text-lime su-decoration-1 hocus:su-decoration-2 focus-visible:su-ring-2 focus-visible:su-ring-lagunita-light focus-visible:su-outline-none focus-visible:su-rounded su-underline-offset-4',
+  link: 'su-font-normal su-underline su-leading-display su-text-current hocus:su-text-current su-decoration-1 hocus:su-decoration-2 focus-visible:su-ring-2 focus-visible:su-ring-lagunita-light focus-visible:su-outline-none focus-visible:su-rounded su-underline-offset-4',
   back: 'su-inline-block su-font-normal su-no-underline su-leading-none group-hocus:su-underline su-text-black hocus:su-text-lagunita focus-visible:su-ring-2 focus-visible:su-ring-lagunita-light focus-visible:su-ring-offset-4 focus:su-outline-none su-rounded-[1px]',
   masthead: 'su-inline-block su-font-normal su-no-underline su-text-white hocus:su-text-white md:su-text-black md:hocus:su-text-black focus:su-outline-none',
   footer: 'su-inline-block su-font-normal su-leading-display su-underline-offset-[3px] su-text-black-20 hocus:su-text-black-20 su-decoration-digital-red-xlight hocus:su-decoration-digital-red-xlight',
@@ -24,12 +24,13 @@ export const ctaVariants = {
 export const ctaColors = {
   black: 'su-text-black',
   white: 'su-text-white',
+  // TODO: These are for ghost buttons and link variants. Will remove if we don't need.
   'digital-red': 'su-text-digital-red',
   'cardinal-red': 'su-text-cardinal-red',
 };
 
 export const ctaSizes = {
-  default: 'su-px-20 su-py-12 md:su-px-30 xl:su-px-40 md:su-py-14 su-text-16 md:su-text-20',
+  default: 'su-px-20 su-py-12 md:su-px-30 xl:su-px-40 md:su-py-14 su-text-18 md:su-text-21',
   small: 'su-px-13 su-py-9 md:su-px-15 md:su-py-10 su-text-16',
   masthead: 'su-text-14 md:su-text-16',
   footer: '',

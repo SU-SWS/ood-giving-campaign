@@ -4,4 +4,4 @@ export const textColors = {
 };
 export type TextColorType = keyof typeof textColors;
 
-export const tab = 'su-inline-block su-h-26 su-w-70 su-bg-poppy';
+export const tab = 'su-h-[2.4rem] su-w-70 su-rs-mb-0';

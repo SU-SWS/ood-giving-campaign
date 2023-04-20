@@ -22,6 +22,7 @@ export default {
      */
     './src/pages/**/*.{js,jsx,ts,tsx}',
     './src/components/**/*.{js,jsx,ts,tsx}',
+    './src/utilities/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
     // Campaign themes extending our Decanter ones
