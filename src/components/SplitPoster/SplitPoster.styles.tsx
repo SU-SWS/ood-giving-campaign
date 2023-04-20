@@ -14,7 +14,7 @@ export const panelLeft = dcnb(panel, 'su-border-b xl:su-border-b-0 xl:su-border-
 export const panelRight = dcnb(panel, 'su-border-t xl:su-border-t-0 xl:su-border-l su-pb-60');
 
 export const posterContentRoot = (hasImage: boolean) => dcnb(
-  'su-relative su-overflow-hidden su-border-white sm:su-max-w-[53rem] md:su-max-w-[60rem] lg:su-max-w-[75rem] su-px-20 sm:su-px-60 2xl:su-px-126 su-min-h-[45rem] md:su-min-h-[60rem] xl:su-min-h-[75rem] su-pb-60 md:su-pb-100',
+  'su-relative su-overflow-hidden su-border-white sm:su-max-w-[53rem] md:su-max-w-[60rem] lg:su-max-w-[75rem] su-px-20 sm:su-px-60 2xl:su-px-126 su-min-h-[45rem] md:su-min-h-[60rem] xl:su-min-h-[75rem] su-pb-60 md:su-pb-100 su-rs-pt-6',
   hasImage ? 'su-text-white' : '',
 );
 

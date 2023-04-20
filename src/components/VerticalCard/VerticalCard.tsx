@@ -7,15 +7,18 @@ import { SbLinkType } from '../Storyblok/Storyblok.types';
 import { TextColorType } from './VerticalCard.styles';
 import { getProcessedImage } from '../../utilities/getProcessedImage';
 import * as styles from './VerticalCard.styles';
+import * as datasource from '../../utilities/datasource';
 
 type VerticalCardProps = HTMLAttributes<HTMLDivElement> & {
   heading?: string;
   headingLevel?: HeadingType;
+  isSmallHeading?: boolean;
   body?: string;
   imageSrc?: string;
   imageFocus?: string;
   alt?: string;
   textColor?: TextColorType;
+  tabColor?: datasource.AccentBgColorType;
   href?: string;
   link?: SbLinkType;
 };
@@ -23,11 +26,13 @@ type VerticalCardProps = HTMLAttributes<HTMLDivElement> & {
 export const VerticalCard = ({
   heading,
   headingLevel = 'h3',
+  isSmallHeading,
   body,
   imageSrc,
   imageFocus,
   alt = '',
   textColor = 'black',
+  tabColor,
   link,
   href,
   className,
@@ -56,26 +61,25 @@ export const VerticalCard = ({
           />
         </div>
       )}
-      <div aria-hidden className={styles.tab} />
       {heading && (
         <Heading
           as={headingLevel}
-          font="druk"
-          size={5}
-          leading="none"
-          className="su-mt-01em su-mb-02em"
+          size={isSmallHeading ? 3 : 4}
+          leading="tight"
+          className="su-rs-mt-1 su-mb-03em"
         >
           {heading}
         </Heading>
       )}
-      <div className="su-mb-06em">
-        <CtaLink href="/about-test" className="su-z-20 su-relative" variant="chip">Taxonomy</CtaLink>
-      </div>
+      {tabColor && (
+        <div className={dcnb(styles.tab, datasource.accentBgColors[tabColor])} />
+      )}
       {body && (
-        <Paragraph size={1} leading="snug">{body}</Paragraph>
+        <Paragraph variant="big" leading="snug">{body}</Paragraph>
       )}
       {(href || link) && (
         <CtaLink
+          color={textColor}
           icon="triangle-right"
           animate="right"
           sbLink={link}
