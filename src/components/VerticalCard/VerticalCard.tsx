@@ -66,7 +66,7 @@ export const VerticalCard = ({
           as={headingLevel}
           size={isSmallHeading ? 3 : 4}
           leading="tight"
-          className="su-rs-mt-1 su-mb-03em"
+          className="su-rs-mt-1 su-rs-mb-neg1"
         >
           {heading}
         </Heading>

@@ -24,12 +24,13 @@ export const ctaVariants = {
 export const ctaColors = {
   black: 'su-text-black',
   white: 'su-text-white',
+  // TODO: These are for ghost buttons and link variants. Will remove if we don't need.
   'digital-red': 'su-text-digital-red',
   'cardinal-red': 'su-text-cardinal-red',
 };
 
 export const ctaSizes = {
-  default: 'su-px-20 su-py-12 md:su-px-30 xl:su-px-40 md:su-py-14 su-text-16 md:su-text-20',
+  default: 'su-px-20 su-py-12 md:su-px-30 xl:su-px-40 md:su-py-14 su-text-18 md:su-text-21',
   small: 'su-px-13 su-py-9 md:su-px-15 md:su-py-10 su-text-16',
   masthead: 'su-text-14 md:su-text-16',
   footer: '',
