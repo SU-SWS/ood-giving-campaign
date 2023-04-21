@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from 'react';
+import React, { useRef } from 'react';
 import { m } from 'framer-motion';
 import { Container } from '../Container';
 import { Heading } from '../Typography';
@@ -49,6 +49,17 @@ export const HomepageHero = () => {
     },
   };
 
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const toggleVideo = () => {
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+      } else {
+        videoRef.current.pause();
+      }
+    }
+  };
+
   return (
     <Container width="full" className="su-relative">
       <Container pt={10} style={{ backgroundColor: '#2F2D29', backgroundImage: darkMesh5 }} className="su-bg-no-repeat su-bg-[center_top_-27rem]">
@@ -67,10 +78,11 @@ export const HomepageHero = () => {
         </Heading>
       </Container>
       <div className="su-relative su-z-10 su-h-[100vw] md:su-h-600 xl:su-h-[57vw] su-w-full">
-        <video playsInline autoPlay muted loop aria-label="Background Video" className="su-w-full su-h-full su-mt-[-9rem] lg:su-mt-[-20rem] 2xl:su-mt-[-23rem] su-object-cover">
+        <video ref={videoRef} playsInline autoPlay muted loop aria-label="Background Video" className="su-w-full su-h-full su-mt-[-9rem] lg:su-mt-[-20rem] 2xl:su-mt-[-23rem] su-object-cover">
           <source src="https://a-us.storyblok.com/f/1005200/x/e36a5877cf/record-compressed.mp4" type="video/mp4" />
         </video>
         <div className="su-absolute su-w-full su-h-full su-top-0 su-left-0 su-bg-black-true/40" />
+        <button type="button" onClick={toggleVideo} className="su-text-white su-absolute su-top-[50%] su-left-[50%]">Hi</button>
       </div>
     </Container>
   );
