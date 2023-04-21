@@ -11,6 +11,8 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 
+import { PlayCircleIcon, PauseCircleIcon } from '@heroicons/react/24/solid';
+
 export const iconMap = {
   action: ChevronRightIcon,
   'arrow-right': ArrowRightIcon,
@@ -27,6 +29,8 @@ export const iconMap = {
   left: ArrowLeftIcon,
   link: LinkIcon,
   more: ArrowRightIcon,
+  pause: PauseCircleIcon,
+  play: PlayCircleIcon,
   plus: PlusIcon,
   right: ArrowRightIcon,
   up: ArrowUpIcon,
