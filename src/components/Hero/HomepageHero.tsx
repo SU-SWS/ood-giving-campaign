@@ -105,6 +105,7 @@ export const HomepageHero = () => {
         >
           <source src="https://a-us.storyblok.com/f/1005200/x/a3e3e04cdd/record-compressed.webm" type="video/webm" />
           <source src="https://a-us.storyblok.com/f/1005200/x/e36a5877cf/record-compressed.mp4" type="video/mp4" />
+          <p>Your browser does not support HTML video.</p>
         </video>
         <div className="su-absolute su-w-full su-h-full su-top-0 su-left-0 su-bg-black-true/40" />
         {isLoaded && (
