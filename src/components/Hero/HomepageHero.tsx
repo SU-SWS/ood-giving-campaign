@@ -53,12 +53,7 @@ export const HomepageHero = () => {
 
   const shouldReduceMotion = useReducedMotion();
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
   const [isPlaying, setIsPlaying] = useState(!shouldReduceMotion);
-
-  const handleLoadedMetadata = () => {
-    setIsLoaded(true);
-  };
 
   // Toggle the video's play/pause state and update isPlaying state
   const toggleVideo = () => {
@@ -95,7 +90,6 @@ export const HomepageHero = () => {
       <div className="su-relative su-z-10 su-h-[100vw] md:su-h-600 xl:su-h-[57vw] su-w-full su-bg-black">
         <video
           ref={videoRef}
-          onLoadedMetadata={handleLoadedMetadata}
           playsInline
           autoPlay={!shouldReduceMotion}
           muted
@@ -109,18 +103,16 @@ export const HomepageHero = () => {
           <p>Your browser does not support HTML video.</p>
         </video>
         <div className="su-absolute su-w-full su-h-full su-top-0 su-left-0 su-bg-black-true/40" />
-        {isLoaded && (
-          <button
-            type="button"
-            onClick={toggleVideo}
-            className="su-text-white/50 su-absolute su-bottom-[7%] su-left-[50%] su-translate-x-[-50%] su-type-6 hocus:su-text-white su-transition"
-          >
-            <HeroIcon
-              icon={isPlaying ? 'pause' : 'play'}
-              title={`${isPlaying ? 'Pause' : 'Play'} background video`}
-            />
-          </button>
-        )}
+        <button
+          type="button"
+          onClick={toggleVideo}
+          className="su-text-white/50 su-absolute su-bottom-[7%] su-left-[50%] su-translate-x-[-50%] su-type-6 hocus:su-text-white su-transition"
+        >
+          <HeroIcon
+            icon={isPlaying ? 'pause' : 'play'}
+            title={`${isPlaying ? 'Pause' : 'Play'} background video`}
+          />
+        </button>
       </div>
     </Container>
   );
