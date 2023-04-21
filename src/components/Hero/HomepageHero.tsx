@@ -5,6 +5,7 @@ import { Heading } from '../Typography';
 import { darkMesh5 } from '../../utilities/gradients';
 import { HeroIcon } from '../HeroIcon';
 import { getProcessedImage } from '../../utilities/getProcessedImage';
+import { getMaskedAsset } from '../../utilities/getMaskedAsset';
 
 export const HomepageHero = () => {
   const lines: string[] = [
@@ -103,8 +104,8 @@ export const HomepageHero = () => {
           poster={getProcessedImage('https://a-us.storyblok.com/f/1005200/1851x1041/e7319575a3/record-poster.jpg', '1920x1080')}
           className="su-block su-w-full su-h-full su--mt-[9.4rem] md:su--mt-[14.4rem] lg:su--mt-[21rem] 2xl:su--mt-[23rem] su-object-cover"
         >
-          <source src="https://a-us.storyblok.com/f/1005200/x/a3e3e04cdd/record-compressed.webm" type="video/webm" />
-          <source src="https://a-us.storyblok.com/f/1005200/x/e36a5877cf/record-compressed.mp4" type="video/mp4" />
+          <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/a3e3e04cdd/record-compressed.webm')} type="video/webm" />
+          <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/e36a5877cf/record-compressed.mp4')} type="video/mp4" />
           <p>Your browser does not support HTML video.</p>
         </video>
         <div className="su-absolute su-w-full su-h-full su-top-0 su-left-0 su-bg-black-true/40" />

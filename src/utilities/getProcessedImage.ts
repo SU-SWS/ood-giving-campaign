@@ -1,4 +1,4 @@
-import { config } from './config';
+import { getMaskedAsset } from './getMaskedAsset';
 
 /**
  *
@@ -20,8 +20,6 @@ export const getProcessedImage = (
   if (!imageSrc) {
     return undefined;
   }
-
-  const { imageService } = config;
 
   // Get the width and the height from the crop dimension
   const width = crop.split('x')[0];
@@ -57,7 +55,7 @@ export const getProcessedImage = (
 
   // The URL of the processed Storyblok image
   const processedSbUrl = `${imageSrc}${myParams}${myFilters}`;
-  const maskedUrl = processedSbUrl.replace(imageService, `${config.assetCdn}a-us/`);
+  const maskedUrl = getMaskedAsset(processedSbUrl);
 
   return maskedUrl;
 };
