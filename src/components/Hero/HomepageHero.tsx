@@ -51,8 +51,8 @@ export const HomepageHero = () => {
 
   return (
     <Container width="full" className="su-relative">
-      <Container pt={10} pb={7} style={{ backgroundColor: '#2F2D29', backgroundImage: darkMesh5 }}>
-        <Heading as="h1" size={9} leading="none" font="druk">
+      <Container pt={10} style={{ backgroundColor: '#2F2D29', backgroundImage: darkMesh5 }} className="su-bg-no-repeat su-bg-[center_top_-27rem]">
+        <Heading as="h1" size={9} leading="none" font="druk" className="su-z-20 su-relative su-mb-0">
           <m.div
             variants={parentVariants}
             initial="hidden"
@@ -66,6 +66,12 @@ export const HomepageHero = () => {
           </m.div>
         </Heading>
       </Container>
+      <div className="su-relative su-z-10 su-h-[100vw] md:su-h-600 xl:su-h-[57vw] su-w-full">
+        <video playsInline autoPlay muted loop aria-label="Background Video" className="su-w-full su-h-full su-mt-[-9rem] lg:su-mt-[-20rem] 2xl:su-mt-[-23rem] su-object-cover">
+          <source src="https://a-us.storyblok.com/f/1005200/x/e36a5877cf/record-compressed.mp4" type="video/mp4" />
+        </video>
+        <div className="su-absolute su-w-full su-h-full su-top-0 su-left-0 su-bg-black-true/40" />
+      </div>
     </Container>
   );
 };

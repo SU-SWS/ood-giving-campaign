@@ -5,5 +5,5 @@
 
 export const externalLinks = {
   give: 'https://give.stanford.edu/',
-  giving: 'https://www.giving.stanford.edu/',
+  giving: 'https://giving.stanford.edu/',
 };
