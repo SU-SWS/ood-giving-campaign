@@ -34,6 +34,7 @@ export const SbSection = ({
     bgColor={bgColor}
     pt={paddingTop}
     pb={paddingBottom}
+    className="su-relative"
   >
     {heading && (
       <Heading as={headingLevel} size={9} leading="none" uppercase font="druk">

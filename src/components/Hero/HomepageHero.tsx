@@ -73,7 +73,7 @@ export const HomepageHero = () => {
   return (
     <Container width="full" className="su-relative">
       <Container style={{ backgroundImage: darkMesh5 }} className="su-bg-black su-pt-120 md:su-pt-216 2xl:su-pt-228 su-bg-no-repeat su-bg-[center_top_-23vw] 2xl:su-bg-[center_top_-27rem]">
-        <Heading as="h1" size={9} leading="none" font="druk" className="su-z-20 su-relative su-mb-0">
+        <Heading as="h1" size={9} leading="none" font="druk" className="su-z-10 su-relative su-mb-0">
           <m.div
             variants={parentVariants}
             initial="hidden"
@@ -87,7 +87,7 @@ export const HomepageHero = () => {
           </m.div>
         </Heading>
       </Container>
-      <div className="su-relative su-z-10 su-h-[100vw] md:su-h-600 xl:su-h-[57vw] su-w-full su-bg-black">
+      <div className="su-relative su-h-[100vw] md:su-h-600 xl:su-h-[57vw] su-w-full su-bg-black su--mb-1 su-z-0">
         <video
           ref={videoRef}
           playsInline
