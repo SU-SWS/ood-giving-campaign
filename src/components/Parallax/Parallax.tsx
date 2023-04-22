@@ -23,25 +23,16 @@ type ParallaxProps = {
  */
 export const Parallax = ({ children, offset = 60 }: ParallaxProps) => {
   const prefersReducedMotion = useReducedMotion();
+  const { scrollY } = useScroll();
   const [elementTop, setElementTop] = useState(0);
   const [clientHeight, setClientHeight] = useState(0);
   const ref = useRef(null);
 
-  const { scrollY } = useScroll();
-
-  const initial = elementTop - clientHeight;
-  const final = elementTop + offset;
-
-  const yRange = useTransform(scrollY, [initial, final], [offset, -offset]);
-  const y = useSpring(yRange, { stiffness: 400, damping: 90 });
-
   useLayoutEffect(() => {
     const element = ref.current;
     const onResize = () => {
-      setElementTop(
-        element.getBoundingClientRect().top + window.scrollY
-          || window.pageYOffset,
-      );
+      const topOfElement = (element?.getBoundingClientRect()?.top ?? 0) + window.scrollY || window.pageYOffset;
+      setElementTop(topOfElement);
       setClientHeight(window.innerHeight);
     };
     onResize();
@@ -49,9 +40,15 @@ export const Parallax = ({ children, offset = 60 }: ParallaxProps) => {
     return () => window.removeEventListener('resize', onResize);
   }, [ref]);
 
+  const initial = elementTop - clientHeight;
+  const final = elementTop + offset;
+
+  const yRange = useTransform(scrollY, [initial, final], [offset, -offset]);
+  const y = useSpring(yRange, { stiffness: 400, damping: 90 });
+
   // Don't parallax if the user has "reduced motion" enabled
   if (prefersReducedMotion) {
-    return <div>children</div>;
+    return <div>{children}</div>;
   }
 
   return (

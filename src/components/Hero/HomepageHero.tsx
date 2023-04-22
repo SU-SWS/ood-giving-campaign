@@ -51,9 +51,9 @@ export const HomepageHero = () => {
     },
   };
 
-  const shouldReduceMotion = useReducedMotion();
+  const prefersReduceMotion = useReducedMotion();
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(!shouldReduceMotion);
+  const [isPlaying, setIsPlaying] = useState(!prefersReduceMotion);
 
   // Toggle the video's play/pause state and update isPlaying state
   const toggleVideo = () => {
@@ -91,7 +91,7 @@ export const HomepageHero = () => {
         <video
           ref={videoRef}
           playsInline
-          autoPlay={!shouldReduceMotion}
+          autoPlay={!prefersReduceMotion}
           muted
           loop
           aria-label="Background Video"
