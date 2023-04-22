@@ -21,9 +21,21 @@ export const AnimationMap = {
   },
   slideUp: {
     hidden: {
-      y: 200,
+      opacity: 0,
+      y: 300,
     },
     visible: {
+      opacity: 1,
+      y: 0,
+    },
+  },
+  slideDown: {
+    hidden: {
+      opacity: 0,
+      y: -300,
+    },
+    visible: {
+      opacity: 1,
       y: 0,
     },
   },
