@@ -1,6 +1,6 @@
-import React, { HTMLAttributes, useRef } from 'react';
-import { useInView } from 'framer-motion';
+import React, { HTMLAttributes } from 'react';
 import { dcnb } from 'cnbuilder';
+import { AnimateInView } from '../Animate';
 import { CtaLink } from '../Cta/CtaLink';
 import { Heading, HeadingType, Paragraph } from '../Typography';
 import { SbLinkType } from '../Storyblok/Storyblok.types';
@@ -37,18 +37,9 @@ export const VerticalCard = ({
   href,
   className,
   ...props
-}: VerticalCardProps) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: false });
-
-  return (
+}: VerticalCardProps) => (
+  <AnimateInView>
     <article
-      style={{
-        transform: isInView ? 'none' : 'scale(0.8)',
-        opacity: isInView ? 1 : 0.6,
-        transition: 'all 1s cubic-bezier(0.17, 0.55, 0.55, 1) 0.2s',
-      }}
-      ref={ref}
       className={dcnb('su-group su-relative su-z-10', styles.textColors[textColor], className)}
       {...props}
     >
@@ -91,5 +82,5 @@ export const VerticalCard = ({
         </CtaLink>
       )}
     </article>
-  );
-};
+  </AnimateInView>
+);
