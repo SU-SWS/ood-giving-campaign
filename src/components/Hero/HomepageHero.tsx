@@ -107,7 +107,7 @@ export const HomepageHero = () => {
             className="su-block su-w-full su-h-full su-object-cover"
           >
             <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/a3e3e04cdd/record-compressed.webm')} type="video/webm" />
-            <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/883ff6f9dc/ocean2-compressed.mp4')} type="video/mp4" />
+            <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/e36a5877cf/record-compressed.mp4')} type="video/mp4" />
             <p>Your browser does not support HTML video.</p>
           </video>
           <div className="su-absolute su-w-full su-h-full su-top-0 su-left-0 su-bg-gradient-to-b su-from-black su-via-black/70 su-via-30% su-to-80%" />

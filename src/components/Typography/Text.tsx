@@ -65,7 +65,7 @@ export const Text = ({
           srOnly ? 'su-sr-only' : '',
           uppercase ? 'su-uppercase' : '',
           useDefaultTracking ? 'su-tracking-normal' : '',
-          font === 'druk' ? 'sm:su-tracking-wide' : '',
+          font === 'druk' ? 'sm:su-tracking-wide' : 'su-tracking-normal',
           className,
         )
       }
