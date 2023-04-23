@@ -19,10 +19,20 @@ export const AnimationMap = {
       x: 0,
     },
   },
+  slideInFromRight: {
+    hidden: {
+      opacity: 0,
+      x: 100,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+    },
+  },
   slideUp: {
     hidden: {
       opacity: 0,
-      y: 200,
+      y: 100,
     },
     visible: {
       opacity: 1,
@@ -32,7 +42,7 @@ export const AnimationMap = {
   slideDown: {
     hidden: {
       opacity: 0,
-      y: -200,
+      y: -100,
     },
     visible: {
       opacity: 1,

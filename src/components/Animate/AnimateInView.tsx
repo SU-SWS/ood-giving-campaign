@@ -33,7 +33,10 @@ export const AnimateInView = ({
       variants={AnimationMap[animation]}
       transition={{
         duration,
-        ease: [0.17, 0.55, 0.55, 1],
+        type: 'spring',
+        bounce: 0.5,
+        damping: 20,
+        mass: 3,
         delay,
       }}
       initial="hidden"

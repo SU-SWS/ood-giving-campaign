@@ -16,13 +16,27 @@ export const HomepageHero = () => {
     'On purpose.',
   ];
 
+  const fadeVariants = {
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 1,
+        delay: 0,
+      },
+    },
+    hidden: {
+      opacity: 0,
+    },
+  };
+
   const parentVariants = {
     visible: {
       opacity: 1,
       transition: {
         when: 'beforeChildren',
-        duration: 1,
-        staggerChildren: 0.8,
+        duration: 0.8,
+        delay: 1,
+        staggerChildren: 0.4,
       },
     },
     hidden: {
@@ -35,19 +49,19 @@ export const HomepageHero = () => {
 
   const itemVariants = {
     visible: {
-      opacity: 1,
-      transform: 'translateY(0)',
+      y: 0,
       WebkitTextStroke: '0',
       color: '#fff',
+      // opacity: 1,
       transition: {
         duration: 0.5,
       },
     },
     hidden: {
-      opacity: 1,
+      // opacity: 0,
       WebkitTextStroke: '2px #ddd',
-      color: 'rgba(255, 255, 255, 0)',
-      transform: 'translateY(0.3em)',
+      color: 'rgba(255, 255, 255, 0.1)',
+      y: '0.3em',
     },
   };
 
@@ -71,49 +85,52 @@ export const HomepageHero = () => {
   };
 
   return (
-    <Container width="full" className="su-relative">
-      <Container style={{ backgroundImage: darkMesh5 }} className="su-bg-black su-pt-120 md:su-pt-216 2xl:su-pt-228 su-bg-no-repeat su-bg-[center_top_-23vw] 2xl:su-bg-[center_top_-27rem]">
-        <Heading as="h1" size={9} leading="none" font="druk" className="su-z-10 su-relative su-mb-0">
-          <m.div
-            variants={parentVariants}
-            initial="hidden"
-            animate="visible"
+    <Container width="full" className="su-relative su-bg-black">
+      <div className="">
+        <m.div
+          variants={fadeVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <Container style={{ backgroundImage: darkMesh5 }} className="su-bg-black su-h-[34.3rem] md:su-h-[56.2rem] lg:su-h-[71.5rem] 2xl:su-h-[77.9rem] su-bg-no-repeat su-bg-[center_top_-2vw] 2xl:su-bg-top" />
+        </m.div>
+        <div className="su-relative su-h-[100vw] md:su-h-600 xl:su-h-[57vw] su-w-full su-bg-black su--mb-1 su-z-0">
+          <video
+            ref={videoRef}
+            playsInline
+            autoPlay={!prefersReduceMotion}
+            muted
+            loop
+            aria-label="Background Video"
+            poster={getProcessedImage('https://a-us.storyblok.com/f/1005200/1851x1041/e7319575a3/record-poster.jpg', '1920x1080')}
+            className="su-block su-w-full su-h-full su-object-cover"
           >
-            {lines.map((text, index) => (
-              <m.div variants={itemVariants} key={`line${index + 1}`}>
-                {text}
-              </m.div>
-            ))}
-          </m.div>
-        </Heading>
-      </Container>
-      <div className="su-relative su-h-[100vw] md:su-h-600 xl:su-h-[57vw] su-w-full su-bg-black su--mb-1 su-z-0">
-        <video
-          ref={videoRef}
-          playsInline
-          autoPlay={!prefersReduceMotion}
-          muted
-          loop
-          aria-label="Background Video"
-          poster={getProcessedImage('https://a-us.storyblok.com/f/1005200/1851x1041/e7319575a3/record-poster.jpg', '1920x1080')}
-          className="su-block su-w-full su-h-full su--mt-[9.4rem] md:su--mt-[14.4rem] lg:su--mt-[21rem] 2xl:su--mt-[23rem] su-object-cover"
-        >
-          <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/a3e3e04cdd/record-compressed.webm')} type="video/webm" />
-          <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/e36a5877cf/record-compressed.mp4')} type="video/mp4" />
-          <p>Your browser does not support HTML video.</p>
-        </video>
-        <div className="su-absolute su-w-full su-h-full su-top-0 su-left-0 su-bg-black-true/40" />
-        <button
-          type="button"
-          onClick={toggleVideo}
-          className="su-text-white/50 su-absolute su-bottom-[7%] su-left-[50%] su-translate-x-[-50%] su-type-6 hocus:su-text-white su-transition"
-        >
-          <HeroIcon
-            icon={isPlaying ? 'pause' : 'play'}
-            title={`${isPlaying ? 'Pause' : 'Play'} background video`}
-          />
-        </button>
+            <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/a3e3e04cdd/record-compressed.webm')} type="video/webm" />
+            <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/883ff6f9dc/ocean2-compressed.mp4')} type="video/mp4" />
+            <p>Your browser does not support HTML video.</p>
+          </video>
+          <div className="su-absolute su-w-full su-h-full su-top-0 su-left-0 su-bg-gradient-to-b su-from-black su-via-black/70 su-via-30% su-to-80%" />
+          <button
+            type="button"
+            onClick={toggleVideo}
+            className="su-text-white/50 su-absolute su-bottom-[7%] su-left-[50%] su-translate-x-[-50%] su-type-6 hocus:su-text-white su-transition"
+          >
+            <HeroIcon
+              icon={isPlaying ? 'pause' : 'play'}
+              title={`${isPlaying ? 'Pause' : 'Play'} background video`}
+            />
+          </button>
+        </div>
       </div>
+      <m.div className="su-cc" variants={parentVariants} initial="hidden" animate="visible">
+        <Heading as="h1" size={9} leading="none" font="druk" color="white" className="su-absolute su-top-0 su-mb-0 su-pt-120 md:su-pt-216 2xl:su-pt-228">
+          {lines.map((text, index) => (
+            <m.div variants={itemVariants} key={`line${index + 1}`}>
+              {text}
+            </m.div>
+          ))}
+        </Heading>
+      </m.div>
     </Container>
   );
 };

@@ -39,7 +39,7 @@ export const Grid = ({
     {...props}
     className={dcnb(
       'su-grid',
-      gap ? 'su-grid-gap' : '',
+      gap ? 'su-grid-gap su-gap-y-[5rem] xl:su-gap-y-[7rem]' : '',
       xs ? styles.gridNumCols.xs[xs] : '',
       sm ? styles.gridNumCols.sm[sm] : '',
       md ? styles.gridNumCols.md[md] : '',
