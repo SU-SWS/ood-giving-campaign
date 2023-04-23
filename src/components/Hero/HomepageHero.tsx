@@ -20,7 +20,7 @@ export const HomepageHero = () => {
     visible: {
       opacity: 1,
       transition: {
-        duration: 1,
+        duration: 0.6,
         delay: 0,
       },
     },
@@ -34,8 +34,8 @@ export const HomepageHero = () => {
       opacity: 1,
       transition: {
         when: 'beforeChildren',
-        duration: 0.8,
-        delay: 1,
+        duration: 0.6,
+        delay: 0.6,
         staggerChildren: 0.3,
       },
     },
@@ -60,7 +60,7 @@ export const HomepageHero = () => {
     },
     hidden: {
       // opacity: 0,
-      WebkitTextStroke: '2px #ddd',
+      WebkitTextStroke: '2px #fff',
       color: 'rgba(255, 255, 255, 0.1)',
       y: '0.3em',
     },
@@ -95,21 +95,23 @@ export const HomepageHero = () => {
         >
           <Container style={{ backgroundImage: darkMesh5 }} className="su-bg-black su-h-[34.3rem] md:su-h-[56.2rem] lg:su-h-[71.5rem] 2xl:su-h-[77.9rem] su-bg-no-repeat su-bg-[center_top_-2vw] 2xl:su-bg-top" />
         </m.div>
-        <div className="su-relative su-h-[100vw] md:su-h-600 xl:su-h-[57vw] su-w-full su-bg-black su--mb-1 su-z-0">
-          <video
-            ref={videoRef}
-            playsInline
-            autoPlay={!prefersReduceMotion}
-            muted
-            loop
-            aria-label="Background Video"
-            poster={getProcessedImage('https://a-us.storyblok.com/f/1005200/1851x1041/e7319575a3/record-poster.jpg', '1920x1080')}
-            className="su-block su-w-full su-h-full su-object-cover"
-          >
-            <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/a3e3e04cdd/record-compressed.webm')} type="video/webm" />
-            <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/e36a5877cf/record-compressed.mp4')} type="video/mp4" />
-            <p>Your browser does not support HTML video.</p>
-          </video>
+        <div className="su-relative su-w-full su-bg-black su--mb-1">
+          <div className="su-aspect-w-1 su-aspect-h-1 md:su-aspect-w-16 md:su-aspect-h-9">
+            <video
+              ref={videoRef}
+              playsInline
+              autoPlay={!prefersReduceMotion}
+              muted
+              loop
+              aria-label="Background Video"
+              poster={getProcessedImage('https://a-us.storyblok.com/f/1005200/1851x1041/e7319575a3/record-poster.jpg', '1920x1080')}
+              className="su-block su-w-full su-h-full su-object-cover"
+            >
+              <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/a3e3e04cdd/record-compressed.webm')} type="video/webm" />
+              <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/e36a5877cf/record-compressed.mp4')} type="video/mp4" />
+              <p>Your browser does not support HTML video.</p>
+            </video>
+          </div>
           <div className="su-absolute su-w-full su-h-full su-top-0 su-left-0 su-bg-gradient-to-b su-from-black su-via-black/70 su-via-30% su-to-80%" />
           <button
             type="button"
