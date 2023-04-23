@@ -36,7 +36,7 @@ export const HomepageHero = () => {
         when: 'beforeChildren',
         duration: 0.8,
         delay: 1,
-        staggerChildren: 0.4,
+        staggerChildren: 0.3,
       },
     },
     hidden: {
@@ -55,6 +55,7 @@ export const HomepageHero = () => {
       // opacity: 1,
       transition: {
         duration: 0.5,
+        ease: 'circOut',
       },
     },
     hidden: {
@@ -122,8 +123,8 @@ export const HomepageHero = () => {
           </button>
         </div>
       </div>
-      <m.div className="su-cc" variants={parentVariants} initial="hidden" animate="visible">
-        <Heading as="h1" size={9} leading="none" font="druk" color="white" className="su-absolute su-top-0 su-mb-0 su-pt-120 md:su-pt-216 2xl:su-pt-228">
+      <m.div variants={parentVariants} initial="hidden" animate="visible">
+        <Heading as="h1" size={9} leading="none" font="druk" color="white" className="su-cc su-absolute su-top-0 su-mb-0 su-pt-120 md:su-pt-216 2xl:su-pt-228">
           {lines.map((text, index) => (
             <m.div variants={itemVariants} key={`line${index + 1}`}>
               {text}

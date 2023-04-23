@@ -2,7 +2,7 @@ export const AnimationMap = {
   zoomIn: {
     hidden: {
       opacity: 0,
-      scale: 0.7,
+      scale: 0.8,
     },
     visible: {
       opacity: 1,

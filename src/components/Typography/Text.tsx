@@ -37,7 +37,7 @@ export const Text = ({
   color = 'default',
   variant,
   leading,
-  useDefaultTracking = font === 'druk' || font === 'druk-wide',
+  useDefaultTracking = font === 'druk-wide',
   italic,
   srOnly,
   uppercase = font === 'druk',
@@ -65,6 +65,7 @@ export const Text = ({
           srOnly ? 'su-sr-only' : '',
           uppercase ? 'su-uppercase' : '',
           useDefaultTracking ? 'su-tracking-normal' : '',
+          font === 'druk' ? 'sm:su-tracking-wide' : '',
           className,
         )
       }
