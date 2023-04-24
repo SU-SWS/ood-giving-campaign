@@ -1,6 +1,6 @@
-import React, { HTMLAttributes, useRef } from 'react';
-import { useInView } from 'framer-motion';
+import React, { HTMLAttributes } from 'react';
 import { dcnb } from 'cnbuilder';
+import { AnimateInView, AnimationType } from '../Animate';
 import { CtaLink } from '../Cta/CtaLink';
 import { Heading, HeadingType, Paragraph } from '../Typography';
 import { SbLinkType } from '../Storyblok/Storyblok.types';
@@ -19,8 +19,11 @@ type VerticalCardProps = HTMLAttributes<HTMLDivElement> & {
   alt?: string;
   textColor?: TextColorType;
   tabColor?: datasource.AccentBgColorType;
+  ctaLabel?: string;
   href?: string;
   link?: SbLinkType;
+  animation?: AnimationType;
+  delay?: number;
 };
 
 export const VerticalCard = ({
@@ -33,22 +36,16 @@ export const VerticalCard = ({
   alt = '',
   textColor = 'black',
   tabColor,
+  ctaLabel,
   link,
   href,
+  animation,
+  delay,
   className,
   ...props
-}: VerticalCardProps) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: false });
-
-  return (
+}: VerticalCardProps) => (
+  <AnimateInView animation={animation} delay={delay}>
     <article
-      style={{
-        transform: isInView ? 'none' : 'scale(0.8)',
-        opacity: isInView ? 1 : 0.6,
-        transition: 'all 1s cubic-bezier(0.17, 0.55, 0.55, 1) 0.2s',
-      }}
-      ref={ref}
       className={dcnb('su-group su-relative su-z-10', styles.textColors[textColor], className)}
       {...props}
     >
@@ -68,7 +65,12 @@ export const VerticalCard = ({
           leading="tight"
           className="su-rs-mt-1 su-rs-mb-neg1"
         >
-          {heading}
+          {(!ctaLabel && (link || href))
+            ? (
+              <CtaLink sbLink={link} href={href} color={textColor} className="su-stretched-link su-no-underline !su-font-bold">
+                {heading}
+              </CtaLink>
+            ) : heading}
         </Heading>
       )}
       {tabColor && (
@@ -77,7 +79,7 @@ export const VerticalCard = ({
       {body && (
         <Paragraph variant="big" leading="snug">{body}</Paragraph>
       )}
-      {(href || link) && (
+      {ctaLabel && (link || href) && (
         <CtaLink
           color={textColor}
           icon="triangle-right"
@@ -87,9 +89,9 @@ export const VerticalCard = ({
           uppercase
           className="su-stretched-link"
         >
-          Learn How
+          {ctaLabel}
         </CtaLink>
       )}
     </article>
-  );
-};
+  </AnimateInView>
+);

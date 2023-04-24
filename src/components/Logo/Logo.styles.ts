@@ -14,7 +14,7 @@ export const stanford = (variant: LogoVariantType) => dcnb('su-leading-none', {
   'su-text-[1.08em]': variant === 'horizontal',
 });
 
-export const onPurpose = (variant: LogoVariantType) => dcnb('', {
+export const onPurpose = (variant: LogoVariantType) => dcnb('!su-tracking-normal', {
   'su-ml-[0.15em] su-leading-[.7]': variant === 'horizontal',
 });
 

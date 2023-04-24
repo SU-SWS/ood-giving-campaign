@@ -1,5 +1,6 @@
 import React, { HTMLAttributes } from 'react';
 import { dcnb } from 'cnbuilder';
+import { AnimateInView } from '../Animate';
 import { FlexBox } from '../FlexBox';
 import { Heading, Paragraph, HeadingType } from '../Typography';
 import { ImageOverlay } from '../ImageOverlay';
@@ -46,31 +47,33 @@ export const PosterContent = ({
         />
       )}
       {hasContent && (
-        <FlexBox
-          direction="col"
-          className={styles.content}
-          alignItems={contentAlign === 'left' ? 'start' : 'end'}
-        >
-          {heading && (
-            <Heading
-              as={headingLevel}
-              size={3}
-              font="druk-wide"
-              leading="tight"
-              uppercase
-              className={styles.heading(!!imageSrc)}
-              align={contentAlign}
-            >
-              {heading}
-            </Heading>
-          )}
-          {body && (
-            <Paragraph size={1} leading="snug" align={contentAlign} className={styles.body}>
-              {body}
-            </Paragraph>
-          )}
-          {children}
-        </FlexBox>
+        <AnimateInView delay={0.2} duration={0.7} animation={contentAlign === 'left' ? 'slideDown' : 'slideUp'}>
+          <FlexBox
+            direction="col"
+            className={styles.content}
+            alignItems={contentAlign === 'left' ? 'start' : 'end'}
+          >
+            {heading && (
+              <Heading
+                as={headingLevel}
+                size={3}
+                font="druk-wide"
+                leading="tight"
+                uppercase
+                className={styles.heading(!!imageSrc)}
+                align={contentAlign}
+              >
+                {heading}
+              </Heading>
+            )}
+            {body && (
+              <Paragraph size={1} leading="snug" align={contentAlign} className={styles.body}>
+                {body}
+              </Paragraph>
+            )}
+            {children}
+          </FlexBox>
+        </AnimateInView>
       )}
     </FlexBox>
   );
