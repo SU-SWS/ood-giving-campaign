@@ -1,5 +1,6 @@
 import React from 'react';
 import { storyblokEditable } from 'gatsby-source-storyblok';
+import { AnimationType } from '../Animate';
 import { HeadingType } from '../Typography';
 import { VerticalCard, TextColorType } from '../VerticalCard';
 import { SbImageType, SbLinkType } from './Storyblok.types';
@@ -17,6 +18,8 @@ type SbVerticalCardProps = {
     tabColor?: AccentBgColorType;
     ctaLabel?: string;
     link?: SbLinkType;
+    animation?: AnimationType;
+    delay?: number;
   };
 };
 
@@ -33,6 +36,8 @@ export const SbVerticalCard = ({
     tabColor,
     ctaLabel,
     link,
+    animation,
+    delay,
   },
   blok,
 }: SbVerticalCardProps) => (
@@ -50,5 +55,7 @@ export const SbVerticalCard = ({
     tabColor={tabColor}
     ctaLabel={ctaLabel}
     link={link}
+    animation={animation}
+    delay={delay}
   />
 );

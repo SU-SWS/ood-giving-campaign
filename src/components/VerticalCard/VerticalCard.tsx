@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react';
 import { dcnb } from 'cnbuilder';
-import { AnimateInView } from '../Animate';
+import { AnimateInView, AnimationType } from '../Animate';
 import { CtaLink } from '../Cta/CtaLink';
 import { Heading, HeadingType, Paragraph } from '../Typography';
 import { SbLinkType } from '../Storyblok/Storyblok.types';
@@ -22,6 +22,8 @@ type VerticalCardProps = HTMLAttributes<HTMLDivElement> & {
   ctaLabel?: string;
   href?: string;
   link?: SbLinkType;
+  animation?: AnimationType;
+  delay?: number;
 };
 
 export const VerticalCard = ({
@@ -37,10 +39,12 @@ export const VerticalCard = ({
   ctaLabel,
   link,
   href,
+  animation,
+  delay,
   className,
   ...props
 }: VerticalCardProps) => (
-  <AnimateInView>
+  <AnimateInView animation={animation} delay={delay}>
     <article
       className={dcnb('su-group su-relative su-z-10', styles.textColors[textColor], className)}
       {...props}
