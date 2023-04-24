@@ -5,6 +5,7 @@ import { Grid } from '../Grid';
 import { HeadingType } from '../Typography';
 import { PosterContent } from './PosterContent';
 import { getProcessedImage } from '../../utilities/getProcessedImage';
+import { BgTextColorPairType } from '../../utilities/datasource';
 import * as styles from './SplitPoster.styles';
 
 type SplitPosterProps = HTMLAttributes<HTMLDivElement> & {
@@ -19,8 +20,8 @@ type SplitPosterProps = HTMLAttributes<HTMLDivElement> & {
   bgImageLeftFocus?: string;
   bgImageRightSrc?: string;
   bgImageRightFocus?: string;
-  bgColorLeft?: styles.BgColorType;
-  bgColorRight?: styles.BgColorType;
+  bgColorLeft?: BgTextColorPairType;
+  bgColorRight?: BgTextColorPairType;
   imageLeftSrc?: string;
   imageLeftFocus?: string;
   addImageOverlayLeft?: boolean;
@@ -92,7 +93,9 @@ export const SplitPoster = ({
             bgColor={bgColorRight}
             className={styles.posterContentRight}
           >
-            {ctaRight}
+            <FlexBox direction="col" className={styles.ctaWrapper}>
+              {ctaRight}
+            </FlexBox>
           </PosterContent>
         </div>
       </Grid>

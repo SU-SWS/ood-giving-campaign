@@ -2,7 +2,8 @@ import React from 'react';
 import { storyblokEditable } from 'gatsby-source-storyblok';
 import { CreateBloks } from '../CreateBloks';
 import { Heading, HeadingType } from '../Typography';
-import { Container, BgColorType, PaddingType } from '../Container';
+import { Container, BgColorType } from '../Container';
+import { PaddingType } from '../../utilities/datasource';
 
 type SbSectionProps = {
   blok: {

@@ -5,5 +5,3 @@ export type ContainerElementType = 'div' | 'section' | 'article' | 'main' | 'foo
 export type WidthType = keyof typeof styles.widths;
 
 export type BgColorType = keyof typeof styles.bgColors | '';
-
-export type PaddingType = keyof typeof styles.paddingTops;

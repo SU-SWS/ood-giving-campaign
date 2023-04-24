@@ -5,6 +5,7 @@ import { FlexBox } from '../FlexBox';
 import { Heading, Paragraph, HeadingType } from '../Typography';
 import { ImageOverlay } from '../ImageOverlay';
 import { getProcessedImage } from '../../utilities/getProcessedImage';
+import { bgTextColorPairs, BgTextColorPairType } from '../../utilities/datasource';
 import * as styles from './SplitPoster.styles';
 
 type PosterContentProps = HTMLAttributes<HTMLDivElement> & {
@@ -15,7 +16,7 @@ type PosterContentProps = HTMLAttributes<HTMLDivElement> & {
   imageFocus?: string;
   addImageOverlay?: boolean;
   contentAlign?: 'left' | 'right';
-  bgColor?: styles.BgColorType;
+  bgColor?: BgTextColorPairType;
 };
 
 export const PosterContent = ({
@@ -38,7 +39,7 @@ export const PosterContent = ({
     <FlexBox
       {...props}
       alignItems="end"
-      className={dcnb(styles.posterContentRoot(!!imageSrc), styles.bgColors[bgColor], className)}
+      className={dcnb(styles.posterContentRoot(!!imageSrc), bgTextColorPairs[bgColor], className)}
     >
       {imageSrc && (
         <ImageOverlay

@@ -3,7 +3,8 @@ import { storyblokEditable } from 'gatsby-source-storyblok';
 import { CreateBloks } from '../CreateBloks';
 import { HeadingType } from '../Typography';
 import { SbImageType } from './Storyblok.types';
-import { SplitPoster, BgColorType } from '../SplitPoster';
+import { SplitPoster } from '../SplitPoster';
+import { BgTextColorPairType } from '../../utilities/datasource';
 
 type SbSplitPosterProps = {
   blok: {
@@ -16,8 +17,8 @@ type SbSplitPosterProps = {
     bodyRight?: string;
     bgImageLeft?: SbImageType;
     bgImageRight?: SbImageType;
-    bgColorLeft?: BgColorType;
-    bgColorRight?: BgColorType;
+    bgColorLeft?: BgTextColorPairType;
+    bgColorRight?: BgTextColorPairType;
     imageLeft?: SbImageType;
     addImageOverlayLeft?: boolean;
     imageRight?: SbImageType;

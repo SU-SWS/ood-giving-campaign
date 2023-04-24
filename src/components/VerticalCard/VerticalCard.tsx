@@ -7,18 +7,19 @@ import { SbLinkType } from '../Storyblok/Storyblok.types';
 import { TextColorType } from './VerticalCard.styles';
 import { getProcessedImage } from '../../utilities/getProcessedImage';
 import * as styles from './VerticalCard.styles';
-import * as datasource from '../../utilities/datasource';
+import { accentBgColors, AccentBgColorType } from '../../utilities/datasource';
 
 type VerticalCardProps = HTMLAttributes<HTMLDivElement> & {
   heading?: string;
   headingLevel?: HeadingType;
+  headingFont?: 'serif' | 'druk';
   isSmallHeading?: boolean;
   body?: string;
   imageSrc?: string;
   imageFocus?: string;
   alt?: string;
   textColor?: TextColorType;
-  tabColor?: datasource.AccentBgColorType;
+  tabColor?: AccentBgColorType;
   ctaLabel?: string;
   href?: string;
   link?: SbLinkType;
@@ -29,6 +30,7 @@ type VerticalCardProps = HTMLAttributes<HTMLDivElement> & {
 export const VerticalCard = ({
   heading,
   headingLevel = 'h3',
+  headingFont = 'serif',
   isSmallHeading,
   body,
   imageSrc,
@@ -61,6 +63,7 @@ export const VerticalCard = ({
       {heading && (
         <Heading
           as={headingLevel}
+          font={headingFont}
           size={isSmallHeading ? 3 : 4}
           leading="tight"
           className="su-rs-mt-1 su-rs-mb-neg1"
@@ -74,7 +77,7 @@ export const VerticalCard = ({
         </Heading>
       )}
       {tabColor && (
-        <div className={dcnb(styles.tab, datasource.accentBgColors[tabColor])} />
+        <div className={dcnb(styles.tab, accentBgColors[tabColor])} />
       )}
       {body && (
         <Paragraph variant="big" leading="snug">{body}</Paragraph>
