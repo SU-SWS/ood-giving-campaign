@@ -57,3 +57,8 @@ Components
 ---
 
 All the React components in this projects can be found under the `src/components/` directory. Components that are connected to Storyblok are in the subdirectory `src/components/Storyblok'.
+
+TailwindCSS
+---
+
+We installed the [official TailwindCSS container query plugin](https://github.com/tailwindlabs/tailwindcss-container-queries), but due to no support for Safari version 15 and earlier, please only use it for progressive enhancement.

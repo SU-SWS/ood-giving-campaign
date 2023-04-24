@@ -25,6 +25,7 @@ export default {
     './src/utilities/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
+    containers: require(`${dir}/theme/gc-containers.js`)(),
     // Campaign themes extending our Decanter ones
     extend: {
       colors: require(`${dir}/theme/gc-colors.js`)(),
@@ -33,6 +34,7 @@ export default {
     },
   },
   plugins: [
+    require('@tailwindcss/container-queries'),
     require(`${dir}/base/gc-base.js`)(),
     require(`${dir}/components/gc-typography.js`)(),
   ],
