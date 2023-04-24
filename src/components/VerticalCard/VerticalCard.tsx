@@ -19,6 +19,7 @@ type VerticalCardProps = HTMLAttributes<HTMLDivElement> & {
   alt?: string;
   textColor?: TextColorType;
   tabColor?: datasource.AccentBgColorType;
+  ctaLabel?: string;
   href?: string;
   link?: SbLinkType;
 };
@@ -33,6 +34,7 @@ export const VerticalCard = ({
   alt = '',
   textColor = 'black',
   tabColor,
+  ctaLabel,
   link,
   href,
   className,
@@ -59,7 +61,12 @@ export const VerticalCard = ({
           leading="tight"
           className="su-rs-mt-1 su-rs-mb-neg1"
         >
-          {heading}
+          {(!ctaLabel && (link || href))
+            ? (
+              <CtaLink sbLink={link} href={href} color={textColor} className="su-stretched-link su-no-underline !su-font-bold">
+                {heading}
+              </CtaLink>
+            ) : heading}
         </Heading>
       )}
       {tabColor && (
@@ -68,7 +75,7 @@ export const VerticalCard = ({
       {body && (
         <Paragraph variant="big" leading="snug">{body}</Paragraph>
       )}
-      {(href || link) && (
+      {ctaLabel && (link || href) && (
         <CtaLink
           color={textColor}
           icon="triangle-right"
@@ -78,7 +85,7 @@ export const VerticalCard = ({
           uppercase
           className="su-stretched-link"
         >
-          Learn How
+          {ctaLabel}
         </CtaLink>
       )}
     </article>

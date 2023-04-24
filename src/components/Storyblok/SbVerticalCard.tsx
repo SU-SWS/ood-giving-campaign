@@ -15,6 +15,7 @@ type SbVerticalCardProps = {
     image?: SbImageType;
     textColor?: TextColorType;
     tabColor?: AccentBgColorType;
+    ctaLabel?: string;
     link?: SbLinkType;
   };
 };
@@ -30,6 +31,7 @@ export const SbVerticalCard = ({
     image: { filename, focus, alt } = {},
     textColor,
     tabColor,
+    ctaLabel,
     link,
   },
   blok,
@@ -46,6 +48,7 @@ export const SbVerticalCard = ({
     alt={alt}
     textColor={textColor}
     tabColor={tabColor}
+    ctaLabel={ctaLabel}
     link={link}
   />
 );
