@@ -9,6 +9,19 @@ module.exports = function () {
         scrollBehavior: 'smooth',
         overflowY: 'visible !important', // Need this for sticky nav to work
       },
+      body: {
+        fontSize: '1.8rem',
+
+        '@screen md': {
+          fontSize: '1.9rem',
+        },
+        '@screen lg': {
+          fontSize: '2.1rem',
+        },
+        '@screen 2xl': {
+          fontSize: '2.3rem',
+        },
+      },
       a: {
         color: config('theme.colors.digital-red.light'),
         transition: 'color 0.25s ease-in-out',
