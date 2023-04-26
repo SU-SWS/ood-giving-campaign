@@ -66,11 +66,9 @@ We installed the [official TailwindCSS container query plugin](https://github.co
 Release Workflow
 ---
 
-To release code to production you will need to create a release branch from `dev` and make a pull request to `main`.
-
 - Create branch from `dev` (or commit ref from `dev`) with `release/` prefix (e.g. `release/my-cool-release`)
-- Create a pull request from your `release/my-cool-release` branch into `main`.
-- Add the appropriate semver label to your PR (e.g., `minor`)
+- Create a pull request from your `release/my-cool-release` branch into `main`
+- Add the appropriate semver label to your PR. Availabel labels: `patch`, `minor`, `major`, `rc`, `alpha`, `beta`
 - On PR approval, do a standard **merge commit** (not a squash commit) into `main`
 
 Merges to `main` will kickoff the following tasks:
