@@ -61,6 +61,10 @@ export const textVariants = {
   card: 'su-card-paragraph',
   intro: 'su-intro-text',
   subheading: 'su-subheading',
+  /**
+   * Campaign typography styles
+   */
+  jumbo: 'su-jumbo',
 };
 
 export const iconStyle = 'su-inline-block su-shrink-0 su-w-[1.2em] su-mr-04em';

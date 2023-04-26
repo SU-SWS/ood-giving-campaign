@@ -8,6 +8,12 @@ module.exports = function () {
         fontSize: '1.6rem',
         lineHeight: '1.3',
       },
+      '.jumbo': {
+        fontSize: '2.8rem',
+        '@screen lg': {
+          fontSize: '4rem',
+        },
+      },
     };
 
     addComponents(components);

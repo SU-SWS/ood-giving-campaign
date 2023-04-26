@@ -6,20 +6,20 @@ import { Heading, Paragraph } from './Typography';
 
 export type RichTextProps = {
   wysiwyg: StoryblokRichtext;
-  isDark?: boolean;
+  isLightText?: boolean;
   className?: string;
   linkColor?: string;
 };
 
 export const RichText = ({
   wysiwyg,
-  isDark,
+  isLightText,
   className,
 }: RichTextProps) => {
   let textColor = 'su-text-current';
 
-  if (isDark) {
-    textColor = 'su-text-black-20 print:su-text-black';
+  if (isLightText) {
+    textColor = 'su-text-white print:su-text-black';
   }
   const rendered = render(wysiwyg, {
     markResolvers: {

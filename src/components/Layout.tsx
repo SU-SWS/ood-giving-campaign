@@ -10,6 +10,7 @@ import { SbLogo } from './Storyblok/SbLogo';
 import { SbSection } from './Storyblok/SbSection';
 import { SbSplitPoster } from './Storyblok/SbSplitPoster';
 import { SbVerticalCard } from './Storyblok/SbVerticalCard';
+import { SbWysiwyg } from './Storyblok/SbWysiwyg';
 
 type LayoutProps = {
   children: React.ReactNode,
@@ -29,6 +30,7 @@ storyblokInit({
     sbSection: SbSection,
     sbSplitPoster: SbSplitPoster,
     sbVerticalCard: SbVerticalCard,
+    sbWysiwyg: SbWysiwyg,
   },
 });
 
