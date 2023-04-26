@@ -71,6 +71,13 @@ export const iconStyles = {
   dismiss: 'su-text-black !su-w-[2.2rem] su--mt-4',
 };
 
+export const ctaIconMap = {
+  dismiss: 'dismiss',
+  close: 'close',
+  'close-x': 'close',
+  back: 'back',
+};
+
 export const iconAnimation = {
   'top-right': 'group-hocus:su-translate-x-01em group-hocus:su--translate-y-01em',
   down: 'group-hocus:su-translate-y-02em',
