@@ -62,3 +62,17 @@ TailwindCSS
 ---
 
 We installed the [official TailwindCSS container query plugin](https://github.com/tailwindlabs/tailwindcss-container-queries), but due to no support for Safari version 15 and earlier, please only use it for progressive enhancement.
+
+Release Workflow
+---
+
+- Create branch from `dev` (or commit ref from `dev`) with `release/` prefix (e.g. `release/my-cool-release`)
+- Create a pull request from your `release/my-cool-release` branch into `main`
+- Add the appropriate semver label to your PR. Availabel labels: `patch`, `minor`, `major`, `rc`, `alpha`, `beta`
+- On PR approval, do a standard **merge commit** (not a squash commit) into `main`
+
+Merges to `main` will kickoff the following tasks:
+- Semver version bump
+- Publish github release
+- Netlify production build and deploy
+- Merge changes back into `dev`
