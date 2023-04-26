@@ -1,49 +1,23 @@
 import React from 'react';
 import { dcnb } from 'cnbuilder';
 import { FlexBox } from '../FlexBox';
-import { HeroIcon, IconType } from '../HeroIcon';
+import { HeroIcon } from '../HeroIcon';
 import { SrOnlyText } from '../Typography';
 import * as styles from './Cta.styles';
+import * as types from './Cta.types';
 
-export const CtaContent = (props) => {
-  const {
-    variant,
-    icon,
-    iconPosition,
-    animate = icon === 'triangle-right' ? 'right' : '',
-    iconProps,
-    srText,
-    children,
-  } = props;
+type CtaContentProps = Omit<types.CtaCommonProps, 'size' | 'color' | 'uppercase'>;
 
-  let heroicon = '' as IconType;
-
-  switch (variant) {
-    case 'dismiss':
-      heroicon = icon || 'dismiss';
-      break;
-    case 'close':
-    case 'close-x':
-      heroicon = icon || 'close';
-      break;
-    case 'back':
-      heroicon = icon || 'back';
-      break;
-    case 'back-external':
-      heroicon = icon || 'back';
-      break;
-    case 'user':
-      heroicon = icon || 'arrow-right';
-      break;
-    case 'showmore':
-    case 'showmore-button':
-    case 'showmore-panel':
-      heroicon = icon || 'chevron-down';
-      break;
-    default:
-      heroicon = icon;
-  }
-
+export const CtaContent = ({
+  variant,
+  icon,
+  iconPosition,
+  animate = icon === 'triangle-right' ? 'right' : '',
+  iconProps,
+  srText,
+  children,
+}: CtaContentProps) => {
+  const heroicon = icon || styles.ctaIconMap[variant] || '';
   const iconAnimate = styles.iconAnimation[animate];
   const iconMarginLeft = iconPosition === 'right' && children ? styles.iconLeftMargin[heroicon] || styles.iconLeftMargin.default : '';
   const iconMarginRight = iconPosition === 'left' && children ? styles.iconRightMargin[heroicon] || styles.iconRightMargin.default : '';
