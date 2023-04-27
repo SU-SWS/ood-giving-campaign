@@ -13,7 +13,7 @@ const StoryblokEntry = ({ data }) => {
   let story = data.storyblokEntry;
   story = useStoryblokState(story);
 
-  const components = story.content.body.map((blok) => (<StoryblokComponent blok={blok} key={blok._uid} />));
+  const components = story.content.body?.map((blok) => (<StoryblokComponent blok={blok} key={blok._uid} />));
 
   const gridRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: gridRef, offset: ['-300px', '200px'] });
