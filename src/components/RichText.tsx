@@ -2,9 +2,8 @@
 import React from 'react';
 import { render, StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { dcnb } from 'cnbuilder';
-import { CtaLink } from './Cta';
 import { SbCta } from './Storyblok/SbCta';
-import { Heading, Paragraph } from './Typography';
+import { Heading, FontSizeType, Paragraph } from './Typography';
 
 export type RichTextProps = {
   wysiwyg: StoryblokRichtext;
@@ -39,23 +38,13 @@ export const RichText = ({
     nodeResolvers: {
       heading: (children, props) => {
         const { level } = props;
-        if (level > 1 && level < 6) {
-          return (
-            <Heading as={`h${level}`} font="serif">
-              {children}
-            </Heading>
-          );
-        }
+        const headingSize = 7 - level;
 
-        if (level === 6) {
-          return (
-            <Heading as="h6" font="serif" size="base">
-              {children}
-            </Heading>
-          );
-        }
-
-        return null;
+        return (
+          <Heading as={`h${level}`} size={headingSize as FontSizeType}>
+            {children}
+          </Heading>
+        );
       },
     },
     blokResolvers: {
