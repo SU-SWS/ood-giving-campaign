@@ -2,6 +2,8 @@
 import React from 'react';
 import { render, StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { dcnb } from 'cnbuilder';
+import { CtaLink } from './Cta';
+import { SbCta } from './Storyblok/SbCta';
 import { Heading, Paragraph } from './Typography';
 
 export type RichTextProps = {
@@ -57,7 +59,9 @@ export const RichText = ({
       },
     },
     blokResolvers: {
-      // TODO: Add components
+      sbCta: (props) => (
+        <SbCta blok={props} />
+      ),
     },
     defaultBlokResolver: (name) => (
       <Paragraph weight="bold">
