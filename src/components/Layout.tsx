@@ -3,7 +3,6 @@ import { Slice } from 'gatsby';
 import { storyblokInit, apiPlugin } from 'gatsby-source-storyblok';
 import { FlexBox } from './FlexBox';
 import { Masthead } from './Masthead';
-import Teaser from './Storyblok/Teaser';
 import { SbCta } from './Storyblok/SbCta';
 import { SbGrid } from './Storyblok/SbGrid';
 import { SbLogo } from './Storyblok/SbLogo';
@@ -23,7 +22,6 @@ storyblokInit({
   },
   use: [apiPlugin],
   components: {
-    teaser: Teaser,
     sbCta: SbCta,
     sbGrid: SbGrid,
     sbLogo: SbLogo,
