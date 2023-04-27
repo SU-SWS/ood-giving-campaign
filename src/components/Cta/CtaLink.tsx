@@ -37,7 +37,7 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
     } = sbLink || {};
 
     // Check for internal links
-    const isInternal: boolean = /^\/(?!\/)/.test(href) || linktype === 'story';
+    const isInternal: boolean = linktype === 'story' || /^\/(?!\/)/.test(href);
 
     // Open internal links in new tab because passing target="_blank" to GatsbyLink doesn't work at the moment
     const openGatsbyLinkInNewTab = (e) => {
@@ -51,6 +51,10 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
 
     if (isInternal) {
       myLink = cachedUrl || href;
+
+      if (!myLink.startsWith('/')) {
+        myLink = myLink === 'home' ? '/' : `/${myLink}`;
+      }
 
       if (anchor) {
         myLink = `${myLink}#${anchor}`;
@@ -79,7 +83,7 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
         {...rest}
         {...sbLinkProps}
         ref={ref}
-        href={myLinkWithUtm}
+        href={myLink}
         target={target || undefined}
       />
     );

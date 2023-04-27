@@ -11,6 +11,5 @@ exports.createPages = async ({ actions }) => {
   actions.createSlice({
     id: 'global-footer',
     component: path.resolve('./src/components/GlobalFooter/GlobalFooter.tsx'),
-    context: {},
   });
 };
