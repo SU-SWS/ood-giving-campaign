@@ -8,6 +8,10 @@ import { getProcessedImage } from '../../utilities/getProcessedImage';
 import { getMaskedAsset } from '../../utilities/getMaskedAsset';
 
 export const HomepageHero = () => {
+  const prefersReduceMotion = useReducedMotion();
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(!prefersReduceMotion);
+
   const lines: string[] = [
     'Here and now',
     'is where we',
@@ -66,10 +70,6 @@ export const HomepageHero = () => {
     },
   };
 
-  const prefersReduceMotion = useReducedMotion();
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(!prefersReduceMotion);
-
   // Toggle the video's play/pause state and update isPlaying state
   const toggleVideo = () => {
     const videoElement = videoRef.current;
@@ -89,7 +89,7 @@ export const HomepageHero = () => {
     <Container width="full" className="su-relative su-bg-black">
       <div className="">
         <m.div
-          variants={fadeVariants}
+          variants={prefersReduceMotion ? undefined : fadeVariants}
           initial="hidden"
           animate="visible"
         >
@@ -125,10 +125,10 @@ export const HomepageHero = () => {
           </button>
         </div>
       </div>
-      <m.div variants={parentVariants} initial="hidden" animate="visible">
+      <m.div variants={prefersReduceMotion ? undefined : parentVariants} initial="hidden" animate="visible">
         <Heading as="h1" size={9} leading="none" font="druk" color="white" className="su-cc su-absolute su-top-0 su-mb-0 su-pt-120 md:su-pt-216 2xl:su-pt-228">
           {lines.map((text, index) => (
-            <m.div variants={itemVariants} key={`line${index + 1}`}>
+            <m.div variants={prefersReduceMotion ? undefined : itemVariants} key={`line${index + 1}`}>
               {text}
             </m.div>
           ))}
