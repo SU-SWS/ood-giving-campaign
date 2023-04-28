@@ -57,6 +57,8 @@ export const RichText = ({
             sbLink={sbLink}
             variant={isLightText ? 'inlineDark' : 'inline'}
             className="children:su-inline"
+            // Custom link attributes are not supported by the rich text renderer currently
+            // Adding rel="noopener" for all eternal links for security reasons
             rel={linktype === 'url' ? 'noopener' : undefined}
           >
             {children}
@@ -67,6 +69,7 @@ export const RichText = ({
     nodeResolvers: {
       heading: (children, props) => {
         const { level } = props;
+        // This gets you type-1 for h6, type-2 for h5, type-3 for h4 and so on
         const headingSize = 7 - level;
 
         return (
