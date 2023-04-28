@@ -52,15 +52,17 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
     if (isInternal) {
       myLink = cachedUrl || href;
 
-      if (!myLink.startsWith('/')) {
+      if (!myLink?.startsWith('/')) {
         myLink = myLink === 'home' ? '/' : `/${myLink}`;
       }
 
       if (anchor) {
         myLink = `${myLink}#${anchor}`;
       }
+    } else if (linktype === 'email') {
+      myLink = `mailto:${email}`;
     } else {
-      myLink = url || cachedUrl || `mailto:${email}` || href;
+      myLink = url || cachedUrl || href;
     }
 
     // Add UTM params to internal links

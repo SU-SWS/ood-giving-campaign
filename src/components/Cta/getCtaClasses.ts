@@ -13,7 +13,7 @@ export const getCtaClasses = (
     styles.cta,
     styles.ctaSizes[size] || styles.ctaSizes[styles.ctaSizeMap[variant]],
     styles.ctaVariants[variant],
-    styles.ctaColors[color],
+    color ? styles.ctaColors[color] : '',
     uppercase ? 'su-uppercase' : '',
     className,
   );

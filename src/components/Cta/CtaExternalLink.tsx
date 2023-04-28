@@ -13,7 +13,7 @@ export const CtaExternalLink = React.forwardRef<HTMLAnchorElement, CtaExternalLi
   (props, ref) => {
     const {
       variant = 'link',
-      color = 'white',
+      color = variant !== 'inline' && variant !== 'inlineDark' ? 'white' : '',
       size,
       icon,
       iconPosition = 'right',
