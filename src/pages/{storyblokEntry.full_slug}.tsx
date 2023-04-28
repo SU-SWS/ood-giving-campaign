@@ -25,6 +25,7 @@ const StoryblokEntry = ({ data }) => {
 
   return (
     <Layout>
+      {/* Entirely POC code below - going to extract into components */}
       <Hero heading={story.name} />
       <Container bgColor="white" pt={9}>
         <div className="su-relative su-mx-auto" ref={gridRef}>
@@ -41,7 +42,7 @@ const StoryblokEntry = ({ data }) => {
             </Paragraph>
           </Grid>
           <m.div
-            className="su-w-2 su-absolute su-top-0 su-left-[50%] su-translate-x-[-50%] su-block su-bg-black su-h-full su-origin-top"
+            className="su-w-2 su-absolute su-top-0 su-left-[50%] su--ml-1 su-block su-bg-black su-h-full su-origin-top"
             style={{ scaleY }}
           />
         </div>

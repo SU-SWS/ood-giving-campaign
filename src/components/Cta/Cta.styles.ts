@@ -3,6 +3,8 @@ export const cta = 'su-group hocus:su-underline su-transition-all';
 export const ctaVariants = {
   primary: 'su-inline-block su-font-normal su-no-underline su-leading-display su-bg-cardinal-red hocus:su-bg-cardinal-red-dark su-text-white hocus:su-text-white su-border-2 su-border-cardinal-red hocus:su-border-cardinal-red-dark hocus:su-decoration-1 focus:su-outline-none su-underline-offset-4',
   secondary: 'su-inline-block su-font-normal su-no-underline su-leading-display su-bg-digital-red hocus:su-bg-digital-red-dark su-text-white hocus:su-text-white su-border-2 su-border-digital-red hocus:su-border-cardinal-red-dark hocus:su-decoration-1 focus:su-outline-none su-underline-offset-4',
+  inline: 'su-inline su-underline su-decoration-1 hocus:su-decoration-2 su-underline-offset-2',
+  inlineDark: 'su-inline su-text-digital-red-xlight hocus:su-text-white su-underline su-decoration-1 hocus:su-decoration-2 su-underline-offset-2',
   ghost: 'su-inline-block su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none su-underline-offset-4 su-decoration-transparent hocus:su-decoration-current',
   /**
    * TODO: These ghost variants are just for giving Alexis and Kerri ideas. Will remove or update later.

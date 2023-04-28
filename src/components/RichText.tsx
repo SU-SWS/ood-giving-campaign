@@ -2,6 +2,7 @@
 import React from 'react';
 import { render, StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { dcnb } from 'cnbuilder';
+import { CtaLink } from './Cta';
 import { SbCta } from './Storyblok/SbCta';
 import {
   Heading,
@@ -34,6 +35,34 @@ export const RichText = ({
       ),
       bold: (children) => <strong>{children}</strong>,
       italic: (children) => <em>{children}</em>,
+      link: (children, props) => {
+        const {
+          href,
+          target,
+          linktype,
+          anchor,
+        } = props;
+        // Structure the link data so it takes the same shape as sbLink
+        const sbLink = {
+          linktype,
+          cached_url: linktype !== 'email' ? href : '',
+          email: linktype === 'email' ? href : '',
+          anchor,
+          // The WYSIWYG link adds a target="_self" by default which is unnecessary
+          target: target === '_blank' ? '_blank' : undefined,
+        };
+
+        return (
+          <CtaLink
+            sbLink={sbLink}
+            variant={isLightText ? 'inlineDark' : 'inline'}
+            className="children:su-inline"
+            rel={linktype === 'url' ? 'noopener' : undefined}
+          >
+            {children}
+          </CtaLink>
+        );
+      },
     },
     nodeResolvers: {
       heading: (children, props) => {
