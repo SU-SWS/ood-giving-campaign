@@ -17,20 +17,12 @@ export const RichText = ({
   isLightText,
   className,
 }: RichTextProps) => {
-  let textColor = 'su-text-current';
+  const textColor = isLightText ? 'su-text-white print:su-text-black' : 'su-text-black';
 
-  if (isLightText) {
-    textColor = 'su-text-white print:su-text-black';
-  }
   const rendered = render(wysiwyg, {
     markResolvers: {
-      styled: (children, props) => React.createElement(
-        'span',
-        {
-          // eslint-disable-next-line react/destructuring-assignment
-          className: props?.class || '',
-        },
-        children,
+      styled: (children, props) => (
+        <span className={props.class}>{children}</span>
       ),
       bold: (children) => <strong>{children}</strong>,
       italic: (children) => <em>{children}</em>,
