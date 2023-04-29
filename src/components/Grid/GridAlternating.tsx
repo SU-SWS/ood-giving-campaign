@@ -23,6 +23,7 @@ export const GridAlternating = ({
 
   return (
     <Grid as={as} gap="split" md={2} py={py} pt={pt} pb={pb} {...props}>
+      {startOnRight && <div />}
       {childrenArray?.map((item, index) => (
         <>
           <div
