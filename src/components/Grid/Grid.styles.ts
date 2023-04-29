@@ -88,3 +88,6 @@ export const gridAlignItems = {
   baseline: 'su-items-baseline',
   stretch: 'su-items-stretch',
 };
+
+// GridAlternating styles
+export const centerline = 'su-hidden md:su-block su-w-2 su-absolute su-top-0 su-left-[50%] su--ml-1 su-h-full su-origin-top su-bg-current';
