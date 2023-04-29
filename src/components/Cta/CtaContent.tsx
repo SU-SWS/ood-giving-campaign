@@ -25,7 +25,7 @@ export const CtaContent = ({
   const { className: iconClasses, ...iProps } = iconProps || {};
 
   return (
-    <FlexBox alignItems="center">
+    <FlexBox as="span" alignItems="center">
       {iconPosition === 'right' && children}
       {heroicon && (
         <HeroIcon
