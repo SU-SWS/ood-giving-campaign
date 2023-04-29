@@ -5,6 +5,6 @@ export const widths = {
 };
 
 export const bgColors = {
-  black: 'su-bg-black su-text-black-10',
+  black: 'su-bg-saa-black su-text-white',
   white: 'su-bg-white su-text-black',
 };
