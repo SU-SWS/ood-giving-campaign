@@ -11,6 +11,8 @@ module.exports = function () {
     'robins-egg': '#77C5D5',
     sapphire: '#005776',
     slate: '#4E4B48',
+    // Colors inherited from the SAA project
+    'saa-black': '#181D1C',
     'digital-red': {
       xlight: '#F83535', // Passed contrast test for black background
     },
