@@ -1,6 +1,7 @@
 import React, { HTMLAttributes, useRef } from 'react';
 import { useScroll, useSpring, m } from 'framer-motion';
 import { Grid, GridProps } from './Grid';
+import { paddingBottoms, PaddingType } from '../../utilities/datasource';
 import * as styles from './Grid.styles';
 
 /**
@@ -19,14 +20,14 @@ import * as styles from './Grid.styles';
 type GridAlternatingProps = HTMLAttributes<HTMLElement> & Pick<GridProps, 'as' | 'gap' | 'pt' | 'pb' | 'py'> & {
   startOnRight?: boolean;
   addCenterLine?: boolean;
-  spacing?: string;
+  spacing?: PaddingType;
 };
 
 export const GridAlternating = ({
   as,
   startOnRight,
   addCenterLine,
-  spacing,
+  spacing = 6,
   pt,
   pb,
   py,
@@ -38,7 +39,7 @@ export const GridAlternating = ({
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['-500px', '200px'],
+    offset: ['-700px', '200px'],
   });
   const scaleY = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -53,7 +54,7 @@ export const GridAlternating = ({
         {childrenArray?.map((item, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <React.Fragment key={index}>
-            <div>{item}</div>
+            <div className={paddingBottoms[spacing]}>{item}</div>
             <div />
             <div />
           </React.Fragment>
