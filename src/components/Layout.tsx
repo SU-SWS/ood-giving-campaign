@@ -5,6 +5,7 @@ import { FlexBox } from './FlexBox';
 import { Masthead } from './Masthead';
 import { SbCta } from './Storyblok/SbCta';
 import { SbGrid } from './Storyblok/SbGrid';
+import { SbGridAlternating } from './Storyblok/SbGridAlternating';
 import { SbLogo } from './Storyblok/SbLogo';
 import { SbSection } from './Storyblok/SbSection';
 import { SbSplitPoster } from './Storyblok/SbSplitPoster';
@@ -24,6 +25,7 @@ storyblokInit({
   components: {
     sbCta: SbCta,
     sbGrid: SbGrid,
+    sbGridAlternating: SbGridAlternating,
     sbLogo: SbLogo,
     sbSection: SbSection,
     sbSplitPoster: SbSplitPoster,

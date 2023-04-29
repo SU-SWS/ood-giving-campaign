@@ -2,6 +2,8 @@ import * as styles from './Grid.styles';
 
 export type GridElementType = 'div' | 'section' | 'article' | 'main' | 'footer' | 'aside' | 'header' | 'nav' | 'form' | 'button' | 'fieldset' | 'ul' | 'ol' | 'li';
 
+export type GridGapType = keyof typeof styles.gridGaps;
+
 export type GridNumColsType = keyof typeof styles.gridNumCols.xs;
 
 export type GridJustifyContentType = keyof typeof styles.gridJustifyContent;

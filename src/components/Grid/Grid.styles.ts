@@ -50,6 +50,12 @@ export const gridNumCols = {
   },
 };
 
+export const gridGaps = {
+  default: 'su-grid-gap',
+  card: 'su-grid-gap su-gap-y-[5rem] xl:su-gap-y-[7rem]',
+  split: 'md:su-gap-x-[6rem] lg:su-gap-x-[10rem] xl:su-gap-x-[20rem] 2xl:su-gap-x-[28rem]',
+};
+
 export const gridJustifyContent = {
   start: 'su-justify-start',
   end: 'su-justify-end',

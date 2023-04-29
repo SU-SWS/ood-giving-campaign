@@ -4,12 +4,12 @@
 module.exports = function () {
   return function ({ addComponents, theme }) {
     const components = {
-      '.jumbo': {
-        fontSize: '2.5rem',
+      '.overview': {
+        fontSize: '2.3rem',
         lineHeight: '1.2',
         fontWeight: '600',
         '@screen md': {
-          fontSize: '3rem',
+          fontSize: '2.6rem',
         },
         '@screen xl': {
           fontSize: '4rem',

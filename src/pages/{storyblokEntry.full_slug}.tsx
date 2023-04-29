@@ -5,7 +5,7 @@ import { StoryblokComponent, storyblokEditable } from 'gatsby-source-storyblok';
 import { useStoryblokState } from '../hooks/useStoryblokState';
 import { Hero } from '../components/Hero/Hero';
 import { Layout } from '../components/Layout';
-import { Grid } from '../components/Grid';
+import { GridAlternating } from '../components/Grid';
 import { Paragraph } from '../components/Typography';
 import { Container } from '../components/Container';
 
@@ -27,20 +27,34 @@ const StoryblokEntry = ({ data }) => {
     <Layout>
       {/* Entirely POC code below - going to extract into components */}
       <Hero heading={story.name} />
+      <Container bgColor="black" pt={9}>
+        <GridAlternating>
+          <Paragraph>
+            Test1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non aliquam purus.
+          </Paragraph>
+          <Paragraph>
+            Test1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non aliquam purus.
+          </Paragraph>
+          <Paragraph>
+            Test1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non aliquam purus.
+          </Paragraph>
+          <Paragraph>
+            Test1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non aliquam purus.
+          </Paragraph>
+        </GridAlternating>
+      </Container>
       <Container bgColor="white" pt={9}>
         <div className="su-relative su-mx-auto" ref={gridRef}>
-          <Grid md={2} className="md:su-gap-x-[6rem] lg:su-gap-x-[10rem] xl:su-gap-x-[20rem] 2xl:su-gap-x-[28rem]">
-            <Paragraph font="serif" variant="jumbo" className="2xl:su-max-w-500 su-justify-self-end">
+          <GridAlternating className="md:su-gap-x-[6rem] lg:su-gap-x-[10rem] xl:su-gap-x-[20rem] 2xl:su-gap-x-[28rem]">
+            <Paragraph font="serif" variant="overview" className="2xl:su-max-w-500 su-justify-self-end">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non aliquam purus.
               Suspendisse efficitur sodales lorem. Nullam non aliquam purus.
             </Paragraph>
-            <div />
-            <div />
-            <Paragraph font="serif" variant="jumbo" className="2xl:su-max-w-500 su-rs-pb-9">
+            <Paragraph font="serif" variant="overview" className="2xl:su-max-w-500 su-rs-pb-9">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non aliquam purus.
               Suspendisse efficitur sodales lorem. Nullam non aliquam purus.
             </Paragraph>
-          </Grid>
+          </GridAlternating>
           <m.div
             className="su-w-2 su-absolute su-top-0 su-left-[50%] su--ml-1 su-block su-bg-black su-h-full su-origin-top"
             style={{ scaleY }}

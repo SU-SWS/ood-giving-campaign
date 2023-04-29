@@ -64,7 +64,7 @@ export const textVariants = {
   /**
    * Campaign typography styles
    */
-  jumbo: 'su-jumbo',
+  overview: 'su-overview',
 };
 
 export const iconStyle = 'su-inline-block su-shrink-0 su-w-[1.2em] su-mr-04em';

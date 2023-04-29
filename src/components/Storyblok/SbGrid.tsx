@@ -11,7 +11,7 @@ type SbGridProps = {
 };
 
 export const SbGrid = ({ blok: { columns }, blok }: SbGridProps) => (
-  <Grid md={2} xl={3} gap {...storyblokEditable(blok)} key={blok._uid}>
+  <Grid md={2} xl={3} gap="card" {...storyblokEditable(blok)} key={blok._uid}>
     <CreateBloks blokSection={columns} />
   </Grid>
 );

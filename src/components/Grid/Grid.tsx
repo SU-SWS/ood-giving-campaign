@@ -11,7 +11,7 @@ import * as types from './Grid.types';
 
 export type GridProps = HTMLAttributes<HTMLElement> & {
   as?: types.GridElementType;
-  gap?: boolean,
+  gap?: types.GridGapType;
   xs?: types.GridNumColsType;
   sm?: types.GridNumColsType;
   md?: types.GridNumColsType;
@@ -51,7 +51,7 @@ export const Grid = ({
     {...props}
     className={dcnb(
       'su-grid',
-      gap ? 'su-grid-gap su-gap-y-[5rem] xl:su-gap-y-[7rem]' : '',
+      gap ? styles.gridGaps[gap] : '',
       xs ? styles.gridNumCols.xs[xs] : '',
       sm ? styles.gridNumCols.sm[sm] : '',
       md ? styles.gridNumCols.md[md] : '',
