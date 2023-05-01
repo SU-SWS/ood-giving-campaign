@@ -36,7 +36,7 @@ export const VerticalCard = ({
   imageSrc,
   imageFocus,
   alt = '',
-  textColor = 'black',
+  textColor,
   tabColor,
   ctaLabel,
   link,
