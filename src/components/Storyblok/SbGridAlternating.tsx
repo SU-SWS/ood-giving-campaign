@@ -1,6 +1,6 @@
 import React from 'react';
 import { storyblokEditable, StoryblokComponent } from 'gatsby-source-storyblok';
-import { GridAlternating } from '../Grid';
+import { GridAlternating, GridWidthType } from '../Grid';
 import { PaddingType } from '../../utilities/datasource';
 
 type SbGridAlternatingProps = {
@@ -9,9 +9,12 @@ type SbGridAlternatingProps = {
     items: any[];
     startOnRight?: boolean;
     addCenterLine?: boolean;
+    width?: GridWidthType;
+    spacing?: PaddingType;
     paddingTop?: PaddingType;
     paddingBottom?: PaddingType;
-  };
+  },
+  isDarkTheme: boolean;
 };
 
 export const SbGridAlternating = ({
@@ -20,9 +23,12 @@ export const SbGridAlternating = ({
     items,
     startOnRight,
     addCenterLine,
+    width,
+    spacing,
     paddingTop,
     paddingBottom,
   },
+  isDarkTheme,
   blok,
 }: SbGridAlternatingProps) => (
   <GridAlternating
@@ -30,9 +36,11 @@ export const SbGridAlternating = ({
     key={_uid}
     startOnRight={startOnRight}
     addCenterLine={addCenterLine}
+    width={width}
+    spacing={spacing}
     pt={paddingTop}
     pb={paddingBottom}
   >
-    {items.map((item) => <StoryblokComponent blok={item} key={item._uid} />)}
+    {items.map((item) => <StoryblokComponent blok={item} key={item._uid} isDarkTheme={isDarkTheme} />)}
   </GridAlternating>
 );

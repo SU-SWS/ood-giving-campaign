@@ -2,11 +2,11 @@ import React from 'react';
 import { storyblokEditable } from 'gatsby-source-storyblok';
 import { AnimationType } from '../Animate';
 import { HeadingType } from '../Typography';
-import { VerticalCard, TextColorType } from '../VerticalCard';
+import { VerticalCard } from '../VerticalCard';
 import { SbImageType, SbLinkType } from './Storyblok.types';
 import { AccentBgColorType } from '../../utilities/datasource';
 
-type SbVerticalCardProps = {
+export type SbVerticalCardProps = {
   blok: {
     _uid: string;
     heading?: string;
@@ -14,13 +14,13 @@ type SbVerticalCardProps = {
     isSmallHeading?: boolean;
     body?: string;
     image?: SbImageType;
-    textColor?: TextColorType;
     tabColor?: AccentBgColorType;
     ctaLabel?: string;
     link?: SbLinkType;
     animation?: AnimationType;
     delay?: number;
   };
+  isDarkTheme?: boolean;
 };
 
 export const SbVerticalCard = ({
@@ -32,7 +32,6 @@ export const SbVerticalCard = ({
     body,
     // TODO: seperate alt as separate field
     image: { filename, focus, alt } = {},
-    textColor,
     tabColor,
     ctaLabel,
     link,
@@ -40,6 +39,7 @@ export const SbVerticalCard = ({
     delay,
   },
   blok,
+  isDarkTheme,
 }: SbVerticalCardProps) => (
   <VerticalCard
     {...storyblokEditable(blok)}
@@ -51,7 +51,7 @@ export const SbVerticalCard = ({
     imageSrc={filename}
     imageFocus={focus}
     alt={alt}
-    textColor={textColor}
+    textColor={isDarkTheme ? 'white' : 'black'}
     tabColor={tabColor}
     ctaLabel={ctaLabel}
     link={link}

@@ -16,7 +16,8 @@ type SbWysiwygProps = {
     width?: WidthType;
     spacingTop?: PaddingType;
     spacingBottom?: PaddingType;
-  };
+  },
+  isDarkTheme?: boolean;
 };
 
 export const SbWysiwyg = ({
@@ -30,6 +31,7 @@ export const SbWysiwyg = ({
     spacingBottom,
   },
   blok,
+  isDarkTheme,
 }: SbWysiwygProps) => (
   <WidthBox
     {...storyblokEditable(blok)}
@@ -38,6 +40,6 @@ export const SbWysiwyg = ({
     pt={spacingTop}
     pb={spacingBottom}
   >
-    <RichText wysiwyg={content} isLightText={isLightText} textAlign={textAlign} />
+    <RichText wysiwyg={content} isLightText={isDarkTheme || isLightText} textAlign={textAlign} />
   </WidthBox>
 );
