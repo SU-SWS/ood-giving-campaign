@@ -99,3 +99,5 @@ export const gridWidths = {
   // This is for the overview text in the alternating grid
   inset: 'su-w-full 3xl:su-w-[85%]',
 };
+
+export const cellWithContent = 'last:su-mb-0 xs:su-mb-36 sm:su-mb-48';

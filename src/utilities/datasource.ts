@@ -83,3 +83,20 @@ export const paddingVerticals = {
   10: 'su-rs-py-10',
 };
 export type PaddingType = keyof typeof paddingTops;
+
+// Add other margins as needed. Used for spacing between elements.
+export const marginBottoms = {
+  none: '',
+  base: 'su-rs-mb-0',
+  1: 'su-rs-mb-1',
+  2: 'su-rs-mb-2',
+  3: 'su-rs-mb-3',
+  4: 'su-rs-mb-4',
+  5: 'su-rs-mb-5',
+  6: 'su-rs-mb-6',
+  7: 'su-rs-mb-7',
+  8: 'su-rs-mb-8',
+  9: 'su-rs-mb-9',
+  10: 'su-rs-mb-10',
+};
+export type MarginType = keyof typeof marginBottoms;
