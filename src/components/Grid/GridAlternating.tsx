@@ -58,7 +58,7 @@ export const GridAlternating = ({
         {childrenArray?.map((item, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <React.Fragment key={index}>
-            <div className={paddingBottoms[spacing]}>{item}</div>
+            <div className={dcnb(paddingBottoms[spacing], 'last:su-pb-0')}>{item}</div>
             {index !== childrenArray.length - 1 && (
               <>
                 <div />

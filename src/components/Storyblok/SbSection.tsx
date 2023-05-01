@@ -1,7 +1,7 @@
 import React from 'react';
 import { storyblokEditable } from 'gatsby-source-storyblok';
 import { CreateBloks } from '../CreateBloks';
-import { Heading, HeadingType } from '../Typography';
+import { Heading, HeadingType, Text } from '../Typography';
 import { Container, BgColorType } from '../Container';
 import { PaddingType } from '../../utilities/datasource';
 
@@ -9,6 +9,7 @@ type SbSectionProps = {
   blok: {
     _uid: string;
     content?: any[];
+    superhead?: string;
     heading?: string;
     headingLevel?: HeadingType;
     bgColor?: BgColorType;
@@ -21,6 +22,7 @@ export const SbSection = ({
   blok: {
     _uid,
     content,
+    superhead,
     heading,
     headingLevel,
     bgColor,
@@ -37,8 +39,13 @@ export const SbSection = ({
     pb={paddingBottom}
     className="su-relative"
   >
+    {superhead && (
+      <Text size={2} leading="tight" font="serif">
+        {superhead}
+      </Text>
+    )}
     {heading && (
-      <Heading as={headingLevel} size={9} leading="none" uppercase font="druk">
+      <Heading as={headingLevel} size={9} leading="none" uppercase font="druk" className="su-max-w-1000">
         {heading}
       </Heading>
     )}

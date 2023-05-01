@@ -9,6 +9,7 @@ import { SbGridAlternating } from './Storyblok/SbGridAlternating';
 import { SbLogo } from './Storyblok/SbLogo';
 import { SbSection } from './Storyblok/SbSection';
 import { SbSplitPoster } from './Storyblok/SbSplitPoster';
+import { SbThemeCard } from './Storyblok/SbThemeCard';
 import { SbVerticalCard } from './Storyblok/SbVerticalCard';
 import { SbWysiwyg } from './Storyblok/SbWysiwyg';
 
@@ -29,6 +30,7 @@ storyblokInit({
     sbLogo: SbLogo,
     sbSection: SbSection,
     sbSplitPoster: SbSplitPoster,
+    sbThemeCard: SbThemeCard,
     sbVerticalCard: SbVerticalCard,
     sbWysiwyg: SbWysiwyg,
   },
@@ -38,6 +40,8 @@ export const Layout = ({ children }: LayoutProps) => (
   <FlexBox justifyContent="between" direction="col" className="su-min-h-screen su-relative">
     <Masthead />
     <main>{children}</main>
-    <Slice alias="global-footer" />
+    <footer>
+      <Slice alias="global-footer" />
+    </footer>
   </FlexBox>
 );
