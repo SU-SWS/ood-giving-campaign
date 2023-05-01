@@ -1,7 +1,5 @@
 import React from 'react';
 import { storyblokEditable } from 'gatsby-source-storyblok';
-import { AnimationType } from '../Animate';
-import { HeadingType } from '../Typography';
 import { ThemeCard } from '../VerticalCard';
 import { SbVerticalCardProps } from './SbVerticalCard';
 

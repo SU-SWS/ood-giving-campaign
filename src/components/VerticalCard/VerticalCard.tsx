@@ -9,7 +9,7 @@ import { getProcessedImage } from '../../utilities/getProcessedImage';
 import * as styles from './VerticalCard.styles';
 import { accentBgColors, AccentBgColorType } from '../../utilities/datasource';
 
-type VerticalCardProps = HTMLAttributes<HTMLDivElement> & {
+export type VerticalCardProps = HTMLAttributes<HTMLDivElement> & {
   heading?: string;
   headingLevel?: HeadingType;
   headingFont?: 'serif' | 'druk';

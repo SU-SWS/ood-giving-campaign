@@ -6,7 +6,7 @@ import { VerticalCard, TextColorType } from '../VerticalCard';
 import { SbImageType, SbLinkType } from './Storyblok.types';
 import { AccentBgColorType } from '../../utilities/datasource';
 
-type SbVerticalCardProps = {
+export type SbVerticalCardProps = {
   blok: {
     _uid: string;
     heading?: string;
