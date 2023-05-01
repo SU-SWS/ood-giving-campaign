@@ -39,7 +39,7 @@ export const GridAlternating = ({
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['-700px', '200px'],
+    offset: ['-600px', '200px'],
   });
   const scaleY = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -55,8 +55,12 @@ export const GridAlternating = ({
           // eslint-disable-next-line react/no-array-index-key
           <React.Fragment key={index}>
             <div className={paddingBottoms[spacing]}>{item}</div>
-            <div />
-            <div />
+            {index !== childrenArray.length - 1 && (
+              <>
+                <div />
+                <div />
+              </>
+            )}
           </React.Fragment>
         ))}
       </Grid>
