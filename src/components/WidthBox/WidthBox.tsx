@@ -43,7 +43,7 @@ export const WidthBox = ({
   }
 
   return (
-    <Grid {...props as NonFullWidthBoxProps} gap sm={12} className={dcnb('su-cc', className)}>
+    <Grid {...props as NonFullWidthBoxProps} gap="default" sm={12} className={dcnb('su-cc', className)}>
       <div
         className={dcnb(
           styles.widthClasses[width]?.column || '',

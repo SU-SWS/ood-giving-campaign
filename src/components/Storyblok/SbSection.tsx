@@ -42,6 +42,6 @@ export const SbSection = ({
         {heading}
       </Heading>
     )}
-    <CreateBloks blokSection={content} />
+    <CreateBloks blokSection={content} isDarkTheme={bgColor === 'black'} />
   </Container>
 );

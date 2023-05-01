@@ -46,6 +46,7 @@ export const textAligns = {
 export const textColors = {
   default: '', // Interit from the base
   black: 'su-text-black',
+  'cool-grey': 'su-text-cool-grey',
   white: 'su-text-white',
   'off-white': 'su-text-black-10',
   'soft-black': 'su-text-black-90',
@@ -57,14 +58,15 @@ export const textVariants = {
    * Decanter typography styles
    */
   big: 'su-big-paragraph',
-  caption: 'su-caption',
-  card: 'su-card-paragraph',
-  intro: 'su-intro-text',
   subheading: 'su-subheading',
   /**
    * Campaign typography styles
+   * (-gc ones are Deccanter styles with Campaign modifications)
    */
-  jumbo: 'su-jumbo',
+  caption: 'su-gc-caption',
+  card: 'su-gc-card',
+  intro: 'su-gc-intro-text',
+  overview: 'su-overview',
 };
 
 export const iconStyle = 'su-inline-block su-shrink-0 su-w-[1.2em] su-mr-04em';

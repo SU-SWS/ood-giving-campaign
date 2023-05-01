@@ -50,6 +50,12 @@ export const gridNumCols = {
   },
 };
 
+export const gridGaps = {
+  default: 'su-grid-gap',
+  card: 'su-grid-gap su-gap-y-[5rem] xl:su-gap-y-[7rem]',
+  split: 'md:su-gap-x-[6rem] lg:su-gap-x-[10rem] xl:su-gap-x-[20rem] 2xl:su-gap-x-[28rem]',
+};
+
 export const gridJustifyContent = {
   start: 'su-justify-start',
   end: 'su-justify-end',
@@ -81,4 +87,15 @@ export const gridAlignItems = {
   center: 'su-items-center',
   baseline: 'su-items-baseline',
   stretch: 'su-items-stretch',
+};
+
+// Styles for the alternating grid
+export const alternatingGridWrapper = 'su-relative su-mx-auto';
+
+export const centerline = 'su-hidden md:su-block su-w-2 su-absolute su-top-0 su-left-[50%] su--ml-1 su-h-full su-origin-top su-bg-current';
+
+export const gridWidths = {
+  full: 'su-w-full',
+  // This is for the overview text in the alternating grid
+  inset: 'su-w-full 3xl:su-w-[85%]',
 };

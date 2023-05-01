@@ -34,7 +34,7 @@ const IndexPage = ({ data }) => {
         </div>
       </div>
       <Container bgColor="black" py={9}>
-        <Grid md={2} xl={3} xxl={4} gap alignItems="center" justifyItems="center">
+        <Grid md={2} xl={3} xxl={4} gap="card" alignItems="center" justifyItems="center">
           <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right">Learn More</CtaLink>
           <CtaLink href="/about-test" variant="ghost" uppercase icon="chevron-right" animate="right">Learn More</CtaLink>
           <CtaLink href="/about-test" variant="ghostLeaf" icon="arrow-right" animate="right">Learn More</CtaLink>
@@ -205,7 +205,7 @@ const IndexPage = ({ data }) => {
         </div>
       </div>
       <Container bgColor="white" py={9}>
-        <Grid md={2} xl={3} xxl={4} gap alignItems="center" justifyItems="center">
+        <Grid md={2} xl={3} xxl={4} gap="card" alignItems="center" justifyItems="center">
           <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right" color="black">Learn More</CtaLink>
           <CtaLink href="/about-test" variant="ghost" uppercase icon="chevron-right" animate="right" color="black">Learn More</CtaLink>
           <CtaLink href="/about-test" variant="ghostLeaf" icon="arrow-right" animate="right" color="black">Learn More</CtaLink>
@@ -365,7 +365,7 @@ const IndexPage = ({ data }) => {
       </Container>
       <Container py={9} bgColor="black">
         <Heading size={7} font="sans">Animated counters</Heading>
-        <Grid md={3} gap alignItems="center" justifyItems="center">
+        <Grid md={3} gap="card" alignItems="center" justifyItems="center">
           <NumberCounter number={42} />
           <NumberCounter number={9} afterText="K+" />
           <NumberCounter number={120} />

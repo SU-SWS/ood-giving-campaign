@@ -4,16 +4,27 @@
 module.exports = function () {
   return function ({ addComponents, theme }) {
     const components = {
-      '.jumbo': {
-        fontSize: '2.5rem',
-        lineHeight: '1.2',
-        fontWeight: '600',
+      '.overview': {
+        fontSize: '2.3rem',
+        lineHeight: theme('lineHeight.display'),
+        fontWeight: theme('fontWeight.semibold'),
         '@screen md': {
-          fontSize: '3rem',
+          fontSize: '2.6rem',
         },
         '@screen xl': {
           fontSize: '4rem',
         },
+      },
+      '.gc-card': {
+        fontSize: '0.93em',
+        lineHeight: theme('lineHeight.snug'),
+      },
+      '.gc-caption': {
+        lineHeight: theme('lineHeight.display'),
+      },
+      '.gc-intro-text': {
+        ...theme('decanter.typography.type2'),
+        lineHeight: theme('lineHeight.cozy'),
       },
     };
 

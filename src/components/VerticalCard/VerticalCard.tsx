@@ -36,7 +36,7 @@ export const VerticalCard = ({
   imageSrc,
   imageFocus,
   alt = '',
-  textColor = 'black',
+  textColor,
   tabColor,
   ctaLabel,
   link,
@@ -80,7 +80,7 @@ export const VerticalCard = ({
         <div className={dcnb(styles.tab, accentBgColors[tabColor])} />
       )}
       {body && (
-        <Paragraph variant="big" leading="snug">{body}</Paragraph>
+        <Paragraph variant="big" leading="snug" noMargin>{body}</Paragraph>
       )}
       {ctaLabel && (link || href) && (
         <CtaLink
@@ -90,7 +90,7 @@ export const VerticalCard = ({
           sbLink={link}
           href={href}
           uppercase
-          className="su-stretched-link"
+          className="su-inline-block su-w-fit su-stretched-link su-rs-mt-1"
         >
           {ctaLabel}
         </CtaLink>
