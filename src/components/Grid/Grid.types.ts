@@ -13,3 +13,5 @@ export type GridJustifyItemsType = keyof typeof styles.gridJustifyItems;
 export type GridAlignContentType = keyof typeof styles.gridAlignContent;
 
 export type GridAlignItemsType = keyof typeof styles.gridAlignItems;
+
+export type GridWidthType = keyof typeof styles.gridWidths;

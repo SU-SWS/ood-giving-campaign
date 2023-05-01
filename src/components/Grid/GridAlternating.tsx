@@ -1,6 +1,8 @@
 import React, { HTMLAttributes, useRef } from 'react';
 import { useScroll, useSpring, m } from 'framer-motion';
+import { dcnb } from 'cnbuilder';
 import { Grid, GridProps } from './Grid';
+import { GridWidthType } from './Grid.types';
 import { paddingBottoms, PaddingType } from '../../utilities/datasource';
 import * as styles from './Grid.styles';
 
@@ -20,6 +22,7 @@ import * as styles from './Grid.styles';
 type GridAlternatingProps = HTMLAttributes<HTMLElement> & Pick<GridProps, 'as' | 'gap' | 'pt' | 'pb' | 'py'> & {
   startOnRight?: boolean;
   addCenterLine?: boolean;
+  width?: GridWidthType;
   spacing?: PaddingType;
 };
 
@@ -27,6 +30,7 @@ export const GridAlternating = ({
   as,
   startOnRight,
   addCenterLine,
+  width = 'inset',
   spacing = 6,
   pt,
   pb,
@@ -48,7 +52,7 @@ export const GridAlternating = ({
   });
 
   return (
-    <div className="su-relative su-mx-auto" ref={containerRef}>
+    <div className={dcnb(styles.alternatingGridWrapper, styles.gridWidths[width])} ref={containerRef}>
       <Grid as={as} gap="split" md={2} py={py} pt={pt} pb={pb} {...props}>
         {startOnRight && <div />}
         {childrenArray?.map((item, index) => (

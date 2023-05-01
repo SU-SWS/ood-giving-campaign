@@ -38,12 +38,12 @@ const StoryblokEntry = ({ data }) => {
         </GridAlternating>
       </Container>
       <Container bgColor="white" pt={9}>
-        <GridAlternating addCenterLine className="md:su-gap-x-[6rem] lg:su-gap-x-[10rem] xl:su-gap-x-[20rem] 2xl:su-gap-x-[28rem]">
-          <Paragraph font="serif" variant="overview" className="2xl:su-max-w-500 su-justify-self-end">
+        <GridAlternating addCenterLine>
+          <Paragraph font="serif" variant="overview">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non aliquam purus.
             Suspendisse efficitur sodales lorem. Nullam non aliquam purus.
           </Paragraph>
-          <Paragraph font="serif" variant="overview" className="2xl:su-max-w-500 su-rs-pb-9">
+          <Paragraph font="serif" variant="overview">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non aliquam purus.
             Suspendisse efficitur sodales lorem. Nullam non aliquam purus.
           </Paragraph>
