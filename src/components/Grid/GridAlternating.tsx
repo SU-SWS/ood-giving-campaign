@@ -43,7 +43,7 @@ export const GridAlternating = ({
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['-600px', '200px'],
+    offset: ['-600px', '60%'],
   });
   const scaleY = useSpring(scrollYProgress, {
     stiffness: 100,
