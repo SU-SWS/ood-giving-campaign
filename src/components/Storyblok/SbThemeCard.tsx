@@ -13,7 +13,6 @@ export const SbThemeCard = ({
     body,
     // TODO: seperate alt as separate field
     image: { filename, focus, alt } = {},
-    textColor,
     tabColor,
     ctaLabel,
     link,
@@ -21,6 +20,7 @@ export const SbThemeCard = ({
     delay,
   },
   blok,
+  isDarkTheme,
 }: SbThemeCardProps) => (
   <ThemeCard
     {...storyblokEditable(blok)}
@@ -31,7 +31,7 @@ export const SbThemeCard = ({
     imageSrc={filename}
     imageFocus={focus}
     alt={alt}
-    textColor={textColor}
+    textColor={isDarkTheme ? 'white' : 'black'}
     tabColor={tabColor}
     ctaLabel={ctaLabel}
     link={link}
