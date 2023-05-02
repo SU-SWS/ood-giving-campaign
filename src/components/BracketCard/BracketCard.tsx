@@ -45,10 +45,18 @@ export const BracketCard = ({
   ...props
 }: BracketCardProps) => (
   <article className={dcnb(styles.root, className)} {...props}>
-    <Grid lg={12} className="su-absolute su-top-0 su-bottom-[4vw] su-w-full">
-      <div className="su-relative su-z-10 lg:su-col-span-2 lg:su-col-start-2 su-border-white su-border">
-        Bracket goes here
-      </div>
+    <Grid lg={12} className="su-absolute su-top-0 lg:su-bottom-[4vw] 3xl:su-bottom-70 su-w-full">
+      <FlexBox direction="col" className="su-relative su-z-10 lg:su-col-span-2 lg:su-col-start-2 su-w-[120%]">
+        <div className="su-text-[1.5vw] 3xl:su-text-25 su-flex">
+          <div className="su-w-[83%] su-h-[8em] su-border-t-2 su-border-l-2 su-border-white su-rounded-tl-full" />
+          <div className="su-w-[17%] su-h-[8em] su-border-r-2 su-border-y-2 su-border-white" />
+        </div>
+        <div className="su-grow su-border-l-2 su-border-r-2 su-border-white su-w-[calc(83%_+_0.2rem)]" />
+        <div className="su-text-[1.5vw] 3xl:su-text-25 su-flex">
+          <div className="su-w-[83%] su-h-[8em] su-border-b-2 su-border-l-2 su-border-white su-rounded-bl-full" />
+          <div className="su-w-[17%] su-h-[8em] su-border-r-2 su-border-y-2 su-border-white" />
+        </div>
+      </FlexBox>
       <div className="su-relative su-z-10 lg:su-col-span-9 lg:su-col-start-4 su-border-b-2 su-border-white">
         <FlexBox
           direction="col"
@@ -81,7 +89,6 @@ export const BracketCard = ({
               variant="ghost"
               sbLink={link}
               href={href}
-              uppercase
               className={styles.ctaLink}
             >
               {ctaLabel}
@@ -91,7 +98,7 @@ export const BracketCard = ({
       </div>
     </Grid>
     {imageSrc && (
-      <Grid lg={12} className="lg:su-pt-[6vw]">
+      <Grid lg={12} className="lg:su-pt-[6vw] 3xl:su-pt-100">
         <div className={styles.imageWrapper}>
           <div className={styles.imageAspectRatio}>
             <img
