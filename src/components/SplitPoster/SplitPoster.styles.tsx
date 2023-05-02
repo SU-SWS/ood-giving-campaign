@@ -1,6 +1,6 @@
 import { dcnb } from 'cnbuilder';
 
-export const root = 'su-bg-white su-bg-no-repeat su-bg-cover su-bg-top';
+export const root = 'su-relative su-bg-white su-bg-no-repeat su-bg-cover su-bg-top';
 
 export const panel = 'su-border-white su-bg-no-repeat su-bg-cover su-bg-top';
 export const panelLeft = dcnb(panel, 'su-border-b xl:su-border-b-0 xl:su-border-r su-pt-60');
