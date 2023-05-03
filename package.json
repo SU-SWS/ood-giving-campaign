@@ -36,14 +36,14 @@
     "cnbuilder": "^3.1.0",
     "dotenv": "^16.0.3",
     "framer-motion": "^10.12.2",
-    "gatsby": "^5.7.0",
-    "gatsby-plugin-manifest": "^5.7.0",
+    "gatsby": "^5.9.0",
+    "gatsby-plugin-manifest": "^5.9.0",
     "gatsby-plugin-robots-txt": "^1.8.0",
-    "gatsby-plugin-sharp": "^5.8.1",
-    "gatsby-plugin-sitemap": "^6.8.0",
-    "gatsby-source-filesystem": "^5.7.0",
-    "gatsby-source-storyblok": "^5.0.12",
-    "gatsby-transformer-sharp": "^5.7.0",
+    "gatsby-plugin-sharp": "^5.9.0",
+    "gatsby-plugin-sitemap": "^6.9.0",
+    "gatsby-source-filesystem": "^5.9.0",
+    "gatsby-source-storyblok": "^5.0.17",
+    "gatsby-transformer-sharp": "^5.9.0",
     "netlify-plugin-vault-variables": "^1.0.7",
     "node-vault": "^0.9.22",
     "react": "^18.2.0",
@@ -67,13 +67,13 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "gatsby-plugin-netlify": "^5.1.0",
-    "gatsby-plugin-postcss": "^6.7.0",
+    "gatsby-plugin-postcss": "^6.9.0",
     "postcss": "^8.4.23",
     "tailwindcss": "^3.3.2",
     "typescript": "^4.9.5"
   },
   "overrides": {
-    "gatsby": "^5.7.0"
+    "gatsby": "^5.9.0"
   },
   "engines": {
     "npm": ">=8.3",
