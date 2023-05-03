@@ -13,7 +13,7 @@ export type CornerType = keyof typeof corners;
 
 export const colors = {
   white: 'su-text-white',
-  black: 'su-text-black',
+  black: 'su-text-saa-black',
 };
 export type ColorType = keyof typeof colors;
 
