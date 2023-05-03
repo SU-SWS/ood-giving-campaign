@@ -4,12 +4,12 @@ export const root = 'su-relative su-mx-auto';
 export const grid = 'su-absolute su-top-0 lg:su-bottom-[4vw] 3xl:su-bottom-70 su-w-full';
 export const bracket = (textOnLeft: boolean) => dcnb(
   'su-relative su-z-10 lg:su-col-span-2 su-w-[120%]',
-  textOnLeft ? 'lg:su-col-end-12 lg:su-justify-self-end' : 'lg:su-col-start-2',
+  textOnLeft ? 'lg:su-order-2 lg:su-col-end-12 lg:su-justify-self-end' : 'lg:su-col-start-2',
 );
 
 export const contentCard = (textOnLeft: boolean) => dcnb(
   'su-relative su-z-10 lg:su-col-span-9 su-border-b-2 su-border-white',
-  textOnLeft ? 'lg:su-col-start-1' : 'lg:su-col-start-4',
+  textOnLeft ? 'lg:su-order-1 lg:su-col-start-1' : 'lg:su-col-start-4',
 );
 
 export const imageGrid = 'lg:su-pt-[6vw] 3xl:su-pt-100';
@@ -25,12 +25,19 @@ export const imageOverlay = (textOnLeft: boolean) => dcnb(
 );
 
 export const bracketWrapper = 'lg:su-pt-108 su-border-b su-border-white';
-export const contentWrapper = (textOnLeft: boolean) => dcnb(
-  'su-relative su-z-10 lg:su-pt-[3.8vw] 3xl:su-pt-60 lg:su-h-full',
+export const contentWrapper = (textOnLeft: boolean, isSmallHeading: boolean) => dcnb(
+  'su-relative su-z-10 lg:su-h-full',
   textOnLeft ? 'lg:su-ml-0 lg:su-mr-auto' : 'lg:su-mr-0 lg:su-ml-auto',
+  isSmallHeading ? 'lg:su-pt-[3.8vw] 3xl:su-pt-60' : 'lg:su-pt-[3vw] 3xl:su-pt-50',
 );
 
-export const heading = 'lg:su-text-[clamp(4.2rem,4vw,7rem)] su-mb-0 su-text-shadow-lg lg:su-max-w-[80%]';
+// We need heading size to be finetuned and be smoothly responsive so we aren't using modular typography here
+export const heading = (isSmallHeading) => dcnb(
+  'su-text-shadow-lg lg:su-max-w-[80%] su-mb-0',
+  isSmallHeading
+    ? 'lg:su-text-[clamp(4.2rem,4vw,7rem)]'
+    : 'lg:su-text-[clamp(5.7rem,5vw,8.8rem)]',
+);
 
 export const body = (textOnLeft: boolean) => dcnb(
   'su-grow lg:su-max-w-[55%] lg:su-text-16 xl:su-text-20 2xl:su-text-23',

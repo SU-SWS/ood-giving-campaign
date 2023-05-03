@@ -1,10 +1,9 @@
 import React from 'react';
 import { storyblokEditable } from 'gatsby-source-storyblok';
-import { AnimationType } from '../Animate';
 import { HeadingType } from '../Typography';
 import { BracketCard } from '../BracketCard';
 import { SbImageType, SbLinkType } from './Storyblok.types';
-import { AccentBgColorType } from '../../utilities/datasource';
+import { AccentBgColorType, MarginType } from '../../utilities/datasource';
 
 export type SbBracketCardProps = {
   blok: {
@@ -18,8 +17,7 @@ export type SbBracketCardProps = {
     tabColor?: AccentBgColorType;
     ctaLabel?: string;
     link?: SbLinkType;
-    animation?: AnimationType;
-    delay?: number;
+    spacingBottom?: MarginType;
   };
   isDarkTheme?: boolean;
 };
@@ -37,6 +35,7 @@ export const SbBracketCard = ({
     tabColor,
     ctaLabel,
     link,
+    spacingBottom,
   },
   blok,
   isDarkTheme,
@@ -56,5 +55,6 @@ export const SbBracketCard = ({
     tabColor={tabColor}
     ctaLabel={ctaLabel}
     link={link}
+    spacingBottom={spacingBottom}
   />
 );

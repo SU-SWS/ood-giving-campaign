@@ -8,7 +8,9 @@ import { Grid } from '../Grid';
 import { Heading, HeadingType, Paragraph } from '../Typography';
 import { SbLinkType } from '../Storyblok/Storyblok.types';
 import { getProcessedImage } from '../../utilities/getProcessedImage';
-import { accentBgColors, AccentBgColorType } from '../../utilities/datasource';
+import {
+  accentBgColors, AccentBgColorType, marginBottoms, MarginType,
+} from '../../utilities/datasource';
 import * as styles from './BracketCard.styles';
 
 type BracketCardProps = HTMLAttributes<HTMLDivElement> & {
@@ -24,8 +26,9 @@ type BracketCardProps = HTMLAttributes<HTMLDivElement> & {
   tabColor?: AccentBgColorType;
   tabBgImage?: string;
   ctaLabel?: string;
-  href?: string;
   link?: SbLinkType;
+  href?: string;
+  spacingBottom?: MarginType;
 };
 
 export const BracketCard = ({
@@ -42,27 +45,32 @@ export const BracketCard = ({
   ctaLabel,
   link,
   href,
+  spacingBottom = 'none',
   className,
   ...props
 }: BracketCardProps) => (
-  <article className={dcnb(styles.root, className)} {...props}>
+  <article
+    className={dcnb(
+      styles.root,
+      marginBottoms[spacingBottom],
+      className,
+    )}
+    {...props}
+  >
     <Grid lg={12} className={styles.grid}>
-      {!textOnLeft && (
-        <Bracket className={styles.bracket(textOnLeft)} />
-      )}
+      <Bracket isClose={textOnLeft} className={styles.bracket(textOnLeft)} />
       <div className={styles.contentCard(textOnLeft)}>
         <FlexBox
           direction="col"
           alignItems={textOnLeft ? 'start' : 'end'}
-          className={styles.contentWrapper(textOnLeft)}
+          className={styles.contentWrapper(textOnLeft, isSmallHeading)}
         >
           {heading && (
             <Heading
               as={headingLevel}
-              // size={isSmallHeading ? 5 : 6}
               leading="tight"
               align={textOnLeft ? 'left' : 'right'}
-              className={styles.heading}
+              className={styles.heading(isSmallHeading)}
             >
               {heading}
             </Heading>
@@ -95,9 +103,6 @@ export const BracketCard = ({
           )}
         </FlexBox>
       </div>
-      {textOnLeft && (
-        <Bracket isClose className={styles.bracket(textOnLeft)} />
-      )}
     </Grid>
     {imageSrc && (
       <Grid lg={12} className={styles.imageGrid}>
