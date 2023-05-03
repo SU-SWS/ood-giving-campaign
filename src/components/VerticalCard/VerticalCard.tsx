@@ -4,7 +4,6 @@ import { AnimateInView, AnimationType } from '../Animate';
 import { CtaLink } from '../Cta/CtaLink';
 import { Heading, HeadingType, Paragraph } from '../Typography';
 import { SbLinkType } from '../Storyblok/Storyblok.types';
-import { TextColorType } from './VerticalCard.styles';
 import { getProcessedImage } from '../../utilities/getProcessedImage';
 import * as styles from './VerticalCard.styles';
 import { accentBgColors, AccentBgColorType } from '../../utilities/datasource';
@@ -18,7 +17,7 @@ export type VerticalCardProps = HTMLAttributes<HTMLDivElement> & {
   imageSrc?: string;
   imageFocus?: string;
   alt?: string;
-  textColor?: TextColorType;
+  textColor?: styles.TextColorType;
   tabColor?: AccentBgColorType;
   ctaLabel?: string;
   href?: string;

@@ -2,8 +2,8 @@ import React, { HTMLAttributes, useRef } from 'react';
 import { useScroll, useSpring, m } from 'framer-motion';
 import { dcnb } from 'cnbuilder';
 import { Grid, GridProps } from './Grid';
-import { GridWidthType } from './Grid.types';
-import { paddingBottoms, PaddingType } from '../../utilities/datasource';
+import { GridNegativeSpacingType, GridWidthType } from './Grid.types';
+import { marginBottoms, MarginType } from '../../utilities/datasource';
 import * as styles from './Grid.styles';
 
 /**
@@ -23,7 +23,7 @@ type GridAlternatingProps = HTMLAttributes<HTMLElement> & Pick<GridProps, 'as' |
   startOnRight?: boolean;
   addCenterLine?: boolean;
   width?: GridWidthType;
-  spacing?: PaddingType;
+  spacing?: MarginType | GridNegativeSpacingType;
 };
 
 export const GridAlternating = ({
@@ -31,7 +31,7 @@ export const GridAlternating = ({
   startOnRight,
   addCenterLine,
   width = 'inset',
-  spacing = 6,
+  spacing,
   pt,
   pb,
   py,
@@ -58,7 +58,15 @@ export const GridAlternating = ({
         {childrenArray?.map((item, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <React.Fragment key={index}>
-            <div className={dcnb(paddingBottoms[spacing], 'last:su-pb-0')}>{item}</div>
+            <div
+              className={dcnb(
+                marginBottoms[spacing],
+                styles.negativeSpacing[spacing],
+                styles.cellWithContent,
+              )}
+            >
+              {item}
+            </div>
             {index !== childrenArray.length - 1 && (
               <>
                 <div />
