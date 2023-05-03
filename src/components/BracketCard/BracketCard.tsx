@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react';
 import { dcnb } from 'cnbuilder';
 // import { AnimateInView, AnimationType } from '../Animate';
-import { BracketCurve } from '../Bracket/BracketCurve';
+import { Bracket } from '../Bracket';
 import { CtaLink } from '../Cta/CtaLink';
 import { FlexBox } from '../FlexBox';
 import { Grid } from '../Grid';
@@ -47,11 +47,7 @@ export const BracketCard = ({
 }: BracketCardProps) => (
   <article className={dcnb(styles.root, className)} {...props}>
     <Grid lg={12} className="su-absolute su-top-0 lg:su-bottom-[4vw] 3xl:su-bottom-70 su-w-full">
-      <FlexBox direction="col" className="su-relative su-z-10 lg:su-col-span-2 lg:su-col-start-2 su-w-[120%]">
-        <BracketCurve />
-        <div className="su-grow su-border-l-2 su-border-r-2 su-border-white su-w-[calc(83%_+_0.2rem)]" />
-        <BracketCurve corner="bl" />
-      </FlexBox>
+      <Bracket className="su-relative su-z-10 lg:su-col-span-2 lg:su-col-start-2 su-w-[120%]" />
       <div className="su-relative su-z-10 lg:su-col-span-9 lg:su-col-start-4 su-border-b-2 su-border-white">
         <FlexBox
           direction="col"

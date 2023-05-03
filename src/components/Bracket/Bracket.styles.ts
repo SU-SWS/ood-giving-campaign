@@ -1,5 +1,6 @@
 import { dcnb } from 'cnbuilder';
 
+// Bracket Curve styles
 export const root = 'su-border-current';
 
 export const corners = {
@@ -22,5 +23,13 @@ export const curve = (isSolid: boolean) => dcnb(
 );
 export const rectangle = (isSolid: boolean) => dcnb(
   'su-w-[17%] su-h-[8em] su-border-r-2 su-border-y-2',
+  isSolid ? 'su-bg-current' : '',
+);
+
+// Bracket styles
+export const directions = (isClose: boolean) => (isClose ? 'su-scale-x-[-1]' : '');
+
+export const middle = (isSolid: boolean) => dcnb(
+  'su-grow su-border-l-2 su-border-r-2 su-border-current su-w-[calc(83%_+_0.2rem)]',
   isSolid ? 'su-bg-current' : '',
 );

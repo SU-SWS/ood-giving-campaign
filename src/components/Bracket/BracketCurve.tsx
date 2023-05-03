@@ -1,9 +1,9 @@
 import React, { HTMLAttributes } from 'react';
 import { dcnb } from 'cnbuilder';
 import { FlexBox } from '../FlexBox';
-import * as styles from './BracketCurve.styles';
+import * as styles from './Bracket.styles';
 
-type BracketCurveProps = HTMLAttributes<HTMLDivElement> & {
+export type BracketCurveProps = HTMLAttributes<HTMLDivElement> & {
   corner?: styles.CornerType;
   color?: styles.ColorType;
   isSolid?: boolean;
