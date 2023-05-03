@@ -46,9 +46,13 @@ export const BracketCard = ({
   ...props
 }: BracketCardProps) => (
   <article className={dcnb(styles.root, className)} {...props}>
-    <Grid lg={12} className="su-absolute su-top-0 lg:su-bottom-[4vw] 3xl:su-bottom-70 su-w-full">
-      <Bracket className="su-relative su-z-10 lg:su-col-span-2 lg:su-col-start-2 su-w-[120%]" />
-      <div className="su-relative su-z-10 lg:su-col-span-9 lg:su-col-start-4 su-border-b-2 su-border-white">
+    <Grid lg={12} className={styles.grid}>
+      {!textOnLeft && (
+        <Bracket
+          className={styles.bracket(textOnLeft)}
+        />
+      )}
+      <div className={styles.contentCard(textOnLeft)}>
         <FlexBox
           direction="col"
           alignItems={textOnLeft ? 'start' : 'end'}
@@ -68,7 +72,7 @@ export const BracketCard = ({
             <div className={dcnb(styles.tab, accentBgColors[tabColor])} />
           )}
           {body && (
-            <Paragraph noMargin leading="snug" className="su-grow lg:su-pl-20 xl:su-pl-30 lg:su-max-w-[55%] lg:su-text-16 xl:su-text-20 2xl:su-text-23">
+            <Paragraph noMargin leading="snug" className={styles.body(textOnLeft)}>
               {body}
             </Paragraph>
           )}
@@ -87,10 +91,16 @@ export const BracketCard = ({
           )}
         </FlexBox>
       </div>
+      {textOnLeft && (
+        <Bracket
+          isClose
+          className={styles.bracket(textOnLeft)}
+        />
+      )}
     </Grid>
     {imageSrc && (
-      <Grid lg={12} className="lg:su-pt-[6vw] 3xl:su-pt-100">
-        <div className={styles.imageWrapper}>
+      <Grid lg={12} className={styles.imageGrid}>
+        <div className={styles.imageWrapper(textOnLeft)}>
           <div className={styles.imageAspectRatio}>
             <img
               src={getProcessedImage(imageSrc, '900x750', imageFocus)}
