@@ -48,9 +48,7 @@ export const BracketCard = ({
   <article className={dcnb(styles.root, className)} {...props}>
     <Grid lg={12} className={styles.grid}>
       {!textOnLeft && (
-        <Bracket
-          className={styles.bracket(textOnLeft)}
-        />
+        <Bracket className={styles.bracket(textOnLeft)} />
       )}
       <div className={styles.contentCard(textOnLeft)}>
         <FlexBox
@@ -63,6 +61,7 @@ export const BracketCard = ({
               as={headingLevel}
               // size={isSmallHeading ? 5 : 6}
               leading="tight"
+              align={textOnLeft ? 'left' : 'right'}
               className={styles.heading}
             >
               {heading}
@@ -72,7 +71,12 @@ export const BracketCard = ({
             <div className={dcnb(styles.tab, accentBgColors[tabColor])} />
           )}
           {body && (
-            <Paragraph noMargin leading="snug" className={styles.body(textOnLeft)}>
+            <Paragraph
+              noMargin
+              leading="snug"
+              align={textOnLeft ? 'left' : 'right'}
+              className={styles.body(textOnLeft)}
+            >
               {body}
             </Paragraph>
           )}
@@ -92,10 +96,7 @@ export const BracketCard = ({
         </FlexBox>
       </div>
       {textOnLeft && (
-        <Bracket
-          isClose
-          className={styles.bracket(textOnLeft)}
-        />
+        <Bracket isClose className={styles.bracket(textOnLeft)} />
       )}
     </Grid>
     {imageSrc && (
