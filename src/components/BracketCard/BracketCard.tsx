@@ -109,6 +109,7 @@ export const BracketCard = ({
               loading="lazy"
               className={styles.image}
             />
+            <div className={styles.imageOverlay(textOnLeft)} />
           </div>
         </div>
       </Grid>

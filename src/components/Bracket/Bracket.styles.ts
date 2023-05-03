@@ -27,7 +27,7 @@ export const rectangle = (isSolid: boolean) => dcnb(
 );
 
 // Bracket styles
-export const directions = (isClose: boolean) => (isClose ? 'su-scale-x-[-1]' : '');
+export const directions = (isClose: boolean) => (isClose ? 'su-rotate-180' : '');
 
 export const middle = (isSolid: boolean) => dcnb(
   'su-grow su-border-l-2 su-border-r-2 su-border-current su-w-[calc(83%_+_0.2rem)]',
