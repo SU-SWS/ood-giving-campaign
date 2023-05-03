@@ -1,6 +1,7 @@
 import React, { HTMLAttributes } from 'react';
 import { dcnb } from 'cnbuilder';
 // import { AnimateInView, AnimationType } from '../Animate';
+import { BracketCurve } from '../Bracket/BracketCurve';
 import { CtaLink } from '../Cta/CtaLink';
 import { FlexBox } from '../FlexBox';
 import { Grid } from '../Grid';
@@ -10,7 +11,7 @@ import { getProcessedImage } from '../../utilities/getProcessedImage';
 import { accentBgColors, AccentBgColorType } from '../../utilities/datasource';
 import * as styles from './BracketCard.styles';
 
-export type BracketCardProps = HTMLAttributes<HTMLDivElement> & {
+type BracketCardProps = HTMLAttributes<HTMLDivElement> & {
   heading?: string;
   headingLevel?: HeadingType;
   isSmallHeading?: boolean;
@@ -47,15 +48,9 @@ export const BracketCard = ({
   <article className={dcnb(styles.root, className)} {...props}>
     <Grid lg={12} className="su-absolute su-top-0 lg:su-bottom-[4vw] 3xl:su-bottom-70 su-w-full">
       <FlexBox direction="col" className="su-relative su-z-10 lg:su-col-span-2 lg:su-col-start-2 su-w-[120%]">
-        <div className="su-text-[1.5vw] 3xl:su-text-25 su-flex">
-          <div className="su-w-[83%] su-h-[8em] su-border-t-2 su-border-l-2 su-border-white su-rounded-tl-full" />
-          <div className="su-w-[17%] su-h-[8em] su-border-r-2 su-border-y-2 su-border-white" />
-        </div>
+        <BracketCurve />
         <div className="su-grow su-border-l-2 su-border-r-2 su-border-white su-w-[calc(83%_+_0.2rem)]" />
-        <div className="su-text-[1.5vw] 3xl:su-text-25 su-flex">
-          <div className="su-w-[83%] su-h-[8em] su-border-b-2 su-border-l-2 su-border-white su-rounded-bl-full" />
-          <div className="su-w-[17%] su-h-[8em] su-border-r-2 su-border-y-2 su-border-white" />
-        </div>
+        <BracketCurve corner="bl" />
       </FlexBox>
       <div className="su-relative su-z-10 lg:su-col-span-9 lg:su-col-start-4 su-border-b-2 su-border-white">
         <FlexBox
@@ -104,6 +99,7 @@ export const BracketCard = ({
             <img
               src={getProcessedImage(imageSrc, '900x750', imageFocus)}
               alt={alt}
+              loading="lazy"
               className={styles.image}
             />
           </div>
