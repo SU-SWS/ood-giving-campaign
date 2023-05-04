@@ -24,6 +24,14 @@ export const fontSizes = {
   7: 'su-type-7',
   8: 'su-type-8',
   9: 'su-type-9',
+  f4: 'su-fluid-type-4',
+  f5: 'su-fluid-type-5',
+  f6: 'su-fluid-type-6',
+  f7: 'su-fluid-type-7',
+  f8: 'su-fluid-type-8',
+  f9: 'su-fluid-type-9',
+  // Curated font size for homepage hero slightly smaller than f9
+  splash: 'su-gc-splash',
 };
 
 // Line heights
