@@ -35,8 +35,8 @@ export const contentWrapper = (textOnLeft: boolean, isSmallHeading: boolean) => 
 export const heading = (isSmallHeading) => dcnb(
   'su-text-shadow-lg lg:su-max-w-[80%] su-mb-0',
   isSmallHeading
-    ? 'lg:su-text-[clamp(4.2rem,4vw,7rem)]'
-    : 'lg:su-text-[clamp(5.7rem,5vw,8.8rem)]',
+    ? 'lg:su-text-[clamp(4.2rem,5.51vw_-_1.27rem,7rem)]'
+    : 'lg:su-text-[clamp(5.7rem,6.1vw_-_.35rem,8.8rem)]',
 );
 
 export const body = (textOnLeft: boolean) => dcnb(

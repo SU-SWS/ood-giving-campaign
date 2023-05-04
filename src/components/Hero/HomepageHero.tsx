@@ -13,10 +13,10 @@ export const HomepageHero = () => {
   const [isPlaying, setIsPlaying] = useState(!prefersReduceMotion);
 
   const lines: string[] = [
-    'Here and now',
-    'is where we',
-    'make the',
-    'world better.',
+    'How will we',
+    'come together',
+    'to make the',
+    'world better?',
     'On purpose.',
   ];
 
@@ -126,7 +126,7 @@ export const HomepageHero = () => {
         </div>
       </div>
       <m.div variants={prefersReduceMotion ? undefined : parentVariants} initial="hidden" animate="visible">
-        <Heading as="h1" size={9} leading="none" font="druk" color="white" className="su-cc su-absolute su-top-0 su-mb-0 su-pt-120 md:su-pt-216 2xl:su-pt-228">
+        <Heading as="h1" size="splash" leading="none" font="druk" color="white" className="su-cc su-absolute su-top-0 su-mb-0 su-pt-120 md:su-pt-216 2xl:su-pt-228">
           {lines.map((text, index) => (
             <m.div variants={prefersReduceMotion ? undefined : itemVariants} key={`line${index + 1}`}>
               {text}
