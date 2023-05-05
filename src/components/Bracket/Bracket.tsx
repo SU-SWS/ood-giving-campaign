@@ -20,13 +20,12 @@ export const Bracket = ({
     direction="col"
     className={dcnb(
       styles.colors[color],
-      styles.directions(isClose),
       className,
     )}
     {...props}
   >
-    <BracketCurve isSolid={isSolid} color={color} />
-    <div className={styles.middle(isSolid)} />
-    <BracketCurve isSolid={isSolid} color={color} corner="bl" />
+    <BracketCurve isSolid={isSolid} color={color} corner={isClose ? 'tr' : 'tl'} />
+    <div className={styles.middle(isClose, isSolid)} />
+    <BracketCurve isSolid={isSolid} color={color} corner={isClose ? 'br' : 'bl'} />
   </FlexBox>
 );
