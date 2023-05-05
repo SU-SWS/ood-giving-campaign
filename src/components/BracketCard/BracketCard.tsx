@@ -57,7 +57,7 @@ export const BracketCard = ({
     )}
     {...props}
   >
-    <Grid lg={12} className={styles.grid}>
+    <Grid md={12} className={styles.grid}>
       <Bracket isClose={textOnLeft} className={styles.bracket(textOnLeft)} />
       <div className={styles.contentCard(textOnLeft)}>
         <FlexBox
@@ -105,7 +105,7 @@ export const BracketCard = ({
       </div>
     </Grid>
     {imageSrc && (
-      <Grid lg={12} className={styles.imageGrid}>
+      <Grid md={12} className={styles.imageGrid}>
         <div className={styles.imageWrapper(textOnLeft)}>
           <div className={styles.imageAspectRatio}>
             <img

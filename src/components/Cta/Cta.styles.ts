@@ -32,8 +32,8 @@ export const ctaColors = {
 };
 
 export const ctaSizes = {
-  default: 'su-px-20 su-py-12 md:su-px-30 xl:su-px-40 md:su-py-14 su-text-18 md:su-text-21',
-  small: 'su-px-13 su-py-9 md:su-px-15 md:su-py-10 su-text-16',
+  default: 'su-px-20 su-pt-9 su-pb-10 lg:su-px-30 xl:su-px-40 lg:su-pt-13 lg:su-pt-14 su-text-16 md:su-text-18 xl:su-text-21',
+  small: 'su-px-13 su-py-9 lg:su-px-15 lg:su-py-10 su-text-16',
   masthead: 'su-text-14 md:su-text-16',
   footer: '',
   'footer-featured': 'su-ma-intro',
