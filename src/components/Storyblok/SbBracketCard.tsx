@@ -4,6 +4,7 @@ import { HeadingType } from '../Typography';
 import { BracketCard } from '../BracketCard';
 import { SbImageType, SbLinkType } from './Storyblok.types';
 import { AccentBgColorType, MarginType } from '../../utilities/datasource';
+import { paletteAccentColors, PaletteAccentColorType } from '../../utilities/colorPalettePlugin';
 
 export type SbBracketCardProps = {
   blok: {
@@ -14,7 +15,9 @@ export type SbBracketCardProps = {
     textOnLeft?: boolean;
     body?: string;
     image?: SbImageType;
-    tabColor?: AccentBgColorType;
+    tabColor?: {
+      value?: PaletteAccentColorType;
+    }
     ctaLabel?: string;
     link?: SbLinkType;
     spacingBottom?: MarginType;
@@ -32,7 +35,7 @@ export const SbBracketCard = ({
     body,
     // TODO: seperate alt as separate field
     image: { filename, focus, alt } = {},
-    tabColor,
+    tabColor: { value } = {},
     ctaLabel,
     link,
     spacingBottom,
@@ -52,7 +55,7 @@ export const SbBracketCard = ({
     imageFocus={focus}
     alt={alt}
     textColor={isDarkTheme ? 'white' : 'black'}
-    tabColor={tabColor}
+    tabColor={paletteAccentColors[value] as AccentBgColorType}
     ctaLabel={ctaLabel}
     link={link}
     spacingBottom={spacingBottom}

@@ -5,6 +5,7 @@ import { HeadingType } from '../Typography';
 import { VerticalCard } from '../VerticalCard';
 import { SbImageType, SbLinkType } from './Storyblok.types';
 import { AccentBgColorType } from '../../utilities/datasource';
+import { paletteAccentColors, PaletteAccentColorType } from '../../utilities/colorPalettePlugin';
 
 export type SbVerticalCardProps = {
   blok: {
@@ -14,7 +15,9 @@ export type SbVerticalCardProps = {
     isSmallHeading?: boolean;
     body?: string;
     image?: SbImageType;
-    tabColor?: AccentBgColorType;
+    tabColor?: {
+      value?: PaletteAccentColorType;
+    }
     ctaLabel?: string;
     link?: SbLinkType;
     animation?: AnimationType;
@@ -32,7 +35,7 @@ export const SbVerticalCard = ({
     body,
     // TODO: seperate alt as separate field
     image: { filename, focus, alt } = {},
-    tabColor,
+    tabColor: { value } = {},
     ctaLabel,
     link,
     animation,
@@ -52,7 +55,7 @@ export const SbVerticalCard = ({
     imageFocus={focus}
     alt={alt}
     textColor={isDarkTheme ? 'white' : 'black'}
-    tabColor={tabColor}
+    tabColor={paletteAccentColors[value] as AccentBgColorType}
     ctaLabel={ctaLabel}
     link={link}
     animation={animation}
