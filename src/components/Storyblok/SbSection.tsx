@@ -37,7 +37,7 @@ export const SbSection = ({
     bgColor={bgColor}
     pt={paddingTop}
     pb={paddingBottom}
-    className="su-relative"
+    className="su-relative su-overflow-hidden"
   >
     {superhead && (
       <Text size={2} leading="tight" font="serif">

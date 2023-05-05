@@ -57,7 +57,34 @@ export const BracketCard = ({
     )}
     {...props}
   >
-    <Grid sm={12} className={styles.grid}>
+    {/* Heading for XS breakpoint */}
+    {heading && (
+      <Heading
+        as={headingLevel}
+        size={isSmallHeading ? 5 : 6}
+        leading="tight"
+        align={textOnLeft ? 'left' : 'right'}
+        className={styles.headingMobile(textOnLeft)}
+      >
+        {heading}
+      </Heading>
+    )}
+    {imageSrc && (
+      <Grid sm={12} className={styles.imageGrid(textOnLeft)}>
+        <div className={styles.imageWrapper(textOnLeft)}>
+          <div className={styles.imageAspectRatio}>
+            <img
+              src={getProcessedImage(imageSrc, '900x750', imageFocus)}
+              alt={alt}
+              loading="lazy"
+              className={styles.image}
+            />
+            <div className={styles.imageOverlay(textOnLeft)} />
+          </div>
+        </div>
+      </Grid>
+    )}
+    <div className={styles.grid(textOnLeft)}>
       <Bracket isClose={textOnLeft} className={styles.bracket(textOnLeft)} />
       <div className={styles.contentCard(textOnLeft)}>
         <FlexBox
@@ -65,6 +92,7 @@ export const BracketCard = ({
           alignItems={textOnLeft ? 'start' : 'end'}
           className={styles.contentWrapper(textOnLeft, isSmallHeading)}
         >
+          {/* Heading for SM and up */}
           {heading && (
             <Heading
               as={headingLevel}
@@ -103,21 +131,7 @@ export const BracketCard = ({
           )}
         </FlexBox>
       </div>
-    </Grid>
-    {imageSrc && (
-      <Grid sm={12} className={styles.imageGrid}>
-        <div className={styles.imageWrapper(textOnLeft)}>
-          <div className={styles.imageAspectRatio}>
-            <img
-              src={getProcessedImage(imageSrc, '900x750', imageFocus)}
-              alt={alt}
-              loading="lazy"
-              className={styles.image}
-            />
-            <div className={styles.imageOverlay(textOnLeft)} />
-          </div>
-        </div>
-      </Grid>
-    )}
+    </div>
+
   </article>
 );

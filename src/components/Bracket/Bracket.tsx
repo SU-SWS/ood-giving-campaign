@@ -7,6 +7,7 @@ import * as styles from './Bracket.styles';
 type BracketProps = Omit<BracketCurveProps, 'corner'> & {
   // Open or close bracket
   isClose?: boolean;
+  curveClassName?: string;
 };
 
 export const Bracket = ({
@@ -14,6 +15,7 @@ export const Bracket = ({
   color,
   isSolid,
   className,
+  curveClassName,
   ...props
 }: BracketProps) => (
   <FlexBox
@@ -24,8 +26,18 @@ export const Bracket = ({
     )}
     {...props}
   >
-    <BracketCurve isSolid={isSolid} color={color} corner={isClose ? 'tr' : 'tl'} />
+    <BracketCurve
+      isSolid={isSolid}
+      color={color}
+      corner={isClose ? 'tr' : 'tl'}
+      className={curveClassName}
+    />
     <div className={styles.middle(isClose, isSolid)} />
-    <BracketCurve isSolid={isSolid} color={color} corner={isClose ? 'br' : 'bl'} />
+    <BracketCurve
+      isSolid={isSolid}
+      color={color}
+      corner={isClose ? 'br' : 'bl'}
+      className={curveClassName}
+    />
   </FlexBox>
 );
