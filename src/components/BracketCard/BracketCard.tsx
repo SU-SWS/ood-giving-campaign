@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react';
 import { dcnb } from 'cnbuilder';
-// import { AnimateInView, AnimationType } from '../Animate';
+import { AnimateInView } from '../Animate';
 import { Bracket } from '../Bracket';
 import { CtaLink } from '../Cta/CtaLink';
 import { FlexBox } from '../FlexBox';
@@ -70,19 +70,24 @@ export const BracketCard = ({
       </Heading>
     )}
     {imageSrc && (
-      <Grid sm={12} className={styles.imageGrid(textOnLeft)}>
-        <div className={styles.imageWrapper(textOnLeft)}>
-          <div className={styles.imageAspectRatio}>
-            <img
-              src={getProcessedImage(imageSrc, '900x750', imageFocus)}
-              alt={alt}
-              loading="lazy"
-              className={styles.image}
-            />
-            <div className={styles.imageOverlay(textOnLeft)} />
+      <AnimateInView
+        duration={0.7}
+        animation={textOnLeft ? 'slideInFromRight' : 'slideInFromLeft'}
+      >
+        <Grid sm={12} className={styles.imageGrid(textOnLeft)}>
+          <div className={styles.imageWrapper(textOnLeft)}>
+            <div className={styles.imageAspectRatio}>
+              <img
+                src={getProcessedImage(imageSrc, '900x750', imageFocus)}
+                alt={alt}
+                loading="lazy"
+                className={styles.image}
+              />
+              <div className={styles.imageOverlay(textOnLeft)} />
+            </div>
           </div>
-        </div>
-      </Grid>
+        </Grid>
+      </AnimateInView>
     )}
     <div className={styles.grid(textOnLeft)}>
       <Bracket isClose={textOnLeft} className={styles.bracket(textOnLeft)} />
@@ -132,6 +137,5 @@ export const BracketCard = ({
         </FlexBox>
       </div>
     </div>
-
   </article>
 );
