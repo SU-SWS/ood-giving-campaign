@@ -3,13 +3,7 @@ import { dcnb } from 'cnbuilder';
 // Bracket Curve styles
 export const root = 'su-border-current';
 
-export const corners = {
-  tl: '',
-  bl: 'su-scale-y-[-1]',
-  tr: 'su-scale-x-[-1]',
-  br: 'su-rotate-180',
-};
-export type CornerType = keyof typeof corners;
+export type CornerType = 'tl' | 'bl' | 'tr' | 'br';
 
 export const colors = {
   white: 'su-text-white',
@@ -17,19 +11,34 @@ export const colors = {
 };
 export type ColorType = keyof typeof colors;
 
-export const curve = (isSolid: boolean) => dcnb(
+export const curve = (corner: CornerType, isSolid: boolean) => dcnb(
   'su-w-[83%] su-h-[8em] su-border-t-2 su-border-l-2 su-rounded-tl-full',
-  isSolid ? 'su-bg-current' : '',
+  {
+    'su-bg-current': isSolid,
+    'su-rounded-tl-full': corner === 'tl',
+    'su-rounded-bl-full': corner === 'bl',
+    'su-rounded-tr-full': corner === 'tr',
+    'su-rounded-br-full': corner === 'br',
+    'su-border-t-2': corner === 'tl' || corner === 'tr',
+    'su-border-l-2': corner === 'tl' || corner === 'bl',
+    'su-border-b-2': corner === 'bl' || corner === 'br',
+    'su-border-r-2 su-order-2': corner === 'tr' || corner === 'br',
+  },
 );
-export const rectangle = (isSolid: boolean) => dcnb(
-  'su-w-[17%] su-h-[8em] su-border-r-2 su-border-y-2',
-  isSolid ? 'su-bg-current' : '',
+export const rectangle = (corner: CornerType, isSolid: boolean) => dcnb(
+  'su-w-[17%] su-h-[8em] su-border-y-2',
+  {
+    'su-bg-current': isSolid,
+    'su-border-r-2': corner === 'tl' || corner === 'bl',
+    'su-border-l-2 su-order-1': corner === 'tr' || corner === 'br',
+  },
 );
 
 // Bracket styles
-export const directions = (isClose: boolean) => (isClose ? 'su-rotate-180' : '');
-
-export const middle = (isSolid: boolean) => dcnb(
-  'su-grow su-border-l-2 su-border-r-2 su-border-current su-w-[calc(83%_+_0.2rem)]',
-  isSolid ? 'su-bg-current' : '',
+export const middle = (isClose: boolean, isSolid: boolean) => dcnb(
+  'su-grow su-border-x-2 su-border-current su-w-[calc(83%_+_0.2rem)]',
+  {
+    'su-self-end': isClose,
+    'su-bg-current': isSolid,
+  },
 );

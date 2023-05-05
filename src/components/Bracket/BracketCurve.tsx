@@ -20,12 +20,11 @@ export const BracketCurve = ({
     className={dcnb(
       styles.root,
       styles.colors[color],
-      styles.corners[corner],
       className,
     )}
     {...props}
   >
-    <div className={styles.curve(isSolid)} />
-    <div className={styles.rectangle(isSolid)} />
+    <div className={styles.curve(corner, isSolid)} />
+    <div className={styles.rectangle(corner, isSolid)} />
   </FlexBox>
 );
