@@ -43,7 +43,7 @@ export const heading = (isSmallHeading: boolean) => dcnb(
   'su-hidden sm:su-block su-text-shadow-lg sm:su-max-w-[85%] su-mb-0',
   isSmallHeading
     ? 'su-text-[3.6rem] sm:su-text-24 md:su-text-[clamp(3rem,5.36vw_-_1.11rem,4.2rem)] lg:su-text-[clamp(4.2rem,5.51vw_-_1.27rem,7rem)]'
-    : 'su-text-[4.2rem] sm:su-text-28 md:su-text-[clamp(4rem,7.59vw_-_1.83rem,5.7rem)] lg:su-text-[clamp(5.7rem,6.1vw_-_.35rem,8.8rem)]',
+    : 'su-text-[4.2rem] sm:su-text-[2.8rem] md:su-text-[clamp(4rem,7.59vw_-_1.83rem,5.7rem)] lg:su-text-[clamp(5.7rem,6.1vw_-_.35rem,8.8rem)]',
 );
 export const headingMobile = (textOnLeft: boolean) => dcnb(
   'sm:su-hidden su-mb-20 su-w-[80%]',
