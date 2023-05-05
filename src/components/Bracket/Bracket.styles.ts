@@ -12,7 +12,7 @@ export const colors = {
 export type ColorType = keyof typeof colors;
 
 export const curve = (corner: CornerType, isSolid: boolean) => dcnb(
-  'su-w-[83%] su-h-[8em] su-border-t-2 su-border-l-2 su-rounded-tl-full',
+  'su-w-[83%] su-h-full su-border-t-2 su-border-l-2 su-rounded-tl-full',
   {
     'su-bg-current': isSolid,
     'su-rounded-tl-full': corner === 'tl',
@@ -26,7 +26,7 @@ export const curve = (corner: CornerType, isSolid: boolean) => dcnb(
   },
 );
 export const rectangle = (corner: CornerType, isSolid: boolean) => dcnb(
-  'su-w-[17%] su-h-[8em] su-border-y-2',
+  'su-w-[17%] su-h-full su-border-y-2',
   {
     'su-bg-current': isSolid,
     'su-border-r-2': corner === 'tl' || corner === 'bl',
