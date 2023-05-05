@@ -2,7 +2,7 @@ import { dcnb } from 'cnbuilder';
 
 export const root = 'su-relative su-mx-auto';
 export const grid = (textOnLeft: boolean) => dcnb(
-  'su-flex su--mt-[40vw] sm:su-mt-0 su-w-[calc(100%_+_7rem)] sm:su-ml-0 sm:su-w-full sm:su-grid sm:su-grid-cols-12 sm:su-absolute sm:su-top-0 sm:su-bottom-[4vw] 3xl:su-bottom-70 su-w-full',
+  'su-flex su--mt-[40vw] sm:su-mt-0 sm:su-ml-0 su-w-[calc(100%_+_7rem)] sm:su-w-full sm:su-grid sm:su-grid-cols-12 sm:su-absolute sm:su-top-0 sm:su-bottom-[4vw] 3xl:su-bottom-70',
   textOnLeft ? 'su--mr-70' : 'su--ml-70',
 );
 
