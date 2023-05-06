@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
-import { StoryblokComponent, storyblokEditable } from 'gatsby-source-storyblok';
 import { useStoryblokState } from '../hooks/useStoryblokState';
 import { HomepageHero } from '../components/Hero/HomepageHero';
 import { Layout } from '../components/Layout';
@@ -11,19 +10,21 @@ import { Logo } from '../components/Logo';
 import { Heading, Text } from '../components/Typography';
 import { Parallax } from '../components/Parallax/Parallax';
 import { NumberCounter } from '../components/NumberCounter';
+import { CreateBloks } from '../components/CreateBloks';
 
 const IndexPage = ({ data }) => {
   let story = data.storyblokEntry;
   story = useStoryblokState(story);
 
-  const components = story.content.body.map((blok) => (<StoryblokComponent blok={blok} key={blok._uid} />));
+  // const components = story.content.content?.map((blok) => (<StoryblokComponent blok={blok} key={blok._uid} />));
 
   return (
     <Layout>
       <HomepageHero />
-      <div {...storyblokEditable(story.content)}>
+      <CreateBloks blokSection={story.content.content} />
+      {/* <div {...storyblokEditable(story.content)}>
         {components}
-      </div>
+      </div> */}
       <div className="su-h-400 lg:su-h-600 su-overflow-hidden su-relative">
         <Parallax>
           <div style={{ backgroundImage: 'url(https://www.space.com/images/i/000/082/219/original/VLT-Pano-MCloudsMilkyWay_6068-net.jpg?interpolation=lanczos-none&fit=around|1024:1024' }} className="su--mt-100 su-h-800 su-flex su-items-center su-justify-center su-bg-center su-bg-cover" />
