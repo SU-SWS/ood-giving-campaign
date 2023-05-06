@@ -381,7 +381,7 @@ const IndexPage = ({ data }) => {
             href="/about-test"
             variant="ghostLeaf"
             icon="triangle-right"
-            className="!su-rs-px-5 !su-rs-py-2 su-text-20 md:su-text-[4.6rem] !su-font-bold !su-text-white !su-bg-black-true/40 hocus:su-rounded-tl-none hocus:su-rounded-br-none hocus:!su-bg-sapphire/80"
+            className="!su-rs-px-5 !su-rs-py-2 !su-text-20 md:!su-text-[4.6rem] !su-font-bold !su-text-white !su-bg-black-true/40 hocus:su-rounded-tl-none hocus:su-rounded-br-none hocus:!su-bg-sapphire/80"
           >
             See our new initiative
           </CtaLink>
