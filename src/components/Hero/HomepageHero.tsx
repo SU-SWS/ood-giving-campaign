@@ -23,13 +23,15 @@ export const HomepageHero = () => {
   const fadeVariants = {
     visible: {
       opacity: 1,
+      filter: 'saturate(100%)',
       transition: {
-        duration: 0.6,
+        duration: 1,
         delay: 0,
       },
     },
     hidden: {
-      opacity: 0,
+      opacity: 0.2,
+      filter: 'saturate(0%)',
     },
   };
 
@@ -104,15 +106,15 @@ export const HomepageHero = () => {
               muted
               loop
               aria-label="Background Video"
-              poster={getProcessedImage('https://a-us.storyblok.com/f/1005200/1851x1041/e7319575a3/record-poster.jpg', '1920x1080')}
+              poster={getProcessedImage('https://a-us.storyblok.com/f/1005200/1280x674/bf8d340dbf/screenshot-2023-05-09-at-3-03-08-pm.png', '1280x676')}
               className="su-block su-w-full su-h-full su-object-cover"
             >
-              <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/a3e3e04cdd/record-compressed.webm')} type="video/webm" />
-              <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/e36a5877cf/record-compressed.mp4')} type="video/mp4" />
+              <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/bf77fd691a/stanford125-loop.webm')} type="video/webm" />
+              <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/17d1fcaa03/stanford125-loop.mp4')} type="video/mp4" />
               <p>Your browser does not support HTML video.</p>
             </video>
           </div>
-          <div className="su-absolute su-w-full su-h-full su-top-0 su-left-0 su-bg-gradient-to-b su-from-saa-black su-via-saa-black/70 su-via-30% su-to-80%" />
+          <div className="su-absolute su-w-full su-h-full su-top-0 su-left-0 su-bg-gradient-to-b su-from-saa-black su-via-saa-black/60 su-via-30% su-to-60%" />
           <button
             type="button"
             onClick={toggleVideo}

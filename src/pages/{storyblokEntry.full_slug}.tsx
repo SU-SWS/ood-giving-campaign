@@ -1,56 +1,27 @@
-import React from 'react';
-import { graphql } from 'gatsby';
-import { StoryblokComponent, storyblokEditable } from 'gatsby-source-storyblok';
+import * as React from 'react';
+import { graphql, PageProps } from 'gatsby';
+import { SbGatsbyStory, storyblokEditable } from 'gatsby-source-storyblok';
 import { useStoryblokState } from '../hooks/useStoryblokState';
 import { Hero } from '../components/Hero/Hero';
 import { Layout } from '../components/Layout';
-import { GridAlternating } from '../components/Grid';
-import { Paragraph } from '../components/Typography';
-import { Container } from '../components/Container';
+import { CreateBloks } from '../components/CreateBloks';
 
-const StoryblokEntry = ({ data }) => {
+type DataProps = {
+  storyblokEntry: SbGatsbyStory;
+};
+
+const StoryblokEntry: React.FC<PageProps<DataProps>> = ({
+  data,
+}) => {
   let story = data.storyblokEntry;
   story = useStoryblokState(story);
 
-  const components = story.content.body?.map((blok) => (<StoryblokComponent blok={blok} key={blok._uid} />));
-
   return (
     <Layout>
-      {/* Entirely POC code below - going to extract into components */}
+      {/* Place holder hero below - going to extract into component */}
       <Hero heading={story.name} />
-      <Container bgColor="black" pt={9}>
-        <GridAlternating>
-          <Paragraph>
-            Test1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non aliquam purus.
-          </Paragraph>
-          <Paragraph>
-            Test1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non aliquam purus.
-          </Paragraph>
-          <Paragraph>
-            Test1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non aliquam purus.
-          </Paragraph>
-          <Paragraph>
-            Test1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non aliquam purus.
-          </Paragraph>
-        </GridAlternating>
-        <GridAlternating startOnRight>
-          {['test1', 'test2', 'test3']}
-        </GridAlternating>
-      </Container>
-      <Container bgColor="white" pt={9}>
-        <GridAlternating addCenterLine>
-          <Paragraph font="serif" variant="overview">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non aliquam purus.
-            Suspendisse efficitur sodales lorem. Nullam non aliquam purus.
-          </Paragraph>
-          <Paragraph font="serif" variant="overview">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non aliquam purus.
-            Suspendisse efficitur sodales lorem. Nullam non aliquam purus.
-          </Paragraph>
-        </GridAlternating>
-      </Container>
       <div {...storyblokEditable(story.content)}>
-        {components}
+        <CreateBloks blokSection={story.content.content} />
       </div>
     </Layout>
   );
