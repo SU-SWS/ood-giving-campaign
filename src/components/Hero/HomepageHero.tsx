@@ -23,13 +23,15 @@ export const HomepageHero = () => {
   const fadeVariants = {
     visible: {
       opacity: 1,
+      filter: 'saturate(100%)',
       transition: {
-        duration: 0.6,
+        duration: 1,
         delay: 0,
       },
     },
     hidden: {
-      opacity: 0,
+      opacity: 0.2,
+      filter: 'saturate(0%)',
     },
   };
 
