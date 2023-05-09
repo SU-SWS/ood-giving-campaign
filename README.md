@@ -1,6 +1,6 @@
 # [Giving Campaign](https://github.com/SU-SWS/ood-giving-campaign)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/738e5599-7329-41a1-8429-82f8540636d9/deploy-status?branch=dev)](https://app.netlify.com/sites/giving-campaign/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/738e5599-7329-41a1-8429-82f8540636d9/deploy-status?branch=dev)](https://app.netlify.com/sites/giving-campaign/deploys?branch=dev)
 
 Description
 ---
