@@ -1,11 +1,18 @@
-import React from 'react';
-import { graphql } from 'gatsby';
+import * as React from 'react';
+import { graphql, PageProps } from 'gatsby';
+import { SbGatsbyStory } from 'gatsby-source-storyblok';
 import { useStoryblokState } from '../hooks/useStoryblokState';
 import { Hero } from '../components/Hero/Hero';
 import { Layout } from '../components/Layout';
 import { CreateBloks } from '../components/CreateBloks';
 
-const StoryblokEntry = ({ data }) => {
+type DataProps = {
+  storyblokEntry: SbGatsbyStory;
+};
+
+const StoryblokEntry: React.FC<PageProps<DataProps>> = ({
+  data,
+}) => {
   let story = data.storyblokEntry;
   story = useStoryblokState(story);
 
