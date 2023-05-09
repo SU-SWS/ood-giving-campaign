@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { graphql, PageProps } from 'gatsby';
-import { SbGatsbyStory } from 'gatsby-source-storyblok';
+import { SbGatsbyStory, storyblokEditable } from 'gatsby-source-storyblok';
 import { useStoryblokState } from '../hooks/useStoryblokState';
 import { Hero } from '../components/Hero/Hero';
 import { Layout } from '../components/Layout';
@@ -16,13 +16,13 @@ const StoryblokEntry: React.FC<PageProps<DataProps>> = ({
   let story = data.storyblokEntry;
   story = useStoryblokState(story);
 
-  // const components = story.content.content?.map((blok) => (<StoryblokComponent blok={blok} key={blok._uid} />));
-
   return (
     <Layout>
       {/* Place holder hero below - going to extract into component */}
       <Hero heading={story.name} />
-      <CreateBloks blokSection={story.content.content} />
+      <div {...storyblokEditable(story.content)}>
+        <CreateBloks blokSection={story.content.content} />
+      </div>
     </Layout>
   );
 };
