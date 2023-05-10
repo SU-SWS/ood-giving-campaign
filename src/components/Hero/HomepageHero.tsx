@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { m, useReducedMotion } from 'framer-motion';
 import { Container } from '../Container';
 import { Heading } from '../Typography';
-import { darkMesh5, skyGradient } from '../../utilities/gradients';
+import { skyGradient } from '../../utilities/gradients';
 import { HeroIcon } from '../HeroIcon';
 import { getProcessedImage } from '../../utilities/getProcessedImage';
 import { getMaskedAsset } from '../../utilities/getMaskedAsset';
