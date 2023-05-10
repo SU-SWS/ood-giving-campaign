@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { m, useReducedMotion } from 'framer-motion';
 import { Container } from '../Container';
 import { Heading } from '../Typography';
-import { darkMesh5 } from '../../utilities/gradients';
+import { darkMesh5, skyGradient } from '../../utilities/gradients';
 import { HeroIcon } from '../HeroIcon';
 import { getProcessedImage } from '../../utilities/getProcessedImage';
 import { getMaskedAsset } from '../../utilities/getMaskedAsset';
@@ -88,16 +88,16 @@ export const HomepageHero = () => {
   };
 
   return (
-    <Container width="full" bgColor="black" className="su-relative">
+    <Container width="full" className="su-relative su-bg-[hsla(214,39%,50%,1)]">
       <div className="">
         <m.div
           variants={prefersReduceMotion ? undefined : fadeVariants}
           initial="hidden"
           animate="visible"
         >
-          <Container bgColor="black" style={{ backgroundImage: darkMesh5 }} className="su-h-[34.3rem] md:su-h-[56.2rem] lg:su-h-[71.5rem] 2xl:su-h-[77.9rem] su-bg-no-repeat su-bg-[center_top_-2vw] 2xl:su-bg-top" />
+          <Container style={{ backgroundImage: skyGradient }} className="su-h-[34.3rem] md:su-h-[56.2rem] lg:su-h-[71.5rem] 2xl:su-h-[77.9rem] su-bg-no-repeat su-bg-[center_top_-2vw] 2xl:su-bg-top" />
         </m.div>
-        <div className="su-relative su-w-full su-bg-saa-black su--mb-1">
+        <div className="su-relative su-w-full su-bg-[hsla(214,39%,50%,1)] su--mb-1">
           <div className="su-aspect-w-1 su-aspect-h-1 md:su-aspect-w-16 md:su-aspect-h-9">
             <video
               ref={videoRef}
@@ -114,7 +114,7 @@ export const HomepageHero = () => {
               <p>Your browser does not support HTML video.</p>
             </video>
           </div>
-          <div className="su-absolute su-w-full su-h-full su-top-0 su-left-0 su-bg-gradient-to-b su-from-saa-black su-via-saa-black/60 su-via-30% su-to-60%" />
+          <div className="su-absolute su-w-full su-h-full su-top-0 su-left-0 su-bg-gradient-to-b su-from-[hsla(214,39%,50%,1)] su-via-[hsla(214,39%,50%,1)]/60 su-via-30% su-to-60%" />
           <button
             type="button"
             onClick={toggleVideo}
