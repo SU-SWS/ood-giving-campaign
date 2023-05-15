@@ -13,3 +13,5 @@ export const darkMesh5 = 'radial-gradient(at 66% 1%, rgb(224 235 3 / 87%) 0px, r
 export const layerGradient = 'radial-gradient(100% 88.5% at 83% 0%, rgba(250, 240, 137, 0.9) 0%, rgba(247, 225, 127, 0.83) 7.58%, rgba(242, 210, 120, 0.75) 15.17%, rgba(238, 195, 112, 0.68) 22.75%, rgba(233, 180, 105, 0.6) 30.33%, rgba(227, 165, 99, 0.53) 37.92%, rgba(223, 150, 92, 0.45) 45.5%, rgba(218, 134, 85, 0.38) 53.08%, rgba(216, 117, 79, 0.3) 60.67%, rgba(216, 96, 72, 0.22) 68.25%, rgba(219, 66, 68, 0.15) 75.83%, rgba(177, 56, 94, 0) 91%), linear-gradient(180deg, #ffffb5 0%, #ffffff 0%, #f6d860 0%, #ed894b 0%, #d53a42 28%, #b1385e 43%, #2f2d29 100%, #6a324f 57%)';
 
 export const spotlight = 'radial-gradient(at 74% 32%, hsla(343,100%,76%,0.12) 0px, transparent 50%), radial-gradient(at 95% 0%, hsla(189,100%,56%,0.52) 0px, transparent 50%), radial-gradient(at 49% 3%, hsla(240,100%,70%,0.6) 0px, transparent 50%)';
+
+export const skyGradient = 'radial-gradient(at 17% 10%, hsla(0, 93%, 46%, 1) 0px, hsla(0, 93%, 46%, 0.6) 40%, transparent 70%), radial-gradient(at 80% 20%, hsla(230, 53%, 53%, 1) 0px, hsla(230, 53%, 53%, 0.8) 50%, transparent 70%)';
