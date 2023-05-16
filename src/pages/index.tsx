@@ -2,8 +2,8 @@ import * as React from 'react';
 import { graphql } from 'gatsby';
 import { storyblokEditable } from 'gatsby-source-storyblok';
 import { useStoryblokState } from '../hooks/useStoryblokState';
+import { BasicPage } from '../components/BasicPage';
 import { HomepageHero } from '../components/Hero/HomepageHero';
-import { Layout } from '../components/Layout';
 import { Container } from '../components/Container';
 import { CtaLink } from '../components/Cta';
 import { Grid } from '../components/Grid';
@@ -11,16 +11,15 @@ import { Logo } from '../components/Logo';
 import { Heading, Text } from '../components/Typography';
 import { Parallax } from '../components/Parallax/Parallax';
 import { NumberCounter } from '../components/NumberCounter';
+import { PageHead } from '../components/PageHead/PageHead';
 import { CreateBloks } from '../components/CreateBloks';
 
 const IndexPage = ({ data }) => {
   let story = data.storyblokEntry;
   story = useStoryblokState(story);
 
-  // const components = story.content.content?.map((blok) => (<StoryblokComponent blok={blok} key={blok._uid} />));
-
   return (
-    <Layout>
+    <BasicPage heading={story.name}>
       <HomepageHero />
       <div {...storyblokEditable(story.content)}>
         <CreateBloks blokSection={story.content.content} />
@@ -388,11 +387,15 @@ const IndexPage = ({ data }) => {
           </CtaLink>
         </div>
       </div>
-    </Layout>
+    </BasicPage>
   );
 };
 
 export default IndexPage;
+
+export const Head = ({ data }) => (
+  <PageHead title={data.storyblokEntry.name} />
+);
 
 export const query = graphql`
   query HomeQuery {
