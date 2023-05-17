@@ -3,12 +3,15 @@ import { getMaskedAsset } from './getMaskedAsset';
 /**
  *
  * @param imageSrc - The Storyblok URL of the image
- * @param crop - The dimension of the image crop (eg., "600 x 400")
+ * @param crop - The dimension of the image crop (eg., "600x400")
  * @param focus - The focal point of the image provided by the Storyblok Asset field (eg, "348x414:349x415")
  * @param filters - Additional filters to apply to the image (eg., "blur(10)").
  * To add multiple filters, separate them with a colon, eg., "blur(10):grayscale()"
  * @returns The processed Storyblok image URL that is masked by our asset CDN
  * @see {@link https://www.storyblok.com/docs/image-service} for more info on the Storyblok image service
+ *
+ * @example
+ * getProcessedImage(imageSrc, '900x750', imageFocus, 'blur(10)'
  */
 
 export const getProcessedImage = (
