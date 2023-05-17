@@ -4,7 +4,7 @@ import { SbGatsbyStory } from 'gatsby-source-storyblok';
 import { useStoryblokState } from '../hooks/useStoryblokState';
 import { Hero } from '../components/Hero/Hero';
 import { CreateBloks } from '../components/CreateBloks';
-import { PageHead } from '../components/PageHead/PageHead';
+import { PageHead } from '../components/PageHead';
 import { Layout } from '../components/Layout';
 
 type DataProps = {
@@ -38,6 +38,7 @@ export const Head = ({ data }) => {
   return (
     <PageHead
       title={blok.title || story.name}
+      heroImage={blok.heroImage || blok.hero.image}
       seo={blok.seo}
     />
   );

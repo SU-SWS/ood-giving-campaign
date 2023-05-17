@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import { useStoryblokState } from '../hooks/useStoryblokState';
 import { DemoContent } from '../components/Temporary/DemoContent';
 import { HomepageHero } from '../components/Hero/HomepageHero';
-import { PageHead } from '../components/PageHead/PageHead';
+import { PageHead } from '../components/PageHead';
 import { CreateBloks } from '../components/CreateBloks';
 import { Layout } from '../components/Layout';
 
@@ -32,6 +32,7 @@ export const Head = ({ data }) => {
   return (
     <PageHead
       title={blok.title || 'Homepage'}
+      heroImage={blok.heroImage || blok.hero.image}
       seo={blok.seo}
     />
   );
