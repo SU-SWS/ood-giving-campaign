@@ -10,12 +10,13 @@ import { Layout } from '../components/Layout';
 const IndexPage = ({ data }) => {
   let story = data.storyblokEntry;
   story = useStoryblokState(story);
+  const blok = story.content;
 
   return (
     <Layout>
       <HomepageHero />
-      <CreateBloks blokSection={story.content.hero} />
-      <CreateBloks blokSection={story.content.content} />
+      <CreateBloks blokSection={blok.hero} />
+      <CreateBloks blokSection={blok.content} />
       <DemoContent />
     </Layout>
   );
@@ -23,9 +24,18 @@ const IndexPage = ({ data }) => {
 
 export default IndexPage;
 
-export const Head = ({ data }) => (
-  <PageHead title={data.storyblokEntry.name} />
-);
+export const Head = ({ data }) => {
+  let story = data.storyblokEntry;
+  story = useStoryblokState(story);
+  const blok = story.content;
+
+  return (
+    <PageHead
+      title={blok.title || 'Homepage'}
+      seo={blok.seo}
+    />
+  );
+};
 
 export const query = graphql`
   query HomeQuery {

@@ -23,6 +23,7 @@ if (process.env.CONTEXT === 'production') {
 const config: GatsbyConfig = {
   siteMetadata: {
     title: 'Stanford On Purpose',
+    description: 'This is a placeholder description for the Stanford On Purpose website.',
     siteUrl,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation
@@ -56,7 +57,7 @@ const config: GatsbyConfig = {
         start_url: '/',
         include_favicon: false,
         crossOrigin: 'use-credentials',
-        icon: 'src/images/icon.png',
+        icons: [],
       },
     },
     {

@@ -16,22 +16,32 @@ const StoryblokEntry: React.FC<PageProps<DataProps>> = ({
 }) => {
   let story = data.storyblokEntry;
   story = useStoryblokState(story);
+  const blok = story.content;
 
   return (
     <Layout>
       {/* Place holder hero below - going to extract into component */}
       <Hero heading={story.name} />
-      <CreateBloks blokSection={story.content.hero} />
-      <CreateBloks blokSection={story.content.content} />
+      <CreateBloks blokSection={blok.hero} />
+      <CreateBloks blokSection={blok.content} />
     </Layout>
   );
 };
 
 export default StoryblokEntry;
 
-export const Head = ({ data }) => (
-  <PageHead title={data.storyblokEntry.name} />
-);
+export const Head = ({ data }) => {
+  let story = data.storyblokEntry;
+  story = useStoryblokState(story);
+  const blok = story.content;
+
+  return (
+    <PageHead
+      title={blok.title || story.name}
+      seo={blok.seo}
+    />
+  );
+};
 
 export const query = graphql`
   query ($full_slug: String!) {
