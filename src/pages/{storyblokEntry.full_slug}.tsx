@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { graphql, PageProps } from 'gatsby';
-import { SbGatsbyStory, storyblokEditable } from 'gatsby-source-storyblok';
+import { SbGatsbyStory } from 'gatsby-source-storyblok';
 import { useStoryblokState } from '../hooks/useStoryblokState';
-import { BasicPage } from '../components/BasicPage';
 import { Hero } from '../components/Hero/Hero';
 import { CreateBloks } from '../components/CreateBloks';
 import { PageHead } from '../components/PageHead/PageHead';
+import { Layout } from '../components/Layout';
 
 type DataProps = {
   storyblokEntry: SbGatsbyStory;
@@ -18,13 +18,12 @@ const StoryblokEntry: React.FC<PageProps<DataProps>> = ({
   story = useStoryblokState(story);
 
   return (
-    <BasicPage heading="Home">
+    <Layout>
       {/* Place holder hero below - going to extract into component */}
       <Hero heading={story.name} />
-      <div {...storyblokEditable(story.content)}>
-        <CreateBloks blokSection={story.content.content} />
-      </div>
-    </BasicPage>
+      <CreateBloks blokSection={story.content.hero} />
+      <CreateBloks blokSection={story.content.content} />
+    </Layout>
   );
 };
 
