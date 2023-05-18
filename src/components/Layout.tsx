@@ -13,6 +13,7 @@ import { SbSplitPoster } from './Storyblok/SbSplitPoster';
 import { SbThemeCard } from './Storyblok/SbThemeCard';
 import { SbVerticalCard } from './Storyblok/SbVerticalCard';
 import { SbWysiwyg } from './Storyblok/SbWysiwyg';
+import { Skiplink } from './SkipLink';
 
 type LayoutProps = {
   children: React.ReactNode,
@@ -40,8 +41,9 @@ storyblokInit({
 
 export const Layout = ({ children }: LayoutProps) => (
   <FlexBox justifyContent="between" direction="col" className="su-min-h-screen su-relative">
+    <Skiplink />
     <Masthead />
-    <main>{children}</main>
+    <main id="main-content">{children}</main>
     <footer>
       <Slice alias="global-footer" />
     </footer>

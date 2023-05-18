@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { graphql, PageProps } from 'gatsby';
-import { SbGatsbyStory, storyblokEditable } from 'gatsby-source-storyblok';
+import { SbGatsbyStory } from 'gatsby-source-storyblok';
 import { useStoryblokState } from '../hooks/useStoryblokState';
 import { Hero } from '../components/Hero/Hero';
-import { Layout } from '../components/Layout';
 import { CreateBloks } from '../components/CreateBloks';
+import { PageHead } from '../components/PageHead';
+import { Layout } from '../components/Layout';
 
 type DataProps = {
   storyblokEntry: SbGatsbyStory;
@@ -15,19 +16,33 @@ const StoryblokEntry: React.FC<PageProps<DataProps>> = ({
 }) => {
   let story = data.storyblokEntry;
   story = useStoryblokState(story);
+  const blok = story.content;
 
   return (
     <Layout>
       {/* Place holder hero below - going to extract into component */}
       <Hero heading={story.name} />
-      <div {...storyblokEditable(story.content)}>
-        <CreateBloks blokSection={story.content.content} />
-      </div>
+      <CreateBloks blokSection={blok.hero} />
+      <CreateBloks blokSection={blok.content} />
     </Layout>
   );
 };
 
 export default StoryblokEntry;
+
+export const Head = ({ data }) => {
+  let story = data.storyblokEntry;
+  story = useStoryblokState(story);
+  const blok = story.content;
+
+  return (
+    <PageHead
+      title={blok.title || story.name}
+      heroImage={blok.heroImage || blok.hero.image}
+      seo={blok.seo}
+    />
+  );
+};
 
 export const query = graphql`
   query ($full_slug: String!) {
