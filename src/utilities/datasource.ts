@@ -33,8 +33,8 @@ export type AccentBorderColorType = keyof typeof accentBorderColors;
 export const bgTextColorPairs = {
   black: 'su-bg-saa-black su-text-white',
   'black-70': 'su-bg-black-true/70 su-text-white',
-  white: 'su-bg-white su-text-black',
-  'white-80': 'su-bg-white/80 su-text-black',
+  white: 'su-bg-white su-text-saa-black',
+  'white-80': 'su-bg-white/80 su-text-saa-black',
 };
 export type BgTextColorPairType = keyof typeof bgTextColorPairs;
 

@@ -23,11 +23,11 @@ module.exports = function () {
         },
       },
       a: {
-        color: config('theme.colors.digital-red.light'),
+        color: config('theme.colors.digital-red.DEFAULT'),
         transition: 'color 0.25s ease-in-out',
 
         '&:hover, &:focus': {
-          color: config('theme.colors.cardinal-red.DEFAULT'),
+          color: config('theme.colors.digital-red.dark'),
         },
       },
     });

@@ -10,7 +10,7 @@ export const headingLink = 'su-stretched-link su-no-underline !su-font-bold';
 
 export const textColors = {
   white: 'su-text-white',
-  black: 'su-text-black',
+  black: 'su-text-saa-black',
 };
 export type TextColorType = keyof typeof textColors;
 
