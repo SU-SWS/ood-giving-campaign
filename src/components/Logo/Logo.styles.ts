@@ -1,7 +1,8 @@
 import { dcnb } from 'cnbuilder';
 
 export type LogoVariantType = 'horizontal' | 'stacked';
-export type LogoColorType = 'black' | 'white' | 'off-white' | 'soft-black';
+
+export type LogoColorType = 'black' | 'white';
 
 export const link = 'su-no-underline focus-visible:su-outline-none focus-visible:su-ring-2 focus-visible:su-ring-spirited';
 
