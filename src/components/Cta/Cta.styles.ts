@@ -89,7 +89,7 @@ export const iconAnimation = {
 };
 
 // Leading icons have right margins
-// Only add to this map if right margin is different from default class su-mr-02em
+// Only add to this map if right margin is different from default class su-mr-03em
 export const iconRightMargin = {
   default: 'su-mr-03em',
   'arrow-left': 'su-mr-04em',
@@ -97,7 +97,7 @@ export const iconRightMargin = {
 };
 
 // Trailing icons have left margins
-// Only add to this map if left margin is different from default class su-ml-02em
+// Only add to this map if left margin is different from default class su-ml-03em
 export const iconLeftMargin = {
   default: 'su-ml-03em',
   'arrow-right': 'su-ml-04em',
