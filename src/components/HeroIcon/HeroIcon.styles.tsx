@@ -11,7 +11,7 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 
-import { PlayCircleIcon, PauseCircleIcon } from '@heroicons/react/24/solid';
+import { PlayCircleIcon, PauseCircleIcon, PlayIcon } from '@heroicons/react/24/solid';
 
 export const iconMap = {
   action: ChevronRightIcon,
@@ -20,9 +20,10 @@ export const iconMap = {
   'arrow-up': ArrowUpIcon,
   back: ArrowLeftIcon,
   'chevron-down': ChevronDownIcon,
-  'triangle-down': ChevronDownIcon,
+  'triangle-down': PlayIcon,
   'chevron-right': ChevronRightIcon,
-  'triangle-right': ChevronRightIcon,
+  'triangle-right': PlayIcon,
+  'triangle-up': PlayIcon,
   close: XMarkIcon,
   email: EnvelopeIcon,
   external: ArrowUpRightIcon,
@@ -37,8 +38,6 @@ export const iconMap = {
 };
 export type IconType = keyof typeof iconMap;
 
-export const triangleFill = 'su-fill-current su-stroke-0';
-
 /**
  * Normalized base size and position of each icon (finetuned manually) for use in eg, buttons
  * Only add to this map if different from default class su-w-1em
@@ -52,8 +51,9 @@ export const iconBaseStyle = {
   back: 'su-w-1em',
   'chevron-right': 'su-w-1em',
   'chevron-down': 'su-w-1em',
-  'triangle-right': 'su-w-[1.1em] su-scale-x-[1.4]',
-  'triangle-down': 'su-w-[1.2em] su-scale-y-[1.4]',
+  'triangle-right': 'su-w-09em su-scale-x-[0.9] su-mt-01em',
+  'triangle-down': 'su-w-09em su-scale-x-[0.9] su-rotate-90 su-mt-01em',
+  'triangle-up': 'su-w-09em su-scale-x-[0.9] su--rotate-90 su-mt-02em',
   email: 'su-w-[1.2em]',
   external: 'su-w-08em',
   left: 'su-w-08em',

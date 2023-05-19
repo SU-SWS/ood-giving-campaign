@@ -88,7 +88,6 @@ export const VerticalCard = ({
           animate="right"
           sbLink={link}
           href={href}
-          uppercase
           className={styles.ctaLink}
         >
           {ctaLabel}

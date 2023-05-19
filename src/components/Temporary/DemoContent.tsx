@@ -242,7 +242,8 @@ export const DemoContent = () => (
           href="/about-test"
           variant="ghostSwipe"
           color="black"
-          icon="triangle-right"
+          icon="triangle-up"
+          animate="up"
           className="after:!su-bg-robins-egg"
         >
           Swipe right
@@ -251,7 +252,8 @@ export const DemoContent = () => (
           href="/about-test"
           variant="ghostSwipe"
           color="black"
-          icon="triangle-right"
+          icon="triangle-up"
+          animate="up"
           className="after:!su-bg-robins-egg"
           uppercase
         >
