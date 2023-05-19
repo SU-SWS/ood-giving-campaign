@@ -32,7 +32,7 @@ export const ctaColors = {
 };
 
 export const ctaSizes = {
-  default: 'su-px-20 su-pt-9 su-pb-10 lg:su-px-30 xl:su-px-40 lg:su-pt-13 lg:su-pb-14 su-text-16 md:su-text-18 xl:su-text-21',
+  default: 'su-pt-9 su-pb-10 su-pl-[2.4rem] su-pr-19 lg:su-pt-12 lg:su-pb-13 su-text-16 md:su-text-18 xl:su-text-20',
   small: 'su-px-13 su-pt-8 su-pb-9 lg:su-px-15 lg:su-pt-10 lg:su-pb-11 su-text-16',
   masthead: 'su-text-14 md:su-text-16',
   footer: '',
@@ -89,20 +89,20 @@ export const iconAnimation = {
 };
 
 // Leading icons have right margins
-// Only add to this map if right margin is different from default class su-mr-02em
+// Only add to this map if right margin is different from default class su-mr-03em
 export const iconRightMargin = {
-  default: 'su-mr-02em',
-  'arrow-left': 'su-mr-03em',
-  back: 'su-mr-03em',
-  camera: 'su-mr-03em',
-  'user-circle': 'su-mr-04em',
+  default: 'su-mr-03em',
+  'arrow-left': 'su-mr-04em',
+  back: 'su-mr-04em',
 };
 
 // Trailing icons have left margins
-// Only add to this map if left margin is different from default class su-ml-02em
+// Only add to this map if left margin is different from default class su-ml-03em
 export const iconLeftMargin = {
-  default: 'su-ml-02em',
-  'arrow-right': 'su-ml-03em',
-  back: 'su-ml-03em',
-  'back-external': 'su-ml-03em',
+  default: 'su-ml-03em',
+  'arrow-right': 'su-ml-04em',
+  back: 'su-ml-04em',
+  'triangle-right': 'su-ml-04em',
+  'triangle-down': 'su-ml-04em',
+  'triangle-up': 'su-ml-04em',
 };
