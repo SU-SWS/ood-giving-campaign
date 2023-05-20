@@ -1,6 +1,6 @@
 export const root = 'su-group su-relative su-z-10 su-max-w-500 su-mx-auto';
 
-export const imageWrapper = 'su-transition-all su-aspect-w-1 su-aspect-h-1 su-rounded-none group-hover:su-rounded-tl-[10rem] group-hover:su-rounded-br-[10rem] group-focus-within:su-rounded-tl-[10rem] group-focus-within:su-rounded-br-[10rem] su-overflow-hidden';
+export const imageWrapper = 'su-transition-all su-aspect-w-1 su-aspect-h-1 su-rounded-none group-hover:su-rounded-br-[10rem] group-focus-within:su-rounded-br-[10rem] su-overflow-hidden';
 
 export const image = 'su-object-cover su-w-full su-h-full';
 
