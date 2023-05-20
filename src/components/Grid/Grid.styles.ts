@@ -105,4 +105,4 @@ export const negativeSpacing = {
   theme: 'md:su--mb-140 lg:su--mb-171',
 };
 
-export const cellWithContent = 'last:su-mb-0';
+export const cellWithContent = 'last:!su-mb-0';

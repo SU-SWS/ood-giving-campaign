@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
-import { useScroll, useTransform, m } from 'framer-motion';
+import {
+  m, useScroll, useSpring, useTransform,
+} from 'framer-motion';
 import { Container } from '../Container';
 import { GridAlternating } from '../Grid';
 import { Heading, Text } from '../Typography';
@@ -9,11 +11,16 @@ export const ThemeSection = () => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['-500px', '700px'],
+    offset: ['-30vh', '0'],
   });
-  const heightWrapper = useTransform(scrollYProgress, [0, 1], [106, 1030]);
-  const zoom = useTransform(scrollYProgress, [0, 1], [0.4, 1]);
-  // const spacing = useTransform(scrollYProgress, [0, 1], [0, -600]);
+  const scrollYSpring = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+  const heightWrapper = useTransform(scrollYSpring, [0, 1], [106, '1030']);
+  const zoom = useTransform(scrollYSpring, [0, 1], [0.4, 1]);
+  const spacing = useTransform(scrollYSpring, [0, 1], [0, -440]);
 
   return (
     <div>
@@ -27,7 +34,7 @@ export const ThemeSection = () => {
           Square pegs, huge goals.
         </Heading>
         <div ref={containerRef}>
-          <GridAlternating addCenterLine>
+          <GridAlternating addCenterLine gridCellStyle={{ marginBottom: spacing }}>
             <m.div style={{ height: heightWrapper }} className="su-overflow-hidden">
               <Heading as="h3" size={6} font="druk" align="right">
                 Discovery
@@ -49,7 +56,7 @@ export const ThemeSection = () => {
             </m.div>
             <m.div style={{ height: heightWrapper }} className="su-overflow-hidden">
               <Heading as="h3" size={6} font="druk">
-                Citizendry
+                Citizenry
               </Heading>
               <m.div
                 style={{ opacity: scrollYProgress, scale: zoom }}

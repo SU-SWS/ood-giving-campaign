@@ -1,5 +1,7 @@
 import React, { HTMLAttributes, useRef } from 'react';
-import { useScroll, useSpring, m } from 'framer-motion';
+import {
+  useScroll, useSpring, m, MotionStyle,
+} from 'framer-motion';
 import { dcnb } from 'cnbuilder';
 import { Grid, GridProps } from './Grid';
 import { GridNegativeSpacingType, GridWidthType } from './Grid.types';
@@ -24,6 +26,8 @@ type GridAlternatingProps = HTMLAttributes<HTMLElement> & Pick<GridProps, 'as' |
   addCenterLine?: boolean;
   width?: GridWidthType;
   spacing?: MarginType | GridNegativeSpacingType;
+  // inline CSS Style for grid cell
+  gridCellStyle?: MotionStyle;
 };
 
 export const GridAlternating = ({
@@ -36,6 +40,7 @@ export const GridAlternating = ({
   pb,
   py,
   children,
+  gridCellStyle,
   ...props
 }: GridAlternatingProps) => {
   // turn children into array
@@ -58,15 +63,16 @@ export const GridAlternating = ({
         {childrenArray?.map((item, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <React.Fragment key={index}>
-            <div
+            <m.div
               className={dcnb(
                 marginBottoms[spacing],
                 styles.negativeSpacing[spacing],
                 styles.cellWithContent,
               )}
+              style={gridCellStyle}
             >
               {item}
-            </div>
+            </m.div>
             {index !== childrenArray.length - 1 && (
               <>
                 <div />
