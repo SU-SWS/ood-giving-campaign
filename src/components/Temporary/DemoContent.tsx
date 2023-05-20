@@ -6,11 +6,9 @@ import { Logo } from '../Logo';
 import { Heading, Text } from '../Typography';
 import { Parallax } from '../Parallax/Parallax';
 import { NumberCounter } from '../NumberCounter';
-import { ThemeSection } from './ThemeSection';
 
 export const DemoContent = () => (
   <div>
-    <ThemeSection />
     <div className="su-h-400 lg:su-h-600 su-overflow-hidden su-relative">
       <Parallax>
         <div style={{ backgroundImage: 'url(https://www.space.com/images/i/000/082/219/original/VLT-Pano-MCloudsMilkyWay_6068-net.jpg?interpolation=lanczos-none&fit=around|1024:1024' }} className="su--mt-100 su-h-800 su-flex su-items-center su-justify-center su-bg-center su-bg-cover" />

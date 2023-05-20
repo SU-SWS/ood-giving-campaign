@@ -2,6 +2,7 @@ import * as React from 'react';
 import { graphql } from 'gatsby';
 import { useStoryblokState } from '../hooks/useStoryblokState';
 import { DemoContent } from '../components/Temporary/DemoContent';
+import { ThemeSection } from '../components/Temporary/ThemeSection';
 import { HomepageHero } from '../components/Hero/HomepageHero';
 import { PageHead } from '../components/PageHead';
 import { CreateBloks } from '../components/CreateBloks';
@@ -15,6 +16,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <HomepageHero />
+      <ThemeSection />
       <CreateBloks blokSection={blok.hero} />
       <CreateBloks blokSection={blok.content} />
       <DemoContent />

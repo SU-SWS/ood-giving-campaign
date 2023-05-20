@@ -6,6 +6,7 @@ import { Container } from '../Container';
 import { GridAlternating } from '../Grid';
 import { Heading, Text } from '../Typography';
 import { ThemeCard } from '../VerticalCard';
+import { colorNameToHex } from '../../utilities/colorPalettePlugin';
 
 export const ThemeSection = () => {
   const containerRef = useRef(null);
@@ -19,9 +20,15 @@ export const ThemeSection = () => {
     restDelta: 0.001,
   });
   const heightWrapper = useTransform(scrollYSpring, [0, 1], [134, '1030']);
-  const zoom = useTransform(scrollYSpring, [0, 1], [0.4, 1]);
-  const spacing = useTransform(scrollYSpring, [0, 1], [-30, -440]);
+  const zoom = useTransform(scrollYSpring, [0, 1], [0, 1]);
+  const spacing = useTransform(scrollYSpring, [0, 1], [-30, -300]);
   const tabHeight = useTransform(scrollYSpring, [0, 0.8], [0.3, 1]);
+  const shiftUp = useTransform(scrollYSpring, [0, 1], [0, -400]);
+
+  const limeChange = useTransform(scrollYSpring, [0, 1], [colorNameToHex['digital-red'], colorNameToHex.lime]);
+  const poppyChange = useTransform(scrollYSpring, [0, 1], [colorNameToHex['digital-red'], colorNameToHex.poppy]);
+  const periwinkleChange = useTransform(scrollYSpring, [0, 1], [colorNameToHex['digital-red'], colorNameToHex.periwinkle]);
+  const robinsEggChange = useTransform(scrollYSpring, [0, 1], [colorNameToHex['digital-red'], colorNameToHex['robins-egg']]);
 
   return (
     <div>
@@ -36,12 +43,12 @@ export const ThemeSection = () => {
         </Heading>
         <div ref={containerRef}>
           <GridAlternating addCenterLine gridCellStyle={{ marginBottom: spacing }}>
-            <m.div style={{ height: heightWrapper }} className="su-overflow-hidden">
+            <m.div style={{ height: heightWrapper, marginBottom: shiftUp }} className="su-overflow-hidden">
               <div className="su-w-fit su-mr-0 su-ml-auto">
                 <Heading as="h3" size={6} font="druk" align="right" className="su-mb-01em">
                   Discovery
                 </Heading>
-                <m.div className="su-h-26 su-bg-lime su-origin-top-right" style={{ scaleY: tabHeight }} />
+                <m.div className="su-h-26 su-origin-top-right" style={{ scaleY: tabHeight, backgroundColor: limeChange }} />
               </div>
               <m.div
                 style={{ opacity: scrollYProgress, scale: zoom }}
@@ -62,7 +69,7 @@ export const ThemeSection = () => {
                 <Heading as="h3" size={6} font="druk" className="su-mb-01em">
                   Citizenry
                 </Heading>
-                <m.div className="su-h-26 su-bg-poppy su-origin-top-left" style={{ scaleY: tabHeight }} />
+                <m.div className="su-h-26 su-bg-poppy su-origin-top-left" style={{ scaleY: tabHeight, backgroundColor: poppyChange }} />
               </div>
               <m.div
                 style={{ opacity: scrollYProgress, scale: zoom }}
@@ -78,12 +85,12 @@ export const ThemeSection = () => {
                 />
               </m.div>
             </m.div>
-            <m.div style={{ height: heightWrapper }} className="su-overflow-hidden">
+            <m.div style={{ height: heightWrapper, marginBottom: shiftUp }} className="su-overflow-hidden">
               <div className="su-w-fit su-mr-0 su-ml-auto">
                 <Heading as="h3" size={6} font="druk" align="right" className="su-mb-01em">
                   Acceleration
                 </Heading>
-                <m.div className="su-h-26 su-bg-periwinkle su-origin-top-right" style={{ scaleY: tabHeight }} />
+                <m.div className="su-h-26 su-bg-periwinkle su-origin-top-right" style={{ scaleY: tabHeight, backgroundColor: periwinkleChange }} />
               </div>
               <m.div
                 style={{ opacity: scrollYProgress, scale: zoom }}
@@ -104,7 +111,7 @@ export const ThemeSection = () => {
                 <Heading as="h3" size={6} font="druk" className="su-mb-01em">
                   Our planet
                 </Heading>
-                <m.div className="su-h-26 su-bg-robins-egg su-origin-top-left" style={{ scaleY: tabHeight }} />
+                <m.div className="su-h-26 su-bg-robins-egg su-origin-top-left" style={{ scaleY: tabHeight, backgroundColor: robinsEggChange }} />
               </div>
               <m.div
                 style={{ opacity: scrollYProgress, scale: zoom }}
