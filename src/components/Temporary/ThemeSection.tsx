@@ -4,9 +4,10 @@ import {
 } from 'framer-motion';
 import { Container } from '../Container';
 import { GridAlternating } from '../Grid';
-import { Heading, Text } from '../Typography';
+import { Heading, Text, Paragraph } from '../Typography';
 import { ThemeCard } from '../VerticalCard';
 import { colorNameToHex } from '../../utilities/colorPalettePlugin';
+import { FlexBox } from '../FlexBox';
 
 export const ThemeSection = () => {
   const containerRef = useRef(null);
@@ -41,8 +42,34 @@ export const ThemeSection = () => {
         <Heading as="h2" size="splash" leading="none" uppercase font="druk" className="su-max-w-1000">
           Square pegs, huge goals.
         </Heading>
+        <FlexBox className="su-mx-auto" justifyContent="center">
+          <m.svg className="su-shrink-0" width="140" height="375" viewBox="0 0 140 375" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <m.path
+              d="M1.00142 0.0948767L2.56929 193.733C3.3767 293.452 64.5865 373.801 139.284 373.196"
+              stroke="white"
+              strokeWidth="2"
+              vector-effect="none"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              strokeDasharray="0 1"
+              transition={{
+                duration: 2,
+                ease: 'easeInOut',
+                repeat: Infinity,
+                repeatType: 'loop',
+                repeatDelay: 2,
+              }}
+            />
+          </m.svg>
+          <Paragraph variant="overview" font="serif" className="su-max-w-[100rem] su-rs-mt-8 su-rs-mb-4 su-ml-[3rem] su-pr-[17rem]">
+            These aren’t priorities to be funded—they are a promise we make to each other.
+            To build a more ethical future, we need to move concern for others from being an afterthought
+            to being integral to the thought process. In every field of study,
+            we need to ensure consequences are weighed and tradeoffs are made on purpose. This is how we get there.
+          </Paragraph>
+        </FlexBox>
         <div ref={containerRef}>
-          <GridAlternating addCenterLine gridCellStyle={{ marginBottom: spacing }}>
+          <GridAlternating pt={7} addCenterLine gridCellStyle={{ marginBottom: spacing }}>
             <m.div style={{ height: heightWrapper, marginBottom: shiftUp }} className="su-overflow-hidden">
               <div className="su-w-fit su-mr-0 su-ml-auto">
                 <Heading as="h3" size={6} font="druk" align="right" className="su-mb-01em">
