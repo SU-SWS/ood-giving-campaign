@@ -50,4 +50,4 @@ export const AnimationMap = {
     },
   },
 };
-export type AnimationType = keyof typeof AnimationMap;
+export type AnimationType = keyof typeof AnimationMap | 'none';

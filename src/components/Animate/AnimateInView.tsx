@@ -23,7 +23,7 @@ export const AnimateInView = ({
   const isInView = useInView(ref, { once });
 
   // Don't animate if the user has "reduced motion" enabled
-  if (prefersReducedMotion) {
+  if (prefersReducedMotion || animation === 'none') {
     return <div>{children}</div>;
   }
 

@@ -40,7 +40,7 @@ export const VerticalCard = ({
   ctaLabel,
   link,
   href,
-  animation,
+  animation = 'none',
   delay,
   className,
   ...props
