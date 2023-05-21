@@ -3,7 +3,7 @@ import {
   m, useScroll, useSpring, useTransform, useInView,
 } from 'framer-motion';
 import { Container } from '../Container';
-import { GridAlternating } from '../Grid';
+import { Grid, GridAlternating } from '../Grid';
 import { Heading, Text, Paragraph } from '../Typography';
 import { ThemeCard } from '../VerticalCard';
 import { colorNameToHex } from '../../utilities/colorPalettePlugin';
@@ -14,8 +14,10 @@ import { CtaButton } from '../Cta';
 export const ThemeSection = () => {
   const containerRef = useRef(null);
   const svgRef = useRef(null);
+  const curveDownRef = useRef(null);
   const revealButtonRef = useRef(null);
-  const isInView = useInView(svgRef, { once: true });
+  const introCurveInView = useInView(svgRef, { once: true });
+  const curveDownInView = useInView(curveDownRef, { once: true });
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -26,16 +28,28 @@ export const ThemeSection = () => {
     damping: 30,
     restDelta: 0.001,
   });
+
+  const { scrollYProgress: curveDownProgess } = useScroll({
+    target: containerRef,
+    offset: ['0', '400px'],
+  });
+  const curveDownSpring = useSpring(curveDownProgess, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
   const heightWrapper = useTransform(scrollYSpring, [0, 1], [134, 1030]);
   const zoom = useTransform(scrollYSpring, [0, 1], [0.4, 1]);
   const spacing = useTransform(scrollYSpring, [0, 1], [-30, -300]);
   const tabHeight = useTransform(scrollYSpring, [0, 0.8], [0.5, 1]);
   const shiftUp = useTransform(scrollYSpring, [0, 1], [0, -400]);
 
-  const limeChange = useTransform(scrollYSpring, [0, 1], [colorNameToHex['digital-red'], colorNameToHex.lime]);
-  const poppyChange = useTransform(scrollYSpring, [0, 1], [colorNameToHex['digital-red'], colorNameToHex.poppy]);
-  const periwinkleChange = useTransform(scrollYSpring, [0, 1], [colorNameToHex['digital-red'], colorNameToHex.periwinkle]);
-  const robinsEggChange = useTransform(scrollYSpring, [0, 1], [colorNameToHex['digital-red'], colorNameToHex['robins-egg']]);
+  const digitalRedHex = colorNameToHex['digital-red'];
+  const limeChange = useTransform(scrollYSpring, [0, 1], [digitalRedHex, colorNameToHex.lime]);
+  const poppyChange = useTransform(scrollYSpring, [0, 1], [digitalRedHex, colorNameToHex.poppy]);
+  const periwinkleChange = useTransform(scrollYSpring, [0, 1], [digitalRedHex, colorNameToHex.periwinkle]);
+  const robinsEggChange = useTransform(scrollYSpring, [0, 1], [digitalRedHex, colorNameToHex['robins-egg']]);
 
   // Scroll the page to the top of the revealButtonRef when the button is focused
   const revealButtonScrollToTop = () => {
@@ -59,9 +73,9 @@ export const ThemeSection = () => {
               d="M1.00142 0.0948767L2.56929 193.733C3.3767 293.452 64.5865 373.801 139.284 373.196"
               stroke="white"
               strokeWidth="2"
-              vector-effect="none"
+              vector-effect="non-scaling-stroke"
               initial={{ pathLength: 0 }}
-              animate={{ pathLength: isInView ? 1 : 0 }}
+              animate={{ pathLength: introCurveInView ? 1 : 0 }}
               transition={{
                 delay: 0.3,
                 duration: 0.3,
@@ -86,6 +100,19 @@ export const ThemeSection = () => {
           >
             Reveal themes
           </CtaButton>
+          <Grid lg={2} className="su-absolute su-left-0 su-top-[180rem] su-w-full">
+            <div className="su-max-w-full su-overflow-hidden">
+              <m.svg className="su-mr-0 su-ml-auto" ref={curveDownRef} viewBox="0 0 952 461" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <m.path
+                  d="M951.043 1H450.62C192.915 1 -16 206.517 -16 460.032"
+                  stroke="white"
+                  strokeWidth="2"
+                  vector-effect="non-scaling-stroke"
+                  style={{ pathLength: curveDownSpring }}
+                />
+              </m.svg>
+            </div>
+          </Grid>
           <GridAlternating pt={7} addCenterLine gridCellStyle={{ marginBottom: spacing }}>
             <m.div style={{ height: heightWrapper, marginBottom: shiftUp }} className="su-overflow-hidden">
               <div className="su-w-fit su-mr-0 su-ml-auto">
