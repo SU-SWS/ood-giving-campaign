@@ -83,7 +83,7 @@ export const VerticalCard = ({
       )}
       {ctaLabel && (link || href) && (
         <CtaLink
-          variant="ghost"
+          variant="ghostSwipe"
           icon="triangle-right"
           animate="right"
           sbLink={link}

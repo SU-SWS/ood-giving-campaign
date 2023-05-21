@@ -9,10 +9,12 @@ import { ThemeCard } from '../VerticalCard';
 import { colorNameToHex } from '../../utilities/colorPalettePlugin';
 import { FlexBox } from '../FlexBox';
 import { AnimateInView } from '../Animate';
+import { CtaButton } from '../Cta';
 
 export const ThemeSection = () => {
   const containerRef = useRef(null);
   const svgRef = useRef(null);
+  const revealButtonRef = useRef(null);
   const isInView = useInView(svgRef, { once: true });
 
   const { scrollYProgress } = useScroll({
@@ -35,6 +37,11 @@ export const ThemeSection = () => {
   const periwinkleChange = useTransform(scrollYSpring, [0, 1], [colorNameToHex['digital-red'], colorNameToHex.periwinkle]);
   const robinsEggChange = useTransform(scrollYSpring, [0, 1], [colorNameToHex['digital-red'], colorNameToHex['robins-egg']]);
 
+  // Scroll the page to the top of the revealButtonRef when the button is focused
+  const revealButtonScrollToTop = () => {
+    revealButtonRef.current?.scrollIntoView({ block: 'start' });
+  };
+
   return (
     <div>
       <Container
@@ -55,7 +62,6 @@ export const ThemeSection = () => {
               vector-effect="none"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: isInView ? 1 : 0 }}
-              strokeDasharray="0 1"
               transition={{
                 delay: 0.3,
                 duration: 0.3,
@@ -73,8 +79,15 @@ export const ThemeSection = () => {
           </AnimateInView>
         </FlexBox>
         <div ref={containerRef}>
+          <CtaButton
+            ref={revealButtonRef}
+            className="su-sr-only"
+            onFocus={revealButtonScrollToTop}
+          >
+            Reveal themes
+          </CtaButton>
           <GridAlternating pt={7} addCenterLine gridCellStyle={{ marginBottom: spacing }}>
-            <m.div style={{ height: heightWrapper, marginBottom: shiftUp }} className="su-overflow-hidden su-group">
+            <m.div style={{ height: heightWrapper, marginBottom: shiftUp }} className="su-overflow-hidden">
               <div className="su-w-fit su-mr-0 su-ml-auto">
                 <Heading as="h3" size="f6" font="druk" align="right" className="su-mb-01em">
                   Discovery
