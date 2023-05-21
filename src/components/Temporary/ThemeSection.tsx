@@ -9,13 +9,10 @@ import { ThemeCard } from '../VerticalCard';
 import { colorNameToHex } from '../../utilities/colorPalettePlugin';
 import { FlexBox } from '../FlexBox';
 import { AnimateInView } from '../Animate';
-import { CtaButton } from '../Cta';
 
 export const ThemeSection = () => {
   const containerRef = useRef(null);
   const svgRef = useRef(null);
-  const curveDownRef = useRef(null);
-  const revealButtonRef = useRef(null);
   const introCurveInView = useInView(svgRef, { once: true });
   const springSetting: SpringOptions = {
     stiffness: 100,
@@ -31,9 +28,27 @@ export const ThemeSection = () => {
 
   const { scrollYProgress: curveDownProgess } = useScroll({
     target: containerRef,
-    offset: ['0', '400px'],
+    offset: ['0', '300px'],
   });
   const curveDownSpring = useSpring(curveDownProgess, springSetting);
+
+  const { scrollYProgress: rightLineSpringProgress } = useScroll({
+    target: containerRef,
+    offset: ['200px', '500px'],
+  });
+  const rightLineSpring = useSpring(rightLineSpringProgress, springSetting);
+
+  const { scrollYProgress: leftLineSpringProgress } = useScroll({
+    target: containerRef,
+    offset: ['800px', '1100px'],
+  });
+  const leftLineSpring = useSpring(leftLineSpringProgress, springSetting);
+
+  const { scrollYProgress: curveUpProgess } = useScroll({
+    target: containerRef,
+    offset: ['1000px', '1400px'],
+  });
+  const curveUpSpring = useSpring(curveUpProgess, springSetting);
 
   const heightWrapper = useTransform(scrollYSpring, [0, 1], [134, 1030]);
   const zoom = useTransform(scrollYSpring, [0, 1], [0.4, 1]);
@@ -47,16 +62,11 @@ export const ThemeSection = () => {
   const periwinkleChange = useTransform(scrollYSpring, [0, 1], [digitalRedHex, colorNameToHex.periwinkle]);
   const robinsEggChange = useTransform(scrollYSpring, [0, 1], [digitalRedHex, colorNameToHex['robins-egg']]);
 
-  // Scroll the page to the top of the revealButtonRef when the button is focused
-  const revealButtonScrollToTop = () => {
-    revealButtonRef.current?.scrollIntoView({ block: 'start' });
-  };
-
   return (
     <div>
       <Container
         bgColor="black"
-        py={9}
+        pt={9}
         className="su-relative su-overflow-hidden"
       >
         <Text size={2} leading="tight" font="serif">Themes</Text>
@@ -74,12 +84,12 @@ export const ThemeSection = () => {
               animate={{ pathLength: introCurveInView ? 1 : 0 }}
               transition={{
                 delay: 0.3,
-                duration: 0.3,
+                duration: 0.6,
                 ease: 'easeInOut',
               }}
             />
           </m.svg>
-          <AnimateInView animation="fadeIn" delay={0.6}>
+          <AnimateInView animation="slideDown" delay={0.6}>
             <Paragraph variant="overview" font="serif" className="su-max-w-[100rem] su-rs-mt-8 su-rs-mb-4 su-ml-[3rem] su-pr-[17rem]">
               These aren’t priorities to be funded—they are a promise we make to each other.
               To build a more ethical future, we need to move concern for others from being an afterthought
@@ -89,16 +99,10 @@ export const ThemeSection = () => {
           </AnimateInView>
         </FlexBox>
         <div ref={containerRef}>
-          <CtaButton
-            ref={revealButtonRef}
-            className="su-sr-only"
-            onFocus={revealButtonScrollToTop}
-          >
-            Reveal themes
-          </CtaButton>
-          <Grid lg={2} className="su-absolute su-left-0 su-top-[180rem] su-w-full">
+          {/* This grid contains the 4 animated lines behind the theme cards */}
+          <Grid lg={2} className="su-absolute su-left-0 su-top-[180rem] su-w-full su-gap-y-[30rem]">
             <div className="su-max-w-full su-overflow-hidden">
-              <m.svg className="su-mr-0 su-ml-auto" ref={curveDownRef} viewBox="0 0 952 461" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <m.svg className="su-mr-0 su-ml-auto" viewBox="0 0 952 461" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <m.path
                   d="M951.043 1H450.62C192.915 1 -16 206.517 -16 460.032"
                   stroke="white"
@@ -108,11 +112,34 @@ export const ThemeSection = () => {
                 />
               </m.svg>
             </div>
+            <div className="su-max-w-full su-overflow-hidden">
+              <m.div
+                className="su-h-2 su-bg-white su-origin-left su-mt-400"
+                style={{ scaleX: rightLineSpring }}
+              />
+            </div>
+            <div className="su-max-w-full su-overflow-hidden">
+              <m.div
+                className="su-h-2 su-bg-white su-origin-right su-mt-300"
+                style={{ scaleX: leftLineSpring }}
+              />
+            </div>
+            <div className="su-max-w-full su-overflow-hidden su-mt-200">
+              <m.svg className="su-mr-0 su-ml-auto su-rotate-180" viewBox="0 0 952 461" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <m.path
+                  d="M951.043 1H450.62C192.915 1 -16 206.517 -16 460.032"
+                  stroke="white"
+                  strokeWidth="2"
+                  vector-effect="non-scaling-stroke"
+                  style={{ pathLength: curveUpSpring }}
+                />
+              </m.svg>
+            </div>
           </Grid>
-          <GridAlternating pt={7} addCenterLine gridCellStyle={{ marginBottom: spacing }}>
+          <GridAlternating py={7} addCenterLine gridCellStyle={{ marginBottom: spacing }}>
             <m.div style={{ height: heightWrapper, marginBottom: shiftUp }} className="su-overflow-hidden">
               <div className="su-w-fit su-mr-0 su-ml-auto">
-                <Heading as="h3" size="f6" font="druk" align="right" className="su-mb-01em">
+                <Heading id="topthemes" as="h3" size="f6" font="druk" align="right" className="su-mb-01em">
                   Discovery
                 </Heading>
                 <m.div className="su-h-20 su-origin-top-right" style={{ scaleY: tabHeight, backgroundColor: limeChange }} />
