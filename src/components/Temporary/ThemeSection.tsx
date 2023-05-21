@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import {
-  m, useScroll, useSpring, useTransform, useInView,
+  m, useScroll, useSpring, useTransform, useInView, SpringOptions,
 } from 'framer-motion';
 import { Container } from '../Container';
 import { Grid, GridAlternating } from '../Grid';
@@ -17,27 +17,23 @@ export const ThemeSection = () => {
   const curveDownRef = useRef(null);
   const revealButtonRef = useRef(null);
   const introCurveInView = useInView(svgRef, { once: true });
-  const curveDownInView = useInView(curveDownRef, { once: true });
+  const springSetting: SpringOptions = {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  };
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['-30vh', '-10px'],
   });
-  const scrollYSpring = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });
+  const scrollYSpring = useSpring(scrollYProgress, springSetting);
 
   const { scrollYProgress: curveDownProgess } = useScroll({
     target: containerRef,
     offset: ['0', '400px'],
   });
-  const curveDownSpring = useSpring(curveDownProgess, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });
+  const curveDownSpring = useSpring(curveDownProgess, springSetting);
 
   const heightWrapper = useTransform(scrollYSpring, [0, 1], [134, 1030]);
   const zoom = useTransform(scrollYSpring, [0, 1], [0.4, 1]);
