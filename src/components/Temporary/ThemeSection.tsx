@@ -27,7 +27,7 @@ export const ThemeSection = () => {
     restDelta: 0.001,
   });
   const heightWrapper = useTransform(scrollYSpring, [0, 1], [134, 1030]);
-  const zoom = useTransform(scrollYSpring, [0, 1], [0, 1]);
+  const zoom = useTransform(scrollYSpring, [0, 1], [0.4, 1]);
   const spacing = useTransform(scrollYSpring, [0, 1], [-30, -300]);
   const tabHeight = useTransform(scrollYSpring, [0, 0.8], [0.5, 1]);
   const shiftUp = useTransform(scrollYSpring, [0, 1], [0, -400]);
@@ -50,7 +50,7 @@ export const ThemeSection = () => {
         className="su-relative su-overflow-hidden"
       >
         <Text size={2} leading="tight" font="serif">Themes</Text>
-        <Heading as="h2" size="splash" leading="none" uppercase font="druk" className="su-max-w-1000">
+        <Heading as="h2" size="splash" leading="none" font="druk" className="su-max-w-1000">
           Square pegs, huge goals.
         </Heading>
         <FlexBox className="su-mx-auto" justifyContent="center">
