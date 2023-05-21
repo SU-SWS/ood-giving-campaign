@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import {
-  m, useScroll, useSpring, useTransform,
+  m, useScroll, useSpring, useTransform, useInView,
 } from 'framer-motion';
 import { Container } from '../Container';
 import { GridAlternating } from '../Grid';
@@ -8,9 +8,13 @@ import { Heading, Text, Paragraph } from '../Typography';
 import { ThemeCard } from '../VerticalCard';
 import { colorNameToHex } from '../../utilities/colorPalettePlugin';
 import { FlexBox } from '../FlexBox';
+import { AnimateInView } from '../Animate';
 
 export const ThemeSection = () => {
   const containerRef = useRef(null);
+  const svgRef = useRef(null);
+  const isInView = useInView(svgRef, { once: true });
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['-30vh', '-10px'],
@@ -20,10 +24,10 @@ export const ThemeSection = () => {
     damping: 30,
     restDelta: 0.001,
   });
-  const heightWrapper = useTransform(scrollYSpring, [0, 1], [134, '1030']);
+  const heightWrapper = useTransform(scrollYSpring, [0, 1], [134, 1030]);
   const zoom = useTransform(scrollYSpring, [0, 1], [0, 1]);
   const spacing = useTransform(scrollYSpring, [0, 1], [-30, -300]);
-  const tabHeight = useTransform(scrollYSpring, [0, 0.8], [0.3, 1]);
+  const tabHeight = useTransform(scrollYSpring, [0, 0.8], [0.5, 1]);
   const shiftUp = useTransform(scrollYSpring, [0, 1], [0, -400]);
 
   const limeChange = useTransform(scrollYSpring, [0, 1], [colorNameToHex['digital-red'], colorNameToHex.lime]);
@@ -43,39 +47,39 @@ export const ThemeSection = () => {
           Square pegs, huge goals.
         </Heading>
         <FlexBox className="su-mx-auto" justifyContent="center">
-          <m.svg className="su-shrink-0" width="140" height="375" viewBox="0 0 140 375" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <m.svg ref={svgRef} className="su-shrink-0" width="140" height="375" viewBox="0 0 140 375" fill="none" xmlns="http://www.w3.org/2000/svg">
             <m.path
               d="M1.00142 0.0948767L2.56929 193.733C3.3767 293.452 64.5865 373.801 139.284 373.196"
               stroke="white"
               strokeWidth="2"
               vector-effect="none"
               initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
+              animate={{ pathLength: isInView ? 1 : 0 }}
               strokeDasharray="0 1"
               transition={{
-                duration: 2,
+                delay: 0.3,
+                duration: 0.3,
                 ease: 'easeInOut',
-                repeat: Infinity,
-                repeatType: 'loop',
-                repeatDelay: 2,
               }}
             />
           </m.svg>
-          <Paragraph variant="overview" font="serif" className="su-max-w-[100rem] su-rs-mt-8 su-rs-mb-4 su-ml-[3rem] su-pr-[17rem]">
-            These aren’t priorities to be funded—they are a promise we make to each other.
-            To build a more ethical future, we need to move concern for others from being an afterthought
-            to being integral to the thought process. In every field of study,
-            we need to ensure consequences are weighed and tradeoffs are made on purpose. This is how we get there.
-          </Paragraph>
+          <AnimateInView animation="fadeIn" delay={0.6}>
+            <Paragraph variant="overview" font="serif" className="su-max-w-[100rem] su-rs-mt-8 su-rs-mb-4 su-ml-[3rem] su-pr-[17rem]">
+              These aren’t priorities to be funded—they are a promise we make to each other.
+              To build a more ethical future, we need to move concern for others from being an afterthought
+              to being integral to the thought process. In every field of study,
+              we need to ensure consequences are weighed and tradeoffs are made on purpose. This is how we get there.
+            </Paragraph>
+          </AnimateInView>
         </FlexBox>
         <div ref={containerRef}>
           <GridAlternating pt={7} addCenterLine gridCellStyle={{ marginBottom: spacing }}>
-            <m.div style={{ height: heightWrapper, marginBottom: shiftUp }} className="su-overflow-hidden">
+            <m.div style={{ height: heightWrapper, marginBottom: shiftUp }} className="su-overflow-hidden su-group">
               <div className="su-w-fit su-mr-0 su-ml-auto">
-                <Heading as="h3" size={6} font="druk" align="right" className="su-mb-01em">
+                <Heading as="h3" size="f6" font="druk" align="right" className="su-mb-01em">
                   Discovery
                 </Heading>
-                <m.div className="su-h-26 su-origin-top-right" style={{ scaleY: tabHeight, backgroundColor: limeChange }} />
+                <m.div className="su-h-20 su-origin-top-right" style={{ scaleY: tabHeight, backgroundColor: limeChange }} />
               </div>
               <m.div
                 style={{ opacity: scrollYProgress, scale: zoom }}
@@ -93,10 +97,10 @@ export const ThemeSection = () => {
             </m.div>
             <m.div style={{ height: heightWrapper }} className="su-overflow-hidden">
               <div className="su-w-fit su-ml-0 su-mr-auto">
-                <Heading as="h3" size={6} font="druk" className="su-mb-01em">
+                <Heading as="h3" size="f6" font="druk" className="su-mb-01em">
                   Citizenry
                 </Heading>
-                <m.div className="su-h-26 su-bg-poppy su-origin-top-left" style={{ scaleY: tabHeight, backgroundColor: poppyChange }} />
+                <m.div className="su-h-20 su-bg-poppy su-origin-top-left" style={{ scaleY: tabHeight, backgroundColor: poppyChange }} />
               </div>
               <m.div
                 style={{ opacity: scrollYProgress, scale: zoom }}
@@ -114,10 +118,10 @@ export const ThemeSection = () => {
             </m.div>
             <m.div style={{ height: heightWrapper, marginBottom: shiftUp }} className="su-overflow-hidden">
               <div className="su-w-fit su-mr-0 su-ml-auto">
-                <Heading as="h3" size={6} font="druk" align="right" className="su-mb-01em">
+                <Heading as="h3" size="f6" font="druk" align="right" className="su-mb-01em">
                   Acceleration
                 </Heading>
-                <m.div className="su-h-26 su-bg-periwinkle su-origin-top-right" style={{ scaleY: tabHeight, backgroundColor: periwinkleChange }} />
+                <m.div className="su-h-20 su-bg-periwinkle su-origin-top-right" style={{ scaleY: tabHeight, backgroundColor: periwinkleChange }} />
               </div>
               <m.div
                 style={{ opacity: scrollYProgress, scale: zoom }}
@@ -135,10 +139,10 @@ export const ThemeSection = () => {
             </m.div>
             <m.div style={{ height: heightWrapper }} className="su-overflow-hidden">
               <div className="su-w-fit su-ml-0 su-mr-auto">
-                <Heading as="h3" size={6} font="druk" className="su-mb-01em">
+                <Heading as="h3" size="f6" font="druk" className="su-mb-01em">
                   Our planet
                 </Heading>
-                <m.div className="su-h-26 su-bg-robins-egg su-origin-top-left" style={{ scaleY: tabHeight, backgroundColor: robinsEggChange }} />
+                <m.div className="su-h-20 su-bg-robins-egg su-origin-top-left" style={{ scaleY: tabHeight, backgroundColor: robinsEggChange }} />
               </div>
               <m.div
                 style={{ opacity: scrollYProgress, scale: zoom }}

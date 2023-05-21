@@ -1,4 +1,12 @@
 export const AnimationMap = {
+  fadeIn: {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+    },
+  },
   zoomIn: {
     hidden: {
       opacity: 0,
