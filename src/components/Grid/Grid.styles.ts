@@ -97,7 +97,7 @@ export const centerline = 'su-hidden md:su-block su-w-2 su-absolute su-top-0 su-
 export const gridWidths = {
   full: 'su-w-full',
   // This is for the overview text and theme cards in the alternating grid
-  inset: 'su-w-full 3xl:su-w-[85%]',
+  inset: 'su-w-full 2xl:su-w-[95%] 3xl:su-w-[85%]',
 };
 
 // Some sections have negative spacing between cards, i.e., the items are shifted upwards

@@ -79,7 +79,7 @@ export const ThemeSection = () => {
               d="M1.00142 0.0948767L2.56929 193.733C3.3767 293.452 64.5865 373.801 139.284 373.196"
               stroke="white"
               strokeWidth="2"
-              vector-effect="non-scaling-stroke"
+              vectorEffect="non-scaling-stroke"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: introCurveInView ? 1 : 0 }}
               transition={{
@@ -107,7 +107,7 @@ export const ThemeSection = () => {
                   d="M951.043 1H450.62C192.915 1 -16 206.517 -16 460.032"
                   stroke="white"
                   strokeWidth="2"
-                  vector-effect="non-scaling-stroke"
+                  vectorEffect="non-scaling-stroke"
                   style={{ pathLength: curveDownSpring }}
                 />
               </m.svg>
@@ -130,7 +130,7 @@ export const ThemeSection = () => {
                   d="M951.043 1H450.62C192.915 1 -16 206.517 -16 460.032"
                   stroke="white"
                   strokeWidth="2"
-                  vector-effect="non-scaling-stroke"
+                  vectorEffect="non-scaling-stroke"
                   style={{ pathLength: curveUpSpring }}
                 />
               </m.svg>
