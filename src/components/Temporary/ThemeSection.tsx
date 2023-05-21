@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import { dcnb } from 'cnbuilder';
 import {
   m, useScroll, useSpring, useTransform, useInView, SpringOptions,
 } from 'framer-motion';
@@ -9,6 +10,7 @@ import { ThemeCard } from '../VerticalCard';
 import { colorNameToHex } from '../../utilities/colorPalettePlugin';
 import { FlexBox } from '../FlexBox';
 import { AnimateInView } from '../Animate';
+import { CtaButton } from '../Cta';
 
 export const ThemeSection = () => {
   const containerRef = useRef(null);
@@ -50,11 +52,13 @@ export const ThemeSection = () => {
   });
   const curveUpSpring = useSpring(curveUpProgess, springSetting);
 
-  const heightWrapper = useTransform(scrollYSpring, [0, 1], [134, 1030]);
-  const zoom = useTransform(scrollYSpring, [0, 1], [0.4, 1]);
-  const spacing = useTransform(scrollYSpring, [0, 1], [-30, -300]);
-  const tabHeight = useTransform(scrollYSpring, [0, 0.8], [0.5, 1]);
-  const shiftUp = useTransform(scrollYSpring, [0, 1], [0, -400]);
+  const [shouldAnimate, setShouldAnimate] = useState(true);
+  const heightWrapper = useTransform(scrollYSpring, [0, 1], [shouldAnimate ? 134 : 1030, 1030]);
+  const zoom = useTransform(scrollYSpring, [0, 1], [shouldAnimate ? 0.4 : 1, 1]);
+  const spacing = useTransform(scrollYSpring, [0, 1], [shouldAnimate ? -30 : -300, -300]);
+  const tabHeight = useTransform(scrollYSpring, [0, 0.8], [shouldAnimate ? 0.5 : 1, 1]);
+  const shiftUp = useTransform(scrollYSpring, [0, 1], [shouldAnimate ? 0 : -400, -400]);
+  const opacityChange = useTransform(scrollYSpring, [0, 1], [shouldAnimate ? 0 : 1, 1]);
 
   const digitalRedHex = colorNameToHex['digital-red'];
   const limeChange = useTransform(scrollYSpring, [0, 1], [digitalRedHex, colorNameToHex.lime]);
@@ -89,7 +93,7 @@ export const ThemeSection = () => {
               }}
             />
           </m.svg>
-          <AnimateInView animation="slideDown" delay={0.6}>
+          <AnimateInView animation="none" delay={0.6}>
             <Paragraph variant="overview" font="serif" className="su-max-w-[100rem] su-rs-mt-8 su-rs-mb-4 su-ml-[3rem] su-pr-[17rem]">
               These aren’t priorities to be funded—they are a promise we make to each other.
               To build a more ethical future, we need to move concern for others from being an afterthought
@@ -98,54 +102,57 @@ export const ThemeSection = () => {
             </Paragraph>
           </AnimateInView>
         </FlexBox>
+        <div className={dcnb('su-sr-only focus-within:su-not-sr-only su-w-fit children:su-mx-auto', !shouldAnimate ? 'su-hidden' : '')}>
+          <CtaButton onClick={() => setShouldAnimate(false)}>Reveal themes visually</CtaButton>
+        </div>
+        {/* This grid contains the 4 animated lines behind the theme cards */}
+        <Grid lg={2} className="su-absolute su-left-0 su-top-[180rem] su-w-full su-gap-y-[30rem]">
+          <div className="su-max-w-full su-overflow-hidden">
+            <m.svg className="su-mr-0 su-ml-auto" viewBox="0 0 952 461" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <m.path
+                d="M951.043 1H450.62C192.915 1 -16 206.517 -16 460.032"
+                stroke="white"
+                strokeWidth="2"
+                vectorEffect="non-scaling-stroke"
+                style={{ pathLength: curveDownSpring }}
+              />
+            </m.svg>
+          </div>
+          <div className="su-max-w-full su-overflow-hidden">
+            <m.div
+              className="su-h-2 su-bg-white su-origin-left su-mt-400"
+              style={{ scaleX: rightLineSpring }}
+            />
+          </div>
+          <div className="su-max-w-full su-overflow-hidden">
+            <m.div
+              className="su-h-2 su-bg-white su-origin-right su-mt-300"
+              style={{ scaleX: leftLineSpring }}
+            />
+          </div>
+          <div className="su-max-w-full su-overflow-hidden su-mt-200">
+            <m.svg className="su-mr-0 su-ml-auto su-rotate-180" viewBox="0 0 952 461" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <m.path
+                d="M951.043 1H450.62C192.915 1 -16 206.517 -16 460.032"
+                stroke="white"
+                strokeWidth="2"
+                vectorEffect="non-scaling-stroke"
+                style={{ pathLength: curveUpSpring }}
+              />
+            </m.svg>
+          </div>
+        </Grid>
         <div ref={containerRef}>
-          {/* This grid contains the 4 animated lines behind the theme cards */}
-          <Grid lg={2} className="su-absolute su-left-0 su-top-[180rem] su-w-full su-gap-y-[30rem]">
-            <div className="su-max-w-full su-overflow-hidden">
-              <m.svg className="su-mr-0 su-ml-auto" viewBox="0 0 952 461" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <m.path
-                  d="M951.043 1H450.62C192.915 1 -16 206.517 -16 460.032"
-                  stroke="white"
-                  strokeWidth="2"
-                  vectorEffect="non-scaling-stroke"
-                  style={{ pathLength: curveDownSpring }}
-                />
-              </m.svg>
-            </div>
-            <div className="su-max-w-full su-overflow-hidden">
-              <m.div
-                className="su-h-2 su-bg-white su-origin-left su-mt-400"
-                style={{ scaleX: rightLineSpring }}
-              />
-            </div>
-            <div className="su-max-w-full su-overflow-hidden">
-              <m.div
-                className="su-h-2 su-bg-white su-origin-right su-mt-300"
-                style={{ scaleX: leftLineSpring }}
-              />
-            </div>
-            <div className="su-max-w-full su-overflow-hidden su-mt-200">
-              <m.svg className="su-mr-0 su-ml-auto su-rotate-180" viewBox="0 0 952 461" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <m.path
-                  d="M951.043 1H450.62C192.915 1 -16 206.517 -16 460.032"
-                  stroke="white"
-                  strokeWidth="2"
-                  vectorEffect="non-scaling-stroke"
-                  style={{ pathLength: curveUpSpring }}
-                />
-              </m.svg>
-            </div>
-          </Grid>
           <GridAlternating py={7} addCenterLine gridCellStyle={{ marginBottom: spacing }}>
             <m.div style={{ height: heightWrapper, marginBottom: shiftUp }} className="su-overflow-hidden">
               <div className="su-w-fit su-mr-0 su-ml-auto">
-                <Heading id="topthemes" as="h3" size="f6" font="druk" align="right" className="su-mb-01em">
+                <Heading as="h3" size="f6" font="druk" align="right" className="su-mb-01em">
                   Discovery
                 </Heading>
                 <m.div className="su-h-20 su-origin-top-right" style={{ scaleY: tabHeight, backgroundColor: limeChange }} />
               </div>
               <m.div
-                style={{ opacity: scrollYProgress, scale: zoom }}
+                style={{ opacity: opacityChange, scale: zoom }}
                 className="su-origin-top-right"
               >
                 <ThemeCard
