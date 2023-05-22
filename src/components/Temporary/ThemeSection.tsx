@@ -93,7 +93,7 @@ export const ThemeSection = () => {
               }}
             />
           </m.svg>
-          <AnimateInView animation="none" delay={0.6}>
+          <AnimateInView animation="slideDown" delay={0.6}>
             <Paragraph variant="overview" font="serif" className="su-max-w-[100rem] su-rs-mt-8 su-rs-mb-4 su-ml-[3rem] su-pr-[17rem]">
               These aren’t priorities to be funded—they are a promise we make to each other.
               To build a more ethical future, we need to move concern for others from being an afterthought

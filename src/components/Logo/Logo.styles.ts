@@ -4,7 +4,7 @@ export type LogoVariantType = 'horizontal' | 'stacked';
 
 export type LogoColorType = 'black' | 'white';
 
-export const link = 'su-no-underline focus-visible:su-outline-none focus-visible:su-ring-2 focus-visible:su-ring-spirited';
+export const link = 'su-no-underline focus-visible:su-outline-none focus-visible:su-ring-2 focus-visible:su-ring-white';
 
 export const textWrapper = (variant: LogoVariantType) => dcnb('su-flex', {
   'su-h-[.82em]': variant === 'horizontal',
