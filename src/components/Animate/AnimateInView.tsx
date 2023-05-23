@@ -23,7 +23,7 @@ export const AnimateInView = ({
   const isInView = useInView(ref, { once });
 
   // Don't animate if the user has "reduced motion" enabled
-  if (prefersReducedMotion) {
+  if (prefersReducedMotion || animation === 'none') {
     return <div>{children}</div>;
   }
 
@@ -32,12 +32,9 @@ export const AnimateInView = ({
       ref={ref}
       variants={AnimationMap[animation]}
       transition={{
-        duration,
-        type: 'spring',
-        bounce: 0.5,
-        damping: 20,
-        mass: 3,
         delay,
+        duration,
+        ease: 'easeInOut',
       }}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
