@@ -178,9 +178,9 @@ export const ThemeSection = () => {
               >
                 <ThemeCard
                   heading="Preparing citizens and leaders"
-                  body="Propelled by new ways of thinking, working, and creating, we probe the frontiers of discovery to drive progress."
+                  body="We are preparing students to live, work, and serve as active citizens, for the good of the world."
                   textColor="white"
-                  imageSrc="https://a-us.storyblok.com/f/1005200/2796x2048/abbf52b8df/21664-9-0002.jpg"
+                  imageSrc="https://a-us.storyblok.com/f/1005200/2560x1708/a3874a6272/barnumtower_0837.jpg"
                   ctaLabel="Learn how"
                   href="/about-test"
                 />
@@ -199,9 +199,9 @@ export const ThemeSection = () => {
               >
                 <ThemeCard
                   heading="Accelerating Solutions for Humanity"
-                  body="Propelled by new ways of thinking, working, and creating, we probe the frontiers of discovery to drive progress."
+                  body="Creating systems to rapidly design, develop, and scale applied research, enabled by expanded and new partnerships."
                   textColor="white"
-                  imageSrc="https://a-us.storyblok.com/f/1005200/1708x2560/9a41936831/arizonagarden_krishnarao_1704.jpg"
+                  imageSrc="https://a-us.storyblok.com/f/1005200/2560x1708/28e01c3d3c/benjamingao_3843.jpg"
                   ctaLabel="Learn how"
                   href="/about-test"
                 />
@@ -220,7 +220,7 @@ export const ThemeSection = () => {
               >
                 <ThemeCard
                   heading="Sustaining Life on Earth"
-                  body="Propelled by new ways of thinking, working, and creating, we probe the frontiers of discovery to drive progress."
+                  body="The future looks bright—but only when we ensure a healthy planet in which humans and nature can thrive together."
                   textColor="white"
                   imageSrc="https://a-us.storyblok.com/f/1005200/2499x1667/203b52dc5a/farm_1206.jpg"
                   ctaLabel="Learn how"
