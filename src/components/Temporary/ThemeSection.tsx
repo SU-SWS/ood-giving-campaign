@@ -67,7 +67,7 @@ export const ThemeSection = () => {
   const robinsEggChange = useTransform(scrollYSpring, [0, 1], [digitalRedHex, colorNameToHex['robins-egg']]);
 
   return (
-    <div>
+    <div className="su-relative">
       <Container
         bgColor="black"
         pt={9}
