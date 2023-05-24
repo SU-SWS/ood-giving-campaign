@@ -1,31 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import {
-  m, useReducedMotion, useScroll, useTransform, useSpring, SpringOptions,
+  m, useScroll, useTransform,
 } from 'framer-motion';
 import { Container } from '../Container';
 import { Heading } from '../Typography';
-import { skyGradient } from '../../utilities/gradients';
-import { HeroIcon } from '../HeroIcon';
 import { getProcessedImage } from '../../utilities/getProcessedImage';
 
 export const HomepageHeroAlt = () => {
-  const prefersReduceMotion = useReducedMotion();
-
-  const lines: string[] = [
-    'How will we',
-    'come together',
-    'to make the',
-    'world better?',
-  ];
-
-  const bgImage = getProcessedImage('https://a-us.storyblok.com/f/1005200/2048x1364/1f1c6c518c/dji_0160-hdr-1-2048x1364.webp');
-
   const { scrollYProgress } = useScroll();
-  const springSetting: SpringOptions = {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  };
   // const progress = useTransform(scrollYProgress, [0, 0.005, 0.015, 0.020], [1, 1, 1, 0.4]);
   // const progress2 = useTransform(scrollYProgress, [0.020, 0.025, 0.045, 0.05], [0.4, 1, 1, 0.4]);
   // const progress3 = useTransform(scrollYProgress, [0.05, 0.055, 0.075, 0.08], [0.4, 1, 1, 0.4]);
