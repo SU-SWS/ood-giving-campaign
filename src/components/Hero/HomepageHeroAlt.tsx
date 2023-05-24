@@ -5,12 +5,9 @@ import { Heading } from '../Typography';
 import { skyGradient } from '../../utilities/gradients';
 import { HeroIcon } from '../HeroIcon';
 import { getProcessedImage } from '../../utilities/getProcessedImage';
-import { getMaskedAsset } from '../../utilities/getMaskedAsset';
 
 export const HomepageHeroAlt = () => {
   const prefersReduceMotion = useReducedMotion();
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(!prefersReduceMotion);
 
   const lines: string[] = [
     'How will we',
@@ -68,26 +65,17 @@ export const HomepageHeroAlt = () => {
     },
   };
 
-  // Toggle the video's play/pause state and update isPlaying state
-  const toggleVideo = () => {
-    const videoElement = videoRef.current;
-
-    if (videoElement) {
-      if (videoElement.paused) {
-        videoElement.play();
-        setIsPlaying(true);
-      } else {
-        videoElement.pause();
-        setIsPlaying(false);
-      }
-    }
-  };
+  const bgImage = getProcessedImage('https://a-us.storyblok.com/f/1005200/2048x1364/1f1c6c518c/dji_0160-hdr-1-2048x1364.webp');
 
   return (
-    <Container width="full" className="su-relative su-bg-[#3074B0]">
+    <Container
+      width="full"
+      className="su-bg-[#3074B0] su-sticky su-top-0 su-h-[300vh]"
+      // style={{ backgroundImage: bgImage, backgroundSize: 'cover' }}
+    >
       <div className="su-rs-pt-10 su-bg-[#3074B0]">
-        <div className="su-relative su-w-full su-bg-[hsla(214,39%,50%,1)] su--mb-1">
-          <div className="su-aspect-w-1 su-aspect-h-1 md:su-aspect-w-16 md:su-aspect-h-9">
+        <div className="su-relative su-w-full su-bg-[hsla(214,39%,50%,1)]">
+          <div className="su-h-screen">
             <img
               alt=""
               src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2048x1364/1f1c6c518c/dji_0160-hdr-1-2048x1364.webp')}
