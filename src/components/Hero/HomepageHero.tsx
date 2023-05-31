@@ -72,7 +72,7 @@ export const HomepageHero = () => {
       <m.div
         animate={{ opacity: [0.5, 1, 1, 0] }}
         transition={{ duration: 1.6, times: [0, 0.2, 0.9, 1], delay: 0.3 }}
-        className="su-cc su-absolute su-top-0 su-left-0 su-right-0 su-mb-0 su-pt-120 md:su-pt-216 2xl:su-pt-228 su-max-w-full"
+        className="su-cc su-opacity-50 su-absolute su-top-0 su-left-0 su-right-0 su-mb-0 su-pt-120 md:su-pt-216 2xl:su-pt-228 su-max-w-full"
       >
         <Heading as="h1" size="f8" leading="none" font="druk" color="white">
           {lines.map((text) => (
