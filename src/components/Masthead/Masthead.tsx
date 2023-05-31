@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from 'react';
 import { dcnb } from 'cnbuilder';
 import { Container } from '../Container';
 import { FlexBox } from '../FlexBox';
-import { LogoHorizontal } from '../Logo';
+import { Logo } from '../Logo';
 
 type MastheadProps = HTMLAttributes<HTMLDivElement>;
 
@@ -14,7 +14,7 @@ export const Masthead = ({ className, ...props }: MastheadProps) => (
         alignItems="center"
         className="su-rs-py-4"
       >
-        <LogoHorizontal title="Stanford On Purpose" className="su-w-200 sm:su-w-[24rem] md:su-w-[32rem] su-fill-white" />
+        <Logo isLink className="su-w-200 sm:su-w-[24rem] md:su-w-[32rem] su-fill-white" />
       </FlexBox>
     </Container>
   </div>

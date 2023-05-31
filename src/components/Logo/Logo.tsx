@@ -1,8 +1,8 @@
 import React, { HTMLAttributes } from 'react';
 import { dcnb } from 'cnbuilder';
 import { Link } from 'gatsby';
-import { StanfordLogo } from '../StanfordLogo';
-import { Text, FontSizeType } from '../Typography';
+import { LogoHorizontal } from './LogoHorizontal';
+import { FontSizeType } from '../Typography';
 import * as styles from './Logo.styles';
 import { useAddUtmParams } from '../../hooks/useAddUtmParams';
 
@@ -22,9 +22,7 @@ export const Logo = ({
   ...rest
 }: LogoProps) => {
   const LogoText = (
-    <div>
-      <img src="/images/on-purpose-logo-trimmed.svg" alt="Stanford On Purpose" />
-    </div>
+    <LogoHorizontal title="Stanford On Purpose" />
   );
 
   const homeLink = useAddUtmParams('/');
