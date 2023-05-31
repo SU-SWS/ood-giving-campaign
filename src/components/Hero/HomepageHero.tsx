@@ -16,8 +16,8 @@ export const HomepageHero = () => {
   const lines: string[] = [
     'How will we',
     'come together',
-    'to make',
-    'the world better?',
+    'to make the',
+    'world better?',
   ];
 
   const parentVariants = {
@@ -104,7 +104,7 @@ export const HomepageHero = () => {
         variants={prefersReduceMotion ? undefined : parentVariants}
         initial="hidden"
         animate="visible"
-        className="su-cc su-absolute su-top-0 su-mb-0 su-pt-120 md:su-pt-216 2xl:su-pt-228"
+        className="su-cc su-absolute su-top-0 su-left-0 su-right-0 su-mb-0 su-pt-120 md:su-pt-216 2xl:su-pt-228 su-max-w-full"
       >
         <Heading as="h1" size="f8" leading="none" font="druk" color="white">
           {lines.map((text, index) => (
@@ -113,9 +113,21 @@ export const HomepageHero = () => {
             </m.div>
           ))}
         </Heading>
-        <FlexBox alignItems="center" justifyContent="center" className="su-h-[18rem]">
-          <OnPurpo className="su-fill-white su-max-h-full" />
-          <Ose className="su-fill-white su-max-h-full" />
+      </m.div>
+      <m.div
+        variants={prefersReduceMotion ? undefined : parentVariants}
+        initial="hidden"
+        animate="visible"
+        className="su-cc su-absolute su-top-200 md:su-top-300 2xl:su-top-400 su-left-0 su-right-0"
+      >
+        <FlexBox alignItems="center" justifyContent="center">
+          <m.div className="su-h-60 md:su-h-100 lg:su-h-120 2xl:su-h-[15rem]">
+            <OnPurpo className="su-fill-white su-h-full su-mr-0" />
+          </m.div>
+          <m.div className="su-h-auto">Play video</m.div>
+          <m.div className="su-h-60 md:su-h-100 lg:su-h-120 2xl:su-h-[15rem]">
+            <Ose className="su-fill-white su--ml-1 su-h-full" />
+          </m.div>
         </FlexBox>
       </m.div>
     </Container>
