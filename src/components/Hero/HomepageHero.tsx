@@ -85,12 +85,12 @@ export const HomepageHero = () => {
       <m.div
         animate={{ opacity: [0, 1], scale: [prefersReduceMotion ? 1 : 0.7, 1], y: [prefersReduceMotion ? 0 : -100, 0] }}
         transition={{ duration: 0.6, times: [0, 1], delay: 1.8 }}
-        className="su-cc su-absolute su-top-[25rem] sm:su-top-300 md:su-top-400 lg:su-top-[28vw] 3xl:su-top-[45rem] su-left-0 su-right-0"
+        className="su-opacity-0 su-cc su-absolute su-top-[25rem] sm:su-top-300 md:su-top-400 lg:su-top-[28vw] 3xl:su-top-[45rem] su-left-0 su-right-0"
       >
         <FlexBox alignItems="center" justifyContent="center">
-          <m.div className="su-h-[10vw] 2xl:su-h-[15rem]">
+          <div className="su-h-[10vw] 2xl:su-h-[15rem]">
             <OnPurpo className="su-fill-white su-h-full su-mr-0" />
-          </m.div>
+          </div>
           <m.div
             className="su-h-auto su-max-w-fit"
             style={{
@@ -115,9 +115,9 @@ export const HomepageHero = () => {
               play video
             </Text>
           </m.div>
-          <m.div className="su-h-[10vw] 2xl:su-h-[15rem]">
+          <div className="su-h-[10vw] 2xl:su-h-[15rem]">
             <Ose className="su-fill-white su-h-full su--ml-2" />
-          </m.div>
+          </div>
         </FlexBox>
       </m.div>
       <button
