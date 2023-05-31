@@ -22,24 +22,9 @@ export const Logo = ({
   ...rest
 }: LogoProps) => {
   const LogoText = (
-    <Text size={size} className={styles.textWrapper(variant)}>
-      <StanfordLogo color={color} type="short" className={styles.stanford(variant)} />
-      <Text
-        font="druk"
-        uppercase
-        leading="trim"
-        color={color}
-        className={styles.onPurpose(variant)}
-        aria-label="On Purpose"
-      >
-        <span className={styles.o(variant)}>O</span>
-        <span className={styles.iBefore(variant)} aria-hidden>i</span>
-        <span className={styles.n}>n</span>
-        <span className={styles.iAfter} aria-hidden>i</span>
-        <br className={styles.onSpace(variant)} />
-        <span className={styles.purpose(variant)}>Purpose</span>
-      </Text>
-    </Text>
+    <div>
+      <img src="/images/on-purpose-logo-trimmed.svg" alt="Stanford On Purpose" />
+    </div>
   );
 
   const homeLink = useAddUtmParams('/');

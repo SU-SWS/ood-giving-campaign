@@ -103,7 +103,7 @@ export const HomepageHero = () => {
             <button
               type="button"
               onClick={toggleVideo}
-              className="su-block su-text-white hocus:su-text-digital-red-light su-transition su-mx-auto"
+              className="su-block su-text-white hocus-visible:su-text-digital-red-light su-transition su-mx-auto"
             >
               <HeroIcon
                 icon="play-outline"
