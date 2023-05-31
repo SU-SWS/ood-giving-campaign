@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
-import { m, useReducedMotion } from 'framer-motion';
+import { m, useReducedMotion, AnimatePresence } from 'framer-motion';
 import { Container } from '../Container';
 import { FlexBox } from '../FlexBox';
-import { Heading } from '../Typography';
+import { Heading, Text } from '../Typography';
 import { HeroIcon } from '../HeroIcon';
 import { OnPurpo, Ose } from '../Logo';
 import { getProcessedImage } from '../../utilities/getProcessedImage';
@@ -20,34 +20,22 @@ export const HomepageHero = () => {
     'world better?',
   ];
 
-  const parentVariants = {
-    visible: {
-      opacity: 1,
-      transition: {
-        when: 'beforeChildren',
-        duration: 0.3,
-        delay: 0.5,
-        staggerChildren: 0.3,
-      },
-    },
-    hidden: {
-      opacity: 0,
-      transition: {
-        when: 'afterChildren',
-      },
-    },
-  };
+  // const headlineParentVariants = {
+  //   opacity: [0, 1],
+  //   staggerChildren: 0.5,
+  //   opacity: [1, 0],
+  // };
 
-  const itemVariants = {
+  const lineVariants = {
+    hidden: {
+      color: 'rgba(255, 255, 255, 0.4)',
+    },
     visible: {
       color: '#fff',
       transition: {
         duration: 0.5,
         ease: 'circOut',
       },
-    },
-    hidden: {
-      color: 'rgba(255, 255, 255, 0.4)',
     },
   };
 
@@ -67,11 +55,11 @@ export const HomepageHero = () => {
   };
 
   return (
-    <Container width="full" className="su-relative su-bg-[#4287BD]">
+    <Container width="full" className="su-relative su-bg-gc-sky">
       <div>
         <Container className="su-h-100 md:su-h-200" />
-        <div className="su-relative su-w-full su-bg-[#4287BD] su--mb-1">
-          <div className="su-aspect-w-1 su-aspect-h-1 md:su-aspect-w-16 md:su-aspect-h-9">
+        <div className="su-relative su-w-full su-bg-gc-sky su--mb-1 2xl:su-max-h-900 3xl:su-overflow-hidden">
+          <div className="su-aspect-w-1 su-aspect-h-1 lg:su-aspect-w-16 lg:su-aspect-h-9 su-bg-gc-sky">
             <video
               ref={videoRef}
               playsInline
@@ -101,31 +89,41 @@ export const HomepageHero = () => {
         </div>
       </div>
       <m.div
-        variants={prefersReduceMotion ? undefined : parentVariants}
-        initial="hidden"
-        animate="visible"
+        animate={{ opacity: [0.5, 1, 1, 0] }}
+        transition={{ duration: 3, times: [0, 0.3, 0.9, 1], delay: 0.5 }}
         className="su-cc su-absolute su-top-0 su-left-0 su-right-0 su-mb-0 su-pt-120 md:su-pt-216 2xl:su-pt-228 su-max-w-full"
       >
         <Heading as="h1" size="f8" leading="none" font="druk" color="white">
           {lines.map((text, index) => (
-            <m.div variants={prefersReduceMotion ? undefined : itemVariants} key={`line${index + 1}`}>
+            <m.div key={`line${index + 1}`}>
               {text}
             </m.div>
           ))}
         </Heading>
       </m.div>
       <m.div
-        variants={prefersReduceMotion ? undefined : parentVariants}
-        initial="hidden"
-        animate="visible"
-        className="su-cc su-absolute su-top-200 md:su-top-300 2xl:su-top-400 su-left-0 su-right-0"
+        className="su-cc su-absolute su-top-200 sm:su-top-300 lg:su-top-400 su-left-0 su-right-0"
       >
         <FlexBox alignItems="center" justifyContent="center">
-          <m.div className="su-h-60 md:su-h-100 lg:su-h-120 2xl:su-h-[15rem]">
+          <m.div className="su-h-[10vw] 2xl:su-h-[15rem]">
             <OnPurpo className="su-fill-white su-h-full su-mr-0" />
           </m.div>
-          <m.div className="su-h-auto">Play video</m.div>
-          <m.div className="su-h-60 md:su-h-100 lg:su-h-120 2xl:su-h-[15rem]">
+          <m.div className="su-h-auto su-rs-px-4">
+            <button
+              type="button"
+              onClick={toggleVideo}
+              className="su-block su-text-digital-red su-type-6 hocus:su-text-white su-transition su-mx-auto"
+            >
+              <HeroIcon
+                icon="triangle-right"
+                title="Play full video"
+              />
+            </button>
+            <Text font="serif" weight="bold" color="white" italic>
+              Play video
+            </Text>
+          </m.div>
+          <m.div className="su-h-[10vw] 2xl:su-h-[15rem]">
             <Ose className="su-fill-white su--ml-1 su-h-full" />
           </m.div>
         </FlexBox>
