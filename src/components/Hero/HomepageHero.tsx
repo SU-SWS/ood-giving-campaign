@@ -1,5 +1,7 @@
 import React, { useRef, useState } from 'react';
-import { m, useReducedMotion } from 'framer-motion';
+import {
+  m, useReducedMotion, useScroll, useTransform,
+} from 'framer-motion';
 import { Container } from '../Container';
 import { FlexBox } from '../FlexBox';
 import { Heading, Text } from '../Typography';
@@ -35,8 +37,16 @@ export const HomepageHero = () => {
     }
   };
 
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['0', '10vh'],
+  });
+  const animatedWidth = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+  const marginAnimate = useTransform(scrollYProgress, [0, 1], ['0', '4vw']);
+
   return (
-    <Container width="full" className="su-relative su-bg-gc-sky">
+    <div ref={heroRef} className="su-relative su-w-full su-bg-gc-sky">
       <div>
         <Container className="su-h-100 md:su-h-200" />
         <div className="su-relative su-w-full su-bg-gc-sky su--mb-1 2xl:su-max-h-900 3xl:su-overflow-hidden">
@@ -57,60 +67,69 @@ export const HomepageHero = () => {
             </video>
           </div>
           <div className="su-absolute su-w-full su-h-full su-top-0 su-left-0 su-bg-gradient-to-b su-from-gc-sky su-via-gc-sky/60 su-via-30% su-to-50%" />
-          <button
-            type="button"
-            onClick={toggleVideo}
-            className="su-text-white/50 su-absolute su-bottom-[7%] su-left-[50%] su-translate-x-[-50%] su-type-5 hocus:su-text-white su-transition"
-          >
-            <HeroIcon
-              icon={isPlaying ? 'pause' : 'play'}
-              title={`${isPlaying ? 'Pause' : 'Play'} background video`}
-            />
-          </button>
         </div>
       </div>
       <m.div
         animate={{ opacity: [0.5, 1, 1, 0] }}
-        transition={{ duration: 2.5, times: [0, 0.3, 0.9, 1], delay: 0.3 }}
+        transition={{ duration: 1.6, times: [0, 0.2, 0.9, 1], delay: 0.3 }}
         className="su-cc su-absolute su-top-0 su-left-0 su-right-0 su-mb-0 su-pt-120 md:su-pt-216 2xl:su-pt-228 su-max-w-full"
       >
         <Heading as="h1" size="f8" leading="none" font="druk" color="white">
-          {lines.map((text, index) => (
-            <m.div key={`line${index + 1}`}>
+          {lines.map((text) => (
+            <div key={text.substring(0, 2)}>
               {text}
-            </m.div>
+            </div>
           ))}
         </Heading>
       </m.div>
       <m.div
-        animate={{ opacity: [0, 1], scale: [0.7, 1], y: [-100, 0] }}
-        transition={{ duration: 0.6, times: [0, 1], delay: 3 }}
-        className="su-cc su-absolute su-top-[25rem] sm:su-top-300 lg:su-top-400 2xl:su-top-[45rem] su-left-0 su-right-0"
+        animate={{ opacity: [0, 1], scale: [prefersReduceMotion ? 1 : 0.7, 1], y: [prefersReduceMotion ? 0 : -100, 0] }}
+        transition={{ duration: 0.6, times: [0, 1], delay: 1.8 }}
+        className="su-cc su-absolute su-top-[25rem] sm:su-top-300 md:su-top-400 lg:su-top-[28vw] 3xl:su-top-[45rem] su-left-0 su-right-0"
       >
         <FlexBox alignItems="center" justifyContent="center">
           <m.div className="su-h-[10vw] 2xl:su-h-[15rem]">
             <OnPurpo className="su-fill-white su-h-full su-mr-0" />
           </m.div>
-          <m.div className="su-h-auto su-rs-px-4">
+          <m.div
+            className="su-h-auto su-max-w-fit"
+            style={{
+              width: animatedWidth,
+              opacity: scrollYProgress,
+              marginLeft: marginAnimate,
+              marginRight: marginAnimate,
+            }}
+          >
             <button
               type="button"
               onClick={toggleVideo}
-              className="su-block su-text-digital-red su-type-6 hocus:su-text-white su-transition su-mx-auto"
+              className="su-block su-text-white hocus:su-text-digital-red-light su-transition su-mx-auto"
             >
               <HeroIcon
-                icon="triangle-right"
+                icon="play-outline"
                 title="Play full video"
+                className="su-type-5"
               />
             </button>
-            <Text font="serif" weight="bold" color="white" italic>
-              Play video
+            <Text font="serif" weight="bold" color="white" align="center" italic className="su-hidden sm:su-block">
+              play video
             </Text>
           </m.div>
           <m.div className="su-h-[10vw] 2xl:su-h-[15rem]">
-            <Ose className="su-fill-white su--ml-1 su-h-full" />
+            <Ose className="su-fill-white su-h-full su--ml-2" />
           </m.div>
         </FlexBox>
       </m.div>
-    </Container>
+      <button
+        type="button"
+        onClick={toggleVideo}
+        className="su-text-white/50 su-absolute su-bottom-[6%] su-left-[50%] su-translate-x-[-50%] su-type-5 hocus:su-text-white su-transition"
+      >
+        <HeroIcon
+          icon={isPlaying ? 'pause' : 'play'}
+          title={`${isPlaying ? 'Pause' : 'Play'} background video`}
+        />
+      </button>
+    </div>
   );
 };

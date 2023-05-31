@@ -7,11 +7,12 @@ import {
   ChevronRightIcon,
   EnvelopeIcon,
   LinkIcon,
+  PlayCircleIcon,
   PlusIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 
-import { PlayCircleIcon, PauseCircleIcon, PlayIcon } from '@heroicons/react/24/solid';
+import { PlayCircleIcon as PlayCircleSolidIcon, PauseCircleIcon, PlayIcon } from '@heroicons/react/24/solid';
 
 export const iconMap = {
   action: ChevronRightIcon,
@@ -31,7 +32,8 @@ export const iconMap = {
   link: LinkIcon,
   more: ArrowRightIcon,
   pause: PauseCircleIcon,
-  play: PlayCircleIcon,
+  play: PlayCircleSolidIcon,
+  'play-outline': PlayCircleIcon,
   plus: PlusIcon,
   right: ArrowRightIcon,
   up: ArrowUpIcon,
