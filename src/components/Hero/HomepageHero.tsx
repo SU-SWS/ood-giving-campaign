@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { m, useReducedMotion, AnimatePresence } from 'framer-motion';
+import { m, useReducedMotion } from 'framer-motion';
 import { Container } from '../Container';
 import { FlexBox } from '../FlexBox';
 import { Heading, Text } from '../Typography';
@@ -19,25 +19,6 @@ export const HomepageHero = () => {
     'to make the',
     'world better?',
   ];
-
-  // const headlineParentVariants = {
-  //   opacity: [0, 1],
-  //   staggerChildren: 0.5,
-  //   opacity: [1, 0],
-  // };
-
-  const lineVariants = {
-    hidden: {
-      color: 'rgba(255, 255, 255, 0.4)',
-    },
-    visible: {
-      color: '#fff',
-      transition: {
-        duration: 0.5,
-        ease: 'circOut',
-      },
-    },
-  };
 
   // Toggle the video's play/pause state and update isPlaying state
   const toggleVideo = () => {
@@ -75,7 +56,7 @@ export const HomepageHero = () => {
               <p>Your browser does not support HTML video.</p>
             </video>
           </div>
-          <div className="su-absolute su-w-full su-h-full su-top-0 su-left-0 su-bg-gradient-to-b su-from-[#4287BD] su-via-[#4287BD]/60 su-via-30% su-to-50%" />
+          <div className="su-absolute su-w-full su-h-full su-top-0 su-left-0 su-bg-gradient-to-b su-from-gc-sky su-via-gc-sky/60 su-via-30% su-to-50%" />
           <button
             type="button"
             onClick={toggleVideo}
@@ -90,7 +71,7 @@ export const HomepageHero = () => {
       </div>
       <m.div
         animate={{ opacity: [0.5, 1, 1, 0] }}
-        transition={{ duration: 3, times: [0, 0.3, 0.9, 1], delay: 0.5 }}
+        transition={{ duration: 2.5, times: [0, 0.3, 0.9, 1], delay: 0.3 }}
         className="su-cc su-absolute su-top-0 su-left-0 su-right-0 su-mb-0 su-pt-120 md:su-pt-216 2xl:su-pt-228 su-max-w-full"
       >
         <Heading as="h1" size="f8" leading="none" font="druk" color="white">
@@ -102,7 +83,9 @@ export const HomepageHero = () => {
         </Heading>
       </m.div>
       <m.div
-        className="su-cc su-absolute su-top-200 sm:su-top-300 lg:su-top-400 su-left-0 su-right-0"
+        animate={{ opacity: [0, 1], scale: [0.7, 1], y: [-100, 0] }}
+        transition={{ duration: 0.6, times: [0, 1], delay: 3 }}
+        className="su-cc su-absolute su-top-[25rem] sm:su-top-300 lg:su-top-400 2xl:su-top-[45rem] su-left-0 su-right-0"
       >
         <FlexBox alignItems="center" justifyContent="center">
           <m.div className="su-h-[10vw] 2xl:su-h-[15rem]">
