@@ -11,6 +11,8 @@ module.exports = function () {
     'robins-egg': '#77C5D5',
     sapphire: '#005776',
     slate: '#4E4B48',
+    'gc-sky': '#4287BD', // For homepage hero sky gradient
+    'gc-black': '#17171A',
     // Colors inherited from the SAA project
     'saa-black': '#181D1C',
     'digital-red': {

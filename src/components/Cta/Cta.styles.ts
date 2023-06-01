@@ -62,7 +62,7 @@ export const ctaSizeMap = {
   unset: 'unset',
 };
 
-export const icon = 'su-inline-block su-shrink-0';
+export const icon = 'su-inline-block su-shrink-0 su-will-change-transform';
 
 export const iconStyles = {
   masthead: 'su-text-white group-hocus:su-text-white md:su-text-digital-red md:group-hover:su-text-digital-red md:group-focus:su-text-digital-red',
