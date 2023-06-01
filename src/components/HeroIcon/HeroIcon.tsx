@@ -22,7 +22,7 @@ export const HeroIcon = ({
   // Set default base style so icon has reasonable size if used out of the box
   // noBaseStyle boolean allows for user to not attach any base styles if needed
   const baseStyle = noBaseStyle ? '' : styles.iconBaseStyle[icon] || styles.iconBaseStyle.default;
-  const heroIconStyle = dcnb('su-transition su-will-change-transform', baseStyle);
+  const heroIconStyle = dcnb('su-transition', baseStyle);
 
   return (
     <Icon

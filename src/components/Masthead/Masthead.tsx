@@ -14,7 +14,7 @@ export const Masthead = ({ className, ...props }: MastheadProps) => (
         alignItems="center"
         className="su-rs-py-4"
       >
-        <Logo color="white" variant="horizontal" size={4} isLink />
+        <Logo isLink className="su-w-200 sm:su-w-[24rem] md:su-w-[32rem] su-fill-white" />
       </FlexBox>
     </Container>
   </div>
