@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Container } from '../Container';
 import { CtaLink } from '../Cta';
 import { Grid } from '../Grid';
-import { Logo } from '../Logo';
 import { Heading, Text } from '../Typography';
 import { Parallax } from '../Parallax/Parallax';
 import { NumberCounter } from '../NumberCounter';
