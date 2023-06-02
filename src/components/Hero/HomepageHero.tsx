@@ -108,12 +108,12 @@ export const HomepageHero = () => {
               <HeroIcon
                 icon="play-outline"
                 title="Play full video"
-                className="su-type-5 su-fill-gc-black/70 group-hocus:su-fill-digital-red"
+                className="su-type-5 su-fill-gc-black/70 group-hocus:su-fill-digital-red su-mx-auto"
               />
+              <Text weight="bold" color="white" align="center" size={1} className="su-hidden sm:su-block">
+                Play video
+              </Text>
             </button>
-            <Text font="serif" weight="bold" color="white" align="center" italic className="su-hidden sm:su-block">
-              play video
-            </Text>
           </m.div>
           <div className="su-h-[10vw] 2xl:su-h-[15rem]">
             <Ose className="su-fill-white su-h-full su--ml-2" />
