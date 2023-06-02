@@ -26,7 +26,7 @@ export const Parallax = ({ children, offset = 60 }: ParallaxProps) => {
   const { scrollY } = useScroll();
   const [elementTop, setElementTop] = useState(0);
   const [clientHeight, setClientHeight] = useState(0);
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const element = ref.current;

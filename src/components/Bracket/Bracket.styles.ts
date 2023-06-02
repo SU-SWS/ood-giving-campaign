@@ -7,7 +7,7 @@ export type CornerType = 'tl' | 'bl' | 'tr' | 'br';
 
 export const colors = {
   white: 'su-text-white',
-  black: 'su-text-saa-black',
+  black: 'su-text-gc-black',
 };
 export type ColorType = keyof typeof colors;
 

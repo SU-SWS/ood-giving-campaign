@@ -26,7 +26,7 @@ export const RichText = ({
   textAlign,
   className,
 }: RichTextProps) => {
-  const textColor = isLightText ? 'su-text-white print:su-text-saa-black' : 'su-text-saa-black';
+  const textColor = isLightText ? 'su-text-white print:su-text-gc-black' : 'su-text-gc-black';
 
   const rendered = render(wysiwyg, {
     markResolvers: {
