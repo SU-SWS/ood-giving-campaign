@@ -1,34 +1,47 @@
 import React, { useRef } from 'react';
 import {
-  m, useReducedMotion, useScroll, useTransform,
+  m, useReducedMotion, useScroll, useTransform, useWillChange, useSpring, SpringOptions,
 } from 'framer-motion';
 import { Bracket } from '../Bracket';
 import { FlexBox } from '../FlexBox';
 
 export const Intro = () => {
   const prefersReduceMotion = useReducedMotion();
+  const willChange = useWillChange();
+  const springSetting: SpringOptions = {
+    stiffness: 130,
+    damping: 22,
+    restDelta: 0.1,
+  };
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ['-30vh', '5vh'],
+    offset: ['-40vh', '-5vh'],
   });
+  const scrollSpring = useSpring(scrollYProgress, springSetting);
 
-  // Animate from justify-between to justify-center
   const bracketOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 0, 0.5, 1]);
-  const contentWidth = useTransform(scrollYProgress, [0, 1], ['100%', '70%']);
+  // We want the text opacity to increase at a slower rate than the bracket opacity
+  const textOpacity = useTransform(scrollYProgress, [0, 0.4, 0.7, 1], [0, 0, 0.6, 1]);
+  const bracketPosition = useTransform(scrollSpring, [0, 1], ['-20vw', '0vw']);
+  const bracketRightPosition = useTransform(scrollSpring, [0, 1], ['20vw', '0vw']);
 
   return (
-    <div ref={sectionRef} className="su-bg-saa-black su-rs-pt-10 su-rs-pb-6 su-text-white su-relative">
-      <m.div className="su-relative su-mx-auto" style={{ width: prefersReduceMotion ? '60%' : contentWidth, opacity: bracketOpacity }}>
-        <FlexBox alignItems="stretch" justifyContent="between">
-          <Bracket
-            isSolid
-            className="su-shrink-0 su-w-[10vw] 2xl:su-w-[15rem]"
-            curveClassName="su-h-[7vw] 2xl:su-h-[10.5rem]"
-          />
+    <div ref={sectionRef} className="su-bg-saa-black su-cc su-rs-pt-10 su-rs-pb-6 su-text-white su-relative">
+      <m.div className="su-relative su-mx-auto su-w-fit" style={{ opacity: bracketOpacity }}>
+        <FlexBox justifyContent="between">
+          <m.div
+            className="su-relative su-h-auto su-shrink-0"
+            style={{ x: prefersReduceMotion ? '0' : bracketPosition, willChange }}
+          >
+            <Bracket
+              isSolid
+              className="su-w-[10vw] 2xl:su-w-[15rem] su-h-full"
+              curveClassName="su-h-[7vw] 2xl:su-h-[10.5rem]"
+            />
+          </m.div>
           <m.p
-            className="su-font-serif su-font-semibold su-gc-intro-text su-max-w-1000 su-rs-p-6 su-mb-0"
+            className="su-font-serif su-font-semibold su-text-21 md:su-text-27 xl:su-text-[3.4rem] su-max-w-1000 su-rs-py-7 su-px-30 lg:su-px-72 su-mb-0"
             style={{ opacity: textOpacity }}
           >
             The present demands immediate action—and the future demands immediate impact.
@@ -37,12 +50,17 @@ export const Intro = () => {
             This is the time for us all to come together with purpose and intent,
             to go further, faster for the sake of the world.
           </m.p>
-          <Bracket
-            isClose
-            isSolid
-            className="su-w-[10vw] 2xl:su-w-[15rem] su-shrink-0"
-            curveClassName="su-h-[7vw] 2xl:su-h-[10.5rem]"
-          />
+          <m.div
+            className="su-relative su-h-auto su-shrink-0"
+            style={{ x: prefersReduceMotion ? '0' : bracketRightPosition, willChange }}
+          >
+            <Bracket
+              isClose
+              isSolid
+              className="su-w-[10vw] 2xl:su-w-[15rem] su-h-full"
+              curveClassName="su-h-[7vw] 2xl:su-h-[10.5rem]"
+            />
+          </m.div>
         </FlexBox>
       </m.div>
     </div>
