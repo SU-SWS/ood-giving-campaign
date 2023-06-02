@@ -13,7 +13,7 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 
-import { PlayCircleIcon as PlayCircleSolidIcon, PlayIcon } from '@heroicons/react/24/solid';
+import { PlayIcon } from '@heroicons/react/24/solid';
 
 export const iconMap = {
   action: ChevronRightIcon,
