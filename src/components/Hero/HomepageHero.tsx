@@ -108,7 +108,7 @@ export const HomepageHero = () => {
               <HeroIcon
                 icon="play-outline"
                 title="Play full video"
-                className="su-type-5"
+                className="su-type-5 su-fill-gc-black/70"
               />
             </button>
             <Text font="serif" weight="bold" color="white" align="center" italic className="su-hidden sm:su-block">
