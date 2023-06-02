@@ -4,6 +4,7 @@ import { useStoryblokState } from '../hooks/useStoryblokState';
 import { DemoContent } from '../components/Temporary/DemoContent';
 import { ThemeSection } from '../components/Temporary/ThemeSection';
 import { HomepageHero } from '../components/Hero/HomepageHero';
+import { Intro } from '../components/Intro';
 import { PageHead } from '../components/PageHead';
 import { CreateBloks } from '../components/CreateBloks';
 import { Layout } from '../components/Layout';
@@ -16,6 +17,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <HomepageHero />
+      <Intro />
       <ThemeSection />
       <CreateBloks blokSection={blok.hero} />
       <CreateBloks blokSection={blok.content} />
