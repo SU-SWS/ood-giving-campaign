@@ -19,12 +19,12 @@ export const ctaVariants = {
   footer: 'su-inline-block su-font-normal su-leading-display su-underline-offset-[3px] su-text-black-20 hocus:su-text-black-20 su-decoration-digital-red-xlight hocus:su-decoration-digital-red-xlight',
   close: 'su-inline-block su-font-semibold su-leading-none su-text-lagunita hocus:su-text-lagunita-dark focus:su-outline-none',
   'close-x': 'su-leading-none',
-  dismiss: 'su-inline-block su-font-bold su-uppercase su-tracking-widest su-leading-none su-text-saa-black hocus:su-text-saa-black focus:su-outline-none',
+  dismiss: 'su-inline-block su-font-bold su-uppercase su-tracking-widest su-leading-none su-text-gc-black hocus:su-text-gc-black focus:su-outline-none',
   unset: '',
 };
 
 export const ctaColors = {
-  black: 'su-text-saa-black',
+  black: 'su-text-gc-black',
   white: 'su-text-white',
   // TODO: These are for ghost buttons and link variants. Will remove if we don't need.
   'digital-red': 'su-text-digital-red',
@@ -70,7 +70,7 @@ export const iconStyles = {
   close: 'su-text-lagunita-light group-hocus:su-text-lagunita-dark !su-w-[2.2rem] su--mt-4',
   'close-x': 'su-text-current hocus:su-text-current su-w-[2.2rem] group-hocus:su-underline',
   chip: 'su--mt-3',
-  dismiss: 'su-text-saa-black !su-w-[2.2rem] su--mt-4',
+  dismiss: 'su-text-gc-black !su-w-[2.2rem] su--mt-4',
 };
 
 export const ctaIconMap = {

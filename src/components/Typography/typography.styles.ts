@@ -53,7 +53,7 @@ export const textAligns = {
 
 export const textColors = {
   default: '', // Interit from the base
-  black: 'su-text-saa-black',
+  black: 'su-text-gc-black',
   'cool-grey': 'su-text-cool-grey',
   white: 'su-text-white',
 };

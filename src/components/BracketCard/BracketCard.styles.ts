@@ -57,7 +57,7 @@ export const body = (textOnLeft: boolean) => dcnb(
 
 export const textColors = {
   white: 'su-text-white',
-  black: 'su-text-saa-black',
+  black: 'su-text-gc-black',
 };
 export type TextColorType = keyof typeof textColors;
 

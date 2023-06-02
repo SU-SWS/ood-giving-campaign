@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 import { useStoryblokState } from '../hooks/useStoryblokState';
-import { DemoContent } from '../components/Temporary/DemoContent';
 import { ThemeSection } from '../components/Temporary/ThemeSection';
 import { HomepageHero } from '../components/Hero/HomepageHero';
 import { Intro } from '../components/Intro';
@@ -21,7 +20,6 @@ const IndexPage = ({ data }) => {
       <ThemeSection />
       <CreateBloks blokSection={blok.hero} />
       <CreateBloks blokSection={blok.content} />
-      <DemoContent />
     </Layout>
   );
 };

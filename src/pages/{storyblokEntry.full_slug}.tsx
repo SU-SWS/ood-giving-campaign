@@ -6,6 +6,7 @@ import { Hero } from '../components/Hero/Hero';
 import { CreateBloks } from '../components/CreateBloks';
 import { PageHead } from '../components/PageHead';
 import { Layout } from '../components/Layout';
+import { DemoContent } from '../components/Temporary/DemoContent';
 
 type DataProps = {
   storyblokEntry: SbGatsbyStory;
@@ -22,6 +23,7 @@ const StoryblokEntry: React.FC<PageProps<DataProps>> = ({
     <Layout>
       {/* Place holder hero below - going to extract into component */}
       <Hero heading={story.name} />
+      <DemoContent />
       <CreateBloks blokSection={blok.hero} />
       <CreateBloks blokSection={blok.content} />
     </Layout>
