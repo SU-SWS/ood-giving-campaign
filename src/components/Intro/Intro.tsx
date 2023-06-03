@@ -24,15 +24,14 @@ export const Intro = () => {
   // We want the text opacity to increase at a slower rate than the bracket opacity
   const textOpacity = useTransform(scrollYProgress, [0, 0.4, 0.7, 1], [0, 0, 0.6, 1]);
   const bracketPosition = useTransform(scrollSpring, [0, 1], ['-20vw', '0vw']);
-  const bracketRightPosition = useTransform(scrollSpring, [0, 1], ['20vw', '0vw']);
 
   return (
     <div ref={sectionRef} className="su-bg-gc-black su-cc su-rs-pt-10 su-rs-pb-6 su-text-white su-relative su-overflow-hidden">
-      <m.div className="su-relative su-mx-auto su-w-fit" style={{ opacity: bracketOpacity }}>
+      <m.div className="su-relative su-mx-auto su-w-fit" style={{ opacity: bracketOpacity, willChange }}>
         <FlexBox justifyContent="between">
           <m.div
             className="su-relative su-h-auto su-shrink-0"
-            style={{ x: prefersReduceMotion ? '0' : bracketPosition, willChange }}
+            style={{ left: prefersReduceMotion ? '0' : bracketPosition, willChange }}
           >
             <Bracket
               isSolid
@@ -42,7 +41,7 @@ export const Intro = () => {
           </m.div>
           <m.p
             className="su-font-serif su-font-semibold su-text-21 md:su-text-27 xl:su-text-[3.4rem] su-max-w-1000 su-rs-py-7 su-px-30 lg:su-px-72 su-mb-0"
-            style={{ opacity: textOpacity }}
+            style={{ opacity: textOpacity, willChange }}
           >
             The present demands immediate action—and the future demands immediate impact.
             Looking at the challenges we face today—some of which threaten the future of
@@ -52,7 +51,7 @@ export const Intro = () => {
           </m.p>
           <m.div
             className="su-relative su-h-auto su-shrink-0"
-            style={{ x: prefersReduceMotion ? '0' : bracketRightPosition, willChange }}
+            style={{ right: prefersReduceMotion ? '0' : bracketPosition, willChange }}
           >
             <Bracket
               isClose
