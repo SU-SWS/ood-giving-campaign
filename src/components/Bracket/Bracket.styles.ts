@@ -1,7 +1,7 @@
 import { dcnb } from 'cnbuilder';
 
 // Bracket Curve styles
-export const root = 'su-border-current';
+export const root = 'su-border-current su-backface-hidden';
 
 export type CornerType = 'tl' | 'bl' | 'tr' | 'br';
 
@@ -26,7 +26,7 @@ export const curve = (corner: CornerType, isSolid: boolean) => dcnb(
   },
 );
 export const rectangle = (corner: CornerType, isSolid: boolean) => dcnb(
-  'su-w-[17%] su-h-full su-border-y-2',
+  'su-h-full su-w-[17%] su-border-y-2',
   {
     'su-bg-current': isSolid,
     'su-border-r-2': corner === 'tl' || corner === 'bl',

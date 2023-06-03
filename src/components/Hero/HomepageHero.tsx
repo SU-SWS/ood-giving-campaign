@@ -103,17 +103,17 @@ export const HomepageHero = () => {
             <button
               type="button"
               onClick={toggleVideo}
-              className="su-block su-text-white hocus-visible:su-text-digital-red-light su-transition su-mx-auto"
+              className="su-group su-block su-text-white su-transition su-mx-auto"
             >
               <HeroIcon
                 icon="play-outline"
                 title="Play full video"
-                className="su-type-5"
+                className="su-type-5 su-fill-gc-black/70 group-hocus:su-fill-digital-red su-mx-auto"
               />
+              <Text weight="bold" color="white" align="center" size={1} className="su-hidden sm:su-block">
+                Play video
+              </Text>
             </button>
-            <Text font="serif" weight="bold" color="white" align="center" italic className="su-hidden sm:su-block">
-              play video
-            </Text>
           </m.div>
           <div className="su-h-[10vw] 2xl:su-h-[15rem]">
             <Ose className="su-fill-white su-h-full su--ml-2" />
@@ -123,12 +123,15 @@ export const HomepageHero = () => {
       <button
         type="button"
         onClick={toggleVideo}
-        className="su-text-white/50 su-absolute su-bottom-[6%] su-left-[50%] su-translate-x-[-50%] su-type-5 hocus:su-text-white su-transition"
+        className="su-w-fit su-group su-text-white su-absolute su-bottom-[4%] su-left-20 sm:su-left-30 md:su-left-50 hocus:su-text-white su-transition"
       >
         <HeroIcon
           icon={isPlaying ? 'pause' : 'play'}
-          title={`${isPlaying ? 'Pause' : 'Play'} background video`}
+          className="su-inline-block su-type-3 su-fill-gc-black/70 group-hocus:su-fill-digital-red su-mr-02em"
         />
+        <Text as="span" variant="card" weight="semibold">
+          {`${isPlaying ? 'Pause' : 'Play'} background video`}
+        </Text>
       </button>
     </div>
   );

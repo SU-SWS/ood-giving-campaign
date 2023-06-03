@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import {
-  m, useReducedMotion, useScroll, useTransform, useWillChange, useSpring, SpringOptions,
+  m, useReducedMotion, useScroll, useTransform, useSpring, useWillChange, SpringOptions,
 } from 'framer-motion';
 import { Bracket } from '../Bracket';
 import { FlexBox } from '../FlexBox';
@@ -27,22 +27,21 @@ export const Intro = () => {
   const bracketRightPosition = useTransform(scrollSpring, [0, 1], ['20vw', '0vw']);
 
   return (
-    <div ref={sectionRef} className="su-bg-gc-black su-cc su-rs-pt-10 su-rs-pb-6 su-text-white su-relative">
-      <m.div className="su-relative su-mx-auto su-w-fit" style={{ opacity: bracketOpacity }}>
+    <div ref={sectionRef} className="su-bg-gc-black su-cc su-rs-pt-10 su-rs-pb-6 su-text-white su-relative su-overflow-hidden">
+      <m.div className="su-relative su-mx-auto su-w-fit" style={{ opacity: bracketOpacity, willChange }}>
         <FlexBox justifyContent="between">
           <m.div
             className="su-relative su-h-auto su-shrink-0"
             style={{ x: prefersReduceMotion ? '0' : bracketPosition, willChange }}
           >
             <Bracket
-              isSolid
               className="su-w-[10vw] 2xl:su-w-[15rem] su-h-full"
               curveClassName="su-h-[7vw] 2xl:su-h-[10.5rem]"
             />
           </m.div>
           <m.p
             className="su-font-serif su-font-semibold su-text-21 md:su-text-27 xl:su-text-[3.4rem] su-max-w-1000 su-rs-py-7 su-px-30 lg:su-px-72 su-mb-0"
-            style={{ opacity: textOpacity }}
+            style={{ opacity: textOpacity, willChange }}
           >
             The present demands immediate action—and the future demands immediate impact.
             Looking at the challenges we face today—some of which threaten the future of
@@ -56,7 +55,6 @@ export const Intro = () => {
           >
             <Bracket
               isClose
-              isSolid
               className="su-w-[10vw] 2xl:su-w-[15rem] su-h-full"
               curveClassName="su-h-[7vw] 2xl:su-h-[10.5rem]"
             />
