@@ -34,7 +34,6 @@ export const Intro = () => {
             style={{ left: prefersReduceMotion ? '0' : bracketPosition, willChange }}
           >
             <Bracket
-              isSolid
               className="su-w-[10vw] 2xl:su-w-[15rem] su-h-full"
               curveClassName="su-h-[7vw] 2xl:su-h-[10.5rem]"
             />
@@ -55,7 +54,6 @@ export const Intro = () => {
           >
             <Bracket
               isClose
-              isSolid
               className="su-w-[10vw] 2xl:su-w-[15rem] su-h-full"
               curveClassName="su-h-[7vw] 2xl:su-h-[10.5rem]"
             />
