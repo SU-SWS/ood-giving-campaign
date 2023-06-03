@@ -32,7 +32,7 @@ export const Intro = () => {
         <FlexBox justifyContent="between">
           <m.div
             className="su-relative su-h-auto su-shrink-0"
-            style={{ x: prefersReduceMotion ? '0' : bracketPosition }}
+            style={{ x: prefersReduceMotion ? '0' : bracketPosition, willChange }}
           >
             <Bracket
               isSolid
@@ -42,7 +42,7 @@ export const Intro = () => {
           </m.div>
           <m.p
             className="su-font-serif su-font-semibold su-text-21 md:su-text-27 xl:su-text-[3.4rem] su-max-w-1000 su-rs-py-7 su-px-30 lg:su-px-72 su-mb-0"
-            style={{ opacity: textOpacity, willChange }}
+            style={{ opacity: textOpacity }}
           >
             The present demands immediate action—and the future demands immediate impact.
             Looking at the challenges we face today—some of which threaten the future of
