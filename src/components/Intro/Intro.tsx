@@ -27,7 +27,7 @@ export const Intro = () => {
   const bracketRightPosition = useTransform(scrollSpring, [0, 1], ['20vw', '0vw']);
 
   return (
-    <div ref={sectionRef} className="su-bg-gc-black su-cc su-rs-pt-10 su-rs-pb-6 su-text-white su-relative">
+    <div ref={sectionRef} className="su-bg-gc-black su-cc su-rs-pt-10 su-rs-pb-6 su-text-white su-relative su-overflow-hidden">
       <m.div className="su-relative su-mx-auto su-w-fit" style={{ opacity: bracketOpacity }}>
         <FlexBox justifyContent="between">
           <m.div
