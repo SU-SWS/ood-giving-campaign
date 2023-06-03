@@ -24,6 +24,7 @@ export const Intro = () => {
   // We want the text opacity to increase at a slower rate than the bracket opacity
   const textOpacity = useTransform(scrollYProgress, [0, 0.4, 0.7, 1], [0, 0, 0.6, 1]);
   const bracketPosition = useTransform(scrollSpring, [0, 1], ['-20vw', '0vw']);
+  const bracketRightPosition = useTransform(scrollSpring, [0, 1], ['20vw', '0vw']);
 
   return (
     <div ref={sectionRef} className="su-bg-gc-black su-cc su-rs-pt-10 su-rs-pb-6 su-text-white su-relative su-overflow-hidden">
@@ -31,7 +32,7 @@ export const Intro = () => {
         <FlexBox justifyContent="between">
           <m.div
             className="su-relative su-h-auto su-shrink-0"
-            style={{ left: prefersReduceMotion ? '0' : bracketPosition, willChange }}
+            style={{ x: prefersReduceMotion ? '0' : bracketPosition, willChange }}
           >
             <Bracket
               className="su-w-[10vw] 2xl:su-w-[15rem] su-h-full"
@@ -50,7 +51,7 @@ export const Intro = () => {
           </m.p>
           <m.div
             className="su-relative su-h-auto su-shrink-0"
-            style={{ right: prefersReduceMotion ? '0' : bracketPosition, willChange }}
+            style={{ x: prefersReduceMotion ? '0' : bracketRightPosition, willChange }}
           >
             <Bracket
               isClose
