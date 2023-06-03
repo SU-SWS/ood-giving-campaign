@@ -28,7 +28,7 @@ export const curve = (corner: CornerType, isSolid: boolean) => dcnb(
 export const rectangle = (corner: CornerType, isSolid: boolean) => dcnb(
   'su-h-full su-border-y-2',
   {
-    'su-w-[19%] su-bg-current': isSolid,
+    'su-w-[20%] su-bg-current': isSolid,
     'su-w-[17%]': !isSolid,
     'su-border-r-2': corner === 'tl' || corner === 'bl',
     'su-border-l-2 su-order-1': corner === 'tr' || corner === 'br',
