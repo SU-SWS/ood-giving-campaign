@@ -12,6 +12,8 @@ type SplitPosterProps = HTMLAttributes<HTMLDivElement> & {
   bgImageSrc?: string;
   bgImageFocus?: string;
   headingLevel?: HeadingType;
+  // Set to true for the variant with larger vertical offset between the left and right panels
+  isLargeOffset?: boolean;
   headingLeft?: string;
   headingRight?: string;
   bodyLeft?: string;
@@ -36,6 +38,7 @@ export const SplitPoster = ({
   bgImageSrc,
   bgImageFocus,
   headingLevel = 'h3',
+  isLargeOffset,
   headingLeft,
   headingRight,
   bodyLeft,
@@ -64,7 +67,7 @@ export const SplitPoster = ({
   return (
     <Container {...props} width="full" className={styles.root} style={bgStyle}>
       <Grid xl={2}>
-        <div className={styles.panelLeft} style={bgImageLeftStyle}>
+        <div className={styles.panelLeft(isLargeOffset)} style={bgImageLeftStyle}>
           <PosterContent
             headingLevel={headingLevel}
             heading={headingLeft}
@@ -81,7 +84,7 @@ export const SplitPoster = ({
             </FlexBox>
           </PosterContent>
         </div>
-        <div className={styles.panelRight} style={bgImageRightStyle}>
+        <div className={styles.panelRight(isLargeOffset)} style={bgImageRightStyle}>
           <PosterContent
             headingLevel={headingLevel}
             heading={headingRight}

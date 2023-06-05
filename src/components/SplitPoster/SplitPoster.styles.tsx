@@ -3,8 +3,16 @@ import { dcnb } from 'cnbuilder';
 export const root = 'su-relative su-bg-white su-bg-no-repeat su-bg-cover su-bg-top';
 
 export const panel = 'su-border-white su-bg-no-repeat su-bg-cover su-bg-top';
-export const panelLeft = dcnb(panel, 'su-border-b xl:su-border-b-0 xl:su-border-r su-pt-60');
-export const panelRight = dcnb(panel, 'su-border-t xl:su-border-t-0 xl:su-border-l su-pb-60');
+export const panelLeft = (isLargeOffset: boolean) => dcnb(
+  panel,
+  'su-border-b xl:su-border-b-0 xl:su-border-r',
+  isLargeOffset ? 'su-pt-200' : 'su-pt-60',
+);
+export const panelRight = (isLargeOffset: boolean) => dcnb(
+  panel,
+  'su-border-t xl:su-border-t-0 xl:su-border-l su-pb-60',
+  isLargeOffset ? 'su-pb-200' : 'su-pb-60',
+);
 
 export const posterContentRoot = (hasImage: boolean) => dcnb(
   'su-relative su-overflow-hidden su-border-white sm:su-max-w-[53rem] md:su-max-w-[60rem] lg:su-max-w-[75rem] su-px-20 sm:su-px-60 2xl:su-px-126 su-min-h-[45rem] md:su-min-h-[60rem] xl:su-min-h-[75rem] su-pb-60 md:su-pb-100 su-rs-pt-6',
@@ -15,7 +23,7 @@ export const posterContentRight = 'su-rounded-br-[12rem] sm:su-rounded-br-[20rem
 
 export const content = 'su-relative su-w-full su-break-words su-z-10';
 
-export const heading = (hasImage: boolean) => dcnb('su-rs-mb-3 su-max-w-[43rem]', hasImage ? 'su-text-shadow-sm' : '');
+export const heading = (hasImage: boolean) => dcnb('su-rs-mb-3 2xl:su-whitespace-pre-line', hasImage ? 'su-text-shadow-sm' : '');
 
 export const body = 'su-rs-mb-2 last:su-mb-0';
 

@@ -1,33 +1,27 @@
-import React, { useRef, useState } from 'react';
-import { dcnb } from 'cnbuilder';
-import {
-  m, useScroll, useSpring, useTransform, useInView, SpringOptions,
-} from 'framer-motion';
+import React from 'react';
 import { Container } from '../Container';
-import { Grid, GridAlternating } from '../Grid';
-import { Heading, Text, Paragraph } from '../Typography';
-import { ThemeCard } from '../VerticalCard';
-import { colorNameToHex } from '../../utilities/colorPalettePlugin';
-import { FlexBox } from '../FlexBox';
+import { Heading, Paragraph } from '../Typography';
 import { AnimateInView } from '../Animate';
-import { CtaButton } from '../Cta';
-import { SplitPoster } from '../SplitPoster';
+import { Triangle } from '../Shapes';
 
 export const FindPurposeSection = ({ children }) => (
   <Container width="full" bgColor="white" py={9}>
     <Container>
-      <Heading size="f8" font="druk" className="su-max-w-900" leading="none">
+      <Heading size="splash" font="druk" className="su-max-w-900 su-rs-mb-4" leading="none">
         Find your purpose.
       </Heading>
-      <div className="lg:su-w-[70%] su-mx-auto">
-        <Paragraph font="serif" weight="semibold">
-          The world’s collective problems require collective solutions—and the work is far from over.
-          It takes all of us, coming together from all angles.
-          Discover the schools and initiatives working together On Purpose.
-        </Paragraph>
-        <Paragraph font="serif" weight="semibold">
-          So, what moves you?
-        </Paragraph>
+      <div className="lg:su-w-[80%] 2xl:su-w-[60%] su-mx-auto su-rs-mb-6">
+        <Triangle className="su-fill-digital-red-light su-w-60 su-rs-mb-7 motion-safe:su-animate-bounce su-" />
+        <AnimateInView delay={0.4} duration={0.7} animation="slideDown">
+          <Paragraph font="serif" weight="semibold" variant="overview" leading="snug">
+            The world’s collective problems require collective solutions—and the work is far from over.
+            It takes all of us, coming together from all angles.
+            Discover the schools and initiatives working together On Purpose.
+          </Paragraph>
+          <Paragraph font="serif" weight="semibold" variant="overview" leading="snug">
+            So, what moves you?
+          </Paragraph>
+        </AnimateInView>
       </div>
     </Container>
     {children}

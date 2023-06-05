@@ -10,6 +10,7 @@ type SbSplitPosterProps = {
   blok: {
     _uid: string;
     headingLevel?: HeadingType;
+    isLargeOffset?: boolean;
     bgImage: SbImageType;
     headingLeft?: string;
     headingRight?: string;
@@ -33,6 +34,7 @@ export const SbSplitPoster = ({
     _uid,
     headingLevel,
     bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
+    isLargeOffset,
     headingLeft,
     headingRight,
     bodyLeft,
@@ -60,6 +62,7 @@ export const SbSplitPoster = ({
       headingLevel={headingLevel}
       bgImageSrc={bgImageSrc}
       bgImageFocus={bgImageFocus}
+      isLargeOffset={isLargeOffset}
       headingLeft={headingLeft}
       headingRight={headingRight}
       bodyLeft={bodyLeft}
