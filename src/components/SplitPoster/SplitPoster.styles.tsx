@@ -15,7 +15,7 @@ export const posterContentRight = 'su-rounded-br-[12rem] sm:su-rounded-br-[20rem
 
 export const content = 'su-relative su-w-full su-break-words su-z-10';
 
-export const heading = (hasImage: boolean) => dcnb('su-rs-mb-3 su-max-w-400', hasImage ? 'su-text-shadow-sm' : '');
+export const heading = (hasImage: boolean) => dcnb('su-rs-mb-3 su-max-w-[43rem]', hasImage ? 'su-text-shadow-sm' : '');
 
 export const body = 'su-rs-mb-2 last:su-mb-0';
 
