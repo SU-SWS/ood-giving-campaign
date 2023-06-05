@@ -3,13 +3,11 @@
     font-family: "Stanford";
     src: url("https://www-media.stanford.edu/assets/fonts/stanford.woff") format("woff"), url("https://www-media.stanford.edu/assets/fonts/stanford.ttf") format("truetype");
     font-weight: 300;
-    font-display: swap;
 }
 @font-face {
     font-family: "Druk Web";
     src: url("/fonts/Druk-Super-Web.woff2") format("woff2");
     font-weight: 900;
-    font-display: fallback;
 }
 @font-face {
     font-family: "Druk Wide Web";

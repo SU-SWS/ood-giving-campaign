@@ -40,10 +40,21 @@ export const HomepageHero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
-    offset: ['0', '10vh'],
+    offset: ['0', '20vh'],
   });
-  const animatedWidth = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
-  const marginAnimate = useTransform(scrollYProgress, [0, 1], ['0', '4vw']);
+
+  // On scroll animation for headline fading out
+  const opacityHeadlineAnimate = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+
+  // On scroll animation for On Pupose coming in
+  const opacityAnimate = useTransform(scrollYProgress, [0.2, 0.5], [0, 1]);
+  const yAnimate = useTransform(scrollYProgress, [0.2, 0.5], [-100, 0]);
+  const scaleAnimate = useTransform(scrollYProgress, [0.2, 0.5], [0.7, 1]);
+
+  // On scroll animation for bracket activation
+  const playAnimate = useTransform(scrollYProgress, [0.5, 1], [0, 1]);
+  const animatedWidth = useTransform(scrollYProgress, [0.5, 1], ['0%', '100%']);
+  const marginAnimate = useTransform(scrollYProgress, [0.5, 1], ['0', '4vw']);
 
   return (
     <div ref={heroRef} className="su-relative su-w-full su-bg-gc-sky">
@@ -70,8 +81,9 @@ export const HomepageHero = () => {
         </div>
       </div>
       <m.div
-        animate={{ opacity: [0.5, 1, 1, 0] }}
-        transition={{ duration: 1.6, times: [0, 0.2, 0.9, 1], delay: 0.3 }}
+        animate={{ opacity: [0.5, 1] }}
+        transition={{ duration: 0.3, times: [0, 1], delay: 0.3 }}
+        style={{ opacity: opacityHeadlineAnimate }}
         className="su-cc su-opacity-50 su-absolute su-top-0 su-left-0 su-right-0 su-mb-0 su-pt-120 md:su-pt-216 2xl:su-pt-228 su-max-w-full"
       >
         <Heading as="h1" size="f8" leading="none" font="druk" color="white">
@@ -83,8 +95,7 @@ export const HomepageHero = () => {
         </Heading>
       </m.div>
       <m.div
-        animate={{ opacity: [0, 1], scale: [prefersReduceMotion ? 1 : 0.7, 1], y: [prefersReduceMotion ? 0 : -100, 0] }}
-        transition={{ duration: 0.6, times: [0, 1], delay: 1.8 }}
+        style={{ opacity: opacityAnimate, scale: scaleAnimate, y: yAnimate }}
         className="su-opacity-0 su-cc su-absolute su-top-[25rem] sm:su-top-300 md:su-top-400 lg:su-top-[28vw] 3xl:su-top-[45rem] su-left-0 su-right-0"
       >
         <FlexBox alignItems="center" justifyContent="center">
@@ -95,7 +106,7 @@ export const HomepageHero = () => {
             className="su-h-auto su-max-w-fit"
             style={{
               width: animatedWidth,
-              opacity: scrollYProgress,
+              opacity: playAnimate,
               marginLeft: marginAnimate,
               marginRight: marginAnimate,
             }}
@@ -116,7 +127,7 @@ export const HomepageHero = () => {
             </button>
           </m.div>
           <div className="su-h-[10vw] 2xl:su-h-[15rem]">
-            <Ose className="su-fill-white su-h-full su--ml-2" />
+            <Ose className="su-fill-white su-h-full su--ml-1 sm:su--ml-2" />
           </div>
         </FlexBox>
       </m.div>
