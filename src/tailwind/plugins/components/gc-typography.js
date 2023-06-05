@@ -5,14 +5,14 @@ module.exports = function () {
   return function ({ addComponents, theme }) {
     const components = {
       '.overview': {
-        fontSize: '2.3rem',
-        lineHeight: theme('lineHeight.display'),
+        fontSize: '2.2rem',
+        lineHeight: theme('lineHeight.snug'),
         fontWeight: theme('fontWeight.semibold'),
         '@screen md': {
-          fontSize: '2.6rem',
+          fontSize: '2.7rem',
         },
         '@screen xl': {
-          fontSize: '4rem',
+          fontSize: '3.4rem',
         },
       },
       '.gc-card': {

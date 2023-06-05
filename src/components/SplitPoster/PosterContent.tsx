@@ -39,6 +39,7 @@ export const PosterContent = ({
     <FlexBox
       {...props}
       alignItems="end"
+      justifyContent={contentAlign === 'left' ? 'start' : 'end'}
       className={dcnb(styles.posterContentRoot(!!imageSrc), bgTextColorPairs[bgColor], className)}
     >
       {imageSrc && (

@@ -45,7 +45,14 @@ export const SbSection = ({
       </Text>
     )}
     {heading && (
-      <Heading as={headingLevel} size="splash" leading="none" uppercase font="druk" className="su-max-w-1000">
+      <Heading
+        as={headingLevel}
+        size="splash"
+        leading="none"
+        uppercase
+        font="druk"
+        className="su-whitespace-pre-line su-max-w-1000"
+      >
         {heading}
       </Heading>
     )}
