@@ -72,22 +72,24 @@ export const ThemeSection = () => {
         pt={9}
         className="su-relative su-overflow-hidden"
       >
-        <Text size={2} leading="tight" font="serif" className="su-cc su-mb-1em">Themes</Text>
-        <FlexBox className="su-relative su-rs-mb-6">
-          <div className="su-hidden lg:su-block su-bg-digital-red lg:su-w-40 3xl:su-w-[5.8rem]" />
-          <Heading
-            as="h2"
-            size="splash"
-            leading="none"
-            font="druk"
-            className="su-cc su-pr-0 su-mb-0 su--mt-[0.16em] su-whitespace-pre-line lg:su--ml-40 3xl:su--ml-[5.8rem] su-w-full su-max-w-1200 3xl:su-max-w-[60%]"
-          >
-            Square pegs,<br />
-            huge goals.
-          </Heading>
-        </FlexBox>
+        <AnimateInView duration={0.6} animation="slideUp">
+          <Text size={2} leading="tight" font="serif" className="su-cc su-mb-1em">Themes</Text>
+          <FlexBox className="su-relative su-rs-mb-6">
+            <div className="su-hidden lg:su-block su-bg-digital-red lg:su-w-40 3xl:su-w-58" />
+            <Heading
+              as="h2"
+              size="splash"
+              leading="none"
+              font="druk"
+              className="su-cc su-pr-0 su-mb-0 su--mt-[0.16em] su-whitespace-pre-line lg:su--ml-40 3xl:su--ml-58 su-w-full su-max-w-1200 3xl:su-max-w-[60%]"
+            >
+              Square pegs,<br />
+              huge goals.
+            </Heading>
+          </FlexBox>
+        </AnimateInView>
         <Container>
-          <AnimateInView animation="slideUp" delay={0.2}>
+          <AnimateInView animation="slideUp" duration={0.6} delay={0.2}>
             <div className="su-max-w-800 su-rs-mb-4 su-mx-auto">
               <Paragraph variant="overview" font="serif">
                 These aren’t priorities to be funded—they are a promise we make to each other.
@@ -128,7 +130,7 @@ export const ThemeSection = () => {
                 style={{ scaleX: leftLineSpring }}
               />
             </div>
-            <div className="su-max-w-full su-overflow-hidden su-mt-200">
+            <div className="su-max-w-full su-overflow-hidden su-mt-100">
               <m.svg className="su-mr-0 su-ml-auto su-rotate-180" viewBox="0 0 952 461" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <m.path
                   d="M951.043 1H450.62C192.915 1 -16 206.517 -16 460.032"
