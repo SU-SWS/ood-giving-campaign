@@ -12,7 +12,7 @@ export const CtaContent = ({
   variant,
   icon,
   iconPosition,
-  animate = icon === 'triangle-right' ? 'right' : '',
+  animate = icon?.includes('right') ? 'right' : '',
   iconProps,
   srText,
   children,

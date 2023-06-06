@@ -5,12 +5,7 @@ export const ctaVariants = {
   inline: 'su-inline su-underline su-decoration-1 hocus:su-decoration-2 su-underline-offset-2',
   inlineDark: 'su-inline su-text-digital-red-xlight hocus:su-text-white su-underline su-decoration-1 hocus:su-decoration-2 su-underline-offset-2',
   ghost: 'su-inline-block su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none su-underline-offset-4 su-decoration-transparent hocus:su-decoration-current',
-  /**
-   * TODO: These ghost variants are just for giving Alexis and Kerri ideas. Will remove or update later.
-   */
-  ghostLeaf: 'su-inline-block su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none su-underline-offset-4 su-decoration-transparent hocus:su-decoration-current su-rounded-tl-[1.4em] su-rounded-br-[1.4em]',
   ghostSwipe: 'su-relative su-z-[10] su-inline-block su-no-underline hocus:su-no-underline su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none after:su-block after:su-content-[""] after:su-absolute after:su-top-0 after:su-left-0 after:su-w-[0] after:su-h-full after:su-bg-gradient-to-r after:su-from-digital-red after:su-to-transparent after:su-transition-all after:su-z-[-1] hocus:after:su-w-full',
-  ghostSwipeDown: 'su-relative su-z-[10] su-inline-block su-no-underline hocus:su-no-underline su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none after:su-block after:su-content-[""] after:su-absolute after:su-top-0 after:su-right-0 after:su-h-[0] after:su-w-full after:su-bg-spirited after:su-transition-all after:su-z-[-1] hocus:after:su-h-full',
   chip: 'su-inline-block su-font-normal su-rounded-full su-text-white hover:su-shadow-md su-no-underline su-leading-display hocus:su-bg-periwinkle su-text-white hocus:su-text-white su-border su-border-white focus:su-ring-2 active:su-ring-2 focus:su-ring-lagunita-40 active:su-ring-lagunita-40 focus:su-outline-none hocus:su-decoration-1',
   link: 'su-font-normal su-underline su-leading-display su-text-current hocus:su-text-current su-decoration-1 hocus:su-decoration-2 focus-visible:su-ring-2 focus-visible:su-ring-lagunita-light focus-visible:su-outline-none focus-visible:su-rounded su-underline-offset-4',
   back: 'su-inline-block su-font-normal su-no-underline su-leading-none group-hocus:su-underline su-text-black hocus:su-text-lagunita focus-visible:su-ring-2 focus-visible:su-ring-lagunita-light focus-visible:su-ring-offset-4 focus:su-outline-none su-rounded-[1px]',
@@ -26,6 +21,13 @@ export const ctaColors = {
   black: 'su-text-gc-black',
   white: 'su-text-white',
   'digital-red': 'su-text-digital-red',
+};
+
+export const ctaBorderRadius = {
+  br: 'su-rounded-br-[1.6rem] xl:su-rounded-br-[2rem]',
+  'br-large': 'su-rounded-br-[2rem] xl:su-rounded-br-[3rem]',
+  bl: 'su-rounded-bl-[1.6rem] xl:su-rounded-bl-[2rem]',
+  'bl-large': 'su-rounded-bl-[2rem] xl:su-rounded-bl-[3rem]',
 };
 
 export const ctaSizes = {
@@ -45,9 +47,7 @@ export const ctaSizes = {
 export const ctaSizeMap = {
   solid: 'default',
   ghost: 'default',
-  ghostLeaf: 'default',
   ghostSwipe: 'default',
-  ghostSwipeDown: 'default',
   footer: 'footer',
   masthead: 'masthead',
   link: 'unset',
