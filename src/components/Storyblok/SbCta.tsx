@@ -11,6 +11,8 @@ type SbCtaType = {
     label: string;
     srText?: string;
     variant?: string;
+    curve?: 'tl' | 'tr' | 'bl' | 'br';
+    isLarge?: boolean;
     icon?: IconType;
   };
 };
@@ -22,6 +24,8 @@ export const SbCta = ({
     label,
     srText,
     variant,
+    curve,
+    isLarge,
     icon,
   },
   blok,
@@ -36,6 +40,8 @@ export const SbCta = ({
       key={_uid}
       sbLink={link}
       variant={ctaVariant}
+      curve={`${curve}${isLarge ? '-large' : ''}`}
+      size={isLarge ? 'large' : 'default'}
       color={color}
       srText={srText}
       icon={icon}

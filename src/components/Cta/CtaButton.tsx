@@ -9,21 +9,21 @@ export const CtaButton = React.forwardRef<HTMLButtonElement, CtaButtonProps>(
   (props, ref) => {
     const {
       type = 'button',
-      variant = 'primary',
+      variant = 'solid',
       color = 'white',
       iconPosition = 'right',
       icon,
       size,
+      curve,
       animate,
       iconProps,
       srText,
-      uppercase,
       children,
       className,
       ...rest
     } = props;
 
-    const ctaClasses = getCtaClasses(variant, color, size, uppercase, className);
+    const ctaClasses = getCtaClasses(variant, size, curve, color, className);
 
     return (
       <button

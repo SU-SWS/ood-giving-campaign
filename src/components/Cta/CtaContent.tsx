@@ -6,13 +6,13 @@ import { SrOnlyText } from '../Typography';
 import * as styles from './Cta.styles';
 import * as types from './Cta.types';
 
-type CtaContentProps = Omit<types.CtaCommonProps, 'size' | 'color' | 'uppercase'>;
+type CtaContentProps = Omit<types.CtaCommonProps, 'size' | 'color'>;
 
 export const CtaContent = ({
   variant,
   icon,
   iconPosition,
-  animate = icon === 'triangle-right' ? 'right' : '',
+  animate = icon?.includes('right') ? 'right' : '',
   iconProps,
   srText,
   children,
