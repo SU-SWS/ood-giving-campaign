@@ -1,8 +1,6 @@
 import React from 'react';
 import { storyblokEditable } from 'gatsby-source-storyblok';
-import {
-  CtaLink, CtaColorType, CtaVariantType, CtaCurveType,
-} from '../Cta';
+import { CtaLink, CtaColorType, CtaVariantType } from '../Cta';
 import { IconType } from '../HeroIcon';
 import { SbLinkType } from './Storyblok.types';
 
@@ -13,7 +11,7 @@ type SbCtaType = {
     label: string;
     srText?: string;
     variant?: string;
-    curve?: CtaCurveType;
+    curve?: 'tl' | 'tr' | 'bl' | 'br';
     isLarge?: boolean;
     icon?: IconType;
   };
@@ -42,7 +40,7 @@ export const SbCta = ({
       key={_uid}
       sbLink={link}
       variant={ctaVariant}
-      curve={curve}
+      curve={`${curve}${isLarge ? '-large' : ''}`}
       size={isLarge ? 'large' : 'default'}
       color={color}
       srText={srText}
