@@ -1,9 +1,7 @@
 import React from 'react';
-import { dcnb } from 'cnbuilder';
 import { Container } from '../Container';
 import { Heading, Paragraph } from '../Typography';
 import { FlexBox } from '../FlexBox';
-import { AnimateInView } from '../Animate';
 import { CtaLink } from '../Cta';
 import { getProcessedImage } from '../../utilities/getProcessedImage';
 
