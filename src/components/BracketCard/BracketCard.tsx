@@ -124,6 +124,7 @@ export const BracketCard = ({
           {ctaLabel && (link || href) && (
             <CtaLink
               color={textColor}
+              curve={textOnLeft ? 'tl' : 'tr'}
               icon="arrow-right"
               animate="right"
               variant="ghost"
