@@ -3,15 +3,9 @@ import { Container } from '../Container';
 import { Heading, Paragraph } from '../Typography';
 import { AnimateInView } from '../Animate';
 import { Triangle } from '../Shapes';
-import { getProcessedImage } from '../../utilities/getProcessedImage';
 
 export const FindPurposeSection = ({ children }) => (
   <div className="su-relative">
-    <img
-      alt=""
-      src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/f23b53c0e4/steve-johnson-cropped-2000x40-02.jpg')}
-      className="su-w-full"
-    />
     <Container width="full" bgColor="white" py={9}>
       <Container>
         <Heading size="splash" font="druk" className="su-max-w-900 su-rs-mb-4" leading="none">
@@ -33,10 +27,5 @@ export const FindPurposeSection = ({ children }) => (
       </Container>
       {children}
     </Container>
-    <img
-      alt=""
-      src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/f23b53c0e4/steve-johnson-cropped-2000x40-02.jpg')}
-      className="su-w-full"
-    />
   </div>
 );

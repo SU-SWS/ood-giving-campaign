@@ -8,6 +8,7 @@ import { FindPurposeSection } from '../components/Temporary/FindPurposeSection';
 import { PageHead } from '../components/PageHead';
 import { CreateBloks } from '../components/CreateBloks';
 import { Layout } from '../components/Layout';
+import { Banner } from '../components/Banner';
 
 const IndexPage = ({ data }) => {
   let story = data.storyblokEntry;
@@ -24,6 +25,12 @@ const IndexPage = ({ data }) => {
       <FindPurposeSection>
         <CreateBloks blokSection={blok.findPurpose} />
       </FindPurposeSection>
+      <Banner
+        heading="Join the conversation in Chicago."
+        body="Chicago Conversation on Purpose. October XX, 2024. This is text that describes the event in a super exciting way."
+        ctaText="Learn how"
+        href="about-test"
+      />
     </Layout>
   );
 };
