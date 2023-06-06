@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { dcnb } from 'cnbuilder';
 import {
-  m, useScroll, useSpring, useTransform, useInView, SpringOptions,
+  m, useScroll, useSpring, useTransform, SpringOptions,
 } from 'framer-motion';
 import { Container } from '../Container';
 import { Grid, GridAlternating } from '../Grid';
@@ -14,8 +14,6 @@ import { CtaButton } from '../Cta';
 
 export const ThemeSection = () => {
   const containerRef = useRef(null);
-  const svgRef = useRef(null);
-  const introCurveInView = useInView(svgRef, { once: true });
   const springSetting: SpringOptions = {
     stiffness: 100,
     damping: 30,
@@ -75,7 +73,7 @@ export const ThemeSection = () => {
         className="su-relative su-overflow-hidden"
       >
         <Text size={2} leading="tight" font="serif" className="su-cc su-mb-1em">Themes</Text>
-        <div className="su-relative su-flex su-rs-mb-6">
+        <FlexBox className="su-relative su-rs-mb-6">
           <div className="su-hidden lg:su-block su-bg-digital-red lg:su-w-40 3xl:su-w-[5.8rem]" />
           <Heading
             as="h2"
@@ -87,7 +85,7 @@ export const ThemeSection = () => {
             Square pegs,<br />
             huge goals.
           </Heading>
-        </div>
+        </FlexBox>
         <Container>
           <AnimateInView animation="slideUp" delay={0.2}>
             <div className="su-max-w-800 su-rs-mb-4 su-mx-auto">
