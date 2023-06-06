@@ -20,18 +20,26 @@ export const DemoContent = () => (
     <Container bgColor="black" py={9}>
       <Grid md={2} xl={3} xxl={4} gap="card" alignItems="center" justifyItems="center">
         <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right">Learn More</CtaLink>
-        <CtaLink href="/about-test" variant="ghostLeaf" icon="arrow-right" animate="right">Learn More</CtaLink>
+        <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right" size="large">Learn More</CtaLink>
         <CtaLink
           href="/about-test"
-          variant="ghostSwipe"
+          variant="ghost-swipe"
           icon="arrow-right"
+        >
+          Swipe right
+        </CtaLink>
+        <CtaLink
+          href="/about-test"
+          variant="ghost-swipe"
+          icon="arrow-right"
+          size="large"
         >
           Swipe right
         </CtaLink>
         {/* Kerri's idea test */}
         <CtaLink
           href="/about-test"
-          variant="ghostSwipe"
+          variant="ghost-swipe"
           icon="arrow-right"
           className="hocus:su-rounded-br-[1.5em] su-overflow-hidden"
         >
@@ -39,10 +47,12 @@ export const DemoContent = () => (
         </CtaLink>
         <CtaLink
           href="/about-test"
-          variant="ghostSwipeDown"
+          variant="ghost-swipe"
           icon="arrow-right"
+          size="large"
+          className="hocus:su-rounded-br-[1.5em] su-overflow-hidden"
         >
-          A button with a really long label
+          Swipe + rounded corner
         </CtaLink>
         <CtaLink
           href="/about-test"
@@ -57,33 +67,24 @@ export const DemoContent = () => (
           variant="solid"
           icon="arrow-right"
           animate="right"
+          size="large"
         >
-          Digital Red with really long label
+          Digital Red
         </CtaLink>
       </Grid>
     </Container>
     <Container bgColor="white" py={9}>
       <Grid md={2} xl={3} xxl={4} gap="card" alignItems="center" justifyItems="center">
         <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right" color="black">Learn More</CtaLink>
-        <CtaLink href="/about-test" variant="ghostLeaf" icon="arrow-right" animate="right" color="black">Learn More</CtaLink>
         <CtaLink
           href="/about-test"
-          variant="ghostSwipe"
+          variant="ghost-swipe"
           color="black"
           icon="chevron-up"
           animate="up"
           className="after:!su-bg-robins-egg"
         >
           Swipe right
-        </CtaLink>
-        <CtaLink
-          href="/about-test"
-          variant="ghostSwipeDown"
-          color="black"
-          className="after:!su-bg-lavender"
-          icon="arrow-right"
-        >
-          A button with a really long label
         </CtaLink>
         <CtaLink
           href="/about-test"
@@ -119,7 +120,7 @@ export const DemoContent = () => (
       <div className="su-absolute su-top-[50%] su-left-[50%] su-translate-x-[-50%] su-translate-y-[-50%] su-z-10">
         <CtaLink
           href="/about-test"
-          variant="ghostLeaf"
+          variant="ghost-swipe"
           icon="arrow-right"
           className="!su-rs-px-5 !su-rs-py-2 !su-text-20 md:!su-text-[4.6rem] !su-font-bold !su-text-white !su-bg-black-true/40 hocus:su-rounded-tl-none hocus:su-rounded-br-none hocus:!su-bg-sapphire/80"
         >

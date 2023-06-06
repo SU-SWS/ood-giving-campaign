@@ -11,6 +11,7 @@ export const CtaGatsbyLink = (props) => {
     variant = 'link',
     color = variant !== 'inline' && variant !== 'inlineDark' ? 'white' : '',
     size,
+    curve,
     icon,
     iconPosition = 'right',
     animate,
@@ -21,7 +22,7 @@ export const CtaGatsbyLink = (props) => {
     ...rest
   } = props;
 
-  const ctaClasses = getCtaClasses(variant, color, size, className);
+  const ctaClasses = getCtaClasses(variant, size, curve, color, className);
 
   return (
     <Link

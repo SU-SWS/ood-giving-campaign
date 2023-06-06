@@ -85,6 +85,7 @@ export const VerticalCard = ({
         <CtaLink
           variant="solid"
           color={textColor}
+          curve="br"
           icon="arrow-right"
           animate="right"
           sbLink={link}

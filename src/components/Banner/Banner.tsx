@@ -33,7 +33,7 @@ export const Banner = ({
           <Paragraph font="serif" variant="overview" weight="semibold" className="su-max-w-[50ch] su-rs-mb-3">
             {body}
           </Paragraph>
-          <CtaLink variant="ghost" color="black" icon="arrow-right" animate="right" href={href}>
+          <CtaLink variant="ghost-swipe" color="black" curve="br" icon="arrow-right" animate="right" href={href}>
             {ctaText}
           </CtaLink>
         </div>

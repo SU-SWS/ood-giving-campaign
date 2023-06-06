@@ -1,11 +1,11 @@
 export const cta = 'su-group hocus:su-underline su-transition-all';
 
 export const ctaVariants = {
-  solid: 'su-inline-block su-font-normal su-no-underline su-leading-display su-border-2 su-border-digital-red-xlight su-bg-digital-red hocus:su-bg-gradient-to-r hocus:su-from-cardinal-red hocus:su-to-cardinal-red-xdark su-text-white hocus:su-text-white hocus:su-no-underline',
+  solid: 'su-relative su-z-[10] su-inline-block su-no-underline hocus:su-no-underline su-font-normal su-leading-display su-bg-digital-red hocus:su-text-white su-border-2 su-border-digital-red-light focus-visible:su-outline-none after:su-block after:su-content-[""] after:su-absolute after:su-top-0 after:su-left-0 after:su-w-[0] after:su-h-full after:su-bg-gradient-to-r after:su-from-cardinal-red after:su-to-cardinal-red-dark after:su-transition-all after:su-z-[-1] hocus:after:su-w-full su-overflow-hidden',
   inline: 'su-inline su-underline su-decoration-1 hocus:su-decoration-2 su-underline-offset-2',
   inlineDark: 'su-inline su-text-digital-red-xlight hocus:su-text-white su-underline su-decoration-1 hocus:su-decoration-2 su-underline-offset-2',
   ghost: 'su-inline-block su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none su-underline-offset-4 su-decoration-transparent hocus:su-decoration-current',
-  ghostSwipe: 'su-relative su-z-[10] su-inline-block su-no-underline hocus:su-no-underline su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none after:su-block after:su-content-[""] after:su-absolute after:su-top-0 after:su-left-0 after:su-w-[0] after:su-h-full after:su-bg-gradient-to-r after:su-from-digital-red after:su-to-transparent after:su-transition-all after:su-z-[-1] hocus:after:su-w-full',
+  'ghost-swipe': 'su-relative su-z-[10] su-inline-block su-no-underline hocus:su-no-underline su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none after:su-block after:su-content-[""] after:su-absolute after:su-top-0 after:su-left-0 after:su-w-[0] after:su-h-full after:su-bg-gradient-to-r after:su-from-digital-red after:su-to-transparent after:su-transition-all after:su-z-[-1] hocus:after:su-w-full',
   chip: 'su-inline-block su-font-normal su-rounded-full su-text-white hover:su-shadow-md su-no-underline su-leading-display hocus:su-bg-periwinkle su-text-white hocus:su-text-white su-border su-border-white focus:su-ring-2 active:su-ring-2 focus:su-ring-lagunita-40 active:su-ring-lagunita-40 focus:su-outline-none hocus:su-decoration-1',
   link: 'su-font-normal su-underline su-leading-display su-text-current hocus:su-text-current su-decoration-1 hocus:su-decoration-2 focus-visible:su-ring-2 focus-visible:su-ring-lagunita-light focus-visible:su-outline-none focus-visible:su-rounded su-underline-offset-4',
   back: 'su-inline-block su-font-normal su-no-underline su-leading-none group-hocus:su-underline su-text-black hocus:su-text-lagunita focus-visible:su-ring-2 focus-visible:su-ring-lagunita-light focus-visible:su-ring-offset-4 focus:su-outline-none su-rounded-[1px]',
@@ -23,16 +23,20 @@ export const ctaColors = {
   'digital-red': 'su-text-digital-red',
 };
 
-export const ctaBorderRadius = {
-  br: 'su-rounded-br-[1.6rem] xl:su-rounded-br-[2rem]',
-  'br-large': 'su-rounded-br-[2rem] xl:su-rounded-br-[3rem]',
+export const ctaCurves = {
+  tl: 'su-rounded-tl-[1.6rem] xl:su-rounded-tl-[2rem]',
+  'tl-large': 'su-rounded-tl-[2rem] xl:su-rounded-tl-[3rem]',
+  tr: 'su-rounded-tr-[1.6rem] xl:su-rounded-tr-[2rem]',
+  'tr-large': 'su-rounded-tr-[2rem] xl:su-rounded-tr-[3rem]',
   bl: 'su-rounded-bl-[1.6rem] xl:su-rounded-bl-[2rem]',
   'bl-large': 'su-rounded-bl-[2rem] xl:su-rounded-bl-[3rem]',
+  br: 'su-rounded-br-[1.6rem] xl:su-rounded-br-[2rem]',
+  'br-large': 'su-rounded-br-[2rem] xl:su-rounded-br-[3rem]',
 };
 
 export const ctaSizes = {
   default: 'su-pt-9 su-pb-10 su-pl-[2.4rem] su-pr-[2.2rem] lg:su-pt-12 lg:su-pb-13 su-text-16 md:su-text-18 xl:su-text-20',
-  large: 'su-px-13 su-pt-8 su-pb-9 lg:su-pl-36 lg:su-pr-[4.6rem] lg:su-pt-[2.2rem] lg:su-pb-[2.4rem] su-text-18 md:su-text-20 xl:su-text-24',
+  large: 'su-pl-[2.4rem] su-pr-[2.2rem] su-pt-12 su-pb-13 lg:su-pr-36 lg:su-pl-[4.2rem] lg:su-pt-[2.2rem] lg:su-pb-[2.4rem] su-text-18 md:su-text-20 xl:su-text-24',
   masthead: 'su-text-14 md:su-text-16',
   footer: '',
   'footer-featured': 'su-ma-intro',
@@ -47,7 +51,7 @@ export const ctaSizes = {
 export const ctaSizeMap = {
   solid: 'default',
   ghost: 'default',
-  ghostSwipe: 'default',
+  'ghost-swipe': 'default',
   footer: 'footer',
   masthead: 'masthead',
   link: 'unset',
