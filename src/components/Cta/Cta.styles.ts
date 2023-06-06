@@ -35,8 +35,8 @@ export const ctaCurves = {
 };
 
 export const ctaSizes = {
-  default: 'su-pt-9 su-pb-10 su-pl-[2.4rem] su-pr-[2.2rem] lg:su-pt-12 lg:su-pb-13 su-text-16 md:su-text-18 xl:su-text-20',
-  large: 'su-pl-[2.4rem] su-pr-[2.2rem] su-pt-12 su-pb-13 lg:su-pr-36 lg:su-pl-[4.2rem] lg:su-pt-[2.2rem] lg:su-pb-[2.4rem] su-text-18 md:su-text-20 xl:su-text-24',
+  default: 'su-pt-9 su-pb-10 su-pl-[2.2rem] su-pr-20 lg:su-pt-10 lg:su-pb-11 su-text-16 md:su-text-18 xl:su-text-20',
+  large: 'su-pl-[2.2rem] su-pr-20 su-pt-10 su-pb-11 lg:su-pr-[3.4rem] lg:su-pl-40 lg:su-pt-20 lg:su-pb-[2.2rem] su-text-18 md:su-text-20 xl:su-text-24',
   masthead: 'su-text-14 md:su-text-16',
   footer: '',
   'footer-featured': 'su-ma-intro',
