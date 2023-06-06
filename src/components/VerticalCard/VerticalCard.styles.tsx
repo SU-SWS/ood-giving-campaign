@@ -4,7 +4,7 @@ export const imageWrapper = 'su-transition-all su-aspect-w-1 su-aspect-h-1 su-ro
 
 export const image = 'su-object-cover su-w-full su-h-full';
 
-export const heading = 'su-rs-mt-1 su-rs-mb-neg1 su-underline su-decoration-transparent group-focus-within:su-decoration-digital-red-light group-hover:su-decoration-digital-red-light su-underline-offset-4 su-transition-colors';
+export const heading = 'su-rs-mt-1 su-rs-mb-neg1';
 
 export const headingLink = 'su-stretched-link su-no-underline !su-font-bold';
 

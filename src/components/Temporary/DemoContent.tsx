@@ -19,48 +19,33 @@ export const DemoContent = () => (
     </div>
     <Container bgColor="black" py={9}>
       <Grid md={2} xl={3} xxl={4} gap="card" alignItems="center" justifyItems="center">
-        <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right">Learn More</CtaLink>
-        <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right" size="large">Learn More</CtaLink>
+        <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right" curve="tr">Ghost</CtaLink>
+        <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right" size="large" curve="tr">Ghost</CtaLink>
         <CtaLink
           href="/about-test"
           variant="ghost-swipe"
           icon="arrow-right"
+          curve="br"
         >
-          Swipe right
+          Ghost swipe
         </CtaLink>
         <CtaLink
           href="/about-test"
           variant="ghost-swipe"
           icon="arrow-right"
           size="large"
+          curve="br"
         >
-          Swipe right
-        </CtaLink>
-        {/* Kerri's idea test */}
-        <CtaLink
-          href="/about-test"
-          variant="ghost-swipe"
-          icon="arrow-right"
-          className="hocus:su-rounded-br-[1.5em] su-overflow-hidden"
-        >
-          Swipe + rounded corner
-        </CtaLink>
-        <CtaLink
-          href="/about-test"
-          variant="ghost-swipe"
-          icon="arrow-right"
-          size="large"
-          className="hocus:su-rounded-br-[1.5em] su-overflow-hidden"
-        >
-          Swipe + rounded corner
+          Ghost swipe
         </CtaLink>
         <CtaLink
           href="/about-test"
           variant="solid"
           icon="arrow-right"
           animate="right"
+          curve="br"
         >
-          Digital Red
+          Solid red
         </CtaLink>
         <CtaLink
           href="/about-test"
@@ -68,39 +53,55 @@ export const DemoContent = () => (
           icon="arrow-right"
           animate="right"
           size="large"
+          curve="br"
         >
-          Digital Red
+          Solid red
         </CtaLink>
       </Grid>
     </Container>
     <Container bgColor="white" py={9}>
       <Grid md={2} xl={3} xxl={4} gap="card" alignItems="center" justifyItems="center">
-        <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right" color="black">Learn More</CtaLink>
+        <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right" color="black" curve="tr">Ghost</CtaLink>
+        <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right" color="black" curve="tr" size="large">Ghost</CtaLink>
         <CtaLink
           href="/about-test"
           variant="ghost-swipe"
           color="black"
-          icon="chevron-up"
-          animate="up"
-          className="after:!su-bg-robins-egg"
+          icon="chevron-right"
+          animate="right"
+          curve="br"
         >
-          Swipe right
+          Ghost swipe
+        </CtaLink>
+        <CtaLink
+          href="/about-test"
+          variant="ghost-swipe"
+          color="black"
+          icon="chevron-right"
+          animate="right"
+          curve="br"
+          size="large"
+        >
+          Ghost swipe
         </CtaLink>
         <CtaLink
           href="/about-test"
           variant="solid"
           icon="arrow-right"
           animate="right"
+          curve="br"
         >
-          Digital Red
+          Solid red
         </CtaLink>
         <CtaLink
           href="/about-test"
           variant="solid"
           icon="arrow-right"
           animate="right"
+          curve="br"
+          size="large"
         >
-          Digital Red with really long label
+          Solid red
         </CtaLink>
       </Grid>
     </Container>
