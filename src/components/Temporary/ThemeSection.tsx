@@ -90,7 +90,7 @@ export const ThemeSection = () => {
         </AnimateInView>
         <Container>
           <AnimateInView animation="slideUp" duration={0.6} delay={0.2}>
-            <div className="su-max-w-800 su-rs-mb-4 su-mx-auto">
+            <div className="su-max-w-800 su-rs-mb-6 su-mx-auto">
               <Paragraph variant="overview" font="serif">
                 These aren’t priorities to be funded—they are a promise we make to each other.
                 To build a more ethical future, we need to move concern for others from being an afterthought
@@ -106,7 +106,7 @@ export const ThemeSection = () => {
             <CtaButton onClick={() => setShouldAnimate(false)}>Reveal themes visually</CtaButton>
           </div>
           {/* This grid contains the 4 animated lines behind the theme cards */}
-          <Grid md={2} className="su-absolute su-left-0 su-top-[180rem] su-w-full su-gap-y-[30rem]">
+          <Grid md={2} className="su-absolute su-left-0 su-top-[160rem] 2xl:su-top-[170rem] su-w-full su-gap-y-[30rem]">
             <div className="su-max-w-full su-overflow-hidden">
               <m.svg className="su-mr-0 su-ml-auto" viewBox="0 0 952 461" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <m.path
@@ -120,17 +120,17 @@ export const ThemeSection = () => {
             </div>
             <div className="su-max-w-full su-overflow-hidden">
               <m.div
-                className="su-h-2 su-bg-white su-origin-left su-mt-400"
+                className="su-h-2 su-bg-white su-origin-left su-mt-300"
                 style={{ scaleX: rightLineSpring }}
               />
             </div>
             <div className="su-max-w-full su-overflow-hidden">
               <m.div
-                className="su-h-2 su-bg-white su-origin-right su-mt-300"
+                className="su-h-2 su-bg-white su-origin-right su-mt-200"
                 style={{ scaleX: leftLineSpring }}
               />
             </div>
-            <div className="su-max-w-full su-overflow-hidden su-mt-100">
+            <div className="su-max-w-full su-overflow-hidden su-mt-300 3xl:su-mt-100">
               <m.svg className="su-mr-0 su-ml-auto su-rotate-180" viewBox="0 0 952 461" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <m.path
                   d="M951.043 1H450.62C192.915 1 -16 206.517 -16 460.032"
