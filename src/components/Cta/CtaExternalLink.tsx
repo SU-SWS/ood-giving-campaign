@@ -20,13 +20,12 @@ export const CtaExternalLink = React.forwardRef<HTMLAnchorElement, CtaExternalLi
       animate,
       iconProps,
       srText = '(external link)',
-      uppercase,
       children,
       className,
       ...rest
     } = props;
 
-    const ctaClasses = getCtaClasses(variant, color, size, uppercase, className);
+    const ctaClasses = getCtaClasses(variant, color, size, className);
 
     return (
       <a

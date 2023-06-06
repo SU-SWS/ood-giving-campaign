@@ -16,13 +16,12 @@ export const CtaGatsbyLink = (props) => {
     animate,
     iconProps,
     srText,
-    uppercase,
     children,
     className,
     ...rest
   } = props;
 
-  const ctaClasses = getCtaClasses(variant, color, size, uppercase, className);
+  const ctaClasses = getCtaClasses(variant, color, size, className);
 
   return (
     <Link

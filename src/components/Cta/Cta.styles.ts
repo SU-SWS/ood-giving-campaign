@@ -1,8 +1,7 @@
 export const cta = 'su-group hocus:su-underline su-transition-all';
 
 export const ctaVariants = {
-  primary: 'su-inline-block su-font-normal su-no-underline su-leading-display su-bg-cardinal-red hocus:su-bg-cardinal-red-dark su-text-white hocus:su-text-white su-border-2 su-border-cardinal-red hocus:su-border-cardinal-red-dark hocus:su-decoration-1 focus:su-outline-none su-underline-offset-4',
-  secondary: 'su-inline-block su-font-normal su-no-underline su-leading-display su-bg-digital-red hocus:su-bg-digital-red-dark su-text-white hocus:su-text-white su-border-2 su-border-digital-red hocus:su-border-cardinal-red-dark hocus:su-decoration-1 focus:su-outline-none su-underline-offset-4',
+  solid: 'su-inline-block su-font-normal su-no-underline su-leading-display su-border-2 su-border-digital-red-xlight su-bg-digital-red hocus:su-bg-gradient-to-r hocus:su-from-cardinal-red hocus:su-to-cardinal-red-xdark su-text-white hocus:su-text-white hocus:su-no-underline',
   inline: 'su-inline su-underline su-decoration-1 hocus:su-decoration-2 su-underline-offset-2',
   inlineDark: 'su-inline su-text-digital-red-xlight hocus:su-text-white su-underline su-decoration-1 hocus:su-decoration-2 su-underline-offset-2',
   ghost: 'su-inline-block su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none su-underline-offset-4 su-decoration-transparent hocus:su-decoration-current',
@@ -26,14 +25,12 @@ export const ctaVariants = {
 export const ctaColors = {
   black: 'su-text-gc-black',
   white: 'su-text-white',
-  // TODO: These are for ghost buttons and link variants. Will remove if we don't need.
   'digital-red': 'su-text-digital-red',
-  'cardinal-red': 'su-text-cardinal-red',
 };
 
 export const ctaSizes = {
-  default: 'su-pt-9 su-pb-10 su-pl-[2.4rem] su-pr-19 lg:su-pt-12 lg:su-pb-13 su-text-16 md:su-text-18 xl:su-text-20',
-  small: 'su-px-13 su-pt-8 su-pb-9 lg:su-px-15 lg:su-pt-10 lg:su-pb-11 su-text-16',
+  default: 'su-pt-9 su-pb-10 su-pl-[2.4rem] su-pr-[2.2rem] lg:su-pt-12 lg:su-pb-13 su-text-16 md:su-text-18 xl:su-text-20',
+  large: 'su-px-13 su-pt-8 su-pb-9 lg:su-pl-36 lg:su-pr-[4.6rem] lg:su-pt-[2.2rem] lg:su-pb-[2.4rem] su-text-18 md:su-text-20 xl:su-text-24',
   masthead: 'su-text-14 md:su-text-16',
   footer: '',
   'footer-featured': 'su-ma-intro',
@@ -46,8 +43,7 @@ export const ctaSizes = {
 };
 
 export const ctaSizeMap = {
-  primary: 'default',
-  secondary: 'default',
+  solid: 'default',
   ghost: 'default',
   ghostLeaf: 'default',
   ghostSwipe: 'default',

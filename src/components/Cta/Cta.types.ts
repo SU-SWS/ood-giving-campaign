@@ -16,6 +16,5 @@ export interface CtaCommonProps {
   iconPosition?: 'left' | 'right';
   animate?: IconAnimationType;
   iconProps?: HeroIconProps & React.ComponentProps<'svg'>;
-  uppercase?: boolean;
   children?: React.ReactNode;
 }
