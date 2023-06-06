@@ -69,167 +69,168 @@ export const ThemeSection = () => {
   return (
     <div>
       <Container
+        width="full"
         bgColor="black"
         pt={9}
         className="su-relative su-overflow-hidden"
       >
-        <Text size={2} leading="tight" font="serif">Themes</Text>
-        <Heading as="h2" size="splash" leading="none" font="druk" className="su-max-w-1000">
-          Square pegs, huge goals.
-        </Heading>
-        <FlexBox className="su-mx-auto" justifyContent="center">
-          <m.svg ref={svgRef} className="su-shrink-0" width="140" height="375" viewBox="0 0 140 375" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <m.path
-              d="M1.00142 0.0948767L2.56929 193.733C3.3767 293.452 64.5865 373.801 139.284 373.196"
-              stroke="white"
-              strokeWidth="2"
-              vectorEffect="non-scaling-stroke"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: introCurveInView ? 1 : 0 }}
-              transition={{
-                delay: 0.3,
-                duration: 0.6,
-                ease: 'easeInOut',
-              }}
-            />
-          </m.svg>
-          <AnimateInView animation="slideDown" delay={0.6}>
-            <Paragraph variant="overview" font="serif" className="su-max-w-[100rem] su-rs-mt-10 su-rs-mb-4 su-ml-[3rem] su-pr-[17rem]">
-              These aren’t priorities to be funded—they are a promise we make to each other.
-              To build a more ethical future, we need to move concern for others from being an afterthought
-              to being integral to the thought process. In every field of study,
-              we need to ensure consequences are weighed and tradeoffs are made on purpose. This is how we get there.
-            </Paragraph>
+        <Text size={2} leading="tight" font="serif" className="su-cc su-mb-1em">Themes</Text>
+        <div className="su-relative su-flex su-rs-mb-6">
+          <div className="su-hidden lg:su-block su-bg-digital-red lg:su-w-40 3xl:su-w-[5.8rem]" />
+          <Heading
+            as="h2"
+            size="splash"
+            leading="none"
+            font="druk"
+            className="su-cc su-pr-0 su-mb-0 su--mt-[0.16em] su-whitespace-pre-line lg:su--ml-40 3xl:su--ml-[5.8rem] su-w-full su-max-w-1200 3xl:su-max-w-[60%]"
+          >
+            Square pegs,<br />
+            huge goals.
+          </Heading>
+        </div>
+        <Container>
+          <AnimateInView animation="slideUp" delay={0.2}>
+            <div className="su-max-w-800 su-rs-mb-4 su-mx-auto">
+              <Paragraph variant="overview" font="serif">
+                These aren’t priorities to be funded—they are a promise we make to each other.
+                To build a more ethical future, we need to move concern for others from being an afterthought
+                to being integral to the thought process. In every field of study,
+                we need to ensure consequences are weighed and tradeoffs are made on purpose.
+              </Paragraph>
+              <Paragraph variant="overview" font="serif">
+                This is how we get there.
+              </Paragraph>
+            </div>
           </AnimateInView>
-        </FlexBox>
-        <div className={dcnb('su-sr-only focus-within:su-not-sr-only su-w-fit children:su-mx-auto', !shouldAnimate ? 'su-hidden' : '')}>
-          <CtaButton onClick={() => setShouldAnimate(false)}>Reveal themes visually</CtaButton>
-        </div>
-        {/* This grid contains the 4 animated lines behind the theme cards */}
-        <Grid md={2} className="su-absolute su-left-0 su-top-[180rem] su-w-full su-gap-y-[30rem]">
-          <div className="su-max-w-full su-overflow-hidden">
-            <m.svg className="su-mr-0 su-ml-auto" viewBox="0 0 952 461" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <m.path
-                d="M951.043 1H450.62C192.915 1 -16 206.517 -16 460.032"
-                stroke="white"
-                strokeWidth="2"
-                vectorEffect="non-scaling-stroke"
-                style={{ pathLength: curveDownSpring }}
+          <div className={dcnb('su-sr-only focus-within:su-not-sr-only su-w-fit children:su-mx-auto', !shouldAnimate ? 'su-hidden' : '')}>
+            <CtaButton onClick={() => setShouldAnimate(false)}>Reveal themes visually</CtaButton>
+          </div>
+          {/* This grid contains the 4 animated lines behind the theme cards */}
+          <Grid md={2} className="su-absolute su-left-0 su-top-[180rem] su-w-full su-gap-y-[30rem]">
+            <div className="su-max-w-full su-overflow-hidden">
+              <m.svg className="su-mr-0 su-ml-auto" viewBox="0 0 952 461" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <m.path
+                  d="M951.043 1H450.62C192.915 1 -16 206.517 -16 460.032"
+                  stroke="white"
+                  strokeWidth="2"
+                  vectorEffect="non-scaling-stroke"
+                  style={{ pathLength: curveDownSpring }}
+                />
+              </m.svg>
+            </div>
+            <div className="su-max-w-full su-overflow-hidden">
+              <m.div
+                className="su-h-2 su-bg-white su-origin-left su-mt-400"
+                style={{ scaleX: rightLineSpring }}
               />
-            </m.svg>
-          </div>
-          <div className="su-max-w-full su-overflow-hidden">
-            <m.div
-              className="su-h-2 su-bg-white su-origin-left su-mt-400"
-              style={{ scaleX: rightLineSpring }}
-            />
-          </div>
-          <div className="su-max-w-full su-overflow-hidden">
-            <m.div
-              className="su-h-2 su-bg-white su-origin-right su-mt-300"
-              style={{ scaleX: leftLineSpring }}
-            />
-          </div>
-          <div className="su-max-w-full su-overflow-hidden su-mt-200">
-            <m.svg className="su-mr-0 su-ml-auto su-rotate-180" viewBox="0 0 952 461" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <m.path
-                d="M951.043 1H450.62C192.915 1 -16 206.517 -16 460.032"
-                stroke="white"
-                strokeWidth="2"
-                vectorEffect="non-scaling-stroke"
-                style={{ pathLength: curveUpSpring }}
+            </div>
+            <div className="su-max-w-full su-overflow-hidden">
+              <m.div
+                className="su-h-2 su-bg-white su-origin-right su-mt-300"
+                style={{ scaleX: leftLineSpring }}
               />
-            </m.svg>
+            </div>
+            <div className="su-max-w-full su-overflow-hidden su-mt-200">
+              <m.svg className="su-mr-0 su-ml-auto su-rotate-180" viewBox="0 0 952 461" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <m.path
+                  d="M951.043 1H450.62C192.915 1 -16 206.517 -16 460.032"
+                  stroke="white"
+                  strokeWidth="2"
+                  vectorEffect="non-scaling-stroke"
+                  style={{ pathLength: curveUpSpring }}
+                />
+              </m.svg>
+            </div>
+          </Grid>
+          <div ref={containerRef}>
+            <GridAlternating py={7} addCenterLine gridCellStyle={{ marginBottom: spacing }}>
+              <m.div style={{ height: heightWrapper, marginBottom: shiftUp }} className="su-overflow-hidden">
+                <div className="su-w-fit su-mr-0 su-ml-auto">
+                  <Heading as="h3" size="f6" font="druk" align="right" className="su-mb-01em">
+                    Discovery
+                  </Heading>
+                  <m.div className="su-h-20 su-origin-top-right" style={{ scaleY: tabHeight, backgroundColor: limeChange }} />
+                </div>
+                <m.div
+                  style={{ opacity: opacityChange, scale: zoom }}
+                  className="su-origin-top-right"
+                >
+                  <ThemeCard
+                    heading="Catalyzing discovery in every field"
+                    body="Propelled by new ways of thinking, working, and creating, we probe the frontiers of discovery to drive progress."
+                    textColor="white"
+                    imageSrc="https://a-us.storyblok.com/f/1005200/2560x1708/bdd62ecfad/charm_lab_1421.jpg"
+                    ctaLabel="Learn how"
+                    href="/about-test"
+                  />
+                </m.div>
+              </m.div>
+              <m.div style={{ height: heightWrapper }} className="su-overflow-hidden">
+                <div className="su-w-fit su-ml-0 su-mr-auto">
+                  <Heading as="h3" size="f6" font="druk" className="su-mb-01em">
+                    Citizenry
+                  </Heading>
+                  <m.div className="su-h-20 su-bg-poppy su-origin-top-left" style={{ scaleY: tabHeight, backgroundColor: poppyChange }} />
+                </div>
+                <m.div
+                  style={{ opacity: scrollYProgress, scale: zoom }}
+                  className="su-origin-top-left"
+                >
+                  <ThemeCard
+                    heading="Preparing citizens and leaders"
+                    body="We are preparing students to live, work, and serve as active citizens, for the good of the world."
+                    textColor="white"
+                    imageSrc="https://a-us.storyblok.com/f/1005200/2560x1708/a3874a6272/barnumtower_0837.jpg"
+                    ctaLabel="Learn how"
+                    href="/about-test"
+                  />
+                </m.div>
+              </m.div>
+              <m.div style={{ height: heightWrapper, marginBottom: shiftUp }} className="su-overflow-hidden">
+                <div className="su-w-fit su-mr-0 su-ml-auto">
+                  <Heading as="h3" size="f6" font="druk" align="right" className="su-mb-01em">
+                    Acceleration
+                  </Heading>
+                  <m.div className="su-h-20 su-bg-periwinkle su-origin-top-right" style={{ scaleY: tabHeight, backgroundColor: periwinkleChange }} />
+                </div>
+                <m.div
+                  style={{ opacity: scrollYProgress, scale: zoom }}
+                  className="su-origin-top-right"
+                >
+                  <ThemeCard
+                    heading="Accelerating solutions for humanity"
+                    body="Creating systems to rapidly design, develop, and scale applied research, enabled by expanded and new partnerships."
+                    textColor="white"
+                    imageSrc="https://a-us.storyblok.com/f/1005200/2560x1708/28e01c3d3c/benjamingao_3843.jpg"
+                    ctaLabel="Learn how"
+                    href="/about-test"
+                  />
+                </m.div>
+              </m.div>
+              <m.div style={{ height: heightWrapper }} className="su-overflow-hidden">
+                <div className="su-w-fit su-ml-0 su-mr-auto">
+                  <Heading as="h3" size="f6" font="druk" className="su-mb-01em">
+                    Our planet
+                  </Heading>
+                  <m.div className="su-h-20 su-bg-robins-egg su-origin-top-left" style={{ scaleY: tabHeight, backgroundColor: robinsEggChange }} />
+                </div>
+                <m.div
+                  style={{ opacity: scrollYProgress, scale: zoom }}
+                  className="su-origin-top-left"
+                >
+                  <ThemeCard
+                    heading="Sustaining life on Earth"
+                    body="The future looks bright—but only when we ensure a healthy planet in which humans and nature can thrive together."
+                    textColor="white"
+                    imageSrc="https://a-us.storyblok.com/f/1005200/2499x1667/203b52dc5a/farm_1206.jpg"
+                    ctaLabel="Learn how"
+                    href="/about-test"
+                  />
+                </m.div>
+              </m.div>
+            </GridAlternating>
           </div>
-        </Grid>
-        <div ref={containerRef}>
-          <GridAlternating py={7} addCenterLine gridCellStyle={{ marginBottom: spacing }}>
-            <m.div style={{ height: heightWrapper, marginBottom: shiftUp }} className="su-overflow-hidden">
-              <div className="su-w-fit su-mr-0 su-ml-auto">
-                <Heading as="h3" size="f6" font="druk" align="right" className="su-mb-01em">
-                  Discovery
-                </Heading>
-                <m.div className="su-h-20 su-origin-top-right" style={{ scaleY: tabHeight, backgroundColor: limeChange }} />
-              </div>
-              <m.div
-                style={{ opacity: opacityChange, scale: zoom }}
-                className="su-origin-top-right"
-              >
-                <ThemeCard
-                  heading="Catalyzing Discovery in Every Field"
-                  body="Propelled by new ways of thinking, working, and creating, we probe the frontiers of discovery to drive progress."
-                  textColor="white"
-                  imageSrc="https://a-us.storyblok.com/f/1005200/2560x1708/bdd62ecfad/charm_lab_1421.jpg"
-                  ctaLabel="Learn how"
-                  href="/about-test"
-                />
-              </m.div>
-            </m.div>
-            <m.div style={{ height: heightWrapper }} className="su-overflow-hidden">
-              <div className="su-w-fit su-ml-0 su-mr-auto">
-                <Heading as="h3" size="f6" font="druk" className="su-mb-01em">
-                  Citizenry
-                </Heading>
-                <m.div className="su-h-20 su-bg-poppy su-origin-top-left" style={{ scaleY: tabHeight, backgroundColor: poppyChange }} />
-              </div>
-              <m.div
-                style={{ opacity: scrollYProgress, scale: zoom }}
-                className="su-origin-top-left"
-              >
-                <ThemeCard
-                  heading="Preparing citizens and leaders"
-                  body="We are preparing students to live, work, and serve as active citizens, for the good of the world."
-                  textColor="white"
-                  imageSrc="https://a-us.storyblok.com/f/1005200/2560x1708/a3874a6272/barnumtower_0837.jpg"
-                  ctaLabel="Learn how"
-                  href="/about-test"
-                />
-              </m.div>
-            </m.div>
-            <m.div style={{ height: heightWrapper, marginBottom: shiftUp }} className="su-overflow-hidden">
-              <div className="su-w-fit su-mr-0 su-ml-auto">
-                <Heading as="h3" size="f6" font="druk" align="right" className="su-mb-01em">
-                  Acceleration
-                </Heading>
-                <m.div className="su-h-20 su-bg-periwinkle su-origin-top-right" style={{ scaleY: tabHeight, backgroundColor: periwinkleChange }} />
-              </div>
-              <m.div
-                style={{ opacity: scrollYProgress, scale: zoom }}
-                className="su-origin-top-right"
-              >
-                <ThemeCard
-                  heading="Accelerating Solutions for Humanity"
-                  body="Creating systems to rapidly design, develop, and scale applied research, enabled by expanded and new partnerships."
-                  textColor="white"
-                  imageSrc="https://a-us.storyblok.com/f/1005200/2560x1708/28e01c3d3c/benjamingao_3843.jpg"
-                  ctaLabel="Learn how"
-                  href="/about-test"
-                />
-              </m.div>
-            </m.div>
-            <m.div style={{ height: heightWrapper }} className="su-overflow-hidden">
-              <div className="su-w-fit su-ml-0 su-mr-auto">
-                <Heading as="h3" size="f6" font="druk" className="su-mb-01em">
-                  Our planet
-                </Heading>
-                <m.div className="su-h-20 su-bg-robins-egg su-origin-top-left" style={{ scaleY: tabHeight, backgroundColor: robinsEggChange }} />
-              </div>
-              <m.div
-                style={{ opacity: scrollYProgress, scale: zoom }}
-                className="su-origin-top-left"
-              >
-                <ThemeCard
-                  heading="Sustaining Life on Earth"
-                  body="The future looks bright—but only when we ensure a healthy planet in which humans and nature can thrive together."
-                  textColor="white"
-                  imageSrc="https://a-us.storyblok.com/f/1005200/2499x1667/203b52dc5a/farm_1206.jpg"
-                  ctaLabel="Learn how"
-                  href="/about-test"
-                />
-              </m.div>
-            </m.div>
-          </GridAlternating>
-        </div>
+        </Container>
       </Container>
     </div>
   );
