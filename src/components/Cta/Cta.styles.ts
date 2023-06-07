@@ -9,6 +9,7 @@ export const ctaVariants = {
   chip: 'su-inline-block su-font-normal su-rounded-full su-text-white hover:su-shadow-md su-no-underline su-leading-display hocus:su-bg-periwinkle su-text-white hocus:su-text-white su-border su-border-white focus:su-ring-2 active:su-ring-2 focus:su-ring-lagunita-40 active:su-ring-lagunita-40 focus:su-outline-none hocus:su-decoration-1',
   link: 'su-font-normal su-decoration-transparent hocus:su-decoration-current su-leading-display su-text-current hocus:su-text-current hocus:su-decoration-2 focus-visible:su-ring-2 focus-visible:su-ring-lagunita-light focus-visible:su-outline-none focus-visible:su-rounded su-underline-offset-4',
   back: 'su-inline-block su-font-normal su-no-underline su-leading-none group-hocus:su-underline su-text-black hocus:su-text-lagunita focus-visible:su-ring-2 focus-visible:su-ring-lagunita-light focus-visible:su-ring-offset-4 focus:su-outline-none su-rounded-[1px]',
+  mainNav: 'su-inline-block su-border-2 su-font-normal su-decoration-transparent su-text-white hocus:su-border-white hocus-visible:su-bg-sapphire/50 hocus:su-text-white',
   masthead: 'su-inline-block su-font-normal su-no-underline su-text-white hocus:su-text-white md:su-text-black md:hocus:su-text-black focus:su-outline-none',
   footer: 'su-inline-block su-font-normal su-leading-display su-underline-offset-[3px] su-text-black-20 hocus:su-text-black-20 su-decoration-digital-red-xlight hocus:su-decoration-digital-red-xlight',
   close: 'su-inline-block su-font-semibold su-leading-none su-text-lagunita hocus:su-text-lagunita-dark focus:su-outline-none',
@@ -37,6 +38,7 @@ export const ctaCurves = {
 export const ctaSizes = {
   default: 'su-pt-9 su-pb-10 su-pl-[2.2rem] su-pr-20 lg:su-pt-10 lg:su-pb-11 su-text-16 md:su-text-18 xl:su-text-20',
   large: 'su-pl-[2.2rem] su-pr-20 su-pt-10 su-pb-11 lg:su-pr-[3.4rem] lg:su-pl-40 lg:su-pt-20 lg:su-pb-[2.2rem] su-text-18 md:su-text-20 xl:su-text-24',
+  mainNav: 'su-text-16 su-px-14 su-py-10 lg:su-px-[2.4rem] lg:su-pt-18 lg:su-pb-19 lg:su-text-20',
   masthead: 'su-text-14 md:su-text-16',
   footer: '',
   'footer-featured': 'su-ma-intro',
@@ -53,6 +55,7 @@ export const ctaSizeMap = {
   ghost: 'default',
   'ghost-swipe': 'default',
   footer: 'footer',
+  mainNav: 'mainNav',
   masthead: 'masthead',
   link: 'unset',
   dismiss: 'dismiss',
