@@ -7,11 +7,15 @@ import { Triangle } from '../Shapes';
 export const FindPurposeSection = ({ children }) => (
   <Container width="full" bgColor="white" py={9} className="su-relative">
     <Container>
-      <Heading size="splash" font="druk" className="su-max-w-900 su-rs-mb-4" leading="none">
-        Find your purpose.
-      </Heading>
+      <AnimateInView duration={0.6} animation="slideUp">
+        <Heading size="splash" font="druk" className="su-max-w-900 su-rs-mb-4" leading="none">
+          Find your purpose.
+        </Heading>
+      </AnimateInView>
       <div className="lg:su-w-[80%] 2xl:su-w-[60%] su-mx-auto su-rs-mb-6">
-        <Triangle className="su-fill-digital-red-light su-w-60 su-rs-mb-7 motion-safe:su-animate-bounce" />
+        <AnimateInView duration={0.6} delay={0.1} animation="slideUp">
+          <Triangle className="su-fill-digital-red-light su-w-60 su-rs-mb-7 motion-safe:su-animate-bounce" />
+        </AnimateInView>
         <AnimateInView delay={0.2} duration={0.6} animation="slideUp">
           <Paragraph font="serif" weight="semibold" variant="overview" leading="snug">
             The world’s collective problems require collective solutions—and the work is far from over.
@@ -24,6 +28,8 @@ export const FindPurposeSection = ({ children }) => (
         </AnimateInView>
       </div>
     </Container>
-    {children}
+    <AnimateInView delay={0.2} duration={1} animation="slideUp">
+      {children}
+    </AnimateInView>
   </Container>
 );
