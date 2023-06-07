@@ -1,4 +1,5 @@
 import React from 'react';
+import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
 import { Heading, Paragraph } from '../Typography';
 import { FlexBox } from '../FlexBox';
@@ -27,21 +28,25 @@ export const Banner = ({
     <Container bgColor="white" className="lg:su-pr-0" py={9}>
       <FlexBox alignItems="start" justifyContent="between" className="su-mr-0 au-ml-auto su-flex-col lg:su-flex-row">
         <div className="su-rs-pr-9 lg:su-max-w-[70%]">
-          <Heading size="f8" font="druk" leading="none" className="su-whitespace-pre-line su--mt-02em su-rs-mb-2">
-            {heading}
-          </Heading>
-          <Paragraph font="serif" variant="overview" weight="semibold" className="su-max-w-[50ch] su-rs-mb-3">
-            {body}
-          </Paragraph>
-          <CtaLink variant="ghost-swipe" color="black" curve="br-large" icon="arrow-right" animate="right" href={href} size="large">
-            {ctaText}
-          </CtaLink>
+          <AnimateInView duration={0.6} animation="slideUp">
+            <Heading size="f7" font="druk" leading="none" className="su-whitespace-pre-line su--mt-02em su-rs-mb-2">
+              {heading}
+            </Heading>
+            <Paragraph font="serif" variant="overview" weight="semibold" className="su-max-w-[50ch] su-rs-mb-3">
+              {body}
+            </Paragraph>
+            <CtaLink variant="ghost-swipe" color="black" curve="br-large" icon="arrow-right" animate="right" href={href} size="large">
+              {ctaText}
+            </CtaLink>
+          </AnimateInView>
         </div>
-        <img
-          alt=""
-          src={getProcessedImage('https://a-us.storyblok.com/f/1005200/7539x5029/df3ccadc57/20200219_diamonds_sra7839.jpg', '360x360')}
-          className="su-rounded-bl-[12rem] su-w-[25rem] xl:su-w-[36rem]"
-        />
+        <AnimateInView duration={0.4} delay={0.7} animation="slideInFromRight">
+          <img
+            alt=""
+            src={getProcessedImage('https://a-us.storyblok.com/f/1005200/7539x5029/df3ccadc57/20200219_diamonds_sra7839.jpg', '360x360')}
+            className="su-rounded-bl-[12rem] su-w-[25rem] xl:su-w-[36rem]"
+          />
+        </AnimateInView>
       </FlexBox>
     </Container>
     <img

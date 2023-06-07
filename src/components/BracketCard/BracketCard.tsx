@@ -22,6 +22,7 @@ type BracketCardProps = HTMLAttributes<HTMLDivElement> & {
   imageFocus?: string;
   alt?: string;
   textOnLeft?: boolean;
+  // TODO: We possibly could remove this and have the text color be inherited from the parent
   textColor?: styles.TextColorType;
   tabColor?: AccentBgColorType;
   tabBgImage?: string;
@@ -71,7 +72,7 @@ export const BracketCard = ({
     )}
     {imageSrc && (
       <AnimateInView
-        duration={0.7}
+        duration={0.6}
         animation={textOnLeft ? 'slideInFromRight' : 'slideInFromLeft'}
       >
         <Grid sm={12} className={styles.imageGrid(textOnLeft)}>
@@ -123,7 +124,6 @@ export const BracketCard = ({
           )}
           {ctaLabel && (link || href) && (
             <CtaLink
-              color={textColor}
               curve={textOnLeft ? 'tl' : 'tr'}
               icon="arrow-right"
               animate="right"
