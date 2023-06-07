@@ -8,7 +8,7 @@ export const FindPurposeSection = ({ children }) => (
   <Container width="full" bgColor="white" py={9} className="su-relative">
     <Container>
       <AnimateInView duration={0.6} animation="slideUp">
-        <Heading size="splash" font="druk" className="su-max-w-900 su-rs-mb-4" leading="none">
+        <Heading size="splash" font="druk" className="su-max-w-900" leading="none">
           Find your purpose.
         </Heading>
       </AnimateInView>

@@ -24,7 +24,7 @@ export const ProgressStories = ({ bgImage, children }: ProgressStoriesProps) => 
   });
 
   return (
-    <Container width="full" bgColor="black" pb={10} className="su-relative">
+    <Container width="full" bgColor="black" pb={10} className="su-relative su--mt-100">
       <div
         className="su-relative su-pb-[7vw] su-bg-black-true"
         style={{ background: `url('${bg}') center center / contain no-repeat` }}
@@ -32,7 +32,7 @@ export const ProgressStories = ({ bgImage, children }: ProgressStoriesProps) => 
         <div className="su-cc su-bg-transparent su-relative su-z-10">
           <AnimateInView duration={0.6} animation="slideUp">
             <div className="su-relative su-rs-pt-9" ref={introRef}>
-              <Heading font="druk" className="su-fluid-type-8 3xl:su-gc-splash xl:su-max-w-[47%] su-pb-[23vw] 2xl:su-whitespace-pre-line" leading="none">
+              <Heading font="druk" className="su-fluid-type-8 su-mb-0 3xl:su-gc-splash xl:su-max-w-[47%] su-pb-[23vw] 2xl:su-whitespace-pre-line" leading="none">
                 Progress<br />
                 is nothing<br />
                 without purpose.
@@ -53,7 +53,7 @@ export const ProgressStories = ({ bgImage, children }: ProgressStoriesProps) => 
           </AnimateInView>
         </div>
         <div className="su-absolute su-top-0 su-h-[60vw] 2xl:su-h-[40vw] 3xl:su-h-[35vw] su-w-full su-bg-gradient-to-b su-from-gc-black su-via-[#35459A]" />
-        <div className="su-absolute su-bottom-0 su-h-[10vw] su-w-full su-bg-gradient-to-t su-from-gc-black su-to-black-true " />
+        <div className="su-absolute su-bottom-0 su-h-[15vw] su-w-full su-bg-gradient-to-t su-from-gc-black su-to-black-true " />
       </div>
       <Container bgColor="black">{children}</Container>
     </Container>
