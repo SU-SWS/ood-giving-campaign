@@ -23,7 +23,7 @@ export const Masthead = ({ className, ...props }: MastheadProps) => (
             Make a gift
           </CtaLink>
           <CtaButton onClick={() => alert('Hello world')} variant="mainNav" className="su--ml-2 su-rounded-tr-[1.4rem] lg:su-rounded-tr-[2rem] su--mt-20 lg:su--mt-36">
-            <HeroIcon icon="menu" noBaseStyle className="su-w-20 lg:su-w-32" />
+            <HeroIcon icon="menu" title="Main menu" noBaseStyle className="su-w-20 lg:su-w-32" />
           </CtaButton>
         </FlexBox>
       </FlexBox>
