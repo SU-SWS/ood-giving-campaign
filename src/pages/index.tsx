@@ -23,7 +23,7 @@ const IndexPage = ({ data }) => {
       <ThemeSection />
       {/* <CreateBloks blokSection={blok.hero} />
       <CreateBloks blokSection={blok.content} /> */}
-      <ProgressStories>
+      <ProgressStories bgImage={blok.progressBgImage.filename}>
         <CreateBloks blokSection={blok.progressStories} />
       </ProgressStories>
       <FindPurposeSection>
