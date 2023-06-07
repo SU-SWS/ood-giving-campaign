@@ -31,5 +31,20 @@ export const FindPurposeSection = ({ children }) => (
     <AnimateInView delay={0.2} duration={1} animation="slideUp">
       {children}
     </AnimateInView>
+    <AnimateInView delay={0.2} duration={0.6} animation="slideUp">
+      <Container pt={9}>
+        <div className="lg:su-w-[80%] 2xl:su-w-[60%] su-mx-auto">
+          <Paragraph font="serif" weight="semibold" variant="overview" leading="snug">
+            The world has never moved faster, and our challenges have never been more urgent.
+            If the future is already here, then what we do today has never mattered more.
+            These challenges require the know-how and dedication of us all to solve.
+            This includes every alum, every family member, and every philanthropist who wants a better world.
+          </Paragraph>
+          <Paragraph font="serif" weight="semibold" variant="overview" leading="snug">
+            There is nothing we can do that we cannot do better, together.
+          </Paragraph>
+        </div>
+      </Container>
+    </AnimateInView>
   </Container>
 );
