@@ -72,7 +72,7 @@ export const BracketCard = ({
     )}
     {imageSrc && (
       <AnimateInView
-        duration={0.7}
+        duration={0.6}
         animation={textOnLeft ? 'slideInFromRight' : 'slideInFromLeft'}
       >
         <Grid sm={12} className={styles.imageGrid(textOnLeft)}>

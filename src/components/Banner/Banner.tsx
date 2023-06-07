@@ -27,7 +27,7 @@ export const Banner = ({
     <Container bgColor="white" className="lg:su-pr-0" py={9}>
       <FlexBox alignItems="start" justifyContent="between" className="su-mr-0 au-ml-auto su-flex-col lg:su-flex-row">
         <div className="su-rs-pr-9 lg:su-max-w-[70%]">
-          <Heading size="f8" font="druk" leading="none" className="su-whitespace-pre-line su--mt-02em su-rs-mb-2">
+          <Heading size="f7" font="druk" leading="none" className="su-whitespace-pre-line su--mt-02em su-rs-mb-2">
             {heading}
           </Heading>
           <Paragraph font="serif" variant="overview" weight="semibold" className="su-max-w-[50ch] su-rs-mb-3">
