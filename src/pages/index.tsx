@@ -5,6 +5,7 @@ import { ThemeSection } from '../components/Temporary/ThemeSection';
 import { HomepageHero } from '../components/Hero/HomepageHero';
 import { Intro } from '../components/Intro';
 import { FindPurposeSection } from '../components/Temporary/FindPurposeSection';
+import { ProgressStories } from '../components/Temporary/ProgressStories';
 import { PageHead } from '../components/PageHead';
 import { CreateBloks } from '../components/CreateBloks';
 import { Layout } from '../components/Layout';
@@ -20,8 +21,11 @@ const IndexPage = ({ data }) => {
       <HomepageHero />
       <Intro />
       <ThemeSection />
-      <CreateBloks blokSection={blok.hero} />
-      <CreateBloks blokSection={blok.content} />
+      {/* <CreateBloks blokSection={blok.hero} />
+      <CreateBloks blokSection={blok.content} /> */}
+      <ProgressStories>
+        <CreateBloks blokSection={blok.progressStories} />
+      </ProgressStories>
       <FindPurposeSection>
         <CreateBloks blokSection={blok.findPurpose} />
       </FindPurposeSection>
