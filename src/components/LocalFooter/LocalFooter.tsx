@@ -24,8 +24,8 @@ export const LocalFooter = () => (
           </Text>
           <Text className="su-rs-mt-0 su-rs-mb-3">Tax ID: 94-1156365</Text>
           <ul className="su-list-unstyled children:su-mb-04em">
-            <li><CtaLink color="black" icon="arrow-right" href="contact-us">Contact us</CtaLink></li>
-            <li><CtaLink color="black" icon="arrow-right" href="faq">FAQs</CtaLink></li>
+            <li><CtaLink color="black" icon="arrow-right" href="contact-us" className="su-inline-block">Contact us</CtaLink></li>
+            <li><CtaLink color="black" icon="arrow-right" href="faq" className="su-inline-block">FAQs</CtaLink></li>
           </ul>
           <CtaLink
             color="black"
@@ -63,8 +63,8 @@ export const LocalFooter = () => (
           </Heading>
           <ul className="su-list-unstyled children:su-mb-06em">
             {Object.values(initiatives).map((initiative) => (
-              <li key={initiative.name} className="children:su-inline-block">
-                <CtaLink color="black" href={initiative.path}>{initiative.name}</CtaLink>
+              <li key={initiative.name}>
+                <CtaLink color="black" href={initiative.path} className="su-inline-block">{initiative.name}</CtaLink>
               </li>
             ))}
           </ul>
@@ -77,8 +77,8 @@ export const LocalFooter = () => (
           </Heading>
           <ul className="su-list-unstyled children:su-mb-06em">
             {Object.values(themes).map((theme) => (
-              <li key={theme.name} className="children:su-inline-block">
-                <CtaLink color="black" href={theme.path}>{theme.name}</CtaLink>
+              <li key={theme.name}>
+                <CtaLink color="black" href={theme.path} className="su-inline-block">{theme.name}</CtaLink>
               </li>
             ))}
           </ul>
@@ -89,8 +89,8 @@ export const LocalFooter = () => (
           </Heading>
           <ul className="su-list-unstyled children:su-mb-06em">
             {Object.values(schools).map((school) => (
-              <li key={school.name} className="children:su-inline-block">
-                <CtaLink color="black" href={school.href}>{school.name}</CtaLink>
+              <li key={school.name}>
+                <CtaLink color="black" href={school.href} className="su-inline-block">{school.name}</CtaLink>
               </li>
             ))}
           </ul>
