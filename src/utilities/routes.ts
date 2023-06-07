@@ -1,53 +1,92 @@
 /**
  * Convenience functions for centralized routing
- * NOTE: These are represented as functions to handle optional route and query params if/when needed
+ * Separate into categories so we can loop over them for navigation/local footer as needed
  */
 
 // Initiatives
-export const initiatives = () => 'initiatives';
-export const changingHumanExperience = () => `${initiatives}/changing-human-experience`;
-export const ethicsSocietyTech = () => `${initiatives}/ethics-society-technology`;
-export const humanCenteredAI = () => `${initiatives}/human-centered-artificial-intelligence`;
-export const innovativeMedicinesAccelerator = () => `${initiatives}/innovative-medicines-accelerator`;
-export const racialJusticeInitiative = () => `${initiatives}/racial-justice-initiative`;
-export const stanfordDataScience = () => `${initiatives}/stanford-data-science`;
-export const stanfordImpactLabs = () => `${initiatives}/stanford-impact-labs`;
-export const stanfordScienceFellows = () => `${initiatives}/stanford-science-fellows`;
-export const townCenter = () => `${initiatives}/town-center`;
-export const stanfordAcceleratorForLearning = () => `${initiatives}/stanford-accelerator-for-learning`;
-export const stanfordAthletics = () => `${initiatives}/stanford-athletics`;
-export const financialAid = () => `${initiatives}/financial-aid`;
-export const internationalNeedBasedAid = () => `${initiatives}/international-need-based-aid`;
-export const undergradEducationStudentLife = () => `${initiatives}/undergraduate-education-and-student-life`;
-export const resX = () => `${initiatives}/resx`;
+export const initiativesRoot = 'initiatives';
+
+export const initiatives = {
+  changingHumanExperience: {
+    name: 'Changing Human Experience',
+    path: `${initiativesRoot}/changing-human-experience`,
+  },
+  ethicsSocietyTech: {
+    name: 'Ethics, Society, and Technology',
+    path: `${initiativesRoot}/ethics-society-and-technology`,
+  },
+  humanCenteredAI: {
+    name: 'Human-Centered Artificial Intelligence',
+    path: `${initiativesRoot}/human-centered-artificial-intelligence`,
+  },
+  innovativeMedicines: {
+    name: 'Innovative Medicines Accelerator',
+    path: `${initiativesRoot}/innovative-medicines-accelerator`,
+  },
+  racialJustice: {
+    name: 'Racial Justice Initiative',
+    path: `${initiativesRoot}/racial-justice-initiative`,
+  },
+  stanfordDataScience: {
+    name: 'Stanford Data Science',
+    path: `${initiativesRoot}/stanford-data-science`,
+  },
+  stanfordImpactLabs: {
+    name: 'Stanford Impact Labs',
+    path: `${initiativesRoot}/stanford-impact-labs`,
+  },
+  stanfordScienceFellows: {
+    name: 'Stanford Science Fellows',
+    path: `${initiativesRoot}/stanford-science-fellows`,
+  },
+  townCenter: {
+    name: 'Town Center',
+    path: `${initiativesRoot}/town-center`,
+  },
+  stanfordAcceleratorForLearning: {
+    name: 'Stanford Accelerator for Learning',
+    path: `${initiativesRoot}/stanford-accelerator-for-learning`,
+  },
+  stanfordAthletics: {
+    name: 'Stanford Athletics',
+    path: `${initiativesRoot}/stanford-athletics`,
+  },
+  financialAid: {
+    name: 'Financial Aid',
+    path: `${initiativesRoot}/financial-aid`,
+  },
+  internationalNeedBasedAid: {
+    name: 'International Need-Based Aid',
+    path: `${initiativesRoot}/international-need-based-aid`,
+  },
+  undergradEducationStudentLife: {
+    name: 'Undergraduate Education and Student Life',
+    path: `${initiativesRoot}/undergraduate-education-and-student-life`,
+  },
+  resX: {
+    name: 'ResX',
+    path: `${initiativesRoot}/resx`,
+  },
+};
 
 // Themes
-export const themes = () => 'themes';
-export const sustainingLife = () => `${themes}/sustaining-life`;
-export const acceleratingSolutions = () => `${themes}/accelerating-solutions`;
-export const catalyzingDiscovery = () => `${themes}/catalyzing-discovery`;
-export const preparingCitizens = () => `${themes}/preparing-citizens`;
+export const themesRoot = 'themes';
 
-export default {
-  initiatives,
-  changingHumanExperience,
-  ethicsSocietyTech,
-  humanCenteredAI,
-  innovativeMedicinesAccelerator,
-  racialJusticeInitiative,
-  stanfordDataScience,
-  stanfordImpactLabs,
-  stanfordScienceFellows,
-  townCenter,
-  stanfordAcceleratorForLearning,
-  stanfordAthletics,
-  financialAid,
-  internationalNeedBasedAid,
-  undergradEducationStudentLife,
-  resX,
-  themes,
-  sustainingLife,
-  acceleratingSolutions,
-  catalyzingDiscovery,
-  preparingCitizens,
+export const themes = {
+  sustainingLife: {
+    name: 'Sustaining Life',
+    path: `${themesRoot}/sustaining-life`,
+  },
+  acceleratingSolutions: {
+    name: 'Accelerating Solutions',
+    path: `${themesRoot}/accelerating-solutions`,
+  },
+  catalyzingDiscovery: {
+    name: 'Catalyzing Discovery',
+    path: `${themesRoot}/catalyzing-discovery`,
+  },
+  preparingCitizens: {
+    name: 'Preparing Citizens',
+    path: `${themesRoot}/preparing-citizens`,
+  },
 };

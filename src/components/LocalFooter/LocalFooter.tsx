@@ -5,11 +5,11 @@ import { Grid } from '../Grid';
 import { Logo } from '../Logo';
 import { CtaLink } from '../Cta';
 import { schools } from '../../utilities/externalLinks';
-import routes from '../../utilities/routes';
+import { initiatives, themes } from '../../utilities/routes';
 
 export const LocalFooter = () => (
   <Container bgColor="white" py={8}>
-    <Logo className="su-w-300 md:su-w-400 2xl:su-w-[56rem] su-fill-gc-black" />
+    <Logo isLink className="su-w-300 md:su-w-400 2xl:su-w-[56rem] su-fill-gc-black" />
     <Grid gap="default" as="nav" aria-label="Local footer" xl={3} pt={7}>
       <div>
         <section>
@@ -62,12 +62,28 @@ export const LocalFooter = () => (
             Initiatives
           </Heading>
           <ul className="su-list-unstyled children:su-mb-06em">
-            <li><CtaLink color="black" href={routes.changingHumanExperience()}>Changing Human Experience</CtaLink></li>
+            {Object.values(initiatives).map((initiative) => (
+              <li key={initiative.name} className="children:su-inline-block">
+                <CtaLink color="black" href={initiative.path}>{initiative.name}</CtaLink>
+              </li>
+            ))}
           </ul>
         </section>
       </div>
       <div>
         <section>
+          <Heading as="h3" size={1} font="druk-wide" uppercase className="su-rs-mb-0">
+            Themes
+          </Heading>
+          <ul className="su-list-unstyled children:su-mb-06em">
+            {Object.values(themes).map((theme) => (
+              <li key={theme.name} className="children:su-inline-block">
+                <CtaLink color="black" href={theme.path}>{theme.name}</CtaLink>
+              </li>
+            ))}
+          </ul>
+        </section>
+        <section className="su-rs-mt-6">
           <Heading as="h3" size={1} font="druk-wide" uppercase className="su-rs-mb-0">
             Schools
           </Heading>
