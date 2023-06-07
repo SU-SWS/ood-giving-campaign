@@ -41,7 +41,7 @@ export const fontLeadings = {
   display: 'su-leading-display', // 1.2
   snug: 'su-leading-snug', // 1.3
   cozy: 'su-leading-cozy', // 1.4
-  normal: 'su-leading-normal', // 1.5
+  normal: 'su-leading', // 1.5
   trim: 'su-leading-trim', // 0.75
 };
 

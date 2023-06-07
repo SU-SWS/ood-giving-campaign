@@ -3,6 +3,7 @@ import { Slice } from 'gatsby';
 import { storyblokInit, apiPlugin } from 'gatsby-source-storyblok';
 import { FlexBox } from './FlexBox';
 import { Masthead } from './Masthead';
+import { LocalFooter } from './LocalFooter';
 import { SbBracketCard } from './Storyblok/SbBracketCard';
 import { SbCta } from './Storyblok/SbCta';
 import { SbGrid } from './Storyblok/SbGrid';
@@ -45,6 +46,7 @@ export const Layout = ({ children }: LayoutProps) => (
     <Masthead />
     <main id="main-content">{children}</main>
     <footer>
+      <LocalFooter />
       <Slice alias="global-footer" />
     </footer>
   </FlexBox>
