@@ -20,6 +20,7 @@ export type PaletteAccentColorType = keyof typeof paletteAccentColors;
 export const colorNameToHex = {
   'cardinal-red': '#8C1515',
   'digital-red': '#B1040E',
+  'digital-red-light': '#E50808',
   flamingo: '#ECC7CD',
   fog: '#DAD7CB',
   fuchsia: '#E31C79',
