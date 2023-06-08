@@ -51,18 +51,27 @@ export const ThemeSection = () => {
   const curveUpSpring = useSpring(curveUpProgess, springSetting);
 
   const [shouldAnimate, setShouldAnimate] = useState(true);
-  const heightWrapper = useTransform(scrollYSpring, [0, 1], [shouldAnimate ? 134 : 1030, 1030]);
+  const heightWrapper = useTransform(scrollYSpring, [0, 1], [shouldAnimate ? 143 : 1030, 1030]);
   const zoom = useTransform(scrollYSpring, [0, 1], [shouldAnimate ? 0.4 : 1, 1]);
   const spacing = useTransform(scrollYSpring, [0, 1], [shouldAnimate ? -30 : -300, -300]);
-  const tabHeight = useTransform(scrollYSpring, [0, 0.8], [shouldAnimate ? 0.5 : 1, 1]);
   const shiftUp = useTransform(scrollYSpring, [0, 1], [shouldAnimate ? 0 : -400, -400]);
   const opacityChange = useTransform(scrollYSpring, [0, 1], [shouldAnimate ? 0 : 1, 1]);
 
-  const digitalRedHex = colorNameToHex['digital-red'];
-  const limeChange = useTransform(scrollYSpring, [0, 1], [digitalRedHex, colorNameToHex.lime]);
-  const poppyChange = useTransform(scrollYSpring, [0, 1], [digitalRedHex, colorNameToHex.poppy]);
-  const periwinkleChange = useTransform(scrollYSpring, [0, 1], [digitalRedHex, colorNameToHex.periwinkle]);
-  const robinsEggChange = useTransform(scrollYSpring, [0, 1], [digitalRedHex, colorNameToHex['robins-egg']]);
+  // Bar below each theme heading width animation
+  const discoverBarWidthChange = useTransform(scrollYSpring, [0, 1], [shouldAnimate ? 28 : 163, 163]);
+  const citizenBarWidthChange = useTransform(scrollYSpring, [0, 1], [shouldAnimate ? 28 : 148, 148]);
+  const accBarWidthChange = useTransform(scrollYSpring, [0, 1], [shouldAnimate ? 28 : 209, 209]);
+  const planetBarWidthChange = useTransform(scrollYSpring, [0, 1], [shouldAnimate ? 28 : 173, 173]);
+
+  const redHex = colorNameToHex['digital-red-light'];
+  const redToLime = useTransform(scrollYSpring, [0, 1], [redHex, colorNameToHex.lime]);
+  const transparentToLime = useTransform(scrollYSpring, [0, 1], ['rgba(0,0,0,0)', colorNameToHex.lime]);
+  const redToPoppy = useTransform(scrollYSpring, [0, 1], [redHex, colorNameToHex.poppy]);
+  const transparentToPoppy = useTransform(scrollYSpring, [0, 1], ['rgba(0,0,0,0)', colorNameToHex.poppy]);
+  const redToPeriwinkle = useTransform(scrollYSpring, [0, 1], [redHex, colorNameToHex.periwinkle]);
+  const transparentToPeriwinkle = useTransform(scrollYSpring, [0, 1], ['rgba(0,0,0,0)', colorNameToHex.periwinkle]);
+  const redToRobinsEgg = useTransform(scrollYSpring, [0, 1], [redHex, colorNameToHex['robins-egg']]);
+  const transparentToRobinsEgg = useTransform(scrollYSpring, [0, 1], ['rgba(0,0,0,0)', colorNameToHex['robins-egg']]);
 
   return (
     <Container
@@ -80,7 +89,7 @@ export const ThemeSection = () => {
             size="splash"
             leading="none"
             font="druk"
-            className="su-cc su-pr-0 su-mb-0 su--mt-[0.16em] su-whitespace-pre-line lg:su--ml-40 3xl:su--ml-58 su-w-full su-max-w-1200 3xl:su-max-w-[60%]"
+            className="su-cc su-pr-0 su-mb-0 su--mt-[0.16em] su-whitespace-pre-line lg:su--ml-40 3xl:su--ml-58 su-w-full su-max-w-1200 3xl:su-max-w-3/5"
           >
             Square pegs,<br />
             huge goals.
@@ -144,12 +153,21 @@ export const ThemeSection = () => {
         <div ref={containerRef}>
           <GridAlternating py={7} addCenterLine gridCellStyle={{ marginBottom: spacing }}>
             <m.div style={{ height: heightWrapper, marginBottom: shiftUp }} className="su-overflow-hidden">
-              <div className="su-w-fit su-mr-0 su-ml-auto">
-                <Heading as="h3" size="f6" font="druk" align="right" className="su-mb-01em">
+              <FlexBox direction="col" alignItems="center" className="su-w-fit su-mr-0 su-ml-auto">
+                <Heading as="h3" font="druk" align="right" className="su-mb-01em su-text-[8rem]">
                   Discovery
                 </Heading>
-                <m.div className="su-h-20 su-origin-top-right" style={{ scaleY: tabHeight, backgroundColor: limeChange }} />
-              </div>
+                <m.div
+                  className="su-w-fit su-border-t-[2.8rem] su-border-bottom-none su-overflow-hidden"
+                  style={{
+                    borderRightWidth: discoverBarWidthChange,
+                    borderLeftWidth: discoverBarWidthChange,
+                    borderTopColor: redToLime,
+                    borderLeftColor: transparentToLime,
+                    borderRightColor: transparentToLime,
+                  }}
+                />
+              </FlexBox>
               <m.div
                 style={{ opacity: opacityChange, scale: zoom }}
                 className="su-origin-top-right"
@@ -165,12 +183,21 @@ export const ThemeSection = () => {
               </m.div>
             </m.div>
             <m.div style={{ height: heightWrapper }} className="su-overflow-hidden">
-              <div className="su-w-fit su-ml-0 su-mr-auto">
-                <Heading as="h3" size="f6" font="druk" className="su-mb-01em">
+              <FlexBox direction="col" alignItems="center" className="su-w-fit su-ml-0 su-mr-auto">
+                <Heading as="h3" font="druk" className="su-mb-01em su-text-[8rem]">
                   Citizenry
                 </Heading>
-                <m.div className="su-h-20 su-bg-poppy su-origin-top-left" style={{ scaleY: tabHeight, backgroundColor: poppyChange }} />
-              </div>
+                <m.div
+                  className="su-w-fit su-border-t-[2.8rem] su-border-bottom-none su-overflow-hidden"
+                  style={{
+                    borderRightWidth: citizenBarWidthChange,
+                    borderLeftWidth: citizenBarWidthChange,
+                    borderTopColor: redToPoppy,
+                    borderLeftColor: transparentToPoppy,
+                    borderRightColor: transparentToPoppy,
+                  }}
+                />
+              </FlexBox>
               <m.div
                 style={{ opacity: scrollYProgress, scale: zoom }}
                 className="su-origin-top-left"
@@ -186,12 +213,21 @@ export const ThemeSection = () => {
               </m.div>
             </m.div>
             <m.div style={{ height: heightWrapper, marginBottom: shiftUp }} className="su-overflow-hidden">
-              <div className="su-w-fit su-mr-0 su-ml-auto">
-                <Heading as="h3" size="f6" font="druk" align="right" className="su-mb-01em">
+              <FlexBox direction="col" alignItems="center" className="su-w-fit su-mr-0 su-ml-auto">
+                <Heading as="h3" font="druk" align="right" className="su-mb-01em su-text-[8rem]">
                   Acceleration
                 </Heading>
-                <m.div className="su-h-20 su-bg-periwinkle su-origin-top-right" style={{ scaleY: tabHeight, backgroundColor: periwinkleChange }} />
-              </div>
+                <m.div
+                  className="su-w-fit su-border-t-[2.8rem] su-border-bottom-none su-overflow-hidden"
+                  style={{
+                    borderRightWidth: accBarWidthChange,
+                    borderLeftWidth: accBarWidthChange,
+                    borderTopColor: redToPeriwinkle,
+                    borderLeftColor: transparentToPeriwinkle,
+                    borderRightColor: transparentToPeriwinkle,
+                  }}
+                />
+              </FlexBox>
               <m.div
                 style={{ opacity: scrollYProgress, scale: zoom }}
                 className="su-origin-top-right"
@@ -207,12 +243,21 @@ export const ThemeSection = () => {
               </m.div>
             </m.div>
             <m.div style={{ height: heightWrapper }} className="su-overflow-hidden">
-              <div className="su-w-fit su-ml-0 su-mr-auto">
-                <Heading as="h3" size="f6" font="druk" className="su-mb-01em">
+              <FlexBox direction="col" alignItems="center" className="su-w-fit su-ml-0 su-mr-auto">
+                <Heading as="h3" font="druk" className="su-mb-01em su-text-[8rem]">
                   Our planet
                 </Heading>
-                <m.div className="su-h-20 su-bg-robins-egg su-origin-top-left" style={{ scaleY: tabHeight, backgroundColor: robinsEggChange }} />
-              </div>
+                <m.div
+                  className="su-w-fit su-border-t-[2.8rem] su-border-bottom-none su-overflow-hidden"
+                  style={{
+                    borderRightWidth: planetBarWidthChange,
+                    borderLeftWidth: planetBarWidthChange,
+                    borderTopColor: redToRobinsEgg,
+                    borderLeftColor: transparentToRobinsEgg,
+                    borderRightColor: transparentToRobinsEgg,
+                  }}
+                />
+              </FlexBox>
               <m.div
                 style={{ opacity: scrollYProgress, scale: zoom }}
                 className="su-origin-top-left"

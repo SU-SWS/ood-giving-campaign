@@ -92,7 +92,7 @@ export const gridAlignItems = {
 // Styles for the alternating grid
 export const alternatingGridWrapper = 'su-relative su-mx-auto';
 
-export const centerline = 'su-hidden md:su-block su-w-2 su-absolute su-top-0 su-left-[50%] su--ml-1 su-h-full su-origin-top su-bg-current';
+export const centerline = 'su-hidden md:su-block su-w-2 su-absolute su-top-0 su-left-1/2 su--ml-1 su-h-full su-origin-top su-bg-current';
 
 export const gridWidths = {
   full: 'su-w-full',

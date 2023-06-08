@@ -84,7 +84,7 @@ export const HomepageHero = () => {
       </m.div>
       <m.div
         animate={{ opacity: [0, 1], scale: [prefersReduceMotion ? 1 : 0.7, 1], y: [prefersReduceMotion ? 0 : -100, 0] }}
-        transition={{ duration: 0.6, times: [0, 1], delay: 1.8 }}
+        transition={{ duration: 0.4, times: [0, 1], delay: 1.8 }}
         className="su-opacity-0 su-cc su-absolute su-top-[25rem] sm:su-top-300 md:su-top-400 lg:su-top-[28vw] 3xl:su-top-[45rem] su-left-0 su-right-0"
       >
         <FlexBox alignItems="center" justifyContent="center">
