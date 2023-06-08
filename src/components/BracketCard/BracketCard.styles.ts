@@ -46,7 +46,7 @@ export const heading = (isSmallHeading: boolean) => dcnb(
     : 'su-text-[4.2rem] sm:su-text-[2.8rem] md:su-text-[clamp(4rem,7.59vw_-_1.83rem,5.7rem)] lg:su-text-[clamp(5.7rem,6.1vw_-_.35rem,8.8rem)]',
 );
 export const headingMobile = (textOnLeft: boolean) => dcnb(
-  'sm:su-hidden su-mb-20 su-w-[80%]',
+  'sm:su-hidden su-mb-20 su-w-4/5',
   textOnLeft ? 'su-ml-0 su-mr-auto' : 'su-mr-0 su-ml-auto',
 );
 

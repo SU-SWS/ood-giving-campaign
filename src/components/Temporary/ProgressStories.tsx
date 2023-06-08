@@ -39,12 +39,12 @@ export const ProgressStories = ({ bgImage, children }: ProgressStoriesProps) => 
               </Heading>
             </AnimateInView>
             <m.div
-              className="su-hidden md:su-block su-w-2 su-absolute su-top-0 su-left-[50%] su--ml-1 su-h-full su-origin-top su-bg-current"
+              className="su-hidden md:su-block su-w-2 su-absolute su-top-0 su-left-1/2 su--ml-1 su-h-full su-origin-top su-bg-current"
               style={{ scaleY }}
             />
           </div>
           <AnimateInView delay={0.2} duration={0.6} animation="slideUp">
-            <div className="lg:su-w-[80%] 2xl:su-w-[60%] su-mx-auto su-rs-pt-5">
+            <div className="lg:su-w-4/5 2xl:su-w-3/5 su-mx-auto su-rs-pt-5">
               <Paragraph font="serif" weight="semibold" variant="overview" leading="snug" className="su-max-w-700 su-mx-auto">
                 Stanford, at its heart, is a community of changemakers.
                 Learn more about the people driving us toward a brighter tomorrow.

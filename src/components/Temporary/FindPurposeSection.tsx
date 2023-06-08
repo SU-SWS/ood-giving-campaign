@@ -12,7 +12,7 @@ export const FindPurposeSection = ({ children }) => (
           Find your purpose.
         </Heading>
       </AnimateInView>
-      <div className="lg:su-w-[80%] 2xl:su-w-[60%] su-mx-auto su-rs-mb-6">
+      <div className="lg:su-w-4/5 2xl:su-w-3/5 su-mx-auto su-rs-mb-6">
         <AnimateInView duration={0.6} delay={0.1} animation="slideUp">
           <Triangle className="su-fill-digital-red-light su-w-60 su-rs-mb-7 motion-safe:su-animate-bounce" />
         </AnimateInView>
@@ -33,7 +33,7 @@ export const FindPurposeSection = ({ children }) => (
     </AnimateInView>
     <AnimateInView delay={0.2} duration={0.6} animation="slideUp">
       <Container pt={9}>
-        <div className="lg:su-w-[80%] 2xl:su-w-[60%] su-mx-auto">
+        <div className="lg:su-w-4/5 2xl:su-w-3/5 su-mx-auto">
           <Paragraph font="serif" weight="semibold" variant="overview" leading="snug">
             The world has never moved faster, and our challenges have never been more urgent.
             If the future is already here, then what we do today has never mattered more.
