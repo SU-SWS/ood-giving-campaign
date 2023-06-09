@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 import {
   m, useScroll, useSpring, useTransform, SpringOptions,
 } from 'framer-motion';
@@ -110,7 +110,7 @@ export const ThemeSection = () => {
             </Paragraph>
           </div>
         </AnimateInView>
-        <div className={dcnb('su-sr-only focus-within:su-not-sr-only su-w-fit children:su-mx-auto', !shouldAnimate ? 'su-hidden' : '')}>
+        <div className={cnb('su-sr-only focus-within:su-not-sr-only su-w-fit children:su-mx-auto', !shouldAnimate ? 'su-hidden' : '')}>
           <CtaButton onClick={() => setShouldAnimate(false)}>Reveal themes visually</CtaButton>
         </div>
         {/* This grid contains the 4 animated lines behind the theme cards */}

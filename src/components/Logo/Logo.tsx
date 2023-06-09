@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 import { Link } from 'gatsby';
 import { LogoHorizontal } from './LogoHorizontal';
 import { FontSizeType } from '../Typography';
@@ -33,7 +33,7 @@ export const Logo = ({
       <Link
         {...rest}
         to={homeLink}
-        className={dcnb(styles.link, className)}
+        className={cnb(styles.link, className)}
       >
         {LogoText}
       </Link>

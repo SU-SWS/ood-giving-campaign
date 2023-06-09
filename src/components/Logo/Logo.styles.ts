@@ -1,4 +1,4 @@
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 
 export type LogoVariantType = 'horizontal' | 'stacked';
 
@@ -6,16 +6,16 @@ export type LogoColorType = 'black' | 'white';
 
 export const link = 'su-block su-no-underline focus-visible:su-outline-none focus-visible:su-ring-2 focus-visible:su-ring-white';
 
-export const textWrapper = (variant: LogoVariantType) => dcnb('su-flex', {
+export const textWrapper = (variant: LogoVariantType) => cnb('su-flex', {
   'su-h-[.82em]': variant === 'horizontal',
 });
 
-export const stanford = (variant: LogoVariantType) => dcnb('su-leading-none', {
+export const stanford = (variant: LogoVariantType) => cnb('su-leading-none', {
   'su-text-vertical-lr su-rotate-180 su-text-[.46em] su-relative su-mt-01em': variant === 'stacked',
   'su-text-[1.08em]': variant === 'horizontal',
 });
 
-export const onPurpose = (variant: LogoVariantType) => dcnb('!su-tracking-normal', {
+export const onPurpose = (variant: LogoVariantType) => cnb('!su-tracking-normal', {
   'su-ml-[0.15em] su-leading-[.7]': variant === 'horizontal',
 });
 

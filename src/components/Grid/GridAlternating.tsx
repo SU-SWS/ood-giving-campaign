@@ -2,7 +2,7 @@ import React, { HTMLAttributes, useRef } from 'react';
 import {
   useScroll, useSpring, m, MotionStyle,
 } from 'framer-motion';
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 import { Grid, GridProps } from './Grid';
 import { GridNegativeSpacingType, GridWidthType } from './Grid.types';
 import { marginBottoms, MarginType } from '../../utilities/datasource';
@@ -57,14 +57,14 @@ export const GridAlternating = ({
   });
 
   return (
-    <div className={dcnb(styles.alternatingGridWrapper, styles.gridWidths[width])} ref={containerRef}>
+    <div className={cnb(styles.alternatingGridWrapper, styles.gridWidths[width])} ref={containerRef}>
       <Grid as={as} gap="split" md={2} py={py} pt={pt} pb={pb} {...props}>
         {startOnRight && <div />}
         {childrenArray?.map((item, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <React.Fragment key={index}>
             <m.div
-              className={dcnb(
+              className={cnb(
                 marginBottoms[spacing],
                 styles.negativeSpacing[spacing],
                 styles.cellWithContent,

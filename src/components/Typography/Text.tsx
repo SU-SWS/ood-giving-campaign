@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 import { HeroIcon, HeroIconProps, IconType } from '../HeroIcon';
 import * as styles from './typography.styles';
 import * as types from './typography.types';
@@ -53,7 +53,7 @@ export const Text = ({
     <AsComponent
       {...rest}
       className={
-        dcnb(
+        cnb(
           font ? styles.fontFamilies[font] : '',
           size ? styles.fontSizes[size] : '',
           weight ? styles.fontWeights[weight] : '',
@@ -74,7 +74,7 @@ export const Text = ({
         <HeroIcon
           icon={icon}
           noBaseStyle
-          className={dcnb(styles.iconStyle, iconClasses)}
+          className={cnb(styles.iconStyle, iconClasses)}
           {...iProps}
         />
       )}

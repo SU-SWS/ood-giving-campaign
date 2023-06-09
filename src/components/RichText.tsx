@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import { render, StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 import { CtaLink } from './Cta';
 import { SbCta } from './Storyblok/SbCta';
 import {
@@ -94,7 +94,7 @@ export const RichText = ({
 
   return (
     <div
-      className={dcnb(
+      className={cnb(
         'su-wysiwyg',
         textColor,
         textAligns[textAlign] || '',

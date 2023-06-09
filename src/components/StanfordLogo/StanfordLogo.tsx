@@ -1,5 +1,5 @@
 import React, { HTMLAttributes, ReactNode } from 'react';
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 import * as styles from './StanfordLogo.styles';
 
 type StanfordLogoProps = HTMLAttributes<HTMLElement> & {
@@ -44,7 +44,7 @@ export const StanfordLogo = ({
       <a
         {...rest}
         href="https://www.stanford.edu"
-        className={dcnb('su-logo', color ? styles.logoColors[color] : '', className)}
+        className={cnb('su-logo', color ? styles.logoColors[color] : '', className)}
       >
         {logoText}
       </a>
@@ -52,7 +52,7 @@ export const StanfordLogo = ({
   }
 
   return (
-    <div {...rest} className={dcnb('su-logo', color ? styles.logoColors[color] : '', className)}>
+    <div {...rest} className={cnb('su-logo', color ? styles.logoColors[color] : '', className)}>
       {logoText}
     </div>
   );

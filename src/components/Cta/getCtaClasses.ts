@@ -1,4 +1,4 @@
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 import * as types from './Cta.types';
 import * as styles from './Cta.styles';
 
@@ -9,7 +9,7 @@ export const getCtaClasses = (
   color?: types.CtaColorType,
   className?: string,
 ) => {
-  const ctaClasses = dcnb(
+  const ctaClasses = cnb(
     styles.cta,
     styles.ctaSizes[size] || styles.ctaSizes[styles.ctaSizeMap[variant]],
     styles.ctaVariants[variant],

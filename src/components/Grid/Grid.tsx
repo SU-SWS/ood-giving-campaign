@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 import {
   paddingTops,
   paddingBottoms,
@@ -49,7 +49,7 @@ export const Grid = ({
 }: GridProps) => (
   <AsComponent
     {...props}
-    className={dcnb(
+    className={cnb(
       'su-grid',
       gap ? styles.gridGaps[gap] : '',
       xs ? styles.gridNumCols.xs[xs] : '',

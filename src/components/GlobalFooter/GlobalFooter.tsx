@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 import { StanfordLogo } from '../StanfordLogo';
 import { SrOnlyText } from '../Typography';
 import { Container } from '../Container';
@@ -13,7 +13,7 @@ type GlobalFooterProps = Omit<HTMLAttributes<HTMLDivElement>, 'className'> & {
 const GlobalFooter = ({ className, ...rest }: GlobalFooterProps) => (
   <Container
     {...rest}
-    className={dcnb(styles.root, className)}
+    className={cnb(styles.root, className)}
     width="site"
   >
     <FlexBox direction="col" className={styles.outerWrapper}>

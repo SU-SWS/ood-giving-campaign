@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 import {
   paddingTops,
   paddingBottoms,
@@ -34,7 +34,7 @@ export const Container = ({
   <AsComponent
     {...props}
     style={style}
-    className={dcnb(
+    className={cnb(
       bgColor ? styles.bgColors[bgColor] : '',
       py ? paddingVerticals[py] : '',
       pt ? paddingTops[pt] : '',

@@ -1,5 +1,5 @@
 import React from 'react';
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 import { FlexBox } from '../FlexBox';
 import { HeroIcon } from '../HeroIcon';
 import { SrOnlyText } from '../Typography';
@@ -30,7 +30,7 @@ export const CtaContent = ({
       {heroicon && (
         <HeroIcon
           icon={heroicon}
-          className={dcnb(styles.icon, iconStyle, iconAnimate, iconMarginLeft, iconMarginRight, iconClasses)}
+          className={cnb(styles.icon, iconStyle, iconAnimate, iconMarginLeft, iconMarginRight, iconClasses)}
           {...iProps}
         />
       )}

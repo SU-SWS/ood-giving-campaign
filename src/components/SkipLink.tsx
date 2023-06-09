@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 
 type SkiplinkProps = Omit<React.ComponentPropsWithoutRef<'a'>, 'href' | 'className' | 'children'> & {
   href?: string;
@@ -21,7 +21,7 @@ export const Skiplink = ({
       ref={ref}
       href={href}
       onFocus={() => ref.current?.scrollIntoView()}
-      className={dcnb('su-skiplink', className)}
+      className={cnb('su-skiplink', className)}
     >
       {children}
     </a>

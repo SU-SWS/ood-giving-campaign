@@ -1,5 +1,5 @@
 import React from 'react';
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 import * as styles from './HeroIcon.styles';
 
 export type HeroIconProps = Omit<React.SVGProps<SVGSVGElement>, 'ref'> & {
@@ -22,14 +22,14 @@ export const HeroIcon = ({
   // Set default base style so icon has reasonable size if used out of the box
   // noBaseStyle boolean allows for user to not attach any base styles if needed
   const baseStyle = noBaseStyle ? '' : styles.iconBaseStyle[icon] || styles.iconBaseStyle.default;
-  const heroIconStyle = dcnb('su-transition', baseStyle);
+  const heroIconStyle = cnb('su-transition', baseStyle);
 
   return (
     <Icon
       title={title}
       // If a title for the SVG is provided, unhide the SVG from screen readers
       aria-hidden={!title}
-      className={dcnb(heroIconStyle, className)}
+      className={cnb(heroIconStyle, className)}
       {...props}
     />
   );

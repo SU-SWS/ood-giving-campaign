@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 
 export const overlays = {
   'black-30': 'su-bg-black-true/30',
@@ -30,7 +30,7 @@ export const ImageOverlay = ({
     />
     {overlay && (
       <div
-        className={dcnb(
+        className={cnb(
           'su-absolute su-w-full su-h-full su-top-0 su-left-0',
           overlays[overlay],
         )}
