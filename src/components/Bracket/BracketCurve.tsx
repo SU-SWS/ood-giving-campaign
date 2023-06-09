@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 import { FlexBox } from '../FlexBox';
 import * as styles from './Bracket.styles';
 
@@ -17,7 +17,7 @@ export const BracketCurve = ({
   ...props
 }: BracketCurveProps) => (
   <FlexBox
-    className={dcnb(
+    className={cnb(
       styles.root,
       styles.colors[color],
       className,

@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 import { AnimateInView } from '../Animate';
 import { Bracket } from '../Bracket';
 import { CtaLink } from '../Cta/CtaLink';
@@ -51,7 +51,7 @@ export const BracketCard = ({
   ...props
 }: BracketCardProps) => (
   <article
-    className={dcnb(
+    className={cnb(
       styles.root,
       marginBottoms[spacingBottom],
       className,
@@ -110,7 +110,7 @@ export const BracketCard = ({
             </Heading>
           )}
           {tabColor && (
-            <div className={dcnb(styles.tab, accentBgColors[tabColor])} />
+            <div className={cnb(styles.tab, accentBgColors[tabColor])} />
           )}
           {body && (
             <Paragraph

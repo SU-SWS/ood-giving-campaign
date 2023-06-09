@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 import { AnimateInView, AnimationType } from '../Animate';
 import { CtaLink } from '../Cta/CtaLink';
 import { Heading, HeadingType, Paragraph } from '../Typography';
@@ -47,7 +47,7 @@ export const VerticalCard = ({
 }: VerticalCardProps) => (
   <AnimateInView animation={animation} delay={delay}>
     <article
-      className={dcnb(styles.root, styles.textColors[textColor], className)}
+      className={cnb(styles.root, styles.textColors[textColor], className)}
       {...props}
     >
       {imageSrc && (
@@ -76,7 +76,7 @@ export const VerticalCard = ({
         </Heading>
       )}
       {tabColor && (
-        <div className={dcnb(styles.tab, accentBgColors[tabColor])} />
+        <div className={cnb(styles.tab, accentBgColors[tabColor])} />
       )}
       {body && (
         <Paragraph variant="card" noMargin>{body}</Paragraph>

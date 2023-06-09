@@ -1,5 +1,5 @@
 import React from 'react';
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 import { Container, ContainerProps } from '../Container';
 import { Grid, GridProps } from '../Grid';
 import * as styles from './WidthBox.styles';
@@ -43,9 +43,9 @@ export const WidthBox = ({
   }
 
   return (
-    <Grid {...props as NonFullWidthBoxProps} gap="default" sm={12} className={dcnb('su-cc', className)}>
+    <Grid {...props as NonFullWidthBoxProps} gap="default" sm={12} className={cnb('su-cc', className)}>
       <div
-        className={dcnb(
+        className={cnb(
           styles.widthClasses[width]?.column || '',
           align === 'center' ? styles.widthClasses[width]?.columnStart : '',
         )}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 import { BracketCurve, BracketCurveProps } from './BracketCurve';
 import { FlexBox } from '../FlexBox';
 import * as styles from './Bracket.styles';
@@ -20,7 +20,7 @@ export const Bracket = ({
 }: BracketProps) => (
   <FlexBox
     direction="col"
-    className={dcnb(
+    className={cnb(
       styles.colors[color],
       className,
     )}

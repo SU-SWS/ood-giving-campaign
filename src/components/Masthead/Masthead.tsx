@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 import { Container } from '../Container';
 import { FlexBox } from '../FlexBox';
 import { Logo } from '../Logo';
@@ -10,7 +10,7 @@ import { HeroIcon } from '../HeroIcon';
 type MastheadProps = HTMLAttributes<HTMLDivElement>;
 
 export const Masthead = ({ className, ...props }: MastheadProps) => (
-  <div className={dcnb('su-bg-transparent su-w-full su-absolute su-z-10', className)} {...props}>
+  <div className={cnb('su-bg-transparent su-w-full su-absolute su-z-10', className)} {...props}>
     <Container>
       <FlexBox
         justifyContent="between"

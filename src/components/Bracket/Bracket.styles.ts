@@ -1,4 +1,4 @@
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 
 // Bracket Curve styles
 export const root = 'su-border-current su-backface-hidden';
@@ -11,7 +11,7 @@ export const colors = {
 };
 export type ColorType = keyof typeof colors;
 
-export const curve = (corner: CornerType, isSolid: boolean) => dcnb(
+export const curve = (corner: CornerType, isSolid: boolean) => cnb(
   'su-w-[83%] su-h-full su-border-t-2 su-border-l-2 su-rounded-tl-full',
   {
     'su-bg-current': isSolid,
@@ -25,7 +25,7 @@ export const curve = (corner: CornerType, isSolid: boolean) => dcnb(
     'su-border-r-2 su-order-2': corner === 'tr' || corner === 'br',
   },
 );
-export const rectangle = (corner: CornerType, isSolid: boolean) => dcnb(
+export const rectangle = (corner: CornerType, isSolid: boolean) => cnb(
   'su-h-full su-w-[17%] su-border-y-2',
   {
     'su-bg-current': isSolid,
@@ -35,7 +35,7 @@ export const rectangle = (corner: CornerType, isSolid: boolean) => dcnb(
 );
 
 // Bracket styles
-export const middle = (isClose: boolean, isSolid: boolean) => dcnb(
+export const middle = (isClose: boolean, isSolid: boolean) => cnb(
   'su-grow su-border-x-2 su-border-current su-w-[calc(83%_+_0.2rem)]',
   {
     'su-self-end': isClose,

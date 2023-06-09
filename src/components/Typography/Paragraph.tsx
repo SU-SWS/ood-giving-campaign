@@ -1,5 +1,5 @@
 import React from 'react';
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 import { Text, TypographyProps } from './Text';
 
 type ParagraphProps = Omit<TypographyProps, 'className'> & React.HTMLAttributes<HTMLParagraphElement> & {
@@ -8,5 +8,5 @@ type ParagraphProps = Omit<TypographyProps, 'className'> & React.HTMLAttributes<
 
 // Convenience component for paragraphs
 export const Paragraph = ({ noMargin, className, ...rest }: ParagraphProps) => (
-  <Text {...rest} as="p" className={dcnb(noMargin ? 'su-mb-0' : '', className)} />
+  <Text {...rest} as="p" className={cnb(noMargin ? 'su-mb-0' : '', className)} />
 );

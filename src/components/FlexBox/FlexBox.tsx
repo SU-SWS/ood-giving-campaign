@@ -1,5 +1,5 @@
 import React, { ReactNode, HTMLAttributes } from 'react';
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 import * as styles from './FlexBox.styles';
 import * as types from './FlexBox.types';
 
@@ -28,7 +28,7 @@ export const FlexBox = ({
 }: FlexBoxProps) => (
   <AsComponent
     {...props}
-    className={dcnb(
+    className={cnb(
       'su-flex',
       direction ? styles.flexDirection[direction] : '',
       wrap ? styles.flexWrap[wrap] : '',
