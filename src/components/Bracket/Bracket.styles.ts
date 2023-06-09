@@ -12,7 +12,7 @@ export const colors = {
 export type ColorType = keyof typeof colors;
 
 export const curve = (corner: CornerType, isSolid: boolean) => cnb(
-  'su-w-[83%] su-h-full su-border-t-2 su-border-l-2 su-rounded-tl-full',
+  'su-w-[83%] su-h-full',
   {
     'su-bg-current': isSolid,
     'su-rounded-tl-full': corner === 'tl',
