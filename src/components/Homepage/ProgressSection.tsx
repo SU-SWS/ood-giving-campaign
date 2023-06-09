@@ -5,12 +5,12 @@ import { Heading, Paragraph } from '../Typography';
 import { AnimateInView } from '../Animate';
 import { getProcessedImage } from '../../utilities/getProcessedImage';
 
-type ProgressStoriesProps = {
+type ProgressSectionProps = {
   bgImage?: string;
   children: React.ReactNode;
 };
 
-export const ProgressStories = ({ bgImage, children }: ProgressStoriesProps) => {
+export const ProgressSection = ({ bgImage, children }: ProgressSectionProps) => {
   const bg = getProcessedImage(bgImage, '3000x0');
   const introRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({

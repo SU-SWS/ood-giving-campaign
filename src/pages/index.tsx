@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 import { useStoryblokState } from '../hooks/useStoryblokState';
-import { ThemeSection } from '../components/Temporary/ThemeSection';
+import { ThemeSection } from '../components/Homepage/ThemeSection';
 import { HomepageHero } from '../components/Hero/HomepageHero';
 import { Intro } from '../components/Intro';
-import { FindPurposeSection } from '../components/Temporary/FindPurposeSection';
-import { ProgressStories } from '../components/Temporary/ProgressStories';
+import { FindPurposeSection } from '../components/Homepage/FindPurposeSection';
+import { ProgressSection } from '../components/Homepage/ProgressSection';
 import { PageHead } from '../components/PageHead';
 import { CreateBloks } from '../components/CreateBloks';
 import { Layout } from '../components/Layout';
@@ -23,9 +23,9 @@ const IndexPage = ({ data }) => {
       <ThemeSection />
       {/* <CreateBloks blokSection={blok.hero} />
       <CreateBloks blokSection={blok.content} /> */}
-      <ProgressStories bgImage={blok.progressBgImage.filename}>
+      <ProgressSection bgImage={blok.progressBgImage.filename}>
         <CreateBloks blokSection={blok.progressStories} />
-      </ProgressStories>
+      </ProgressSection>
       <FindPurposeSection>
         <CreateBloks blokSection={blok.findPurpose} />
       </FindPurposeSection>
