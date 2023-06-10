@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import {
-  m, useReducedMotion, useScroll, useTransform,
+  m, useReducedMotion, useScroll, useTransform, useSpring,
 } from 'framer-motion';
 import { Container } from '../Container';
 import { FlexBox } from '../FlexBox';
@@ -45,6 +45,17 @@ export const HomepageHero = () => {
   const animatedWidth = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
   const marginAnimate = useTransform(scrollYProgress, [0, 1], ['0', '4vw']);
 
+  const { scrollYProgress: onPurposeProgress } = useScroll({
+    target: heroRef,
+    offset: ['0', '40vh'],
+  });
+  const onPurposeSpring = useSpring(onPurposeProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+  const onPurposeY = useTransform(onPurposeSpring, [0, 1], ['0%', '10%']);
+
   return (
     <div ref={heroRef} className="su-relative su-w-full su-bg-gc-sky">
       <div>
@@ -83,6 +94,7 @@ export const HomepageHero = () => {
         </Heading>
       </m.div>
       <m.div
+        style={{ marginTop: onPurposeY }}
         animate={{ opacity: [0, 1], scale: [prefersReduceMotion ? 1 : 0.7, 1] }}
         transition={{ duration: 0.4, times: [0, 1], delay: 1.8 }}
         className="su-opacity-0 su-cc su-absolute su-top-[25rem] sm:su-top-300 md:su-top-400 lg:su-top-[28vw] 3xl:su-top-[45rem] su-left-0 su-right-0"
