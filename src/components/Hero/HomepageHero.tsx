@@ -70,8 +70,8 @@ export const HomepageHero = () => {
         </div>
       </div>
       <m.div
-        animate={{ opacity: [0.5, 1, 1, 0] }}
-        transition={{ duration: 1.6, times: [0, 0.2, 0.9, 1], delay: 0.3 }}
+        animate={{ opacity: [1, 0] }}
+        transition={{ duration: 0.6, delay: 1.2 }}
         className="su-cc su-opacity-50 su-absolute su-top-0 su-left-0 su-right-0 su-mb-0 su-pt-120 md:su-pt-216 2xl:su-pt-228 su-max-w-full"
       >
         <Heading as="h1" size="f8" leading="none" font="druk" color="white">
@@ -83,7 +83,7 @@ export const HomepageHero = () => {
         </Heading>
       </m.div>
       <m.div
-        animate={{ opacity: [0, 1], scale: [prefersReduceMotion ? 1 : 0.7, 1], y: [prefersReduceMotion ? 0 : -100, 0] }}
+        animate={{ opacity: [0, 1], scale: [prefersReduceMotion ? 1 : 0.7, 1] }}
         transition={{ duration: 0.4, times: [0, 1], delay: 1.8 }}
         className="su-opacity-0 su-cc su-absolute su-top-[25rem] sm:su-top-300 md:su-top-400 lg:su-top-[28vw] 3xl:su-top-[45rem] su-left-0 su-right-0"
       >
