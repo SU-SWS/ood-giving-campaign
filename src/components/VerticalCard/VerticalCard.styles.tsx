@@ -4,15 +4,9 @@ export const imageWrapper = 'su-transition-all su-aspect-w-1 su-aspect-h-1 su-ro
 
 export const image = 'su-object-cover su-w-full su-h-full';
 
-export const heading = 'su-rs-mt-1 su-rs-mb-neg1';
+export const heading = 'su-rs-mt-1 su-rs-mb-neg1 su-text-current';
 
 export const headingLink = 'su-stretched-link su-no-underline !su-font-bold';
-
-export const textColors = {
-  white: 'su-text-white',
-  black: 'su-text-gc-black',
-};
-export type TextColorType = keyof typeof textColors;
 
 export const tab = 'su-h-[2.4rem] su-w-70 su-rs-my-0';
 

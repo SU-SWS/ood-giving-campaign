@@ -6,13 +6,26 @@ import {
 import { Container } from '../Container';
 import { Grid, GridAlternating } from '../Grid';
 import { Heading, Text, Paragraph } from '../Typography';
-import { ThemeCard } from '../VerticalCard';
 import { colorNameToHex } from '../../utilities/colorPalettePlugin';
 import { FlexBox } from '../FlexBox';
 import { AnimateInView } from '../Animate';
 import { CtaButton } from '../Cta';
+import { CreateBloks } from '../CreateBloks';
+import { SbThemeCardProps } from '../Storyblok/SbThemeCard';
 
-export const ThemeSection = () => {
+type ThemeSectionProps = {
+  themeCardDiscovery?: SbThemeCardProps;
+  themeCardCitizen?: SbThemeCardProps;
+  themeCardAcceleration?: SbThemeCardProps;
+  themeCardPlanet?: SbThemeCardProps;
+};
+
+export const ThemeSection = ({
+  themeCardDiscovery,
+  themeCardCitizen,
+  themeCardAcceleration,
+  themeCardPlanet,
+}: ThemeSectionProps) => {
   const containerRef = useRef(null);
   const springSetting: SpringOptions = {
     stiffness: 100,
@@ -172,14 +185,7 @@ export const ThemeSection = () => {
                 style={{ opacity: opacityChange, scale: zoom }}
                 className="su-origin-top-right"
               >
-                <ThemeCard
-                  heading="Catalyzing discovery in every field"
-                  body="Propelled by new ways of thinking, working, and creating, we probe the frontiers of discovery to drive progress."
-                  textColor="white"
-                  imageSrc="https://a-us.storyblok.com/f/1005200/2560x1708/bdd62ecfad/charm_lab_1421.jpg"
-                  ctaLabel="Learn how"
-                  href="/about-test"
-                />
+                <CreateBloks blokSection={themeCardDiscovery} />
               </m.div>
             </m.div>
             <m.div style={{ height: heightWrapper }} className="su-overflow-hidden">
@@ -202,14 +208,7 @@ export const ThemeSection = () => {
                 style={{ opacity: scrollYProgress, scale: zoom }}
                 className="su-origin-top-left"
               >
-                <ThemeCard
-                  heading="Preparing citizens and leaders"
-                  body="We are preparing students to live, work, and serve as active citizens, for the good of the world."
-                  textColor="white"
-                  imageSrc="https://a-us.storyblok.com/f/1005200/2560x1708/a3874a6272/barnumtower_0837.jpg"
-                  ctaLabel="Learn how"
-                  href="/about-test"
-                />
+                <CreateBloks blokSection={themeCardCitizen} />
               </m.div>
             </m.div>
             <m.div style={{ height: heightWrapper, marginBottom: shiftUp }} className="su-overflow-hidden">
@@ -232,14 +231,7 @@ export const ThemeSection = () => {
                 style={{ opacity: scrollYProgress, scale: zoom }}
                 className="su-origin-top-right"
               >
-                <ThemeCard
-                  heading="Accelerating solutions for humanity"
-                  body="Creating systems to rapidly design, develop, and scale applied research, enabled by expanded and new partnerships."
-                  textColor="white"
-                  imageSrc="https://a-us.storyblok.com/f/1005200/2560x1708/28e01c3d3c/benjamingao_3843.jpg"
-                  ctaLabel="Learn how"
-                  href="/about-test"
-                />
+                <CreateBloks blokSection={themeCardAcceleration} />
               </m.div>
             </m.div>
             <m.div style={{ height: heightWrapper }} className="su-overflow-hidden">
@@ -262,14 +254,7 @@ export const ThemeSection = () => {
                 style={{ opacity: scrollYProgress, scale: zoom }}
                 className="su-origin-top-left"
               >
-                <ThemeCard
-                  heading="Sustaining life on Earth"
-                  body="The future looks bright—but only when we ensure a healthy planet in which humans and nature can thrive together."
-                  textColor="white"
-                  imageSrc="https://a-us.storyblok.com/f/1005200/2499x1667/203b52dc5a/farm_1206.jpg"
-                  ctaLabel="Learn how"
-                  href="/about-test"
-                />
+                <CreateBloks blokSection={themeCardPlanet} />
               </m.div>
             </m.div>
           </GridAlternating>

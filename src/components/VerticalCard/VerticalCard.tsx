@@ -17,9 +17,9 @@ export type VerticalCardProps = HTMLAttributes<HTMLDivElement> & {
   imageSrc?: string;
   imageFocus?: string;
   alt?: string;
-  textColor?: styles.TextColorType;
   tabColor?: AccentBgColorType;
   ctaLabel?: string;
+  ctaSrText?: string;
   href?: string;
   link?: SbLinkType;
   animation?: AnimationType;
@@ -34,10 +34,9 @@ export const VerticalCard = ({
   body,
   imageSrc,
   imageFocus,
-  alt = '',
-  textColor,
   tabColor,
   ctaLabel,
+  ctaSrText,
   link,
   href,
   animation = 'none',
@@ -47,14 +46,14 @@ export const VerticalCard = ({
 }: VerticalCardProps) => (
   <AnimateInView animation={animation} delay={delay}>
     <article
-      className={cnb(styles.root, styles.textColors[textColor], className)}
+      className={cnb(styles.root, className)}
       {...props}
     >
       {imageSrc && (
         <div className={styles.imageWrapper}>
           <img
+            alt=""
             src={getProcessedImage(imageSrc, '600x600', imageFocus)}
-            alt={alt}
             className={styles.image}
           />
         </div>
@@ -69,7 +68,7 @@ export const VerticalCard = ({
         >
           {(!ctaLabel && (link || href))
             ? (
-              <CtaLink sbLink={link} href={href} color={textColor} className={styles.headingLink}>
+              <CtaLink sbLink={link} href={href} className={styles.headingLink}>
                 {heading}
               </CtaLink>
             ) : heading}
@@ -84,10 +83,10 @@ export const VerticalCard = ({
       {ctaLabel && (link || href) && (
         <CtaLink
           variant="solid"
-          color={textColor}
           curve="br"
           icon="arrow-right"
           animate="right"
+          srText={ctaSrText}
           sbLink={link}
           href={href}
           className={styles.ctaLink}

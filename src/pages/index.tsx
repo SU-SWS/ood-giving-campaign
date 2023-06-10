@@ -20,7 +20,12 @@ const IndexPage = ({ data }) => {
     <Layout>
       <HomepageHero />
       <Intro />
-      <ThemeSection />
+      <ThemeSection
+        themeCardDiscovery={blok.themeCardDiscovery}
+        themeCardCitizen={blok.themeCardCitizen}
+        themeCardAcceleration={blok.themeCardAcceleration}
+        themeCardPlanet={blok.themeCardPlanet}
+      />
       {/* <CreateBloks blokSection={blok.hero} />
       <CreateBloks blokSection={blok.content} /> */}
       <ProgressSection bgImage={blok.progressBgImage.filename}>
