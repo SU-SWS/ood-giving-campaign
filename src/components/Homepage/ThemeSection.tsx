@@ -127,7 +127,7 @@ export const ThemeSection = ({
           <CtaButton onClick={() => setShouldAnimate(false)}>Reveal themes visually</CtaButton>
         </div>
         {/* This grid contains the 4 animated lines behind the theme cards */}
-        <Grid md={2} className="su-absolute su-left-0 su-top-[160rem] 2xl:su-top-[170rem] su-w-full su-gap-y-[30rem]">
+        <Grid md={2} className="su-hidden md:su-grid su-absolute su-left-0 su-top-[160rem] 2xl:su-top-[170rem] su-w-full su-gap-y-[30rem]">
           <div className="su-max-w-full su-overflow-hidden">
             <m.svg className="su-mr-0 su-ml-auto" viewBox="0 0 952 461" fill="none" xmlns="http://www.w3.org/2000/svg">
               <m.path
