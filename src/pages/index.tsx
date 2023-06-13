@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 import { useStoryblokState } from '../hooks/useStoryblokState';
+import { Heading } from '../components/Typography';
 import { ThemeSection } from '../components/Homepage/ThemeSection';
 import { HomepageHero } from '../components/Hero/HomepageHero';
 import { Intro } from '../components/Intro';
@@ -11,6 +12,10 @@ import { CreateBloks } from '../components/CreateBloks';
 import { Layout } from '../components/Layout';
 import { Banner } from '../components/Banner';
 
+/**
+ * This is the layout for the homepage
+ */
+
 const IndexPage = ({ data }) => {
   let story = data.storyblokEntry;
   story = useStoryblokState(story);
@@ -18,6 +23,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
+      <Heading as="h1" srOnly>{blok.title || 'Homepage'}</Heading>
       <HomepageHero />
       <Intro />
       <ThemeSection

@@ -85,7 +85,7 @@ export const HomepageHero = () => {
         transition={{ duration: 0.6, delay: 1.2 }}
         className="su-cc su-absolute su-top-0 su-left-0 su-right-0 su-mb-0 su-pt-120 md:su-pt-216 2xl:su-pt-228 su-max-w-full"
       >
-        <Heading as="h1" size="f8" leading="none" font="druk" color="white">
+        <Heading as="h2" size="f8" leading="none" font="druk" color="white">
           {lines.map((text) => (
             <div key={text.substring(0, 2)}>
               {text}
