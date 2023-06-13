@@ -19,7 +19,6 @@ export const ctaVariants = {
 export const ctaColors = {
   black: 'su-text-gc-black',
   white: 'su-text-white',
-  'digital-red': 'su-text-digital-red',
 };
 
 export const ctaCurves = {
