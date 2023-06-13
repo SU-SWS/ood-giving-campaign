@@ -96,13 +96,13 @@ export const ThemeSection = ({
       <AnimateInView duration={0.6} animation="slideUp">
         <Text size={2} leading="tight" font="serif" className="su-cc su-mb-1em">Themes</Text>
         <FlexBox className="su-relative su-rs-mb-6">
-          <div className="su-hidden lg:su-block su-bg-digital-red lg:su-w-40 3xl:su-w-58" />
+          <div className="su-block su-bg-digital-red su-w-8 md:su-w-20 lg:su-w-40" />
           <Heading
             as="h2"
             size="splash"
             leading="none"
             font="druk"
-            className="su-cc su-pr-0 su-mb-0 su--mt-[0.16em] su-whitespace-pre-line lg:su--ml-40 3xl:su--ml-58 su-w-full su-max-w-1200 3xl:su-max-w-3/5"
+            className="su-cc su-pr-0 su-mb-0 su--mt-[0.16em] su-whitespace-pre-line su--ml-8 md:su--ml-20 lg:su--ml-40 su-w-full su-max-w-1200 3xl:su-max-w-3/5"
           >
             Square pegs,<br />
             huge goals.
