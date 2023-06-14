@@ -18,6 +18,6 @@ export const tab = 'su-h-[2.4rem] su-w-70 su-rs-my-0';
 
 export const ctaLink = 'su-inline-block su-w-fit su-stretched-link su-rs-mt-1 hocus:su-bg-gradient-to-l hocus:su-from-transparent hocus:su-to-digital-red';
 
-export const taxonomy = 'su-list-unstyled su-space-x-12 su-ml-36';
+export const taxonomy = 'su-list-unstyled su-leading-display children:su-mr-12 last:children:su-ml-0 su-ml-36';
 
-export const taxonomyItem = 'su-inline-block';
+export const taxonomyItem = 'su-inline-block su-mb-0';
