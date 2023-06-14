@@ -6,12 +6,19 @@ import { CreateBloks } from '../CreateBloks';
 type SbGridProps = {
   blok: {
     _uid: string;
-    columns: any[];
+    gap?: 'default' | 'card' | 'xs'
+    items: any[];
   };
 };
 
-export const SbGrid = ({ blok: { columns }, blok }: SbGridProps) => (
-  <Grid md={2} xl={3} gap="card" {...storyblokEditable(blok)} key={blok._uid}>
-    <CreateBloks blokSection={columns} />
+export const SbGrid = ({
+  blok: {
+    items,
+    gap,
+  },
+  blok,
+}: SbGridProps) => (
+  <Grid md={2} xl={3} gap={gap} {...storyblokEditable(blok)} key={blok._uid}>
+    <CreateBloks blokSection={items} />
   </Grid>
 );
