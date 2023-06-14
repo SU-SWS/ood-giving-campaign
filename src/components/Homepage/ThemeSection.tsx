@@ -94,19 +94,21 @@ export const ThemeSection = ({
       className="su-relative su-overflow-hidden"
     >
       <AnimateInView duration={0.6} animation="slideUp">
-        <Text size={2} leading="tight" font="serif" className="su-cc su-mb-08em">Themes</Text>
-        <FlexBox className="su-relative su-rs-mb-6">
+        <FlexBox className="su-rs-mb-6">
           <div className="su-block su-bg-digital-red su-w-8 md:su-w-20 lg:su-w-40" />
-          <Heading
-            as="h2"
-            size="splash"
-            leading="none"
-            font="druk"
-            className="su-cc su-mb-0 su--mt-[0.14em] su-whitespace-pre-line su--ml-8 md:su--ml-20 lg:su--ml-40 su-w-full 3xl:su-max-w-3/5"
-          >
-            Square pegs,<br />
-            huge goals.
-          </Heading>
+          <div className="su-cc su-whitespace-pre-line su-w-full 3xl:su-max-w-3/5 su--ml-8 md:su--ml-20 lg:su--ml-40">
+            <Text size={2} leading="tight" font="serif">Themes</Text>
+            <Heading
+              as="h2"
+              size="splash"
+              leading="none"
+              font="druk"
+              className="su-mb-0"
+            >
+              Square pegs,<br />
+              huge goals.
+            </Heading>
+          </div>
         </FlexBox>
       </AnimateInView>
       <Container>
