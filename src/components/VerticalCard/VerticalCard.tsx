@@ -5,8 +5,9 @@ import { CtaLink } from '../Cta/CtaLink';
 import { Heading, HeadingType, Paragraph } from '../Typography';
 import { SbLinkType } from '../Storyblok/Storyblok.types';
 import { getProcessedImage } from '../../utilities/getProcessedImage';
-import * as styles from './VerticalCard.styles';
+import { slugify } from '../../utilities/slugify';
 import { accentBorderColors, AccentBorderColorType } from '../../utilities/datasource';
+import * as styles from './VerticalCard.styles';
 
 /**
  * Currently, both Theme Card and Story Card use this component.
@@ -19,7 +20,6 @@ export type VerticalCardProps = HTMLAttributes<HTMLDivElement> & {
   body?: string;
   imageSrc?: string;
   imageFocus?: string;
-  alt?: string;
   tabColor?: AccentBorderColorType;
   ctaLabel?: string;
   ctaSrText?: string;
@@ -103,7 +103,7 @@ export const VerticalCard = ({
         <ul className={styles.taxonomy}>
           {taxonomy.map((item) => (
             <li key={item} className={styles.taxonomyItem}>
-              <CtaLink href={`/tag/${item}`} variant="storyCardTag">{item}</CtaLink>
+              <CtaLink href={`/topics/${slugify(item)}`} variant="storyCardTag">{item}</CtaLink>
             </li>
           ))}
         </ul>

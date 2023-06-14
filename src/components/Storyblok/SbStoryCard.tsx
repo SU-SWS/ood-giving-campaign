@@ -2,7 +2,7 @@ import React from 'react';
 import { storyblokEditable } from 'gatsby-source-storyblok';
 import { AnimationType } from '../Animate';
 import { HeadingType } from '../Typography';
-import { VerticalCard } from '../VerticalCard';
+import { StoryCard } from '../VerticalCard';
 import { SbImageType, SbLinkType } from './Storyblok.types';
 import { AccentBgColorType } from '../../utilities/datasource';
 import { paletteAccentColors, PaletteAccentColorType } from '../../utilities/colorPalettePlugin';
@@ -55,7 +55,7 @@ export const SbStoryCard = ({
   },
   blok,
 }: SbStoryCardProps) => (
-  <VerticalCard
+  <StoryCard
     {...storyblokEditable(blok)}
     key={_uid}
     heading={cardTitle || title || heading}
