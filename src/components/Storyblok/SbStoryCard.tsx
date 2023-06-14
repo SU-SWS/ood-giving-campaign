@@ -41,7 +41,7 @@ export const SbStoryCard = ({
         cardTitle,
         topics,
         heroImage: { filename: heroImage, focus: heroFocus } = {},
-      },
+      } = {},
       full_slug,
     } = {},
     heading,
@@ -58,7 +58,7 @@ export const SbStoryCard = ({
   <StoryCard
     {...storyblokEditable(blok)}
     key={_uid}
-    heading={cardTitle || title || heading}
+    heading={heading || cardTitle || title}
     headingLevel={headingLevel}
     isSmallHeading={isSmallHeading}
     imageSrc={cardImage || heroImage}
