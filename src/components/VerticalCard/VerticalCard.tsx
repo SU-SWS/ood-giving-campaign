@@ -68,7 +68,7 @@ export const VerticalCard = ({
             as={headingLevel}
             size={isSmallHeading ? 3 : 4}
             leading="tight"
-            className={cnb(styles.heading(tabColor), accentBorderColors[tabColor])}
+            className={cnb(styles.heading(!!tabColor), accentBorderColors[tabColor])}
           >
             {(!ctaLabel && (link || href))
               ? (
@@ -100,7 +100,7 @@ export const VerticalCard = ({
         )}
       </div>
       {taxonomy?.length > 0 && (
-        <ul className={styles.taxonomy}>
+        <ul className={styles.taxonomy(!!tabColor)}>
           {taxonomy.map((item) => (
             <li key={item} className={styles.taxonomyItem}>
               <CtaLink href={`/topics/${slugify(item)}`} variant="storyCardTag">{item}</CtaLink>
