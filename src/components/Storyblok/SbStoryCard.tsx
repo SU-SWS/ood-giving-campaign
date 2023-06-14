@@ -52,5 +52,6 @@ export const SbStoryCard = ({
     link={link}
     animation={animation}
     delay={delay}
+    taxonomy={['Science', 'Technology', 'Ethics']}
   />
 );

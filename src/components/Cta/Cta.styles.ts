@@ -13,6 +13,7 @@ export const ctaVariants = {
   close: 'su-inline-block su-font-semibold su-leading-none su-text-lagunita hocus:su-text-lagunita-dark focus:su-outline-none',
   'close-x': 'su-leading-none',
   dismiss: 'su-inline-block su-font-bold su-uppercase su-tracking-widest su-leading-none su-text-gc-black hocus:su-text-gc-black focus:su-outline-none',
+  storyCardTag: 'su-inline-block su-text-current hocus:su-text-current su-font-normal su-decoration-2 su-underline-offset-4 su-decoration-black-50 hocus:su-decoration-current',
   unset: '',
 };
 
@@ -42,6 +43,7 @@ export const ctaSizes = {
   back: 'su-text-16',
   close: 'su-text-18 md:su-text-21',
   dismiss: 'su-text-17',
+  storyCardTag: 'su-text-16 lg:su-text-18',
   unset: '',
 };
 
@@ -55,6 +57,7 @@ export const ctaSizeMap = {
   close: 'close',
   back: 'back',
   chip: 'chip',
+  storyCardTag: 'storyCardTag',
   unset: 'unset',
 };
 
