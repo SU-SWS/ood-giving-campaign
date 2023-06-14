@@ -94,7 +94,7 @@ export const ThemeSection = ({
       className="su-relative su-overflow-hidden"
     >
       <AnimateInView duration={0.6} animation="slideUp">
-        <Text size={2} leading="tight" font="serif" className="su-cc su-mb-1em">Themes</Text>
+        <Text size={2} leading="tight" font="serif" className="su-cc su-mb-08em">Themes</Text>
         <FlexBox className="su-relative su-rs-mb-6">
           <div className="su-block su-bg-digital-red su-w-8 md:su-w-20 lg:su-w-40" />
           <Heading
@@ -102,7 +102,7 @@ export const ThemeSection = ({
             size="splash"
             leading="none"
             font="druk"
-            className="su-cc su-pr-0 su-mb-0 su--mt-[0.16em] su-whitespace-pre-line su--ml-8 md:su--ml-20 lg:su--ml-40 su-w-full 3xl:su-max-w-3/5"
+            className="su-cc su-mb-0 su--mt-[0.14em] su-whitespace-pre-line su--ml-8 md:su--ml-20 lg:su--ml-40 su-w-full 3xl:su-max-w-3/5"
           >
             Square pegs,<br />
             huge goals.

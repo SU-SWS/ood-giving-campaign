@@ -1,6 +1,5 @@
 export const accentBgColors = {
   flamingo: 'su-bg-flamingo',
-  fog: 'su-bg-fog',
   fuchsia: 'su-bg-fuchsia',
   lavender: 'su-bg-lavender',
   lime: 'su-bg-lime',
@@ -9,14 +8,15 @@ export const accentBgColors = {
   poppy: 'su-bg-poppy',
   'robins-egg': 'su-bg-robins-egg',
   sapphire: 'su-bg-sapphire',
-  slate: 'su-bg-slate',
   spirited: 'su-bg-spirited',
+  'cardinal-red': 'su-bg-cardinal-red',
+  'digital-red': 'su-bg-digital-red',
+  'digital-red-light': 'su-bg-digital-red-light',
 };
 export type AccentBgColorType = keyof typeof accentBgColors;
 
 export const accentBorderColors = {
   flamingo: 'su-border-flamingo',
-  fog: 'su-border-fog',
   fuchsia: 'su-border-fuchsia',
   lavender: 'su-border-lavender',
   lime: 'su-border-lime',
@@ -25,8 +25,10 @@ export const accentBorderColors = {
   poppy: 'su-border-poppy',
   'robins-egg': 'su-border-robins-egg',
   sapphire: 'su-border-sapphire',
-  slate: 'su-border-slate',
   spirited: 'su-border-spirited',
+  'cardinal-red': 'su-border-cardinal-red',
+  'digital-red': 'su-border-digital-red',
+  'digital-red-light': 'su-border-digital-red-light',
 };
 export type AccentBorderColorType = keyof typeof accentBorderColors;
 
