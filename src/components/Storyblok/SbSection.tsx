@@ -52,30 +52,32 @@ export const SbSection = ({
         {superhead}
       </Text>
     )}
-    <FlexBox className="su-relative su-rs-mb-6">
-      {barColorValue && (
-        <div className={cnb(
-          'su-block su-w-8 md:su-w-20 lg:su-w-40',
-          accentBgColors[paletteAccentColors[barColorValue]],
-        )}
-        />
-      )}
-      {heading && (
-        <Heading
-          as={headingLevel}
-          size="splash"
-          leading="none"
-          uppercase
-          font="druk"
-          className={cnb(
-            'su-cc su--mt-[0.16em] su-mb-0 su-whitespace-pre-line su-w-full 3xl:su-max-w-3/5',
-            barColorValue ? 'su--ml-8 md:su--ml-20 lg:su--ml-40' : '',
+    {heading && (
+      <FlexBox className="su-relative su-rs-mb-6">
+        {barColorValue && (
+          <div className={cnb(
+            'su-block su-w-8 md:su-w-20 lg:su-w-40',
+            accentBgColors[paletteAccentColors[barColorValue]],
           )}
-        >
-          {heading}
-        </Heading>
-      )}
-    </FlexBox>
+          />
+        )}
+        {heading && (
+          <Heading
+            as={headingLevel}
+            size="splash"
+            leading="none"
+            uppercase
+            font="druk"
+            className={cnb(
+              'su-cc su--mt-[0.14em] su-mb-0 su-whitespace-pre-line su-w-full 3xl:su-max-w-3/5',
+              barColorValue ? 'su--ml-8 md:su--ml-20 lg:su--ml-40' : '',
+            )}
+          >
+            {heading}
+          </Heading>
+        )}
+      </FlexBox>
+    )}
     <Container>
       <CreateBloks blokSection={content} isDarkTheme={bgColor === 'black'} />
     </Container>
