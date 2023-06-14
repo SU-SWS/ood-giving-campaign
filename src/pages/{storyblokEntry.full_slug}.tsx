@@ -7,6 +7,7 @@ import { CreateBloks } from '../components/CreateBloks';
 import { PageHead } from '../components/PageHead';
 import { Layout } from '../components/Layout';
 import { DemoContent } from '../components/Temporary/DemoContent';
+import { resolveRelations } from '../utilities/resolveRelations';
 
 type DataProps = {
   storyblokEntry: SbGatsbyStory;
@@ -16,9 +17,7 @@ const StoryblokEntry: React.FC<PageProps<DataProps>> = ({
   data,
 }) => {
   let story = data.storyblokEntry;
-  story = useStoryblokState(story, {
-    resolveRelations: ['sbStoryCard.storyPicker'],
-  });
+  story = useStoryblokState(story, { resolveRelations });
   const blok = story.content;
 
   return (
