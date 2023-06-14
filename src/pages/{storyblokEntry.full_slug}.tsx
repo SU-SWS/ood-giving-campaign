@@ -22,7 +22,7 @@ const StoryblokEntry: React.FC<PageProps<DataProps>> = ({
   return (
     <Layout>
       {/* Place holder hero below - going to extract into component */}
-      <Hero heading={story.name} />
+      <Hero heading={blok.title} />
       <DemoContent />
       <CreateBloks blokSection={blok.hero} />
       <CreateBloks blokSection={blok.content} />

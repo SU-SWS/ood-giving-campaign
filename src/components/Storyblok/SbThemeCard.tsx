@@ -1,11 +1,16 @@
 import React from 'react';
 import { storyblokEditable } from 'gatsby-source-storyblok';
 import { ThemeCard } from '../VerticalCard';
-import { SbVerticalCardProps } from './SbVerticalCard';
+import { SbStoryCardProps } from './SbStoryCard';
 import { AccentBgColorType } from '../../utilities/datasource';
 import { paletteAccentColors } from '../../utilities/colorPalettePlugin';
 
-export type SbThemeCardProps = Omit<SbVerticalCardProps, 'isSmallHeading'>;
+export type SbThemeCardProps = Omit<SbStoryCardProps, 'isSmallHeading'> & {
+  blok: {
+    ctaLabel?: string;
+    ctaSrText?: string;
+  };
+};
 
 export const SbThemeCard = ({
   blok: {

@@ -7,7 +7,7 @@ import { SbImageType, SbLinkType } from './Storyblok.types';
 import { AccentBgColorType } from '../../utilities/datasource';
 import { paletteAccentColors, PaletteAccentColorType } from '../../utilities/colorPalettePlugin';
 
-export type SbVerticalCardProps = {
+export type SbStoryCardProps = {
   blok: {
     _uid: string;
     heading?: string;
@@ -18,15 +18,13 @@ export type SbVerticalCardProps = {
     tabColor?: {
       value?: PaletteAccentColorType;
     }
-    ctaLabel?: string;
-    ctaSrText?: string;
     link?: SbLinkType;
     animation?: AnimationType;
     delay?: number;
   };
 };
 
-export const SbVerticalCard = ({
+export const SbStoryCard = ({
   blok: {
     _uid,
     heading,
@@ -35,14 +33,12 @@ export const SbVerticalCard = ({
     body,
     image: { filename, focus } = {},
     tabColor: { value } = {},
-    ctaLabel,
-    ctaSrText,
     link,
     animation,
     delay,
   },
   blok,
-}: SbVerticalCardProps) => (
+}: SbStoryCardProps) => (
   <VerticalCard
     {...storyblokEditable(blok)}
     key={_uid}
@@ -53,8 +49,6 @@ export const SbVerticalCard = ({
     imageSrc={filename}
     imageFocus={focus}
     tabColor={paletteAccentColors[value] as AccentBgColorType}
-    ctaLabel={ctaLabel}
-    ctaSrText={ctaSrText}
     link={link}
     animation={animation}
     delay={delay}
