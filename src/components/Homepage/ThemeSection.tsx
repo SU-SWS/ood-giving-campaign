@@ -5,7 +5,9 @@ import {
 } from 'framer-motion';
 import { Container } from '../Container';
 import { Grid, GridAlternating } from '../Grid';
-import { Heading, Text, Paragraph } from '../Typography';
+import {
+  Heading, Text, Paragraph, SrOnlyText,
+} from '../Typography';
 import { colorNameToHex } from '../../utilities/colorPalettePlugin';
 import { FlexBox } from '../FlexBox';
 import { AnimateInView } from '../Animate';
@@ -97,7 +99,7 @@ export const ThemeSection = ({
         <FlexBox className="su-rs-mb-6">
           <div className="su-block su-bg-digital-red su-w-8 md:su-w-20 lg:su-w-40" />
           <div className="su-cc su-whitespace-pre-line su-w-full 3xl:su-max-w-3/5 su--ml-8 md:su--ml-20 lg:su--ml-40">
-            <Text size={2} leading="tight" font="serif">Themes</Text>
+            <Text size={2} leading="tight" font="serif" aria-hidden>Themes</Text>
             <Heading
               as="h2"
               size="splash"
@@ -105,6 +107,7 @@ export const ThemeSection = ({
               font="druk"
               className="su-mb-0"
             >
+              <SrOnlyText>Themes: </SrOnlyText>
               Square pegs,<br />
               huge goals.
             </Heading>

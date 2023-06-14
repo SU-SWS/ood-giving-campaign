@@ -3,7 +3,9 @@ import { cnb } from 'cnbuilder';
 import { storyblokEditable } from 'gatsby-source-storyblok';
 import { CreateBloks } from '../CreateBloks';
 import { FlexBox } from '../FlexBox';
-import { Heading, HeadingType, Text } from '../Typography';
+import {
+  Heading, HeadingType, SrOnlyText, Text,
+} from '../Typography';
 import { Container, BgColorType } from '../Container';
 import { accentBgColors, PaddingType } from '../../utilities/datasource';
 import { paletteAccentColors, PaletteAccentColorType } from '../../utilities/colorPalettePlugin';
@@ -63,7 +65,7 @@ export const SbSection = ({
         )}
         >
           {superhead && (
-            <Text size={2} leading="tight" font="serif">
+            <Text size={2} leading="tight" font="serif" aria-hidden>
               {superhead}
             </Text>
           )}
@@ -76,7 +78,7 @@ export const SbSection = ({
               font="druk"
               className="su-mb-0"
             >
-              {heading}
+              {superhead && <SrOnlyText>{`${superhead}:`}</SrOnlyText>}{heading}
             </Heading>
           )}
         </div>
