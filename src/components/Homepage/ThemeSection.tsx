@@ -102,7 +102,7 @@ export const ThemeSection = ({
             size="splash"
             leading="none"
             font="druk"
-            className="su-cc su-mb-0 su--mt-[0.16em] su-whitespace-pre-line su--ml-8 md:su--ml-20 lg:su--ml-40 su-w-full 3xl:su-max-w-3/5"
+            className="su-cc su-mb-0 su--mt-[0.14em] su-whitespace-pre-line su--ml-8 md:su--ml-20 lg:su--ml-40 su-w-full 3xl:su-max-w-3/5"
           >
             Square pegs,<br />
             huge goals.
