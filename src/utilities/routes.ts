@@ -4,7 +4,7 @@
  */
 
 // Initiatives
-export const initiativesRoot = 'initiatives';
+export const initiativesRoot = '/initiatives';
 
 export const initiatives = {
   changingHumanExperience: {
@@ -70,7 +70,7 @@ export const initiatives = {
 };
 
 // Themes
-export const themesRoot = 'themes';
+export const themesRoot = '/themes';
 
 export const themes = {
   sustainingLife: {

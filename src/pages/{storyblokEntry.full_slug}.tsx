@@ -16,7 +16,9 @@ const StoryblokEntry: React.FC<PageProps<DataProps>> = ({
   data,
 }) => {
   let story = data.storyblokEntry;
-  story = useStoryblokState(story);
+  story = useStoryblokState(story, {
+    resolveRelations: ['sbStoryCard.storyPicker'],
+  });
   const blok = story.content;
 
   return (

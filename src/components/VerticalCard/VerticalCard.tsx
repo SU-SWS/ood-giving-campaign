@@ -103,7 +103,7 @@ export const VerticalCard = ({
         <ul className={styles.taxonomy}>
           {taxonomy.map((item) => (
             <li key={item} className={styles.taxonomyItem}>
-              <CtaLink href={`tag/${item}`} variant="storyCardTag">{item}</CtaLink>
+              <CtaLink href={`/tag/${item}`} variant="storyCardTag">{item}</CtaLink>
             </li>
           ))}
         </ul>

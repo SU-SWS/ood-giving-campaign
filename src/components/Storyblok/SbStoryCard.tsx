@@ -10,10 +10,17 @@ import { paletteAccentColors, PaletteAccentColorType } from '../../utilities/col
 export type SbStoryCardProps = {
   blok: {
     _uid: string;
+    storyPicker?: {
+      content?: {
+        title?: string;
+        cardTitle?: string;
+        topics?: string[];
+      },
+      full_slug?: string;
+    };
     heading?: string;
     headingLevel?: HeadingType;
     isSmallHeading?: boolean;
-    body?: string;
     image?: SbImageType;
     tabColor?: {
       value?: PaletteAccentColorType;
@@ -27,10 +34,17 @@ export type SbStoryCardProps = {
 export const SbStoryCard = ({
   blok: {
     _uid,
+    storyPicker: {
+      content: {
+        title,
+        cardTitle,
+        topics,
+      },
+      full_slug,
+    } = {},
     heading,
     headingLevel,
     isSmallHeading,
-    body,
     image: { filename, focus } = {},
     tabColor: { value } = {},
     link,
@@ -42,16 +56,16 @@ export const SbStoryCard = ({
   <VerticalCard
     {...storyblokEditable(blok)}
     key={_uid}
-    heading={heading}
+    heading={cardTitle || title || heading}
     headingLevel={headingLevel}
     isSmallHeading={isSmallHeading}
-    body={body}
     imageSrc={filename}
     imageFocus={focus}
     tabColor={paletteAccentColors[value] as AccentBgColorType}
     link={link}
+    href={`/${full_slug}`}
     animation={animation}
     delay={delay}
-    taxonomy={['Science', 'Technology', 'Ethics']}
+    taxonomy={topics}
   />
 );

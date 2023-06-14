@@ -66,6 +66,7 @@ const config: GatsbyConfig = {
         accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
         version: activeEnv === 'production' ? 'published' : 'draft',
         region: 'us',
+        resolveRelations: ['sbStoryCard.storyPicker'],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

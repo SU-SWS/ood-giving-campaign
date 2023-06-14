@@ -7,6 +7,7 @@ import { paletteAccentColors } from '../../utilities/colorPalettePlugin';
 
 export type SbThemeCardProps = Omit<SbStoryCardProps, 'isSmallHeading'> & {
   blok: {
+    body?: string;
     ctaLabel?: string;
     ctaSrText?: string;
   };

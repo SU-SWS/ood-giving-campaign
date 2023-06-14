@@ -18,7 +18,9 @@ import { Banner } from '../components/Banner';
 
 const IndexPage = ({ data }) => {
   let story = data.storyblokEntry;
-  story = useStoryblokState(story);
+  story = useStoryblokState(story, {
+    resolveRelations: ['sbStoryCard.storyPicker'],
+  });
   const blok = story.content;
 
   return (
