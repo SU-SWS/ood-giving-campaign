@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import {
-  m, useReducedMotion, useScroll, useTransform,
+  m, useReducedMotion, useScroll, useTransform, useSpring,
 } from 'framer-motion';
 import { Container } from '../Container';
 import { FlexBox } from '../FlexBox';
@@ -45,6 +45,17 @@ export const HomepageHero = () => {
   const animatedWidth = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
   const marginAnimate = useTransform(scrollYProgress, [0, 1], ['0', '4vw']);
 
+  const { scrollYProgress: onPurposeProgress } = useScroll({
+    target: heroRef,
+    offset: ['0', '40vh'],
+  });
+  const onPurposeSpring = useSpring(onPurposeProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+  const onPurposeY = useTransform(onPurposeSpring, [0, 1], ['0%', '10%']);
+
   return (
     <div ref={heroRef} className="su-relative su-w-full su-bg-gc-sky">
       <div>
@@ -70,11 +81,11 @@ export const HomepageHero = () => {
         </div>
       </div>
       <m.div
-        animate={{ opacity: [0.5, 1, 1, 0] }}
-        transition={{ duration: 1.6, times: [0, 0.2, 0.9, 1], delay: 0.3 }}
-        className="su-cc su-opacity-50 su-absolute su-top-0 su-left-0 su-right-0 su-mb-0 su-pt-120 md:su-pt-216 2xl:su-pt-228 su-max-w-full"
+        animate={{ opacity: [1, 0] }}
+        transition={{ duration: 0.6, delay: 1.2 }}
+        className="su-cc su-absolute su-top-0 su-left-0 su-right-0 su-mb-0 su-pt-120 md:su-pt-216 2xl:su-pt-228 su-max-w-full"
       >
-        <Heading as="h1" size="f8" leading="none" font="druk" color="white">
+        <Heading as="h2" size="f8" leading="none" font="druk" color="white">
           {lines.map((text) => (
             <div key={text.substring(0, 2)}>
               {text}
@@ -83,8 +94,9 @@ export const HomepageHero = () => {
         </Heading>
       </m.div>
       <m.div
-        animate={{ opacity: [0, 1], scale: [prefersReduceMotion ? 1 : 0.7, 1], y: [prefersReduceMotion ? 0 : -100, 0] }}
-        transition={{ duration: 0.4, times: [0, 1], delay: 1.8 }}
+        style={{ marginTop: onPurposeY }}
+        animate={{ opacity: [0, 1] }}
+        transition={{ duration: 0.6, times: [0, 1], delay: 1.4 }}
         className="su-opacity-0 su-cc su-absolute su-top-[25rem] sm:su-top-300 md:su-top-400 lg:su-top-[28vw] 3xl:su-top-[45rem] su-left-0 su-right-0"
       >
         <FlexBox alignItems="center" justifyContent="center">

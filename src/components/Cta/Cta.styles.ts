@@ -1,7 +1,7 @@
 export const cta = 'su-group hocus:su-underline su-transition-all';
 
 export const ctaVariants = {
-  solid: 'su-relative su-z-[10] su-inline-block su-no-underline hocus:su-no-underline su-font-normal su-leading-display su-bg-digital-red hocus:su-text-white su-border-2 su-border-digital-red-light focus-visible:su-outline-none after:su-block after:su-content-[""] after:su-absolute after:su-top-0 after:su-left-0 after:su-w-[0] after:su-h-full after:su-bg-gradient-to-r after:su-from-cardinal-red after:su-to-cardinal-red-dark after:su-transition-all after:su-z-[-1] hocus:after:su-w-full su-overflow-hidden',
+  solid: 'su-relative su-z-[10] su-font-normal su-inline-block su-decoration-2 su-decoration-transparent su-underline-offset-4 su-leading-display su-bg-digital-red hocus:su-text-white su-border-2 su-border-digital-red-light focus-visible:su-outline-none hocus:su-decoration-white/70 after:su-block after:su-content-[""] after:su-absolute after:su-top-0 after:su-left-0 after:su-w-[0] after:su-h-full after:su-bg-gradient-to-r after:su-from-cardinal-red after:su-to-cardinal-red-dark after:su-transition-all after:su-z-[-1] hocus:after:su-w-full su-overflow-hidden',
   inline: 'su-inline su-underline su-decoration-1 hocus:su-decoration-2 su-underline-offset-2',
   inlineDark: 'su-inline su-text-digital-red-xlight hocus:su-text-white su-underline su-decoration-1 hocus:su-decoration-2 su-underline-offset-2',
   ghost: 'su-inline-block su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none su-underline-offset-4 su-decoration-transparent hocus:su-decoration-current',
@@ -19,7 +19,6 @@ export const ctaVariants = {
 export const ctaColors = {
   black: 'su-text-gc-black',
   white: 'su-text-white',
-  'digital-red': 'su-text-digital-red',
 };
 
 export const ctaCurves = {

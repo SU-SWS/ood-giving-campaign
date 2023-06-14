@@ -5,7 +5,11 @@ import {
 import { Bracket } from '../Bracket';
 import { FlexBox } from '../FlexBox';
 
-export const Intro = () => {
+type IntroProps = {
+  text: string;
+};
+
+export const Intro = ({ text }: IntroProps) => {
   const prefersReduceMotion = useReducedMotion();
   const willChange = useWillChange();
   const springSetting: SpringOptions = {
@@ -39,16 +43,14 @@ export const Intro = () => {
               curveClassName="su-h-[7vw] 2xl:su-h-[10.5rem]"
             />
           </m.div>
-          <m.p
-            className="su-font-serif su-font-semibold su-overview su-max-w-1000 su-rs-py-7 su-px-30 lg:su-px-72 su-mb-0"
-            style={{ opacity: textOpacity, willChange }}
-          >
-            The present demands immediate action—and the future demands immediate impact.
-            Looking at the challenges we face today—some of which threaten the future of
-            life on Earth—we feel a sense of urgency.
-            This is the time for us all to come together with purpose and intent,
-            to go further, faster for the sake of the world.
-          </m.p>
+          {text && (
+            <m.p
+              className="su-font-serif su-font-semibold su-overview su-max-w-1000 su-rs-py-7 su-px-30 lg:su-px-72 su-mb-0"
+              style={{ opacity: textOpacity, willChange }}
+            >
+              {text}
+            </m.p>
+          )}
           <m.div
             className="su-relative su-h-auto su-shrink-0"
             style={{ x: prefersReduceMotion ? '0' : bracketRightPosition, willChange }}

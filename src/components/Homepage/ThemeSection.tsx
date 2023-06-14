@@ -6,13 +6,26 @@ import {
 import { Container } from '../Container';
 import { Grid, GridAlternating } from '../Grid';
 import { Heading, Text, Paragraph } from '../Typography';
-import { ThemeCard } from '../VerticalCard';
 import { colorNameToHex } from '../../utilities/colorPalettePlugin';
 import { FlexBox } from '../FlexBox';
 import { AnimateInView } from '../Animate';
 import { CtaButton } from '../Cta';
+import { CreateBloks } from '../CreateBloks';
+import { SbThemeCardProps } from '../Storyblok/SbThemeCard';
 
-export const ThemeSection = () => {
+type ThemeSectionProps = {
+  themeCardDiscovery?: SbThemeCardProps;
+  themeCardCitizen?: SbThemeCardProps;
+  themeCardAcceleration?: SbThemeCardProps;
+  themeCardPlanet?: SbThemeCardProps;
+};
+
+export const ThemeSection = ({
+  themeCardDiscovery,
+  themeCardCitizen,
+  themeCardAcceleration,
+  themeCardPlanet,
+}: ThemeSectionProps) => {
   const containerRef = useRef(null);
   const springSetting: SpringOptions = {
     stiffness: 100,
@@ -83,13 +96,13 @@ export const ThemeSection = () => {
       <AnimateInView duration={0.6} animation="slideUp">
         <Text size={2} leading="tight" font="serif" className="su-cc su-mb-1em">Themes</Text>
         <FlexBox className="su-relative su-rs-mb-6">
-          <div className="su-hidden lg:su-block su-bg-digital-red lg:su-w-40 3xl:su-w-58" />
+          <div className="su-block su-bg-digital-red su-w-8 md:su-w-20 lg:su-w-40" />
           <Heading
             as="h2"
             size="splash"
             leading="none"
             font="druk"
-            className="su-cc su-pr-0 su-mb-0 su--mt-[0.16em] su-whitespace-pre-line lg:su--ml-40 3xl:su--ml-58 su-w-full su-max-w-1200 3xl:su-max-w-3/5"
+            className="su-cc su-pr-0 su-mb-0 su--mt-[0.16em] su-whitespace-pre-line su--ml-8 md:su--ml-20 lg:su--ml-40 su-w-full 3xl:su-max-w-3/5"
           >
             Square pegs,<br />
             huge goals.
@@ -114,7 +127,7 @@ export const ThemeSection = () => {
           <CtaButton onClick={() => setShouldAnimate(false)}>Reveal themes visually</CtaButton>
         </div>
         {/* This grid contains the 4 animated lines behind the theme cards */}
-        <Grid md={2} className="su-absolute su-left-0 su-top-[160rem] 2xl:su-top-[170rem] su-w-full su-gap-y-[30rem]">
+        <Grid md={2} className="su-hidden md:su-grid su-absolute su-left-0 su-top-[160rem] 2xl:su-top-[170rem] su-w-full su-gap-y-[30rem]">
           <div className="su-max-w-full su-overflow-hidden">
             <m.svg className="su-mr-0 su-ml-auto" viewBox="0 0 952 461" fill="none" xmlns="http://www.w3.org/2000/svg">
               <m.path
@@ -172,14 +185,7 @@ export const ThemeSection = () => {
                 style={{ opacity: opacityChange, scale: zoom }}
                 className="su-origin-top-right"
               >
-                <ThemeCard
-                  heading="Catalyzing discovery in every field"
-                  body="Propelled by new ways of thinking, working, and creating, we probe the frontiers of discovery to drive progress."
-                  textColor="white"
-                  imageSrc="https://a-us.storyblok.com/f/1005200/2560x1708/bdd62ecfad/charm_lab_1421.jpg"
-                  ctaLabel="Learn how"
-                  href="/about-test"
-                />
+                <CreateBloks blokSection={themeCardDiscovery} />
               </m.div>
             </m.div>
             <m.div style={{ height: heightWrapper }} className="su-overflow-hidden">
@@ -202,14 +208,7 @@ export const ThemeSection = () => {
                 style={{ opacity: scrollYProgress, scale: zoom }}
                 className="su-origin-top-left"
               >
-                <ThemeCard
-                  heading="Preparing citizens and leaders"
-                  body="We are preparing students to live, work, and serve as active citizens, for the good of the world."
-                  textColor="white"
-                  imageSrc="https://a-us.storyblok.com/f/1005200/2560x1708/a3874a6272/barnumtower_0837.jpg"
-                  ctaLabel="Learn how"
-                  href="/about-test"
-                />
+                <CreateBloks blokSection={themeCardCitizen} />
               </m.div>
             </m.div>
             <m.div style={{ height: heightWrapper, marginBottom: shiftUp }} className="su-overflow-hidden">
@@ -232,14 +231,7 @@ export const ThemeSection = () => {
                 style={{ opacity: scrollYProgress, scale: zoom }}
                 className="su-origin-top-right"
               >
-                <ThemeCard
-                  heading="Accelerating solutions for humanity"
-                  body="Creating systems to rapidly design, develop, and scale applied research, enabled by expanded and new partnerships."
-                  textColor="white"
-                  imageSrc="https://a-us.storyblok.com/f/1005200/2560x1708/28e01c3d3c/benjamingao_3843.jpg"
-                  ctaLabel="Learn how"
-                  href="/about-test"
-                />
+                <CreateBloks blokSection={themeCardAcceleration} />
               </m.div>
             </m.div>
             <m.div style={{ height: heightWrapper }} className="su-overflow-hidden">
@@ -262,14 +254,7 @@ export const ThemeSection = () => {
                 style={{ opacity: scrollYProgress, scale: zoom }}
                 className="su-origin-top-left"
               >
-                <ThemeCard
-                  heading="Sustaining life on Earth"
-                  body="The future looks bright—but only when we ensure a healthy planet in which humans and nature can thrive together."
-                  textColor="white"
-                  imageSrc="https://a-us.storyblok.com/f/1005200/2499x1667/203b52dc5a/farm_1206.jpg"
-                  ctaLabel="Learn how"
-                  href="/about-test"
-                />
+                <CreateBloks blokSection={themeCardPlanet} />
               </m.div>
             </m.div>
           </GridAlternating>

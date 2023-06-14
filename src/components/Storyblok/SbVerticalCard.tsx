@@ -19,11 +19,11 @@ export type SbVerticalCardProps = {
       value?: PaletteAccentColorType;
     }
     ctaLabel?: string;
+    ctaSrText?: string;
     link?: SbLinkType;
     animation?: AnimationType;
     delay?: number;
   };
-  isDarkTheme?: boolean;
 };
 
 export const SbVerticalCard = ({
@@ -33,16 +33,15 @@ export const SbVerticalCard = ({
     headingLevel,
     isSmallHeading,
     body,
-    // TODO: seperate alt as separate field
-    image: { filename, focus, alt } = {},
+    image: { filename, focus } = {},
     tabColor: { value } = {},
     ctaLabel,
+    ctaSrText,
     link,
     animation,
     delay,
   },
   blok,
-  isDarkTheme,
 }: SbVerticalCardProps) => (
   <VerticalCard
     {...storyblokEditable(blok)}
@@ -53,10 +52,9 @@ export const SbVerticalCard = ({
     body={body}
     imageSrc={filename}
     imageFocus={focus}
-    alt={alt}
-    textColor={isDarkTheme ? 'white' : 'black'}
     tabColor={paletteAccentColors[value] as AccentBgColorType}
     ctaLabel={ctaLabel}
+    ctaSrText={ctaSrText}
     link={link}
     animation={animation}
     delay={delay}

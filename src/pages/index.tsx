@@ -1,15 +1,20 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 import { useStoryblokState } from '../hooks/useStoryblokState';
-import { ThemeSection } from '../components/Temporary/ThemeSection';
-import { HomepageHero } from '../components/Hero/HomepageHero';
-import { Intro } from '../components/Intro';
-import { FindPurposeSection } from '../components/Temporary/FindPurposeSection';
-import { ProgressStories } from '../components/Temporary/ProgressStories';
+import { Heading } from '../components/Typography';
+import { HomepageHero } from '../components/Homepage/HomepageHero';
+import { Intro } from '../components/Homepage/Intro';
+import { ThemeSection } from '../components/Homepage/ThemeSection';
+import { FindPurposeSection } from '../components/Homepage/FindPurposeSection';
+import { ProgressSection } from '../components/Homepage/ProgressSection';
 import { PageHead } from '../components/PageHead';
 import { CreateBloks } from '../components/CreateBloks';
 import { Layout } from '../components/Layout';
 import { Banner } from '../components/Banner';
+
+/**
+ * This is the layout for the homepage
+ */
 
 const IndexPage = ({ data }) => {
   let story = data.storyblokEntry;
@@ -18,14 +23,18 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
+      <Heading as="h1" srOnly>{blok.title || 'Homepage'}</Heading>
       <HomepageHero />
-      <Intro />
-      <ThemeSection />
-      {/* <CreateBloks blokSection={blok.hero} />
-      <CreateBloks blokSection={blok.content} /> */}
-      <ProgressStories bgImage={blok.progressBgImage.filename}>
+      <Intro text={blok.intro} />
+      <ThemeSection
+        themeCardDiscovery={blok.themeCardDiscovery}
+        themeCardCitizen={blok.themeCardCitizen}
+        themeCardAcceleration={blok.themeCardAcceleration}
+        themeCardPlanet={blok.themeCardPlanet}
+      />
+      <ProgressSection bgImage={blok.progressBgImage.filename}>
         <CreateBloks blokSection={blok.progressStories} />
-      </ProgressStories>
+      </ProgressSection>
       <FindPurposeSection>
         <CreateBloks blokSection={blok.findPurpose} />
       </FindPurposeSection>

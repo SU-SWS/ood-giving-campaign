@@ -5,7 +5,7 @@ import { SbVerticalCardProps } from './SbVerticalCard';
 import { AccentBgColorType } from '../../utilities/datasource';
 import { paletteAccentColors } from '../../utilities/colorPalettePlugin';
 
-type SbThemeCardProps = Omit<SbVerticalCardProps, 'isSmallHeading'>;
+export type SbThemeCardProps = Omit<SbVerticalCardProps, 'isSmallHeading'>;
 
 export const SbThemeCard = ({
   blok: {
@@ -13,16 +13,15 @@ export const SbThemeCard = ({
     heading,
     headingLevel,
     body,
-    // TODO: seperate alt as separate field
-    image: { filename, focus, alt } = {},
+    image: { filename, focus } = {},
     tabColor: { value } = {},
     ctaLabel,
+    ctaSrText,
     link,
     animation,
     delay,
   },
   blok,
-  isDarkTheme,
 }: SbThemeCardProps) => (
   <ThemeCard
     {...storyblokEditable(blok)}
@@ -32,10 +31,9 @@ export const SbThemeCard = ({
     body={body}
     imageSrc={filename}
     imageFocus={focus}
-    alt={alt}
-    textColor={isDarkTheme ? 'white' : 'black'}
     tabColor={paletteAccentColors[value] as AccentBgColorType}
     ctaLabel={ctaLabel}
+    ctaSrText={ctaSrText}
     link={link}
     animation={animation}
     delay={delay}
