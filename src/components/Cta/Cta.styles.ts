@@ -31,6 +31,10 @@ export const ctaCurves = {
   'bl-large': 'su-rounded-bl-[2rem] xl:su-rounded-bl-[3rem]',
   br: 'su-rounded-br-[1.6rem] xl:su-rounded-br-[2rem]',
   'br-large': 'su-rounded-br-[2rem] xl:su-rounded-br-[3rem]',
+  tlbr: 'su-rounded-tl-[1.6rem] xl:su-rounded-tl-[2rem] su-rounded-br-[1.6rem] xl:su-rounded-br-[2rem]',
+  'tlbr-large': 'su-rounded-tl-[2rem] xl:su-rounded-tl-[3rem] su-rounded-br-[2rem] xl:su-rounded-br-[3rem]',
+  trbl: 'su-rounded-tr-[1.6rem] xl:su-rounded-tr-[2rem] su-rounded-bl-[1.6rem] xl:su-rounded-bl-[2rem]',
+  'trbl-large': 'su-rounded-tr-[2rem] xl:su-rounded-tr-[3rem] su-rounded-bl-[2rem] xl:su-rounded-bl-[3rem]',
 };
 
 export const ctaSizes = {
