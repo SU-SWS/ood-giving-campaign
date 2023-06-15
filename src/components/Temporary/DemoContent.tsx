@@ -20,7 +20,7 @@ export const DemoContent = () => (
     <Container bgColor="black" py={9}>
       <Grid md={2} xl={3} xxl={4} gap="card" alignItems="center" justifyItems="center">
         <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right" curve="tr">Ghost</CtaLink>
-        <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right" size="large" curve="tr">Ghost</CtaLink>
+        <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right" size="large" curve="tr-large">Ghost</CtaLink>
         <CtaLink
           href="/about-test"
           variant="ghost-swipe"
@@ -34,7 +34,7 @@ export const DemoContent = () => (
           variant="ghost-swipe"
           icon="arrow-right"
           size="large"
-          curve="br"
+          curve="br-large"
         >
           Ghost swipe
         </CtaLink>
@@ -53,7 +53,7 @@ export const DemoContent = () => (
           icon="arrow-right"
           animate="right"
           size="large"
-          curve="br"
+          curve="br-large"
         >
           Solid red
         </CtaLink>
@@ -62,7 +62,7 @@ export const DemoContent = () => (
     <Container bgColor="white" py={9}>
       <Grid md={2} xl={3} xxl={4} gap="card" alignItems="center" justifyItems="center">
         <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right" color="black" curve="tr">Ghost</CtaLink>
-        <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right" color="black" curve="tr" size="large">Ghost</CtaLink>
+        <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right" color="black" curve="tr-large" size="large">Ghost</CtaLink>
         <CtaLink
           href="/about-test"
           variant="ghost-swipe"
@@ -79,7 +79,7 @@ export const DemoContent = () => (
           color="black"
           icon="chevron-right"
           animate="right"
-          curve="br"
+          curve="br-large"
           size="large"
         >
           Ghost swipe
@@ -98,7 +98,7 @@ export const DemoContent = () => (
           variant="solid"
           icon="arrow-right"
           animate="right"
-          curve="br"
+          curve="br-large"
           size="large"
         >
           Solid red
