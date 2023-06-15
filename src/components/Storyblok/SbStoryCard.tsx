@@ -2,61 +2,72 @@ import React from 'react';
 import { storyblokEditable } from 'gatsby-source-storyblok';
 import { AnimationType } from '../Animate';
 import { HeadingType } from '../Typography';
-import { VerticalCard } from '../VerticalCard';
+import { StoryCard } from '../VerticalCard';
 import { SbImageType, SbLinkType } from './Storyblok.types';
 import { AccentBgColorType } from '../../utilities/datasource';
 import { paletteAccentColors, PaletteAccentColorType } from '../../utilities/colorPalettePlugin';
 
-export type SbVerticalCardProps = {
+export type SbStoryCardProps = {
   blok: {
     _uid: string;
+    storyPicker?: {
+      content?: {
+        title?: string;
+        cardTitle?: string;
+        topics?: string[];
+        heroImage?: SbImageType;
+      },
+      full_slug?: string;
+    };
     heading?: string;
     headingLevel?: HeadingType;
     isSmallHeading?: boolean;
-    body?: string;
     image?: SbImageType;
     tabColor?: {
       value?: PaletteAccentColorType;
     }
-    ctaLabel?: string;
-    ctaSrText?: string;
     link?: SbLinkType;
     animation?: AnimationType;
     delay?: number;
   };
 };
 
-export const SbVerticalCard = ({
+export const SbStoryCard = ({
   blok: {
     _uid,
+    storyPicker: {
+      content: {
+        title,
+        cardTitle,
+        topics,
+        heroImage: { filename: heroImage, focus: heroFocus } = {},
+      } = {},
+      full_slug,
+    } = {},
     heading,
     headingLevel,
     isSmallHeading,
-    body,
-    image: { filename, focus } = {},
+    image: { filename: cardImage, focus: cardFocus } = {},
     tabColor: { value } = {},
-    ctaLabel,
-    ctaSrText,
     link,
     animation,
     delay,
   },
   blok,
-}: SbVerticalCardProps) => (
-  <VerticalCard
+}: SbStoryCardProps) => (
+  <StoryCard
     {...storyblokEditable(blok)}
     key={_uid}
-    heading={heading}
+    heading={heading || cardTitle || title}
     headingLevel={headingLevel}
     isSmallHeading={isSmallHeading}
-    body={body}
-    imageSrc={filename}
-    imageFocus={focus}
+    imageSrc={cardImage || heroImage}
+    imageFocus={cardFocus || heroFocus}
     tabColor={paletteAccentColors[value] as AccentBgColorType}
-    ctaLabel={ctaLabel}
-    ctaSrText={ctaSrText}
     link={link}
+    href={`/${full_slug}`}
     animation={animation}
     delay={delay}
+    taxonomy={topics}
   />
 );

@@ -7,6 +7,7 @@ import { CreateBloks } from '../components/CreateBloks';
 import { PageHead } from '../components/PageHead';
 import { Layout } from '../components/Layout';
 import { DemoContent } from '../components/Temporary/DemoContent';
+import { resolveRelations } from '../utilities/resolveRelations';
 
 type DataProps = {
   storyblokEntry: SbGatsbyStory;
@@ -16,16 +17,16 @@ const StoryblokEntry: React.FC<PageProps<DataProps>> = ({
   data,
 }) => {
   let story = data.storyblokEntry;
-  story = useStoryblokState(story);
+  story = useStoryblokState(story, { resolveRelations });
   const blok = story.content;
 
   return (
     <Layout>
       {/* Place holder hero below - going to extract into component */}
-      <Hero heading={story.name} />
-      <DemoContent />
+      <Hero heading={blok.title} />
       <CreateBloks blokSection={blok.hero} />
       <CreateBloks blokSection={blok.content} />
+      <DemoContent />
     </Layout>
   );
 };

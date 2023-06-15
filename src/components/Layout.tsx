@@ -12,7 +12,7 @@ import { SbLogo } from './Storyblok/SbLogo';
 import { SbSection } from './Storyblok/SbSection';
 import { SbSplitPoster } from './Storyblok/SbSplitPoster';
 import { SbThemeCard } from './Storyblok/SbThemeCard';
-import { SbVerticalCard } from './Storyblok/SbVerticalCard';
+import { SbStoryCard } from './Storyblok/SbStoryCard';
 import { SbWysiwyg } from './Storyblok/SbWysiwyg';
 import { Skiplink } from './SkipLink';
 
@@ -35,7 +35,7 @@ storyblokInit({
     sbSection: SbSection,
     sbSplitPoster: SbSplitPoster,
     sbThemeCard: SbThemeCard,
-    sbVerticalCard: SbVerticalCard,
+    sbStoryCard: SbStoryCard,
     sbWysiwyg: SbWysiwyg,
   },
 });

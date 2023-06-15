@@ -11,6 +11,7 @@ import { PageHead } from '../components/PageHead';
 import { CreateBloks } from '../components/CreateBloks';
 import { Layout } from '../components/Layout';
 import { Banner } from '../components/Banner';
+import { resolveRelations } from '../utilities/resolveRelations';
 
 /**
  * This is the layout for the homepage
@@ -18,7 +19,7 @@ import { Banner } from '../components/Banner';
 
 const IndexPage = ({ data }) => {
   let story = data.storyblokEntry;
-  story = useStoryblokState(story);
+  story = useStoryblokState(story, { resolveRelations });
   const blok = story.content;
 
   return (

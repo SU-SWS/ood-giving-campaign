@@ -5,23 +5,27 @@ import { CtaLink } from '../Cta/CtaLink';
 import { Heading, HeadingType, Paragraph } from '../Typography';
 import { SbLinkType } from '../Storyblok/Storyblok.types';
 import { getProcessedImage } from '../../utilities/getProcessedImage';
+import { slugify } from '../../utilities/slugify';
+import { accentBorderColors, AccentBorderColorType } from '../../utilities/datasource';
 import * as styles from './VerticalCard.styles';
-import { accentBgColors, AccentBgColorType } from '../../utilities/datasource';
+
+/**
+ * Currently, both Theme Card and Story Card use this component.
+ */
 
 export type VerticalCardProps = HTMLAttributes<HTMLDivElement> & {
   heading?: string;
   headingLevel?: HeadingType;
-  headingFont?: 'serif' | 'druk';
   isSmallHeading?: boolean;
   body?: string;
   imageSrc?: string;
   imageFocus?: string;
-  alt?: string;
-  tabColor?: AccentBgColorType;
+  tabColor?: AccentBorderColorType;
   ctaLabel?: string;
   ctaSrText?: string;
   href?: string;
   link?: SbLinkType;
+  taxonomy?: string[];
   animation?: AnimationType;
   delay?: number;
 };
@@ -29,7 +33,6 @@ export type VerticalCardProps = HTMLAttributes<HTMLDivElement> & {
 export const VerticalCard = ({
   heading,
   headingLevel = 'h3',
-  headingFont = 'serif',
   isSmallHeading,
   body,
   imageSrc,
@@ -39,6 +42,7 @@ export const VerticalCard = ({
   ctaSrText,
   link,
   href,
+  taxonomy,
   animation = 'none',
   delay,
   className,
@@ -49,50 +53,61 @@ export const VerticalCard = ({
       className={cnb(styles.root, className)}
       {...props}
     >
-      {imageSrc && (
-        <div className={styles.imageWrapper}>
-          <img
-            alt=""
-            src={getProcessedImage(imageSrc, '600x600', imageFocus)}
-            className={styles.image}
-          />
-        </div>
-      )}
-      {heading && (
-        <Heading
-          as={headingLevel}
-          font={headingFont}
-          size={isSmallHeading ? 3 : 4}
-          leading="tight"
-          className={styles.heading}
-        >
-          {(!ctaLabel && (link || href))
-            ? (
-              <CtaLink sbLink={link} href={href} className={styles.headingLink}>
-                {heading}
-              </CtaLink>
-            ) : heading}
-        </Heading>
-      )}
-      {tabColor && (
+      <div className={styles.cardWrapper}>
+        {imageSrc && (
+          <div className={styles.imageWrapper}>
+            <img
+              alt=""
+              src={getProcessedImage(imageSrc, '600x600', imageFocus)}
+              className={styles.image}
+            />
+          </div>
+        )}
+        {heading && (
+          <Heading
+            as={headingLevel}
+            size={isSmallHeading ? 3 : 4}
+            leading="tight"
+            className={cnb(styles.heading(!!tabColor), accentBorderColors[tabColor])}
+          >
+            {(!ctaLabel && (link || href))
+              ? (
+                <CtaLink sbLink={link} href={href} className={styles.headingLink}>
+                  {heading}
+                </CtaLink>
+              ) : heading}
+          </Heading>
+        )}
+        {/* {tabColor && (
         <div className={cnb(styles.tab, accentBgColors[tabColor])} />
-      )}
-      {body && (
-        <Paragraph variant="card" noMargin>{body}</Paragraph>
-      )}
-      {ctaLabel && (link || href) && (
-        <CtaLink
-          variant="solid"
-          curve="br"
-          icon="arrow-right"
-          animate="right"
-          srText={ctaSrText}
-          sbLink={link}
-          href={href}
-          className={styles.ctaLink}
-        >
-          {ctaLabel}
-        </CtaLink>
+      )} */}
+        {body && (
+          <Paragraph variant="card" noMargin>{body}</Paragraph>
+        )}
+        {ctaLabel && (link || href) && (
+          <CtaLink
+            variant="solid"
+            curve="br"
+            icon="arrow-right"
+            animate="right"
+            srText={ctaSrText}
+            sbLink={link}
+            href={href}
+            className={styles.ctaLink}
+          >
+            {ctaLabel}
+          </CtaLink>
+        )}
+      </div>
+      {/* Display max 3 topic tags; TODO: Sort tags after clients decide on order */}
+      {taxonomy?.length > 0 && (
+        <ul className={styles.taxonomy(!!tabColor)}>
+          {taxonomy.slice(0, 3).map((item) => (
+            <li key={item} className={styles.taxonomyItem}>
+              <CtaLink href={`/topics/${slugify(item)}`} variant="storyCardTag">{item}</CtaLink>
+            </li>
+          ))}
+        </ul>
       )}
     </article>
   </AnimateInView>
