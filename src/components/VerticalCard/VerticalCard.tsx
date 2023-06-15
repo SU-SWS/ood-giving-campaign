@@ -99,9 +99,10 @@ export const VerticalCard = ({
           </CtaLink>
         )}
       </div>
+      {/* Display max 3 topic tags; TODO: Sort tags after clients decide on order */}
       {taxonomy?.length > 0 && (
         <ul className={styles.taxonomy(!!tabColor)}>
-          {taxonomy.map((item) => (
+          {taxonomy.slice(0, 3).map((item) => (
             <li key={item} className={styles.taxonomyItem}>
               <CtaLink href={`/topics/${slugify(item)}`} variant="storyCardTag">{item}</CtaLink>
             </li>
