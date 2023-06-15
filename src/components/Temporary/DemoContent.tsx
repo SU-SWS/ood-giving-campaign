@@ -19,11 +19,12 @@ export const DemoContent = () => (
     </div>
     <Container bgColor="black" py={9}>
       <Grid md={2} xl={3} xxl={4} gap="card" alignItems="center" justifyItems="center">
-        <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right" curve="tr">Ghost</CtaLink>
-        <CtaLink href="/about-test" variant="ghost" icon="chevron-right" animate="right" size="large" curve="tr-large">Ghost</CtaLink>
+        <CtaLink href="/about-test" variant="ghost" color="white" icon="chevron-right" animate="right" curve="tr">Ghost</CtaLink>
+        <CtaLink href="/about-test" variant="ghost" color="white" icon="chevron-right" animate="right" size="large" curve="tr-large">Ghost</CtaLink>
         <CtaLink
           href="/about-test"
           variant="ghost-swipe"
+          color="white"
           icon="arrow-right"
           curve="br"
         >
@@ -32,6 +33,7 @@ export const DemoContent = () => (
         <CtaLink
           href="/about-test"
           variant="ghost-swipe"
+          color="white"
           icon="arrow-right"
           size="large"
           curve="br-large"
