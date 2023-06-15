@@ -4,7 +4,7 @@ export const root = 'su-relative su-z-10 sm:su-max-w-500 md:su-max-w-full su-mx-
 
 export const cardWrapper = 'su-relative su-group';
 
-export const imageWrapper = 'su-transition-all su-aspect-w-1 su-aspect-h-1 su-rounded-none su-overflow-hidden';
+export const imageWrapper = 'su-transition-all su-aspect-w-1 su-aspect-h-1 su-overflow-hidden';
 
 export const image = 'su-object-cover su-w-full su-h-full group-hover:su-scale-105 group-focus-within:su-scale-105 su-transition-transform';
 
