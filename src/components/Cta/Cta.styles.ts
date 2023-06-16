@@ -25,19 +25,28 @@ export const ctaColors = {
   'digital-red': 'su-text-digital-red',
 };
 
+const tlBase = 'su-rounded-tl-[1.6rem] lg:su-rounded-tl-[2rem]';
+const trBase = 'su-rounded-tr-[1.6rem] lg:su-rounded-tr-[2rem]';
+const blBase = 'su-rounded-bl-[1.6rem] lg:su-rounded-bl-[2rem]';
+const brBase = 'su-rounded-br-[1.6rem] lg:su-rounded-br-[2rem]';
+const tlLargeBase = 'su-rounded-tl-[2rem] lg:su-rounded-tl-[3rem]';
+const trLargeBase = 'su-rounded-tr-[2rem] lg:su-rounded-tr-[3rem]';
+const blLargeBase = 'su-rounded-bl-[2rem] lg:su-rounded-bl-[3rem]';
+const brLargeBase = 'su-rounded-br-[2rem] lg:su-rounded-br-[3rem]';
+
 export const ctaCurves = {
-  tl: 'su-rounded-tl-[1.6rem] xl:su-rounded-tl-[2rem]',
-  'tl-large': 'su-rounded-tl-[2rem] xl:su-rounded-tl-[3rem]',
-  tr: 'su-rounded-tr-[1.6rem] xl:su-rounded-tr-[2rem]',
-  'tr-large': 'su-rounded-tr-[2rem] xl:su-rounded-tr-[3rem]',
-  bl: 'su-rounded-bl-[1.6rem] xl:su-rounded-bl-[2rem]',
-  'bl-large': 'su-rounded-bl-[2rem] xl:su-rounded-bl-[3rem]',
-  br: 'su-rounded-br-[1.6rem] xl:su-rounded-br-[2rem]',
-  'br-large': 'su-rounded-br-[2rem] xl:su-rounded-br-[3rem]',
-  tlbr: 'su-rounded-tl-[1.6rem] xl:su-rounded-tl-[2rem] su-rounded-br-[1.6rem] xl:su-rounded-br-[2rem]',
-  'tlbr-large': 'su-rounded-tl-[2rem] xl:su-rounded-tl-[3rem] su-rounded-br-[2rem] xl:su-rounded-br-[3rem]',
-  trbl: 'su-rounded-tr-[1.6rem] xl:su-rounded-tr-[2rem] su-rounded-bl-[1.6rem] xl:su-rounded-bl-[2rem]',
-  'trbl-large': 'su-rounded-tr-[2rem] xl:su-rounded-tr-[3rem] su-rounded-bl-[2rem] xl:su-rounded-bl-[3rem]',
+  tl: tlBase,
+  'tl-large': tlLargeBase,
+  tr: trBase,
+  'tr-large': trLargeBase,
+  bl: blBase,
+  'bl-large': blLargeBase,
+  br: brBase,
+  'br-large': brLargeBase,
+  tlbr: `${tlBase} ${brBase}`,
+  'tlbr-large': `${tlLargeBase} ${brLargeBase}`,
+  trbl: `${trBase} ${blBase}`,
+  'trbl-large': `${trLargeBase} ${blLargeBase}`,
 };
 
 export const ctaSizes = {
