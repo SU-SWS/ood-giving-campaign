@@ -79,7 +79,7 @@ export const SplitPoster = ({
             bgColor={bgColorLeft}
             className={styles.posterContentLeft}
           >
-            <FlexBox direction="col" className={styles.ctaWrapper}>
+            <FlexBox direction="col" alignItems="end" className={styles.ctaWrapper}>
               {ctaLeft}
             </FlexBox>
           </PosterContent>
@@ -96,7 +96,7 @@ export const SplitPoster = ({
             bgColor={bgColorRight}
             className={styles.posterContentRight}
           >
-            <FlexBox direction="col" className={styles.ctaWrapper}>
+            <FlexBox direction="col" alignItems="start" className={styles.ctaWrapper}>
               {ctaRight}
             </FlexBox>
           </PosterContent>

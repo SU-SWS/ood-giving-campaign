@@ -5,7 +5,7 @@ export const overlays = {
   'black-30': 'su-bg-black-true/30',
   'black-40': 'su-bg-black-true/40',
   'black-60': 'su-bg-black-true/60',
-  'black-gradient': 'su-bg-gradient-to-b su-from-transparent su-via-black-true/20 su-to-black-true/70',
+  'black-gradient': 'su-bg-gradient-to-b su-from-transparent su-via-black-true/20 su-to-black-true/50',
 };
 export type OverlayType = keyof typeof overlays | '';
 
