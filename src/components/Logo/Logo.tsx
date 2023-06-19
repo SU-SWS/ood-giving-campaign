@@ -12,14 +12,14 @@ type LogoProps = HTMLAttributes<HTMLElement> & {
 };
 
 export const Logo = ({
-  color = 'black',
+  color = 'white',
   variant = 'horizontal',
   isLink,
   className,
   ...rest
 }: LogoProps) => {
   const LogoText = (
-    <LogoHorizontal title="Stanford On Purpose" />
+    <LogoHorizontal color={color} />
   );
 
   const homeLink = useAddUtmParams('/');
