@@ -45,12 +45,12 @@ export const Masthead = ({ className }: MastheadProps) => {
   return (
     <m.div
       className={cnb(
-        'su-w-full su-fixed su-top-0 su-z-50',
+        'su-w-full su-fixed su-top-0 su-z-50 su-transition-colors',
         !isAtTop && isScrollingBack ? 'su-bg-white su-border-b su-border-b-black-20' : 'su-bg-transparent su-border-b-transparent',
         className,
       )}
       animate={{ y: isVisible ? 0 : -slideDistance, opacity: isVisible ? 1 : 0 }}
-      transition={{ duration: 0.5, delay: 0.1, ease: 'easeInOut' }}
+      transition={{ duration: 0.4, delay: 0.1, ease: 'easeInOut' }}
       style={{ height: slideDistance, willChange }}
     >
       <FlexBox
