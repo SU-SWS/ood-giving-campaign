@@ -1,5 +1,7 @@
 import React, { useEffect, useState, HTMLAttributes } from 'react';
-import { m, useScroll, useVelocity } from 'framer-motion';
+import {
+  m, useMotionValueEvent, useScroll, useVelocity,
+} from 'framer-motion';
 import { cnb } from 'cnbuilder';
 import { Container } from '../Container';
 import { FlexBox } from '../FlexBox';
@@ -18,33 +20,36 @@ export const Masthead = ({ className }: MastheadProps) => {
   const scrollVelocity = useVelocity(scrollY);
 
   const [isScrollingBack, setIsScrollingBack] = useState(false);
-  const [isAtTop, setIsAtTop] = useState(true); // true if the page is not scrolled or fully scrolled back
-  const [isInView, setIsInView] = useState(true);
+  const [isAtTop, setIsAtTop] = useState(true);
+  const [isVisible, setIsVisible] = useState(true);
 
-  useEffect(
-    () => scrollVelocity.onChange((latest) => {
-      if (latest > 0) {
-        setIsScrollingBack(false);
-        return;
-      }
-      if (latest < -threshold) {
-        setIsScrollingBack(true);
-      }
-    }),
-    [scrollVelocity],
-  );
+  useMotionValueEvent(scrollVelocity, 'change', (latest) => {
+    if (latest > 0) {
+      setIsScrollingBack(false);
+      return;
+    }
+    if (latest < -threshold) {
+      setIsScrollingBack(true);
+    }
+  });
 
-  useEffect(() => scrollY.onChange((latest) => setIsAtTop(latest <= 200)), [scrollY]);
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    setIsAtTop(latest <= 200);
+  });
 
-  useEffect(() => setIsInView(isScrollingBack || isAtTop), [
+  useEffect(() => setIsVisible(isScrollingBack || isAtTop), [
     isScrollingBack,
     isAtTop,
   ]);
 
   return (
     <m.div
-      className={cnb('su-bg-transparent su-w-full su-fixed su-top-0 su-z-[100] su-transition-all', !isAtTop && isScrollingBack ? 'su-bg-white' : '', className)}
-      animate={{ y: isInView ? 0 : -slideDistance, opacity: isInView ? 1 : 0 }}
+      className={cnb(
+        'su-w-full su-fixed su-top-0 su-z-[100] su-transition-all',
+        !isAtTop && isScrollingBack ? 'su-bg-white su-border-b su-border-b-black-20' : 'su-bg-transparent su-border-b-transparent',
+        className,
+      )}
+      animate={{ y: isVisible ? 0 : -slideDistance, opacity: isVisible ? 1 : 0 }}
       transition={{ duration: 0.3, delay: 0.1, ease: 'easeInOut' }}
       style={{ height: slideDistance }}
     >
@@ -54,7 +59,11 @@ export const Masthead = ({ className }: MastheadProps) => {
           alignItems="center"
           className="su-rs-py-1"
         >
-          <Logo isLink className="su-w-160 sm:su-w-[24rem] md:su-w-[32rem] su-fill-white" color={!isAtTop && isScrollingBack ? 'black' : 'white'} />
+          <Logo
+            isLink
+            className="su-w-160 sm:su-w-[24rem] md:su-w-[32rem] su-fill-white"
+            color={!isAtTop && isScrollingBack ? 'black' : 'white'}
+          />
           <FlexBox alignItems="center">
             <CtaLink
               href={ood.give}
