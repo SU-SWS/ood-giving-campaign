@@ -13,7 +13,7 @@ type MastheadProps = HTMLAttributes<HTMLDivElement>;
 
 export const Masthead = ({ className }: MastheadProps) => {
   const slideDistance = 96;
-  const threshold = 300;
+  const threshold = 200;
 
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
@@ -34,7 +34,7 @@ export const Masthead = ({ className }: MastheadProps) => {
   });
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    setIsAtTop(latest <= 200);
+    setIsAtTop(latest <= 100);
   });
 
   useEffect(() => setIsVisible(isScrollingBack || isAtTop), [
