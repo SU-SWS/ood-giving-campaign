@@ -1,6 +1,6 @@
 import React, { useEffect, useState, HTMLAttributes } from 'react';
 import {
-  m, useMotionValueEvent, useScroll, useVelocity,
+  m, useMotionValueEvent, useScroll, useVelocity, useWillChange,
 } from 'framer-motion';
 import { cnb } from 'cnbuilder';
 import { FlexBox } from '../FlexBox';
@@ -17,6 +17,7 @@ export const Masthead = ({ className }: MastheadProps) => {
 
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
+  const willChange = useWillChange();
 
   const [isScrollingBack, setIsScrollingBack] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
@@ -43,15 +44,14 @@ export const Masthead = ({ className }: MastheadProps) => {
 
   return (
     <m.div
-      className={cnb('su-w-full su-fixed su-top-0 su-z-50 su-transition-all su-border-b', className)}
-      animate={{
-        y: isVisible ? 0 : -slideDistance,
-        opacity: isVisible ? 1 : 0,
-        backgroundColor: isScrollingBack && !isAtTop ? 'rgba(255,255,255)' : 'rgba(255,255,255,0)',
-        borderBottomColor: isScrollingBack && !isAtTop ? 'rgba(0,0,0,0.1)' : 'rgba(0,0,0,0)',
-        height: isVisible ? slideDistance : 0,
-      }}
-      transition={{ duration: 0.4, delay: 0.1, ease: 'easeInOut' }}
+      className={cnb(
+        'su-w-full su-fixed su-top-0 su-z-50',
+        !isAtTop && isScrollingBack ? 'su-bg-white su-border-b su-border-b-black-20' : 'su-bg-transparent su-border-b-transparent',
+        className,
+      )}
+      animate={{ y: isVisible ? 0 : -slideDistance, opacity: isVisible ? 1 : 0 }}
+      transition={{ duration: 0.5, delay: 0.1, ease: 'easeInOut' }}
+      style={{ height: slideDistance, willChange }}
     >
       <FlexBox
         justifyContent="between"
