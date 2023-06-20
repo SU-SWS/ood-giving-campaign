@@ -30,7 +30,7 @@ export const Logo = ({
       <Link
         {...rest}
         to={homeLink}
-        className={cnb(styles.link, className)}
+        className={cnb(styles.link(color), className)}
       >
         {LogoText}
       </Link>
