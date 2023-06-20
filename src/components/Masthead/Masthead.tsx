@@ -67,17 +67,17 @@ export const Masthead = ({ className }: MastheadProps) => {
           <FlexBox alignItems="center">
             <CtaLink
               href={ood.give}
-              variant="mainNav"
+              variant={!isAtTop && isScrollingBack ? 'mainNavBlack' : 'mainNav'}
               className="su-rounded-bl-[1.4rem] lg:su-rounded-bl-[2rem] su-mt-10 lg:su-mt-26"
             >
               Make a gift
             </CtaLink>
             <CtaButton
               onClick={() => alert('Hello world')}
-              variant="mainNav"
+              variant={!isAtTop && isScrollingBack ? 'mainNavBlack' : 'mainNav'}
               className="su--ml-2 su-rounded-tr-[1.4rem] lg:su-rounded-tr-[2rem] su--mt-10 lg:su--mt-26"
             >
-              <HeroIcon icon="menu" title="Main menu" noBaseStyle className="su-w-20 lg:su-w-32" />
+              <HeroIcon icon="menu" title="Main menu" noBaseStyle className="su-w-20 lg:su-w-32 group-hover:su-scale-y-75" />
             </CtaButton>
           </FlexBox>
         </FlexBox>
