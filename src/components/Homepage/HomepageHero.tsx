@@ -57,7 +57,7 @@ export const HomepageHero = () => {
   const onPurposeY = useTransform(onPurposeSpring, [0, 1], ['0%', '10%']);
 
   return (
-    <div ref={heroRef} className="su-relative su-w-full su-bg-gc-sky">
+    <div ref={heroRef} className="su-relative su-w-full su-bg-gc-sky su-overflow-hidden">
       <div>
         <Container className="su-h-100 md:su-h-200" />
         <div className="su-relative su-w-full su-bg-gc-sky su--mb-1 2xl:su-max-h-900 3xl:su-overflow-hidden">

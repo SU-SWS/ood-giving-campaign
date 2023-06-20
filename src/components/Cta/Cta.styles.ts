@@ -55,7 +55,7 @@ export const ctaCurves = {
 export const ctaSizes = {
   default: 'su-pt-9 su-pb-10 su-pl-[2.2rem] su-pr-20 lg:su-pt-10 lg:su-pb-11 su-text-16 md:su-text-18 xl:su-text-20',
   large: 'su-pl-[2.2rem] su-pr-20 su-pt-10 su-pb-11 lg:su-pr-[3.4rem] lg:su-pl-40 lg:su-pt-20 lg:su-pb-[2.2rem] su-text-18 md:su-text-20 xl:su-text-24',
-  mainNav: 'su-text-16 su-px-14 su-py-10 lg:su-px-[2.4rem] lg:su-pt-18 lg:su-pb-19 lg:su-text-20',
+  mainNav: 'su-text-14 su-px-10 su-pt-8 su-pb-9 lg:su-px-[2.4rem] lg:su-pt-18 lg:su-pb-19 lg:su-text-20',
   'footer-featured': 'su-ma-intro',
   card: 'su-ma-card',
   back: 'su-text-16',

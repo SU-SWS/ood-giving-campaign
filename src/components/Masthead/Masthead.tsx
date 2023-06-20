@@ -56,11 +56,11 @@ export const Masthead = ({ className }: MastheadProps) => {
       <FlexBox
         justifyContent="between"
         alignItems="center"
-        className="su-py-26 su-cc"
+        className="su-py-18 md:su-py-26 su-cc"
       >
         <Logo
           isLink
-          className="su-w-160 sm:su-w-[24rem] md:su-w-[32rem] su-fill-white"
+          className="su-w-[17rem] sm:su-w-[24rem] md:su-w-[32rem] su-fill-white"
           color={!isAtTop && isScrollingBack ? 'black' : 'white'}
         />
         <FlexBox alignItems="center">

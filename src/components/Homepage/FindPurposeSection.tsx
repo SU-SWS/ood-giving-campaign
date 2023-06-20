@@ -5,7 +5,7 @@ import { AnimateInView } from '../Animate';
 import { Triangle } from '../Shapes';
 
 export const FindPurposeSection = ({ children }) => (
-  <Container width="full" bgColor="white" py={9} className="su-relative">
+  <Container width="full" bgColor="white" py={9} className="su-relative su-overflow-hidden">
     <Container>
       <AnimateInView duration={0.6} animation="slideUp">
         <Heading size="splash" font="druk" className="su-max-w-900" leading="none">
