@@ -12,7 +12,7 @@ import { HeroIcon } from '../HeroIcon';
 type MastheadProps = HTMLAttributes<HTMLDivElement>;
 
 export const Masthead = ({ className }: MastheadProps) => {
-  const slideDistance = 142;
+  const slideDistance = 102;
   const threshold = 300;
 
   const { scrollY } = useScroll();
@@ -56,14 +56,14 @@ export const Masthead = ({ className }: MastheadProps) => {
       <FlexBox
         justifyContent="between"
         alignItems="center"
-        className="su-py-18 md:su-py-26 su-cc"
+        className={cnb('su-cc su-transition-all', !isAtTop ? 'su-py-18 lg:su-py-6' : 'su-py-18 md:su-py-26')}
       >
         <Logo
           isLink
           className="su-w-[17rem] sm:su-w-[24rem] md:su-w-[32rem] su-fill-white"
           color={!isAtTop && isScrollingBack ? 'black' : 'white'}
         />
-        <FlexBox alignItems="center">
+        <FlexBox alignItems="center" className={cnb('su-transition-all', isAtTop ? '' : 'lg:su-scale-75')}>
           <CtaLink
             href={ood.give}
             variant={!isAtTop && isScrollingBack ? 'mainNavBlack' : 'mainNav'}
