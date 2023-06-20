@@ -24,7 +24,7 @@ export const ProgressSection = ({ bgImage, children }: ProgressSectionProps) => 
   });
 
   return (
-    <Container width="full" bgColor="black" pb={10} className="su-relative su--mt-100">
+    <Container width="full" bgColor="black" pb={10} className="su-relative su--mt-100 su-overflow-hidden">
       <div
         className="su-relative su-pb-[7vw] su-bg-black-true"
         style={{ background: `url('${bg}') center center / contain no-repeat` }}

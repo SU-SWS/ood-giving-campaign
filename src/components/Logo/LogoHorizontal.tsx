@@ -1,7 +1,17 @@
 import React from 'react';
+import { logoColors, LogoColorType } from './Logo.styles';
 
-export const LogoHorizontal = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="17.95 17.4 299.08 34.04" {...props}>
+type LogoHorizontalProps = {
+  color?: LogoColorType;
+};
+
+export const LogoHorizontal = ({ color = 'white' }: LogoHorizontalProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="17.95 17.4 299.08 34.04"
+    className={logoColors[color]}
+  >
+    <title>Stanford On Purpose</title>
     <path
       d="M294.93 31.3l-4.2-2.96c-1.05-.74-1.32-1.31-1.32-2.35v-2.13h1.77v4.04h8.54v-3.41c0-3.9-2.04-7.04-8.36-7.04h-2.08c-6.19 0-8.84 3.27-8.84 7.79v1.68c0 3.63 1.37 6.41 4.51 8.63l4.2 2.96c1.41 1.07 1.55 1.68 1.55 3.1v2.66h-1.85v-1.22-4.01h-8.67v4.55c0 5.13 2.96 7.74 8.67 7.74h2.08c6.46 0 9.2-3.8 9.2-9.07v-1.72c0-4.34-1.46-6.64-5.18-9.25"
     />
