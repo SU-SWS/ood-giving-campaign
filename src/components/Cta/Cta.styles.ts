@@ -2,7 +2,7 @@ export const cta = 'su-group hocus:su-underline su-transition-all';
 
 const ghostSwipeBase = 'su-relative su-z-[10] su-inline-block su-no-underline hocus:su-no-underline su-font-normal su-leading-display hocus:su-text-white su-border-2 su-border-current hocus:su-border-digital-red-light focus-visible:su-outline-none after:su-block after:su-content-[""] after:su-absolute after:su-top-0 after:su-left-0 after:su-w-[0] after:su-h-full after:su-bg-gradient-to-r after:su-from-digital-red after:su-to-cardinal-red after:su-transition-all after:su-z-[-1] hocus:after:su-w-full su-overflow-hidden';
 
-const mainNavBase = 'su-group su-inline-block su-border-2 su-font-normal su-decoration-transparent su-decoration-1 su-underline-offset-4 su-text-white hocus:su-text-white hocus:su-decoration-white hocus:su-ring-1 hocus:su-ring-inset hocus:su-ring-white';
+const mainNavBase = 'su-group su-bg-clip-padding su-inline-block su-border-2 su-border-white su-font-normal su-decoration-transparent su-decoration-1 su-underline-offset-4 su-text-white hocus:su-text-white hocus:su-decoration-white hocus:su-ring-1 hocus:su-ring-inset hocus:su-ring-white';
 
 export const ctaVariants = {
   solid: 'su-relative su-z-[10] su-font-normal su-inline-block su-decoration-2 su-decoration-transparent su-underline-offset-4 su-leading-display su-bg-digital-red su-text-white hocus:su-text-white su-border-2 su-border-digital-red-light focus-visible:su-outline-none hocus:su-decoration-white/80 after:su-block after:su-content-[""] after:su-absolute after:su-top-0 after:su-left-0 after:su-w-[0] after:su-h-full after:su-bg-gradient-to-r after:su-from-cardinal-red after:su-to-cardinal-red-dark after:su-transition-all after:su-z-[-1] hocus:after:su-w-full su-overflow-hidden',
