@@ -2,11 +2,13 @@ import React from 'react';
 import { useLocation } from '@reach/router';
 import { useSiteMetadata } from '../../hooks/useSiteMetadata';
 import { getProcessedImage } from '../../utilities/getProcessedImage';
-import { SbImageType } from '../Storyblok/Storyblok.types';
+import { SbImageType, SbLinkType } from '../Storyblok/Storyblok.types';
 
 export type SEOProps = {
   title: string;
   heroImage?: SbImageType;
+  noindex?: boolean;
+  canonicalUrl?: SbLinkType;
   seo?: {
     title?: string;
     description?: string;
@@ -22,6 +24,8 @@ export type SEOProps = {
 export const SEO = ({
   title,
   heroImage: { filename, focus } = {},
+  noindex,
+  canonicalUrl,
   seo: {
     title: seoTitle,
     description: seoDescription,
@@ -49,13 +53,21 @@ export const SEO = ({
 
   const location = useLocation();
   let ogType = 'website';
-  if (location.pathname.startsWith('/story')) {
+  if (location.pathname.startsWith('/stories')) {
     ogType = 'article';
   }
+
+  // Self reference URL is the page's URL without any query params
+  const selfReferencingUrl = `${location.origin}${location.pathname}`;
+  // If the canonical URL is entered in Storyblok, find the full URL for it
+  const canonicalNotSelf = canonicalUrl?.linktype === 'story' ? `${location.origin}/${canonicalUrl?.cached_url}` : canonicalUrl?.url;
+  const canonical = canonicalNotSelf || selfReferencingUrl;
 
   return (
     <>
       <title>{`${seoTitle || title} | ${siteTitle}`}</title>
+      {noindex && <meta name="robots" content="noindex" />}
+      {!noindex && <link rel="canonical" href={canonical} />}
       <meta name="description" content={seoDescription || description} />
       <meta property="og:type" content={ogType} />
       {ogTitle && (

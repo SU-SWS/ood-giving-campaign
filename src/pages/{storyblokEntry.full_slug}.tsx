@@ -43,6 +43,8 @@ export const Head = ({ data }) => {
       title={blok.title || story.name}
       heroImage={blok.heroImage || blok.hero.image}
       seo={blok.seo}
+      noindex={blok.noindex}
+      canonicalUrl={blok.canonicalUrl}
     />
   );
 };
