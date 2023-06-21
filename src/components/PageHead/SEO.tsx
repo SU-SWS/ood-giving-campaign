@@ -60,7 +60,7 @@ export const SEO = ({
   // Self reference URL is the page's URL without any query params
   const selfReferencingUrl = `${location.origin}${location.pathname}`;
   // If the canonical URL is entered in Storyblok, find the full URL for it
-  const canonicalNotSelf = canonicalUrl?.linktype === 'story' ? `${location.origin}${canonicalUrl?.cached_url}` : canonicalUrl?.url;
+  const canonicalNotSelf = canonicalUrl?.linktype === 'story' ? `${location.origin}/${canonicalUrl?.cached_url}` : canonicalUrl?.url;
   const canonical = canonicalNotSelf || selfReferencingUrl;
 
   return (
