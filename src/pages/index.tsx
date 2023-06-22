@@ -10,8 +10,8 @@ import { ProgressSection } from '../components/Homepage/ProgressSection';
 import { PageHead } from '../components/PageHead';
 import { CreateBloks } from '../components/CreateBloks';
 import { Layout } from '../components/Layout';
-import { Banner } from '../components/Banner';
 import { resolveRelations } from '../utilities/resolveRelations';
+import { getProcessedImage } from '../utilities/getProcessedImage';
 
 /**
  * This is the layout for the homepage
@@ -39,12 +39,12 @@ const IndexPage = ({ data }) => {
       <FindPurposeSection>
         <CreateBloks blokSection={blok.findPurpose} />
       </FindPurposeSection>
-      <Banner
-        heading="Join the conversation in Chicago."
-        body="Chicago Conversation on Purpose. October XX, 2024. This is text that describes the event in a super exciting way."
-        ctaText="Learn how"
-        href="about-test"
+      <img
+        alt=""
+        src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/c4777a4925/steve-johnson-cropped-2000x40-01.jpg')}
+        className="su-w-full"
       />
+      <CreateBloks blokSection={blok.ankle} />
     </Layout>
   );
 };
