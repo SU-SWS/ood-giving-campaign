@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react';
 import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
-import { Heading, Paragraph } from '../Typography';
+import { Heading, Text } from '../Typography';
 import { FlexBox } from '../FlexBox';
 import { getProcessedImage } from '../../utilities/getProcessedImage';
 import { BgTextColorPairBlackWhiteType } from '../../utilities/datasource';
@@ -42,9 +42,9 @@ export const Banner = ({
             </Heading>
           )}
           {body && (
-            <Paragraph font="serif" variant="overview" weight="semibold" className={styles.body}>
+            <Text font="serif" variant="overview" weight="semibold" className={styles.body}>
               {body}
-            </Paragraph>
+            </Text>
           )}
           {cta}
         </AnimateInView>
