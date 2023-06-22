@@ -9,6 +9,7 @@ import { Layout } from '../components/Layout';
 import { DemoContent } from '../components/Temporary/DemoContent';
 import { resolveRelations } from '../utilities/resolveRelations';
 import { getProcessedImage } from '../utilities/getProcessedImage';
+import { getNumBloks } from '../utilities/getNumBloks';
 
 type DataProps = {
   storyblokEntry: SbGatsbyStory;
@@ -28,11 +29,13 @@ const StoryblokEntry: React.FC<PageProps<DataProps>> = ({
       <CreateBloks blokSection={blok.hero} />
       <CreateBloks blokSection={blok.content} />
       <DemoContent />
-      <img
-        alt=""
-        src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/c4777a4925/steve-johnson-cropped-2000x40-01.jpg')}
-        className="su-w-full"
-      />
+      {getNumBloks(blok.ankle) > 0 && (
+        <img
+          alt=""
+          src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/c4777a4925/steve-johnson-cropped-2000x40-01.jpg')}
+          className="su-w-full"
+        />
+      )}
       <CreateBloks blokSection={blok.ankle} />
     </Layout>
   );
