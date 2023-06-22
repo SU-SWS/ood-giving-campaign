@@ -4,6 +4,7 @@ import { storyblokInit, apiPlugin } from 'gatsby-source-storyblok';
 import { FlexBox } from './FlexBox';
 import { Masthead } from './Masthead';
 import { LocalFooter } from './LocalFooter';
+import { SbBanner } from './Storyblok/SbBanner';
 import { SbBracketCard } from './Storyblok/SbBracketCard';
 import { SbCta } from './Storyblok/SbCta';
 import { SbGrid } from './Storyblok/SbGrid';
@@ -27,6 +28,7 @@ storyblokInit({
   },
   use: [apiPlugin],
   components: {
+    sbBanner: SbBanner,
     sbBracketCard: SbBracketCard,
     sbCta: SbCta,
     sbGrid: SbGrid,

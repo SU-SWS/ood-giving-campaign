@@ -10,7 +10,7 @@ export const ctaVariants = {
   inlineDark: 'su-inline su-text-digital-red-xlight hocus:su-text-white su-underline su-decoration-1 hocus:su-decoration-2 su-underline-offset-2',
   ghost: 'su-inline-block su-font-normal su-leading-display su-bg-transparent hocus:su-text-current su-border-2 su-border-current focus-visible:su-outline-none su-underline-offset-4 su-decoration-transparent hocus:su-decoration-current',
   'ghost-swipe': `${ghostSwipeBase} su-bg-transparent`,
-  'ghost-swipe-overlay': `${ghostSwipeBase} su-bg-black/60`, // Use for split poster over images
+  'ghost-swipe-overlay': `${ghostSwipeBase} su-bg-black-true/40`, // Use for split poster over images
   link: 'su-font-normal su-decoration-transparent hocus:su-decoration-current su-leading-display su-text-current hocus:su-text-current hocus:su-decoration-2 focus-visible:su-ring-2 focus-visible:su-ring-lagunita-light focus-visible:su-outline-none focus-visible:su-rounded su-underline-offset-4',
   back: 'su-inline-block su-font-normal su-no-underline su-leading-none group-hocus:su-underline su-text-black hocus:su-text-lagunita focus-visible:su-ring-2 focus-visible:su-ring-lagunita-light focus-visible:su-ring-offset-4 focus:su-outline-none su-rounded-[1px]',
   mainNav: `${mainNavBase} hocus-visible:su-bg-sapphire/50`, // Main nav buttons at the top of the page
