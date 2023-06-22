@@ -26,16 +26,16 @@ export const Banner = ({
   bgColor = 'white',
   ...props
 }: BannerProps) => (
-  <Container {...props} as="section" bgColor={bgColor} className="lg:su-pr-0" py={9}>
+  <Container {...props} as="section" bgColor={bgColor} width="full" py={9}>
     <FlexBox alignItems="start" justifyContent="between" className="su-mr-0 au-ml-auto su-flex-col lg:su-flex-row">
-      <div className="su-rs-pr-9 lg:su-max-w-[70%]">
+      <div className="su-cc lg:su-rs-pr-9 su-ml-0">
         <AnimateInView duration={0.6} animation="slideUp">
           {heading && (
             <Heading
               size={isSmallHeading ? 'f6' : 'f7'}
               font="druk"
               leading="none"
-              className="su-whitespace-pre-line su--mt-02em su-rs-mb-2"
+              className="su-whitespace-pre-line su--mt-01em su-rs-mb-2 su-max-w-1000"
             >
               {heading}
             </Heading>
@@ -48,13 +48,17 @@ export const Banner = ({
           {cta}
         </AnimateInView>
       </div>
-      <AnimateInView duration={0.4} delay={0.7} animation="slideInFromRight">
-        <img
-          alt=""
-          src={getProcessedImage(imageSrc, '360x360', imageFocus)}
-          className="su-rounded-bl-[12rem] su-w-[25rem] xl:su-w-[36rem]"
-        />
-      </AnimateInView>
+      {imageSrc && (
+        <div className="su-self-end lg:su-self-start su-shrink-0">
+          <AnimateInView duration={0.4} delay={0.7} animation="slideInFromRight">
+            <img
+              alt=""
+              src={getProcessedImage(imageSrc, '360x360', imageFocus)}
+              className="su-rs-mt-3 lg:su-mt-0 su-rounded-bl-[12rem] su-w-[25rem] xl:su-w-[36rem]"
+            />
+          </AnimateInView>
+        </div>
+      )}
     </FlexBox>
   </Container>
 );
