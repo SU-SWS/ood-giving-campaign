@@ -1,6 +1,6 @@
 import { cnb } from 'cnbuilder';
 
-export const root = 'su-relative su-mx-auto';
+export const root = 'su-group su-relative su-mx-auto';
 export const grid = (textOnLeft: boolean) => cnb(
   'su-flex su--mt-[40vw] sm:su-mt-0 sm:su-ml-0 su-w-[calc(100%_+_7rem)] sm:su-w-full sm:su-grid sm:su-grid-cols-12 sm:su-absolute sm:su-top-0 sm:su-bottom-[4vw] 3xl:su-bottom-70',
   textOnLeft ? 'su--mr-70' : 'su--ml-70',
@@ -18,14 +18,14 @@ export const contentCard = (textOnLeft: boolean) => cnb(
 
 export const imageGrid = (textOnLeft: boolean) => cnb(
   'sm:su-ml-0 sm:su-pt-[6vw] 3xl:su-pt-100',
-  textOnLeft ? 'su--mr-20' : 'su--ml-20',
+  textOnLeft ? 'su--mr-20 sm:su-mr-0' : 'su--ml-20 sm:su-ml-0',
 );
 export const imageWrapper = (textOnLeft: boolean) => cnb(
-  'su-relative su-w-[80vw] sm:su-w-full sm:su-col-span-7',
+  'su-relative su-w-[80vw] sm:su-w-full sm:su-col-span-7 su-overflow-hidden',
   textOnLeft ? 'su-mr-0 su-ml-auto sm:su-col-start-6' : '',
 );
 export const imageAspectRatio = 'su-aspect-w-6 su-aspect-h-5';
-export const image = 'su-object-cover';
+export const image = 'su-object-cover group-hover:su-scale-105 group-focus-within:su-scale-105 su-transition-transform';
 export const imageOverlay = (textOnLeft: boolean) => cnb(
   'su-hidden sm:su-block su-from-black-true/50 su-via-black-true/20 su-to-transparent su-via-20% sm:su-absolute su-w-full su-h-full sm:su-top-0 sm:su-left-0',
   textOnLeft ? 'su-bg-gradient-to-r' : 'su-bg-gradient-to-l',
