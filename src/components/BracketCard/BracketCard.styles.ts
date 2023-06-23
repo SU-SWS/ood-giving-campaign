@@ -7,12 +7,12 @@ export const grid = (textOnLeft: boolean) => cnb(
 );
 
 export const bracket = (textOnLeft: boolean) => cnb(
-  'su-relative su-z-10 su-w-[13rem] su-shrink-0 sm:su-col-span-2 sm:su-w-[120%]',
+  'su-z-10 su-w-[13rem] su-shrink-0 sm:su-col-span-2 sm:su-w-[120%]',
   textOnLeft ? 'su-order-2 sm:su-col-end-12 sm:su-justify-self-end' : 'sm:su-col-start-2',
 );
 
 export const contentCard = (textOnLeft: boolean) => cnb(
-  'su-relative su-z-10 sm:su-col-span-9 su-border-b-2 su-border-white',
+  'su-z-10 sm:su-col-span-9 su-border-b-2 su-border-white',
   textOnLeft ? 'su-order-1 sm:su-col-start-1' : 'sm:su-col-start-4',
 );
 
@@ -33,7 +33,7 @@ export const imageOverlay = (textOnLeft: boolean) => cnb(
 
 export const bracketWrapper = 'sm:su-pt-108 su-border-b su-border-white';
 export const contentWrapper = (textOnLeft: boolean, isSmallHeading: boolean) => cnb(
-  'su-relative su-z-10 sm:su-h-full',
+  'su-z-10 sm:su-h-full',
   textOnLeft ? 'sm:su-ml-0 sm:su-mr-auto' : 'sm:su-mr-0 sm:su-ml-auto',
   isSmallHeading ? 'sm:su-pt-[3.8vw] 3xl:su-pt-60' : 'sm:su-pt-[3vw] 3xl:su-pt-50',
 );
