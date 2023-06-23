@@ -63,7 +63,7 @@ export const Masthead = ({ className }: MastheadProps) => {
           className={cnb('su-w-[17rem] sm:su-w-[24rem] su-transition-all', isAtTop ? 'lg:su-w-[32rem]' : 'lg:su-w-[28rem]')}
         />
         {/* The scale3d here solves a Firefox only rendering bug with blurry curved borders when using transform */}
-        <FlexBox alignItems="center" className={cnb('su-transition-all', isAtTop ? '' : 'lg:[transform:scale3d(0.75,0.75,0.75)]')}>
+        <FlexBox alignItems="center" className={cnb('su-transition-all', isAtTop ? '' : 'su-origin-right lg:[transform:scale3d(0.75,0.75,0.75)]')}>
           <CtaLink
             href={ood.give}
             variant={!isAtTop && isScrollingBack ? 'mainNavUp' : 'mainNav'}
