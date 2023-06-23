@@ -63,4 +63,4 @@ export type TextColorType = keyof typeof textColors;
 
 export const tab = 'su-mt-[50vw] su-mb-26 su-h-14 lg:su-h-16 xl:su-h-20 2xl:su-h-[2.4rem] su-max-w-full su-w-200 xl:su-w-300 2xl:su-w-[35rem] sm:su-my-16 xl:su-my-36 2xl:su-my-48';
 
-export const ctaLink = 'su-inline-block su-w-fit su-rs-mt-0 su-relative su-top-2 su-text-current';
+export const ctaLink = 'su-inline-block su-stretched-link su-w-fit su-rs-mt-0 su--mb-2 su-text-current';
