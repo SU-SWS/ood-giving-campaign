@@ -14,7 +14,7 @@ export const ctaVariants = {
   link: 'su-font-normal su-decoration-transparent hocus:su-decoration-current su-leading-display su-text-current hocus:su-text-current hocus:su-decoration-2 focus-visible:su-ring-2 focus-visible:su-ring-lagunita-light focus-visible:su-outline-none focus-visible:su-rounded su-underline-offset-4',
   back: 'su-inline-block su-font-normal su-no-underline su-leading-none group-hocus:su-underline su-text-black hocus:su-text-lagunita focus-visible:su-ring-2 focus-visible:su-ring-lagunita-light focus-visible:su-ring-offset-4 focus:su-outline-none su-rounded-[1px]',
   mainNav: `${mainNavBase} hocus-visible:su-bg-sapphire/50`, // Main nav buttons at the top of the page
-  mainNavBlack: `${mainNavBase} su-bg-gc-black hocus-visible:su-bg-digital-red`, // Main nav buttons when scrolling up
+  mainNavUp: `${mainNavBase} hocus-visible:su-bg-digital-red`, // Main nav buttons when scrolling up
   close: 'su-inline-block su-font-semibold su-leading-none su-text-lagunita hocus:su-text-lagunita-dark focus:su-outline-none',
   'close-x': 'su-leading-none',
   dismiss: 'su-inline-block su-font-bold su-uppercase su-tracking-widest su-leading-none su-text-gc-black hocus:su-text-gc-black focus:su-outline-none',
@@ -71,7 +71,7 @@ export const ctaSizeMap = {
   'ghost-swipe': 'default',
   'ghost-swipe-overlay': 'default',
   mainNav: 'mainNav',
-  mainNavBlack: 'mainNav',
+  mainNavUp: 'mainNav',
   link: 'unset',
   dismiss: 'dismiss',
   close: 'close',
