@@ -10,7 +10,7 @@ export type TextCardProps = HTMLAttributes<HTMLDivElement> & {
   text?: string;
   color?: BgTextColorPairBlackWhiteType;
   font?: 'serif' | 'druk6' | 'druk7';
-  colSpan?: 1 | 2 | 3;
+  colSpan?: styles.ColSpanType;
   animation?: AnimationType;
   delay?: number;
 };
@@ -31,7 +31,12 @@ export const TextCard = ({
     <AnimateInView animation={animation} delay={delay}>
       <FlexBox
         direction="col"
-        className={cnb(styles.root, className)}
+        className={cnb(
+          styles.root,
+          styles.colSpans[colSpan],
+          bgTextColorPairsBlackWhite[color],
+          className,
+        )}
         {...props}
       >
         <Text
