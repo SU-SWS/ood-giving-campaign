@@ -43,7 +43,7 @@ export const heading = (isSmallHeading: boolean) => cnb(
   'su-hidden sm:su-block su-text-shadow-lg sm:su-max-w-[85%] su-mb-0',
   isSmallHeading
     ? 'su-text-[3.6rem] sm:su-text-24 md:su-text-[clamp(3rem,5.36vw_-_1.11rem,4.2rem)] lg:su-text-[clamp(4.2rem,5.51vw_-_1.27rem,7rem)]'
-    : 'su-text-[4.2rem] sm:su-text-[2.8rem] md:su-text-[clamp(4rem,7.59vw_-_1.83rem,5.7rem)] lg:su-text-[clamp(5.7rem,6.1vw_-_.35rem,8.8rem)]',
+    : 'su-text-[4.2rem] sm:su-text-28 md:su-text-[clamp(4rem,7.59vw_-_1.83rem,5.7rem)] lg:su-text-[clamp(5.7rem,6.1vw_-_.35rem,8.8rem)]',
 );
 export const headingMobile = (textOnLeft: boolean) => cnb(
   'sm:su-hidden su-mb-20 su-w-4/5',
@@ -61,6 +61,6 @@ export const textColors = {
 };
 export type TextColorType = keyof typeof textColors;
 
-export const tab = 'su-mt-[50vw] su-mb-26 su-h-14 lg:su-h-16 xl:su-h-20 2xl:su-h-[2.4rem] su-max-w-full su-w-200 xl:su-w-300 2xl:su-w-[35rem] sm:su-my-16 xl:su-my-36 2xl:su-my-48';
+export const tab = 'su-mt-[50vw] su-mb-26 su-h-14 lg:su-h-16 xl:su-h-20 2xl:su-h-24 su-max-w-full su-w-200 xl:su-w-300 2xl:su-w-[35rem] sm:su-my-16 xl:su-my-36 2xl:su-my-48';
 
 export const ctaLink = 'su-inline-block su-stretched-link su-w-fit su-rs-mt-0 su--mb-2 su-text-current';
