@@ -73,7 +73,7 @@ export const InitiativeCard = ({
           {body}
         </Paragraph>
       </div>
-      <CtaLink sbLink={link} className={styles.cta}>
+      <CtaLink variant="unset" sbLink={link} className={styles.cta}>
         <HeroIcon
           title={heading}
           icon="arrow-right"
