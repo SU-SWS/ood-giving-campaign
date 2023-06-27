@@ -9,6 +9,7 @@ import { SbBracketCard } from './Storyblok/SbBracketCard';
 import { SbCta } from './Storyblok/SbCta';
 import { SbGrid } from './Storyblok/SbGrid';
 import { SbGridAlternating } from './Storyblok/SbGridAlternating';
+import { SbInitiativeCard } from './Storyblok/SbInitiativeCard';
 import { SbLogo } from './Storyblok/SbLogo';
 import { SbSection } from './Storyblok/SbSection';
 import { SbSplitPoster } from './Storyblok/SbSplitPoster';
@@ -34,6 +35,7 @@ storyblokInit({
     sbCta: SbCta,
     sbGrid: SbGrid,
     sbGridAlternating: SbGridAlternating,
+    sbInitiativeCard: SbInitiativeCard,
     sbLogo: SbLogo,
     sbSection: SbSection,
     sbSplitPoster: SbSplitPoster,
