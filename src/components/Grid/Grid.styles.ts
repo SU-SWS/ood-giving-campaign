@@ -54,7 +54,8 @@ export const gridGaps = {
   default: 'su-grid-gap',
   card: 'su-grid-gap su-gap-y-[5rem] xl:su-gap-y-[7rem]',
   split: 'md:su-gap-x-[6rem] lg:su-gap-x-[10rem] xl:su-gap-x-[20rem] 2xl:su-gap-x-[28rem]',
-  xs: 'su-gap-x-[0.4rem] su-gap-y-[5rem] xl:su-gap-y-[7rem]',
+  xs: 'su-gap-[0.4rem]',
+  'xs-horizontal': 'su-gap-x-[0.4rem] su-gap-y-[5rem] xl:su-gap-y-[7rem]',
 };
 
 export const gridJustifyContent = {
