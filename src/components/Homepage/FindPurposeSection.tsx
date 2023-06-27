@@ -14,7 +14,7 @@ export const FindPurposeSection = ({ children }) => (
       </AnimateInView>
       <div className="lg:su-w-4/5 2xl:su-w-3/5 su-mx-auto su-rs-mb-6">
         <AnimateInView duration={0.6} delay={0.1} animation="slideUp">
-          <Triangle className="su-fill-digital-red-light su-w-60 su-rs-mb-7 motion-safe:su-animate-bounce" />
+          <Triangle className="su-rs-mb-7" />
         </AnimateInView>
         <AnimateInView delay={0.2} duration={0.6} animation="slideUp">
           <Paragraph font="serif" weight="semibold" variant="overview" leading="snug">
