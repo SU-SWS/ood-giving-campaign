@@ -55,7 +55,7 @@ export const InitiativeCard = ({
           font="druk-wide"
           size={1}
           leading="tight"
-          className={cnb(styles.heading(!!tabColor), accentBorderColors[tabColor])}
+          className={styles.heading}
         >
           <CtaLink sbLink={link} className={styles.headingLink}>
             {heading}
@@ -63,7 +63,16 @@ export const InitiativeCard = ({
         </Heading>
       )}
       {body && (
-        <Paragraph variant="subheading" noMargin>{body}</Paragraph>
+        <div className={styles.bodyWrapper}>
+          <Paragraph
+            variant="subheading"
+            leading="display"
+            noMargin
+            className={cnb(styles.body(!!tabColor), accentBorderColors[tabColor])}
+          >
+            {body}
+          </Paragraph>
+        </div>
       )}
     </article>
   </AnimateInView>
