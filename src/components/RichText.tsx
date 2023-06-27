@@ -4,6 +4,7 @@ import { render, StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts
 import { cnb } from 'cnbuilder';
 import { CtaLink } from './Cta';
 import { SbCta } from './Storyblok/SbCta';
+import { SbTriangle } from './Storyblok/SbTriangle';
 import {
   Heading,
   FontSizeType,
@@ -82,6 +83,9 @@ export const RichText = ({
     blokResolvers: {
       sbCta: (props) => (
         <SbCta blok={props} />
+      ),
+      sbTriangle: (props) => (
+        <SbTriangle blok={props} />
       ),
     },
     defaultBlokResolver: (name) => (
