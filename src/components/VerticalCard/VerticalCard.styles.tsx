@@ -14,7 +14,7 @@ export const heading = (hasTabColor: boolean) => cnb('su-rs-mt-1 su-pr-18 su-rs-
 
 export const headingLink = 'su-stretched-link su-no-underline !su-font-bold !su-leading-tight';
 
-export const tab = 'su-h-[2.4rem] su-w-70 su-rs-my-0';
+export const tab = 'su-h-24 su-w-70 su-rs-my-0';
 
 export const ctaLink = 'su-inline-block su-w-fit su-stretched-link su-rs-mt-1 hocus:su-bg-gradient-to-l hocus:su-from-transparent hocus:su-to-digital-red';
 

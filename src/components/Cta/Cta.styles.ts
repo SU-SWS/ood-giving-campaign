@@ -53,9 +53,9 @@ export const ctaCurves = {
 };
 
 export const ctaSizes = {
-  default: 'su-pt-9 su-pb-10 su-pl-[2.2rem] su-pr-20 lg:su-pt-10 lg:su-pb-11 su-text-16 md:su-text-18 xl:su-text-20',
-  large: 'su-pl-[2.2rem] su-pr-20 su-pt-10 su-pb-11 lg:su-pr-[3.4rem] lg:su-pl-40 lg:su-pt-20 lg:su-pb-[2.2rem] su-text-18 md:su-text-20 xl:su-text-24',
-  mainNav: 'su-text-14 su-px-10 su-pt-8 su-pb-9 lg:su-px-[2.4rem] lg:su-pt-18 lg:su-pb-19 lg:su-text-20',
+  default: 'su-pt-9 su-pb-10 su-pl-22 su-pr-20 lg:su-pt-10 lg:su-pb-11 su-text-16 md:su-text-18 xl:su-text-20',
+  large: 'su-pl-22 su-pr-20 su-pt-10 su-pb-11 lg:su-pr-[3.4rem] lg:su-pl-40 lg:su-pt-20 lg:su-pb-22 su-text-18 md:su-text-20 xl:su-text-24',
+  mainNav: 'su-text-14 su-px-10 su-pt-8 su-pb-9 lg:su-px-24 lg:su-pt-18 lg:su-pb-19 lg:su-text-20',
   'footer-featured': 'su-ma-intro',
   card: 'su-ma-card',
   back: 'su-text-16',
@@ -85,11 +85,11 @@ export const icon = 'su-inline-block su-shrink-0 su-will-change-transform su-tra
 
 export const iconStyles = {
   'ghost-swipe': 'group-hocus:su-text-white',
-  back: 'su-text-lagunita-light !su-w-[2.2rem]',
-  close: 'su-text-lagunita-light group-hocus:su-text-lagunita-dark !su-w-[2.2rem] su--mt-4',
-  'close-x': 'su-text-current hocus:su-text-current su-w-[2.2rem] group-hocus:su-underline',
+  back: 'su-text-lagunita-light !su-w-22',
+  close: 'su-text-lagunita-light group-hocus:su-text-lagunita-dark !su-w-22 su--mt-4',
+  'close-x': 'su-text-current hocus:su-text-current su-w-22 group-hocus:su-underline',
   chip: 'su--mt-3',
-  dismiss: 'su-text-gc-black !su-w-[2.2rem] su--mt-4',
+  dismiss: 'su-text-gc-black !su-w-22 su--mt-4',
 };
 
 export const ctaIconMap = {
