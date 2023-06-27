@@ -177,7 +177,7 @@ export const ThemeSection = ({
                   Discovery
                 </Heading>
                 <m.div
-                  className="su-w-fit su-border-t-[2.8rem] su-border-bottom-none su-overflow-hidden"
+                  className="su-w-fit su-border-t-[2.6rem] su-border-bottom-none su-overflow-hidden"
                   style={{
                     borderRightWidth: discoverBarWidthChange,
                     borderLeftWidth: discoverBarWidthChange,
@@ -200,7 +200,7 @@ export const ThemeSection = ({
                   Citizenry
                 </Heading>
                 <m.div
-                  className="su-w-fit su-border-t-[2.8rem] su-border-bottom-none su-overflow-hidden"
+                  className="su-w-fit su-border-t-[2.6rem] su-border-bottom-none su-overflow-hidden"
                   style={{
                     borderRightWidth: citizenBarWidthChange,
                     borderLeftWidth: citizenBarWidthChange,
@@ -224,7 +224,7 @@ export const ThemeSection = ({
                   Acceleration
                 </Heading>
                 <m.div
-                  className="su-w-fit su-border-t-[2.8rem] su-border-bottom-none su-overflow-hidden"
+                  className="su-w-fit su-border-t-[2.6rem] su-border-bottom-none su-overflow-hidden"
                   style={{
                     borderRightWidth: accBarWidthChange,
                     borderLeftWidth: accBarWidthChange,
@@ -248,7 +248,7 @@ export const ThemeSection = ({
                   Our planet
                 </Heading>
                 <m.div
-                  className="su-w-fit su-border-t-[2.8rem] su-border-bottom-none su-overflow-hidden"
+                  className="su-w-fit su-border-t-[2.6rem] su-border-bottom-none su-overflow-hidden"
                   style={{
                     borderRightWidth: planetBarWidthChange,
                     borderLeftWidth: planetBarWidthChange,

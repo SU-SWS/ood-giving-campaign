@@ -13,7 +13,7 @@ export const heading = 'su-absolute su-bottom-0 su-w-full su-bg-black-true/60 su
 export const bodyWrapper = 'su-grow su-bg-gc-black su-text-black-10 su-rs-pt-2 su-rs-pr-1';
 
 export const body = (hasTabColor: boolean) => cnb('su-rs-pl-2 su-text-current', {
-  'su-border-l-[1.4rem] md:su-border-l-[1.8rem]': hasTabColor,
+  'su-border-l-[1.4rem] md:su-border-l-[2rem]': hasTabColor,
 });
 
 export const cta = 'su-inline-block su-bg-gc-black su-text-white hocus:su-text-white su-stretched-link su-no-underline su-rs-py-1 su-rs-pr-1';
