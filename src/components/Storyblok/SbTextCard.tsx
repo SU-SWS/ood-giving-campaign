@@ -11,7 +11,12 @@ type SbTextCardProps = {
     text?: string;
     color?: BgTextColorPairBlackWhiteType;
     font?: 'serif' | 'druk6' | 'druk7';
-    colSpan?: styles.ColSpanType;
+    xsColSpan?: styles.ColSpanType;
+    smColSpan?: styles.ColSpanType;
+    mdColSpan?: styles.ColSpanType;
+    lgColSpan?: styles.ColSpanType;
+    xlColSpan?: styles.ColSpanType;
+    xxlColSpan?: styles.ColSpanType;
     animation?: AnimationType;
     delay?: number;
   };
@@ -23,7 +28,12 @@ export const SbTextCard = ({
     text,
     color,
     font,
-    colSpan,
+    xsColSpan,
+    smColSpan,
+    mdColSpan,
+    lgColSpan,
+    xlColSpan,
+    xxlColSpan,
     animation,
     delay,
   },
@@ -35,7 +45,12 @@ export const SbTextCard = ({
     text={text}
     color={color}
     font={font}
-    colSpan={colSpan}
+    xsColSpan={xsColSpan}
+    smColSpan={smColSpan}
+    mdColSpan={mdColSpan}
+    lgColSpan={lgColSpan}
+    xlColSpan={xlColSpan}
+    xxlColSpan={xxlColSpan}
     animation={animation}
     delay={delay}
   />

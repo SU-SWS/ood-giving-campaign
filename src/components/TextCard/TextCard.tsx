@@ -10,7 +10,12 @@ export type TextCardProps = HTMLAttributes<HTMLDivElement> & {
   text?: string;
   color?: BgTextColorPairBlackWhiteType;
   font?: 'serif' | 'druk6' | 'druk7';
-  colSpan?: styles.ColSpanType;
+  xsColSpan?: styles.ColSpanType;
+  smColSpan?: styles.ColSpanType;
+  mdColSpan?: styles.ColSpanType;
+  lgColSpan?: styles.ColSpanType;
+  xlColSpan?: styles.ColSpanType;
+  xxlColSpan?: styles.ColSpanType;
   animation?: AnimationType;
   delay?: number;
 };
@@ -19,7 +24,12 @@ export const TextCard = ({
   text,
   color = 'white',
   font = 'serif',
-  colSpan = 1,
+  xsColSpan = 1,
+  smColSpan,
+  mdColSpan,
+  lgColSpan,
+  xlColSpan,
+  xxlColSpan,
   animation = 'none',
   delay,
   className,
@@ -31,7 +41,12 @@ export const TextCard = ({
     <div
       className={cnb(
         styles.root,
-        styles.colSpans[colSpan],
+        styles.xsColSpans[xsColSpan],
+        styles.smColSpans[smColSpan],
+        styles.mdColSpans[mdColSpan],
+        styles.lgColSpans[lgColSpan],
+        styles.xlColSpans[xlColSpan],
+        styles.xxlColSpans[xxlColSpan],
         bgTextColorPairsBlackWhite[color],
         className,
       )}
