@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react';
+import React from 'react';
 import { cnb } from 'cnbuilder';
 import { StanfordLogo } from '../StanfordLogo';
 import { SrOnlyText } from '../Typography';
@@ -6,22 +6,19 @@ import { Container } from '../Container';
 import { FlexBox } from '../FlexBox';
 import * as styles from './GlobalFooter.styles';
 
-type GlobalFooterProps = Omit<HTMLAttributes<HTMLDivElement>, 'className'> & {
+type GlobalFooterProps = {
   className?: string;
 };
 
-const GlobalFooter = ({ className, ...rest }: GlobalFooterProps) => (
-  <Container
-    {...rest}
-    className={cnb(styles.root, className)}
-    width="site"
-  >
+const GlobalFooter = ({ className }: GlobalFooterProps) => (
+  <Container className={cnb(styles.root, className)}>
     <FlexBox direction="col" className={styles.outerWrapper}>
       <div className={styles.logoWrapper}>
         <StanfordLogo isLink className={styles.logo} type="stacked" color="white" />
       </div>
       <div className={styles.contentWrapper}>
         <FlexBox
+          as="nav"
           justifyContent="center"
           aria-label="global footer menu"
           className={styles.menusWrapper}
