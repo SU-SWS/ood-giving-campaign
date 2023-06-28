@@ -6,7 +6,6 @@ import { Hero } from '../components/Hero/Hero';
 import { CreateBloks } from '../components/CreateBloks';
 import { PageHead } from '../components/PageHead';
 import { Layout } from '../components/Layout';
-import { DemoContent } from '../components/Temporary/DemoContent';
 import { resolveRelations } from '../utilities/resolveRelations';
 import { getProcessedImage } from '../utilities/getProcessedImage';
 import { getNumBloks } from '../utilities/getNumBloks';
@@ -28,7 +27,6 @@ const StoryblokEntry: React.FC<PageProps<DataProps>> = ({
       <Hero heading={blok.title} />
       <CreateBloks blokSection={blok.hero} />
       <CreateBloks blokSection={blok.content} />
-      <DemoContent />
       {getNumBloks(blok.ankle) > 0 && (
         <img
           alt=""

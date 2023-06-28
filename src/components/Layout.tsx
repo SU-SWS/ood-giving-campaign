@@ -14,6 +14,7 @@ import { SbLogo } from './Storyblok/SbLogo';
 import { SbSection } from './Storyblok/SbSection';
 import { SbSplitPoster } from './Storyblok/SbSplitPoster';
 import { SbStoryCard } from './Storyblok/SbStoryCard';
+import { SbTextCard } from './Storyblok/SbTextCard';
 import { SbThemeCard } from './Storyblok/SbThemeCard';
 import { SbTriangle } from './Storyblok/SbTriangle';
 import { SbWysiwyg } from './Storyblok/SbWysiwyg';
@@ -39,6 +40,7 @@ storyblokInit({
     sbLogo: SbLogo,
     sbSection: SbSection,
     sbSplitPoster: SbSplitPoster,
+    sbTextCard: SbTextCard,
     sbThemeCard: SbThemeCard,
     sbTriangle: SbTriangle,
     sbStoryCard: SbStoryCard,

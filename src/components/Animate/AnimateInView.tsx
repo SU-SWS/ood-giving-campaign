@@ -13,8 +13,8 @@ type AnimateInViewProps = {
 export const AnimateInView = ({
   animation = 'zoomIn',
   once = true,
-  duration = 1,
-  delay = 0.3,
+  duration = 0.5,
+  delay,
   children,
   ...props
 }: AnimateInViewProps) => {
