@@ -25,28 +25,30 @@ export const TextCard = ({
   className,
   ...props
 }: TextCardProps) => {
-  const drukFontSize = font === 'druk6' ? 6 : 7;
+  const drukFontSize = font === 'druk6' ? 'f5' : 'f7';
 
   return (
-    <AnimateInView animation={animation} delay={delay}>
-      <FlexBox
-        direction="col"
-        className={cnb(
-          styles.root,
-          styles.colSpans[colSpan],
-          bgTextColorPairsBlackWhite[color],
-          className,
-        )}
-        {...props}
-      >
-        <Text
-          font={font === 'serif' ? 'serif' : 'druk'}
-          size={font === 'serif' ? 4 : drukFontSize}
-          weight={font === 'serif' ? 'semibold' : 'black'}
-        >
-          {text}
-        </Text>
-      </FlexBox>
-    </AnimateInView>
+    <div
+      className={cnb(
+        styles.root,
+        styles.colSpans[colSpan],
+        bgTextColorPairsBlackWhite[color],
+        className,
+      )}
+      {...props}
+    >
+      <AnimateInView animation={animation} delay={delay}>
+        <FlexBox direction="col">
+          <Text
+            font={font === 'serif' ? 'serif' : 'druk'}
+            size={font === 'serif' ? 4 : drukFontSize}
+            weight={font === 'serif' ? 'bold' : 'black'}
+            leading={font === 'serif' ? 'tight' : 'none'}
+          >
+            {text}
+          </Text>
+        </FlexBox>
+      </AnimateInView>
+    </div>
   );
 };
