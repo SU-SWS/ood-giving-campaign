@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { cnb } from 'cnbuilder';
 import {
-  m, useScroll, useSpring, useTransform, SpringOptions,
+  m, useScroll, useSpring, useTransform, SpringOptions, useWillChange,
 } from 'framer-motion';
 import { Container } from '../Container';
 import { Grid, GridAlternating } from '../Grid';
@@ -34,6 +34,7 @@ export const ThemeSection = ({
     damping: 30,
     restDelta: 0.001,
   };
+  const willChange = useWillChange();
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -147,13 +148,13 @@ export const ThemeSection = ({
           <div className="su-max-w-full su-overflow-hidden">
             <m.div
               className="su-h-2 su-bg-white su-origin-left su-mt-300"
-              style={{ scaleX: rightLineSpring }}
+              style={{ scaleX: rightLineSpring, willChange }}
             />
           </div>
           <div className="su-max-w-full su-overflow-hidden">
             <m.div
               className="su-h-2 su-bg-white su-origin-right su-mt-200"
-              style={{ scaleX: leftLineSpring }}
+              style={{ scaleX: leftLineSpring, willChange }}
             />
           </div>
           <div className="su-max-w-full su-overflow-hidden su-mt-300 3xl:su-mt-100">
@@ -170,13 +171,13 @@ export const ThemeSection = ({
         </Grid>
         <div ref={containerRef}>
           <GridAlternating py={7} addCenterLine gridCellStyle={{ marginBottom: spacing }}>
-            <m.div style={{ height: heightWrapper, marginBottom: shiftUp }} className="su-overflow-hidden">
+            <m.div style={{ height: heightWrapper, marginBottom: shiftUp, willChange }} className="su-overflow-hidden">
               <FlexBox direction="col" alignItems="center" className="su-w-fit su-mr-0 su-ml-auto">
                 <Heading as="h3" font="druk" align="right" className="su-mb-01em su-text-[8rem]">
                   Discovery
                 </Heading>
                 <m.div
-                  className="su-w-fit su-border-t-[2.8rem] su-border-bottom-none su-overflow-hidden"
+                  className="su-w-fit su-border-t-[2.6rem] su-border-bottom-none su-overflow-hidden"
                   style={{
                     borderRightWidth: discoverBarWidthChange,
                     borderLeftWidth: discoverBarWidthChange,
@@ -193,70 +194,73 @@ export const ThemeSection = ({
                 <CreateBloks blokSection={themeCardDiscovery} />
               </m.div>
             </m.div>
-            <m.div style={{ height: heightWrapper }} className="su-overflow-hidden">
+            <m.div style={{ height: heightWrapper, willChange }} className="su-overflow-hidden">
               <FlexBox direction="col" alignItems="center" className="su-w-fit su-ml-0 su-mr-auto">
                 <Heading as="h3" font="druk" className="su-mb-01em su-text-[8rem]">
                   Citizenry
                 </Heading>
                 <m.div
-                  className="su-w-fit su-border-t-[2.8rem] su-border-bottom-none su-overflow-hidden"
+                  className="su-w-fit su-border-t-[2.6rem] su-border-bottom-none su-overflow-hidden"
                   style={{
                     borderRightWidth: citizenBarWidthChange,
                     borderLeftWidth: citizenBarWidthChange,
                     borderTopColor: redToPoppy,
                     borderLeftColor: transparentToPoppy,
                     borderRightColor: transparentToPoppy,
+                    willChange,
                   }}
                 />
               </FlexBox>
               <m.div
-                style={{ opacity: scrollYProgress, scale: zoom }}
+                style={{ opacity: scrollYProgress, scale: zoom, willChange }}
                 className="su-origin-top-left"
               >
                 <CreateBloks blokSection={themeCardCitizen} />
               </m.div>
             </m.div>
-            <m.div style={{ height: heightWrapper, marginBottom: shiftUp }} className="su-overflow-hidden">
+            <m.div style={{ height: heightWrapper, marginBottom: shiftUp, willChange }} className="su-overflow-hidden">
               <FlexBox direction="col" alignItems="center" className="su-w-fit su-mr-0 su-ml-auto">
                 <Heading as="h3" font="druk" align="right" className="su-mb-01em su-text-[8rem]">
                   Acceleration
                 </Heading>
                 <m.div
-                  className="su-w-fit su-border-t-[2.8rem] su-border-bottom-none su-overflow-hidden"
+                  className="su-w-fit su-border-t-[2.6rem] su-border-bottom-none su-overflow-hidden"
                   style={{
                     borderRightWidth: accBarWidthChange,
                     borderLeftWidth: accBarWidthChange,
                     borderTopColor: redToPeriwinkle,
                     borderLeftColor: transparentToPeriwinkle,
                     borderRightColor: transparentToPeriwinkle,
+                    willChange,
                   }}
                 />
               </FlexBox>
               <m.div
-                style={{ opacity: scrollYProgress, scale: zoom }}
+                style={{ opacity: scrollYProgress, scale: zoom, willChange }}
                 className="su-origin-top-right"
               >
                 <CreateBloks blokSection={themeCardAcceleration} />
               </m.div>
             </m.div>
-            <m.div style={{ height: heightWrapper }} className="su-overflow-hidden">
+            <m.div style={{ height: heightWrapper, willChange }} className="su-overflow-hidden">
               <FlexBox direction="col" alignItems="center" className="su-w-fit su-ml-0 su-mr-auto">
                 <Heading as="h3" font="druk" className="su-mb-01em su-text-[8rem]">
                   Our planet
                 </Heading>
                 <m.div
-                  className="su-w-fit su-border-t-[2.8rem] su-border-bottom-none su-overflow-hidden"
+                  className="su-w-fit su-border-t-[2.6rem] su-border-bottom-none su-overflow-hidden"
                   style={{
                     borderRightWidth: planetBarWidthChange,
                     borderLeftWidth: planetBarWidthChange,
                     borderTopColor: redToRobinsEgg,
                     borderLeftColor: transparentToRobinsEgg,
                     borderRightColor: transparentToRobinsEgg,
+                    willChange,
                   }}
                 />
               </FlexBox>
               <m.div
-                style={{ opacity: scrollYProgress, scale: zoom }}
+                style={{ opacity: scrollYProgress, scale: zoom, willChange }}
                 className="su-origin-top-left"
               >
                 <CreateBloks blokSection={themeCardPlanet} />

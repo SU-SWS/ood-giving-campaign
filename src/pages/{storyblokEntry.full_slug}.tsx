@@ -6,8 +6,9 @@ import { Hero } from '../components/Hero/Hero';
 import { CreateBloks } from '../components/CreateBloks';
 import { PageHead } from '../components/PageHead';
 import { Layout } from '../components/Layout';
-import { DemoContent } from '../components/Temporary/DemoContent';
 import { resolveRelations } from '../utilities/resolveRelations';
+import { getProcessedImage } from '../utilities/getProcessedImage';
+import { getNumBloks } from '../utilities/getNumBloks';
 
 type DataProps = {
   storyblokEntry: SbGatsbyStory;
@@ -26,7 +27,14 @@ const StoryblokEntry: React.FC<PageProps<DataProps>> = ({
       <Hero heading={blok.title} />
       <CreateBloks blokSection={blok.hero} />
       <CreateBloks blokSection={blok.content} />
-      <DemoContent />
+      {getNumBloks(blok.ankle) > 0 && (
+        <img
+          alt=""
+          src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/c4777a4925/steve-johnson-cropped-2000x40-01.jpg')}
+          className="su-w-full"
+        />
+      )}
+      <CreateBloks blokSection={blok.ankle} />
     </Layout>
   );
 };
@@ -43,6 +51,8 @@ export const Head = ({ data }) => {
       title={blok.title || story.name}
       heroImage={blok.heroImage || blok.hero.image}
       seo={blok.seo}
+      noindex={blok.noindex}
+      canonicalUrl={blok.canonicalUrl}
     />
   );
 };

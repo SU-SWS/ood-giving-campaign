@@ -32,11 +32,22 @@ export const accentBorderColors = {
 };
 export type AccentBorderColorType = keyof typeof accentBorderColors;
 
-export const bgTextColorPairs = {
+// Many components have dark and light themes - these are the basic options
+export const bgTextColorPairsBlackWhite = {
   black: 'su-bg-gc-black su-text-white',
-  'black-70': 'su-bg-black-true/70 su-text-white',
   white: 'su-bg-white su-text-gc-black',
+};
+export type BgTextColorPairBlackWhiteType = keyof typeof bgTextColorPairsBlackWhite;
+
+// Some components, eg, Split Posters, have additional options
+export const bgTextColorPairsAdditional = {
+  'black-70': 'su-bg-black-true/70 su-text-white',
   'white-80': 'su-bg-white/80 su-text-gc-black',
+};
+
+export const bgTextColorPairs = {
+  ...bgTextColorPairsBlackWhite,
+  ...bgTextColorPairsAdditional,
 };
 export type BgTextColorPairType = keyof typeof bgTextColorPairs;
 
