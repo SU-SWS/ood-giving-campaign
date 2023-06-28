@@ -9,6 +9,7 @@ import { Layout } from '../components/Layout';
 import { resolveRelations } from '../utilities/resolveRelations';
 import { getProcessedImage } from '../utilities/getProcessedImage';
 import { getNumBloks } from '../utilities/getNumBloks';
+import { StoryHero } from '../components/Hero';
 
 type DataProps = {
   storyblokEntry: SbGatsbyStory;
@@ -23,9 +24,17 @@ const StoryblokEntry: React.FC<PageProps<DataProps>> = ({
 
   return (
     <Layout>
-      {/* Place holder hero below - going to extract into component */}
-      <Hero heading={blok.title} />
-      <CreateBloks blokSection={blok.hero} />
+      {blok.component === 'sbStory' ? (
+        <StoryHero
+          title={blok.title}
+        />
+      ) : (
+        <>
+          {/* Place holder hero below - going to extract into component */}
+          <Hero heading={blok.title} />
+          <CreateBloks blokSection={blok.hero} />
+        </>
+      )}
       <CreateBloks blokSection={blok.content} />
       {getNumBloks(blok.ankle) > 0 && (
         <img
