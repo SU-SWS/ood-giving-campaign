@@ -1,7 +1,7 @@
-export const root = 'su-rs-py-5 su-rs-px-3';
+export const root = 'su-relative su-rs-py-5 su-rs-px-3';
 
 export const xsColSpans = {
-  1: '',
+  1: 'su-col-span-1',
   2: 'su-col-span-2',
   3: 'su-col-span-3',
 };

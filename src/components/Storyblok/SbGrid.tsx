@@ -25,12 +25,12 @@ export const SbGrid = ({
   blok: {
     gap,
     items,
-    xs = 1,
-    sm = 1,
-    md = 2,
-    lg = 2,
-    xl = 3,
-    xxl = 3,
+    xs,
+    sm,
+    md,
+    lg,
+    xl,
+    xxl,
   },
   blok,
 }: SbGridProps) => (

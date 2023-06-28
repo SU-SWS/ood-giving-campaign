@@ -24,7 +24,7 @@ export const TextCard = ({
   text,
   color = 'white',
   font = 'serif',
-  xsColSpan = 1,
+  xsColSpan,
   smColSpan,
   mdColSpan,
   lgColSpan,
