@@ -34,13 +34,19 @@ export const StoryHero = ({
   tabColor: { value: tabColorValue } = {},
   taxonomy,
 }: StoryHeroProps) => (
-  <Container width="full" bgColor={isLightHero ? 'white' : 'black'} className="su-relative" pt={10} pb={8}>
+  <Container
+    width="full"
+    bgColor={isLightHero ? 'white' : 'black'}
+    pt={10}
+    pb={8}
+    className="su-relative"
+  >
     <Grid md={isVerticalHero ? 2 : 1}>
       {filename && (
         <div className={styles.imageWrapper(isVerticalHero)}>
           <img
             alt=""
-            src={getProcessedImage(filename, isImageLeft ? '1000x1600' : '2000x1000', focus)}
+            src={getProcessedImage(filename, isVerticalHero ? '1000x1600' : '2000x1000', focus)}
             className={styles.image}
           />
         </div>
@@ -66,7 +72,13 @@ export const StoryHero = ({
           )}
         </div>
         <div className="su-px-20 sm:su-px-30 md:su-px-50 lg:su-px-80 xl:su-px-100">
-          <Paragraph variant="overview" font="serif" className="su-rs-mt-4 xl:su-max-w-[56rem] su-mb-0">{intro}</Paragraph>
+          <Paragraph
+            variant="overview"
+            font="serif"
+            className="su-rs-mt-4 xl:su-max-w-[56rem] su-mb-0"
+          >
+            {intro}
+          </Paragraph>
         </div>
       </div>
     </Grid>
