@@ -51,27 +51,27 @@ export const StoryHero = ({
           />
         </div>
       )}
-      <div className={isVerticalHero ? 'su-pt-40 xl:su-rs-pt-9' : ''}>
+      <div className={isVerticalHero ? 'su-pt-40 xl:su-rs-pt-9' : 'su-cc su-ml-0 su-rs-mt-9'}>
         <div className={cnb(
-          styles.tabSection(!!tabColorValue),
+          styles.tabSection(!!tabColorValue, isVerticalHero),
           accentBorderColors[paletteAccentColors[tabColorValue]],
         )}
         >
           <Heading
             as="h1"
             leading="tight"
-            size="f5"
-            className={styles.heading(!!tabColorValue)}
+            size={isVerticalHero ? 'f5' : 'f6'}
+            className={styles.heading(!!tabColorValue, isVerticalHero)}
           >
             {title}
           </Heading>
           {byline && (
-            <Text variant="caption" className={styles.heading(!!tabColorValue)}>
+            <Text variant="caption" className={styles.heading(!!tabColorValue, isVerticalHero)}>
               {`By: ${byline}`}
             </Text>
           )}
         </div>
-        <div className="su-px-20 sm:su-px-30 md:su-px-50 lg:su-px-80 xl:su-px-100">
+        <div className={isVerticalHero ? 'su-px-20 sm:su-px-30 md:su-px-50 lg:su-px-80 xl:su-px-100' : ''}>
           <Paragraph
             variant="overview"
             font="serif"
