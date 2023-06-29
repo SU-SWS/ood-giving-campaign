@@ -1,4 +1,5 @@
 import React from 'react';
+import { cnb } from 'cnbuilder';
 import { Container } from '../Container';
 import { FlexBox } from '../FlexBox';
 import { Grid } from '../Grid';
@@ -32,7 +33,7 @@ export const StoryHero = ({
   taxonomy,
 }: StoryHeroProps) => (
   <Container width="full" bgColor={isLightHero ? 'white' : 'black'} className="su-relative su-rs-pt-9" pb={9}>
-    <Grid lg={isVerticalHero ? 2 : 1}>
+    <Grid md={isVerticalHero ? 2 : 1}>
       {filename && (
         <div className={styles.imageWrapper(isVerticalHero)}>
           <img
@@ -43,11 +44,15 @@ export const StoryHero = ({
         </div>
       )}
       <div>
-        <Heading as="h1" size={6}>{title}</Heading>
-        {byline && (
-          <Text variant="caption">{`By: ${byline}`}</Text>
-        )}
-        <Paragraph variant="overview" font="serif">{intro}</Paragraph>
+        <div className={cnb('md:su-px-50 lg:su-px-80 xl:su-px-100')}>
+          <Heading as="h1" leading="tight" size="f5" className="su-mb-02em xl:su-max-w-700">{title}</Heading>
+          {byline && (
+            <Text variant="caption">{`By: ${byline}`}</Text>
+          )}
+        </div>
+        <div className="md:su-px-50 lg:su-px-80 xl:su-px-100">
+          <Paragraph variant="overview" font="serif" className="su-rs-mt-4 xl:su-max-w-[56rem] su-mb-0">{intro}</Paragraph>
+        </div>
       </div>
     </Grid>
   </Container>

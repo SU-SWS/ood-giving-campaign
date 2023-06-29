@@ -50,7 +50,7 @@ export const Masthead = ({ className }: MastheadProps) => {
         className,
       )}
       animate={{ y: isVisible ? 0 : -slideDistance, opacity: isVisible ? 1 : 0 }}
-      transition={{ duration: 0.3, delay: 0, ease: 'easeInOut' }}
+      transition={{ duration: 0.3, delay: 0.1, ease: 'easeInOut' }}
       style={{ height: slideDistance, willChange }}
     >
       <FlexBox
