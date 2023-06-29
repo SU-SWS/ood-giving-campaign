@@ -1,9 +1,9 @@
 import React from 'react';
 import { cnb } from 'cnbuilder';
 import { Container } from '../Container';
-import { FlexBox } from '../FlexBox';
 import { Grid } from '../Grid';
 import { Heading, Text, Paragraph } from '../Typography';
+import { paletteAccentColors, PaletteAccentColorType } from '../../utilities/colorPalettePlugin';
 import { accentBorderColors, AccentBorderColorType } from '../../utilities/datasource';
 import { getProcessedImage } from '../../utilities/getProcessedImage';
 import { SbImageType } from '../Storyblok/Storyblok.types';
@@ -17,7 +17,9 @@ type StoryHeroProps = {
   isVerticalHero?: boolean;
   isImageLeft?: boolean;
   isLightHero?: boolean;
-  tabColor?: AccentBorderColorType;
+  tabColor?: {
+    value?: PaletteAccentColorType;
+  }
   taxonomy?: string[];
 };
 
@@ -29,7 +31,7 @@ export const StoryHero = ({
   isVerticalHero,
   isImageLeft,
   isLightHero,
-  tabColor,
+  tabColor: { value: tabColorValue } = {},
   taxonomy,
 }: StoryHeroProps) => (
   <Container width="full" bgColor={isLightHero ? 'white' : 'black'} className="su-relative" pt={10} pb={8}>
@@ -44,10 +46,23 @@ export const StoryHero = ({
         </div>
       )}
       <div className={isVerticalHero ? 'su-pt-40 xl:su-rs-pt-9' : ''}>
-        <div className={cnb('su-px-20 sm:su-px-30 md:su-px-50 lg:su-px-80 xl:su-px-100')}>
-          <Heading as="h1" leading="tight" size="f5" className="su-mb-02em xl:su-max-w-700">{title}</Heading>
+        <div className={cnb(
+          styles.tabSection(!!tabColorValue),
+          accentBorderColors[paletteAccentColors[tabColorValue]],
+        )}
+        >
+          <Heading
+            as="h1"
+            leading="tight"
+            size="f5"
+            className={styles.heading(!!tabColorValue)}
+          >
+            {title}
+          </Heading>
           {byline && (
-            <Text variant="caption">{`By: ${byline}`}</Text>
+            <Text variant="caption" className={styles.heading(!!tabColorValue)}>
+              {`By: ${byline}`}
+            </Text>
           )}
         </div>
         <div className="su-px-20 sm:su-px-30 md:su-px-50 lg:su-px-80 xl:su-px-100">
