@@ -27,6 +27,12 @@ const StoryblokEntry: React.FC<PageProps<DataProps>> = ({
       {blok.component === 'sbStory' ? (
         <StoryHero
           title={blok.title}
+          intro={blok.intro}
+          byline={blok.byline}
+          heroImage={blok.heroImage}
+          isLightHero={blok.isLightHero}
+          isVerticalHero={blok.isVerticalHero}
+          isImageLeft={blok.isImageLeft}
         />
       ) : (
         <>

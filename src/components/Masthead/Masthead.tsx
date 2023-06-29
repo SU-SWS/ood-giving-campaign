@@ -13,7 +13,7 @@ type MastheadProps = HTMLAttributes<HTMLDivElement>;
 
 export const Masthead = ({ className }: MastheadProps) => {
   const slideDistance = 86;
-  const threshold = 200;
+  const threshold = 90;
 
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
@@ -34,7 +34,7 @@ export const Masthead = ({ className }: MastheadProps) => {
   });
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    setIsAtTop(latest <= 100);
+    setIsAtTop(latest <= 90);
   });
 
   useEffect(() => setIsVisible(isScrollingBack || isAtTop), [
@@ -50,7 +50,7 @@ export const Masthead = ({ className }: MastheadProps) => {
         className,
       )}
       animate={{ y: isVisible ? 0 : -slideDistance, opacity: isVisible ? 1 : 0 }}
-      transition={{ duration: 0.4, delay: 0.1, ease: 'easeInOut' }}
+      transition={{ duration: 0.3, delay: 0, ease: 'easeInOut' }}
       style={{ height: slideDistance, willChange }}
     >
       <FlexBox
