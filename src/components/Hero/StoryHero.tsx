@@ -4,7 +4,7 @@ import { Container } from '../Container';
 import { Grid } from '../Grid';
 import { Heading, Text, Paragraph } from '../Typography';
 import { paletteAccentColors, PaletteAccentColorType } from '../../utilities/colorPalettePlugin';
-import { accentBorderColors, AccentBorderColorType } from '../../utilities/datasource';
+import { accentBorderColors } from '../../utilities/datasource';
 import { getProcessedImage } from '../../utilities/getProcessedImage';
 import { SbImageType } from '../Storyblok/Storyblok.types';
 import * as styles from './StoryHero.styles';

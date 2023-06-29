@@ -56,7 +56,7 @@ export const Masthead = ({ className }: MastheadProps) => {
       <FlexBox
         justifyContent="between"
         alignItems="center"
-        className={cnb('su-cc su-transition-all su-py-18', !isAtTop ? 'lg:su-py-3' : 'md:su-py-26')}
+        className={cnb('su-cc su-transition su-py-18', !isAtTop ? 'lg:su-py-3' : 'md:su-py-26')}
       >
         <Logo
           isLink
