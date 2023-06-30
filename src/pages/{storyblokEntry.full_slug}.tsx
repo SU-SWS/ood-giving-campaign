@@ -23,12 +23,13 @@ const StoryblokEntry: React.FC<PageProps<DataProps>> = ({
   const blok = story.content;
 
   return (
-    <Layout>
+    <Layout isDark={!blok.isLightHero}>
       {blok.component === 'sbStory' ? (
         <StoryHero
           title={blok.title}
           intro={blok.intro}
           byline={blok.byline}
+          publishedDate={blok.publishedDate}
           heroImage={blok.heroImage}
           isLightHero={blok.isLightHero}
           isVerticalHero={blok.isVerticalHero}

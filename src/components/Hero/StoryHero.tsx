@@ -13,6 +13,7 @@ type StoryHeroProps = {
   title: string;
   byline?: string;
   intro?: string;
+  publishedDate?: string;
   heroImage?: SbImageType;
   isVerticalHero?: boolean;
   isImageLeft?: boolean;
@@ -27,60 +28,70 @@ export const StoryHero = ({
   title,
   byline,
   intro,
+  publishedDate,
   heroImage: { filename, focus } = {},
   isVerticalHero,
   isImageLeft,
   isLightHero,
   tabColor: { value: tabColorValue } = {},
   taxonomy,
-}: StoryHeroProps) => (
-  <Container
-    width="full"
-    bgColor={isLightHero ? 'white' : 'black'}
-    pt={10}
-    pb={8}
-    className="su-relative"
-  >
-    <Grid md={isVerticalHero ? 2 : 1}>
-      {filename && (
-        <div className={styles.imageWrapper(isVerticalHero)}>
-          <img
-            alt=""
-            src={getProcessedImage(filename, isVerticalHero ? '1000x1600' : '2000x1000', focus)}
-            className={styles.image}
-          />
-        </div>
-      )}
-      <div className={isVerticalHero ? 'su-pt-40 xl:su-rs-pt-9' : 'su-cc su-ml-0 su-rs-mt-9'}>
-        <div className={cnb(
-          styles.tabSection(!!tabColorValue, isVerticalHero),
-          accentBorderColors[paletteAccentColors[tabColorValue]],
+}: StoryHeroProps) => {
+  const date = new Date(publishedDate);
+  const formattedDate = date?.toLocaleDateString('en-US', {
+    weekday: 'long',
+    month: 'long',
+    day: '2-digit',
+    year: 'numeric',
+  });
+
+  return (
+    <Container
+      width="full"
+      bgColor={isLightHero ? 'white' : 'black'}
+      pb={8}
+      className="su-pt-80 md:su-pt-120 lg:su-pt-[15rem] su-relative"
+    >
+      <Grid md={isVerticalHero ? 2 : 1}>
+        {filename && (
+          <div className={styles.imageWrapper(isVerticalHero)}>
+            <img
+              alt=""
+              src={getProcessedImage(filename, isVerticalHero ? '1000x1600' : '2000x1000', focus)}
+              className={styles.image}
+            />
+          </div>
         )}
-        >
-          <Heading
-            as="h1"
-            leading="tight"
-            size={isVerticalHero ? 'f5' : 'f6'}
-            className={styles.heading(!!tabColorValue, isVerticalHero)}
-          >
-            {title}
-          </Heading>
-          {byline && (
-            <Text variant="caption" className={styles.heading(!!tabColorValue, isVerticalHero)}>
-              {`By: ${byline}`}
-            </Text>
+        <div className={isVerticalHero ? 'su-mt-40 xl:su-rs-mt-8' : 'su-ml-0 su-rs-mt-8'}>
+          <div className={cnb(
+            styles.tabSection(!!tabColorValue, isVerticalHero),
+            accentBorderColors[paletteAccentColors[tabColorValue]],
           )}
-        </div>
-        <div className={isVerticalHero ? 'su-px-20 sm:su-px-30 md:su-px-50 lg:su-px-80 xl:su-px-100' : ''}>
-          <Paragraph
-            variant="overview"
-            font="serif"
-            className="su-rs-mt-4 xl:su-max-w-[56rem] su-mb-0"
           >
-            {intro}
-          </Paragraph>
+            <Heading
+              as="h1"
+              leading="tight"
+              size={isVerticalHero ? 'f5' : 'f6'}
+              className={styles.heading(!!tabColorValue, isVerticalHero)}
+            >
+              {title}
+            </Heading>
+            {(byline || formattedDate) && (
+              <Text variant="caption" className={styles.heading(!!tabColorValue, isVerticalHero)}>
+                {formattedDate}{byline && formattedDate ? ' | ' : ''}{`By: ${byline}`}
+              </Text>
+            )}
+          </div>
+          <div className={isVerticalHero ? 'su-px-20 sm:su-px-30 md:su-px-50 lg:su-px-80 xl:su-px-100' : 'su-cc'}>
+            <Paragraph
+              variant="overview"
+              font="serif"
+              className={styles.body(isVerticalHero)}
+            >
+              {intro}
+            </Paragraph>
+          </div>
         </div>
-      </div>
-    </Grid>
-  </Container>
-);
+      </Grid>
+    </Container>
+  );
+};
