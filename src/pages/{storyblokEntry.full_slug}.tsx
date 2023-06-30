@@ -33,7 +33,7 @@ const StoryblokEntry: React.FC<PageProps<DataProps>> = ({
           heroImage={blok.heroImage}
           isLightHero={blok.isLightHero}
           isVerticalHero={blok.isVerticalHero}
-          isImageLeft={blok.isImageLeft}
+          isLeftImage={blok.isLeftImage}
           tabColor={blok.tabColor}
         />
       ) : (

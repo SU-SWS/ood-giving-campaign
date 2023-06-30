@@ -16,7 +16,7 @@ type StoryHeroProps = {
   publishedDate?: string;
   heroImage?: SbImageType;
   isVerticalHero?: boolean;
-  isImageLeft?: boolean;
+  isLeftImage?: boolean;
   isLightHero?: boolean;
   tabColor?: {
     value?: PaletteAccentColorType;
@@ -31,7 +31,7 @@ export const StoryHero = ({
   publishedDate,
   heroImage: { filename, focus } = {},
   isVerticalHero,
-  isImageLeft,
+  isLeftImage,
   isLightHero,
   tabColor: { value: tabColorValue } = {},
   taxonomy,
@@ -53,7 +53,7 @@ export const StoryHero = ({
     >
       <Grid md={isVerticalHero ? 2 : 1}>
         {filename && (
-          <div className={styles.imageWrapper(isVerticalHero)}>
+          <div className={styles.imageWrapper(isVerticalHero, isLeftImage)}>
             <img
               alt=""
               src={getProcessedImage(filename, isVerticalHero ? '1000x1600' : '2000x1000', focus)}
@@ -61,7 +61,7 @@ export const StoryHero = ({
             />
           </div>
         )}
-        <div className={isVerticalHero ? 'su-mt-40 xl:su-rs-mt-8' : 'su-ml-0 su-rs-mt-8'}>
+        <div className={styles.content(isVerticalHero, isLeftImage)}>
           <div className={cnb(
             styles.tabSection(!!tabColorValue, isVerticalHero),
             accentBorderColors[paletteAccentColors[tabColorValue]],
