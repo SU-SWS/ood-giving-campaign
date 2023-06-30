@@ -36,8 +36,8 @@ export const StoryHero = ({
   tabColor: { value: tabColorValue } = {},
   taxonomy,
 }: StoryHeroProps) => {
-  const date = new Date(publishedDate);
-  const formattedDate = date?.toLocaleDateString('en-US', {
+  const date = publishedDate && new Date(publishedDate);
+  const formattedDate = date && date.toLocaleDateString('en-US', {
     weekday: 'long',
     month: 'long',
     day: '2-digit',
@@ -75,9 +75,9 @@ export const StoryHero = ({
             >
               {title}
             </Heading>
-            {(byline || formattedDate) && (
+            {(byline || date) && (
               <Text variant="caption" className={styles.heading(!!tabColorValue, isVerticalHero)}>
-                {formattedDate}{byline && formattedDate ? ' | ' : ''}{`By: ${byline}`}
+                {formattedDate}{byline && date ? ' | ' : ''}{`By: ${byline}`}
               </Text>
             )}
           </div>
