@@ -24,12 +24,16 @@ export async function getStoryData(params) {
   return storyblokApi?.get(`cdn/stories/${slug}`, sbParams);
 };
 
+type pathsType = {
+  slug: string[];
+}
+
 export async function generateStaticParams() {
   const storyblokApi: StoryblokClient = getStoryblokApi();
   let sbParams: ISbStoriesParams = { version: 'draft' };
 
   const { data: { links } } = await storyblokApi?.get('cdn/links', sbParams);
-  const paths = [];
+  let paths: pathsType[] = [];
   Object.keys(links).forEach((linkKey) => {
     if (links[linkKey].is_folder || links[linkKey].slug === 'home') {
       return;
