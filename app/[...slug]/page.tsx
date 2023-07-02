@@ -2,6 +2,7 @@ import {
   getStoryblokApi, ISbStoriesParams, StoryblokClient,
 } from '@storyblok/react/rsc';
 import StoryblokStory from '@storyblok/react/story';
+import { resolveRelations } from '../../src/utilities/resolveRelations';
 
 export default async function Page({ params }) {
   const { data } = await getStoryData(params);
@@ -16,7 +17,7 @@ export async function getStoryData(params) {
   let sbParams: ISbStoriesParams = {
     version: 'draft',
     cv: Date.now(),
-    //resolve_relations: 'teaser:teasers',
+    resolve_relations: resolveRelations,
   };
 
   const storyblokApi: StoryblokClient = getStoryblokApi();

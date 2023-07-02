@@ -1,4 +1,3 @@
-'use client';
 import { storyblokEditable } from '@storyblok/react/rsc';
 import Image from 'next/image';
 import { CreateBloks } from '../CreateBloks';
@@ -10,8 +9,6 @@ type SbBasicPageProps = {
   blok: {
     _uid: string;
     title?: string;
-    intro?: string;
-    byline?: string;
     hero?: any[];
     content?: any[];
     ankle?: any[];
@@ -22,8 +19,6 @@ export const SbBasicPage = ({
   blok: {
     _uid,
     title,
-    intro,
-    byline,
     hero,
     content,
     ankle,
