@@ -10,7 +10,7 @@ type GlobalFooterProps = {
   className?: string;
 };
 
-const GlobalFooter = ({ className }: GlobalFooterProps) => (
+export const GlobalFooter = ({ className }: GlobalFooterProps) => (
   <Container className={cnb(styles.root, className)}>
     <FlexBox direction="col" className={styles.outerWrapper}>
       <div className={styles.logoWrapper}>
@@ -132,6 +132,3 @@ const GlobalFooter = ({ className }: GlobalFooterProps) => (
     </FlexBox>
   </Container>
 );
-
-// Must use default export for Gatsby slice
-export default GlobalFooter;
