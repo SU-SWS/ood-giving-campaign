@@ -6,11 +6,13 @@ export default async function Home() {
   const { data } = await fetchData();
 
   return (
-    <StoryblokStory story={data.story} key={data.key} />
+    <StoryblokStory story={data.story} />
   );
 }
 
-export async function fetchData() {
+// Make sure to not export this function otherwise there will be a typescript error
+// https://github.com/vercel/next.js/discussions/48724
+async function fetchData() {
   const sbParams: ISbStoriesParams = {
     version: 'draft',
     resolve_relations: resolveRelations,

@@ -12,8 +12,10 @@ export default async function Page({ params }) {
   );
 };
 
-export async function getStoryData(params) {
-  let slug = params.slug ? params.slug.join('/') : 'home';
+// Make sure to not export the below functions otherwise there will be a typescript error
+// https://github.com/vercel/next.js/discussions/48724
+async function getStoryData(params) {
+  let slug: string = params.slug ? params.slug.join('/') : 'home';
   let sbParams: ISbStoriesParams = {
     version: 'draft',
     cv: Date.now(),
@@ -28,7 +30,7 @@ type pathsType = {
   slug: string[];
 }
 
-export async function generateStaticParams() {
+async function generateStaticParams() {
   const storyblokApi: StoryblokClient = getStoryblokApi();
   let sbParams: ISbStoriesParams = { version: 'draft' };
 
@@ -39,7 +41,7 @@ export async function generateStaticParams() {
     if (links[linkKey].is_folder || links[linkKey].slug === 'home') {
       return;
     }
-    const slug = links[linkKey].slug;
+    const slug: string = links[linkKey].slug;
     let splittedSlug = slug.split('/');
     paths.push({ slug: splittedSlug });
   });
