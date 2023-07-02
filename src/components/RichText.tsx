@@ -101,7 +101,7 @@ export const RichText = ({
       className={cnb(
         'su-wysiwyg',
         textColor,
-        textAligns[textAlign] || '',
+        textAligns[textAlign || ''],
         className,
       )}
     >

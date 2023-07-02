@@ -41,13 +41,13 @@ export const TextCard = ({
     <div
       className={cnb(
         styles.root,
-        styles.xsColSpans[xsColSpan],
-        styles.smColSpans[smColSpan],
-        styles.mdColSpans[mdColSpan],
-        styles.lgColSpans[lgColSpan],
-        styles.xlColSpans[xlColSpan],
-        styles.xxlColSpans[xxlColSpan],
-        bgTextColorPairsBlackWhite[color],
+        styles.xsColSpans[xsColSpan || ''],
+        styles.smColSpans[smColSpan || ''],
+        styles.mdColSpans[mdColSpan || ''],
+        styles.lgColSpans[lgColSpan || ''],
+        styles.xlColSpans[xlColSpan || ''],
+        styles.xxlColSpans[xxlColSpan || ''],
+        bgTextColorPairsBlackWhite[color || ''],
         className,
       )}
       {...props}

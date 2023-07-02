@@ -11,15 +11,16 @@ import { SbLinkType } from '../Storyblok/Storyblok.types';
  * Use this component for CTA links.
  * You can pass in a Storyblok link field sbLink or a href that is internal or external.
  */
-export type CtaLinkProps = LinkProps & React.ComponentPropsWithoutRef<'a'> & CtaCommonProps & {
+export type CtaLinkProps = Omit<LinkProps, 'href'> & React.ComponentPropsWithoutRef<'a'> & CtaCommonProps & {
   sbLink?: SbLinkType;
+  href?: string;
 };
 
 export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
   (props, ref) => {
     const {
       sbLink,
-      href,
+      href = '',
       ...rest
     } = props;
 

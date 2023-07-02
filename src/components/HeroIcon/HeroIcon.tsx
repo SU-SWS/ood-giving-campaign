@@ -17,11 +17,11 @@ export const HeroIcon = ({
   className,
   ...props
 }: HeroIconProps) => {
-  const Icon = styles.iconMap[icon];
+  const Icon = styles.iconMap[icon || ''];
 
   // Set default base style so icon has reasonable size if used out of the box
   // noBaseStyle boolean allows for user to not attach any base styles if needed
-  const baseStyle = noBaseStyle ? '' : styles.iconBaseStyle[icon] || styles.iconBaseStyle.default;
+  const baseStyle = noBaseStyle ? '' : styles.iconBaseStyle[icon || ''] || styles.iconBaseStyle.default;
   const heroIconStyle = cnb('su-transition', baseStyle);
 
   return (

@@ -1,4 +1,5 @@
 import React, { HTMLAttributes } from 'react';
+import Image from 'next/image';
 import { cnb } from 'cnbuilder';
 import { AnimateInView, AnimationType } from '../Animate';
 import { CtaLink } from '../Cta/CtaLink';
@@ -28,7 +29,7 @@ export const InitiativeCard = ({
   headingLevel = 'h2',
   isSmallHeading,
   body,
-  imageSrc,
+  imageSrc = '',
   imageFocus,
   tabColor,
   link,
@@ -46,9 +47,11 @@ export const InitiativeCard = ({
     >
       <div className={styles.topWrapper}>
         <div className={styles.imageWrapper}>
-          <img
+          <Image
+            width={600}
+            height={800}
             alt=""
-            src={getProcessedImage(imageSrc, '600x800', imageFocus)}
+            src={getProcessedImage(imageSrc, '600x800', imageFocus) || ''}
             className={styles.image}
           />
         </div>
@@ -68,7 +71,7 @@ export const InitiativeCard = ({
           variant="subheading"
           leading="display"
           noMargin
-          className={cnb(styles.body(!!tabColor), accentBorderColors[tabColor])}
+          className={cnb(styles.body(!!tabColor), accentBorderColors[tabColor || ''])}
         >
           {body}
         </Paragraph>

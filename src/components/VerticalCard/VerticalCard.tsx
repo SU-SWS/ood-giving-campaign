@@ -41,7 +41,7 @@ export const VerticalCard = ({
   ctaLabel,
   ctaSrText,
   link,
-  href,
+  href = '',
   taxonomy,
   animation = 'none',
   delay,

@@ -19,7 +19,7 @@ export const getProcessedImage = (
   crop: string = '',
   focus: string = '',
   filters: string = '',
-): string => {
+): string | undefined => {
   if (!imageSrc) {
     return undefined;
   }
