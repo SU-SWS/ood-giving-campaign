@@ -1,4 +1,3 @@
-import React from 'react';
 import { cnb } from 'cnbuilder';
 import { BracketCurve, BracketCurveProps } from './BracketCurve';
 import { FlexBox } from '../FlexBox';
@@ -11,9 +10,9 @@ type BracketProps = Omit<BracketCurveProps, 'corner'> & {
 };
 
 export const Bracket = ({
-  isClose,
+  isClose = false,
   color,
-  isSolid,
+  isSolid = false,
   className,
   curveClassName,
   ...props
@@ -21,7 +20,7 @@ export const Bracket = ({
   <FlexBox
     direction="col"
     className={cnb(
-      styles.colors[color],
+      styles.colors[color || ''],
       className,
     )}
     {...props}

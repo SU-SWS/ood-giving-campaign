@@ -1,12 +1,14 @@
+'use client';
 import React from 'react';
-import { Link, GatsbyLinkProps } from 'gatsby';
+import Link from 'next/link';
+import { LinkProps } from 'next/link';
 import { CtaContent } from './CtaContent';
 import { getCtaClasses } from './getCtaClasses';
 import { CtaCommonProps } from './Cta.types';
 
-export type CtaGatsbyLinkProps = CtaCommonProps & GatsbyLinkProps<{}>;
+export type CtaNextLinkProps = CtaCommonProps & LinkProps;
 
-export const CtaGatsbyLink = (props) => {
+export const CtaNextLink = (props) => {
   const {
     variant = 'link',
     color,

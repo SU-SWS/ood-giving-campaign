@@ -68,7 +68,7 @@ export const VerticalCard = ({
             as={headingLevel}
             size={isSmallHeading ? 3 : 4}
             leading="tight"
-            className={cnb(styles.heading(!!tabColor), accentBorderColors[tabColor])}
+            className={cnb(styles.heading(!!tabColor), accentBorderColors[tabColor || ''])}
           >
             {(!ctaLabel && (link || href))
               ? (
@@ -100,7 +100,7 @@ export const VerticalCard = ({
         )}
       </div>
       {/* Display max 3 topic tags; TODO: Sort tags after clients decide on order */}
-      {taxonomy?.length > 0 && (
+      {!!taxonomy?.length && (
         <ul className={styles.taxonomy(!!tabColor)}>
           {taxonomy.slice(0, 3).map((item) => (
             <li key={item} className={styles.taxonomyItem}>

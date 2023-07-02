@@ -1,3 +1,4 @@
+'use client';
 import React, { useRef } from 'react';
 import { cnb } from 'cnbuilder';
 
@@ -20,7 +21,7 @@ export const Skiplink = ({
       {...rest}
       ref={ref}
       href={href}
-      onFocus={() => ref.current?.scrollIntoView()}
+      //onFocus={() => ref.current?.scrollIntoView()}
       className={cnb('su-skiplink', className)}
     >
       {children}

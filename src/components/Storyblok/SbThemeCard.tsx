@@ -1,5 +1,5 @@
 import React from 'react';
-import { storyblokEditable } from 'gatsby-source-storyblok';
+import { storyblokEditable } from '@storyblok/react/rsc';
 import { ThemeCard } from '../VerticalCard';
 import { SbStoryCardProps } from './SbStoryCard';
 import { AccentBgColorType } from '../../utilities/datasource';
@@ -37,7 +37,7 @@ export const SbThemeCard = ({
     body={body}
     imageSrc={filename}
     imageFocus={focus}
-    tabColor={paletteAccentColors[value] as AccentBgColorType}
+    tabColor={paletteAccentColors[value || ''] as AccentBgColorType}
     ctaLabel={ctaLabel}
     ctaSrText={ctaSrText}
     link={link}

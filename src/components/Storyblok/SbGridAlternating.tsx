@@ -1,5 +1,6 @@
+'use client';
 import React from 'react';
-import { storyblokEditable, StoryblokComponent } from 'gatsby-source-storyblok';
+import { storyblokEditable, StoryblokComponent } from '@storyblok/react';
 import { GridAlternating, GridWidthType } from '../Grid';
 import { PaddingType } from '../../utilities/datasource';
 

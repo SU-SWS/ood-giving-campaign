@@ -1,5 +1,6 @@
+'use client';
 import React from 'react';
-import { storyblokEditable } from 'gatsby-source-storyblok';
+import { storyblokEditable } from '@storyblok/react/rsc';
 import { AnimationType } from '../Animate';
 import { TextCard } from '../TextCard/TextCard';
 import * as styles from '../TextCard/TextCard.styles';

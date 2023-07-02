@@ -1,0 +1,61 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "comma-dangle": ["error", {
+      "objects": "always-multiline",
+      "arrays": "always-multiline",
+      "imports": "always-multiline",
+      "exports": "always-multiline",
+      "functions": "always-multiline"
+      }],
+    "max-len": ["warn", { "code": 120, "ignoreStrings": true }],
+    "no-use-before-define": "off",
+    "no-param-reassign": "off",
+    "no-redeclare": "off",
+    "no-undef": "off",
+    "no-underscore-dangle": "off", // We have _uid from Storyblok that can't be changed
+    "object-curly-newline": ["error", { "consistent": true, "minProperties": 4 }],
+    "import/extensions": "off",
+    "no-shadow": "off",
+    "jsx-a11y/label-has-associated-control": [ 2, {
+      "components": [ "Label" ],
+      "required": {
+          "some": [ "nesting", "id" ]
+      }
+    }],
+    "quotes": [2, "single",
+      { "avoidEscape": true, "allowTemplateLiterals": true }
+    ],
+    "space-before-function-paren": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/prop-types": 0,
+    "react/jsx-handler-names": 0,
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [
+            ".js",
+            ".ts",
+            ".jsx",
+            ".tsx"
+        ]
+      }
+    ],
+    "react/jsx-fragments": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "react/no-unused-prop-types": 0,
+    "react/require-default-props": 0,
+    "react/function-component-definition": [2, {
+      "namedComponents": ["function-declaration", "arrow-function"]
+    }],
+    "react/display-name": 0,
+    "import/prefer-default-export": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/no-cycle": 0,
+    "import/no-unresolved": 0,
+    "no-unused-vars": 0,
+    "import/export": 0,
+    "func-names": 0,
+    "semi": [1, "always"] // 1 is for warning
+  }
+}

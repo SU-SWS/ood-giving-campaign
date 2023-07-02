@@ -1,3 +1,4 @@
+'use client';
 import React, { useRef } from 'react';
 import { useScroll, useSpring, m } from 'framer-motion';
 import { Container } from '../Container';
@@ -11,7 +12,7 @@ type ProgressSectionProps = {
 };
 
 export const ProgressSection = ({ bgImage, children }: ProgressSectionProps) => {
-  const bg = getProcessedImage(bgImage, '3000x0');
+  const bg = bgImage ? getProcessedImage(bgImage, '3000x0') : '';
   const introRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: introRef,

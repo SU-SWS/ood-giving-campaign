@@ -1,6 +1,6 @@
 import React from 'react';
-import { useLocation } from '@reach/router';
-import { useSiteMetadata } from '../../hooks/useSiteMetadata';
+import { useRouter } from 'next/router';
+//import { useSiteMetadata } from '../../hooks/useSiteMetadata';
 import { getProcessedImage } from '../../utilities/getProcessedImage';
 import { SbImageType, SbLinkType } from '../Storyblok/Storyblok.types';
 
@@ -37,30 +37,33 @@ export const SEO = ({
     twitter_image,
   } = {},
 }: SEOProps) => {
-  const { title: siteTitle, description } = useSiteMetadata();
+  //const { title: siteTitle, description } = useSiteMetadata();
+  const description = 'description';
+  const siteTitle = 'siteTitle';
   const ogTitle = og_title || seoTitle || title;
   const ogDescription = og_description || seoDescription || description;
-  const heroImageCropped = getProcessedImage(filename, '1200x630', focus);
+  const heroImageCropped = filename ? getProcessedImage(filename, '1200x630', focus) : undefined;
 
   /**
    * The og_image and twitter_image fields provided by the Storyblok SEO plugin has no image focus support
    */
-  const ogCropped = getProcessedImage(og_image, '1200x630');
+  const ogCropped = og_image ? getProcessedImage(og_image, '1200x630') : undefined;
   // Twitter card image has an aspect ratio of 2:1
-  const twitterCropped = getProcessedImage(twitter_image, '1200x600');
+  const twitterCropped = twitter_image ? getProcessedImage(twitter_image, '1200x600') : undefined;
 
   const ogImage = ogCropped || heroImageCropped;
 
-  const location = useLocation();
+  const router = useRouter();
+  const origin = typeof window !== 'undefined' && window.location.origin ? window.location.origin : '';
   let ogType = 'website';
-  if (location.pathname.startsWith('/stories')) {
+  if (router.pathname.startsWith('/stories')) {
     ogType = 'article';
   }
 
   // Self reference URL is the page's URL without any query params
-  const selfReferencingUrl = `${location.origin}${location.pathname}`;
+  const selfReferencingUrl = `${origin}${router.pathname}`;
   // If the canonical URL is entered in Storyblok, find the full URL for it
-  const canonicalNotSelf = canonicalUrl?.linktype === 'story' ? `${location.origin}/${canonicalUrl?.cached_url}` : canonicalUrl?.url;
+  const canonicalNotSelf = canonicalUrl?.linktype === 'story' ? `${origin}/${canonicalUrl?.cached_url}` : canonicalUrl?.url;
   const canonical = canonicalNotSelf || selfReferencingUrl;
 
   return (

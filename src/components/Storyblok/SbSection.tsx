@@ -1,6 +1,6 @@
 import React from 'react';
 import { cnb } from 'cnbuilder';
-import { storyblokEditable } from 'gatsby-source-storyblok';
+import { storyblokEditable } from '@storyblok/react/rsc';
 import { CreateBloks } from '../CreateBloks';
 import { FlexBox } from '../FlexBox';
 import {

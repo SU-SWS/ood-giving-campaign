@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryblokComponent } from 'gatsby-source-storyblok';
+import { StoryblokComponent } from '@storyblok/react/rsc';
 
 export const CreateBloks = ({ blokSection, ...props }) => {
   if (blokSection) {

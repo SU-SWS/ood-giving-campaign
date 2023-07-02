@@ -1,6 +1,7 @@
+'use client';
 import React, { useEffect, useState, HTMLAttributes } from 'react';
 import {
-  m, useMotionValueEvent, useScroll, useVelocity, useWillChange,
+  motion, useMotionValueEvent, useScroll, useVelocity, useWillChange,
 } from 'framer-motion';
 import { cnb } from 'cnbuilder';
 import { FlexBox } from '../FlexBox';
@@ -43,7 +44,7 @@ export const Masthead = ({ className }: MastheadProps) => {
   ]);
 
   return (
-    <m.div
+    <motion.div
       className={cnb(
         'su-w-full su-fixed su-top-0 su-z-50 su-transition-colors',
         !isAtTop && isScrollingBack ? 'su-bg-gc-black su-border-b su-border-b-black-80' : 'su-bg-transparent su-border-b-transparent',
@@ -86,6 +87,6 @@ export const Masthead = ({ className }: MastheadProps) => {
           </CtaButton>
         </FlexBox>
       </FlexBox>
-    </m.div>
+    </motion.div>
   );
 };

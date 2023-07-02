@@ -2,6 +2,7 @@
 
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
 import { SbBanner } from './Storyblok/SbBanner';
+import { SbBasicPage } from './Storyblok/SbBasicPage';
 import { SbBracketCard } from './Storyblok/SbBracketCard';
 import { SbCta } from './Storyblok/SbCta';
 import { SbGrid } from './Storyblok/SbGrid';
@@ -18,6 +19,7 @@ import { SbWysiwyg } from './Storyblok/SbWysiwyg';
 
 const components = {
   sbBanner: SbBanner,
+  sbBasicPage: SbBasicPage,
   sbBracketCard: SbBracketCard,
   sbCta: SbCta,
   sbGrid: SbGrid,
@@ -44,4 +46,4 @@ storyblokInit({
 
 export default function StoryblokProvider({ children }) {
   return children;
-}
+};

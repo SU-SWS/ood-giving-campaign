@@ -1,3 +1,4 @@
+'use client';
 import React, { HTMLAttributes } from 'react';
 import { Container } from '../Container';
 import { FlexBox } from '../FlexBox';
@@ -38,7 +39,7 @@ export const SplitPoster = ({
   bgImageSrc,
   bgImageFocus,
   headingLevel = 'h3',
-  isLargeOffset,
+  isLargeOffset = false,
   headingLeft,
   headingRight,
   bodyLeft,

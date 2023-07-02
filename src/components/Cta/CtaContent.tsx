@@ -17,11 +17,11 @@ export const CtaContent = ({
   srText,
   children,
 }: CtaContentProps) => {
-  const heroicon = icon || styles.ctaIconMap[variant] || '';
+  const heroicon = icon || styles.ctaIconMap[variant || ''] || '';
   const iconAnimate = styles.iconAnimation[animate];
   const iconMarginLeft = iconPosition === 'right' && children ? styles.iconLeftMargin[heroicon] || styles.iconLeftMargin.default : '';
   const iconMarginRight = iconPosition === 'left' && children ? styles.iconRightMargin[heroicon] || styles.iconRightMargin.default : '';
-  const iconStyle = styles.iconStyles[variant];
+  const iconStyle = styles.iconStyles[variant || ''];
   const { className: iconClasses, ...iProps } = iconProps || {};
 
   return (

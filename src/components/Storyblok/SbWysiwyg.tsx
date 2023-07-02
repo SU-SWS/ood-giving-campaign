@@ -1,6 +1,6 @@
 import React from 'react';
 import { StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
-import { storyblokEditable } from 'gatsby-source-storyblok';
+import { storyblokEditable } from '@storyblok/react/rsc';
 import { RichText } from '../RichText';
 import { TextAlignType } from '../Typography';
 import { WidthBox, WidthType } from '../WidthBox';
@@ -26,7 +26,7 @@ export const SbWysiwyg = ({
     content,
     isLightText,
     textAlign,
-    width,
+    width = 'full',
     spacingTop,
     spacingBottom,
   },

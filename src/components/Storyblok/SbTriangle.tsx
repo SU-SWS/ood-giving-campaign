@@ -1,5 +1,5 @@
 import React from 'react';
-import { storyblokEditable } from 'gatsby-source-storyblok';
+import { storyblokEditable } from '@storyblok/react/rsc';
 import { Triangle } from '../Shapes';
 
 type SbTriangleProps = {

@@ -24,15 +24,18 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <StoryblokProvider>
       <html lang="en">
-        <FlexBox justifyContent="between" direction="col" className="su-min-h-screen su-relative">
-          <Skiplink />
-          <Masthead />
-          <main id="main-content">{children}</main>
-          <footer>
-            <LocalFooter />
-            <GlobalFooter />
-          </footer>
-        </FlexBox>
+        {/* Absolutely necessary to have a body tag here, otherwise your components won't get any interactivity */}
+        <body>
+          <FlexBox justifyContent="between" direction="col" className="su-min-h-screen su-relative">
+            <Skiplink />
+            <Masthead />
+            <main id="main-content">{children}</main>
+            <footer>
+              <LocalFooter />
+              <GlobalFooter />
+            </footer>
+          </FlexBox>
+        </body>
       </html>
     </StoryblokProvider>
   );

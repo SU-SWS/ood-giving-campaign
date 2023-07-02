@@ -1,5 +1,5 @@
 import React from 'react';
-import { storyblokEditable } from 'gatsby-source-storyblok';
+import { storyblokEditable } from '@storyblok/react/rsc';
 import { AnimationType } from '../Animate';
 import { InitiativeCard } from '../InitiativeCard';
 import { HeadingType } from '../Typography';

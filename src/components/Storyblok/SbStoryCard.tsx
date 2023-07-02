@@ -1,5 +1,6 @@
+'use client';
 import React from 'react';
-import { storyblokEditable } from 'gatsby-source-storyblok';
+import { storyblokEditable } from '@storyblok/react/rsc';
 import { AnimationType } from '../Animate';
 import { HeadingType } from '../Typography';
 import { StoryCard } from '../VerticalCard';
@@ -37,10 +38,10 @@ export const SbStoryCard = ({
     _uid,
     storyPicker: {
       content: {
-        title,
-        cardTitle,
-        topics,
-        heroImage: { filename: heroImage, focus: heroFocus } = {},
+        title = '',
+        cardTitle = '',
+        topics = [],
+        heroImage: { filename: heroImage = '', focus: heroFocus = '' } = {},
       } = {},
       full_slug,
     } = {},
@@ -63,7 +64,7 @@ export const SbStoryCard = ({
     isSmallHeading={isSmallHeading}
     imageSrc={cardImage || heroImage}
     imageFocus={cardFocus || heroFocus}
-    tabColor={paletteAccentColors[value] as AccentBgColorType}
+    tabColor={paletteAccentColors[value || ''] as AccentBgColorType}
     link={link}
     href={`/${full_slug}`}
     animation={animation}

@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { CtaContent } from './CtaContent';
 import { getCtaClasses } from './getCtaClasses';
@@ -26,7 +27,7 @@ export const CtaExternalLink = React.forwardRef<HTMLAnchorElement, CtaExternalLi
       ...rest
     } = props;
 
-    const ctaClasses = getCtaClasses(variant, size, curve, color, className);
+    const ctaClasses = getCtaClasses(variant, size || '', curve, color, className);
 
     return (
       <a

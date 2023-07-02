@@ -1,5 +1,5 @@
 import React from 'react';
-import { storyblokEditable } from 'gatsby-source-storyblok';
+import { storyblokEditable } from '@storyblok/react/rsc';
 import { Logo, LogoVariantType, LogoColorType } from '../Logo';
 
 type SbLogoProps = {

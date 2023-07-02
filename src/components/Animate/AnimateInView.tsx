@@ -1,5 +1,6 @@
+'use client';
 import React, { useRef } from 'react';
-import { useInView, m, useReducedMotion } from 'framer-motion';
+import { useInView, motion, useReducedMotion } from 'framer-motion';
 import { AnimationMap, AnimationType } from './AnimationMap';
 
 type AnimateInViewProps = {
@@ -28,7 +29,7 @@ export const AnimateInView = ({
   }
 
   return (
-    <m.div
+    <motion.div
       ref={ref}
       variants={AnimationMap[animation]}
       transition={{
@@ -41,6 +42,6 @@ export const AnimateInView = ({
       {...props}
     >
       {children}
-    </m.div>
+    </motion.div>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { storyblokEditable } from 'gatsby-source-storyblok';
+import { storyblokEditable } from '@storyblok/react/rsc';
 import { CtaLink, CtaColorType, CtaVariantType } from '../Cta';
 import { IconType } from '../HeroIcon';
 import { SbLinkType } from './Storyblok.types';

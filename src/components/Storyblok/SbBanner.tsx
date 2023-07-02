@@ -1,5 +1,6 @@
+'use client';
 import React from 'react';
-import { storyblokEditable } from 'gatsby-source-storyblok';
+import { storyblokEditable } from '@storyblok/react/rsc';
 import { StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { Banner } from '../Banner';
 import { CreateBloks } from '../CreateBloks';
@@ -12,7 +13,7 @@ type SbBannerProps = {
     _uid: string;
     heading?: string;
     isSmallHeading?: boolean;
-    body?: StoryblokRichtext;
+    body: StoryblokRichtext;
     cta?: any[];
     image?: SbImageType;
     bgColor?: BgTextColorPairBlackWhiteType;

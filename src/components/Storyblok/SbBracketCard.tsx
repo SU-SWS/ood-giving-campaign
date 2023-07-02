@@ -1,5 +1,5 @@
-import React from 'react';
-import { storyblokEditable } from 'gatsby-source-storyblok';
+'use client';
+import { storyblokEditable } from '@storyblok/react/rsc';
 import { HeadingType } from '../Typography';
 import { BracketCard } from '../BracketCard';
 import { SbImageType, SbLinkType } from './Storyblok.types';
@@ -55,7 +55,7 @@ export const SbBracketCard = ({
     imageFocus={focus}
     alt={alt}
     textColor={isDarkTheme ? 'white' : 'black'}
-    tabColor={paletteAccentColors[value] as AccentBgColorType}
+    tabColor={paletteAccentColors[value || ''] as AccentBgColorType}
     ctaLabel={ctaLabel}
     link={link}
     spacingBottom={spacingBottom}

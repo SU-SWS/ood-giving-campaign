@@ -1,6 +1,7 @@
+'use client';
 import React, { HTMLAttributes, useRef } from 'react';
 import {
-  useScroll, useSpring, m, MotionStyle,
+  useScroll, useSpring, motion, MotionStyle,
 } from 'framer-motion';
 import { cnb } from 'cnbuilder';
 import { Grid, GridProps } from './Grid';
@@ -63,16 +64,16 @@ export const GridAlternating = ({
         {childrenArray?.map((item, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <React.Fragment key={index}>
-            <m.div
+            <motion.div
               className={cnb(
-                marginBottoms[spacing],
-                styles.negativeSpacing[spacing],
+                marginBottoms[spacing || ''],
+                styles.negativeSpacing[spacing || ''],
                 styles.cellWithContent,
               )}
               style={gridCellStyle}
             >
               {item}
-            </m.div>
+            </motion.div>
             {index !== childrenArray.length - 1 && (
               <>
                 <div />
@@ -83,7 +84,7 @@ export const GridAlternating = ({
         ))}
       </Grid>
       {addCenterLine && (
-        <m.div
+        <motion.div
           className={styles.centerline}
           style={{ scaleY }}
         />

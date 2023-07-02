@@ -1,5 +1,5 @@
-import React from 'react';
-import { storyblokEditable } from 'gatsby-source-storyblok';
+'use client';
+import { storyblokEditable } from '@storyblok/react/rsc';
 import { CreateBloks } from '../CreateBloks';
 import { HeadingType } from '../Typography';
 import { SbImageType } from './Storyblok.types';

@@ -1,3 +1,4 @@
+'use client';
 import React, { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
 import { AnimateInView } from '../Animate';
@@ -40,7 +41,7 @@ export const PosterContent = ({
       {...props}
       alignItems="end"
       justifyContent={contentAlign === 'left' ? 'start' : 'end'}
-      className={cnb(styles.posterContentRoot(!!imageSrc), bgTextColorPairs[bgColor], className)}
+      className={cnb(styles.posterContentRoot(!!imageSrc), bgTextColorPairs[bgColor || ''], className)}
     >
       {imageSrc && (
         <ImageOverlay

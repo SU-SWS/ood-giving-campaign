@@ -1,17 +1,17 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+'use client';
 import React from 'react';
-import { GatsbyLinkProps } from 'gatsby';
+import { LinkProps } from 'next/link';
 import { CtaCommonProps } from './Cta.types';
 import { CtaExternalLink } from './CtaExternalLink';
-import { CtaGatsbyLink } from './CtaGatsbyLink';
+import { CtaNextLink } from './CtaNextLink';
 import { SbLinkType } from '../Storyblok/Storyblok.types';
-import { useAddUtmParams } from '../../hooks/useAddUtmParams';
+//import { useAddUtmParams } from '../../hooks/useAddUtmParams';
 
 /**
  * Use this component for CTA links.
  * You can pass in a Storyblok link field sbLink or a href that is internal or external.
  */
-export type CtaLinkProps = Omit<GatsbyLinkProps<{}>, 'to'> & React.ComponentPropsWithoutRef<'a'> & CtaCommonProps & {
+export type CtaLinkProps = LinkProps & React.ComponentPropsWithoutRef<'a'> & CtaCommonProps & {
   sbLink?: SbLinkType;
 };
 
@@ -39,8 +39,8 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
     // Check for internal links
     const isInternal: boolean = linktype === 'story' || /^\/(?!\/)/.test(href);
 
-    // Open internal links in new tab because passing target="_blank" to GatsbyLink doesn't work at the moment
-    const openGatsbyLinkInNewTab = (e) => {
+    // Open internal links in new tab because passing target="_blank" to NextLink doesn't work at the moment
+    const openNextLinkInNewTab = (e) => {
       if (target === '_blank') {
         e.preventDefault();
         window.open(cachedUrl || href, '_blank');
@@ -66,16 +66,17 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
     }
 
     // Add UTM params to internal links
-    const myLinkWithUtm = useAddUtmParams(myLink);
+    //const myLinkWithUtm = useAddUtmParams(myLink);
+    const myLinkWithUtm = myLink;
 
     if (isInternal) {
       return (
-        <CtaGatsbyLink
+        <CtaNextLink
           {...rest}
           ref={ref}
-          to={myLinkWithUtm}
+          href={myLinkWithUtm}
           target={target || undefined}
-          onClick={openGatsbyLinkInNewTab}
+          onClick={openNextLinkInNewTab}
         />
       );
     }

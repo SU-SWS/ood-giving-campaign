@@ -12,7 +12,7 @@ export type BracketCurveProps = HTMLAttributes<HTMLDivElement> & {
 export const BracketCurve = ({
   corner = 'tl',
   color = 'white',
-  isSolid,
+  isSolid = false,
   className = 'su-text-[clamp(1.2rem,1.5vw,2.5rem)] su-h-100 sm:su-h-[12vw] 2xl:su-h-[8em]',
   ...props
 }: BracketCurveProps) => (
