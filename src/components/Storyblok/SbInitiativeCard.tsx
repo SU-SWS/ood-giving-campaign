@@ -26,7 +26,6 @@ type SbInitiativeCardProps = {
 
 export const SbInitiativeCard = ({
   blok: {
-    _uid,
     heading,
     headingLevel,
     body,
@@ -40,7 +39,6 @@ export const SbInitiativeCard = ({
 }: SbInitiativeCardProps) => (
   <InitiativeCard
     {...storyblokEditable(blok)}
-    key={_uid}
     heading={heading}
     headingLevel={headingLevel}
     body={body}

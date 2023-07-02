@@ -8,7 +8,7 @@ export default async function Page({ params }) {
   const { data } = await getStoryData(params);
 
   return (
-    <StoryblokStory story={data.story} key={data.key} />
+    <StoryblokStory story={data.story} />
   );
 };
 
@@ -34,6 +34,7 @@ export async function generateStaticParams() {
 
   const { data: { links } } = await storyblokApi?.get('cdn/links', sbParams);
   let paths: pathsType[] = [];
+
   Object.keys(links).forEach((linkKey) => {
     if (links[linkKey].is_folder || links[linkKey].slug === 'home') {
       return;

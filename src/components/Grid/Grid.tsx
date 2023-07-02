@@ -50,7 +50,7 @@ export const Grid = ({
   <AsComponent
     {...props}
     className={cnb(
-      'su-grid',
+      'su-grid su-overflow-hidden',
       gap ? styles.gridGaps[gap] : '',
       xs ? styles.gridNumCols.xs[xs] : '',
       sm ? styles.gridNumCols.sm[sm] : '',

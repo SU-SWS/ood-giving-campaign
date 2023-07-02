@@ -31,7 +31,6 @@ export const SbThemeCard = ({
 }: SbThemeCardProps) => (
   <ThemeCard
     {...storyblokEditable(blok)}
-    key={_uid}
     heading={heading}
     headingLevel={headingLevel}
     body={body}

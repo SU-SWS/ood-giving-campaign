@@ -1,4 +1,3 @@
-'use client';
 import React, { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
 import Link from 'next/link';

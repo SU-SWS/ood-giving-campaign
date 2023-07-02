@@ -43,7 +43,6 @@ export const SbGrid = ({
     xxl={xxl}
     gap={gap}
     {...storyblokEditable(blok)}
-    key={blok._uid}
   >
     <CreateBloks blokSection={items} />
   </Grid>

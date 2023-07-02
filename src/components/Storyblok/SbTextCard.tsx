@@ -42,7 +42,6 @@ export const SbTextCard = ({
 }: SbTextCardProps) => (
   <TextCard
     {...storyblokEditable(blok)}
-    key={_uid}
     text={text}
     color={color}
     font={font}

@@ -28,7 +28,6 @@ type SbSectionProps = {
 
 export const SbSection = ({
   blok: {
-    _uid,
     content,
     superhead,
     heading,
@@ -42,7 +41,6 @@ export const SbSection = ({
 }: SbSectionProps) => (
   <Container
     {...storyblokEditable(blok)}
-    key={_uid}
     width="full"
     bgColor={bgColor}
     pt={paddingTop}

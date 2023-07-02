@@ -20,7 +20,6 @@ type SbCtaType = {
 
 export const SbCta = ({
   blok: {
-    _uid,
     link,
     label,
     srText,
@@ -38,7 +37,6 @@ export const SbCta = ({
   return (
     <CtaLink
       {...storyblokEditable(blok)}
-      key={_uid}
       sbLink={link}
       variant={ctaVariant}
       curve={`${curve}${isLarge && curve ? '-large' : ''}` as CtaCurveType}

@@ -31,7 +31,6 @@ type SbSplitPosterProps = {
 
 export const SbSplitPoster = ({
   blok: {
-    _uid,
     headingLevel,
     bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
     isLargeOffset,
@@ -58,7 +57,6 @@ export const SbSplitPoster = ({
   return (
     <SplitPoster
       {...storyblokEditable(blok)}
-      key={_uid}
       headingLevel={headingLevel}
       bgImageSrc={bgImageSrc}
       bgImageFocus={bgImageFocus}

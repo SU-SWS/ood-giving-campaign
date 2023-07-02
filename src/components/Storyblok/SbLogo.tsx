@@ -12,11 +12,10 @@ type SbLogoProps = {
 
 export const SbLogo = ({
   blok: {
-    _uid,
     type,
     color,
   },
   blok,
 }: SbLogoProps) => (
-  <Logo {...storyblokEditable(blok)} key={_uid} variant={type} color={color} />
+  <Logo {...storyblokEditable(blok)} variant={type} color={color} />
 );

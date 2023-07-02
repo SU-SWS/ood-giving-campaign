@@ -20,7 +20,6 @@ type SbGridAlternatingProps = {
 
 export const SbGridAlternating = ({
   blok: {
-    _uid,
     items,
     startOnRight,
     addCenterLine,
@@ -34,7 +33,6 @@ export const SbGridAlternating = ({
 }: SbGridAlternatingProps) => (
   <GridAlternating
     {...storyblokEditable(blok)}
-    key={_uid}
     startOnRight={startOnRight}
     addCenterLine={addCenterLine}
     width={width}

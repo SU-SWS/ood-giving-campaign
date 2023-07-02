@@ -1,5 +1,3 @@
-'use client';
-import React from 'react';
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { Banner } from '../Banner';
@@ -22,7 +20,6 @@ type SbBannerProps = {
 
 export const SbBanner = ({
   blok: {
-    _uid,
     heading,
     isSmallHeading,
     body,
@@ -38,7 +35,6 @@ export const SbBanner = ({
   return (
     <Banner
       {...storyblokEditable(blok)}
-      key={_uid}
       heading={heading}
       isSmallHeading={isSmallHeading}
       body={Body}

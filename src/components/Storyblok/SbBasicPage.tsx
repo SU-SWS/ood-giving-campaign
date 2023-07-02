@@ -17,7 +17,6 @@ type SbBasicPageProps = {
 
 export const SbBasicPage = ({
   blok: {
-    _uid,
     title,
     hero,
     content,
@@ -25,7 +24,7 @@ export const SbBasicPage = ({
   },
   blok,
 }: SbBasicPageProps) => (
-  <div {...storyblokEditable(blok)} key={_uid}>
+  <div {...storyblokEditable(blok)}>
     <CreateBloks blokSection={hero} />
     <Hero heading={title} />
     <CreateBloks blokSection={content} />

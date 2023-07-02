@@ -22,7 +22,6 @@ type SbWysiwygProps = {
 
 export const SbWysiwyg = ({
   blok: {
-    _uid,
     content,
     isLightText,
     textAlign,
@@ -35,7 +34,6 @@ export const SbWysiwyg = ({
 }: SbWysiwygProps) => (
   <WidthBox
     {...storyblokEditable(blok)}
-    key={_uid}
     width={width}
     pt={spacingTop}
     pb={spacingBottom}

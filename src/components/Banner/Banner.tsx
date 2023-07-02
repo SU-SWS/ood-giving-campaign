@@ -1,4 +1,3 @@
-'use client';
 import React, { HTMLAttributes } from 'react';
 import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
@@ -28,7 +27,7 @@ export const Banner = ({
   bgColor = 'white',
   ...props
 }: BannerProps) => (
-  <Container {...props} as="section" bgColor={bgColor} width="full" py={9}>
+  <Container {...props} as="section" bgColor={bgColor} width="full" py={9} className="su-overflow-hidden">
     <FlexBox alignItems="start" justifyContent="between" className={styles.wrapper}>
       <Container className={styles.contentWrapper}>
         <AnimateInView duration={0.6} animation="slideUp">

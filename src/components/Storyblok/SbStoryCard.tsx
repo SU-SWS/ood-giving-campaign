@@ -35,7 +35,6 @@ export type SbStoryCardProps = {
 
 export const SbStoryCard = ({
   blok: {
-    _uid,
     storyPicker: {
       content: {
         title = '',
@@ -58,7 +57,6 @@ export const SbStoryCard = ({
 }: SbStoryCardProps) => (
   <StoryCard
     {...storyblokEditable(blok)}
-    key={_uid}
     heading={heading || cardTitle || title}
     headingLevel={headingLevel}
     isSmallHeading={isSmallHeading}

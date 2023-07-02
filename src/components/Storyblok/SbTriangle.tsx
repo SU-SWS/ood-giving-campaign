@@ -9,10 +9,7 @@ type SbTriangleProps = {
 };
 
 export const SbTriangle = ({
-  blok: {
-    _uid,
-  },
   blok,
 }: SbTriangleProps) => (
-  <Triangle {...storyblokEditable(blok)} key={_uid} />
+  <Triangle {...storyblokEditable(blok)} />
 );

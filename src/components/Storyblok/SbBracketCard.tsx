@@ -1,4 +1,3 @@
-'use client';
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { HeadingType } from '../Typography';
 import { BracketCard } from '../BracketCard';
@@ -27,7 +26,6 @@ export type SbBracketCardProps = {
 
 export const SbBracketCard = ({
   blok: {
-    _uid,
     heading,
     headingLevel,
     isSmallHeading,
@@ -45,7 +43,6 @@ export const SbBracketCard = ({
 }: SbBracketCardProps) => (
   <BracketCard
     {...storyblokEditable(blok)}
-    key={_uid}
     heading={heading}
     headingLevel={headingLevel}
     isSmallHeading={isSmallHeading}
