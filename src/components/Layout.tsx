@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Slice } from 'gatsby';
-import { storyblokInit, apiPlugin } from 'gatsby-source-storyblok';
+// import { Slice } from 'gatsby';
+// import { storyblokInit, apiPlugin } from 'gatsby-source-storyblok';
 import { FlexBox } from './FlexBox';
 import { Masthead } from './Masthead';
 import { LocalFooter } from './LocalFooter';
