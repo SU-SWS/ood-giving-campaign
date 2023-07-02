@@ -29,7 +29,7 @@ export const AnimateInView = ({
   }
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       variants={AnimationMap[animation]}
       transition={{
@@ -42,6 +42,6 @@ export const AnimateInView = ({
       {...props}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 };
