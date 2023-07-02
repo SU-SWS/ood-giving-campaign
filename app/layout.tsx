@@ -1,5 +1,6 @@
 import React from 'react';
 import './globals.css';
+import { Source_Sans_3, Source_Serif_4 } from 'next/font/google';
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
 import StoryblokProvider from '../src/components/StoryblokProvider';
 import { FlexBox } from '../src/components/FlexBox';
@@ -12,6 +13,18 @@ type LayoutProps = {
   children: React.ReactNode,
 };
 
+const sourceSans = Source_Sans_3({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-source-sans',
+});
+
+const sourceSerif = Source_Serif_4({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-source-serif',
+});
+
 storyblokInit({
   accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
   use: [apiPlugin],
@@ -23,7 +36,7 @@ storyblokInit({
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <StoryblokProvider>
-      <html lang="en">
+      <html lang="en" className={`${sourceSans.variable} ${sourceSerif.variable}`}>
         {/* Absolutely necessary to have a body tag here, otherwise your components won't get any interactivity */}
         <body>
           <FlexBox justifyContent="between" direction="col" className="su-min-h-screen su-relative">
