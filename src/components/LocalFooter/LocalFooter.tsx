@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Paragraph, Heading, Text } from '../Typography';
 import { Container } from '../Container';
 import { Grid } from '../Grid';
@@ -10,9 +11,12 @@ import { initiatives, themes } from '../../utilities/routes';
 
 export const LocalFooter = () => (
   <>
-    <img
+    <Image
+      width={2000}
+      height={40}
       alt=""
-      src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/f23b53c0e4/steve-johnson-cropped-2000x40-02.jpg')}
+      loading="lazy"
+      src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/f23b53c0e4/steve-johnson-cropped-2000x40-02.jpg') || ''}
       className="su-w-full"
     />
     <Container bgColor="white" py={8}>
