@@ -37,14 +37,14 @@
     "dotenv": "^16.0.3",
     "framer-motion": "^10.12.16",
     "netlify-plugin-vault-variables": "^1.0.7",
-    "next": "^13.4.7",
+    "next": "^13.4.8",
     "node-vault": "^0.9.22",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "storyblok-rich-text-react-renderer-ts": "^3.2.0"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^4.38.1",
+    "@netlify/plugin-nextjs": "^4.39.0",
     "@tailwindcss/container-queries": "^0.1.1",
     "@types/node": "^20.3.3",
     "@types/react": "^18.2.14",
