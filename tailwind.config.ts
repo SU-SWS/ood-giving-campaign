@@ -20,7 +20,7 @@ export default {
      * Writing out the subdirectories in src/ here to prevent an infinite loop
      * https://www.gatsbyjs.com/docs/how-to/styling/tailwind-css/#installing-and-configuring-tailwind
      */
-    './src/pages/**/*.{js,jsx,ts,tsx}',
+    './app/**/*.{js,jsx,ts,tsx}',
     './src/components/**/*.{js,jsx,ts,tsx}',
     './src/utilities/**/*.{js,jsx,ts,tsx}',
   ],

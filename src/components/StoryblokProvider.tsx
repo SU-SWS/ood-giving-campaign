@@ -13,6 +13,7 @@ import { SbInitiativeCard } from './Storyblok/SbInitiativeCard';
 import { SbLogo } from './Storyblok/SbLogo';
 import { SbSection } from './Storyblok/SbSection';
 import { SbSplitPoster } from './Storyblok/SbSplitPoster';
+import { SbStory } from './Storyblok/SbStory';
 import { SbStoryCard } from './Storyblok/SbStoryCard';
 import { SbTextCard } from './Storyblok/SbTextCard';
 import { SbThemeCard } from './Storyblok/SbThemeCard';
@@ -31,6 +32,7 @@ const components = {
   sbLogo: SbLogo,
   sbSection: SbSection,
   sbSplitPoster: SbSplitPoster,
+  sbStory: SbStory,
   sbTextCard: SbTextCard,
   sbThemeCard: SbThemeCard,
   sbTriangle: SbTriangle,
