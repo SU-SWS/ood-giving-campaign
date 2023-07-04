@@ -8,6 +8,7 @@ import { SbBracketCard } from './Storyblok/SbBracketCard';
 import { SbCta } from './Storyblok/SbCta';
 import { SbGrid } from './Storyblok/SbGrid';
 import { SbGridAlternating } from './Storyblok/SbGridAlternating';
+import { SbHomepagePage } from './Storyblok/SbHomepage';
 import { SbInitiativeCard } from './Storyblok/SbInitiativeCard';
 import { SbLogo } from './Storyblok/SbLogo';
 import { SbSection } from './Storyblok/SbSection';
@@ -25,6 +26,7 @@ const components = {
   sbCta: SbCta,
   sbGrid: SbGrid,
   sbGridAlternating: SbGridAlternating,
+  sbHomepage: SbHomepagePage,
   sbInitiativeCard: SbInitiativeCard,
   sbLogo: SbLogo,
   sbSection: SbSection,
