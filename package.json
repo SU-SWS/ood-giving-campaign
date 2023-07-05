@@ -44,7 +44,7 @@
     "storyblok-rich-text-react-renderer-ts": "^3.2.0"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^4.39.0",
+    "@netlify/plugin-nextjs": "^4.29.5-appdir.0",
     "@tailwindcss/container-queries": "^0.1.1",
     "@types/node": "^20.3.3",
     "@types/react": "^18.2.14",
