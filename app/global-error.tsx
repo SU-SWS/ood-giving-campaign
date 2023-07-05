@@ -10,7 +10,7 @@ export default function GlobalError({
   return (
     <html>
       <body>
-        <h1>Error: Something went wrong!</h1>
+        <h1>Global Error: Something went wrong!</h1>
       </body>
     </html>
   );
