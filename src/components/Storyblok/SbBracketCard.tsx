@@ -31,8 +31,7 @@ export const SbBracketCard = ({
     isSmallHeading,
     textOnLeft,
     body,
-    // TODO: seperate alt as separate field
-    image: { filename, focus, alt } = {},
+    image: { filename, focus } = {},
     tabColor: { value } = {},
     ctaLabel,
     link,
@@ -50,9 +49,8 @@ export const SbBracketCard = ({
     body={body}
     imageSrc={filename}
     imageFocus={focus}
-    alt={alt}
     textColor={isDarkTheme ? 'white' : 'black'}
-    tabColor={paletteAccentColors[value || ''] as AccentBgColorType}
+    tabColor={paletteAccentColors[value] as AccentBgColorType}
     ctaLabel={ctaLabel}
     link={link}
     spacingBottom={spacingBottom}

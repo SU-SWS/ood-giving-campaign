@@ -20,7 +20,6 @@ type BracketCardProps = HTMLAttributes<HTMLDivElement> & {
   body?: string;
   imageSrc?: string;
   imageFocus?: string;
-  alt?: string;
   textOnLeft?: boolean;
   // TODO: We possibly could remove this and have the text color be inherited from the parent
   textColor?: styles.TextColorType;
@@ -39,7 +38,6 @@ export const BracketCard = ({
   body,
   imageSrc,
   imageFocus,
-  alt = '',
   textOnLeft = false,
   textColor,
   tabColor,
@@ -80,7 +78,7 @@ export const BracketCard = ({
             <div className={styles.imageAspectRatio}>
               <img
                 src={getProcessedImage(imageSrc, '900x750', imageFocus)}
-                alt={alt}
+                alt=""
                 loading="lazy"
                 className={styles.image}
               />
