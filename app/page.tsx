@@ -13,8 +13,10 @@ export default async function Home() {
 // Make sure to not export this function otherwise there will be a typescript error
 // https://github.com/vercel/next.js/discussions/48724
 async function fetchData() {
+  const activeEnv = process.env.NODE_ENV || 'development';
+
   const sbParams: ISbStoriesParams = {
-    version: 'draft',
+    version: activeEnv === 'development' ? 'draft' : 'published',
     resolve_relations: resolveRelations,
     cv: Date.now(),
   };

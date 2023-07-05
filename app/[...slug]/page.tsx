@@ -31,8 +31,13 @@ type pathsType = {
 }
 
 async function generateStaticParams() {
+  const activeEnv = process.env.NODE_ENV || 'development';
   const storyblokApi: StoryblokClient = getStoryblokApi();
-  let sbParams: ISbStoriesParams = { version: 'draft' };
+  let sbParams: ISbStoriesParams = {
+    version: activeEnv === 'development' ? 'draft' : 'published',
+    resolve_relations: resolveRelations,
+    cv: Date.now(),
+  };
 
   const { data: { links } } = await storyblokApi?.get('cdn/links', sbParams);
   let paths: pathsType[] = [];

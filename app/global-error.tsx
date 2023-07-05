@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 export default function GlobalError({
   error,
@@ -13,5 +13,5 @@ export default function GlobalError({
         <h1>Error: Something went wrong!</h1>
       </body>
     </html>
-  )
+  );
 };
