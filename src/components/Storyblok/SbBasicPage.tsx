@@ -28,7 +28,7 @@ export const SbBasicPage = ({
     <CreateBloks blokSection={hero} />
     <Hero heading={title} />
     <CreateBloks blokSection={content} />
-    {getNumBloks(blok.ankle) > 0 && (
+    {getNumBloks(ankle) > 0 && (
       <Image
         width={2000}
         height={40}
