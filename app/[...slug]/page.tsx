@@ -1,8 +1,8 @@
-import {
-  getStoryblokApi, ISbStoriesParams, StoryblokClient,
-} from '@storyblok/react/rsc';
+import { getStoryblokApi, ISbStoriesParams, StoryblokClient } from '@storyblok/react/rsc';
 import StoryblokStory from '@storyblok/react/story';
 import { resolveRelations } from '../../src/utilities/resolveRelations';
+
+const activeEnv = process.env.NODE_ENV || 'development';
 
 export default async function Page({ params }) {
   const { data } = await getStoryData(params);
@@ -17,7 +17,7 @@ export default async function Page({ params }) {
 async function getStoryData(params) {
   let slug: string = params.slug ? params.slug.join('/') : 'home';
   let sbParams: ISbStoriesParams = {
-    version: 'draft',
+    version: activeEnv === 'development' ? 'draft' : 'published',
     cv: Date.now(),
     resolve_relations: resolveRelations,
   };
@@ -31,11 +31,9 @@ type pathsType = {
 }
 
 async function generateStaticParams() {
-  const activeEnv = process.env.NODE_ENV || 'development';
   const storyblokApi: StoryblokClient = getStoryblokApi();
   let sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',
-    resolve_relations: resolveRelations,
     cv: Date.now(),
   };
 
