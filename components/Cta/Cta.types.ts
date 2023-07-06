@@ -1,4 +1,3 @@
-import React from 'react';
 import { HeroIconProps, IconType } from '../HeroIcon';
 import * as styles from './Cta.styles';
 

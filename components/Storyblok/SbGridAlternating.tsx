@@ -1,4 +1,3 @@
-import React from 'react';
 import { storyblokEditable, StoryblokComponent } from '@storyblok/react';
 import { GridAlternating, GridWidthType } from '../Grid';
 import { PaddingType } from '@/utilities/datasource';

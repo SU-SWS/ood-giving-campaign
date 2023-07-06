@@ -1,4 +1,3 @@
-import React from 'react';
 import './globals.css';
 import { Source_Sans_3, Source_Serif_4 } from 'next/font/google';
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';

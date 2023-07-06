@@ -1,4 +1,3 @@
-import React, { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
 import Image from 'next/image';
 import { AnimateInView, AnimationType } from '../Animate';
@@ -14,7 +13,7 @@ import * as styles from './VerticalCard.styles';
  * Currently, both Theme Card and Story Card use this component.
  */
 
-export type VerticalCardProps = HTMLAttributes<HTMLDivElement> & {
+export type VerticalCardProps = React.HTMLAttributes<HTMLDivElement> & {
   heading?: string;
   headingLevel?: HeadingType;
   isSmallHeading?: boolean;

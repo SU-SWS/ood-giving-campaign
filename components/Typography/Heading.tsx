@@ -1,4 +1,3 @@
-import React from 'react';
 import { Text, TypographyProps } from './Text';
 import * as types from './typography.types';
 
