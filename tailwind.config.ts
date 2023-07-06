@@ -6,7 +6,7 @@ const path = require('path');
 const decanter = require('decanter');
 
 // Path to custom Tailwind plugins for Directory
-const dir = path.resolve(__dirname, 'src/tailwind/plugins');
+const dir = path.resolve(__dirname, 'tailwind/plugins');
 
 export default {
   presets: [
@@ -14,8 +14,8 @@ export default {
   ],
   content: [
     './app/**/*.{js,jsx,ts,tsx}',
-    './src/components/**/*.{js,jsx,ts,tsx}',
-    './src/utilities/**/*.{js,jsx,ts,tsx}',
+    './components/**/*.{js,jsx,ts,tsx}',
+    './utilities/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
     containers: require(`${dir}/theme/gc-containers.js`)(),
