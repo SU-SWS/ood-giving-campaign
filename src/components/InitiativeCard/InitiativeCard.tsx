@@ -51,6 +51,7 @@ export const InitiativeCard = ({
             width={600}
             height={800}
             alt=""
+            loading="lazy"
             src={getProcessedImage(imageSrc, '600x800', imageFocus) || ''}
             className={styles.image}
           />

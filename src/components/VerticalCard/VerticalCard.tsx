@@ -1,5 +1,6 @@
 import React, { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
+import Image from 'next/image';
 import { AnimateInView, AnimationType } from '../Animate';
 import { CtaLink } from '../Cta/CtaLink';
 import { Heading, HeadingType, Paragraph } from '../Typography';
@@ -56,8 +57,11 @@ export const VerticalCard = ({
       <div className={styles.cardWrapper}>
         {imageSrc && (
           <div className={styles.imageWrapper}>
-            <img
+            <Image
               alt=""
+              width={600}
+              height={600}
+              loading="lazy"
               src={getProcessedImage(imageSrc, '600x600', imageFocus)}
               className={styles.image}
             />
