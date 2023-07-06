@@ -34,7 +34,6 @@
     "@heroicons/react": "^2.0.18",
     "@storyblok/react": "^2.1.8",
     "cnbuilder": "^3.1.0",
-    "dotenv": "^16.0.3",
     "framer-motion": "^10.12.16",
     "netlify-plugin-vault-variables": "^1.0.7",
     "next": "^13.4.8",
