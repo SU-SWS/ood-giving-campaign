@@ -1,5 +1,4 @@
-'use client';
-import React, { HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
 import { AnimateInView } from '../Animate';
 import { FlexBox } from '../FlexBox';

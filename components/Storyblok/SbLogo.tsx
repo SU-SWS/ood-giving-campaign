@@ -1,4 +1,3 @@
-import React from 'react';
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { Logo, LogoVariantType, LogoColorType } from '../Logo';
 

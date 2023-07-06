@@ -1,4 +1,3 @@
-import React from 'react';
 import { cnb } from 'cnbuilder';
 import { StanfordLogo } from '../StanfordLogo';
 import { SrOnlyText } from '../Typography';

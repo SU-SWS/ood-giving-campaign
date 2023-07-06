@@ -1,4 +1,3 @@
-import React from 'react';
 import { cnb } from 'cnbuilder';
 import { Container, ContainerProps } from '../Container';
 import { Grid, GridProps } from '../Grid';

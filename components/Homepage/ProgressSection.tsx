@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { useScroll, useSpring, m } from 'framer-motion';
 import { Container } from '../Container';
 import { Heading, Paragraph } from '../Typography';

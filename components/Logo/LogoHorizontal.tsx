@@ -1,4 +1,3 @@
-import React from 'react';
 import { logoColors, LogoColorType } from './Logo.styles';
 
 type LogoHorizontalProps = {

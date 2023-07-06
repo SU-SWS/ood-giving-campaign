@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import { cnb } from 'cnbuilder';
 import * as styles from './StanfordLogo.styles';
 

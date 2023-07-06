@@ -1,4 +1,3 @@
-import React from 'react';
 import { SEO, SEOProps } from './SEO';
 
 export type PageHeadProps = SEOProps;

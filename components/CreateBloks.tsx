@@ -1,4 +1,3 @@
-import React from 'react';
 import { StoryblokComponent } from '@storyblok/react/rsc';
 
 export const CreateBloks = ({ blokSection, ...props }) => {
