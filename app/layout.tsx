@@ -19,20 +19,20 @@ const druk = localFont({
   variable: '--font-druk',
 });
 
-const drukWide = localFont({
+const druk_wide = localFont({
   src: '../public/fonts/DrukWide-Bold-Web.woff2',
   weight: '700',
   variable: '--font-druk-wide',
 });
 
-const sourceSans = Source_Sans_3({
+const source_sans = Source_Sans_3({
   subsets: ['latin'],
   style: ['italic','normal'],
   display: 'swap',
   variable: '--font-source-sans',
 });
 
-const sourceSerif = Source_Serif_4({
+const source_serif = Source_Serif_4({
   subsets: ['latin'],
   style: ['italic','normal'],
   display: 'swap',
@@ -52,9 +52,7 @@ export default function RootLayout({ children }: LayoutProps) {
     <StoryblokProvider>
       <html
         lang="en"
-        className={`
-        ${sourceSans.variable} ${sourceSerif.variable} ${druk.variable} ${drukWide.variable}}}
-        `}
+        className={`${source_sans.variable} ${source_serif.variable} ${druk.variable} ${druk_wide.variable}`}
       >
         {/* Absolutely necessary to have a body tag here, otherwise your components won't get any interactivity */}
         <body>
