@@ -14,7 +14,7 @@ type AnimateInViewProps = {
 export const AnimateInView = ({
   animation = 'zoomIn',
   once = true,
-  duration = 0.5,
+  duration = 0.6,
   delay,
   children,
   ...props
@@ -35,7 +35,7 @@ export const AnimateInView = ({
       transition={{
         delay,
         duration,
-        ease: 'easeInOut',
+        ease: 'easeOut',
       }}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
