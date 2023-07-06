@@ -5,7 +5,7 @@
 Description
 ---
 
-Netlify hosted, Gatsby built, Storyblok headless CMS site for the Stanford On Purpose website.
+Netlify hosted, Next.js built, Storyblok headless CMS site for the Stanford On Purpose website.
 
 Environment variable set up and installation
 ---
@@ -49,14 +49,17 @@ Authentication
 ---
 To protect unpublished content, all the previews are currently for authenticated users only. Please contact the admin of this repo for login information.
 
-Linting
+Linting and Type Check
 ---
 
-We use [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint) to enable ESLint to run on our TypeScript code. We also use [eslint-config-airbnb](https://www.npmjs.com/package/eslint-config-airbnb) and [eslint-config-airbnb-typescript](https://www.npmjs.com/package/eslint-config-airbnb-typescript) plus their dependencies for our configuration.
+We use the default Next.js [eslint-config-next](https://nextjs.org/docs/app/building-your-application/configuring/eslint#eslint-config) with the core web vitals rule set as our linting configuration.
 
 To run ESLint:
 - `npm run lint` to check your .js, .jsx, .ts and .tsx files in the /src directory for warnings and errors.
 - `npm run lint:fix` to fix any fixable issues and displays the ones that need to be manually fixed.
+
+To run type heck:
+- `npm run typecheck` will check for any typescript errors.
 
 Components
 ---
