@@ -1,4 +1,4 @@
-# [Giving Campaign](https://github.com/SU-SWS/ood-giving-campaign)
+# [Giving Campaign (Stanford On Purpose)](https://github.com/SU-SWS/ood-giving-campaign)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/738e5599-7329-41a1-8429-82f8540636d9/deploy-status?branch=dev)](https://app.netlify.com/sites/giving-campaign/deploys)
 
@@ -20,7 +20,7 @@ If you can't find them, please ask another developer on the team.
 3. After the `VAULT_ROLE_ID` and `VAULT_SECRET_ID` environment variables have been added to .env, retrieve all other environment variables from the vault:
 `npm run vault:local`
 4. Install packages using `npm ci` or `npm install`
-5. Then fire up your development server using Gatsby
+5. Then fire up your development server using Next.js
 `npm run dev`
 
 We use the netlify-plugin-vault-variables to fetch the correct environment variables from the vault. For more information, please see:
