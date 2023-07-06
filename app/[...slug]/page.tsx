@@ -1,6 +1,6 @@
 import { getStoryblokApi, ISbStoriesParams, StoryblokClient } from '@storyblok/react/rsc';
 import StoryblokStory from '@storyblok/react/story';
-import { resolveRelations } from '../../src/utilities/resolveRelations';
+import { resolveRelations } from '@/utilities/resolveRelations';
 
 const activeEnv = process.env.NODE_ENV || 'development';
 

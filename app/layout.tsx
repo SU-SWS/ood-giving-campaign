@@ -2,12 +2,12 @@ import './globals.css';
 import { Source_Sans_3, Source_Serif_4 } from 'next/font/google';
 import localFont from 'next/font/local';
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
-import StoryblokProvider from '../src/components/StoryblokProvider';
-import { FlexBox } from '../src/components/FlexBox';
-import { Masthead } from '../src/components/Masthead';
-import { LocalFooter } from '../src/components/LocalFooter';
-import { GlobalFooter } from '../src/components/GlobalFooter';
-import { Skiplink } from '../src/components/SkipLink';
+import StoryblokProvider from '@/components/StoryblokProvider';
+import { FlexBox } from '@/components/FlexBox';
+import { Masthead } from '@/components/Masthead';
+import { LocalFooter } from '@/components/LocalFooter';
+import { GlobalFooter } from '@/components/GlobalFooter';
+import { Skiplink } from '@/components/SkipLink';
 
 type LayoutProps = {
   children: React.ReactNode,

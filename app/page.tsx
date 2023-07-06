@@ -1,6 +1,6 @@
 import { getStoryblokApi, ISbStoriesParams } from '@storyblok/react/rsc';
 import StoryblokStory from '@storyblok/react/story';
-import { resolveRelations } from '../src/utilities/resolveRelations';
+import { resolveRelations } from '@/utilities/resolveRelations';
 
 export default async function Home() {
   const { data } = await fetchData();
