@@ -23,7 +23,9 @@ async function getStoryData(params) {
   };
 
   const storyblokApi: StoryblokClient = getStoryblokApi();
-  return storyblokApi?.get(`cdn/stories/${slug}`, sbParams);
+  const story = await storyblokApi?.get(`cdn/stories/${slug}`, sbParams);
+
+  return story;
 };
 
 type pathsType = {
@@ -37,7 +39,7 @@ async function generateStaticParams() {
     cv: Date.now(),
   };
 
-  const { data: { links } } = storyblokApi?.get('cdn/links', sbParams);
+  const { data: { links } } = await storyblokApi?.get('cdn/links', sbParams);
   let paths: pathsType[] = [];
 
   Object.keys(links).forEach((linkKey) => {
