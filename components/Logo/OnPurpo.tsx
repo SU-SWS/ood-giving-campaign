@@ -1,5 +1,3 @@
-import React from 'react';
-
 type OnPurpoProps = React.SVGProps<SVGSVGElement>;
 
 export const OnPurpo = (props: OnPurpoProps) => (

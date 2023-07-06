@@ -1,4 +1,3 @@
-import React from 'react';
 import Image from 'next/image';
 import { Paragraph, Heading, Text } from '../Typography';
 import { Container } from '../Container';

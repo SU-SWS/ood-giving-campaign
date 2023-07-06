@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
 import { FlexBox } from '../FlexBox';
 import * as styles from './Bracket.styles';

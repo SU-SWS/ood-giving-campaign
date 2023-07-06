@@ -1,4 +1,3 @@
-import React from 'react';
 import { Container } from '../Container';
 import { Heading, Paragraph } from '../Typography';
 import { AnimateInView } from '../Animate';

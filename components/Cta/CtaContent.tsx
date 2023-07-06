@@ -1,4 +1,3 @@
-import React from 'react';
 import { cnb } from 'cnbuilder';
 import { FlexBox } from '../FlexBox';
 import { HeroIcon } from '../HeroIcon';

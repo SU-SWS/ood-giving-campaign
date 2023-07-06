@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unstable-nested-components */
-import React from 'react';
 import { render, StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { cnb } from 'cnbuilder';
 import { CtaLink } from './Cta';

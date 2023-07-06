@@ -1,5 +1,4 @@
-'use client';
-import React, {
+import {
   useState, useRef, useLayoutEffect, ReactNode,
 } from 'react';
 import {

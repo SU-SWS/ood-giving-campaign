@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState, HTMLAttributes } from 'react';
+import { useEffect, useState, HTMLAttributes } from 'react';
 import {
   m, useMotionValueEvent, useScroll, useVelocity, useWillChange,
 } from 'framer-motion';

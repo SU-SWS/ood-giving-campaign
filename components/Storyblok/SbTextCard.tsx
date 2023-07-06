@@ -1,5 +1,3 @@
-'use client';
-import React from 'react';
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { AnimationType } from '../Animate';
 import { TextCard } from '../TextCard/TextCard';

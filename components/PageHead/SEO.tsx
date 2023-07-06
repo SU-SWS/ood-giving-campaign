@@ -1,4 +1,3 @@
-import React from 'react';
 import { useRouter } from 'next/router';
 //import { useSiteMetadata } from '../../hooks/useSiteMetadata';
 import { getProcessedImage } from '@/utilities/getProcessedImage';

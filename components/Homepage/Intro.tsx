@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import {
   m, useReducedMotion, useScroll, useTransform, useSpring, useWillChange, SpringOptions,
 } from 'framer-motion';

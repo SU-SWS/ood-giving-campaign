@@ -1,4 +1,3 @@
-import React from 'react';
 import { cnb } from 'cnbuilder';
 
 type TriangleProps = React.SVGProps<SVGSVGElement>;

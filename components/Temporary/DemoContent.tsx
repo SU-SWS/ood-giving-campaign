@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Container } from '../Container';
 import { CtaLink } from '../Cta';
 import { Grid } from '../Grid';

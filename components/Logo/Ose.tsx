@@ -1,5 +1,3 @@
-import React from 'react';
-
 type OseProps = React.SVGProps<SVGSVGElement>;
 
 export const Ose = (props: OseProps) => (

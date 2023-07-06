@@ -1,4 +1,3 @@
-import React from 'react';
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { ThemeCard } from '../VerticalCard';
 import { SbStoryCardProps } from './SbStoryCard';
@@ -15,7 +14,6 @@ export type SbThemeCardProps = Omit<SbStoryCardProps, 'isSmallHeading'> & {
 
 export const SbThemeCard = ({
   blok: {
-    _uid,
     heading,
     headingLevel,
     body,

@@ -1,5 +1,4 @@
-'use client';
-import React, { HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 import { Container } from '../Container';
 import { FlexBox } from '../FlexBox';
 import { Grid } from '../Grid';

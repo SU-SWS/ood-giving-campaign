@@ -1,4 +1,3 @@
-import React from 'react';
 import { cnb } from 'cnbuilder';
 import { Text, TypographyProps } from './Text';
 
