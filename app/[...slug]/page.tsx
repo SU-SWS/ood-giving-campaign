@@ -8,9 +8,10 @@ const activeEnv = process.env.NODE_ENV || 'development';
 
 export async function generateMetadata({ params }): Promise<Metadata> {
   const { data } = await getStoryData(params);
-  const story = data.story;
   const blok = data.story.content;
-  const meta = getPageMetaData({ blok, story });
+
+  let slug: string = params.slug ? params.slug.join('/') : '';
+  const meta = getPageMetaData({ blok, slug });
 
   return meta;
 }

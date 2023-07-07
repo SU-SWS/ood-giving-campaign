@@ -14,7 +14,6 @@ export type SbSEOType = {
 };
 
 type PageMetaDataProps = {
-  story: any;
   blok: {
     title: string;
     heroImage?: SbImageType;
@@ -22,11 +21,12 @@ type PageMetaDataProps = {
     canonicalUrl?: SbLinkType;
     seo?: SbSEOType;
   },
+  slug: string;
 };
 
 export const getPageMetaData = ({
   blok,
-  story,
+  slug,
 }: PageMetaDataProps) => {
   const siteTitle = config.siteTitle;
   // We only care about canonical URL for production so ok to use the prod URL here
@@ -46,17 +46,17 @@ export const getPageMetaData = ({
   const twitterCropped = getProcessedImage(blok.seo?.twitter_image, '1200x600');
   const ogImage = ogCropped || heroImageCropped;
 
-  const pathname = story?.full_slug;
-
   let ogType = 'website';
-  if (pathname.startsWith('/stories')) {
+  if (slug.startsWith('stories/')) {
     ogType = 'article';
   }
 
   // Self reference URL is the page's URL without any query params
-  const selfReferencingUrl = `${siteUrl}/${pathname}`;
+  const selfReferencingUrl = `${siteUrl}/${slug}`;
   // If the canonical URL is entered in Storyblok, find the full URL for it
-  const canonicalNotSelf = blok.canonicalUrl?.linktype === 'story' ? `${siteUrl}/${blok.canonicalUrl?.cached_url}` : blok.canonicalUrl?.url;
+  const canonicalNotSelf = blok.canonicalUrl.linktype === 'story' && blok.canonicalUrl.cached_url
+    ? `${siteUrl}/${blok.canonicalUrl.cached_url}`
+    : blok.canonicalUrl.url;
   const canonical = canonicalNotSelf || selfReferencingUrl;
 
   return {
@@ -64,9 +64,9 @@ export const getPageMetaData = ({
     description: seoDescription,
     openGraph: {
       title: ogTitle,
-      type: ogType,
       description: ogDescription,
       images: ogImage,
+      type: ogType,
     },
     twitter: {
       card: 'summary_large_image',
@@ -75,8 +75,8 @@ export const getPageMetaData = ({
       images: twitterCropped,
     },
     alternates: {
-      canonical: !blok.noindex ? canonical : undefined,
+      canonical: !blok.noindex && canonical,
     },
-    robots: blok.noindex ? 'noindex' : undefined,
+    robots: blok.noindex && 'noindex',
   };
 };
