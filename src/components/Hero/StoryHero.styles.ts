@@ -2,16 +2,18 @@ import { cnb } from 'cnbuilder';
 
 export const imageWrapper = (isVerticalHero: boolean, isLeftImage: boolean) => cnb('su-rounded-br-[16vw] su-overflow-hidden', {
   'su-aspect-w-2 su-aspect-h-1': !isVerticalHero,
-  'su-aspect-w-5 su-aspect-h-8': isVerticalHero,
+  'su-aspect-w-1 su-aspect-h-1 lg:su-aspect-w-5 lg:su-aspect-h-8': isVerticalHero,
   'md:su-order-2': !isLeftImage && isVerticalHero,
 });
 
 export const image = 'su-object-cover su-w-full su-h-full';
 
-export const content = (isVerticalHero: boolean, isLeftImage: boolean) => cnb(
-  isVerticalHero ? 'su-mt-40 xl:su-rs-mt-8' : 'su-mls-0 su-rs-mt-8',
-  !isLeftImage && isVerticalHero ? 'md:su-order-1' : '',
-);
+export const content = (hasHeroImage: boolean, isVerticalHero: boolean, isLeftImage: boolean) => cnb({
+  'su-rs-mt-10 xl:su-mt-[32.7rem]': !hasHeroImage,
+  'md:su-order-1': !isLeftImage && isVerticalHero && hasHeroImage,
+  'su-mt-40 xl:su-rs-mt-8': isVerticalHero && hasHeroImage,
+  'su-mls-0 su-rs-mt-8': !isVerticalHero && hasHeroImage,
+});
 
 export const tabSection = (hasTabColor: boolean, isVerticalHero: boolean) => cnb(
   hasTabColor ? 'su-border-l-[1rem] sm:su-border-l-[1.8rem] lg:su-border-l-[2.6rem]' : '',

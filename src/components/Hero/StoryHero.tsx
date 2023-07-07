@@ -51,7 +51,7 @@ export const StoryHero = ({
       pb={8}
       className="su-pt-80 md:su-pt-120 lg:su-pt-[15rem] su-relative"
     >
-      <Grid md={isVerticalHero ? 2 : 1}>
+      <Grid lg={isVerticalHero ? 2 : 1} alignItems="start">
         {filename && (
           <div className={styles.imageWrapper(isVerticalHero, isLeftImage)}>
             <img
@@ -61,7 +61,7 @@ export const StoryHero = ({
             />
           </div>
         )}
-        <div className={styles.content(isVerticalHero, isLeftImage)}>
+        <div className={styles.content(!!filename, isVerticalHero, isLeftImage)}>
           <div className={cnb(
             styles.tabSection(!!tabColorValue, isVerticalHero),
             accentBorderColors[paletteAccentColors[tabColorValue]],
