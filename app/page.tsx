@@ -6,8 +6,9 @@ import { getPageMetaData } from '@/utilities/getPageMetadata';
 
 export async function generateMetadata(): Promise<Metadata> {
   const { data } = await fetchData();
+  const story = data.story;
   const blok = data.story.content;
-  const meta = getPageMetaData({ blok });
+  const meta = getPageMetaData({ story, blok });
 
   return meta;
 }

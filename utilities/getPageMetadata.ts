@@ -1,5 +1,6 @@
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { SbImageType, SbLinkType } from '@/components/Storyblok/Storyblok.types';
+import { config } from './config';
 
 export type SbSEOType = {
   title?: string;
@@ -13,6 +14,7 @@ export type SbSEOType = {
 };
 
 type PageMetaDataProps = {
+  story: any;
   blok: {
     title: string;
     heroImage?: SbImageType;
@@ -24,25 +26,27 @@ type PageMetaDataProps = {
 
 export const getPageMetaData = ({
   blok,
+  story,
 }: PageMetaDataProps) => {
-  const siteTitle = 'Stanford On Purpose';
+  const siteTitle = config.siteTitle;
+  // We only care about canonical URL for production so ok to use the prod URL here
+  const siteUrl = config.siteUrlProd;
+
   const seoDescription = blok.seo.description;
-  const seoTitle = blok.title || blok.seo.title;
-  const ogTitle = blok.seo.og_title || seoTitle || blok.title;
+  const title = blok.seo.title || blok.title;
+  const ogTitle = blok.seo.og_title || title;
   const ogDescription = blok.seo.og_description || seoDescription;
-  const heroImageCropped = blok.heroImage?.filename ? getProcessedImage(blok.heroImage.filename, '1200x630', blok.heroImage.focus) : undefined;
+  const heroImageCropped = getProcessedImage(blok.heroImage?.filename, '1200x630', blok.heroImage?.focus);
 
   /**
    * The og_image and twitter_image fields provided by the Storyblok SEO plugin has no image focus support
    */
-  const ogCropped = blok.seo.og_image ? getProcessedImage(blok.seo.og_image, '1200x630') : undefined;
+  const ogCropped = getProcessedImage(blok.seo?.og_image, '1200x630');
   // Twitter card image has an aspect ratio of 2:1
-  const twitterCropped = blok.seo.twitter_image ? getProcessedImage(blok.seo.twitter_image, '1200x600') : undefined;
-
+  const twitterCropped = getProcessedImage(blok.seo?.twitter_image, '1200x600');
   const ogImage = ogCropped || heroImageCropped;
 
-  const origin = typeof window !== 'undefined' && window.location.origin ? window.location.origin : '';
-  const pathname = typeof window !== 'undefined' && window.location.pathname ? window.location.pathname : '';
+  const pathname = story?.full_slug;
 
   let ogType = 'website';
   if (pathname.startsWith('/stories')) {
@@ -50,13 +54,13 @@ export const getPageMetaData = ({
   }
 
   // Self reference URL is the page's URL without any query params
-  const selfReferencingUrl = `${origin}${pathname}`;
+  const selfReferencingUrl = `${siteUrl}/${pathname}`;
   // If the canonical URL is entered in Storyblok, find the full URL for it
-  const canonicalNotSelf = blok.canonicalUrl?.linktype === 'story' ? `${origin}/${blok.canonicalUrl?.cached_url}` : blok.canonicalUrl.url;
+  const canonicalNotSelf = blok.canonicalUrl?.linktype === 'story' ? `${siteUrl}/${blok.canonicalUrl?.cached_url}` : blok.canonicalUrl?.url;
   const canonical = canonicalNotSelf || selfReferencingUrl;
 
   return {
-    title: `${seoTitle || blok.title} | ${siteTitle}`,
+    title: `${title} | ${siteTitle}`,
     description: seoDescription,
     openGraph: {
       title: ogTitle,
