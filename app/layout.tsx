@@ -1,6 +1,5 @@
 import './globals.css';
 import { Source_Sans_3, Source_Serif_4 } from 'next/font/google';
-import { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
 import StoryblokProvider from '@/components/StoryblokProvider';
@@ -12,13 +11,6 @@ import { Skiplink } from '@/components/SkipLink';
 
 type LayoutProps = {
   children: React.ReactNode,
-};
-
-export const metadata: Metadata = {
-  title: {
-    template: '%s | Stanford On Purpose',
-    default: 'Stanford On Purpose',
-  },
 };
 
 const druk = localFont({
