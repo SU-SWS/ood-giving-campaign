@@ -56,7 +56,7 @@ module.exports = function () {
       // Slightly smaller than fluid-type-9 so we can fit each line on a 360px viewport
       '.gc-splash': {
         fontSize: 'clamp(5.8rem, 8.95vw + 2.58rem, 16rem)',
-      }
+      },
     };
 
     addComponents(components);

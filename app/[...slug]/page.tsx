@@ -26,7 +26,7 @@ export default async function Page({ params }) {
 
 // Make sure to not export the below functions otherwise there will be a typescript error
 // https://github.com/vercel/next.js/discussions/48724
-async function getStoryData(params) {
+async function getStoryData(params: { slug: string[] }) {
   let slug: string = params.slug ? params.slug.join('/') : 'home';
   let sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',

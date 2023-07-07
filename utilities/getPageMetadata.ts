@@ -24,10 +24,7 @@ type PageMetaDataProps = {
   slug: string;
 };
 
-export const getPageMetaData = ({
-  blok,
-  slug,
-}: PageMetaDataProps) => {
+export const getPageMetaData = ({ blok, slug }: PageMetaDataProps) => {
   const siteTitle = config.siteTitle;
   // We only care about canonical URL for production so ok to use the prod URL here
   const siteUrl = config.siteUrlProd;
