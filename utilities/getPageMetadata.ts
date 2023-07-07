@@ -22,22 +22,22 @@ type PageMetaDataProps = {
   },
 };
 
-export const usePageMetaData = ({
+export const getPageMetaData = ({
   blok,
-}: PageHeadProps) => {
+}: PageMetaDataProps) => {
   const siteTitle = 'Stanford On Purpose';
-  const seoDescription = blok?.seo.description;
-  const seoTitle = blok?.title || blok?.seo.title;
-  const ogTitle = blok?.seo.og_title || seoTitle || blok?.title;
-  const ogDescription = blok?.seo.og_description || seoDescription;
-  const heroImageCropped = blok?.heroImage?.filename ? getProcessedImage(blok?.heroImage.filename, '1200x630', blok?.heroImage.focus) : undefined;
+  const seoDescription = blok.seo.description;
+  const seoTitle = blok.title || blok.seo.title;
+  const ogTitle = blok.seo.og_title || seoTitle || blok.title;
+  const ogDescription = blok.seo.og_description || seoDescription;
+  const heroImageCropped = blok.heroImage?.filename ? getProcessedImage(blok.heroImage.filename, '1200x630', blok.heroImage.focus) : undefined;
 
   /**
    * The og_image and twitter_image fields provided by the Storyblok SEO plugin has no image focus support
    */
-  const ogCropped = blok?.seo.og_image ? getProcessedImage(blok?.seo.og_image, '1200x630') : undefined;
+  const ogCropped = blok.seo.og_image ? getProcessedImage(blok.seo.og_image, '1200x630') : undefined;
   // Twitter card image has an aspect ratio of 2:1
-  const twitterCropped = blok?.seo.twitter_image ? getProcessedImage(blok?.seo.twitter_image, '1200x600') : undefined;
+  const twitterCropped = blok.seo.twitter_image ? getProcessedImage(blok.seo.twitter_image, '1200x600') : undefined;
 
   const ogImage = ogCropped || heroImageCropped;
 
@@ -56,7 +56,7 @@ export const usePageMetaData = ({
   const canonical = canonicalNotSelf || selfReferencingUrl;
 
   return {
-    title: `${seoTitle || blok?.title} | ${siteTitle}`,
+    title: `${seoTitle || blok.title} | ${siteTitle}`,
     description: seoDescription,
     openGraph: {
       title: ogTitle,
@@ -67,12 +67,12 @@ export const usePageMetaData = ({
     twitter: {
       card: 'summary_large_image',
       title:  blok.seo.twitter_title,
-      description: blok?.seo.twitter_description,
+      description: blok.seo.twitter_description,
       images: twitterCropped,
     },
     alternates: {
-      canonical: !blok?.noindex ? canonical : undefined,
+      canonical: !blok.noindex ? canonical : undefined,
     },
-    robots: blok?.noindex ? 'noindex' : undefined,
+    robots: blok.noindex ? 'noindex' : undefined,
   };
 };
