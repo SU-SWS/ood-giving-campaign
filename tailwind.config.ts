@@ -6,6 +6,7 @@ import type { Config } from 'tailwindcss';
 
 const path = require('path');
 const decanter = require('decanter');
+const plugin = require('tailwindcss/plugin');
 
 // Path to custom Tailwind plugins for Directory
 const dir = path.resolve(__dirname, 'src/tailwind/plugins');
@@ -37,5 +38,11 @@ export default {
     require('@tailwindcss/container-queries'),
     require(`${dir}/base/gc-base.js`)(),
     require(`${dir}/components/gc-typography.js`)(),
+    plugin(({ addVariant }) => {
+      addVariant('group-hocus-within', [
+        ':merge(.group):focus-within &',
+        ':merge(.group):hover &',
+      ]);
+    }),
   ],
 } satisfies Config;
