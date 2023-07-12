@@ -52,15 +52,6 @@ export const StoryHero = ({
       className="su-pt-80 md:su-pt-120 lg:su-pt-[15rem] su-relative"
     >
       <Grid lg={isVerticalHero ? 2 : 1} alignItems="start">
-        {filename && (
-          <div className={styles.imageWrapper(isVerticalHero, isLeftImage)}>
-            <img
-              alt=""
-              src={getProcessedImage(filename, isVerticalHero ? '1000x1600' : '2000x1000', focus)}
-              className={styles.image}
-            />
-          </div>
-        )}
         <div className={styles.content(!!filename, isVerticalHero, isLeftImage)}>
           <div className={cnb(
             styles.tabSection(!!tabColorValue, isVerticalHero),
@@ -91,6 +82,15 @@ export const StoryHero = ({
             </Paragraph>
           </div>
         </div>
+        {filename && (
+          <div className={styles.imageWrapper(isVerticalHero, isLeftImage)}>
+            <img
+              alt=""
+              src={getProcessedImage(filename, isVerticalHero ? '1000x1600' : '2000x1000', focus)}
+              className={styles.image}
+            />
+          </div>
+        )}
       </Grid>
     </Container>
   );
