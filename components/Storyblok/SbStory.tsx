@@ -1,29 +1,48 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import Image from 'next/image';
-import { CreateBloks } from '../CreateBloks';
-import { Hero } from '../Hero/Hero';
+import { CreateBloks } from '@/components/CreateBloks';
+import { StoryHero, StoryHeroProps } from '@/components/Hero';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 
 type SbStoryProps = {
   blok: {
     _uid: string;
-    title?: string;
     content?: any[];
     ankle?: any[];
-  };
+  } & StoryHeroProps;
 };
 
 export const SbStory = ({
   blok: {
     title,
+    byline,
+    intro,
+    publishedDate,
+    heroImage,
+    isVerticalHero,
+    isLeftImage,
+    isLightHero,
+    tabColor,
+    taxonomy,
     content,
     ankle,
   },
   blok,
 }: SbStoryProps) => (
   <div {...storyblokEditable(blok)}>
-    <Hero heading={title} />
+    <StoryHero
+      title={title}
+      intro={intro}
+      byline={byline}
+      publishedDate={publishedDate}
+      heroImage={heroImage}
+      isLightHero={isLightHero}
+      isVerticalHero={isVerticalHero}
+      isLeftImage={isLeftImage}
+      tabColor={tabColor}
+      taxonomy={taxonomy}
+    />
     <CreateBloks blokSection={content} />
     {getNumBloks(blok.ankle) > 0 && (
       <Image
