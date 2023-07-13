@@ -16,7 +16,7 @@ type SbHomepagePageProps = {
   blok: {
     _uid: string;
     title?: string;
-    intro?: string;
+    intro: string;
     themeCardDiscovery?: SbThemeCardProps;
     themeCardCitizen?: SbThemeCardProps;
     themeCardAcceleration?: SbThemeCardProps;
@@ -48,7 +48,7 @@ export const SbHomepagePage = ({
   <div {...storyblokEditable(blok)}>
     <Heading as="h1" srOnly>{title || 'Homepage'}</Heading>
     <HomepageHero />
-    <Intro text={blok.intro} />
+    <Intro text={intro} />
       <ThemeSection
         themeCardDiscovery={themeCardDiscovery}
         themeCardCitizen={themeCardCitizen}

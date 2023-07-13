@@ -5,9 +5,9 @@ import { config } from './config';
  * @returns The processed Storyblok asset URL that is masked by our asset CDN
  */
 
-export const getMaskedAsset = (mediaSrc: string): string | undefined => {
+export const getMaskedAsset = (mediaSrc: string): string => {
   if (!mediaSrc) {
-    return undefined;
+    return '';
   }
 
   const { imageService } = config;
