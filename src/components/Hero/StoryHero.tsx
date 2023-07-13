@@ -36,6 +36,7 @@ export const StoryHero = ({
   tabColor: { value: tabColorValue } = {},
   taxonomy,
 }: StoryHeroProps) => {
+  const useTwoColLayout = isVerticalHero && !!filename;
   const date = publishedDate && new Date(publishedDate);
   const formattedDate = date && date.toLocaleDateString('en-US', {
     weekday: 'long',
@@ -49,9 +50,9 @@ export const StoryHero = ({
       width="full"
       bgColor={isLightHero ? 'white' : 'black'}
       pb={8}
-      className="su-pt-80 md:su-pt-120 lg:su-pt-[15rem] su-relative"
+      className={styles.root}
     >
-      <Grid lg={isVerticalHero ? 2 : 1} alignItems="start">
+      <Grid lg={useTwoColLayout ? 2 : 1} alignItems="start">
         <div className={styles.content(!!filename, isVerticalHero, isLeftImage)}>
           <div className={cnb(
             styles.tabSection(!!tabColorValue, isVerticalHero),
@@ -61,13 +62,13 @@ export const StoryHero = ({
             <Heading
               as="h1"
               leading="tight"
-              size={isVerticalHero ? 'f5' : 'f6'}
-              className={styles.heading(!!tabColorValue, isVerticalHero)}
+              size={useTwoColLayout ? 'f5' : 'f6'}
+              className={styles.heading(!!filename, !!tabColorValue, isVerticalHero)}
             >
               {title}
             </Heading>
             {(byline || date) && (
-              <Text variant="caption" className={styles.heading(!!tabColorValue, isVerticalHero)}>
+              <Text variant="caption" className={styles.heading(!!filename, !!tabColorValue, isVerticalHero)}>
                 {formattedDate}{byline && date ? ' | ' : ''}{`By: ${byline}`}
               </Text>
             )}
@@ -76,7 +77,7 @@ export const StoryHero = ({
             <Paragraph
               variant="overview"
               font="serif"
-              className={styles.body(isVerticalHero)}
+              className={styles.body(!!filename, isVerticalHero)}
             >
               {intro}
             </Paragraph>
