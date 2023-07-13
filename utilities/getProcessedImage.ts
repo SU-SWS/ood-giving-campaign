@@ -19,9 +19,9 @@ export const getProcessedImage = (
   crop: string = '',
   focus: string = '',
   filters: string = '',
-): string | undefined => {
+): string => {
   if (!imageSrc) {
-    return undefined;
+    return '';
   }
 
   // Get the width and the height from the crop dimension

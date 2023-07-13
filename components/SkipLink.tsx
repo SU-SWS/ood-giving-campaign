@@ -14,7 +14,7 @@ export const Skiplink = ({
   className,
   ...rest
 }: SkiplinkProps) => {
-  const ref = useRef(null);
+  const ref = useRef<null | HTMLAnchorElement>(null);
 
   return (
     <a
