@@ -64,7 +64,6 @@ export const Head = ({ data }) => {
   return (
     <PageHead
       title={blok.title || 'Homepage'}
-      heroImage={blok.heroImage || blok.hero.image}
       seo={blok.seo}
       noindex={blok.noindex}
       canonicalUrl={blok.canonicalUrl}

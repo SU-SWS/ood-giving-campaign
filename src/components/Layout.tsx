@@ -21,6 +21,7 @@ import { SbWysiwyg } from './Storyblok/SbWysiwyg';
 import { Skiplink } from './SkipLink';
 
 type LayoutProps = {
+  isDark?: boolean,
   children: React.ReactNode,
 };
 
@@ -48,10 +49,10 @@ storyblokInit({
   },
 });
 
-export const Layout = ({ children }: LayoutProps) => (
+export const Layout = ({ isDark, children }: LayoutProps) => (
   <FlexBox justifyContent="between" direction="col" className="su-min-h-screen su-relative">
     <Skiplink />
-    <Masthead />
+    <Masthead isDark={isDark} />
     <main id="main-content">{children}</main>
     <footer>
       <LocalFooter />

@@ -9,6 +9,7 @@ import { Layout } from '../components/Layout';
 import { resolveRelations } from '../utilities/resolveRelations';
 import { getProcessedImage } from '../utilities/getProcessedImage';
 import { getNumBloks } from '../utilities/getNumBloks';
+import { StoryHero } from '../components/Hero';
 
 type DataProps = {
   storyblokEntry: SbGatsbyStory;
@@ -22,10 +23,26 @@ const StoryblokEntry: React.FC<PageProps<DataProps>> = ({
   const blok = story.content;
 
   return (
-    <Layout>
-      {/* Place holder hero below - going to extract into component */}
-      <Hero heading={blok.title} />
-      <CreateBloks blokSection={blok.hero} />
+    <Layout isDark={!blok.isLightHero}>
+      {blok.component === 'sbStory' ? (
+        <StoryHero
+          title={blok.title}
+          intro={blok.intro}
+          byline={blok.byline}
+          publishedDate={blok.publishedDate}
+          heroImage={blok.heroImage}
+          isLightHero={blok.isLightHero}
+          isVerticalHero={blok.isVerticalHero}
+          isLeftImage={blok.isLeftImage}
+          tabColor={blok.tabColor}
+        />
+      ) : (
+        <>
+          {/* Place holder hero below - going to extract into component */}
+          <Hero heading={blok.title} />
+          <CreateBloks blokSection={blok.hero} />
+        </>
+      )}
       <CreateBloks blokSection={blok.content} />
       {getNumBloks(blok.ankle) > 0 && (
         <img
@@ -49,7 +66,7 @@ export const Head = ({ data }) => {
   return (
     <PageHead
       title={blok.title || story.name}
-      heroImage={blok.heroImage || blok.hero.image}
+      heroImage={blok.heroImage || blok.hero?.image}
       seo={blok.seo}
       noindex={blok.noindex}
       canonicalUrl={blok.canonicalUrl}
