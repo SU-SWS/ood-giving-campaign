@@ -15,7 +15,7 @@ import { getMaskedAsset } from './getMaskedAsset';
  */
 
 export const getProcessedImage = (
-  imageSrc: string,
+  imageSrc: string = '',
   crop: string = '',
   focus: string = '',
   filters: string = '',

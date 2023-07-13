@@ -24,23 +24,40 @@ type PageMetaDataProps = {
   slug: string;
 };
 
-export const getPageMetaData = ({ blok, slug }: PageMetaDataProps) => {
-  const siteTitle = config.siteTitle;
+export const getPageMetaData = ({
+  blok: {
+    title: pageTitle,
+    heroImage: { filename = '', focus = '' } = {},
+    noindex = false,
+    canonicalUrl,
+    seo: {
+      title: seoTitle,
+      description: seoDescription,
+      og_title,
+      og_description,
+      og_image,
+      twitter_title,
+      twitter_description,
+      twitter_image,
+    } = {},
+  },
+  slug,
+}: PageMetaDataProps) => {
   // We only care about canonical URL for production so ok to use the prod URL here
-  const siteUrl = config.siteUrlProd;
+  const { siteTitle, siteDescription, siteUrlProd: siteUrl } = config;
 
-  const seoDescription = blok.seo.description;
-  const title = blok.seo.title || blok.title;
-  const ogTitle = blok.seo.og_title || title;
-  const ogDescription = blok.seo.og_description || seoDescription;
-  const heroImageCropped = getProcessedImage(blok.heroImage?.filename, '1200x630', blok.heroImage?.focus);
+  const title = seoTitle || pageTitle;
+  const description = seoDescription || siteDescription;
+  const ogTitle = og_title || title;
+  const ogDescription = og_description || description;
+  const heroImageCropped = getProcessedImage(filename, '1200x630', focus);
 
   /**
    * The og_image and twitter_image fields provided by the Storyblok SEO plugin has no image focus support
    */
-  const ogCropped = getProcessedImage(blok.seo?.og_image, '1200x630');
+  const ogCropped = getProcessedImage(og_image, '1200x630');
   // Twitter card image has an aspect ratio of 2:1
-  const twitterCropped = getProcessedImage(blok.seo?.twitter_image, '1200x600');
+  const twitterCropped = getProcessedImage(twitter_image, '1200x600');
   const ogImage = ogCropped || heroImageCropped;
 
   let ogType = 'website';
@@ -51,14 +68,14 @@ export const getPageMetaData = ({ blok, slug }: PageMetaDataProps) => {
   // Self reference URL is the page's URL without any query params
   const selfReferencingUrl = `${siteUrl}/${slug}`;
   // If the canonical URL is entered in Storyblok, find the full URL for it
-  const canonicalNotSelf = blok.canonicalUrl.linktype === 'story' && blok.canonicalUrl.cached_url
-    ? `${siteUrl}/${blok.canonicalUrl.cached_url}`
-    : blok.canonicalUrl.url;
+  const canonicalNotSelf = canonicalUrl?.linktype === 'story' && canonicalUrl.cached_url
+    ? `${siteUrl}/${canonicalUrl.cached_url}`
+    : canonicalUrl?.url;
   const canonical = canonicalNotSelf || selfReferencingUrl;
 
   return {
     title: `${title} | ${siteTitle}`,
-    description: seoDescription,
+    description: description,
     openGraph: {
       title: ogTitle,
       description: ogDescription,
@@ -67,13 +84,13 @@ export const getPageMetaData = ({ blok, slug }: PageMetaDataProps) => {
     },
     twitter: {
       card: 'summary_large_image',
-      title:  blok.seo.twitter_title,
-      description: blok.seo.twitter_description,
+      title:  twitter_title,
+      description: twitter_description,
       images: twitterCropped,
     },
     alternates: {
-      canonical: !blok.noindex && canonical,
+      canonical: !noindex && canonical,
     },
-    robots: blok.noindex && 'noindex',
+    robots: noindex && 'noindex',
   };
 };
