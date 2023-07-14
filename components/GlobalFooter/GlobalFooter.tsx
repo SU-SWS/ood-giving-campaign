@@ -13,7 +13,7 @@ export const GlobalFooter = ({ className }: GlobalFooterProps) => (
   <Container className={cnb(styles.root, className)}>
     <FlexBox direction="col" className={styles.outerWrapper}>
       <div className={styles.logoWrapper}>
-        <StanfordLogo isLink className={styles.logo} type="stacked" color="white" />
+        <StanfordLogo isLink tabIndex={-1} aria-hidden className={styles.logo} type="stacked" color="white" />
       </div>
       <div className={styles.contentWrapper}>
         <FlexBox

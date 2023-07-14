@@ -40,7 +40,7 @@ export const Intro = ({ text }: IntroProps) => {
             style={{ x: prefersReduceMotion ? '0' : bracketPosition, willChange }}
           >
             <Bracket
-              className="w-[10vw] 2xl:w-[15rem] h-full children:!text-lime"
+              className="w-[10vw] 2xl:w-150 h-full children:!text-lime"
               curveClassName="h-[7vw] 2xl:h-[10.5rem]"
             />
           </m.div>
@@ -58,7 +58,7 @@ export const Intro = ({ text }: IntroProps) => {
           >
             <Bracket
               isClose
-              className="w-[10vw] 2xl:w-[15rem] h-full children:!text-lavender"
+              className="w-[10vw] 2xl:w-150 h-full children:!text-lavender"
               curveClassName="h-[7vw] 2xl:h-[10.5rem]"
             />
           </m.div>

@@ -63,7 +63,7 @@ export const Masthead = ({ isDark, className }: MastheadProps) => {
       >
         <Logo
           isLink
-          className={cnb('w-[17rem] sm:w-[24rem] transition-[width] !duration-100', isAtTop ? 'lg:w-[32rem]' : 'lg:w-[28rem]')}
+          className={cnb('w-170 sm:w-240 transition-[width] !duration-100', isAtTop ? 'lg:w-[32rem]' : 'lg:w-280')}
         />
         {/* The scale3d here solves a Firefox only rendering bug with blurry curved borders when using transform */}
         <m.div

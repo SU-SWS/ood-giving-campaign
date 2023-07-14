@@ -1,6 +1,6 @@
 import { cnb } from 'cnbuilder';
 
-export const root = 'pt-80 md:pt-120 lg:pt-[15rem] relative';
+export const root = 'pt-80 md:pt-120 lg:pt-150 relative';
 export const imageWrapper = (isVerticalHero: boolean, isLeftImage: boolean) => cnb('rounded-br-[16vw] overflow-hidden', {
   'aspect-w-2 aspect-h-1': !isVerticalHero,
   'aspect-w-1 aspect-h-1 lg:aspect-w-5 lg:aspect-h-8': isVerticalHero,
