@@ -2,13 +2,13 @@ import { Metadata } from 'next';
 import { getStoryblokApi, ISbStoriesParams } from '@storyblok/react/rsc';
 import StoryblokStory from '@storyblok/react/story';
 import { resolveRelations } from '@/utilities/resolveRelations';
-import { getPageMetaData } from '@/utilities/getPageMetadata';
+import { getPageMetadata } from '@/utilities/getPageMetadata';
 
 export async function generateMetadata(): Promise<Metadata> {
   const { data } = await fetchData();
   const blok = data.story.content;
 
-  const meta = getPageMetaData({ blok, slug: '' });
+  const meta = getPageMetadata({ blok, slug: '' });
 
   return meta;
 }

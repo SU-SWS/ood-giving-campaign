@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { getStoryblokApi, ISbStoriesParams, StoryblokClient } from '@storyblok/react/rsc';
 import StoryblokStory from '@storyblok/react/story';
 import { resolveRelations } from '@/utilities/resolveRelations';
-import { getPageMetaData } from '@/utilities/getPageMetadata';
+import { getPageMetadata } from '@/utilities/getPageMetadata';
 
 const activeEnv = process.env.NODE_ENV || 'development';
 
@@ -11,7 +11,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
   const blok = data.story.content;
 
   let slug: string = params.slug ? params.slug.join('/') : '';
-  const meta = getPageMetaData({ blok, slug });
+  const meta = getPageMetadata({ blok, slug });
 
   return meta;
 }
