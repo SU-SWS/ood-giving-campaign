@@ -25,7 +25,7 @@ export const imageWrapper = (textOnLeft: boolean) => cnb(
   textOnLeft ? 'mr-0 ml-auto sm:col-start-6' : '',
 );
 export const imageAspectRatio = 'aspect-w-6 aspect-h-5';
-export const image = 'object-cover group-hover:scale-105 group-focus-within:scale-105 transition-transform';
+export const image = 'object-cover group-hocus-within:scale-105 transition-transform';
 export const imageOverlay = (textOnLeft: boolean) => cnb(
   'hidden sm:block from-black-true/50 via-black-true/20 to-transparent via-20% sm:absolute w-full h-full sm:top-0 sm:left-0',
   textOnLeft ? 'bg-gradient-to-r' : 'bg-gradient-to-l',

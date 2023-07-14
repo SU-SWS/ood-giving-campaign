@@ -6,7 +6,7 @@ export const cardWrapper = 'relative group';
 
 export const imageWrapper = 'transition-all aspect-w-1 aspect-h-1 overflow-hidden';
 
-export const image = 'object-cover w-full h-full group-hover:scale-105 group-focus-within:scale-105 transition-transform';
+export const image = 'object-cover w-full h-full group-hocus-within:scale-105 transition-transform';
 
 export const heading = (hasTabColor: boolean) => cnb('rs-mt-1 pr-18 rs-mb-neg1 text-current', {
   'border-l-[1.8rem] px-18': hasTabColor,
