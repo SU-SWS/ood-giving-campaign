@@ -13,7 +13,7 @@ export type SbSEOType = {
   twitter_image?: string;
 };
 
-type PageMetaDataProps = {
+type PageMetadataProps = {
   blok: {
     title: string;
     heroImage?: SbImageType;
@@ -24,7 +24,7 @@ type PageMetaDataProps = {
   slug: string;
 };
 
-export const getPageMetaData = ({
+export const getPageMetadata = ({
   blok: {
     title: pageTitle,
     heroImage: { filename = '', focus = '' } = {},
@@ -42,7 +42,7 @@ export const getPageMetaData = ({
     } = {},
   },
   slug,
-}: PageMetaDataProps) => {
+}: PageMetadataProps) => {
   // We only care about canonical URL for production so ok to use the prod URL here
   const { siteTitle, siteDescription, siteUrlProd: siteUrl } = config;
 
