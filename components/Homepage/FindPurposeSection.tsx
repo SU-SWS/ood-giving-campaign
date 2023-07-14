@@ -4,16 +4,16 @@ import { AnimateInView } from '../Animate';
 import { Triangle } from '../Shapes';
 
 export const FindPurposeSection = ({ children }) => (
-  <Container width="full" bgColor="white" py={9} className="su-relative su-overflow-hidden">
+  <Container width="full" bgColor="white" py={9} className="relative overflow-hidden">
     <Container>
       <AnimateInView animation="slideUp">
-        <Heading size="splash" font="druk" className="su-max-w-900" leading="none">
+        <Heading size="splash" font="druk" className="max-w-900" leading="none">
           Find your purpose.
         </Heading>
       </AnimateInView>
-      <div className="lg:su-w-4/5 2xl:su-w-3/5 su-mx-auto su-rs-mb-6">
+      <div className="lg:w-4/5 2xl:w-3/5 mx-auto rs-mb-6">
         <AnimateInView delay={0.1} animation="slideUp">
-          <Triangle className="su-rs-mb-7" />
+          <Triangle className="rs-mb-7" />
         </AnimateInView>
         <AnimateInView delay={0.2} animation="slideUp">
           <Paragraph font="serif" weight="semibold" variant="overview" leading="snug">
@@ -32,7 +32,7 @@ export const FindPurposeSection = ({ children }) => (
     </AnimateInView>
     <AnimateInView delay={0.2} animation="slideUp">
       <Container pt={9}>
-        <div className="lg:su-w-4/5 2xl:su-w-3/5 su-mx-auto">
+        <div className="lg:w-4/5 2xl:w-3/5 mx-auto">
           <Paragraph font="serif" weight="semibold" variant="overview" leading="snug">
             The world has never moved faster, and our challenges have never been more urgent.
             If the future is already here, then what we do today has never mattered more.

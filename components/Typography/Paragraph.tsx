@@ -7,5 +7,5 @@ type ParagraphProps = Omit<TypographyProps, 'className'> & React.HTMLAttributes<
 
 // Convenience component for paragraphs
 export const Paragraph = ({ noMargin, className, ...rest }: ParagraphProps) => (
-  <Text {...rest} as="p" className={cnb(noMargin ? 'su-mb-0' : '', className)} />
+  <Text {...rest} as="p" className={cnb(noMargin ? 'mb-0' : '', className)} />
 );

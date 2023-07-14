@@ -27,7 +27,7 @@ export const Banner = ({
   bgColor = 'white',
   ...props
 }: BannerProps) => (
-  <Container {...props} as="section" bgColor={bgColor} width="full" py={9} className="su-overflow-hidden">
+  <Container {...props} as="section" bgColor={bgColor} width="full" py={9} className="overflow-hidden">
     <FlexBox alignItems="start" justifyContent="between" className={styles.wrapper}>
       <Container className={styles.contentWrapper}>
         <AnimateInView animation="slideUp">

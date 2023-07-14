@@ -95,19 +95,19 @@ export const ThemeSection = ({
       width="full"
       bgColor="black"
       pt={9}
-      className="su-relative su-overflow-hidden"
+      className="relative overflow-hidden"
     >
       <AnimateInView animation="slideUp">
-        <FlexBox className="su-rs-mb-6">
-          <div className="su-block su-bg-digital-red su-w-8 md:su-w-20 lg:su-w-40" />
-          <div className="su-cc su-whitespace-pre-line su-w-full 3xl:su-max-w-3/5 su--ml-8 md:su--ml-20 lg:su--ml-40">
+        <FlexBox className="rs-mb-6">
+          <div className="block bg-digital-red w-8 md:w-20 lg:w-40" />
+          <div className="cc whitespace-pre-line w-full 3xl:max-w-3/5 -ml-8 md:-ml-20 lg:-ml-40">
             <Text size={2} leading="tight" font="serif" aria-hidden>Themes</Text>
             <Heading
               as="h2"
               size="splash"
               leading="none"
               font="druk"
-              className="su-mb-0"
+              className="mb-0"
             >
               <SrOnlyText>Themes: </SrOnlyText>
               Square pegs,<br />
@@ -118,7 +118,7 @@ export const ThemeSection = ({
       </AnimateInView>
       <Container>
         <AnimateInView animation="slideUp" delay={0.2}>
-          <div className="su-max-w-800 su-rs-mb-6 su-mx-auto">
+          <div className="max-w-800 rs-mb-6 mx-auto">
             <Paragraph variant="overview" font="serif">
               These aren’t priorities to be funded—they are a promise we make to each other.
               To build a more ethical future, we need to move concern for others from being an afterthought
@@ -130,13 +130,13 @@ export const ThemeSection = ({
             </Paragraph>
           </div>
         </AnimateInView>
-        <div className={cnb('su-sr-only focus-within:su-not-sr-only su-w-fit children:su-mx-auto', !shouldAnimate ? 'su-hidden' : '')}>
+        <div className={cnb('sr-only focus-within:not-sr-only w-fit children:mx-auto', !shouldAnimate ? 'hidden' : '')}>
           <CtaButton onClick={() => setShouldAnimate(false)}>Reveal themes visually</CtaButton>
         </div>
         {/* This grid contains the 4 animated lines behind the theme cards */}
-        <Grid md={2} className="su-hidden md:su-grid su-absolute su-left-0 su-top-[160rem] 2xl:su-top-[170rem] su-w-full su-gap-y-[30rem]">
-          <div className="su-max-w-full su-overflow-hidden">
-            <m.svg className="su-mr-0 su-ml-auto" viewBox="0 0 952 461" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <Grid md={2} className="hidden md:grid absolute left-0 top-[160rem] 2xl:top-[170rem] w-full gap-y-[30rem]">
+          <div className="max-w-full overflow-hidden">
+            <m.svg className="mr-0 ml-auto" viewBox="0 0 952 461" fill="none" xmlns="http://www.w3.org/2000/svg">
               <m.path
                 d="M951.043 1H450.62C192.915 1 -16 206.517 -16 460.032"
                 stroke="white"
@@ -146,20 +146,20 @@ export const ThemeSection = ({
               />
             </m.svg>
           </div>
-          <div className="su-max-w-full su-overflow-hidden">
+          <div className="max-w-full overflow-hidden">
             <m.div
-              className="su-h-2 su-bg-white su-origin-left su-mt-300"
+              className="h-2 bg-white origin-left mt-300"
               style={{ scaleX: rightLineSpring, willChange }}
             />
           </div>
-          <div className="su-max-w-full su-overflow-hidden">
+          <div className="max-w-full overflow-hidden">
             <m.div
-              className="su-h-2 su-bg-white su-origin-right su-mt-200"
+              className="h-2 bg-white origin-right mt-200"
               style={{ scaleX: leftLineSpring, willChange }}
             />
           </div>
-          <div className="su-max-w-full su-overflow-hidden su-mt-300 3xl:su-mt-100">
-            <m.svg className="su-mr-0 su-ml-auto su-rotate-180" viewBox="0 0 952 461" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <div className="max-w-full overflow-hidden mt-300 3xl:mt-100">
+            <m.svg className="mr-0 ml-auto rotate-180" viewBox="0 0 952 461" fill="none" xmlns="http://www.w3.org/2000/svg">
               <m.path
                 d="M951.043 1H450.62C192.915 1 -16 206.517 -16 460.032"
                 stroke="white"
@@ -172,13 +172,13 @@ export const ThemeSection = ({
         </Grid>
         <div ref={containerRef}>
           <GridAlternating py={7} addCenterLine gridCellStyle={{ marginBottom: spacing }}>
-            <m.div style={{ height: heightWrapper, marginBottom: shiftUp, willChange }} className="su-overflow-hidden">
-              <FlexBox direction="col" alignItems="center" className="su-w-fit su-mr-0 su-ml-auto">
-                <Heading as="h3" font="druk" align="right" className="su-mb-01em su-text-[8rem]">
+            <m.div style={{ height: heightWrapper, marginBottom: shiftUp, willChange }} className="overflow-hidden">
+              <FlexBox direction="col" alignItems="center" className="w-fit mr-0 ml-auto">
+                <Heading as="h3" font="druk" align="right" className="mb-01em text-[8rem]">
                   Discovery
                 </Heading>
                 <m.div
-                  className="su-w-fit su-border-t-[2.6rem] su-border-bottom-none su-overflow-hidden"
+                  className="w-fit border-t-[2.6rem] border-bottom-none overflow-hidden"
                   style={{
                     borderRightWidth: discoverBarWidthChange,
                     borderLeftWidth: discoverBarWidthChange,
@@ -190,18 +190,18 @@ export const ThemeSection = ({
               </FlexBox>
               <m.div
                 style={{ opacity: opacityChange, scale: zoom }}
-                className="su-origin-top-right"
+                className="origin-top-right"
               >
                 <CreateBloks blokSection={themeCardDiscovery} />
               </m.div>
             </m.div>
-            <m.div style={{ height: heightWrapper, willChange }} className="su-overflow-hidden">
-              <FlexBox direction="col" alignItems="center" className="su-w-fit su-ml-0 su-mr-auto">
-                <Heading as="h3" font="druk" className="su-mb-01em su-text-[8rem]">
+            <m.div style={{ height: heightWrapper, willChange }} className="overflow-hidden">
+              <FlexBox direction="col" alignItems="center" className="w-fit ml-0 mr-auto">
+                <Heading as="h3" font="druk" className="mb-01em text-[8rem]">
                   Citizenry
                 </Heading>
                 <m.div
-                  className="su-w-fit su-border-t-[2.6rem] su-border-bottom-none su-overflow-hidden"
+                  className="w-fit border-t-[2.6rem] border-bottom-none overflow-hidden"
                   style={{
                     borderRightWidth: citizenBarWidthChange,
                     borderLeftWidth: citizenBarWidthChange,
@@ -214,18 +214,18 @@ export const ThemeSection = ({
               </FlexBox>
               <m.div
                 style={{ opacity: scrollYProgress, scale: zoom, willChange }}
-                className="su-origin-top-left"
+                className="origin-top-left"
               >
                 <CreateBloks blokSection={themeCardCitizen} />
               </m.div>
             </m.div>
-            <m.div style={{ height: heightWrapper, marginBottom: shiftUp, willChange }} className="su-overflow-hidden">
-              <FlexBox direction="col" alignItems="center" className="su-w-fit su-mr-0 su-ml-auto">
-                <Heading as="h3" font="druk" align="right" className="su-mb-01em su-text-[8rem]">
+            <m.div style={{ height: heightWrapper, marginBottom: shiftUp, willChange }} className="overflow-hidden">
+              <FlexBox direction="col" alignItems="center" className="w-fit mr-0 ml-auto">
+                <Heading as="h3" font="druk" align="right" className="mb-01em text-[8rem]">
                   Acceleration
                 </Heading>
                 <m.div
-                  className="su-w-fit su-border-t-[2.6rem] su-border-bottom-none su-overflow-hidden"
+                  className="w-fit border-t-[2.6rem] border-bottom-none overflow-hidden"
                   style={{
                     borderRightWidth: accBarWidthChange,
                     borderLeftWidth: accBarWidthChange,
@@ -238,18 +238,18 @@ export const ThemeSection = ({
               </FlexBox>
               <m.div
                 style={{ opacity: scrollYProgress, scale: zoom, willChange }}
-                className="su-origin-top-right"
+                className="origin-top-right"
               >
                 <CreateBloks blokSection={themeCardAcceleration} />
               </m.div>
             </m.div>
-            <m.div style={{ height: heightWrapper, willChange }} className="su-overflow-hidden">
-              <FlexBox direction="col" alignItems="center" className="su-w-fit su-ml-0 su-mr-auto">
-                <Heading as="h3" font="druk" className="su-mb-01em su-text-[8rem]">
+            <m.div style={{ height: heightWrapper, willChange }} className="overflow-hidden">
+              <FlexBox direction="col" alignItems="center" className="w-fit ml-0 mr-auto">
+                <Heading as="h3" font="druk" className="mb-01em text-[8rem]">
                   Our planet
                 </Heading>
                 <m.div
-                  className="su-w-fit su-border-t-[2.6rem] su-border-bottom-none su-overflow-hidden"
+                  className="w-fit border-t-[2.6rem] border-bottom-none overflow-hidden"
                   style={{
                     borderRightWidth: planetBarWidthChange,
                     borderLeftWidth: planetBarWidthChange,
@@ -262,7 +262,7 @@ export const ThemeSection = ({
               </FlexBox>
               <m.div
                 style={{ opacity: scrollYProgress, scale: zoom, willChange }}
-                className="su-origin-top-left"
+                className="origin-top-left"
               >
                 <CreateBloks blokSection={themeCardPlanet} />
               </m.div>

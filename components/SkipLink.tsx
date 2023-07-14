@@ -22,7 +22,7 @@ export const Skiplink = ({
       ref={ref}
       href={href}
       onFocus={() => ref.current?.scrollIntoView()}
-      className={cnb('su-skiplink', className)}
+      className={cnb('skiplink', className)}
     >
       {children}
     </a>

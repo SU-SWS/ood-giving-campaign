@@ -2,10 +2,10 @@ import { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
 
 export const overlays = {
-  'black-30': 'su-bg-black-true/30',
-  'black-40': 'su-bg-black-true/40',
-  'black-60': 'su-bg-black-true/60',
-  'black-gradient': 'su-bg-gradient-to-b su-from-transparent su-via-black-true/20 su-to-black-true/50',
+  'black-30': 'bg-black-true/30',
+  'black-40': 'bg-black-true/40',
+  'black-60': 'bg-black-true/60',
+  'black-gradient': 'bg-gradient-to-b from-transparent via-black-true/20 to-black-true/50',
 };
 export type OverlayType = keyof typeof overlays | '';
 
@@ -25,13 +25,13 @@ export const ImageOverlay = ({
       src={imageSrc}
       alt=""
       loading="lazy"
-      className="su-absolute su-w-full su-h-full su-object-cover su-top-0 su-left-0"
+      className="absolute w-full h-full object-cover top-0 left-0"
       {...props}
     />
     {overlay && (
       <div
         className={cnb(
-          'su-absolute su-w-full su-h-full su-top-0 su-left-0',
+          'absolute w-full h-full top-0 left-0',
           overlays[overlay],
         )}
       />

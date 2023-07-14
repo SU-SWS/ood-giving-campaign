@@ -25,7 +25,7 @@ export const RichText = ({
   textAlign,
   className,
 }: RichTextProps) => {
-  const textColor = isLightText ? 'su-text-white print:su-text-gc-black' : 'su-text-gc-black';
+  const textColor = isLightText ? 'text-white print:text-gc-black' : 'text-gc-black';
 
   const rendered = render(wysiwyg, {
     markResolvers: {
@@ -55,7 +55,7 @@ export const RichText = ({
           <CtaLink
             sbLink={sbLink}
             variant={isLightText ? 'inlineDark' : 'inline'}
-            className="children:su-inline"
+            className="children:inline"
             // Custom link attributes are not supported by the rich text renderer currently
             // Adding rel="noopener" for all eternal links for security reasons
             rel={linktype === 'url' ? 'noopener' : undefined}
@@ -97,7 +97,7 @@ export const RichText = ({
   return (
     <div
       className={cnb(
-        'su-wysiwyg',
+        'wysiwyg',
         textColor,
         textAligns[textAlign || ''],
         className,

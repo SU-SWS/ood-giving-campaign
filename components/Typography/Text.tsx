@@ -61,11 +61,11 @@ export const Text = ({
           color ? styles.textColors[color] : '',
           variant ? styles.textVariants[variant] : '',
           leading ? styles.fontLeadings[leading] : '',
-          italic ? 'su-italic' : '',
-          srOnly ? 'su-sr-only' : '',
-          uppercase ? 'su-uppercase' : '',
-          useDefaultTracking ? 'su-tracking-normal' : '',
-          font === 'druk' ? 'su-tracking-normal sm:su-tracking-wide' : '',
+          italic ? 'italic' : '',
+          srOnly ? 'sr-only' : '',
+          uppercase ? 'uppercase' : '',
+          useDefaultTracking ? 'tracking-normal' : '',
+          font === 'druk' ? 'tracking-normal sm:tracking-wide' : '',
           className,
         )
       }
