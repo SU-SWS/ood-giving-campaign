@@ -1,13 +1,14 @@
 # BUILD Settings:
 # ##############################################################################
 [build]
-  publish = "public"
+  command = "npm run build"
+  publish = ".next"
 
 # PLUGINS
 # ##############################################################################
 
 [[plugins]]
-  package = "@netlify/plugin-gatsby"
+  package = "@netlify/plugin-nextjs"
 
 # Fetch vault plugin needs to come before any of the contextual environment
 # variable plugins so they can act on the new vars.
@@ -33,3 +34,4 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Strict-Transport-Security = "max-age=2592000"
     Permissions-Policy = "vibrate=(), geolocation=(), midi=(), notifications=(), push=(), microphone=(), camera=(), magnetometer=(), gyroscope=(), speaker=()"
+    X-Robots-Tag = "noindex, nofollow"
