@@ -49,7 +49,7 @@ export const PosterContent = ({
         />
       )}
       {hasContent && (
-        <AnimateInView delay={0.2} duration={0.7} animation={contentAlign === 'left' ? 'slideDown' : 'slideUp'}>
+        <AnimateInView delay={0.2} animation={contentAlign === 'left' ? 'slideDown' : 'slideUp'}>
           <FlexBox
             direction="col"
             className={styles.content}

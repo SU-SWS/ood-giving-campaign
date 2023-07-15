@@ -21,13 +21,13 @@ export const Intro = ({ text }: IntroProps) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ['-40vh', '-5vh'],
+    offset: ['-50vh', '-5vh'],
   });
   const scrollSpring = useSpring(scrollYProgress, springSetting);
 
   const bracketOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
   // We want the text opacity to increase at a slower rate than the bracket opacity
-  const textOpacity = useTransform(scrollYProgress, [0, 0.4, 0.7, 1], [0, 0, 0.6, 1]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 0, 0.6, 1]);
   const bracketPosition = useTransform(scrollSpring, [0, 1], ['-20vw', '0vw']);
   const bracketRightPosition = useTransform(scrollSpring, [0, 1], ['20vw', '0vw']);
 

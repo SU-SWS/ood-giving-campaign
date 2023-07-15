@@ -1,8 +1,20 @@
+import { Metadata } from 'next';
 import { getStoryblokApi, ISbStoriesParams, StoryblokClient } from '@storyblok/react/rsc';
 import StoryblokStory from '@storyblok/react/story';
 import { resolveRelations } from '@/utilities/resolveRelations';
+import { getPageMetadata } from '@/utilities/getPageMetadata';
 
 const activeEnv = process.env.NODE_ENV || 'development';
+
+export async function generateMetadata({ params }): Promise<Metadata> {
+  const { data } = await getStoryData(params);
+  const blok = data.story.content;
+
+  let slug: string = params.slug ? params.slug.join('/') : '';
+  const meta = getPageMetadata({ blok, slug });
+
+  return meta;
+}
 
 export default async function Page({ params }) {
   const { data } = await getStoryData(params);
@@ -14,7 +26,7 @@ export default async function Page({ params }) {
 
 // Make sure to not export the below functions otherwise there will be a typescript error
 // https://github.com/vercel/next.js/discussions/48724
-async function getStoryData(params) {
+async function getStoryData(params: { slug: string[] }) {
   let slug: string = params.slug ? params.slug.join('/') : 'home';
   let sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',

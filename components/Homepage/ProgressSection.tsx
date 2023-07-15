@@ -32,7 +32,7 @@ export const ProgressSection = ({ bgImage, children }: ProgressSectionProps) => 
       >
         <div className="su-cc su-bg-transparent su-relative su-z-10">
           <div className="su-relative su-rs-pt-9" ref={introRef}>
-            <AnimateInView duration={0.6} delay={0.2} animation="slideUp">
+            <AnimateInView delay={0.2} animation="slideUp">
               <Heading font="druk" className="su-fluid-type-8 su-mb-0 3xl:su-gc-splash xl:su-max-w-[47%] su-pb-[23vw] 2xl:su-whitespace-pre-line" leading="none">
                 Progress<br />
                 is nothing<br />
@@ -44,7 +44,7 @@ export const ProgressSection = ({ bgImage, children }: ProgressSectionProps) => 
               style={{ scaleY }}
             />
           </div>
-          <AnimateInView delay={0.2} duration={0.6} animation="slideUp">
+          <AnimateInView delay={0.2} animation="slideUp">
             <div className="lg:su-w-4/5 2xl:su-w-3/5 su-mx-auto su-rs-pt-5">
               <Paragraph font="serif" weight="semibold" variant="overview" leading="snug" className="su-max-w-700 su-mx-auto">
                 Stanford, at its heart, is a community of changemakers.

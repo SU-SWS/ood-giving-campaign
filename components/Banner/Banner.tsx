@@ -30,7 +30,7 @@ export const Banner = ({
   <Container {...props} as="section" bgColor={bgColor} width="full" py={9} className="su-overflow-hidden">
     <FlexBox alignItems="start" justifyContent="between" className={styles.wrapper}>
       <Container className={styles.contentWrapper}>
-        <AnimateInView duration={0.6} animation="slideUp">
+        <AnimateInView animation="slideUp">
           {heading && (
             <Heading
               size={isSmallHeading ? 'f6' : 'f7'}
@@ -51,7 +51,7 @@ export const Banner = ({
       </Container>
       {imageSrc && (
         <div className={styles.imageWrapper}>
-          <AnimateInView duration={0.4} delay={0.7} animation="slideInFromRight">
+          <AnimateInView delay={0.7} animation="slideInFromRight">
             <img
               alt=""
               src={getProcessedImage(imageSrc, '360x360', imageFocus)}

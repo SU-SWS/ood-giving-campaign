@@ -11,11 +11,11 @@ import { getMaskedAsset } from './getMaskedAsset';
  * @see {@link https://www.storyblok.com/docs/image-service} for more info on the Storyblok image service
  *
  * @example
- * getProcessedImage(imageSrc, '900x750', imageFocus, 'blur(10)'
+ * getProcessedImage(imageSrc, '900x750', imageFocus, 'blur(10)')
  */
 
 export const getProcessedImage = (
-  imageSrc: string,
+  imageSrc: string = '',
   crop: string = '',
   focus: string = '',
   filters: string = '',

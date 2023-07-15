@@ -1,5 +1,5 @@
 node_modules/
-src/tailwind/
+tailwind/
 postcss.config.js
 *.min.js
 *.test.js
