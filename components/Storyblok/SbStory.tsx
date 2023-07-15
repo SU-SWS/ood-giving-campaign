@@ -24,13 +24,13 @@ export const SbStory = ({
     isLeftImage,
     isLightHero,
     tabColor,
-    taxonomy,
+    topics,
     content,
     ankle,
   },
   blok,
 }: SbStoryProps) => (
-  <div {...storyblokEditable(blok)}>
+  <article {...storyblokEditable(blok)}>
     <StoryHero
       title={title}
       intro={intro}
@@ -41,7 +41,7 @@ export const SbStory = ({
       isVerticalHero={isVerticalHero}
       isLeftImage={isLeftImage}
       tabColor={tabColor}
-      taxonomy={taxonomy}
+      topics={topics}
     />
     <CreateBloks blokSection={content} />
     {getNumBloks(blok.ankle) > 0 && (
@@ -55,6 +55,6 @@ export const SbStory = ({
       />
     )}
     <CreateBloks blokSection={ankle} />
-  </div>
+  </article>
 );
 

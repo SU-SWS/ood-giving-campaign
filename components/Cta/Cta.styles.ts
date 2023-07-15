@@ -18,6 +18,7 @@ export const ctaVariants = {
   close: 'inline-block font-semibold leading-none text-lagunita hocus:text-lagunita-dark focus:outline-none',
   'close-x': 'leading-none',
   dismiss: 'inline-block font-bold uppercase tracking-widest leading-none text-gc-black hocus:text-gc-black focus:outline-none',
+  chip: 'inline-block leading-display no-underline text-current rounded-full border-2 border-current hocus:text-current font-normal underline-offset-4 decoration-transparent hocus-visible:decoration-current hocus-visible:decoration-1 hocus-visible:bg-digital-red',
   storyCardTag: 'inline-block text-current hocus:text-current font-normal decoration-2 underline-offset-4 decoration-black-50 hocus:decoration-current hocus:decoration-4',
   unset: '',
 };
@@ -61,6 +62,7 @@ export const ctaSizes = {
   back: 'text-16',
   close: 'text-18 md:text-21',
   dismiss: 'text-17',
+  chip: 'py-7 px-22 text-18',
   storyCardTag: 'text-16 lg:text-18',
   unset: '',
 };
@@ -88,7 +90,6 @@ export const iconStyles = {
   back: 'text-lagunita-light !w-22',
   close: 'text-lagunita-light group-hocus:text-lagunita-dark !w-22 -mt-4',
   'close-x': 'text-current hocus:text-current w-22 group-hocus:underline',
-  chip: '-mt-3',
   dismiss: 'text-gc-black !w-22 -mt-4',
 };
 

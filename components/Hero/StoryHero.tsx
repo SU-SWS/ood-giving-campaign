@@ -1,12 +1,16 @@
 import React from 'react';
 import { cnb } from 'cnbuilder';
 import { Container } from '../Container';
+import { CtaLink } from '../Cta';
 import { Grid } from '../Grid';
+import { FlexBox } from '../FlexBox';
 import { Heading, Text, Paragraph } from '../Typography';
-import { paletteAccentColors, PaletteAccentColorType } from '../../utilities/colorPalettePlugin';
-import { accentBorderColors } from '../../utilities/datasource';
-import { getProcessedImage } from '../../utilities/getProcessedImage';
+import { paletteAccentColors, PaletteAccentColorType } from '@/utilities/colorPalettePlugin';
+import { accentBorderColors } from '@/utilities/datasource';
+import { getProcessedImage } from '@/utilities/getProcessedImage';
+import { slugify } from '@/utilities/slugify';
 import { SbImageType } from '../Storyblok/Storyblok.types';
+
 import * as styles from './StoryHero.styles';
 
 export type StoryHeroProps = {
@@ -21,7 +25,7 @@ export type StoryHeroProps = {
   tabColor?: {
     value?: PaletteAccentColorType;
   }
-  taxonomy?: string[];
+  topics?: string[];
 };
 
 export const StoryHero = ({
@@ -34,7 +38,7 @@ export const StoryHero = ({
   isLeftImage = false,
   isLightHero = false,
   tabColor: { value: tabColorValue } = {},
-  taxonomy,
+  topics,
 }: StoryHeroProps) => {
   const useTwoColLayout = isVerticalHero && !!filename;
   const date = publishedDate && new Date(publishedDate);
@@ -47,6 +51,7 @@ export const StoryHero = ({
 
   return (
     <Container
+      as="header"
       width="full"
       bgColor={isLightHero ? 'white' : 'black'}
       pb={8}
@@ -68,12 +73,23 @@ export const StoryHero = ({
               {title}
             </Heading>
             {(byline || date) && (
-              <Text variant="caption" className={styles.heading(!!filename, !!tabColorValue, isVerticalHero)}>
+              <Text variant="caption" className={styles.byline(!!filename, !!tabColorValue, isVerticalHero)}>
                 {formattedDate}{byline && date ? ' | ' : ''}{`By: ${byline}`}
               </Text>
             )}
           </div>
           <div className={isVerticalHero ? 'px-20 sm:px-30 md:px-50 lg:px-80 xl:px-100' : 'cc'}>
+            <Heading srOnly>Topics</Heading>
+            {/* Display max 3 topic tags */}
+            {!!topics?.length && (
+              <FlexBox wrap="wrap" as="ul" className={styles.taxonomy}>
+                {topics.slice(0, 3).map((topic) => (
+                  <li key={topic} className={styles.taxonomyItem}>
+                    <CtaLink href={`/topics/${slugify(topic)}`} variant="chip">{topic}</CtaLink>
+                  </li>
+                ))}
+              </FlexBox>
+            )}
             <Paragraph
               variant="overview"
               font="serif"

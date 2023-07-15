@@ -102,7 +102,7 @@ export const VerticalCard = ({
           </CtaLink>
         )}
       </div>
-      {/* Display max 3 topic tags; TODO: Sort tags after clients decide on order */}
+      {/* Display max 3 topic tags */}
       {!!taxonomy?.length && (
         <ul className={styles.taxonomy(!!tabColor)}>
           {taxonomy.slice(0, 3).map((item) => (

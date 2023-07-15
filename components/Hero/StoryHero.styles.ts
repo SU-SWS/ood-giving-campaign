@@ -14,16 +14,23 @@ export const content = (hasHeroImage: boolean, isVerticalHero: boolean, isLeftIm
   'lg:order-2': isLeftImage && isVerticalHero && hasHeroImage,
   'mt-40 lg:mb-0 xl:rs-mt-8': isVerticalHero && hasHeroImage,
   'rs-mb-6': hasHeroImage,
-  'ml-0 rs-mt-10': !isVerticalHero && hasHeroImage,
+  'ml-0 rs-mt-9': !isVerticalHero && hasHeroImage,
 });
 
 export const tabSection = (hasTabColor: boolean, isVerticalHero: boolean) => cnb(
+  'rs-mb-0',
   hasTabColor ? 'border-l-[1rem] sm:border-l-[1.8rem] lg:border-l-[2.6rem]' : '',
   isVerticalHero ? 'px-20 sm:px-30 md:px-50 lg:px-80 xl:px-100' : 'cc',
 );
 
 export const heading = (hasHeroImage: boolean, hasTabColor: boolean, isVerticalHero: boolean) => cnb(
-  'rs-mb-1',
+  'mb-0',
+  hasTabColor ? '-ml-10 sm:-ml-18 lg:-ml-26' : '',
+  isVerticalHero && hasHeroImage ? 'xl:max-w-700' : 'xl:max-w-1200',
+);
+
+export const byline = (hasHeroImage: boolean, hasTabColor: boolean, isVerticalHero: boolean) => cnb(
+  'rs-mt-1',
   hasTabColor ? '-ml-10 sm:-ml-18 lg:-ml-26' : '',
   isVerticalHero && hasHeroImage ? 'xl:max-w-700' : 'xl:max-w-1200',
 );
@@ -32,3 +39,6 @@ export const body = (hasHeroImage: boolean, isVerticalHero: boolean) => cnb(
   'rs-mt-4 mb-0',
   isVerticalHero && hasHeroImage ? 'xl:max-w-[56rem]' : 'max-w-prose',
 );
+
+export const taxonomy = 'list-unstyled leading-display gap-x-19 gap-y-8';
+export const taxonomyItem = 'inline-block';
