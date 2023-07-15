@@ -19,6 +19,7 @@ export type StoryHeroProps = {
   intro?: string;
   publishedDate?: string;
   heroImage?: SbImageType;
+  caption?: string;
   isVerticalHero?: boolean;
   isLeftImage?: boolean;
   isLightHero?: boolean;
@@ -34,6 +35,7 @@ export const StoryHero = ({
   intro,
   publishedDate,
   heroImage: { filename, focus } = {},
+  caption,
   isVerticalHero = false,
   isLeftImage = false,
   isLightHero = false,
@@ -85,7 +87,7 @@ export const StoryHero = ({
               <FlexBox wrap="wrap" as="ul" className={styles.taxonomy}>
                 {topics.slice(0, 3).map((topic) => (
                   <li key={topic} className={styles.taxonomyItem}>
-                    <CtaLink href={`/topics/${slugify(topic)}`} variant="chip">{topic}</CtaLink>
+                    <CtaLink href={`/stories?topic=${slugify(topic)}`} variant="chip">{topic}</CtaLink>
                   </li>
                 ))}
               </FlexBox>
@@ -100,13 +102,20 @@ export const StoryHero = ({
           </div>
         </div>
         {filename && (
-          <div className={styles.imageWrapper(isVerticalHero, isLeftImage)}>
-            <img
-              alt=""
-              src={getProcessedImage(filename, isVerticalHero ? '1000x1600' : '2000x1000', focus)}
-              className={styles.image}
-            />
-          </div>
+          <figure>
+            <div className={styles.imageWrapper(isVerticalHero, isLeftImage)}>
+              <img
+                alt=""
+                src={getProcessedImage(filename, isVerticalHero ? '1000x1600' : '2000x1000', focus)}
+                className={styles.image}
+              />
+            </div>
+            {caption && (
+              <figcaption className={styles.caption}>
+                <Text variant="caption" className={styles.captionText}>{caption}</Text>
+              </figcaption>
+            )}
+          </figure>
         )}
       </Grid>
     </Container>

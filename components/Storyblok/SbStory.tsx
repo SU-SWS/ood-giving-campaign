@@ -20,6 +20,7 @@ export const SbStory = ({
     intro,
     publishedDate,
     heroImage,
+    caption,
     isVerticalHero,
     isLeftImage,
     isLightHero,
@@ -37,6 +38,7 @@ export const SbStory = ({
       byline={byline}
       publishedDate={publishedDate}
       heroImage={heroImage}
+      caption={caption}
       isLightHero={isLightHero}
       isVerticalHero={isVerticalHero}
       isLeftImage={isLeftImage}

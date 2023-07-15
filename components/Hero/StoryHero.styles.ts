@@ -1,13 +1,6 @@
 import { cnb } from 'cnbuilder';
 
 export const root = 'pt-80 md:pt-120 lg:pt-150 relative';
-export const imageWrapper = (isVerticalHero: boolean, isLeftImage: boolean) => cnb('rounded-br-[16vw] overflow-hidden', {
-  'aspect-w-2 aspect-h-1': !isVerticalHero,
-  'aspect-w-1 aspect-h-1 lg:aspect-w-5 lg:aspect-h-8': isVerticalHero,
-  'lg:order-1': isLeftImage && isVerticalHero,
-});
-
-export const image = 'object-cover w-full h-full';
 
 export const content = (hasHeroImage: boolean, isVerticalHero: boolean, isLeftImage: boolean) => cnb({
   'rs-mt-10 xl:mt-[32.7rem]': !hasHeroImage,
@@ -42,3 +35,14 @@ export const body = (hasHeroImage: boolean, isVerticalHero: boolean) => cnb(
 
 export const taxonomy = 'list-unstyled leading-display gap-x-19 gap-y-8';
 export const taxonomyItem = 'inline-block';
+
+export const imageWrapper = (isVerticalHero: boolean, isLeftImage: boolean) => cnb('rounded-br-[16vw] overflow-hidden', {
+  'aspect-w-2 aspect-h-1': !isVerticalHero,
+  'aspect-w-1 aspect-h-1 lg:aspect-w-5 lg:aspect-h-8': isVerticalHero,
+  'lg:order-1': isLeftImage && isVerticalHero,
+});
+
+export const image = 'object-cover w-full h-full';
+
+export const caption = 'cc text-current rs-mt-0';
+export const captionText = 'max-w-900 text-black-20';

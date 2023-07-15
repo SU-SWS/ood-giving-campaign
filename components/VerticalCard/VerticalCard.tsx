@@ -107,7 +107,7 @@ export const VerticalCard = ({
         <ul className={styles.taxonomy(!!tabColor)}>
           {taxonomy.slice(0, 3).map((item) => (
             <li key={item} className={styles.taxonomyItem}>
-              <CtaLink href={`/topics/${slugify(item)}`} variant="storyCardTag">{item}</CtaLink>
+              <CtaLink href={`/stories?topic=${slugify(item)}`} variant="storyCardTag">{item}</CtaLink>
             </li>
           ))}
         </ul>

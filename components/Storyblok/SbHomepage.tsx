@@ -48,6 +48,14 @@ export const SbHomepagePage = ({
   <div {...storyblokEditable(blok)}>
     <Heading as="h1" srOnly>{title || 'Homepage'}</Heading>
     <HomepageHero />
+    <Image
+      width={2000}
+      height={40}
+      alt=""
+      loading="lazy"
+      src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/f23b53c0e4/steve-johnson-cropped-2000x40-02.jpg') || ''}
+      className="w-full"
+    />
     <Intro text={intro} />
       <ThemeSection
         themeCardDiscovery={themeCardDiscovery}
@@ -68,7 +76,7 @@ export const SbHomepagePage = ({
         height={40}
         alt=""
         loading="lazy"
-        src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/f23b53c0e4/steve-johnson-cropped-2000x40-02.jpg') || ''}
+        src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/c4777a4925/steve-johnson-cropped-2000x40-01.jpg') || ''}
         className="w-full"
       />
     )}
