@@ -44,21 +44,21 @@ export const SbSection = ({
     bgColor={bgColor}
     pt={paddingTop}
     pb={paddingBottom}
-    className="su-relative su-overflow-hidden"
+    className="relative overflow-hidden"
   >
     {(heading || superhead) && (
-      <FlexBox className="su-rs-mb-6">
+      <FlexBox className="rs-mb-6">
         {barColorValue && (
           <div className={cnb(
-            'su-block su-w-8 md:su-w-20 lg:su-w-40',
+            'block w-8 md:w-20 lg:w-40',
             accentBgColors[paletteAccentColors[barColorValue]],
           )}
           />
         )}
         <div className={cnb(
-          'su-cc su-whitespace-pre-line su-w-full 3xl:su-max-w-3/5',
-          barColorValue ? 'su--ml-8 md:su--ml-20 lg:su--ml-40' : '',
-          superhead ? '' : 'su--mt-05em',
+          'cc whitespace-pre-line w-full 3xl:max-w-3/5',
+          barColorValue ? '-ml-8 md:-ml-20 lg:-ml-40' : '',
+          superhead ? '' : '-mt-05em',
         )}
         >
           {superhead && (
@@ -73,7 +73,7 @@ export const SbSection = ({
               leading="none"
               uppercase
               font="druk"
-              className="su-mb-0"
+              className="mb-0"
             >
               {superhead && <SrOnlyText>{`${superhead}:`}</SrOnlyText>}{heading}
             </Heading>

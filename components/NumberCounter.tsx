@@ -22,7 +22,7 @@ export const NumberCounter = ({ number, duration = 2500, afterText = '' }) => {
 
   return (
     <m.span animate={{ opacity: count > 0 ? 1 : 0 }} ref={ref}>
-      <Text size={8} weight="bold" align="center" className="su-text-robins-egg">{count}{afterText}</Text>
+      <Text size={8} weight="bold" align="center" className="text-robins-egg">{count}{afterText}</Text>
     </m.span>
   );
 };

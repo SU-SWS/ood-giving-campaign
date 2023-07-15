@@ -47,23 +47,23 @@ export type IconType = keyof typeof iconMap;
 
 /**
  * Normalized base size and position of each icon (finetuned manually) for use in eg, buttons
- * Only add to this map if different from default class su-w-1em
+ * Only add to this map if different from default class w-1em
  * If you wish to use the HeroIcon without any base styles, set the noBaseStyle boolean prop to true
  */
 // TODO: Adjust these base styles as they were ported over when we were using v1 of Heroicons
 export const iconBaseStyle = {
-  default: 'su-w-1em',
-  'arrow-left': 'su-w-08em',
-  'arrow-right': 'su-w-08em',
-  'triangle-right': 'su-w-09em su-scale-x-[0.9] su-mt-01em',
-  'triangle-down': 'su-w-09em su-scale-x-[0.9] su-rotate-90 su-mt-01em',
-  'triangle-up': 'su-w-09em su-scale-x-[0.9] su--rotate-90 su-mt-02em',
-  email: 'su-w-[1.2em]',
-  external: 'su-w-08em',
-  left: 'su-w-08em',
-  link: 'su--mt-01em',
-  more: 'su-w-08em',
-  plus: 'su-w-08em',
-  right: 'su-w-08em',
-  up: 'su-w-1em',
+  default: 'w-1em',
+  'arrow-left': 'w-08em',
+  'arrow-right': 'w-08em',
+  'triangle-right': 'w-09em scale-x-[0.9] mt-01em',
+  'triangle-down': 'w-09em scale-x-[0.9] rotate-90 mt-01em',
+  'triangle-up': 'w-09em scale-x-[0.9] -rotate-90 mt-02em',
+  email: 'w-[1.2em]',
+  external: 'w-08em',
+  left: 'w-08em',
+  link: '-mt-01em',
+  more: 'w-08em',
+  plus: 'w-08em',
+  right: 'w-08em',
+  up: 'w-1em',
 };

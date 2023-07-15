@@ -73,7 +73,7 @@ export const StoryHero = ({
               </Text>
             )}
           </div>
-          <div className={isVerticalHero ? 'su-px-20 sm:su-px-30 md:su-px-50 lg:su-px-80 xl:su-px-100' : 'su-cc'}>
+          <div className={isVerticalHero ? 'px-20 sm:px-30 md:px-50 lg:px-80 xl:px-100' : 'cc'}>
             <Paragraph
               variant="overview"
               font="serif"

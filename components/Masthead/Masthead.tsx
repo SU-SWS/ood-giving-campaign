@@ -48,8 +48,8 @@ export const Masthead = ({ isDark, className }: MastheadProps) => {
   return (
     <m.div
       className={cnb(
-        'su-w-full su-fixed su-top-0 su-z-50 su-transition-colors su-will-change-transform',
-        !isAtTop && isScrollingBack ? 'su-bg-gc-black su-border-b su-border-b-black-80' : 'su-bg-transparent su-border-b-transparent',
+        'w-full fixed top-0 z-50 transition-colors will-change-transform',
+        !isAtTop && isScrollingBack ? 'bg-gc-black border-b border-b-black-80' : 'bg-transparent border-b-transparent',
         className,
       )}
       animate={{ y: isVisible ? 0 : -slideDistance, opacity: isVisible ? 1 : 0 }}
@@ -59,25 +59,25 @@ export const Masthead = ({ isDark, className }: MastheadProps) => {
       <FlexBox
         justifyContent="between"
         alignItems="center"
-        className={cnb('su-cc su-transition su-py-18', !isAtTop ? 'lg:su-py-3' : 'md:su-py-26')}
+        className={cnb('cc transition py-18', !isAtTop ? 'lg:py-3' : 'md:py-26')}
       >
         <Logo
           isLink
-          className={cnb('su-w-[17rem] sm:su-w-[24rem] su-transition-[width] !su-duration-100', isAtTop ? 'lg:su-w-[32rem]' : 'lg:su-w-[28rem]')}
+          className={cnb('w-170 sm:w-240 transition-[width] !duration-100', isAtTop ? 'lg:w-[32rem]' : 'lg:w-280')}
         />
         {/* The scale3d here solves a Firefox only rendering bug with blurry curved borders when using transform */}
         <m.div
           animate={{ scale: isAtTop ? 1 : 0.75 }}
           transition={{ duration: 0.1, ease: 'easeInOut' }}
-          className="su-origin-right"
+          className="origin-right"
         >
           <FlexBox alignItems="center">
             <CtaLink
               href={ood.give}
               variant={!isAtTop && isScrollingBack ? 'mainNavUp' : 'mainNav'}
               className={cnb(
-                'su-rounded-bl-[1.4rem] lg:su-rounded-bl-[2rem]',
-                isAtTop ? 'su-mt-10 lg:su-mt-26' : 'su-mt-5 lg:su-mt-16',
+                'rounded-bl-[1.4rem] lg:rounded-bl-[2rem]',
+                isAtTop ? 'mt-10 lg:mt-26' : 'mt-5 lg:mt-16',
               )}
             >
               Make a gift
@@ -86,11 +86,11 @@ export const Masthead = ({ isDark, className }: MastheadProps) => {
               onClick={() => alert('Hello world')}
               variant={!isAtTop && isScrollingBack ? 'mainNavUp' : 'mainNav'}
               className={cnb(
-                'su--ml-2 su-rounded-tr-[1.4rem] lg:su-rounded-tr-[2rem]',
-                isAtTop ? 'su--mt-10 lg:su--mt-26' : 'su--mt-5 lg:su--mt-10',
+                '-ml-2 rounded-tr-[1.4rem] lg:rounded-tr-[2rem]',
+                isAtTop ? '-mt-10 lg:-mt-26' : '-mt-5 lg:-mt-10',
               )}
             >
-              <HeroIcon icon="menu" title="Main menu" noBaseStyle className="su-w-20 lg:su-w-32 group-hocus:su-scale-y-75 su-will-change-transform" />
+              <HeroIcon icon="menu" title="Main menu" noBaseStyle className="w-20 lg:w-32 group-hocus:scale-y-75 will-change-transform" />
             </CtaButton>
           </FlexBox>
         </m.div>

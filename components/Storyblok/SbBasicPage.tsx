@@ -35,7 +35,7 @@ export const SbBasicPage = ({
         alt=""
         loading="lazy"
         src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/c4777a4925/steve-johnson-cropped-2000x40-01.jpg')}
-        className="su-w-full"
+        className="w-full"
       />
     )}
     <CreateBloks blokSection={ankle} />

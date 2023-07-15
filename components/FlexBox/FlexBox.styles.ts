@@ -1,38 +1,38 @@
 export const flexDirection = {
-  row: 'su-flex-row',
-  'row-reverse': 'su-flex-row-reverse',
-  col: 'su-flex-col',
-  'col-reverse': 'su-flex-col-reverse',
+  row: 'flex-row',
+  'row-reverse': 'flex-row-reverse',
+  col: 'flex-col',
+  'col-reverse': 'flex-col-reverse',
 };
 
 export const flexWrap = {
-  wrap: 'su-flex-wrap',
-  'wrap-reverse': 'su-flex-wrap-reverse',
-  nowrap: 'su-flex-nowrap',
+  wrap: 'flex-wrap',
+  'wrap-reverse': 'flex-wrap-reverse',
+  nowrap: 'flex-nowrap',
 };
 
 export const flexJustifyContent = {
-  start: 'su-justify-start',
-  end: 'su-justify-end',
-  center: 'su-justify-center',
-  between: 'su-justify-between',
-  around: 'su-justify-around',
-  evenly: 'su-justify-evenly',
+  start: 'justify-start',
+  end: 'justify-end',
+  center: 'justify-center',
+  between: 'justify-between',
+  around: 'justify-around',
+  evenly: 'justify-evenly',
 };
 
 export const flexAlignContent = {
-  start: 'su-content-start',
-  end: 'su-content-end',
-  center: 'su-content-center',
-  between: 'su-content-between',
-  around: 'su-content-around',
-  evenly: 'su-content-evenly',
+  start: 'content-start',
+  end: 'content-end',
+  center: 'content-center',
+  between: 'content-between',
+  around: 'content-around',
+  evenly: 'content-evenly',
 };
 
 export const flexAlignItems = {
-  start: 'su-items-start',
-  end: 'su-items-end',
-  center: 'su-items-center',
-  baseline: 'su-items-baseline',
-  stretch: 'su-items-stretch',
+  start: 'items-start',
+  end: 'items-end',
+  center: 'items-center',
+  baseline: 'items-baseline',
+  stretch: 'items-stretch',
 };

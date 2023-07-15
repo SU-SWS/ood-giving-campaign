@@ -1,30 +1,30 @@
 import { cnb } from 'cnbuilder';
 
-export const root = 'su-relative su-bg-white su-bg-no-repeat su-bg-cover su-bg-top';
+export const root = 'relative bg-white bg-no-repeat bg-cover bg-top';
 
-export const panel = 'su-border-white su-bg-no-repeat su-bg-cover su-bg-top';
+export const panel = 'border-white bg-no-repeat bg-cover bg-top';
 export const panelLeft = (isLargeOffset: boolean) => cnb(
   panel,
-  'su-border-b xl:su-border-b-0 xl:su-border-r',
-  isLargeOffset ? 'su-pt-200' : 'su-pt-60',
+  'border-b xl:border-b-0 xl:border-r',
+  isLargeOffset ? 'pt-200' : 'pt-60',
 );
 export const panelRight = (isLargeOffset: boolean) => cnb(
   panel,
-  'su-border-t xl:su-border-t-0 xl:su-border-l su-pb-60',
-  isLargeOffset ? 'su-pb-200' : 'su-pb-60',
+  'border-t xl:border-t-0 xl:border-l pb-60',
+  isLargeOffset ? 'pb-200' : 'pb-60',
 );
 
 export const posterContentRoot = (hasImage: boolean) => cnb(
-  'su-relative su-overflow-hidden su-border-white sm:su-max-w-[53rem] md:su-max-w-[60rem] lg:su-max-w-[75rem] su-px-20 sm:su-px-60 2xl:su-px-126 su-min-h-[45rem] md:su-min-h-[60rem] xl:su-min-h-[75rem] su-pb-60 md:su-pb-100 su-rs-pt-6',
-  hasImage ? 'su-text-white' : '',
+  'relative overflow-hidden border-white sm:max-w-[53rem] md:max-w-[60rem] lg:max-w-[75rem] px-20 sm:px-60 2xl:px-126 min-h-[45rem] md:min-h-[60rem] xl:min-h-[75rem] pb-60 md:pb-100 rs-pt-6',
+  hasImage ? 'text-white' : '',
 );
-export const posterContentLeft = 'su-rounded-tl-[12rem] sm:su-rounded-tl-[20rem] lg:su-rounded-tl-[30rem] su-border-t-2 su-border-l-2 su-ml-20 sm:su-ml-auto xl:su-ml-100 3xl:su-ml-auto xl:su-pb-[18rem]';
-export const posterContentRight = 'su-rounded-br-[12rem] sm:su-rounded-br-[20rem] lg:su-rounded-br-[30rem] su-border-r-2 su-border-b-2 su-mr-20 sm:su-mr-auto xl:su-mr-100 3xl:su-mr-auto xl:su-pb-[11.8rem]';
+export const posterContentLeft = 'rounded-tl-[12rem] sm:rounded-tl-[20rem] lg:rounded-tl-[30rem] border-t-2 border-l-2 ml-20 sm:ml-auto xl:ml-100 3xl:ml-auto xl:pb-180';
+export const posterContentRight = 'rounded-br-[12rem] sm:rounded-br-[20rem] lg:rounded-br-[30rem] border-r-2 border-b-2 mr-20 sm:mr-auto xl:mr-100 3xl:mr-auto xl:pb-[11.8rem]';
 
-export const content = 'su-relative su-w-full su-break-words su-z-10';
+export const content = 'relative w-full break-words z-10';
 
-export const heading = (hasImage: boolean) => cnb('su-rs-mb-3 2xl:su-whitespace-pre-line', hasImage ? 'su-text-shadow-sm' : '');
+export const heading = (hasImage: boolean) => cnb('rs-mb-3 2xl:whitespace-pre-line', hasImage ? 'text-shadow-sm' : '');
 
-export const body = 'su-rs-mb-2 last:su-mb-0';
+export const body = 'rs-mb-2 last:mb-0';
 
-export const ctaWrapper = 'children:su-rs-mb-1 last:children:su-mb-0 su-mr-0';
+export const ctaWrapper = 'children:rs-mb-1 last:children:mb-0 mr-0';

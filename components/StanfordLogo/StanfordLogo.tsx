@@ -44,7 +44,7 @@ export const StanfordLogo = ({
       <a
         {...rest}
         href="https://www.stanford.edu"
-        className={cnb('su-logo', color ? styles.logoColors[color] : '', className)}
+        className={cnb('logo', color ? styles.logoColors[color] : '', className)}
       >
         {logoText}
       </a>
@@ -52,7 +52,7 @@ export const StanfordLogo = ({
   }
 
   return (
-    <div {...rest} className={cnb('su-logo', color ? styles.logoColors[color] : '', className)}>
+    <div {...rest} className={cnb('logo', color ? styles.logoColors[color] : '', className)}>
       {logoText}
     </div>
   );

@@ -58,11 +58,11 @@ export const HomepageHero = () => {
   const onPurposeY = useTransform(onPurposeSpring, [0, 1], ['0%', '10%']);
 
   return (
-    <div ref={heroRef} className="su-relative su-w-full su-bg-gc-sky su-overflow-hidden">
+    <div ref={heroRef} className="relative w-full bg-gc-sky overflow-hidden">
       <div>
-        <Container className="su-h-100 md:su-h-200" />
-        <div className="su-relative su-w-full su-bg-gc-sky su--mb-1 2xl:su-max-h-900 3xl:su-overflow-hidden">
-          <div className="su-aspect-w-1 su-aspect-h-1 lg:su-aspect-w-16 lg:su-aspect-h-9 su-bg-gc-sky">
+        <Container className="h-100 md:h-200" />
+        <div className="relative w-full bg-gc-sky -mb-1 2xl:max-h-900 3xl:overflow-hidden">
+          <div className="aspect-w-1 aspect-h-1 lg:aspect-w-16 lg:aspect-h-9 bg-gc-sky">
             <video
               ref={videoRef}
               playsInline
@@ -71,20 +71,20 @@ export const HomepageHero = () => {
               loop
               aria-label="Background Video"
               poster={getProcessedImage('https://a-us.storyblok.com/f/1005200/1280x674/bf8d340dbf/screenshot-2023-05-09-at-3-03-08-pm.png', '1280x676')}
-              className="su-block su-w-full su-h-full su-object-cover"
+              className="block w-full h-full object-cover"
             >
               <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/bf77fd691a/stanford125-loop.webm')} type="video/webm" />
               <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/17d1fcaa03/stanford125-loop.mp4')} type="video/mp4" />
               <p>Your browser does not support HTML video.</p>
             </video>
           </div>
-          <div className="su-absolute su-w-full su-h-full su-top-0 su-left-0 su-bg-gradient-to-b su-from-gc-sky su-via-gc-sky/60 su-via-30% su-to-50%" />
+          <div className="absolute w-full h-full top-0 left-0 bg-gradient-to-b from-gc-sky via-gc-sky/60 via-30% to-50%" />
         </div>
       </div>
       <m.div
         animate={{ opacity: [1, 0] }}
         transition={{ duration: 0.6, delay: 1.2 }}
-        className="su-cc su-absolute su-top-0 su-left-0 su-right-0 su-mb-0 su-pt-120 md:su-pt-216 2xl:su-pt-228 su-max-w-full"
+        className="cc absolute top-0 left-0 right-0 mb-0 pt-120 md:pt-216 2xl:pt-228 max-w-full"
       >
         <Heading as="h2" size="f8" leading="none" font="druk" color="white">
           {lines.map((text) => (
@@ -98,14 +98,14 @@ export const HomepageHero = () => {
         style={{ marginTop: onPurposeY }}
         animate={{ opacity: [0, 1] }}
         transition={{ duration: 0.6, times: [0, 1], delay: 1.4 }}
-        className="su-opacity-0 su-cc su-absolute su-top-[25rem] sm:su-top-300 md:su-top-400 lg:su-top-[28vw] 3xl:su-top-[45rem] su-left-0 su-right-0"
+        className="opacity-0 cc absolute top-[25rem] sm:top-300 md:top-400 lg:top-[28vw] 3xl:top-[45rem] left-0 right-0"
       >
         <FlexBox alignItems="center" justifyContent="center">
-          <div className="su-h-[10vw] 2xl:su-h-[15rem]">
-            <OnPurpo className="su-fill-white su-h-full su-mr-0" />
+          <div className="h-[10vw] 2xl:h-[15rem]">
+            <OnPurpo className="fill-white h-full mr-0" />
           </div>
           <m.div
-            className="su-h-auto su-max-w-fit"
+            className="h-auto max-w-fit"
             style={{
               width: animatedWidth,
               opacity: scrollYProgress,
@@ -116,31 +116,31 @@ export const HomepageHero = () => {
             <button
               type="button"
               onClick={toggleVideo}
-              className="su-group su-block su-text-white su-transition su-mx-auto"
+              className="group block text-white transition mx-auto"
             >
               <HeroIcon
                 icon="play-outline"
                 title="Play full video"
-                className="su-type-5 su-fill-gc-black/70 group-hocus:su-fill-digital-red su-mx-auto"
+                className="type-5 fill-gc-black/70 group-hocus:fill-digital-red mx-auto"
               />
-              <Text weight="bold" color="white" align="center" size={1} className="su-hidden sm:su-block">
+              <Text weight="bold" color="white" align="center" size={1} className="hidden sm:block">
                 Play video
               </Text>
             </button>
           </m.div>
-          <div className="su-h-[10vw] 2xl:su-h-[15rem]">
-            <Ose className="su-fill-white su-h-full su--ml-2" />
+          <div className="h-[10vw] 2xl:h-[15rem]">
+            <Ose className="fill-white h-full -ml-2" />
           </div>
         </FlexBox>
       </m.div>
       <button
         type="button"
         onClick={toggleVideo}
-        className="su-w-fit su-group su-text-white su-absolute su-bottom-[4%] su-left-20 sm:su-left-30 md:su-left-50 hocus:su-text-white su-transition"
+        className="w-fit group text-white absolute bottom-[4%] left-20 sm:left-30 md:left-50 hocus:text-white transition"
       >
         <HeroIcon
           icon={isPlaying ? 'pause' : 'play'}
-          className="su-inline-block su-type-3 su-fill-gc-black/70 group-hocus:su-fill-digital-red su-mr-02em"
+          className="inline-block type-3 fill-gc-black/70 group-hocus:fill-digital-red mr-02em"
         />
         <Text as="span" variant="card" weight="semibold">
           {`${isPlaying ? 'Pause' : 'Play'} background video`}

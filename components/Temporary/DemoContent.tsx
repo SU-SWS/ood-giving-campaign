@@ -7,12 +7,12 @@ import { NumberCounter } from '../NumberCounter';
 
 export const DemoContent = () => (
   <div>
-    <div className="su-h-400 lg:su-h-600 su-overflow-hidden su-relative">
+    <div className="h-400 lg:h-600 overflow-hidden relative">
       <Parallax>
-        <div style={{ backgroundImage: 'url(https://www.space.com/images/i/000/082/219/original/VLT-Pano-MCloudsMilkyWay_6068-net.jpg?interpolation=lanczos-none&fit=around|1024:1024' }} className="su--mt-100 su-h-800 su-flex su-items-center su-justify-center su-bg-center su-bg-cover" />
-        <div className="su-absolute su-top-0 su-left-0 su-w-full su-h-full su-block su-bg-black-true/40" />
+        <div style={{ backgroundImage: 'url(https://www.space.com/images/i/000/082/219/original/VLT-Pano-MCloudsMilkyWay_6068-net.jpg?interpolation=lanczos-none&fit=around|1024:1024' }} className="-mt-100 h-800 flex items-center justify-center bg-center bg-cover" />
+        <div className="absolute top-0 left-0 w-full h-full block bg-black-true/40" />
       </Parallax>
-      <div className="su-absolute su-top-1/2 su-left-1/2 su-translate-x-[-50%] su-translate-y-[-50%] su-text-shadow-lg su-z-10 su-max-w-800">
+      <div className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] text-shadow-lg z-10 max-w-800">
         <Text leading="none" align="center" font="druk-wide" size={7} color="white" weight="bold" className="">To infinity and beyond</Text>
       </div>
     </div>
@@ -114,17 +114,17 @@ export const DemoContent = () => (
         <NumberCounter number={120} />
       </Grid>
     </Container>
-    <div className="su-h-400 lg:su-h-600 su-overflow-hidden su-relative">
+    <div className="h-400 lg:h-600 overflow-hidden relative">
       <Parallax>
-        <div style={{ backgroundImage: 'url(https://upload.wikimedia.org/wikipedia/commons/0/00/Crab_Nebula.jpg' }} className="su--mt-100 su-h-800 su-flex su-items-center su-justify-center su-bg-center su-bg-cover" />
-        <div className="su-absolute su-top-0 su-left-0 su-w-full su-h-full su-block su-bg-black-true/40" />
+        <div style={{ backgroundImage: 'url(https://upload.wikimedia.org/wikipedia/commons/0/00/Crab_Nebula.jpg' }} className="-mt-100 h-800 flex items-center justify-center bg-center bg-cover" />
+        <div className="absolute top-0 left-0 w-full h-full block bg-black-true/40" />
       </Parallax>
-      <div className="su-absolute su-top-1/2 su-left-1/2 su-translate-x-[-50%] su-translate-y-[-50%] su-z-10">
+      <div className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-10">
         <CtaLink
           href="/about-test"
           variant="ghost-swipe"
           icon="arrow-right"
-          className="!su-rs-px-5 !su-rs-py-2 su-rounded-br-[5rem] !su-text-20 md:!su-text-[4.6rem] !su-font-bold !su-text-white !su-bg-black-true/40 hocus:!su-bg-sapphire/80"
+          className="!rs-px-5 !rs-py-2 rounded-br-[5rem] !text-20 md:!text-[4.6rem] !font-bold !text-white !bg-black-true/40 hocus:!bg-sapphire/80"
         >
           See our new initiative
         </CtaLink>
