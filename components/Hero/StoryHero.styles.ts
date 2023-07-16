@@ -45,4 +45,4 @@ export const imageWrapper = (isVerticalHero: boolean, isLeftImage: boolean) => c
 export const image = 'object-cover w-full h-full';
 
 export const caption = 'cc text-current rs-mt-0';
-export const captionText = 'max-w-900 text-black-20';
+export const captionText = 'max-w-900';

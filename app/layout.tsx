@@ -4,7 +4,6 @@ import localFont from 'next/font/local';
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
 import StoryblokProvider from '@/components/StoryblokProvider';
 import { FlexBox } from '@/components/FlexBox';
-import { Masthead } from '@/components/Masthead';
 import { LocalFooter } from '@/components/LocalFooter';
 import { GlobalFooter } from '@/components/GlobalFooter';
 import { Skiplink } from '@/components/SkipLink';
@@ -64,8 +63,7 @@ export default function RootLayout({ children }: LayoutProps) {
         <body>
           <FlexBox justifyContent="between" direction="col" className="min-h-screen relative">
             <Skiplink />
-            <Masthead />
-            <main id="main-content">{children}</main>
+            {children}
             <footer>
               <LocalFooter />
               <GlobalFooter />

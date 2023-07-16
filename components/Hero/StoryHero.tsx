@@ -112,7 +112,13 @@ export const StoryHero = ({
             </div>
             {caption && (
               <figcaption className={styles.caption}>
-                <Text variant="caption" className={styles.captionText}>{caption}</Text>
+                <Text
+                  variant="caption"
+                  color={isLightHero ? 'black-70' : 'black-20'}
+                  className={styles.captionText}
+                >
+                  {caption}
+                </Text>
               </figcaption>
             )}
           </figure>
