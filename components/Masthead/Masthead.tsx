@@ -37,7 +37,7 @@ export const Masthead = ({ isLight, className }: MastheadProps) => {
   });
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    setIsAtTop(latest <= 200);
+    setIsAtTop(latest <= 40);
   });
 
   useEffect(() => setIsVisible(isScrollingBack || isAtTop), [

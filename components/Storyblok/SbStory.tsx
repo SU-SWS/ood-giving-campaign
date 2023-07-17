@@ -18,7 +18,7 @@ export const SbStory = ({
   blok: {
     title,
     byline,
-    intro,
+    dek,
     publishedDate,
     heroImage,
     caption,
@@ -38,7 +38,7 @@ export const SbStory = ({
       <article>
         <StoryHero
           title={title}
-          intro={intro}
+          dek={dek}
           byline={byline}
           publishedDate={publishedDate}
           heroImage={heroImage}

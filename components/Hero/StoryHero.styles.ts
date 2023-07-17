@@ -12,7 +12,7 @@ export const content = (hasHeroImage: boolean, isVerticalHero: boolean, isLeftIm
 
 export const tabSection = (hasTabColor: boolean, isVerticalHero: boolean) => cnb(
   'rs-mb-0',
-  hasTabColor ? 'border-l-[1rem] sm:border-l-[1.8rem] lg:border-l-[2.6rem]' : '',
+  hasTabColor ? 'border-l-[1rem] sm:border-l-[1.4rem] md:border-l-[2rem] lg:border-l-[2.6rem]' : '',
   isVerticalHero ? 'px-20 sm:px-30 md:px-50 lg:px-80 xl:px-100' : 'cc',
 );
 
@@ -44,5 +44,11 @@ export const imageWrapper = (isVerticalHero: boolean, isLeftImage: boolean) => c
 
 export const image = 'object-cover w-full h-full';
 
-export const caption = 'cc text-current rs-mt-0';
-export const captionText = 'max-w-900';
+export const caption = (isVerticalHero: boolean, isLeftImage: boolean) => cnb('text-current rs-mt-0 cc', {
+  'pr-0': isVerticalHero && isLeftImage,
+  'pl-0': isVerticalHero && !isLeftImage,
+});
+export const captionText = (isVerticalHero: boolean, isLeftImage: boolean) => cnb(isVerticalHero ? 'max-w-prose-wide' : 'max-w-900', {
+  '3xl:pl-100 mr-auto': isVerticalHero && isLeftImage,
+  'text-right 3xl:pr-100 ml-auto ': isVerticalHero && !isLeftImage,
+});
