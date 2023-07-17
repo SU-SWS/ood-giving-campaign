@@ -30,7 +30,7 @@ async function getStoryData(params: { slug: string[] }) {
   let slug: string = params.slug ? params.slug.join('/') : 'home';
   let sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',
-    cv: Date.now(),
+    cv: activeEnv === 'development' ? Date.now() : undefined,
     resolve_relations: resolveRelations,
   };
 
@@ -48,7 +48,7 @@ async function generateStaticParams() {
   const storyblokApi: StoryblokClient = getStoryblokApi();
   let sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',
-    cv: Date.now(),
+    cv: activeEnv === 'development' ? Date.now() : undefined,
   };
 
   const { data: { links } } = await storyblokApi?.get('cdn/links', sbParams);
