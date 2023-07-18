@@ -7,7 +7,9 @@ import { Grid } from '../Grid';
 import { FlexBox } from '../FlexBox';
 import { Heading, Text, Paragraph } from '../Typography';
 import { paletteAccentColors, PaletteAccentColorType } from '@/utilities/colorPalettePlugin';
-import { accentBorderColors } from '@/utilities/datasource';
+import {
+  accentBorderColors, storyHeroAspectRatios, storyHeroAspectRatiosDesktop, StoryHeroAspectRatioType,
+} from '@/utilities/datasource';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { slugify } from '@/utilities/slugify';
 import { SbImageType } from '../Storyblok/Storyblok.types';
@@ -20,8 +22,10 @@ export type StoryHeroProps = {
   publishedDate?: string;
   dek?: string;
   heroImage?: SbImageType;
+  mobileImage?: SbImageType;
   caption?: string;
-  aspectRatio?: '2x1' | '16x9' | '5x8';
+  aspectRatio?: StoryHeroAspectRatioType;
+  mobileAspectRatio?: StoryHeroAspectRatioType;
   isVerticalHero?: boolean;
   isLeftImage?: boolean;
   isLightHero?: boolean;
@@ -37,11 +41,13 @@ export const StoryHero = ({
   dek,
   publishedDate,
   heroImage: { filename, focus } = {},
+  mobileImage: { filename: mobileFilename, focus: mobileFocus } = {},
   caption,
-  aspectRatio,
   isVerticalHero = false,
   isLeftImage = false,
   isLightHero = false,
+  aspectRatio = isVerticalHero ? '5x8' : '2x1',
+  mobileAspectRatio = '1x1',
   tabColor: { value: tabColorValue } = {},
   topics,
 }: StoryHeroProps) => {
@@ -115,7 +121,11 @@ export const StoryHero = ({
         </div>
         {filename && (
           <figure>
-            <div className={styles.imageWrapper(isVerticalHero, isLeftImage)}>
+            <div className={cnb(
+              styles.imageWrapper(isVerticalHero, isLeftImage),
+              storyHeroAspectRatios[mobileAspectRatio],
+              storyHeroAspectRatiosDesktop[aspectRatio],
+            )}>
               <Image
                 alt=""
                 width={isVerticalHero ? 1000 : 2000}

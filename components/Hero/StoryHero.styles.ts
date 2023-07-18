@@ -62,8 +62,6 @@ export const taxonomy = 'list-unstyled leading-display gap-x-19 gap-y-8';
 export const taxonomyItem = 'inline-block';
 
 export const imageWrapper = (isVerticalHero: boolean, isLeftImage: boolean) => cnb('rounded-br-[16vw] overflow-hidden', {
-  'aspect-w-2 aspect-h-1': !isVerticalHero,
-  'aspect-w-1 aspect-h-1 lg:aspect-w-5 lg:aspect-h-8': isVerticalHero,
   'lg:order-1': isLeftImage && isVerticalHero,
 });
 

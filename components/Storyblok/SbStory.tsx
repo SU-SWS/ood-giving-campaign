@@ -21,6 +21,9 @@ export const SbStory = ({
     dek,
     publishedDate,
     heroImage,
+    mobileImage,
+    aspectRatio,
+    mobileAspectRatio,
     caption,
     isVerticalHero,
     isLeftImage,
@@ -42,6 +45,9 @@ export const SbStory = ({
           byline={byline}
           publishedDate={publishedDate}
           heroImage={heroImage}
+          mobileImage={mobileImage}
+          aspectRatio={aspectRatio}
+          mobileAspectRatio={mobileAspectRatio}
           caption={caption}
           isLightHero={isLightHero}
           isVerticalHero={isVerticalHero}
