@@ -62,12 +62,14 @@ export const taxonomy = 'list-unstyled leading-display gap-x-19 gap-y-8';
 export const taxonomyItem = 'inline-block';
 
 export const imageCrops = {
-  '1x1': '2000x2000',
+  '1x1': '1200x1200',
   '2x1': '2000x1000',
+  '3x2': '2100x1400',
   '5x8': '1000x1600',
   '16x9': '2000x1125',
   'free': '2000x0',
 };
+export type ImageCropType = keyof typeof imageCrops;
 
 export const imageWrapper = (isVerticalHero: boolean, isLeftImage: boolean) => cnb('rounded-br-[16vw] overflow-hidden', {
   'lg:order-1': isLeftImage && isVerticalHero,

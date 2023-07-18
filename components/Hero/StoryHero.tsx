@@ -7,13 +7,10 @@ import { Grid } from '../Grid';
 import { FlexBox } from '../FlexBox';
 import { Heading, Text, Paragraph } from '../Typography';
 import { paletteAccentColors, PaletteAccentColorType } from '@/utilities/colorPalettePlugin';
-import {
-  accentBorderColors, storyHeroAspectRatios, storyHeroAspectRatiosDesktop, StoryHeroAspectRatioType,
-} from '@/utilities/datasource';
+import { accentBorderColors } from '@/utilities/datasource';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { slugify } from '@/utilities/slugify';
 import { SbImageType } from '../Storyblok/Storyblok.types';
-
 import * as styles from './StoryHero.styles';
 
 export type StoryHeroProps = {
@@ -22,11 +19,11 @@ export type StoryHeroProps = {
   publishedDate?: string;
   dek?: string;
   heroImage?: SbImageType;
+  aspectRatio?: styles.ImageCropType;
   mobileImage?: SbImageType;
+  mobileAspectRatio?: styles.ImageCropType;
   alt?: string;
   caption?: string;
-  aspectRatio?: StoryHeroAspectRatioType;
-  mobileAspectRatio?: StoryHeroAspectRatioType;
   isVerticalHero?: boolean;
   isLeftImage?: boolean;
   isLightHero?: boolean;
