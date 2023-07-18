@@ -25,7 +25,7 @@ export const heading = (
   isLeftImage: boolean,
 ) => cnb(
   'mb-0',
-  isVerticalHero && hasHeroImage ? ' xl:max-w-700' : 'xl:max-w-1200', {
+  isVerticalHero && hasHeroImage ? 'xl:max-w-700 type-5 lg:fluid-type-5' : 'xl:max-w-1200 type-5 lg:fluid-type-6', {
     '-ml-10 sm:-ml-18 lg:-ml-26': hasTabColor,
     '3xl:ml-[7.4rem]': isVerticalHero && hasHeroImage && isLeftImage && hasTabColor,
     '3xl:ml-100': isVerticalHero && hasHeroImage && isLeftImage && !hasTabColor,
@@ -75,7 +75,7 @@ export const imageWrapper = (isVerticalHero: boolean, isLeftImage: boolean) => c
 
 export const image = 'object-cover w-full h-full';
 
-export const caption = (isVerticalHero: boolean, isLeftImage: boolean) => cnb('text-current rs-mt-0 cc', {
+export const caption = (isVerticalHero: boolean, isLeftImage: boolean) => cnb('text-current rs-mt-0 cc type-0', {
   'lg:pr-0': isVerticalHero && isLeftImage,
   'lg:pl-0': isVerticalHero && !isLeftImage,
 });

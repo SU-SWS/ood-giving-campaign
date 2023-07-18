@@ -84,7 +84,6 @@ export const StoryHero = ({
             <Heading
               as="h1"
               leading="tight"
-              size={useTwoColLayout ? 'f5' : 'f6'}
               className={styles.heading(!!filename, !!tabColorValue, isVerticalHero, isLeftImage)}
             >
               {title}
@@ -92,20 +91,16 @@ export const StoryHero = ({
             {(byline || date) && (
               <div className={styles.byline(!!filename, !!tabColorValue, isVerticalHero, isLeftImage)}>
                 {byline && (
-                  <Text variant="caption">
-                    {byline}
-                  </Text>
+                  <Text>{byline}</Text>
                 )}
                 {date && (
-                  <Text as="time" variant="caption">
-                    {formattedDate}
-                  </Text>
+                  <time dateTime={publishedDate}>{formattedDate}</time>
                 )}
               </div>
             )}
           </div>
           <div className={styles.chipDek(!!filename, isVerticalHero, isLeftImage)}>
-            <Heading srOnly>Topics</Heading>
+            <Heading srOnly>Top 3 related topics</Heading>
             {/* Display max 3 topic tags */}
             {!!topics?.length && (
               <FlexBox wrap="wrap" as="ul" className={styles.taxonomy}>
@@ -142,7 +137,7 @@ export const StoryHero = ({
               <figcaption className={styles.caption(isVerticalHero, isLeftImage)}>
                 <Text
                   variant="caption"
-                  color={isLightHero ? 'black-70' : 'black-20'}
+                  color={isLightHero ? 'black-80' : 'black-20'}
                   className={styles.captionText(isVerticalHero, isLeftImage)}
                 >
                   {caption}
