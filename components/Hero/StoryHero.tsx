@@ -65,7 +65,7 @@ export const StoryHero = ({
       <Grid lg={useTwoColLayout ? 2 : 1} alignItems="start">
         <div className={styles.content(!!filename, isVerticalHero, isLeftImage)}>
           <div className={cnb(
-            styles.tabSection(!!tabColorValue, isVerticalHero),
+            styles.tabSection(!!tabColorValue, isVerticalHero, isLeftImage),
             accentBorderColors[paletteAccentColors[tabColorValue || '']],
           )}
           >
@@ -73,12 +73,12 @@ export const StoryHero = ({
               as="h1"
               leading="tight"
               size={useTwoColLayout ? 'f5' : 'f6'}
-              className={styles.heading(!!filename, !!tabColorValue, !!isVerticalHero)}
+              className={styles.heading(!!filename, !!tabColorValue, isVerticalHero, isLeftImage)}
             >
               {title}
             </Heading>
             {(byline || date) && (
-              <div className={styles.byline(!!filename, !!tabColorValue, isVerticalHero)}>
+              <div className={styles.byline(!!filename, !!tabColorValue, isVerticalHero, isLeftImage)}>
                 {byline && (
                   <Text variant="caption">
                     {byline}
@@ -92,7 +92,7 @@ export const StoryHero = ({
               </div>
             )}
           </div>
-          <div className={isVerticalHero ? 'px-20 sm:px-30 md:px-50 lg:px-80 xl:px-100' : 'cc'}>
+          <div className={styles.chipDek(!!filename, isVerticalHero, isLeftImage)}>
             <Heading srOnly>Topics</Heading>
             {/* Display max 3 topic tags */}
             {!!topics?.length && (

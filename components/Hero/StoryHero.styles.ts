@@ -10,22 +10,47 @@ export const content = (hasHeroImage: boolean, isVerticalHero: boolean, isLeftIm
   'ml-0 rs-mt-9': !isVerticalHero && hasHeroImage,
 });
 
-export const tabSection = (hasTabColor: boolean, isVerticalHero: boolean) => cnb(
-  'rs-mb-0',
-  hasTabColor ? 'border-l-[1rem] sm:border-l-[1.4rem] md:border-l-[2rem] lg:border-l-[2.6rem]' : '',
-  isVerticalHero ? 'px-20 sm:px-30 md:px-50 lg:px-80 xl:px-100' : 'cc',
+export const tabSection = (hasTabColor: boolean, isVerticalHero: boolean, isLeftImage: boolean) => cnb(
+  'rs-mb-0 cc', {
+    'border-l-[1rem] sm:border-l-[1.4rem] md:border-l-[2rem] lg:border-l-[2.6rem]': hasTabColor,
+    '3xl:pl-0 3xl:pr-[calc(100%-75rem)]': isVerticalHero && isLeftImage,
+    '3xl:pr-0 3xl:pl-[calc(100%-75rem)]': isVerticalHero && !isLeftImage,
+  },
 );
 
-export const heading = (hasHeroImage: boolean, hasTabColor: boolean, isVerticalHero: boolean) => cnb(
+export const heading = (
+  hasHeroImage: boolean,
+  hasTabColor: boolean,
+  isVerticalHero: boolean,
+  isLeftImage: boolean,
+) => cnb(
   'mb-0',
-  hasTabColor ? '-ml-10 sm:-ml-18 lg:-ml-26' : '',
-  isVerticalHero && hasHeroImage ? 'xl:max-w-700' : 'xl:max-w-1200',
+  isVerticalHero && hasHeroImage ? ' xl:max-w-700' : 'xl:max-w-1200', {
+    '-ml-10 sm:-ml-18 lg:-ml-26': hasTabColor,
+    '3xl:ml-[7.4rem]': isVerticalHero && hasHeroImage && isLeftImage && hasTabColor,
+    '3xl:ml-100': isVerticalHero && hasHeroImage && isLeftImage && !hasTabColor,
+  },
 );
 
-export const byline = (hasHeroImage: boolean, hasTabColor: boolean, isVerticalHero: boolean) => cnb(
+export const byline = (
+  hasHeroImage: boolean,
+  hasTabColor: boolean,
+  isVerticalHero: boolean,
+  isLeftImage: boolean,
+) => cnb(
   'rs-mt-1',
-  hasTabColor ? '-ml-10 sm:-ml-18 lg:-ml-26' : '',
-  isVerticalHero && hasHeroImage ? 'xl:max-w-700' : 'xl:max-w-1200',
+  isVerticalHero && hasHeroImage ? 'xl:max-w-700' : 'xl:max-w-1200', {
+    '-ml-10 sm:-ml-18 lg:-ml-26': hasTabColor,
+    '3xl:ml-[7.4rem]': isVerticalHero && hasHeroImage && isLeftImage && hasTabColor,
+    '3xl:ml-100': isVerticalHero && hasHeroImage && isLeftImage && !hasTabColor,
+  },
+);
+
+export const chipDek = (hasHeroImage: boolean, isVerticalHero: boolean, isLeftImage: boolean) => cnb(
+  'cc', {
+    '3xl:ml-100 3xl:pl-0 3xl:pr-[calc(100%-75rem)]': isVerticalHero && hasHeroImage && isLeftImage,
+    '3xl:pr-0 3xl:pl-[calc(100%-75rem)]': isVerticalHero && hasHeroImage && !isLeftImage,
+  },
 );
 
 export const body = (hasHeroImage: boolean, isVerticalHero: boolean) => cnb(
