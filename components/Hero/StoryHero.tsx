@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import { cnb } from 'cnbuilder';
 import { Container } from '../Container';
 import { CtaLink } from '../Cta';
@@ -126,7 +125,7 @@ export const StoryHero = ({
               storyHeroAspectRatios[mobileAspectRatio],
               storyHeroAspectRatiosDesktop[aspectRatio],
             )}>
-              <Image
+              <img
                 alt=""
                 width={isVerticalHero ? 1000 : 2000}
                 height={isVerticalHero ? 1600 : 1000}
