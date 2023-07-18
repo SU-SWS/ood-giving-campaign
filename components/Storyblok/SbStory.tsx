@@ -24,6 +24,7 @@ export const SbStory = ({
     mobileImage,
     aspectRatio,
     mobileAspectRatio,
+    alt,
     caption,
     isVerticalHero,
     isLeftImage,
@@ -48,6 +49,7 @@ export const SbStory = ({
           mobileImage={mobileImage}
           aspectRatio={aspectRatio}
           mobileAspectRatio={mobileAspectRatio}
+          alt={alt}
           caption={caption}
           isLightHero={isLightHero}
           isVerticalHero={isVerticalHero}

@@ -61,6 +61,14 @@ export const body = (hasHeroImage: boolean, isVerticalHero: boolean) => cnb(
 export const taxonomy = 'list-unstyled leading-display gap-x-19 gap-y-8';
 export const taxonomyItem = 'inline-block';
 
+export const imageCrops = {
+  '1x1': '2000x2000',
+  '2x1': '2000x1000',
+  '5x8': '1000x1600',
+  '16x9': '2000x1125',
+  'free': '2000x0',
+};
+
 export const imageWrapper = (isVerticalHero: boolean, isLeftImage: boolean) => cnb('rounded-br-[16vw] overflow-hidden', {
   'lg:order-1': isLeftImage && isVerticalHero,
 });
@@ -68,8 +76,8 @@ export const imageWrapper = (isVerticalHero: boolean, isLeftImage: boolean) => c
 export const image = 'object-cover w-full h-full';
 
 export const caption = (isVerticalHero: boolean, isLeftImage: boolean) => cnb('text-current rs-mt-0 cc', {
-  'pr-0': isVerticalHero && isLeftImage,
-  'pl-0': isVerticalHero && !isLeftImage,
+  'lg:pr-0': isVerticalHero && isLeftImage,
+  'lg:pl-0': isVerticalHero && !isLeftImage,
 });
 export const captionText = (isVerticalHero: boolean, isLeftImage: boolean) => cnb(isVerticalHero ? 'max-w-prose-wide' : 'max-w-900', {
   '3xl:pl-100 mr-auto': isVerticalHero && isLeftImage,

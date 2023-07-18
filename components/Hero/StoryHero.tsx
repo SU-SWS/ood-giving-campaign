@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { cnb } from 'cnbuilder';
 import { Container } from '../Container';
 import { CtaLink } from '../Cta';
@@ -22,6 +23,7 @@ export type StoryHeroProps = {
   dek?: string;
   heroImage?: SbImageType;
   mobileImage?: SbImageType;
+  alt?: string;
   caption?: string;
   aspectRatio?: StoryHeroAspectRatioType;
   mobileAspectRatio?: StoryHeroAspectRatioType;
@@ -41,6 +43,7 @@ export const StoryHero = ({
   publishedDate,
   heroImage: { filename, focus } = {},
   mobileImage: { filename: mobileFilename, focus: mobileFocus } = {},
+  alt,
   caption,
   isVerticalHero = false,
   isLeftImage = false,
@@ -58,6 +61,10 @@ export const StoryHero = ({
     day: '2-digit',
     year: 'numeric',
   });
+
+  const cropSize = styles.imageCrops[aspectRatio];
+  const cropWidth = parseInt(cropSize.split('x')[0], 10);
+  const cropHeight = parseInt(cropSize.split('x')[1], 10);
 
   return (
     <Container
@@ -120,16 +127,14 @@ export const StoryHero = ({
         </div>
         {filename && (
           <figure>
-            <div className={cnb(
-              styles.imageWrapper(isVerticalHero, isLeftImage),
-              storyHeroAspectRatios[mobileAspectRatio],
-              storyHeroAspectRatiosDesktop[aspectRatio],
-            )}>
-              <img
-                alt=""
-                width={isVerticalHero ? 1000 : 2000}
-                height={isVerticalHero ? 1600 : 1000}
-                src={getProcessedImage(filename, isVerticalHero ? '1000x1600' : '2000x1000', focus)}
+            <div className={styles.imageWrapper(isVerticalHero, isLeftImage)}>
+              <Image
+                alt={alt}
+                loading="eager"
+                width={cropWidth}
+                height={cropHeight}
+                src={getProcessedImage(filename, styles.imageCrops[aspectRatio], focus)}
+                sizes={isVerticalHero ? '(max-width: 991px) 100vw, 50vw' : '100vw'}
                 className={styles.image}
               />
             </div>
