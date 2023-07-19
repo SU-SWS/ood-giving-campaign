@@ -81,9 +81,6 @@ export const VerticalCard = ({
               ) : heading}
           </Heading>
         )}
-        {/* {tabColor && (
-        <div className={cnb(styles.tab, accentBgColors[tabColor])} />
-      )} */}
         {body && (
           <Paragraph variant="card" noMargin>{body}</Paragraph>
         )}

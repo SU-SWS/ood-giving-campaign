@@ -7,7 +7,7 @@ import { Intro } from '../Homepage/Intro';
 import { Masthead } from '../Masthead';
 import { ThemeSection } from '../Homepage/ThemeSection';
 import { FindPurposeSection } from '../Homepage/FindPurposeSection';
-import { ProgressSection } from '../Homepage/ProgressSection';
+import { ProgressStorySection } from '../Homepage/ProgressStorySection';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { SbThemeCardProps } from './SbThemeCard';
@@ -67,9 +67,9 @@ export const SbHomepagePage = ({
             themeCardAcceleration={themeCardAcceleration}
             themeCardPlanet={themeCardPlanet}
           />
-          <ProgressSection bgImage={progressImage}>
+          <ProgressStorySection bgImage={progressImage}>
             <CreateBloks blokSection={progressStories} />
-          </ProgressSection>
+          </ProgressStorySection>
           <FindPurposeSection>
             <CreateBloks blokSection={findPurpose} />
           </FindPurposeSection>

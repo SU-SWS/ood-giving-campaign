@@ -7,10 +7,10 @@ const mainNavWhite = 'text-white border-white hocus:text-white hocus:decoration-
 const mainNavDark = 'text-gc-black border-gc-black hocus:text-gc-black hocus:decoration-gc-black hocus:ring-gc-black';
 
 export const ctaVariants = {
-  solid: 'relative z-[10] font-normal inline-block decoration-2 decoration-transparent underline-offset-4 hocus:decoration-white/80 leading-display bg-digital-red text-white hocus:text-white border-2 border-digital-red-light focus-visible:outline-none  after:block after:content-[""] after:absolute after:top-0 after:left-0 after:w-[0] after:h-full after:bg-gradient-to-r after:from-cardinal-red after:to-cardinal-red-dark after:transition-all after:z-[-1] hocus:after:w-full overflow-hidden',
+  solid: 'block w-fit relative z-[10] font-normal decoration-2 decoration-transparent underline-offset-4 hocus:decoration-white/80 leading-display bg-digital-red text-white hocus:text-white border-2 border-digital-red-light focus-visible:outline-none  after:block after:content-[""] after:absolute after:top-0 after:left-0 after:w-[0] after:h-full after:bg-gradient-to-r after:from-cardinal-red after:to-cardinal-red-dark after:transition-all after:z-[-1] hocus:after:w-full overflow-hidden',
   inline: 'inline underline decoration-1 hocus:decoration-2 underline-offset-2',
   inlineDark: 'inline text-digital-red-xlight hocus:text-white underline decoration-1 hocus:decoration-2 underline-offset-2',
-  ghost: 'inline-block font-normal leading-display bg-transparent hocus:text-current border-2 border-current focus-visible:outline-none underline-offset-4 decoration-transparent hocus:decoration-current',
+  ghost: ' block w-fit font-normal leading-display bg-transparent hocus:text-current border-2 border-current focus-visible:outline-none underline-offset-4 decoration-transparent hocus:decoration-current',
   'ghost-swipe': `${ghostSwipeBase} bg-transparent`,
   'ghost-swipe-overlay': `${ghostSwipeBase} bg-black-true/40`, // Use for split poster over images
   link: 'font-normal decoration-transparent hocus:decoration-current leading-display text-current hocus:text-current hocus:decoration-2 focus-visible:ring-2 focus-visible:ring-lagunita-light focus-visible:outline-none focus-visible:rounded underline-offset-4',
