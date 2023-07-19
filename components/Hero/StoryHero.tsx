@@ -60,8 +60,43 @@ export const StoryHero = ({
   });
 
   const cropSize = styles.imageCrops[aspectRatio];
-  const cropWidth = parseInt(cropSize.split('x')[0], 10);
-  const cropHeight = parseInt(cropSize.split('x')[1], 10);
+  const cropWidth = parseInt(cropSize?.split('x')[0], 10);
+  const cropHeight = parseInt(cropSize?.split('x')[1], 10);
+  const mobileCropSize = styles.mobileImageCrops[mobileAspectRatio];
+  const mobileCropWidth = parseInt(mobileCropSize?.split('x')[0], 10);
+  const mobileCropHeight = parseInt(mobileCropSize?.split('x')[1], 10);
+
+  const renderOneImage = !!filename && !mobileFilename && mobileAspectRatio === aspectRatio;
+  // Render 2 different images if there is both a hero image or a mobile image
+  // Or when there is no mobile image, but the mobile aspect ratio is different from the desktop aspect ratio
+  const renderTwoImages = (!!filename && !!mobileFilename) ||
+    (!!filename && !mobileFilename && mobileAspectRatio !== aspectRatio);
+
+  // This one will always be rendered when there's a hero image
+  const RenderedDesktopImage = (
+    <Image
+      alt={alt || ''}
+      loading="eager"
+      width={cropWidth}
+      height={cropHeight}
+      src={getProcessedImage(filename, cropSize, focus)}
+      sizes={isVerticalHero ? `${renderOneImage ? '(max-width: 991px) 100vw, 50vw}' : '50vw'}` : '100vw'}
+      className={styles.image(renderTwoImages)}
+    />
+  );
+
+  // This one will only be rendered when the conditions in renderTwoImages are met
+  const RenderedMobileImage = renderTwoImages && (
+    <Image
+      alt={alt || ''}
+      loading="eager"
+      width={mobileCropWidth}
+      height={mobileCropHeight}
+      src={getProcessedImage(mobileFilename || filename, mobileCropSize, mobileFocus || focus)}
+      sizes="100vw"
+      className={styles.mobileImage}
+    />
+  );
 
   return (
     <Container
@@ -86,7 +121,7 @@ export const StoryHero = ({
               {title}
             </Heading>
             {(byline || date) && (
-              <div className={styles.byline(!!filename, !!tabColorValue, isVerticalHero, isLeftImage)}>
+              <div className={styles.storyInfo(!!filename, !!tabColorValue, isVerticalHero, isLeftImage)}>
                 {byline && (
                   <Text>{byline}</Text>
                 )}
@@ -120,15 +155,8 @@ export const StoryHero = ({
         {filename && (
           <figure>
             <div className={styles.imageWrapper(isVerticalHero, isLeftImage)}>
-              <Image
-                alt={alt}
-                loading="eager"
-                width={cropWidth}
-                height={cropHeight}
-                src={getProcessedImage(filename, styles.imageCrops[aspectRatio], focus)}
-                sizes={isVerticalHero ? '(max-width: 991px) 100vw, 50vw' : '100vw'}
-                className={styles.image}
-              />
+              {RenderedMobileImage}
+              {RenderedDesktopImage}
             </div>
             {caption && (
               <figcaption className={styles.caption(isVerticalHero, isLeftImage)}>

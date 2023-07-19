@@ -32,13 +32,13 @@ export const heading = (
   },
 );
 
-export const byline = (
+export const storyInfo = (
   hasHeroImage: boolean,
   hasTabColor: boolean,
   isVerticalHero: boolean,
   isLeftImage: boolean,
 ) => cnb(
-  'rs-mt-1',
+  'rs-mt-1 gc-card',
   isVerticalHero && hasHeroImage ? 'xl:max-w-700' : 'xl:max-w-1200', {
     '-ml-10 sm:-ml-18 lg:-ml-26': hasTabColor,
     '3xl:ml-[7.4rem]': isVerticalHero && hasHeroImage && isLeftImage && hasTabColor,
@@ -71,11 +71,24 @@ export const imageCrops = {
 };
 export type ImageCropType = keyof typeof imageCrops;
 
+export const mobileImageCrops = {
+  '1x1': '1000x1000',
+  '2x1': '1000x500',
+  '3x2': '1200x800',
+  '5x8': '1000x1600',
+  '16x9': '1600x900',
+  'free': '1000x0',
+}
+
 export const imageWrapper = (isVerticalHero: boolean, isLeftImage: boolean) => cnb('rounded-br-[16vw] overflow-hidden', {
   'lg:order-1': isLeftImage && isVerticalHero,
 });
 
-export const image = 'object-cover w-full h-full';
+export const image = (renderTwoImages: boolean) => cnb(
+  'w-full h-full',
+  renderTwoImages ? 'hidden lg:block' : '',
+);
+export const mobileImage = 'w-full h-full lg:hidden';
 
 export const caption = (isVerticalHero: boolean, isLeftImage: boolean) => cnb('text-current rs-mt-0 cc type-0', {
   'lg:pr-0': isVerticalHero && isLeftImage,
