@@ -76,7 +76,7 @@ export const StoryHero = ({
   const RenderedDesktopImage = (
     <Image
       alt={alt || ''}
-      loading="eager"
+      priority
       width={cropWidth}
       height={cropHeight}
       src={getProcessedImage(filename, cropSize, focus)}
@@ -89,7 +89,7 @@ export const StoryHero = ({
   const RenderedMobileImage = renderTwoImages && (
     <Image
       alt={alt || ''}
-      loading="eager"
+      priority
       width={mobileCropWidth}
       height={mobileCropHeight}
       src={getProcessedImage(mobileFilename || filename, mobileCropSize, mobileFocus || focus)}
