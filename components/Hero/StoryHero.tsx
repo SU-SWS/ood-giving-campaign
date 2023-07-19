@@ -72,11 +72,12 @@ export const StoryHero = ({
   const renderTwoImages = (!!filename && !!mobileFilename) ||
     (!!filename && !mobileFilename && mobileAspectRatio !== aspectRatio);
 
+  // TODO: add srcset later in GIVCAMP-71
   // This one will always be rendered when there's a hero image
   const RenderedDesktopImage = (
-    <Image
+    <img
       alt={alt || ''}
-      priority
+      loading="eager"
       width={cropWidth}
       height={cropHeight}
       src={getProcessedImage(filename, cropSize, focus)}
@@ -87,9 +88,9 @@ export const StoryHero = ({
 
   // This one will only be rendered when the conditions in renderTwoImages are met
   const RenderedMobileImage = renderTwoImages && (
-    <Image
+    <img
       alt={alt || ''}
-      priority
+      loading="eager"
       width={mobileCropWidth}
       height={mobileCropHeight}
       src={getProcessedImage(mobileFilename || filename, mobileCropSize, mobileFocus || focus)}

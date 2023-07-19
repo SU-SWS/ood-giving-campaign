@@ -78,7 +78,7 @@ export const mobileImageCrops = {
   '5x8': '1000x1600',
   '16x9': '1600x900',
   'free': '1000x0',
-}
+};
 
 export const imageWrapper = (isVerticalHero: boolean, isLeftImage: boolean) => cnb('rounded-br-[16vw] overflow-hidden', {
   'lg:order-1': isLeftImage && isVerticalHero,
