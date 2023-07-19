@@ -6,15 +6,15 @@ import {
 import { cnb } from 'cnbuilder';
 import { FlexBox } from '../FlexBox';
 import { Logo } from '../Logo';
-import { CtaLink, CtaButton } from '../Cta';
+import { CtaLink, CtaButton, CtaVariantType } from '../Cta';
 import { ood } from '@/utilities/externalLinks';
 import { HeroIcon } from '../HeroIcon';
 
 type MastheadProps = HTMLAttributes<HTMLDivElement> & {
-  isDark?: boolean;
+  isLight?: boolean;
 };
 
-export const Masthead = ({ isDark, className }: MastheadProps) => {
+export const Masthead = ({ isLight, className }: MastheadProps) => {
   const slideDistance = 86;
   const threshold = 200;
 
@@ -37,13 +37,21 @@ export const Masthead = ({ isDark, className }: MastheadProps) => {
   });
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    setIsAtTop(latest <= 200);
+    setIsAtTop(latest <= 40);
   });
 
   useEffect(() => setIsVisible(isScrollingBack || isAtTop), [
     isScrollingBack,
     isAtTop,
   ]);
+
+  let ctaVariant: CtaVariantType = 'mainNav';
+  if (!isAtTop && isScrollingBack) {
+    ctaVariant = 'mainNavUp';
+  }
+  if (isLight && isAtTop) {
+    ctaVariant = 'mainNavBlack';
+  }
 
   return (
     <m.div
@@ -62,6 +70,7 @@ export const Masthead = ({ isDark, className }: MastheadProps) => {
         className={cnb('cc transition py-18', !isAtTop ? 'lg:py-3' : 'md:py-26')}
       >
         <Logo
+          color={isLight && isAtTop ? 'black' : 'white'}
           isLink
           className={cnb('w-170 sm:w-240 transition-[width] !duration-100', isAtTop ? 'lg:w-[32rem]' : 'lg:w-280')}
         />
@@ -74,7 +83,8 @@ export const Masthead = ({ isDark, className }: MastheadProps) => {
           <FlexBox alignItems="center">
             <CtaLink
               href={ood.give}
-              variant={!isAtTop && isScrollingBack ? 'mainNavUp' : 'mainNav'}
+              variant={ctaVariant}
+              color="current"
               className={cnb(
                 'rounded-bl-[1.4rem] lg:rounded-bl-[2rem]',
                 isAtTop ? 'mt-10 lg:mt-26' : 'mt-5 lg:mt-16',
@@ -84,7 +94,8 @@ export const Masthead = ({ isDark, className }: MastheadProps) => {
             </CtaLink>
             <CtaButton
               onClick={() => alert('Hello world')}
-              variant={!isAtTop && isScrollingBack ? 'mainNavUp' : 'mainNav'}
+              variant={ctaVariant}
+              color="current"
               className={cnb(
                 '-ml-2 rounded-tr-[1.4rem] lg:rounded-tr-[2rem]',
                 isAtTop ? '-mt-10 lg:-mt-26' : '-mt-5 lg:-mt-10',

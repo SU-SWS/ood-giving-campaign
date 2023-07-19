@@ -5,6 +5,7 @@ export type LogoVariantType = 'horizontal' | 'stacked';
 export const logoColors = {
   black: 'fill-gc-black',
   white: 'fill-white',
+  current: 'fill-current',
 };
 export type LogoColorType = keyof typeof logoColors;
 

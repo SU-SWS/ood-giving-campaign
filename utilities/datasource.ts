@@ -32,6 +32,23 @@ export const accentBorderColors = {
 };
 export type AccentBorderColorType = keyof typeof accentBorderColors;
 
+export const storyHeroAspectRatios = {
+  '1x1': 'aspect-w-1 aspect-h-1',
+  '2x1': 'aspect-w-2 aspect-h-1',
+  '5x8': 'aspect-w-5 aspect-h-8',
+  '16x9': 'aspect-w-16 aspect-h-9',
+  'free': '',
+};
+export type StoryHeroAspectRatioType = keyof typeof storyHeroAspectRatios;
+
+export const storyHeroAspectRatiosDesktop = {
+  '1x1': 'lg:aspect-w-1 lg:aspect-h-1',
+  '2x1': 'lg:aspect-w-2 lg:aspect-h-1',
+  '5x8': 'lg:aspect-w-5 lg:aspect-h-8',
+  '16x9': 'lg:aspect-w-16 lg:aspect-h-9',
+  'free': '',
+};
+
 // Many components have dark and light themes - these are the basic options
 export const bgTextColorPairsBlackWhite = {
   black: 'bg-gc-black text-white',

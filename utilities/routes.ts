@@ -39,10 +39,6 @@ export const initiatives = {
     name: 'Stanford Science Fellows',
     path: `${initiativesRoot}/stanford-science-fellows`,
   },
-  townCenter: {
-    name: 'Town Center',
-    path: `${initiativesRoot}/town-center`,
-  },
   stanfordAcceleratorForLearning: {
     name: 'Stanford Accelerator for Learning',
     path: `${initiativesRoot}/stanford-accelerator-for-learning`,

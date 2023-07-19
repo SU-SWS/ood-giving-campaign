@@ -20,6 +20,7 @@ module.exports = function () {
         lineHeight: theme('lineHeight.snug'),
       },
       '.gc-caption': {
+        fontSize: '0.81em',
         lineHeight: theme('lineHeight.display'),
       },
       '.gc-intro-text': {

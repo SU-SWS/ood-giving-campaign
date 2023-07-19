@@ -2,7 +2,7 @@ import * as styles from './typography.styles';
 
 export type HeadingType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
-export type NonHeadingTypographyType = 'p' | 'span' | 'div' | 'label' | 'legend' | 'figcaption' | 'blockquote' | 'cite' | 'q' | 'small' | 'strong' | 'em' | 'del' | 'ins' | 'sub' | 'sup' | 'address' | 'pre' | 'ul' | 'ol' | 'li';
+export type NonHeadingTypographyType = 'p' | 'span' | 'div' | 'label' | 'legend' | 'figcaption' | 'blockquote' | 'cite' | 'q' | 'small' | 'strong' | 'em' | 'del' | 'ins' | 'sub' | 'sup' | 'address' | 'pre' | 'ul' | 'ol' | 'li' | 'time';
 
 export type TextType = HeadingType | NonHeadingTypographyType;
 

@@ -29,7 +29,7 @@ async function fetchData() {
   const sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',
     resolve_relations: resolveRelations,
-    cv: Date.now(),
+    cv: activeEnv === 'development' ? Date.now() : undefined,
   };
 
   const storyblokApi = getStoryblokApi();

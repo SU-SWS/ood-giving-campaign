@@ -15,6 +15,7 @@ export type SbStoryCardProps = {
         cardTitle?: string;
         topics?: string[];
         heroImage?: SbImageType;
+        mobileImage?: SbImageType;
       },
       full_slug?: string;
     };
@@ -38,7 +39,8 @@ export const SbStoryCard = ({
         title = '',
         cardTitle = '',
         topics = [],
-        heroImage: { filename: heroImage = '', focus: heroFocus = '' } = {},
+        heroImage: { filename: heroFilename = '', focus: heroFocus = '' } = {},
+        mobileImage: { filename: mobileFilename = '', focus: mobileFocus = '' } = {},
       } = {},
       full_slug,
     } = {},
@@ -58,8 +60,8 @@ export const SbStoryCard = ({
     heading={heading || cardTitle || title}
     headingLevel={headingLevel}
     isSmallHeading={isSmallHeading}
-    imageSrc={cardImage || heroImage}
-    imageFocus={cardFocus || heroFocus}
+    imageSrc={cardImage || mobileFilename || heroFilename}
+    imageFocus={cardFocus || mobileFocus || heroFocus}
     tabColor={paletteAccentColors[value || ''] as AccentBgColorType}
     link={link}
     href={`/${full_slug}`}

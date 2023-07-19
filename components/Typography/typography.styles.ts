@@ -56,6 +56,8 @@ export const textColors = {
   black: 'text-gc-black',
   'cool-grey': 'text-cool-grey',
   white: 'text-white',
+  'black-20': 'text-black-20',
+  'black-80': 'text-black-80',
 };
 
 export const textVariants = {
