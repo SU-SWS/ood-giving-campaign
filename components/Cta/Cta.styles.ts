@@ -58,8 +58,9 @@ export const ctaCurves = {
 };
 
 export const ctaSizes = {
-  default: 'pt-9 pb-10 pl-22 pr-20 lg:pt-10 lg:pb-11 text-16 md:text-18 xl:text-20',
-  large: 'pl-22 pr-20 pt-10 pb-11 lg:pr-34 lg:pl-40 lg:pt-20 lg:pb-22 text-18 md:text-20 xl:text-24',
+  default: 'pt-9 pb-10 pl-18 pr-16 lg:pl-22 lg:pr-20 lg:pt-10 lg:pb-11 text-16 lg:text-20',
+  large: 'pl-28 pr-26 pt-16 pb-17 lg:pr-40 lg:pl-44 lg:pt-20 lg:pb-22 text-18 lg:text-24',
+  link: 'text-16 lg:text-20',
   mainNav: 'text-14 px-10 pt-8 pb-9 lg:px-24 lg:pt-18 lg:pb-19 lg:text-20',
   'footer-featured': 'ma-intro',
   card: 'ma-card',
