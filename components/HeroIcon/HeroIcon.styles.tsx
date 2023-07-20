@@ -53,8 +53,8 @@ export type IconType = keyof typeof iconMap;
 // TODO: Adjust these base styles as they were ported over when we were using v1 of Heroicons
 export const iconBaseStyle = {
   default: 'w-1em',
-  'arrow-left': 'w-08em',
-  'arrow-right': 'w-08em',
+  'arrow-left': 'w-09em -mt-01em',
+  'arrow-right': 'w-09em -mt-01em',
   'triangle-right': 'w-09em scale-x-[0.9] mt-01em',
   'triangle-down': 'w-09em scale-x-[0.9] rotate-90 mt-01em',
   'triangle-up': 'w-09em scale-x-[0.9] -rotate-90 mt-02em',
