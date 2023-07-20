@@ -1,17 +1,22 @@
 'use client';
+
 import { useRef } from 'react';
 import { useScroll, useSpring, m } from 'framer-motion';
+import { CtaLink } from '../Cta';
 import { Container } from '../Container';
+import { Grid } from '../Grid';
 import { Heading, Paragraph } from '../Typography';
 import { AnimateInView } from '../Animate';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
+import { storiesRoot } from '@/utilities/routes';
+import { WordBlock } from '../WordBlock';
 
-type ProgressSectionProps = {
+type ProgressStorySectionProps = {
   bgImage?: string;
   children: React.ReactNode;
 };
 
-export const ProgressSection = ({ bgImage, children }: ProgressSectionProps) => {
+export const ProgressStorySection = ({ bgImage, children }: ProgressStorySectionProps) => {
   const bg = bgImage ? getProcessedImage(bgImage, '3000x0') : '';
   const introRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -25,7 +30,7 @@ export const ProgressSection = ({ bgImage, children }: ProgressSectionProps) => 
   });
 
   return (
-    <Container width="full" bgColor="black" pb={10} className="relative -mt-100 overflow-hidden">
+    <Container width="full" bgColor="black" pb={9} className="relative -mt-100 overflow-hidden">
       <div
         className="relative pb-[7vw] bg-black-true"
         style={{ background: `url('${bg}') center center / contain no-repeat` }}
@@ -56,7 +61,23 @@ export const ProgressSection = ({ bgImage, children }: ProgressSectionProps) => 
         <div className="absolute top-0 h-[50vw] 2xl:h-[40vw] 3xl:h-[35vw] w-full bg-gradient-to-b from-gc-black via-[#35459A]" />
         <div className="absolute bottom-0 h-[20vw] 2xl:h-[15vw] w-full bg-gradient-to-t from-gc-black to-black-true" />
       </div>
-      <Container bgColor="black">{children}</Container>
+      <Container bgColor="black" width="full">
+        {/* GIVCAMP-177 Turn this into a swipeable carousel */}
+        <Grid sm={2} lg={4} gap="xs-horizontal">
+          {children}
+        </Grid>
+        <CtaLink
+          href={storiesRoot}
+          variant="ghost-swipe"
+          size="large"
+          color="white"
+          icon="arrow-right"
+          className="mx-auto rs-mt-5"
+          curve="br-large"
+        >
+          See all stories
+        </CtaLink>
+      </Container>
     </Container>
   );
 };

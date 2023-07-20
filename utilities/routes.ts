@@ -86,3 +86,6 @@ export const themes = {
     path: `${themesRoot}/preparing-citizens`,
   },
 };
+
+// Stories
+export const storiesRoot = '/stories';
