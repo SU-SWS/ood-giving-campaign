@@ -16,8 +16,8 @@ export const headingLink = 'stretched-link no-underline !font-bold !leading-tigh
 
 export const ctaLink = 'inline-block w-fit stretched-link rs-mt-1 hocus:bg-gradient-to-l hocus:from-transparent hocus:to-digital-red';
 
-export const taxonomy = (hasTabColor: boolean) => cnb('list-unstyled leading-display children:mr-12 last:children:ml-0 pr-18', {
-  'ml-36': hasTabColor,
+export const taxonomy = (hasTabColor: boolean) => cnb('list-unstyled leading-display children:mr-12 last:children:ml-0 mr-18', {
+  '@200:ml-24 @xs:ml-36': hasTabColor,
 });
 
 export const taxonomyItem = 'inline-block mb-0';

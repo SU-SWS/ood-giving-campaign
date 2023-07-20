@@ -17,7 +17,8 @@ export const borderColors = {
   black: 'border-gc-black',
 }
 
-export const root = (textColor: TextColorType) => cnb(
-  'rs-px-4 rs-py-2 border-[0.5em]',
+export const text = (textColor: TextColorType, isLarge: boolean) => cnb(
+  'w-fit rs-px-4 rs-py-1 border-6 md:border-8 lg:border-[1.2rem] type-3',
   borderColors[textColor],
+  isLarge ? 'md:fluid-type-5' : '',
 );

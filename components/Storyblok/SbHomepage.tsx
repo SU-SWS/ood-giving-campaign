@@ -8,6 +8,7 @@ import { Masthead } from '../Masthead';
 import { ThemeSection } from '../Homepage/ThemeSection';
 import { FindPurposeSection } from '../Homepage/FindPurposeSection';
 import { ProgressStorySection } from '../Homepage/ProgressStorySection';
+import { BlockPoster } from '../Homepage/BlockPoster';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { SbThemeCardProps } from './SbThemeCard';
@@ -24,6 +25,10 @@ type SbHomepagePageProps = {
     themeCardPlanet?: SbThemeCardProps;
     progressBgImage?: SbImageType;
     progressStories?: any[];
+    blockPosterImage?: SbImageType;
+    phrase1?: string;
+    phrase2?: string;
+    blockPosterBody?: string;
     findPurpose?: any[];
     content?: any[];
     ankle?: any[];
@@ -40,6 +45,10 @@ export const SbHomepagePage = ({
     themeCardPlanet,
     progressBgImage: { filename: progressImage } = {},
     progressStories,
+    blockPosterImage: { filename: blockPosterImage } = {},
+    phrase1,
+    phrase2,
+    blockPosterBody,
     findPurpose,
     content,
     ankle,
@@ -70,6 +79,12 @@ export const SbHomepagePage = ({
           <ProgressStorySection bgImage={progressImage}>
             <CreateBloks blokSection={progressStories} />
           </ProgressStorySection>
+          <BlockPoster
+            imageSrc={getProcessedImage(blockPosterImage, '2000x0')}
+            phrase1={phrase1}
+            phrase2={phrase2}
+            body={blockPosterBody}
+          />
           <FindPurposeSection>
             <CreateBloks blokSection={findPurpose} />
           </FindPurposeSection>

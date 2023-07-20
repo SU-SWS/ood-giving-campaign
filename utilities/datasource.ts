@@ -32,6 +32,7 @@ export const accentBorderColors = {
 };
 export type AccentBorderColorType = keyof typeof accentBorderColors;
 
+// TODO: We might be not need this
 export const storyHeroAspectRatios = {
   '1x1': 'aspect-w-1 aspect-h-1',
   '2x1': 'aspect-w-2 aspect-h-1',

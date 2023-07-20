@@ -9,6 +9,7 @@ import { Heading, Paragraph } from '../Typography';
 import { AnimateInView } from '../Animate';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { storiesRoot } from '@/utilities/routes';
+import { WordBlock } from '../WordBlock';
 
 type ProgressStorySectionProps = {
   bgImage?: string;
@@ -29,7 +30,7 @@ export const ProgressStorySection = ({ bgImage, children }: ProgressStorySection
   });
 
   return (
-    <Container width="full" bgColor="black" pb={10} className="relative -mt-100 overflow-hidden">
+    <Container width="full" bgColor="black" pb={9} className="relative -mt-100 overflow-hidden">
       <div
         className="relative pb-[7vw] bg-black-true"
         style={{ background: `url('${bg}') center center / contain no-repeat` }}
@@ -67,7 +68,7 @@ export const ProgressStorySection = ({ bgImage, children }: ProgressStorySection
         </Grid>
         <CtaLink
           href={storiesRoot}
-          variant="ghost"
+          variant="ghost-swipe"
           size="large"
           color="white"
           icon="arrow-right"

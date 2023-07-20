@@ -25,7 +25,7 @@ export const ImageOverlay = ({
       src={imageSrc}
       alt=""
       loading="lazy"
-      className="absolute w-full h-full object-cover top-0 left-0"
+      className="absolute w-full top-0 left-0"
       {...props}
     />
     {overlay && (
