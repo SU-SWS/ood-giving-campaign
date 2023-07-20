@@ -3,6 +3,7 @@ import { Container } from '../Container';
 import { FlexBox } from '../FlexBox';
 import { Paragraph } from '../Typography';
 import { WordBlock } from '../WordBlock';
+import { ImageOverlay } from '../ImageOverlay';
 
 export type BlockPosterProps = React.HTMLAttributes<HTMLDivElement> & {
   imageSrc?: string;
@@ -25,13 +26,7 @@ export const BlockPoster = ({
     bgColor="black"
     className={cnb('pb-200 2xl:pb-400 relative', className)}
   >
-    <img
-      src={imageSrc}
-      alt=""
-      loading="lazy"
-      className="absolute w-full h-full object-cover"
-    />
-    <div className="absolute w-full h-full top-0 left-0 bg-gradient-to-b from-gc-black via-transparent via-40% to-gc-black" />
+    <ImageOverlay imageSrc={imageSrc} overlay="black-top-bottom" />
     <Container pt={10} className="relative z-20">
       <FlexBox direction="col" alignItems="center">
         <WordBlock animation="slideInFromLeft" isLarge className="md:self-start 2xl:self-center 2xl:-ml-250">{phrase1}</WordBlock>
