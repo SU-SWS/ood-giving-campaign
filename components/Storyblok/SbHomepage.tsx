@@ -9,6 +9,7 @@ import { ThemeSection } from '../Homepage/ThemeSection';
 import { FindPurposeSection } from '../Homepage/FindPurposeSection';
 import { ProgressStorySection } from '../Homepage/ProgressStorySection';
 import { BlockBanner } from '../Homepage/BlockBanner';
+import { BelowBlockBanner } from '../Homepage/BelowBlockBanner';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { SbThemeCardProps } from './SbThemeCard';
@@ -29,6 +30,7 @@ type SbHomepagePageProps = {
     phrase1?: string;
     phrase2?: string;
     blockBannerBody?: string;
+    belowBlockBanner?: any[];
     findPurpose?: any[];
     content?: any[];
     ankle?: any[];
@@ -49,6 +51,7 @@ export const SbHomepagePage = ({
     phrase1,
     phrase2,
     blockBannerBody,
+    belowBlockBanner,
     findPurpose,
     content,
     ankle,
@@ -85,6 +88,9 @@ export const SbHomepagePage = ({
             phrase2={phrase2}
             body={blockBannerBody}
           />
+          <BelowBlockBanner>
+            <CreateBloks blokSection={belowBlockBanner} />
+          </BelowBlockBanner>
           <FindPurposeSection>
             <CreateBloks blokSection={findPurpose} />
           </FindPurposeSection>

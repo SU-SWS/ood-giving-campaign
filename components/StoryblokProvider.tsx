@@ -11,6 +11,7 @@ import { SbGridAlternating } from './Storyblok/SbGridAlternating';
 import { SbHomepagePage } from './Storyblok/SbHomepage';
 import { SbInitiativeCard } from './Storyblok/SbInitiativeCard';
 import { SbLogo } from './Storyblok/SbLogo';
+import { SbPortraitCard } from './Storyblok/SbPortraitCard';
 import { SbSection } from './Storyblok/SbSection';
 import { SbSplitPoster } from './Storyblok/SbSplitPoster';
 import { SbStory } from './Storyblok/SbStory';
@@ -30,6 +31,7 @@ const components = {
   sbHomepage: SbHomepagePage,
   sbInitiativeCard: SbInitiativeCard,
   sbLogo: SbLogo,
+  sbPortraitCard: SbPortraitCard,
   sbSection: SbSection,
   sbSplitPoster: SbSplitPoster,
   sbStory: SbStory,
