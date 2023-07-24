@@ -1,7 +1,9 @@
 import { cnb } from 'cnbuilder';
-import { AnimateInView, AnimationType } from '../Animate';
+import {AnimateInView, AnimationType } from '../Animate';
 import { CtaButton } from '../Cta/CtaButton';
-import { Heading, HeadingType, Paragraph, Text } from '../Typography';
+import {
+  Heading, HeadingType, Paragraph, Text,
+} from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import * as styles from './PortraitCard.styles';
 
@@ -40,12 +42,12 @@ export const PortraitCard = ({
 }: PortraitCardProps) => (
   <AnimateInView animation={animation} delay={delay}>
     <article
-      className={cnb(styles.root, className)}
+      className={cnb(styles.root, styles.curves[curve], className)}
       {...props}
     >
       <div className={styles.wrapper}>
         {imageSrc && (
-          <div className={cnb(styles.imageWrapper, styles.curves[curve])}>
+          <div className={cnb(styles.imageWrapper)}>
             <img
               alt=""
               width={700}

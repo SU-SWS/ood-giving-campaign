@@ -1,9 +1,9 @@
-export const root = 'relative';
+export const root = 'relative overflow-hidden';
 export const wrapper = '';
 
 export const curves = {
-  tl: 'rounded-tl-[20rem]',
-  tr: 'rounded-tr-[20rem]',
+  tl: 'rounded-tl-[30vw] md:rounded-tl-[15vw] xl:rounded-tl-[20rem]',
+  tr: 'rounded-tr-[30vw] md:rounded-tr-[15vw] xl:rounded-tr-[20rem]',
 }
 export type CurvesType = keyof typeof curves;
 
