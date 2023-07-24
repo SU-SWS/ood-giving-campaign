@@ -45,7 +45,7 @@ export const PortraitCard = ({
       className={cnb(styles.root, styles.curves[curve], className)}
       {...props}
     >
-      <div className={styles.wrapper}>
+      <div>
         {imageSrc && (
           <div className={cnb(styles.imageWrapper)}>
             <img
@@ -54,7 +54,6 @@ export const PortraitCard = ({
               height={1400}
               loading="lazy"
               src={getProcessedImage(imageSrc, '700x1400', imageFocus)}
-              className={styles.image}
             />
           </div>
         )}
@@ -88,6 +87,7 @@ export const PortraitCard = ({
           )}
           {ctaLabel && (
             <CtaButton
+              color="white"
               variant="link"
               icon="arrow-right"
               srText={ctaSrText}

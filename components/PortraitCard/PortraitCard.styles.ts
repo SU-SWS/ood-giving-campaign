@@ -1,5 +1,4 @@
-export const root = 'relative overflow-hidden';
-export const wrapper = '';
+export const root = 'relative overflow-hidden max-w-400 mx-auto md:max-w-none';
 
 export const curves = {
   tl: 'rounded-tl-[30vw] md:rounded-tl-[15vw] xl:rounded-tl-[20rem]',
@@ -8,8 +7,7 @@ export const curves = {
 export type CurvesType = keyof typeof curves;
 
 export const imageWrapper = 'overflow-hidden aspect-w-1 aspect-h-2';
-export const image = '';
-export const content = 'rs-pt-3 rs-px-2 rs-pb-4 bg-black-true/40 absolute bottom-0 left-0';
+export const content = 'rs-pt-3 rs-px-2 rs-pb-4 bg-black-true/50 absolute bottom-0 left-0';
 export const heading = '';
 export const body = '';
 export const ctaLink = '';
