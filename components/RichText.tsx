@@ -22,7 +22,7 @@ export type RichTextProps = {
 export const RichText = ({
   wysiwyg,
   isLightText,
-  textAlign,
+  textAlign = 'left',
   className,
 }: RichTextProps) => {
   const textColor = isLightText ? 'text-white print:text-gc-black' : 'text-gc-black';
@@ -99,7 +99,7 @@ export const RichText = ({
       className={cnb(
         'wysiwyg',
         textColor,
-        textAligns[textAlign || ''],
+        textAligns[textAlign],
         className,
       )}
     >

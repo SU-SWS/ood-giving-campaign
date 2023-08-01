@@ -6,7 +6,13 @@ import { Text } from './Typography';
 /**
  * TODO: This is a POC. Will add types and props if client decides we need this.
  */
-export const NumberCounter = ({ number, duration = 2500, afterText = '' }) => {
+type NumberCounterProps = {
+  number: number;
+  duration?: number;
+  afterText?: string;
+};
+
+export const NumberCounter = ({ number, duration = 2500, afterText = '' }: NumberCounterProps) => {
   const [count, setCount] = useState(1);
   const ref = useRef(null);
   const isInView = useInView(ref);
