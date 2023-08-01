@@ -6,7 +6,7 @@ import {
   Heading, HeadingType, SrOnlyText, Text,
 } from '../Typography';
 import { Container, BgColorType } from '../Container';
-import { accentBgColors, PaddingType } from '@/utilities/datasource';
+import { accentBgColors, AccentBgColorType, PaddingType } from '@/utilities/datasource';
 import { paletteAccentColors, PaletteAccentColorType } from '@/utilities/colorPalettePlugin';
 
 type SbSectionProps = {
@@ -51,7 +51,7 @@ export const SbSection = ({
         {barColorValue && (
           <div className={cnb(
             'block w-8 md:w-20 lg:w-40',
-            accentBgColors[paletteAccentColors[barColorValue]],
+            accentBgColors[paletteAccentColors[barColorValue] as AccentBgColorType],
           )}
           />
         )}

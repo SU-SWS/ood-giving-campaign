@@ -1,4 +1,4 @@
-import { storyblokEditable } from '@storyblok/react/rsc';
+import { storyblokEditable, SbBlokData } from '@storyblok/react/rsc';
 import Image from 'next/image';
 import { CreateBloks } from '../CreateBloks';
 import { Heading } from '../Typography';
@@ -12,7 +12,6 @@ import { BlockBanner } from '../Homepage/BlockBanner';
 import { BelowBlockBanner } from '../Homepage/BelowBlockBanner';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { SbThemeCardProps } from './SbThemeCard';
 import { SbImageType } from './Storyblok.types';
 
 type SbHomepagePageProps = {
@@ -20,10 +19,10 @@ type SbHomepagePageProps = {
     _uid: string;
     title?: string;
     intro: string;
-    themeCardDiscovery?: SbThemeCardProps;
-    themeCardCitizen?: SbThemeCardProps;
-    themeCardAcceleration?: SbThemeCardProps;
-    themeCardPlanet?: SbThemeCardProps;
+    themeCardDiscovery?: SbBlokData[];
+    themeCardCitizen?: SbBlokData[];
+    themeCardAcceleration?: SbBlokData[];
+    themeCardPlanet?: SbBlokData[];
     progressBgImage?: SbImageType;
     progressStories?: any[];
     blockBannerImage?: SbImageType;

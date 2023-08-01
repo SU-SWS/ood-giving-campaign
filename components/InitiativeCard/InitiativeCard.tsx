@@ -72,7 +72,7 @@ export const InitiativeCard = ({
           variant="subheading"
           leading="display"
           noMargin
-          className={cnb(styles.body(!!tabColor), accentBorderColors[tabColor || ''])}
+          className={cnb(styles.body(!!tabColor), accentBorderColors[tabColor])}
         >
           {body}
         </Paragraph>
