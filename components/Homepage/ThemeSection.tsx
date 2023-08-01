@@ -1,6 +1,7 @@
 'use client';
 import { useRef, useState } from 'react';
 import { cnb } from 'cnbuilder';
+import { SbBlokData } from '@storyblok/react/rsc';
 import {
   m, useScroll, useSpring, useTransform, SpringOptions, useWillChange,
 } from 'framer-motion';
@@ -14,13 +15,12 @@ import { FlexBox } from '../FlexBox';
 import { AnimateInView } from '../Animate';
 import { CtaButton } from '../Cta';
 import { CreateBloks } from '../CreateBloks';
-import { SbThemeCardProps } from '../Storyblok/SbThemeCard';
 
 type ThemeSectionProps = {
-  themeCardDiscovery?: SbThemeCardProps;
-  themeCardCitizen?: SbThemeCardProps;
-  themeCardAcceleration?: SbThemeCardProps;
-  themeCardPlanet?: SbThemeCardProps;
+  themeCardDiscovery?: SbBlokData[];
+  themeCardCitizen?: SbBlokData[]
+  themeCardAcceleration?: SbBlokData[];
+  themeCardPlanet?: SbBlokData[];
 };
 
 export const ThemeSection = ({

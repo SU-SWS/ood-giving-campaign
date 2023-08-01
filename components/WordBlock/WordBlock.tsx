@@ -32,7 +32,7 @@ export const WordBlock = ({
         leading="tight"
         color={textColor}
         weight="bold"
-        className={cnb(styles.text(textColor, isLarge), styles.bgColors[bgColor || ''])}
+        className={cnb(styles.text(textColor, isLarge), bgColor ? styles.bgColors[bgColor] : '')}
       >
         {children}
       </Text>

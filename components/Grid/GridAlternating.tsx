@@ -66,7 +66,7 @@ export const GridAlternating = ({
           <React.Fragment key={index}>
             <m.div
               className={cnb(
-                marginBottoms[spacing || ''],
+                spacing ? marginBottoms[spacing] : '',
                 styles.negativeSpacing[spacing || ''],
                 styles.cellWithContent,
               )}

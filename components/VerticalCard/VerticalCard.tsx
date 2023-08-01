@@ -71,7 +71,7 @@ export const VerticalCard = ({
             as={headingLevel}
             size={isSmallHeading ? 3 : 4}
             leading="tight"
-            className={cnb(styles.heading(!!tabColor), accentBorderColors[tabColor || ''])}
+            className={cnb(styles.heading(!!tabColor), accentBorderColors[tabColor])}
           >
             {(!ctaLabel && (link || href))
               ? (
