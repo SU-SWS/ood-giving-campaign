@@ -6,9 +6,11 @@ import { CtaContent } from './CtaContent';
 import { getCtaClasses } from './getCtaClasses';
 import { CtaCommonProps } from './Cta.types';
 
-export type CtaNextLinkProps = CtaCommonProps & LinkProps;
+export type CtaNextLinkProps = CtaCommonProps & LinkProps & {
+  className: string;
+};
 
-export const CtaNextLink = (props) => {
+export const CtaNextLink = (props: CtaNextLinkProps) => {
   const {
     variant = 'link',
     color,
