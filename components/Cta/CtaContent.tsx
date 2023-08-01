@@ -1,6 +1,6 @@
 import { cnb } from 'cnbuilder';
 import { FlexBox } from '../FlexBox';
-import { HeroIcon } from '../HeroIcon';
+import { HeroIcon, IconType } from '../HeroIcon';
 import { SrOnlyText } from '../Typography';
 import * as styles from './Cta.styles';
 import * as types from './Cta.types';
@@ -16,7 +16,7 @@ export const CtaContent = ({
   srText,
   children,
 }: CtaContentProps) => {
-  const heroicon = icon || styles.ctaIconMap[variant || ''] || '';
+  const heroicon: IconType | undefined = icon || styles.ctaIconMap[variant] || '';
   const iconAnimate = styles.iconAnimation[animate];
   const iconMarginLeft = iconPosition === 'right' && children ? styles.iconLeftMargin[heroicon] || styles.iconLeftMargin.default : '';
   const iconMarginRight = iconPosition === 'left' && children ? styles.iconRightMargin[heroicon] || styles.iconRightMargin.default : '';
