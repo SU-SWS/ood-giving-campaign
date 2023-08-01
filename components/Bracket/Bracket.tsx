@@ -20,7 +20,7 @@ export const Bracket = ({
   <FlexBox
     direction="col"
     className={cnb(
-      styles.colors[color || ''],
+      color ? styles.colors[color] : '',
       className,
     )}
     {...props}

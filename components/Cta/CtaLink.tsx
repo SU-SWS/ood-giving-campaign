@@ -41,7 +41,7 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
     const isInternal: boolean = linktype === 'story' || /^\/(?!\/)/.test(href);
 
     // Open internal links in new tab because passing target="_blank" to NextLink doesn't work at the moment
-    const openNextLinkInNewTab = (e) => {
+    const openNextLinkInNewTab = (e: React.MouseEvent<HTMLAnchorElement> | React.KeyboardEvent<HTMLAnchorElement>) => {
       if (target === '_blank') {
         e.preventDefault();
         window.open(cachedUrl || href, '_blank');
