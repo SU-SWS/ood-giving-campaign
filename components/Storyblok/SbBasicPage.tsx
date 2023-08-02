@@ -1,4 +1,4 @@
-import { storyblokEditable } from '@storyblok/react/rsc';
+import { storyblokEditable, SbBlokData } from '@storyblok/react/rsc';
 import Image from 'next/image';
 import { CreateBloks } from '../CreateBloks';
 import { Hero } from '../Hero/Hero';
@@ -10,9 +10,9 @@ type SbBasicPageProps = {
   blok: {
     _uid: string;
     title?: string;
-    hero?: any[];
-    content?: any[];
-    ankle?: any[];
+    hero?: SbBlokData[];
+    content?: SbBlokData[];
+    ankle?: SbBlokData[];
   };
 };
 

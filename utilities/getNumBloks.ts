@@ -1,3 +1,4 @@
+import { SbBlokData } from '@storyblok/react/rsc';
 /**
  * Returns the number of nested bloks when we use the CreateBloks utility.
  *
@@ -5,7 +6,7 @@
  * @returns {number} The number of bloks in the section.
  */
 
-export const getNumBloks = (section) => {
+export const getNumBloks = (section: SbBlokData[]) => {
   if (section) {
     return Object.keys(section).length;
   }

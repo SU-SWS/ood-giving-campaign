@@ -24,15 +24,15 @@ type SbHomepagePageProps = {
     themeCardAcceleration?: SbBlokData[];
     themeCardPlanet?: SbBlokData[];
     progressBgImage?: SbImageType;
-    progressStories?: any[];
+    progressStories?: SbBlokData[];
     blockBannerImage?: SbImageType;
     phrase1?: string;
     phrase2?: string;
     blockBannerBody?: string;
-    belowBlockBanner?: any[];
-    findPurpose?: any[];
-    content?: any[];
-    ankle?: any[];
+    belowBlockBanner?: SbBlokData[];
+    findPurpose?: SbBlokData[];
+    content?: SbBlokData[];
+    ankle?: SbBlokData[];
   };
 };
 
