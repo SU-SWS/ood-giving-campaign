@@ -16,11 +16,16 @@ export const CtaContent = ({
   srText,
   children,
 }: CtaContentProps) => {
-  const heroicon: IconType | undefined = icon || styles.ctaIconMap[variant] || '';
-  const iconAnimate = styles.iconAnimation[animate];
-  const iconMarginLeft = iconPosition === 'right' && children ? styles.iconLeftMargin[heroicon] || styles.iconLeftMargin.default : '';
-  const iconMarginRight = iconPosition === 'left' && children ? styles.iconRightMargin[heroicon] || styles.iconRightMargin.default : '';
-  const iconStyle = styles.iconStyles[variant || ''];
+  const heroicon = icon || styles.ctaIconMap[variant as types.CtaIconMapType] as IconType;
+  const iconAnimate = animate ? styles.iconAnimation[animate] : '';
+
+  const iconMarginLeft = iconPosition === 'right' && children && heroicon
+    ? styles.iconLeftMargin[heroicon as types.CtaIconLeftMarginType] || styles.iconLeftMarginDefault
+    : '';
+  const iconMarginRight = iconPosition === 'left' && children && heroicon
+    ? styles.iconRightMargin[heroicon as types.CtaIconRightMarginType] || styles.iconRightMarginDefault
+    : '';
+  const iconStyle = styles.iconStyles[variant as types.CtaIconStyleType];
   const { className: iconClasses, ...iProps } = iconProps || {};
 
   return (

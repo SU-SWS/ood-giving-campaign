@@ -57,7 +57,9 @@ export default function RootLayout({ children }: LayoutProps) {
     <StoryblokProvider>
       <html
         lang="en"
-        className={`${source_sans.variable} ${source_serif.variable} ${druk.variable} ${druk_wide.variable} ${stanford.variable}`}
+        className={
+          `${source_sans.variable} ${source_serif.variable} ${druk.variable} ${druk_wide.variable} ${stanford.variable}`
+        }
       >
         {/* Absolutely necessary to have a body tag here, otherwise your components won't get any interactivity */}
         <body>

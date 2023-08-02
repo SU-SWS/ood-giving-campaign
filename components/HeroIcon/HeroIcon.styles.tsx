@@ -67,3 +67,4 @@ export const iconBaseStyle = {
   right: 'w-08em',
   up: 'w-1em',
 };
+export type IconBaseStyleType = keyof typeof iconBaseStyle;

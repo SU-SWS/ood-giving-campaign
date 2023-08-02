@@ -5,6 +5,7 @@ import { CreateBloks } from '../CreateBloks';
 import { RichText } from '../RichText';
 import { SbImageType } from './Storyblok.types';
 import { BgTextColorPairBlackWhiteType } from '@/utilities/datasource';
+import { hasRichText } from '@/utilities/hasRichText';
 
 type SbBannerProps = {
   blok: {
@@ -30,7 +31,7 @@ export const SbBanner = ({
   blok,
 }: SbBannerProps) => {
   const Cta = <CreateBloks blokSection={cta} />;
-  const Body = <RichText wysiwyg={body} isLightText={bgColor === 'black'} />;
+  const Body = hasRichText(body) ? <RichText wysiwyg={body} isLightText={bgColor === 'black'} /> : undefined;
 
   return (
     <Banner

@@ -116,16 +116,16 @@ export const iconAnimation = {
 
 // Leading icons have right margins
 // Only add to this map if right margin is different from default class mr-03em
+export const iconRightMarginDefault = 'mr-03em';
 export const iconRightMargin = {
-  default: 'mr-03em',
   'arrow-left': 'mr-04em',
   back: 'mr-04em',
 };
 
 // Trailing icons have left margins
 // Only add to this map if left margin is different from default class ml-03em
+export const iconLeftMarginDefault = 'ml-03em';
 export const iconLeftMargin = {
-  default: 'ml-03em',
   'arrow-right': 'ml-04em',
   back: 'ml-04em',
   'triangle-right': 'ml-04em',

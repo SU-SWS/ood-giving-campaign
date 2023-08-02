@@ -7,6 +7,11 @@ export type CtaSizeType = keyof typeof styles.ctaSizes | '';
 export type CtaCurveType = keyof typeof styles.ctaCurves | '';
 export type IconAnimationType = keyof typeof styles.iconAnimation | '';
 
+export type CtaIconStyleType = keyof typeof styles.iconStyles;
+export type CtaIconMapType = keyof typeof styles.ctaIconMap;
+export type CtaIconRightMarginType = keyof typeof styles.iconRightMargin;
+export type CtaIconLeftMarginType = keyof typeof styles.iconLeftMargin;
+
 export interface CtaCommonProps {
   variant?: CtaVariantType;
   color?: CtaColorType;
