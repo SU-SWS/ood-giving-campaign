@@ -1,7 +1,7 @@
 import { HeroIconProps, IconType } from '../HeroIcon';
 import * as styles from './Cta.styles';
 
-export type CtaVariantType = keyof typeof styles.ctaVariants | '';
+export type CtaVariantType = keyof typeof styles.ctaVariants;
 export type CtaColorType = keyof typeof styles.ctaColors | '';
 export type CtaSizeType = keyof typeof styles.ctaSizes | '';
 export type CtaCurveType = keyof typeof styles.ctaCurves | '';

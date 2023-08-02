@@ -1,11 +1,11 @@
-import { storyblokEditable, StoryblokComponent } from '@storyblok/react';
+import { storyblokEditable, StoryblokComponent, SbBlokData } from '@storyblok/react/rsc';
 import { GridAlternating, GridWidthType } from '../Grid';
 import { PaddingType } from '@/utilities/datasource';
 
 type SbGridAlternatingProps = {
   blok: {
     _uid: string;
-    items: any[];
+    items: SbBlokData[];
     startOnRight?: boolean;
     addCenterLine?: boolean;
     width?: GridWidthType;

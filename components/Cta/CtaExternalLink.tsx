@@ -1,9 +1,10 @@
-'use client';
 import React from 'react';
 import { CtaContent } from './CtaContent';
 import { getCtaClasses } from './getCtaClasses';
 import { CtaCommonProps } from './Cta.types';
 import { SbLinkType } from '../Storyblok/Storyblok.types';
+import * as styles from './Cta.styles';
+import * as types from './Cta.types';
 
 export type CtaExternalLinkProps = React.ComponentPropsWithoutRef<'a'> & CtaCommonProps & {
   sbLink?: SbLinkType;
@@ -15,7 +16,7 @@ export const CtaExternalLink = React.forwardRef<HTMLAnchorElement, CtaExternalLi
     const {
       variant = 'link',
       color = variant !== 'inline' && variant !== 'inlineDark' ? 'white' : '',
-      size,
+      size = styles.ctaSizeMap[variant] as types.CtaSizeType,
       curve,
       icon,
       iconPosition = 'right',
@@ -27,7 +28,7 @@ export const CtaExternalLink = React.forwardRef<HTMLAnchorElement, CtaExternalLi
       ...rest
     } = props;
 
-    const ctaClasses = getCtaClasses(variant, size || '', curve, color, className);
+    const ctaClasses = getCtaClasses(variant, size, curve, color, className);
 
     return (
       <a

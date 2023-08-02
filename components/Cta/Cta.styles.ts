@@ -75,6 +75,8 @@ export const ctaSizes = {
 export const ctaSizeMap = {
   solid: 'default',
   ghost: 'default',
+  inline: 'unset',
+  inlineDark: 'unset',
   'ghost-swipe': 'default',
   'ghost-swipe-overlay': 'default',
   mainNav: 'mainNav',
@@ -83,6 +85,7 @@ export const ctaSizeMap = {
   link: 'unset',
   dismiss: 'dismiss',
   close: 'close',
+  'close-x': 'unset',
   back: 'back',
   chip: 'chip',
   storyCardTag: 'storyCardTag',

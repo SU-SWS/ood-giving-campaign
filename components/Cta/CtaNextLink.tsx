@@ -4,6 +4,8 @@ import { LinkProps } from 'next/link';
 import { CtaContent } from './CtaContent';
 import { getCtaClasses } from './getCtaClasses';
 import { CtaCommonProps } from './Cta.types';
+import * as styles from './Cta.styles';
+import * as types from './Cta.types';
 
 export type CtaNextLinkProps = CtaCommonProps & LinkProps & {
   target?: React.HTMLAttributeAnchorTarget;
@@ -15,7 +17,7 @@ export const CtaNextLink = React.forwardRef<HTMLAnchorElement, CtaNextLinkProps>
     href,
     variant = 'link',
     color,
-    size,
+    size = styles.ctaSizeMap[variant] as types.CtaSizeType,
     curve,
     icon,
     iconPosition = 'right',

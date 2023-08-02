@@ -3,6 +3,8 @@ import React from 'react';
 import { CtaContent } from './CtaContent';
 import { getCtaClasses } from './getCtaClasses';
 import { CtaCommonProps } from './Cta.types';
+import * as styles from './Cta.styles';
+import * as types from './Cta.types';
 
 export type CtaButtonProps = React.ComponentPropsWithoutRef<'button'> & CtaCommonProps;
 
@@ -14,7 +16,7 @@ export const CtaButton = React.forwardRef<HTMLButtonElement, CtaButtonProps>(
       color = 'white',
       iconPosition = 'right',
       icon,
-      size,
+      size = styles.ctaSizeMap[variant] as types.CtaSizeType,
       curve,
       animate,
       iconProps,
@@ -24,7 +26,7 @@ export const CtaButton = React.forwardRef<HTMLButtonElement, CtaButtonProps>(
       ...rest
     } = props;
 
-    const ctaClasses = getCtaClasses(variant, size || '', curve, color, className);
+    const ctaClasses = getCtaClasses(variant, size, curve, color, className);
 
     return (
       <button
