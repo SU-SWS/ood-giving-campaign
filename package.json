@@ -34,7 +34,7 @@
     "@heroicons/react": "^2.0.18",
     "@storyblok/react": "^2.3.4",
     "cnbuilder": "^3.1.0",
-    "framer-motion": "^10.12.18",
+    "framer-motion": "^10.15.0",
     "netlify-plugin-vault-variables": "^1.0.7",
     "next": "^13.4.12",
     "node-vault": "^0.9.22",
@@ -45,14 +45,14 @@
   "devDependencies": {
     "@netlify/plugin-nextjs": "^4.39.3",
     "@tailwindcss/container-queries": "^0.1.1",
-    "@types/node": "^20.4.0",
-    "@types/react": "^18.2.14",
-    "@types/react-dom": "^18.2.6",
+    "@types/node": "^20.4.7",
+    "@types/react": "^18.2.18",
+    "@types/react-dom": "^18.2.7",
     "autoprefixer": "^10.4.14",
     "decanter": "^7.1.1",
     "eslint": "^8.46.0",
     "eslint-config-next": "^13.4.12",
-    "postcss": "^8.4.24",
+    "postcss": "^8.4.27",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.1.6"
   }
