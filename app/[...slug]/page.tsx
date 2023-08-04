@@ -21,7 +21,7 @@ async function generateStaticParams() {
     cv: activeEnv === 'development' ? Date.now() : undefined,
   };
 
-  const { data: { links } } = await storyblokApi?.get('cdn/links', sbParams);
+  const { data: { links } } = await storyblokApi.get('cdn/links', sbParams);
   let paths: PathsType[] = [];
 
   Object.keys(links).forEach((linkKey) => {
