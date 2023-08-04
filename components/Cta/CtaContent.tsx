@@ -1,6 +1,6 @@
 import { cnb } from 'cnbuilder';
 import { FlexBox } from '../FlexBox';
-import { HeroIcon, IconType } from '../HeroIcon';
+import { HeroIcon, type IconType } from '../HeroIcon';
 import { SrOnlyText } from '../Typography';
 import * as styles from './Cta.styles';
 import * as types from './Cta.types';
