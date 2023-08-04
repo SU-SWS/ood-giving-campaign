@@ -1,5 +1,4 @@
-import { StoryblokComponent } from '@storyblok/react/rsc';
-import { SbBlokData } from '@storyblok/react/rsc';
+import { StoryblokComponent, type SbBlokData } from '@storyblok/react/rsc';
 
 type CreateBloksProps = {
   blokSection: SbBlokData[];
