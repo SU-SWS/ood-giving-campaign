@@ -1,4 +1,4 @@
-import { logoColors, LogoColorType } from './Logo.styles';
+import { logoColors, type LogoColorType } from './Logo.styles';
 
 type LogoHorizontalProps = {
   color?: LogoColorType;

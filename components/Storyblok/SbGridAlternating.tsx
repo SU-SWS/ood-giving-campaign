@@ -1,6 +1,6 @@
-import { storyblokEditable, StoryblokComponent, SbBlokData } from '@storyblok/react/rsc';
-import { GridAlternating, GridWidthType } from '../Grid';
-import { PaddingType } from '@/utilities/datasource';
+import { storyblokEditable, StoryblokComponent, type SbBlokData } from '@storyblok/react/rsc';
+import { GridAlternating, type GridWidthType } from '../Grid';
+import { type PaddingType } from '@/utilities/datasource';
 
 type SbGridAlternatingProps = {
   blok: {

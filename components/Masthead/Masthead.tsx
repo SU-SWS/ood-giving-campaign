@@ -6,7 +6,7 @@ import {
 import { cnb } from 'cnbuilder';
 import { FlexBox } from '../FlexBox';
 import { Logo } from '../Logo';
-import { CtaLink, CtaButton, CtaVariantType } from '../Cta';
+import { CtaLink, CtaButton, type CtaVariantType } from '../Cta';
 import { ood } from '@/utilities/externalLinks';
 import { HeroIcon } from '../HeroIcon';
 

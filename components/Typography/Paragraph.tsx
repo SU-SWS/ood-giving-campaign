@@ -1,5 +1,5 @@
 import { cnb } from 'cnbuilder';
-import { Text, TypographyProps } from './Text';
+import { Text, type TypographyProps } from './Text';
 
 type ParagraphProps = Omit<TypographyProps, 'className'> & React.HTMLAttributes<HTMLParagraphElement> & {
   noMargin?: boolean; // If true, remove the bottom margin from base styles

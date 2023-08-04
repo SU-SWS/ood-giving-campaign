@@ -1,9 +1,9 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
-import { HeadingType } from '../Typography';
+import { type HeadingType } from '../Typography';
 import { BracketCard } from '../BracketCard';
-import { SbImageType, SbLinkType } from './Storyblok.types';
-import { AccentBgColorType, MarginType } from '@/utilities/datasource';
-import { paletteAccentColors, PaletteAccentColorType } from '@/utilities/colorPalettePlugin';
+import { type SbImageType, type SbLinkType } from './Storyblok.types';
+import { type AccentBgColorType, type MarginType } from '@/utilities/datasource';
+import { paletteAccentColors, type PaletteAccentColorType } from '@/utilities/colorPalettePlugin';
 
 export type SbBracketCardProps = {
   blok: {

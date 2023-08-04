@@ -2,7 +2,7 @@
 import React from 'react';
 import { CtaContent } from './CtaContent';
 import { getCtaClasses } from './getCtaClasses';
-import { CtaCommonProps } from './Cta.types';
+import { type CtaCommonProps } from './Cta.types';
 import * as styles from './Cta.styles';
 import * as types from './Cta.types';
 

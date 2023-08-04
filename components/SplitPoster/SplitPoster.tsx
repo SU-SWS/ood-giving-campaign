@@ -2,10 +2,10 @@ import { HTMLAttributes } from 'react';
 import { Container } from '../Container';
 import { FlexBox } from '../FlexBox';
 import { Grid } from '../Grid';
-import { HeadingType } from '../Typography';
+import { type HeadingType } from '../Typography';
 import { PosterContent } from './PosterContent';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { BgTextColorPairType } from '@/utilities/datasource';
+import { type BgTextColorPairType } from '@/utilities/datasource';
 import * as styles from './SplitPoster.styles';
 
 type SplitPosterProps = HTMLAttributes<HTMLDivElement> & {

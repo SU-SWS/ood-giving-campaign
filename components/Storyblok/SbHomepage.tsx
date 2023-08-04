@@ -1,4 +1,4 @@
-import { storyblokEditable, SbBlokData } from '@storyblok/react/rsc';
+import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import Image from 'next/image';
 import { CreateBloks } from '../CreateBloks';
 import { Heading } from '../Typography';
@@ -12,7 +12,7 @@ import { BlockBanner } from '../Homepage/BlockBanner';
 import { BelowBlockBanner } from '../Homepage/BelowBlockBanner';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { SbImageType } from './Storyblok.types';
+import { type SbImageType } from './Storyblok.types';
 
 type SbHomepagePageProps = {
   blok: {

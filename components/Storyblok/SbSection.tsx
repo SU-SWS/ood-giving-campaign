@@ -3,11 +3,11 @@ import { storyblokEditable } from '@storyblok/react/rsc';
 import { CreateBloks } from '../CreateBloks';
 import { FlexBox } from '../FlexBox';
 import {
-  Heading, HeadingType, SrOnlyText, Text,
+  Heading, type HeadingType, SrOnlyText, Text,
 } from '../Typography';
-import { Container, BgColorType } from '../Container';
-import { accentBgColors, AccentBgColorType, PaddingType } from '@/utilities/datasource';
-import { paletteAccentColors, PaletteAccentColorType } from '@/utilities/colorPalettePlugin';
+import { Container, type BgColorType } from '../Container';
+import { accentBgColors, type AccentBgColorType, type PaddingType } from '@/utilities/datasource';
+import { paletteAccentColors, type PaletteAccentColorType } from '@/utilities/colorPalettePlugin';
 
 type SbSectionProps = {
   blok: {

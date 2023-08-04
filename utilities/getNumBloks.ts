@@ -1,4 +1,4 @@
-import { SbBlokData } from '@storyblok/react/rsc';
+import { type SbBlokData } from '@storyblok/react/rsc';
 /**
  * Returns the number of nested bloks when we use the CreateBloks utility.
  *

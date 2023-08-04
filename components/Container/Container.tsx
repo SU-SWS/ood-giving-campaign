@@ -4,7 +4,7 @@ import {
   paddingTops,
   paddingBottoms,
   paddingVerticals,
-  PaddingType,
+  type PaddingType,
 } from '@/utilities/datasource';
 import * as styles from './Container.styles';
 import * as types from './Container.types';

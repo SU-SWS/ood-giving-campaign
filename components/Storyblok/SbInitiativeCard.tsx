@@ -1,10 +1,10 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
-import { AnimationType } from '../Animate';
+import { type AnimationType } from '../Animate';
 import { InitiativeCard } from '../InitiativeCard';
-import { HeadingType } from '../Typography';
-import { SbImageType, SbLinkType } from './Storyblok.types';
-import { AccentBgColorType } from '@/utilities/datasource';
-import { paletteAccentColors, PaletteAccentColorType } from '@/utilities/colorPalettePlugin';
+import { type HeadingType } from '../Typography';
+import { type SbImageType, type SbLinkType } from './Storyblok.types';
+import { type AccentBgColorType } from '@/utilities/datasource';
+import { paletteAccentColors, type PaletteAccentColorType } from '@/utilities/colorPalettePlugin';
 
 type SbInitiativeCardProps = {
   blok: {

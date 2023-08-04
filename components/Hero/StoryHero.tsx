@@ -9,7 +9,7 @@ import { paletteAccentColors, PaletteAccentColorType } from '@/utilities/colorPa
 import { accentBorderColors, type AccentBorderColorType } from '@/utilities/datasource';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { slugify } from '@/utilities/slugify';
-import { SbImageType } from '../Storyblok/Storyblok.types';
+import { type SbImageType } from '../Storyblok/Storyblok.types';
 import * as styles from './StoryHero.styles';
 
 export type StoryHeroProps = {

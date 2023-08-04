@@ -1,7 +1,7 @@
 'use client';
 import { useRef, useState } from 'react';
 import { cnb } from 'cnbuilder';
-import { SbBlokData } from '@storyblok/react/rsc';
+import { type SbBlokData } from '@storyblok/react/rsc';
 import {
   m, useScroll, useSpring, useTransform, SpringOptions, useWillChange,
 } from 'framer-motion';

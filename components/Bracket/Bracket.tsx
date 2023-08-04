@@ -1,5 +1,5 @@
 import { cnb } from 'cnbuilder';
-import { BracketCurve, BracketCurveProps } from './BracketCurve';
+import { BracketCurve, type BracketCurveProps } from './BracketCurve';
 import { FlexBox } from '../FlexBox';
 import * as styles from './Bracket.styles';
 

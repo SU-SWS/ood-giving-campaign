@@ -1,14 +1,14 @@
 import { HTMLAttributes } from 'react';
 import Image from 'next/image';
 import { cnb } from 'cnbuilder';
-import { AnimateInView, AnimationType } from '../Animate';
+import { AnimateInView, type AnimationType } from '../Animate';
 import { CtaLink } from '../Cta/CtaLink';
-import { Heading, HeadingType, Paragraph } from '../Typography';
+import { Heading, type HeadingType, Paragraph } from '../Typography';
 import { HeroIcon } from '../HeroIcon';
 import { FlexBox } from '../FlexBox';
-import { SbLinkType } from '../Storyblok/Storyblok.types';
+import { type SbLinkType } from '../Storyblok/Storyblok.types';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { accentBorderColors, AccentBorderColorType } from '@/utilities/datasource';
+import { accentBorderColors, type AccentBorderColorType } from '@/utilities/datasource';
 import * as styles from './InitiativeCard.styles';
 
 export type InitiativeCardProps = HTMLAttributes<HTMLDivElement> & {

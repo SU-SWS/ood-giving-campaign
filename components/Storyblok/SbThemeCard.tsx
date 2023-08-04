@@ -1,7 +1,7 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { ThemeCard } from '../VerticalCard';
-import { SbStoryCardProps } from './SbStoryCard';
-import { AccentBgColorType } from '@/utilities/datasource';
+import { type SbStoryCardProps } from './SbStoryCard';
+import { type AccentBgColorType } from '@/utilities/datasource';
 import { paletteAccentColors } from '@/utilities/colorPalettePlugin';
 
 export type SbThemeCardProps = Omit<SbStoryCardProps, 'isSmallHeading'> & {
