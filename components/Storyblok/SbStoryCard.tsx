@@ -3,8 +3,7 @@ import { type AnimationType } from '../Animate';
 import { type HeadingType } from '../Typography';
 import { StoryCard } from '../VerticalCard';
 import { type SbImageType, type SbLinkType } from './Storyblok.types';
-import { type AccentBgColorType } from '@/utilities/datasource';
-import { paletteAccentColors, type PaletteAccentColorType } from '@/utilities/colorPalettePlugin';
+import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
 
 export type SbStoryCardProps = {
   blok: {
@@ -24,7 +23,7 @@ export type SbStoryCardProps = {
     isSmallHeading?: boolean;
     image?: SbImageType;
     tabColor?: {
-      value?: PaletteAccentColorType;
+      value?: PaletteAccentHexColorType;
     }
     link?: SbLinkType;
     animation?: AnimationType;
@@ -62,7 +61,7 @@ export const SbStoryCard = ({
     isSmallHeading={isSmallHeading}
     imageSrc={cardImage || mobileFilename || heroFilename}
     imageFocus={cardFocus || mobileFocus || heroFocus}
-    tabColor={paletteAccentColors[value] as AccentBgColorType}
+    tabColor={paletteAccentColors[value]}
     link={link}
     href={`/${full_slug}`}
     animation={animation}

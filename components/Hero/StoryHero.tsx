@@ -5,7 +5,7 @@ import { CtaLink } from '../Cta';
 import { Grid } from '../Grid';
 import { FlexBox } from '../FlexBox';
 import { Heading, Text, Paragraph } from '../Typography';
-import { paletteAccentColors, PaletteAccentColorType } from '@/utilities/colorPalettePlugin';
+import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
 import { accentBorderColors, type AccentBorderColorType } from '@/utilities/datasource';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { slugify } from '@/utilities/slugify';
@@ -27,7 +27,7 @@ export type StoryHeroProps = {
   isLeftImage?: boolean;
   isLightHero?: boolean;
   tabColor?: {
-    value?: PaletteAccentColorType;
+    value?: PaletteAccentHexColorType;
   }
   topics?: string[];
 };
@@ -110,7 +110,7 @@ export const StoryHero = ({
         <div className={styles.content(!!filename, isVerticalHero, isLeftImage)}>
           <div className={cnb(
             styles.tabSection(!!tabColorValue, isVerticalHero, isLeftImage),
-            accentBorderColors[paletteAccentColors[tabColorValue] as AccentBorderColorType],
+            accentBorderColors[paletteAccentColors[tabColorValue]],
           )}
           >
             <Heading

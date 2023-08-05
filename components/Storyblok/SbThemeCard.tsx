@@ -1,7 +1,6 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { ThemeCard } from '../VerticalCard';
 import { type SbStoryCardProps } from './SbStoryCard';
-import { type AccentBgColorType } from '@/utilities/datasource';
 import { paletteAccentColors } from '@/utilities/colorPalettePlugin';
 
 export type SbThemeCardProps = Omit<SbStoryCardProps, 'isSmallHeading'> & {
@@ -34,7 +33,7 @@ export const SbThemeCard = ({
     body={body}
     imageSrc={filename}
     imageFocus={focus}
-    tabColor={paletteAccentColors[value] as AccentBgColorType}
+    tabColor={paletteAccentColors[value]}
     ctaLabel={ctaLabel}
     ctaSrText={ctaSrText}
     link={link}
