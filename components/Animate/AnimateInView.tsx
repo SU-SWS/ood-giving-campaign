@@ -1,4 +1,5 @@
 'use client';
+
 import { useRef } from 'react';
 import { useInView, m, useReducedMotion } from 'framer-motion';
 import { AnimationMap, type AnimationType } from './AnimationMap';
