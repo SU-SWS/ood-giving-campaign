@@ -25,7 +25,6 @@ export const CtaNextLink = React.forwardRef<HTMLAnchorElement, CtaNextLinkProps>
     iconProps,
     srText,
     target,
-    onClick,
     children,
     className,
     ...rest
@@ -34,19 +33,17 @@ export const CtaNextLink = React.forwardRef<HTMLAnchorElement, CtaNextLinkProps>
   const ctaClasses = getCtaClasses(variant, size, curve, color, className);
 
   return (
-    <Link href={href} passHref legacyBehavior {...rest}>
-      <a ref={ref} target={target} onClick={onClick} className={ctaClasses}>
-        <CtaContent
-          variant={variant}
-          icon={icon}
-          iconPosition={iconPosition}
-          animate={animate}
-          iconProps={iconProps}
-          srText={srText}
-        >
-          {children}
-        </CtaContent>
-      </a>
+    <Link {...rest} href={href} ref={ref} target={target} className={ctaClasses}>
+      <CtaContent
+        variant={variant}
+        icon={icon}
+        iconPosition={iconPosition}
+        animate={animate}
+        iconProps={iconProps}
+        srText={srText}
+      >
+        {children}
+      </CtaContent>
     </Link>
   );
 });
