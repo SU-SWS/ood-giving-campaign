@@ -1,4 +1,6 @@
 import {
+  type CtaSizeObjectType,
+  type CtaSizeMapType,
   type CtaIconStyleType,
   type CtaIconMapType,
   type CtaIconRightMarginType,
@@ -63,13 +65,11 @@ export const ctaCurves = {
   'trbl-large': `${trLargeBase} ${blLargeBase}`,
 };
 
-export const ctaSizes = {
+export const ctaSizes: CtaSizeObjectType = {
   default: 'pt-9 pb-10 pl-18 pr-16 lg:pl-22 lg:pr-20 lg:pt-10 lg:pb-11 text-16 lg:text-20',
   large: 'pl-28 pr-26 pt-16 pb-17 lg:pr-40 lg:pl-44 lg:pt-20 lg:pb-22 text-18 lg:text-24',
   link: 'text-16 lg:text-20',
   mainNav: 'text-14 px-10 pt-8 pb-9 lg:px-24 lg:pt-18 lg:pb-19 lg:text-20',
-  'footer-featured': 'ma-intro',
-  card: 'ma-card',
   back: 'text-16',
   close: 'text-18 md:text-21',
   chip: 'py-7 px-22 text-18',
@@ -77,7 +77,7 @@ export const ctaSizes = {
   unset: '',
 };
 
-export const ctaSizeMap = {
+export const ctaSizeMap: CtaSizeMapType = {
   solid: 'default',
   ghost: 'default',
   inline: 'unset',

@@ -1,10 +1,9 @@
 import React from 'react';
+import { cnb } from 'cnbuilder';
 import { CtaContent } from './CtaContent';
-import { getCtaClasses } from './getCtaClasses';
 import { type CtaCommonProps } from './Cta.types';
 import { type SbLinkType } from '../Storyblok/Storyblok.types';
 import * as styles from './Cta.styles';
-import * as types from './Cta.types';
 
 export type CtaExternalLinkProps = React.ComponentPropsWithoutRef<'a'> & CtaCommonProps & {
   sbLink?: SbLinkType;
@@ -16,7 +15,7 @@ export const CtaExternalLink = React.forwardRef<HTMLAnchorElement, CtaExternalLi
     const {
       variant = 'link',
       color = variant !== 'inline' && variant !== 'inlineDark' ? 'white' : '',
-      size = styles.ctaSizeMap[variant] as types.CtaSizeType,
+      size,
       curve,
       icon,
       iconPosition = 'right',
@@ -28,13 +27,18 @@ export const CtaExternalLink = React.forwardRef<HTMLAnchorElement, CtaExternalLi
       ...rest
     } = props;
 
-    const ctaClasses = getCtaClasses(variant, size, curve, color, className);
-
     return (
       <a
-        className={ctaClasses}
-        ref={ref as React.ForwardedRef<HTMLAnchorElement>}
         {...rest}
+        ref={ref as React.ForwardedRef<HTMLAnchorElement>}
+        className={cnb(
+          styles.cta,
+          styles.ctaVariants[variant],
+          styles.ctaSizes[size] || styles.ctaSizes[styles.ctaSizeMap[variant]],
+          curve ? styles.ctaCurves[curve] : '',
+          color ? styles.ctaColors[color] : '',
+          className,
+        )}
       >
         <CtaContent
           variant={variant}
