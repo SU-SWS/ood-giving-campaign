@@ -4,9 +4,9 @@ import {
   useScroll, useSpring, m, MotionStyle,
 } from 'framer-motion';
 import { cnb } from 'cnbuilder';
-import { Grid, GridProps } from './Grid';
-import { GridNegativeSpacingType, GridWidthType } from './Grid.types';
-import { marginBottoms, MarginType } from '@/utilities/datasource';
+import { Grid, type GridProps } from './Grid';
+import { type GridNegativeSpacingType, type GridWidthType } from './Grid.types';
+import { marginBottoms, type MarginType } from '@/utilities/datasource';
 import * as styles from './Grid.styles';
 
 /**
@@ -66,8 +66,7 @@ export const GridAlternating = ({
           <React.Fragment key={index}>
             <m.div
               className={cnb(
-                marginBottoms[spacing || ''],
-                styles.negativeSpacing[spacing || ''],
+                marginBottoms[spacing as MarginType] || styles.negativeSpacing[spacing as GridNegativeSpacingType],
                 styles.cellWithContent,
               )}
               style={gridCellStyle}

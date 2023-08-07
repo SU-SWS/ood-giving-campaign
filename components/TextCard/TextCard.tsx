@@ -1,9 +1,9 @@
 import { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
-import { AnimateInView, AnimationType } from '../Animate';
+import { AnimateInView, type AnimationType } from '../Animate';
 import { Text } from '../Typography';
 import { FlexBox } from '../FlexBox';
-import { bgTextColorPairsBlackWhite, BgTextColorPairBlackWhiteType } from '@/utilities/datasource';
+import { bgTextColorPairsBlackWhite, type BgTextColorPairBlackWhiteType } from '@/utilities/datasource';
 import * as styles from './TextCard.styles';
 
 export type TextCardProps = HTMLAttributes<HTMLDivElement> & {
@@ -41,13 +41,13 @@ export const TextCard = ({
     <div
       className={cnb(
         styles.root,
-        styles.xsColSpans[xsColSpan || ''],
-        styles.smColSpans[smColSpan || ''],
-        styles.mdColSpans[mdColSpan || ''],
-        styles.lgColSpans[lgColSpan || ''],
-        styles.xlColSpans[xlColSpan || ''],
-        styles.xxlColSpans[xxlColSpan || ''],
-        bgTextColorPairsBlackWhite[color || ''],
+        xsColSpan ? styles.xsColSpans[xsColSpan] : '',
+        smColSpan ? styles.smColSpans[smColSpan] : '',
+        mdColSpan ? styles.mdColSpans[mdColSpan] : '',
+        lgColSpan ? styles.lgColSpans[lgColSpan] : '',
+        xlColSpan ? styles.xlColSpans[xlColSpan] : '',
+        xxlColSpan ? styles.xxlColSpans[xxlColSpan] : '',
+        color ? bgTextColorPairsBlackWhite[color] : '',
         className,
       )}
       {...props}

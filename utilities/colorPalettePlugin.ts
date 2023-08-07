@@ -1,7 +1,13 @@
+import { type AccentColorType } from "./datasource";
 /**
  * Maps of color utilities for the Storyblok palette plugin
  */
-export const paletteAccentColors = {
+
+export type PaletteAccentColorType = {
+  [key: string]: AccentColorType;
+};
+
+export const paletteAccentColors: PaletteAccentColorType = {
   '#ECC7CD': 'flamingo',
   '#E31C79': 'fuchsia',
   '#C5B4E3': 'lavender',
@@ -16,7 +22,12 @@ export const paletteAccentColors = {
   '#B1040E': 'digital-red',
   '#E50808': 'digital-red-light',
 };
-export type PaletteAccentColorType = keyof typeof paletteAccentColors;
+
+/**
+ * Writing all the hex colors out for PaletteAccentHexColorType since when I tried to use
+ * keyof typeof paletteAccentColors, it infers that the type is string | number which is incorrect
+ */
+export type PaletteAccentHexColorType = '#ECC7CD' | '#E31C79' | '#C5B4E3' | '#DBE442' | '#175E54' | '#485CC7' | '#E98300' | '#77C5D5' | '#005776' | '#E04F39' | '#8C1515' | '#B1040E' | '#E50808';
 
 export const colorNameToHex = {
   flamingo: '#ECC7CD',

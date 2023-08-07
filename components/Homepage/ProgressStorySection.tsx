@@ -9,7 +9,6 @@ import { Heading, Paragraph } from '../Typography';
 import { AnimateInView } from '../Animate';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { storiesRoot } from '@/utilities/routes';
-import { WordBlock } from '../WordBlock';
 
 type ProgressStorySectionProps = {
   bgImage?: string;

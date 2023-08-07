@@ -1,9 +1,9 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { CreateBloks } from '../CreateBloks';
-import { HeadingType } from '../Typography';
-import { SbImageType } from './Storyblok.types';
+import { type HeadingType } from '../Typography';
+import { type SbImageType } from './Storyblok.types';
 import { SplitPoster } from '../SplitPoster';
-import { BgTextColorPairType } from '@/utilities/datasource';
+import { type BgTextColorPairType } from '@/utilities/datasource';
 
 export type SbSplitPosterProps = {
   blok: {

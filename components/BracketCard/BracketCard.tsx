@@ -6,11 +6,11 @@ import { Bracket } from '../Bracket';
 import { CtaLink } from '../Cta/CtaLink';
 import { FlexBox } from '../FlexBox';
 import { Grid } from '../Grid';
-import { Heading, HeadingType, Paragraph } from '../Typography';
+import { Heading, type HeadingType, Paragraph } from '../Typography';
 import { SbLinkType } from '../Storyblok/Storyblok.types';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import {
-  accentBgColors, AccentBgColorType, marginBottoms, MarginType,
+  accentBgColors, type AccentColorType, marginBottoms, type MarginType,
 } from '@/utilities/datasource';
 import * as styles from './BracketCard.styles';
 
@@ -24,7 +24,7 @@ type BracketCardProps = HTMLAttributes<HTMLDivElement> & {
   textOnLeft?: boolean;
   // TODO: We possibly could remove this and have the text color be inherited from the parent
   textColor?: styles.TextColorType;
-  tabColor?: AccentBgColorType;
+  tabColor?: AccentColorType;
   tabBgImage?: string;
   ctaLabel?: string;
   link?: SbLinkType;

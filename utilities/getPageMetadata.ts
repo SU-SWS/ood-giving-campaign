@@ -1,5 +1,5 @@
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { SbImageType, SbLinkType } from '@/components/Storyblok/Storyblok.types';
+import { type SbImageType, type SbLinkType } from '@/components/Storyblok/Storyblok.types';
 import { config } from './config';
 
 export type SbSEOType = {

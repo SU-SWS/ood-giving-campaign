@@ -1,10 +1,11 @@
 'use client';
+
 import React from 'react';
-import { LinkProps } from 'next/link';
-import { CtaCommonProps } from './Cta.types';
+import { type LinkProps } from 'next/link';
+import { type CtaCommonProps } from './Cta.types';
 import { CtaExternalLink } from './CtaExternalLink';
 import { CtaNextLink } from './CtaNextLink';
-import { SbLinkType } from '../Storyblok/Storyblok.types';
+import { type SbLinkType } from '../Storyblok/Storyblok.types';
 //import { useAddUtmParams } from '../../hooks/useAddUtmParams';
 
 /**
@@ -40,14 +41,6 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
     // Check for internal links
     const isInternal: boolean = linktype === 'story' || /^\/(?!\/)/.test(href);
 
-    // Open internal links in new tab because passing target="_blank" to NextLink doesn't work at the moment
-    const openNextLinkInNewTab = (e) => {
-      if (target === '_blank') {
-        e.preventDefault();
-        window.open(cachedUrl || href, '_blank');
-      }
-    };
-
     let myLink: string = '';
 
     if (isInternal) {
@@ -77,7 +70,6 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
           ref={ref}
           href={myLinkWithUtm}
           target={target || undefined}
-          onClick={openNextLinkInNewTab}
         />
       );
     }

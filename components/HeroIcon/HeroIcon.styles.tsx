@@ -50,9 +50,14 @@ export type IconType = keyof typeof iconMap;
  * Only add to this map if different from default class w-1em
  * If you wish to use the HeroIcon without any base styles, set the noBaseStyle boolean prop to true
  */
-// TODO: Adjust these base styles as they were ported over when we were using v1 of Heroicons
-export const iconBaseStyle = {
-  default: 'w-1em',
+
+// This basically means that the keys from iconBaseStyle are from the keys of iconMap
+type IconBaseStyleType = Partial<{
+  [Key in IconType]: string;
+}>;
+
+export const iconBaseStyleDefault = 'w-1em';
+export const iconBaseStyle: IconBaseStyleType = {
   'arrow-left': 'w-09em -mt-01em',
   'arrow-right': 'w-09em -mt-01em',
   'triangle-right': 'w-09em scale-x-[0.9] mt-01em',

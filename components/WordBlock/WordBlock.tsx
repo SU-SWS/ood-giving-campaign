@@ -1,5 +1,5 @@
 import { cnb } from 'cnbuilder';
-import { AnimateInView, AnimationType } from '../Animate';
+import { AnimateInView, type AnimationType } from '../Animate';
 import { Text } from '../Typography';
 import * as styles from './WordBlock.styles';
 
@@ -32,7 +32,7 @@ export const WordBlock = ({
         leading="tight"
         color={textColor}
         weight="bold"
-        className={cnb(styles.text(textColor, isLarge), styles.bgColors[bgColor || ''])}
+        className={cnb(styles.text(textColor, isLarge), bgColor ? styles.bgColors[bgColor] : '')}
       >
         {children}
       </Text>

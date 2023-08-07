@@ -3,7 +3,7 @@ import { Heading, Paragraph } from '../Typography';
 import { AnimateInView } from '../Animate';
 import { Triangle } from '../Shapes';
 
-export const FindPurposeSection = ({ children }) => (
+export const FindPurposeSection = ({ children }: { children: React.ReactNode }) => (
   <Container width="full" bgColor="white" py={9} className="relative overflow-hidden">
     <Container>
       <AnimateInView animation="slideUp">

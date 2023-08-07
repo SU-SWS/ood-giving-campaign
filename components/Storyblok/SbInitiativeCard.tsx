@@ -1,10 +1,9 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
-import { AnimationType } from '../Animate';
+import { type AnimationType } from '../Animate';
 import { InitiativeCard } from '../InitiativeCard';
-import { HeadingType } from '../Typography';
-import { SbImageType, SbLinkType } from './Storyblok.types';
-import { AccentBgColorType } from '@/utilities/datasource';
-import { paletteAccentColors, PaletteAccentColorType } from '@/utilities/colorPalettePlugin';
+import { type HeadingType } from '../Typography';
+import { type SbImageType, type SbLinkType } from './Storyblok.types';
+import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
 
 type SbInitiativeCardProps = {
   blok: {
@@ -15,7 +14,7 @@ type SbInitiativeCardProps = {
     isSmallHeading?: boolean;
     image?: SbImageType;
     tabColor?: {
-      value?: PaletteAccentColorType;
+      value?: PaletteAccentHexColorType;
     }
     link?: SbLinkType;
     animation?: AnimationType;
@@ -43,7 +42,7 @@ export const SbInitiativeCard = ({
     body={body}
     imageSrc={filename}
     imageFocus={focus}
-    tabColor={paletteAccentColors[value || ''] as AccentBgColorType}
+    tabColor={paletteAccentColors[value]}
     link={link}
     animation={animation}
     delay={delay}

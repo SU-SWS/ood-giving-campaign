@@ -1,16 +1,15 @@
 import React from 'react';
-import Image from 'next/image';
 import { cnb } from 'cnbuilder';
 import { Container } from '../Container';
 import { CtaLink } from '../Cta';
 import { Grid } from '../Grid';
 import { FlexBox } from '../FlexBox';
 import { Heading, Text, Paragraph } from '../Typography';
-import { paletteAccentColors, PaletteAccentColorType } from '@/utilities/colorPalettePlugin';
-import { accentBorderColors } from '@/utilities/datasource';
+import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
+import { accentBorderColors, type AccentBorderColorType } from '@/utilities/datasource';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { slugify } from '@/utilities/slugify';
-import { SbImageType } from '../Storyblok/Storyblok.types';
+import { type SbImageType } from '../Storyblok/Storyblok.types';
 import * as styles from './StoryHero.styles';
 
 export type StoryHeroProps = {
@@ -28,7 +27,7 @@ export type StoryHeroProps = {
   isLeftImage?: boolean;
   isLightHero?: boolean;
   tabColor?: {
-    value?: PaletteAccentColorType;
+    value?: PaletteAccentHexColorType;
   }
   topics?: string[];
 };
@@ -111,7 +110,7 @@ export const StoryHero = ({
         <div className={styles.content(!!filename, isVerticalHero, isLeftImage)}>
           <div className={cnb(
             styles.tabSection(!!tabColorValue, isVerticalHero, isLeftImage),
-            accentBorderColors[paletteAccentColors[tabColorValue || '']],
+            accentBorderColors[paletteAccentColors[tabColorValue]],
           )}
           >
             <Heading

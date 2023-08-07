@@ -1,12 +1,12 @@
 import { cnb } from 'cnbuilder';
 import Image from 'next/image';
-import { AnimateInView, AnimationType } from '../Animate';
+import { AnimateInView, type AnimationType } from '../Animate';
 import { CtaLink } from '../Cta/CtaLink';
-import { Heading, HeadingType, Paragraph } from '../Typography';
+import { Heading, type HeadingType, Paragraph } from '../Typography';
 import { SbLinkType } from '../Storyblok/Storyblok.types';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { slugify } from '@/utilities/slugify';
-import { accentBorderColors, AccentBorderColorType } from '@/utilities/datasource';
+import { accentBorderColors, type AccentBorderColorType } from '@/utilities/datasource';
 import * as styles from './VerticalCard.styles';
 
 /**
@@ -71,7 +71,7 @@ export const VerticalCard = ({
             as={headingLevel}
             size={isSmallHeading ? 3 : 4}
             leading="tight"
-            className={cnb(styles.heading(!!tabColor), accentBorderColors[tabColor || ''])}
+            className={cnb(styles.heading(!!tabColor), accentBorderColors[tabColor])}
           >
             {(!ctaLabel && (link || href))
               ? (

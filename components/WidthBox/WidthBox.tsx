@@ -1,6 +1,6 @@
 import { cnb } from 'cnbuilder';
-import { Container, ContainerProps } from '../Container';
-import { Grid, GridProps } from '../Grid';
+import { Container, type ContainerProps } from '../Container';
+import { Grid, type GridProps } from '../Grid';
 import * as styles from './WidthBox.styles';
 
 /**

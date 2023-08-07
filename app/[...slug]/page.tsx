@@ -6,22 +6,34 @@ import { getPageMetadata } from '@/utilities/getPageMetadata';
 
 const activeEnv = process.env.NODE_ENV || 'development';
 
-export async function generateMetadata({ params }): Promise<Metadata> {
-  const { data } = await getStoryData(params);
-  const blok = data.story.content;
+type PathsType = {
+  slug: string[];
+};
 
-  let slug: string = params.slug ? params.slug.join('/') : '';
-  const meta = getPageMetadata({ blok, slug });
+type ParamsType = {
+  slug: string[];
+};
 
-  return meta;
-}
+async function generateStaticParams() {
+  const storyblokApi: StoryblokClient = getStoryblokApi();
+  let sbParams: ISbStoriesParams = {
+    version: activeEnv === 'development' ? 'draft' : 'published',
+    cv: activeEnv === 'development' ? Date.now() : undefined,
+  };
 
-export default async function Page({ params }) {
-  const { data } = await getStoryData(params);
+  const { data: { links } } = await storyblokApi.get('cdn/links', sbParams);
+  let paths: PathsType[] = [];
 
-  return (
-    <StoryblokStory story={data.story} />
-  );
+  Object.keys(links).forEach((linkKey) => {
+    if (links[linkKey].is_folder || links[linkKey].slug === 'home') {
+      return;
+    }
+    const slug: string = links[linkKey].slug;
+    let splittedSlug = slug.split('/');
+    paths.push({ slug: splittedSlug });
+  });
+
+  return paths;
 };
 
 // Make sure to not export the below functions otherwise there will be a typescript error
@@ -40,28 +52,20 @@ async function getStoryData(params: { slug: string[] }) {
   return story;
 };
 
-type pathsType = {
-  slug: string[];
+export async function generateMetadata({ params }: { params: ParamsType }): Promise<Metadata> {
+  const { data } = await getStoryData(params);
+  const blok = data.story.content;
+
+  let slug: string = params.slug ? params.slug.join('/') : '';
+  const meta = getPageMetadata({ blok, slug });
+
+  return meta;
 }
 
-async function generateStaticParams() {
-  const storyblokApi: StoryblokClient = getStoryblokApi();
-  let sbParams: ISbStoriesParams = {
-    version: activeEnv === 'development' ? 'draft' : 'published',
-    cv: activeEnv === 'development' ? Date.now() : undefined,
-  };
+export default async function Page({ params }: { params: ParamsType }) {
+  const { data } = await getStoryData(params);
 
-  const { data: { links } } = await storyblokApi?.get('cdn/links', sbParams);
-  let paths: pathsType[] = [];
-
-  Object.keys(links).forEach((linkKey) => {
-    if (links[linkKey].is_folder || links[linkKey].slug === 'home') {
-      return;
-    }
-    const slug: string = links[linkKey].slug;
-    let splittedSlug = slug.split('/');
-    paths.push({ slug: splittedSlug });
-  });
-
-  return paths;
+  return (
+    <StoryblokStory story={data.story} />
+  );
 };

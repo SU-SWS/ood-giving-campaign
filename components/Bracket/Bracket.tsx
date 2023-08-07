@@ -1,5 +1,5 @@
 import { cnb } from 'cnbuilder';
-import { BracketCurve, BracketCurveProps } from './BracketCurve';
+import { BracketCurve, type BracketCurveProps } from './BracketCurve';
 import { FlexBox } from '../FlexBox';
 import * as styles from './Bracket.styles';
 
@@ -20,7 +20,7 @@ export const Bracket = ({
   <FlexBox
     direction="col"
     className={cnb(
-      styles.colors[color || ''],
+      color ? styles.colors[color] : '',
       className,
     )}
     {...props}

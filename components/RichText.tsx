@@ -1,14 +1,14 @@
-import { render, StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
+import { render, type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { cnb } from 'cnbuilder';
 import { CtaLink } from './Cta';
 import { SbCta } from './Storyblok/SbCta';
 import { SbTriangle } from './Storyblok/SbTriangle';
 import {
   Heading,
-  FontSizeType,
+  type FontSizeType,
   Paragraph,
   textAligns,
-  TextAlignType,
+  type TextAlignType,
 } from './Typography';
 
 export type RichTextProps = {
@@ -16,13 +16,12 @@ export type RichTextProps = {
   isLightText?: boolean;
   textAlign?: TextAlignType;
   className?: string;
-  linkColor?: string;
 };
 
 export const RichText = ({
   wysiwyg,
   isLightText,
-  textAlign,
+  textAlign = 'left',
   className,
 }: RichTextProps) => {
   const textColor = isLightText ? 'text-white print:text-gc-black' : 'text-gc-black';
@@ -99,7 +98,7 @@ export const RichText = ({
       className={cnb(
         'wysiwyg',
         textColor,
-        textAligns[textAlign || ''],
+        textAligns[textAlign],
         className,
       )}
     >

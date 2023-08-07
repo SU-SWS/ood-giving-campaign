@@ -1,11 +1,10 @@
-import { render } from 'storyblok-rich-text-react-renderer-ts';
-import { getNumBloks } from './getNumBloks';
+import { render, type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 
 /**
  * Returns a boolean if the Storyblok rich text field (wysiwyg) has any content.
  *
- * @param {object} wysiwyg - The wysiwyg to check for content.
+ * @param {StoryblokRichtext} wysiwyg - The wysiwyg to check for content.
  * @returns {boolean} - Whether or not the wysiwyg has content.
  */
 
-export const hasRichText = (wysiwyg) => getNumBloks(render(wysiwyg)) > 0;
+export const hasRichText = (wysiwyg: StoryblokRichtext) => !!render(wysiwyg);

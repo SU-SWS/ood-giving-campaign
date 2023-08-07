@@ -1,15 +1,19 @@
-'use client';
 import React from 'react';
+import { cnb } from 'cnbuilder';
 import Link from 'next/link';
-import { LinkProps } from 'next/link';
+import { type LinkProps } from 'next/link';
 import { CtaContent } from './CtaContent';
-import { getCtaClasses } from './getCtaClasses';
-import { CtaCommonProps } from './Cta.types';
+import { type CtaCommonProps } from './Cta.types';
+import * as styles from './Cta.styles';
 
-export type CtaNextLinkProps = CtaCommonProps & LinkProps;
+export type CtaNextLinkProps = CtaCommonProps & LinkProps & {
+  target?: React.HTMLAttributeAnchorTarget;
+  className?: string;
+};
 
-export const CtaNextLink = (props) => {
+export const CtaNextLink = React.forwardRef<HTMLAnchorElement, CtaNextLinkProps>((props, ref) => {
   const {
+    href,
     variant = 'link',
     color,
     size,
@@ -19,17 +23,26 @@ export const CtaNextLink = (props) => {
     animate,
     iconProps,
     srText,
+    target,
     children,
     className,
     ...rest
   } = props;
 
-  const ctaClasses = getCtaClasses(variant, size, curve, color, className);
-
   return (
     <Link
-      className={ctaClasses}
       {...rest}
+      ref={ref}
+      href={href}
+      target={target}
+      className={cnb(
+        styles.cta,
+        styles.ctaVariants[variant],
+        styles.ctaSizes[size] || styles.ctaSizes[styles.ctaSizeMap[variant]],
+        curve ? styles.ctaCurves[curve] : '',
+        color ? styles.ctaColors[color] : '',
+        className,
+      )}
     >
       <CtaContent
         variant={variant}
@@ -43,4 +56,4 @@ export const CtaNextLink = (props) => {
       </CtaContent>
     </Link>
   );
-};
+});

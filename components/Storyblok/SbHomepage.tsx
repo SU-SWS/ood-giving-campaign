@@ -1,4 +1,4 @@
-import { storyblokEditable } from '@storyblok/react/rsc';
+import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import Image from 'next/image';
 import { CreateBloks } from '../CreateBloks';
 import { Heading } from '../Typography';
@@ -12,28 +12,27 @@ import { BlockBanner } from '../Homepage/BlockBanner';
 import { BelowBlockBanner } from '../Homepage/BelowBlockBanner';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { SbThemeCardProps } from './SbThemeCard';
-import { SbImageType } from './Storyblok.types';
+import { type SbImageType } from './Storyblok.types';
 
 type SbHomepagePageProps = {
   blok: {
     _uid: string;
     title?: string;
     intro: string;
-    themeCardDiscovery?: SbThemeCardProps;
-    themeCardCitizen?: SbThemeCardProps;
-    themeCardAcceleration?: SbThemeCardProps;
-    themeCardPlanet?: SbThemeCardProps;
+    themeCardDiscovery?: SbBlokData[];
+    themeCardCitizen?: SbBlokData[];
+    themeCardAcceleration?: SbBlokData[];
+    themeCardPlanet?: SbBlokData[];
     progressBgImage?: SbImageType;
-    progressStories?: any[];
+    progressStories?: SbBlokData[];
     blockBannerImage?: SbImageType;
     phrase1?: string;
     phrase2?: string;
     blockBannerBody?: string;
-    belowBlockBanner?: any[];
-    findPurpose?: any[];
-    content?: any[];
-    ankle?: any[];
+    belowBlockBanner?: SbBlokData[];
+    findPurpose?: SbBlokData[];
+    content?: SbBlokData[];
+    ankle?: SbBlokData[];
   };
 };
 

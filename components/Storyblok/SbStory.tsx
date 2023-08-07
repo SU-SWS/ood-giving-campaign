@@ -1,16 +1,16 @@
-import { storyblokEditable } from '@storyblok/react/rsc';
+import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import Image from 'next/image';
 import { CreateBloks } from '@/components/CreateBloks';
 import { Masthead } from '@/components/Masthead';
-import { StoryHero, StoryHeroProps } from '@/components/Hero';
+import { StoryHero, type StoryHeroProps } from '@/components/Hero';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 
 type SbStoryProps = {
   blok: {
     _uid: string;
-    content?: any[];
-    ankle?: any[];
+    content?: SbBlokData[];
+    ankle?: SbBlokData[];
   } & StoryHeroProps;
 };
 

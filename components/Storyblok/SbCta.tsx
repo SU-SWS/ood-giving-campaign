@@ -1,8 +1,8 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
-import { CtaLink, CtaColorType, CtaVariantType } from '../Cta';
-import { IconType } from '../HeroIcon';
-import { SbLinkType } from './Storyblok.types';
-import { CtaCurveType } from '../Cta';
+import { CtaLink, type CtaColorType, type CtaVariantType } from '../Cta';
+import { type IconType } from '../HeroIcon';
+import { type SbLinkType } from './Storyblok.types';
+import { type CtaCurveType } from '../Cta';
 
 type SbCtaType = {
   blok: {
