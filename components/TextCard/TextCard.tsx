@@ -1,9 +1,9 @@
 import { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
-import { AnimateInView, AnimationType } from '../Animate';
+import { AnimateInView, type AnimationType } from '../Animate';
 import { Text } from '../Typography';
 import { FlexBox } from '../FlexBox';
-import { bgTextColorPairsBlackWhite, BgTextColorPairBlackWhiteType } from '@/utilities/datasource';
+import { bgTextColorPairsBlackWhite, type BgTextColorPairBlackWhiteType } from '@/utilities/datasource';
 import * as styles from './TextCard.styles';
 
 export type TextCardProps = HTMLAttributes<HTMLDivElement> & {

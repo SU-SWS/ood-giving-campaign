@@ -1,4 +1,4 @@
-import { VerticalCard, VerticalCardProps } from './VerticalCard';
+import { VerticalCard, type VerticalCardProps } from './VerticalCard';
 
 export type ThemeCardProps = Omit<VerticalCardProps, 'isSmallHeading' | 'taxonomy'>;
 

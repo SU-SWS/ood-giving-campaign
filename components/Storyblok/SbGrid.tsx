@@ -1,5 +1,5 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
-import { Grid, GridGapType, GridNumColsType } from '../Grid';
+import { Grid, type GridGapType, type GridNumColsType } from '../Grid';
 import { CreateBloks } from '../CreateBloks';
 
 type SbGridProps = {

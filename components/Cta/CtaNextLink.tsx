@@ -1,11 +1,10 @@
 import React from 'react';
+import { cnb } from 'cnbuilder';
 import Link from 'next/link';
-import { LinkProps } from 'next/link';
+import { type LinkProps } from 'next/link';
 import { CtaContent } from './CtaContent';
-import { getCtaClasses } from './getCtaClasses';
-import { CtaCommonProps } from './Cta.types';
+import { type CtaCommonProps } from './Cta.types';
 import * as styles from './Cta.styles';
-import * as types from './Cta.types';
 
 export type CtaNextLinkProps = CtaCommonProps & LinkProps & {
   target?: React.HTMLAttributeAnchorTarget;
@@ -17,7 +16,7 @@ export const CtaNextLink = React.forwardRef<HTMLAnchorElement, CtaNextLinkProps>
     href,
     variant = 'link',
     color,
-    size = styles.ctaSizeMap[variant] as types.CtaSizeType,
+    size,
     curve,
     icon,
     iconPosition = 'right',
@@ -25,28 +24,36 @@ export const CtaNextLink = React.forwardRef<HTMLAnchorElement, CtaNextLinkProps>
     iconProps,
     srText,
     target,
-    onClick,
     children,
     className,
     ...rest
   } = props;
 
-  const ctaClasses = getCtaClasses(variant, size, curve, color, className);
-
   return (
-    <Link href={href} passHref legacyBehavior {...rest}>
-      <a ref={ref} target={target} onClick={onClick} className={ctaClasses}>
-        <CtaContent
-          variant={variant}
-          icon={icon}
-          iconPosition={iconPosition}
-          animate={animate}
-          iconProps={iconProps}
-          srText={srText}
-        >
-          {children}
-        </CtaContent>
-      </a>
+    <Link
+      {...rest}
+      ref={ref}
+      href={href}
+      target={target}
+      className={cnb(
+        styles.cta,
+        styles.ctaVariants[variant],
+        styles.ctaSizes[size] || styles.ctaSizes[styles.ctaSizeMap[variant]],
+        curve ? styles.ctaCurves[curve] : '',
+        color ? styles.ctaColors[color] : '',
+        className,
+      )}
+    >
+      <CtaContent
+        variant={variant}
+        icon={icon}
+        iconPosition={iconPosition}
+        animate={animate}
+        iconProps={iconProps}
+        srText={srText}
+      >
+        {children}
+      </CtaContent>
     </Link>
   );
 });

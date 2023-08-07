@@ -1,8 +1,8 @@
 import { cnb } from 'cnbuilder';
-import {AnimateInView, AnimationType } from '../Animate';
+import {AnimateInView, type AnimationType } from '../Animate';
 import { CtaButton } from '../Cta/CtaButton';
 import {
-  Heading, HeadingType, Paragraph, Text,
+  Heading, type HeadingType, Paragraph, Text,
 } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import * as styles from './PortraitCard.styles';

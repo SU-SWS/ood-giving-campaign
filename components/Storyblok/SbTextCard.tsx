@@ -1,8 +1,8 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
-import { AnimationType } from '../Animate';
+import { type AnimationType } from '../Animate';
 import { TextCard } from '../TextCard/TextCard';
-import * as styles from '../TextCard/TextCard.styles';
-import { BgTextColorPairBlackWhiteType } from '@/utilities/datasource';
+import { ColSpanType } from '../TextCard/TextCard.styles';
+import { type BgTextColorPairBlackWhiteType } from '@/utilities/datasource';
 
 type SbTextCardProps = {
   blok: {
@@ -10,12 +10,12 @@ type SbTextCardProps = {
     text?: string;
     color?: BgTextColorPairBlackWhiteType;
     font?: 'serif' | 'druk6' | 'druk7';
-    xsColSpan?: styles.ColSpanType;
-    smColSpan?: styles.ColSpanType;
-    mdColSpan?: styles.ColSpanType;
-    lgColSpan?: styles.ColSpanType;
-    xlColSpan?: styles.ColSpanType;
-    xxlColSpan?: styles.ColSpanType;
+    xsColSpan?: ColSpanType;
+    smColSpan?: ColSpanType;
+    mdColSpan?: ColSpanType;
+    lgColSpan?: ColSpanType;
+    xlColSpan?: ColSpanType;
+    xxlColSpan?: ColSpanType;
     animation?: AnimationType;
     delay?: number;
   };

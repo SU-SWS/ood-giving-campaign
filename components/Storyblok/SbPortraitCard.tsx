@@ -1,9 +1,9 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { PortraitCard } from '../PortraitCard';
-import { CurvesType } from '../PortraitCard';
-import { AnimationType } from '../Animate';
-import { SbImageType } from './Storyblok.types';
-import { HeadingType } from '../Typography';
+import { type CurvesType } from '../PortraitCard';
+import { type AnimationType } from '../Animate';
+import { type SbImageType } from './Storyblok.types';
+import { type HeadingType } from '../Typography';
 
 export type SbPortraitCardProps = {
   blok: {

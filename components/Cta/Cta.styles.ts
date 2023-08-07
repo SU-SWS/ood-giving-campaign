@@ -1,3 +1,12 @@
+import {
+  type CtaSizeObjectType,
+  type CtaSizeMapType,
+  type CtaIconStyleType,
+  type CtaIconMapType,
+  type CtaIconRightMarginType,
+  type CtaIconLeftMarginType,
+} from './Cta.types';
+
 export const cta = 'group hocus:underline transition-all';
 
 const ghostSwipeBase = 'relative z-[10] block w-fit decoration-2 decoration-transparent underline-offset-4 hocus:decoration-white/80 font-normal leading-display hocus:text-white border-2 border-current hocus:border-digital-red-light focus-visible:outline-none after:block after:content-[""] after:absolute after:top-0 after:left-0 after:w-[0] after:h-full after:bg-gradient-to-r after:from-digital-red after:to-cardinal-red after:transition-all after:z-[-1] hocus:after:w-full overflow-hidden';
@@ -20,7 +29,6 @@ export const ctaVariants = {
   mainNavBlack: `${mainNavBase} ${mainNavDark} hocus-visible:bg-lime`, // Main nav buttons when scrolling up
   close: 'inline-block font-semibold leading-none text-lagunita hocus:text-lagunita-dark focus:outline-none',
   'close-x': 'leading-none',
-  dismiss: 'inline-block font-bold uppercase tracking-widest leading-none text-gc-black hocus:text-gc-black focus:outline-none',
   chip: 'inline-block leading-display no-underline text-current rounded-full border-2 border-current hocus:text-current font-normal underline-offset-4 decoration-transparent hocus-visible:decoration-current hocus-visible:decoration-2',
   storyCardTag: 'inline-block text-current hocus:text-current font-normal decoration-2 underline-offset-4 decoration-black-50 hocus:decoration-current hocus:decoration-4',
   unset: '',
@@ -57,22 +65,19 @@ export const ctaCurves = {
   'trbl-large': `${trLargeBase} ${blLargeBase}`,
 };
 
-export const ctaSizes = {
+export const ctaSizes: CtaSizeObjectType = {
   default: 'pt-9 pb-10 pl-18 pr-16 lg:pl-22 lg:pr-20 lg:pt-10 lg:pb-11 text-16 lg:text-20',
   large: 'pl-28 pr-26 pt-16 pb-17 lg:pr-40 lg:pl-44 lg:pt-20 lg:pb-22 text-18 lg:text-24',
   link: 'text-16 lg:text-20',
   mainNav: 'text-14 px-10 pt-8 pb-9 lg:px-24 lg:pt-18 lg:pb-19 lg:text-20',
-  'footer-featured': 'ma-intro',
-  card: 'ma-card',
   back: 'text-16',
   close: 'text-18 md:text-21',
-  dismiss: 'text-17',
   chip: 'py-7 px-22 text-18',
   storyCardTag: 'text-16 lg:text-18',
   unset: '',
 };
 
-export const ctaSizeMap = {
+export const ctaSizeMap: CtaSizeMapType = {
   solid: 'default',
   ghost: 'default',
   inline: 'unset',
@@ -83,7 +88,6 @@ export const ctaSizeMap = {
   mainNavUp: 'mainNav',
   mainNavBlack: 'mainNav',
   link: 'unset',
-  dismiss: 'dismiss',
   close: 'close',
   'close-x': 'unset',
   back: 'back',
@@ -94,16 +98,14 @@ export const ctaSizeMap = {
 
 export const icon = 'inline-block shrink-0 will-change-transform transition-transform';
 
-export const iconStyles = {
+export const iconStyles: CtaIconStyleType = {
   'ghost-swipe': 'group-hocus:text-white',
   back: 'text-lagunita-light !w-22',
   close: 'text-lagunita-light group-hocus:text-lagunita-dark !w-22 -mt-4',
   'close-x': 'text-current hocus:text-current w-22 group-hocus:underline',
-  dismiss: 'text-gc-black !w-22 -mt-4',
 };
 
-export const ctaIconMap = {
-  dismiss: 'dismiss',
+export const ctaIconMap: CtaIconMapType = {
   close: 'close',
   'close-x': 'close',
   back: 'back',
@@ -120,7 +122,7 @@ export const iconAnimation = {
 // Leading icons have right margins
 // Only add to this map if right margin is different from default class mr-03em
 export const iconRightMarginDefault = 'mr-03em';
-export const iconRightMargin = {
+export const iconRightMargin: CtaIconRightMarginType = {
   'arrow-left': 'mr-04em',
   back: 'mr-04em',
 };
@@ -128,7 +130,7 @@ export const iconRightMargin = {
 // Trailing icons have left margins
 // Only add to this map if left margin is different from default class ml-03em
 export const iconLeftMarginDefault = 'ml-03em';
-export const iconLeftMargin = {
+export const iconLeftMargin: CtaIconLeftMarginType = {
   'arrow-right': 'ml-04em',
   back: 'ml-04em',
   'triangle-right': 'ml-04em',

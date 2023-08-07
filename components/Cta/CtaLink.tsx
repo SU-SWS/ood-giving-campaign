@@ -1,10 +1,11 @@
 'use client';
+
 import React from 'react';
-import { LinkProps } from 'next/link';
-import { CtaCommonProps } from './Cta.types';
+import { type LinkProps } from 'next/link';
+import { type CtaCommonProps } from './Cta.types';
 import { CtaExternalLink } from './CtaExternalLink';
 import { CtaNextLink } from './CtaNextLink';
-import { SbLinkType } from '../Storyblok/Storyblok.types';
+import { type SbLinkType } from '../Storyblok/Storyblok.types';
 //import { useAddUtmParams } from '../../hooks/useAddUtmParams';
 
 /**

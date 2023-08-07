@@ -1,9 +1,9 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
-import { HeadingType } from '../Typography';
+import { type HeadingType } from '../Typography';
 import { BracketCard } from '../BracketCard';
-import { SbImageType, SbLinkType } from './Storyblok.types';
-import { AccentBgColorType, MarginType } from '@/utilities/datasource';
-import { paletteAccentColors, PaletteAccentColorType } from '@/utilities/colorPalettePlugin';
+import { type SbImageType, type SbLinkType } from './Storyblok.types';
+import { type MarginType } from '@/utilities/datasource';
+import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
 
 export type SbBracketCardProps = {
   blok: {
@@ -15,7 +15,7 @@ export type SbBracketCardProps = {
     body?: string;
     image?: SbImageType;
     tabColor?: {
-      value?: PaletteAccentColorType;
+      value?: PaletteAccentHexColorType;
     }
     ctaLabel?: string;
     link?: SbLinkType;
@@ -50,7 +50,7 @@ export const SbBracketCard = ({
     imageSrc={filename}
     imageFocus={focus}
     textColor={isDarkTheme ? 'white' : 'black'}
-    tabColor={paletteAccentColors[value] as AccentBgColorType}
+    tabColor={paletteAccentColors[value]}
     ctaLabel={ctaLabel}
     link={link}
     spacingBottom={spacingBottom}

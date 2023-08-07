@@ -2,10 +2,10 @@ import { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
 import { AnimateInView } from '../Animate';
 import { FlexBox } from '../FlexBox';
-import { Heading, Paragraph, HeadingType } from '../Typography';
+import { Heading, Paragraph, type HeadingType } from '../Typography';
 import { ImageOverlay } from '../ImageOverlay';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { bgTextColorPairs, BgTextColorPairType } from '@/utilities/datasource';
+import { bgTextColorPairs, type BgTextColorPairType } from '@/utilities/datasource';
 import * as styles from './SplitPoster.styles';
 
 type PosterContentProps = HTMLAttributes<HTMLDivElement> & {

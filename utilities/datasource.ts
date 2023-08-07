@@ -13,7 +13,7 @@ export const accentBgColors = {
   'digital-red': 'bg-digital-red',
   'digital-red-light': 'bg-digital-red-light',
 };
-export type AccentBgColorType = keyof typeof accentBgColors;
+export type AccentColorType = keyof typeof accentBgColors;
 
 export const accentBorderColors = {
   flamingo: 'border-flamingo',
@@ -30,7 +30,7 @@ export const accentBorderColors = {
   'digital-red': 'border-digital-red',
   'digital-red-light': 'border-digital-red-light',
 };
-export type AccentBorderColorType = keyof typeof accentBorderColors;
+export type AccentBorderColorType = AccentColorType;
 
 // TODO: We might be not need this
 export const storyHeroAspectRatios = {

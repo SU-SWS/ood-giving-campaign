@@ -1,5 +1,5 @@
 import { cnb } from 'cnbuilder';
-import { AnimateInView, AnimationType } from '../Animate';
+import { AnimateInView, type AnimationType } from '../Animate';
 import { Text } from '../Typography';
 import * as styles from './WordBlock.styles';
 

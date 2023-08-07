@@ -1,5 +1,5 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
-import { Logo, LogoVariantType, LogoColorType } from '../Logo';
+import { Logo, type LogoVariantType, type LogoColorType } from '../Logo';
 
 type SbLogoProps = {
   blok: {

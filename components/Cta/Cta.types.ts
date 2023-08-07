@@ -1,16 +1,35 @@
-import { HeroIconProps, IconType } from '../HeroIcon';
+import { type HeroIconProps, type IconType } from '../HeroIcon';
 import * as styles from './Cta.styles';
 
 export type CtaVariantType = keyof typeof styles.ctaVariants;
-export type CtaColorType = keyof typeof styles.ctaColors | '';
-export type CtaSizeType = keyof typeof styles.ctaSizes | '';
-export type CtaCurveType = keyof typeof styles.ctaCurves | '';
+export type CtaColorType = keyof typeof styles.ctaColors;
+export type CtaCurveType = keyof typeof styles.ctaCurves;
 export type IconAnimationType = keyof typeof styles.iconAnimation | '';
 
-export type CtaIconStyleType = keyof typeof styles.iconStyles;
-export type CtaIconMapType = keyof typeof styles.ctaIconMap;
-export type CtaIconRightMarginType = keyof typeof styles.iconRightMargin;
-export type CtaIconLeftMarginType = keyof typeof styles.iconLeftMargin;
+export type CtaSizeObjectType = Partial<{
+  [Key in CtaVariantType | 'default' | 'large']: string;
+}>;
+export type CtaSizeType = keyof CtaSizeObjectType;
+
+export type CtaSizeMapType = {
+  [Key in CtaVariantType]: keyof typeof styles.ctaSizes;
+}
+
+export type CtaIconStyleType = Partial<{
+  [Key in CtaVariantType]: string;
+}>;
+
+export type CtaIconMapType = Partial<{
+  [Key in CtaVariantType]: IconType;
+}>;
+
+export type CtaIconRightMarginType = Partial<{
+  [Key in IconType]: string;
+}>;
+
+export type CtaIconLeftMarginType = Partial<{
+  [Key in IconType]: string;
+}>;
 
 export interface CtaCommonProps {
   variant?: CtaVariantType;

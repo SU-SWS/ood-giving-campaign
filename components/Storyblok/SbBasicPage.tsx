@@ -1,4 +1,4 @@
-import { storyblokEditable, SbBlokData } from '@storyblok/react/rsc';
+import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import Image from 'next/image';
 import { CreateBloks } from '../CreateBloks';
 import { Hero } from '../Hero/Hero';
