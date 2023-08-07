@@ -32,11 +32,11 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
-    "@storyblok/react": "^2.3.4",
+    "@storyblok/react": "^2.4.0",
     "cnbuilder": "^3.1.0",
     "framer-motion": "^10.15.0",
     "netlify-plugin-vault-variables": "^1.0.7",
-    "next": "^13.4.12",
+    "next": "^13.4.13",
     "node-vault": "^0.9.22",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -51,7 +51,7 @@
     "autoprefixer": "^10.4.14",
     "decanter": "^7.1.1",
     "eslint": "^8.46.0",
-    "eslint-config-next": "^13.4.12",
+    "eslint-config-next": "^13.4.13",
     "postcss": "^8.4.27",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.1.6"
