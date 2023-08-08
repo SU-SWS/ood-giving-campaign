@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { CreateBloks } from '@/components/CreateBloks';
 import { Masthead } from '@/components/Masthead';
 import { StoryHero, type StoryHeroProps } from '@/components/Hero';
+import { ScrollyTelling } from '@/components/ScrollyTelling/ScrollyTelling';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 
@@ -58,6 +59,7 @@ export const SbStory = ({
           topics={topics}
         />
         <CreateBloks blokSection={content} />
+        <ScrollyTelling />
         {getNumBloks(blok.ankle) > 0 && (
           <Image
             width={2000}
