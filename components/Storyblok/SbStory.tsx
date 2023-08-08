@@ -59,6 +59,14 @@ export const SbStory = ({
           topics={topics}
         />
         <CreateBloks blokSection={content} />
+        <Image
+            width={2000}
+            height={40}
+            alt=""
+            loading="lazy"
+            src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/c4777a4925/steve-johnson-cropped-2000x40-01.jpg') || ''}
+            className="w-full"
+          />
         <ScrollyTelling />
         {getNumBloks(blok.ankle) > 0 && (
           <Image
