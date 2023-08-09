@@ -30,6 +30,13 @@ export const ScrollyTelling = () => {
   const section6InView = useInView(section6Ref);
   const section5AtTop = !section4InView && section5InView;
   const section6AtTop = !section5InView && section6InView;
+  const { scrollYProgress: section5Scroll } = useScroll({
+    target: section5Ref,
+    offset: ['start start', 'end start'],
+  });
+  const animateImage5Scale = useTransform(section5Scroll, [0, 0.5], [1, 1.7]);
+  const animateImage5XPan = useTransform(section5Scroll, [0.4, 1], ['0', '300px']);
+  const animateImage5YPan = useTransform(section5Scroll, [0.4, 1], ['0', '200px']);
 
   // Chapter 3
   const chapter3Ref = useRef<HTMLDivElement>(null);
@@ -141,10 +148,11 @@ export const ScrollyTelling = () => {
             </Text>
           </div>
           <div className="w-full h-full">
-            <figure className="relative h-full w-full">
+            <figure className="relative h-full w-full overflow-hidden">
               {section4InView && (
                 <>
                   <img
+                    loading="eager"
                     src={getProcessedImage('https://a-us.storyblok.com/f/1005200/4240x4211/1319d3cf69/antennae_galaxies_reloaded.jpg', '2000x0')}
                     className="relative object-cover w-full h-full"
                     alt=""
@@ -160,10 +168,12 @@ export const ScrollyTelling = () => {
               )}
               {section5AtTop && (
                 <>
-                  <img
-                    src={getProcessedImage('https://a-us.storyblok.com/f/1005200/3600x2085/f78572796c/main_image_star-forming_region_carina_nircam_final-5mb.jpg', '2000x0')}
-                    className="relative object-cover w-full h-full"
+                  <m.img
+                    loading="eager"
+                    src={getProcessedImage('https://a-us.storyblok.com/f/1005200/3600x2085/f78572796c/main_image_star-forming_region_carina_nircam_final-5mb.jpg', '3000x0')}
+                    className="relative object-cover w-full h-full object-left"
                     alt=""
+                    style={{ scale: animateImage5Scale, x: animateImage5XPan, y: animateImage5YPan }}
                   />
                   <figcaption
                     className="absolute bottom-100 right-50 w-5/12 bg-gc-black/70 text-white border border-white/60 rounded z-10 text-left text-17 leading-snug rs-p-0"
@@ -215,6 +225,7 @@ export const ScrollyTelling = () => {
           </section>
           <section ref={section5Ref} className="rs-mt-6">
             <Heading font="serif" size={3}>Heading 5</Heading>
+            {Paragraphs}
             {Paragraphs}
           </section>
           <section ref={section6Ref} className="rs-mt-6">
