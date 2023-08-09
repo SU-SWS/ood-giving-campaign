@@ -25,13 +25,13 @@ export const ScrollyFullwidth = () => {
       <div className="sticky top-0 h-screen w-full">
         <m.img
           loading="eager"
-          src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2499x1667/53d21f92bf/farm_1208.jpg', '3000x0')}
-          className="relative object-cover w-full h-full object-left"
+          src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2499x1667/53d21f92bf/farm_1208.jpg', '2000x0')}
+          className="relative object-cover w-full h-full"
           style={{ opacity: animateOpacity, scale: animateScale }}
           alt="Something alt"
         />
       </div>
-      <div ref={contentRef} className="relative w-1/3 mx-auto text-white z-10 rs-py-10">
+      <div ref={contentRef} className="relative w-2/3 lg:w-1/3 mx-auto text-white z-10 rs-py-10">
         <section>
           <div className="w-[200%] -ml-[50%] mb-500">
             <Heading
@@ -80,7 +80,7 @@ export const ScrollyFullwidth = () => {
           </Paragraph>
         </section>
       </div>
-      <div className="relative w-1/3 ml-auto rs-mr-4 text-white z-10 rs-py-10">
+      <div className="relative w-2/3 lg:w-1/3 ml-auto rs-mr-4 text-white z-10 rs-py-10">
         <section>
           <Paragraph className="bg-black/80 rs-p-2">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget pulvinar ipsum, ut sodales odio.
