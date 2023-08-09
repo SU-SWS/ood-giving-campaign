@@ -97,7 +97,7 @@ export const ScrollyTelling = () => {
 
   return (
     <Container width="full">
-      <Grid md={3} className="">
+      <Grid md={3} className="border-t border-black-50">
         <div className={cnb(
           'sticky top-0 self-start h-screen col-span-2 transition-colors bg-gradient-to-b',
           section1InView ? 'from-illuminating-light via-poppy-light to-poppy' : '',
@@ -105,7 +105,7 @@ export const ScrollyTelling = () => {
           section3AtTop ? 'from-sky-light via-plum-light to-black' : '',
           )}>
           <FlexBox className="h-full" alignItems="stretch">
-            <div className="relative bg-white border-r-black-70 border-r uppercase font-bold">
+            <div className="relative bg-white border-black-50 border-r uppercase font-bold">
               <Text align="center" font="druk-wide" leading="normal" className="text-vertical-lr -rotate-180 h-screen">
                 Chapter 1
               </Text>
@@ -117,7 +117,7 @@ export const ScrollyTelling = () => {
             </Heading>
           </FlexBox>
         </div>
-        <div className="relative bg-white text-gc-black rs-py-6 rs-px-4">
+        <div className="relative bg-fog-light text-gc-black rs-py-6 rs-px-4">
           <section ref={section1Ref}>
             <Heading font="serif">Heading 1</Heading>
             {Paragraphs}
@@ -132,10 +132,10 @@ export const ScrollyTelling = () => {
           </section>
         </div>
       </Grid>
-      <Grid md={3} className="">
+      <Grid md={3} className="border-t border-black-50 -mt-1">
         <div className="sticky top-0 bg-black self-start h-screen col-span-2">
         <FlexBox className="h-full" alignItems="stretch">
-          <div className="relative bg-white border-r-black-70 border-r uppercase font-bold">
+          <div className="relative bg-white border-r-black-50 border-r uppercase font-bold">
             <Text align="center" font="druk-wide" leading="normal" className="text-vertical-lr -rotate-180 h-screen">
               Chapter 2
             </Text>
@@ -168,14 +168,14 @@ export const ScrollyTelling = () => {
                   <figcaption
                     className="absolute bottom-100 right-50 w-5/12 bg-gc-black/70 text-white border border-white/60 rounded z-10 text-left text-17 leading-snug rs-p-0"
                   >
-                    <p>
+                    <Paragraph>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       Phasellus eget pulvinar ipsum, ut sodales odio.
-                    </p>
-                    <p>
+                    </Paragraph>
+                    <Paragraph noMargin>
                       Phasellus eget pulvinar ipsum, ut sodales odio. Cras dui ipsum, aliquet eget nibh ut,
                       sollicitudin pharetra risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
+                    </Paragraph>
                   </figcaption>
                 </>
               )}
@@ -224,7 +224,7 @@ export const ScrollyTelling = () => {
           </section>
         </div>
       </Grid>
-      <Grid md={3} className="">
+      <Grid md={3} className="border-t border-black-50">
         <div className={cnb(
           'sticky top-0 self-start h-screen col-span-2 transition-colors bg-gradient-to-b',
           section1InView ? 'from-illuminating-light via-poppy-light to-poppy' : '',
@@ -232,7 +232,7 @@ export const ScrollyTelling = () => {
           section3AtTop ? 'from-sky-light via-plum-light to-black' : '',
           )}>
           <FlexBox className="h-full" alignItems="stretch">
-            <div className="relative bg-white border-r-black-70 border-r uppercase font-bold">
+            <div className="relative bg-white border-r-black-50 border-r uppercase font-bold">
               <Text align="center" font="druk-wide" leading="normal" className="text-vertical-lr -rotate-180 h-screen">
                 Chapter 3
               </Text>
