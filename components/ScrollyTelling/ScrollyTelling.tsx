@@ -48,14 +48,6 @@ export const ScrollyTelling = () => {
   const animatePusheenY = useTransform(scrollYProgress, [0, 0.5, 1], ['0', '300px', '500px']);
   const animatePusheenRotate = useTransform(scrollYProgress, [0, 0.7], ['0', '360deg']);
   const animatedBgColor = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], ['#ECC7CD', '#77C5D5', '#DBE442', '#C5B4E3']);
-  const section7Ref = useRef<HTMLDivElement>(null);
-  const section8Ref = useRef<HTMLDivElement>(null);
-  const section9Ref = useRef<HTMLDivElement>(null);
-  const section7InView = useInView(section7Ref);
-  const section8InView = useInView(section8Ref);
-  const section9InView = useInView(section9Ref);
-  const section8AtTop = !section7InView && section8InView;
-  const section9AtTop = !section8InView && section9InView;
 
   const Paragraphs = (
     <>
@@ -106,7 +98,7 @@ export const ScrollyTelling = () => {
     <Container width="full">
       <Grid md={3} className="border-t border-black-50">
         <div className={cnb(
-          'sticky top-0 self-start h-screen col-span-2 transition-colors bg-gradient-to-b',
+          'sticky top-0 self-start h-screen col-span-2 bg-gradient-to-b',
           section1InView ? 'from-illuminating-light via-poppy-light to-poppy' : '',
           section2AtTop ? 'from-palo-verde-light via-lagunita-light to-palo-alto-dark' : '',
           section3AtTop ? 'from-sky-light via-plum-light to-black' : '',
@@ -236,12 +228,7 @@ export const ScrollyTelling = () => {
         </div>
       </Grid>
       <Grid md={3} className="border-t border-black-50">
-        <div className={cnb(
-          'sticky top-0 self-start h-screen col-span-2 transition-colors bg-gradient-to-b',
-          section1InView ? 'from-illuminating-light via-poppy-light to-poppy' : '',
-          section2AtTop ? 'from-palo-verde-light via-lagunita-light to-palo-alto-dark' : '',
-          section3AtTop ? 'from-sky-light via-plum-light to-black' : '',
-          )}>
+        <div className="sticky top-0 self-start h-screen col-span-2 bg-flamingo">
           <FlexBox className="h-full" alignItems="stretch">
             <div className="relative bg-white border-r-black-50 border-r uppercase font-bold">
               <Text align="center" font="druk-wide" leading="normal" className="text-vertical-lr -rotate-180 h-screen">
@@ -262,15 +249,15 @@ export const ScrollyTelling = () => {
           </FlexBox>
         </div>
         <div ref={chapter3Ref} className="relative bg-white text-gc-black rs-py-6 rs-px-4">
-          <section ref={section7Ref}>
+          <section>
             <Heading font="serif">Heading 7</Heading>
             {Paragraphs}
           </section>
-          <section ref={section8Ref} className="rs-mt-6">
+          <section className="rs-mt-6">
             <Heading font="serif" size={3}>Heading 8</Heading>
             {Paragraphs}
           </section>
-          <section ref={section9Ref} className="rs-mt-6">
+          <section className="rs-mt-6">
             <Heading font="serif" size={3}>Heading 9</Heading>
             {Paragraphs}
           </section>
