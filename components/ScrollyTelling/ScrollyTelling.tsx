@@ -37,8 +37,8 @@ export const ScrollyTelling = () => {
     target: chapter3Ref,
   });
   const animatePusheenSize = useTransform(scrollYProgress, [0, 0.5, 1], [0.7, 1.6, 1]);
-  const animatePusheenX = useTransform(scrollYProgress, [0, 0.5, 1], ['0', '300px', '500px']);
-  const animatePusheenY = useTransform(scrollYProgress, [0, 0.5, 1], ['0', '200px', '600px']);
+  const animatePusheenX = useTransform(scrollYProgress, [0, 0.5, 1], ['0', '200px', '600px']);
+  const animatePusheenY = useTransform(scrollYProgress, [0, 0.5, 1], ['0', '300px', '500px']);
   const animatePusheenRotate = useTransform(scrollYProgress, [0, 0.7], ['0', '360deg']);
   const animatedBgColor = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], ['#ECC7CD', '#77C5D5', '#DBE442', '#C5B4E3']);
   const section7Ref = useRef<HTMLDivElement>(null);
