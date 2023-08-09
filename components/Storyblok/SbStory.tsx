@@ -67,7 +67,9 @@ export const SbStory = ({
             src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/c4777a4925/steve-johnson-cropped-2000x40-01.jpg') || ''}
             className="w-full"
           />
-        <ScrollyTelling />
+        {title?.includes('Immersive featured') && (
+          <ScrollyTelling />
+        )}
         {getNumBloks(blok.ankle) > 0 && (
           <Image
             width={2000}

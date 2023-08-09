@@ -1,5 +1,7 @@
 import { useRef } from 'react';
-import { useInView, useScroll } from 'framer-motion';
+import {
+  useInView, useScroll, m, useTransform,
+} from 'framer-motion';
 import { cnb } from 'cnbuilder';
 import { Container } from '../Container';
 import { FlexBox } from '../FlexBox';
@@ -28,6 +30,25 @@ export const ScrollyTelling = () => {
   const section6InView = useInView(section6Ref);
   const section5AtTop = !section4InView && section5InView;
   const section6AtTop = !section5InView && section6InView;
+
+  // Chapter 3
+  const chapter3Ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: chapter3Ref,
+  });
+  const animatePusheenSize = useTransform(scrollYProgress, [0, 0.5, 1], [0.7, 1.6, 1]);
+  const animatePusheenX = useTransform(scrollYProgress, [0, 0.5, 1], ['0', '300px', '500px']);
+  const animatePusheenY = useTransform(scrollYProgress, [0, 0.5, 1], ['0', '200px', '600px']);
+  const animatePusheenRotate = useTransform(scrollYProgress, [0, 0.7], ['0', '360deg']);
+  const animatedBgColor = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], ['#ECC7CD', '#77C5D5', '#DBE442', '#C5B4E3']);
+  const section7Ref = useRef<HTMLDivElement>(null);
+  const section8Ref = useRef<HTMLDivElement>(null);
+  const section9Ref = useRef<HTMLDivElement>(null);
+  const section7InView = useInView(section7Ref);
+  const section8InView = useInView(section8Ref);
+  const section9InView = useInView(section9Ref);
+  const section8AtTop = !section7InView && section8InView;
+  const section9AtTop = !section8InView && section9InView;
 
   const Paragraphs = (
     <>
@@ -161,18 +182,27 @@ export const ScrollyTelling = () => {
               {section6AtTop && (
                 // eslint-disable-next-line max-len
                 // <iframe width="100%" height="100%" src="https://www.youtube.com/embed/ehFCaL2PUyo?autoplay=1&enablejsapi=1&rel=0&mute=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
-                <video
-                  playsInline
-                  autoPlay
-                  muted
-                  loop
-                  aria-label="video of milky way rotating"
-                  className="block w-full h-full object-cover"
-                >
-                  <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/80ddd8341f/starloop.webm')} type="video/webm" />
-                  <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/1a881ffc0a/starloop.mp4')} type="video/mp4" />
-                  <p>Your browser does not support HTML video.</p>
-                </video>
+                <>
+                  <video
+                    playsInline
+                    autoPlay
+                    muted
+                    loop
+                    aria-label="video of milky way rotating"
+                    className="block w-full h-full object-cover"
+                  >
+                    <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/80ddd8341f/starloop.webm')} type="video/webm" />
+                    <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/1a881ffc0a/starloop.mp4')} type="video/mp4" />
+                    <p>Your browser does not support HTML video.</p>
+                  </video>
+                  <figcaption
+                    className="absolute bottom-100 left-50 w-5/12 bg-gc-black/70 text-white border border-white/60 rounded z-10 text-left text-17 leading-snug rs-p-0"
+                  >
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Phasellus eget pulvinar ipsum, ut sodales odio. Cras dui ipsum, aliquet eget nibh ut,
+                    sollicitudin pharetra risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  </figcaption>
+                </>
               )}
             </figure>
           </div>
@@ -190,6 +220,47 @@ export const ScrollyTelling = () => {
           <section ref={section6Ref} className="rs-mt-6">
             <Heading font="serif" size={3}>Heading 6</Heading>
             {Paragraphs}
+            {Paragraphs}
+          </section>
+        </div>
+      </Grid>
+      <Grid md={3} className="">
+        <div className={cnb(
+          'sticky top-0 self-start h-screen col-span-2 transition-colors bg-gradient-to-b',
+          section1InView ? 'from-illuminating-light via-poppy-light to-poppy' : '',
+          section2AtTop ? 'from-palo-verde-light via-lagunita-light to-palo-alto-dark' : '',
+          section3AtTop ? 'from-sky-light via-plum-light to-black' : '',
+          )}>
+          <FlexBox className="h-full" alignItems="stretch">
+            <div className="relative bg-white border-r-black-70 border-r uppercase font-bold">
+              <Text align="center" font="druk-wide" leading="normal" className="text-vertical-lr -rotate-180 h-screen">
+                Chapter 3
+              </Text>
+            </div>
+            <m.div className="w-full" style={{ backgroundColor: animatedBgColor }}>
+              <m.img
+                src={getProcessedImage('https://a-us.storyblok.com/f/1005200/480x480/2d4d6fe8c5/27a3dc55f9db79268a344a545a9ccf73.gif')}
+                alt="Pusheen walking animated"
+                width={300}
+                className="ml-100 mt-100"
+                style={{
+                  scale: animatePusheenSize, x: animatePusheenX, y: animatePusheenY, rotate: animatePusheenRotate,
+                }}
+              />
+            </m.div>
+          </FlexBox>
+        </div>
+        <div ref={chapter3Ref} className="relative bg-white text-gc-black rs-py-6 rs-px-4">
+          <section ref={section7Ref}>
+            <Heading font="serif">Heading 7</Heading>
+            {Paragraphs}
+          </section>
+          <section ref={section8Ref} className="rs-mt-6">
+            <Heading font="serif" size={3}>Heading 8</Heading>
+            {Paragraphs}
+          </section>
+          <section ref={section9Ref} className="rs-mt-6">
+            <Heading font="serif" size={3}>Heading 9</Heading>
             {Paragraphs}
           </section>
         </div>
