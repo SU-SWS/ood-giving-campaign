@@ -4,7 +4,7 @@ import {
   paddingTops,
   paddingBottoms,
   paddingVerticals,
-  PaddingType,
+  type PaddingType,
 } from '@/utilities/datasource';
 import * as styles from './Grid.styles';
 import * as types from './Grid.types';
@@ -50,7 +50,7 @@ export const Grid = ({
   <AsComponent
     {...props}
     className={cnb(
-      'grid overflow-hidden',
+      'grid',
       gap ? styles.gridGaps[gap] : '',
       xs ? styles.gridNumCols.xs[xs] : '',
       sm ? styles.gridNumCols.sm[sm] : '',

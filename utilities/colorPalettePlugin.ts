@@ -1,4 +1,4 @@
-import { type AccentColorType } from "./datasource";
+import { type AccentColorType } from './datasource';
 /**
  * Maps of color utilities for the Storyblok palette plugin
  */

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { CreateBloks } from '@/components/CreateBloks';
 import { Masthead } from '@/components/Masthead';
 import { StoryHero, type StoryHeroProps } from '@/components/Hero';
+import { ScrollyTelling } from '@/components/ScrollyTelling/ScrollyTelling';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 
@@ -57,7 +58,18 @@ export const SbStory = ({
           tabColor={tabColor}
           topics={topics}
         />
+        <Image
+            width={2000}
+            height={40}
+            alt=""
+            loading="lazy"
+            src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/c4777a4925/steve-johnson-cropped-2000x40-01.jpg') || ''}
+            className="w-full"
+          />
         <CreateBloks blokSection={content} />
+        {title?.includes('Immersive featured') && (
+          <ScrollyTelling />
+        )}
         {getNumBloks(blok.ankle) > 0 && (
           <Image
             width={2000}
