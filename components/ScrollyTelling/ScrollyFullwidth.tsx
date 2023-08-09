@@ -12,6 +12,13 @@ import { getMaskedAsset } from '@/utilities/getMaskedAsset';
 import { Paragraphs } from '../Temporary/Paragraphs';
 
 export const ScrollyFullwidth = () => {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: contentRef,
+    offset: ['start start', 'end start'],
+  });
+  const animateOpacity = useTransform(scrollYProgress, [0, 0.2], ['20%', '100%']);
+
   return (
     <Container width="full" className="relative rs-p-0" bgColor="black">
       <div className="sticky top-0 h-screen w-full">
@@ -19,19 +26,30 @@ export const ScrollyFullwidth = () => {
           loading="eager"
           src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2499x1667/53d21f92bf/farm_1208.jpg', '3000x0')}
           className="relative object-cover w-full h-full object-left"
-          alt=""
+          style={{ opacity: animateOpacity }}
+          alt="Something alt"
         />
       </div>
-      <div className="relative w-1/3 mx-auto text-white z-10 rs-py-10">
+      <div ref={contentRef} className="relative w-1/3 mx-auto text-white z-10 rs-py-10">
         <section>
-          <Paragraph className="bg-black/80 rs-p-2">
+          <Heading
+            leading="tight"
+            align="center"
+            font="serif"
+            weight="normal"
+            size={7}
+            className="w-[200%] -ml-[50%] mb-500"
+          >
+            Heading lorem ipsum
+          </Heading>
+          <Paragraph className="bg-white/90 text-gc-black rs-p-2">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget pulvinar ipsum, ut sodales odio.
             Cras dui ipsum, aliquet eget nibh ut, sollicitudin pharetra risus.
           </Paragraph>
-          <Paragraph className="bg-black/80 rs-p-2 mt-300">
+          <Paragraph className="bg-white/90 text-gc-black rs-p-2 mt-300">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget pulvinar ipsum, ut sodales odio.
           </Paragraph>
-          <Paragraph className="bg-black/80 rs-p-2 mt-300">
+          <Paragraph className="bg-white/90 text-gc-black rs-p-2 mt-300">
           Cras dui ipsum, aliquet eget nibh ut, sollicitudin pharetra risus.
           </Paragraph>
         </section>
