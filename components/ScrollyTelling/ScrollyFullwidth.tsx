@@ -15,9 +15,10 @@ export const ScrollyFullwidth = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: contentRef,
-    offset: ['start start', 'end start'],
+    offset: ['start center', 'end start'],
   });
-  const animateOpacity = useTransform(scrollYProgress, [0, 0.2], ['20%', '100%']);
+  const animateOpacity = useTransform(scrollYProgress, [0, 0.4], ['20%', '100%']);
+  const animateScale = useTransform(scrollYProgress, [0, 0.2], [0.5, 1]);
 
   return (
     <Container width="full" className="relative rs-p-0" bgColor="black">
@@ -26,22 +27,25 @@ export const ScrollyFullwidth = () => {
           loading="eager"
           src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2499x1667/53d21f92bf/farm_1208.jpg', '3000x0')}
           className="relative object-cover w-full h-full object-left"
-          style={{ opacity: animateOpacity }}
+          style={{ opacity: animateOpacity, scale: animateScale }}
           alt="Something alt"
         />
       </div>
       <div ref={contentRef} className="relative w-1/3 mx-auto text-white z-10 rs-py-10">
         <section>
-          <Heading
-            leading="tight"
-            align="center"
-            font="serif"
-            weight="normal"
-            size={7}
-            className="w-[200%] -ml-[50%] mb-500"
-          >
-            Heading lorem ipsum
-          </Heading>
+          <div className="w-[200%] -ml-[50%] mb-500">
+            <Heading
+              leading="tight"
+              align="center"
+              font="serif"
+              weight="semibold"
+              size={6}
+              className="mb-02em"
+            >
+              Heading lorem ipsum
+            </Heading>
+            <Text align="center" size={2}>Subheading lorem ipsum</Text>
+          </div>
           <Paragraph className="bg-white/90 text-gc-black rs-p-2">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget pulvinar ipsum, ut sodales odio.
             Cras dui ipsum, aliquet eget nibh ut, sollicitudin pharetra risus.
