@@ -5,6 +5,8 @@ export const overlays = {
   'black-30': 'bg-black-true/30',
   'black-40': 'bg-black-true/40',
   'black-60': 'bg-black-true/60',
+  'black-70': 'bg-black-true/70',
+  'black-80': 'bg-black-true/80',
   'black-gradient': 'bg-gradient-to-b from-transparent via-black-true/20 to-black-true/50',
   'black-top-bottom': 'bg-gradient-to-b from-gc-black via-transparent via-40% to-gc-black',
 };
