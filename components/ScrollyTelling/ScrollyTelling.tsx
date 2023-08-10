@@ -7,6 +7,7 @@ import { Container } from '../Container';
 import { FlexBox } from '../FlexBox';
 import { Grid } from '../Grid';
 import { Heading, Paragraph, Text } from '../Typography';
+import { Paragraphs } from '../Temporary/Paragraphs';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { getMaskedAsset } from '@/utilities/getMaskedAsset';
 
@@ -49,51 +50,6 @@ export const ScrollyTelling = () => {
   const animatePusheenRotate = useTransform(scrollYProgress, [0, 0.7], ['0', '360deg']);
   const animatedBgColor = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], ['#ECC7CD', '#77C5D5', '#DBE442', '#C5B4E3']);
 
-  const Paragraphs = (
-    <>
-      <Paragraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget pulvinar ipsum, ut sodales odio.
-        Cras dui ipsum, aliquet eget nibh ut, sollicitudin pharetra risus.
-      </Paragraph>
-      <Paragraph>
-        Aliquam erat volutpat. Morbi posuere, elit vel faucibus mattis, orci nisl suscipit justo,
-        vel maximus ante libero eget nibh. Maecenas non arcu a sapien maximus commodo.
-        Aenean nec molestie leo. Aenean suscipit purus eget est dictum, vel tristique lectus fermentum.
-        Curabitur imperdiet finibus volutpat.
-      </Paragraph>
-      <Paragraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget pulvinar ipsum, ut sodales odio.
-        Cras dui ipsum, aliquet eget nibh ut, sollicitudin pharetra risus.
-      </Paragraph>
-      <Paragraph>
-        Aliquam erat volutpat. Morbi posuere, elit vel faucibus mattis, orci nisl suscipit justo,
-        vel maximus ante libero eget nibh. Maecenas non arcu a sapien maximus commodo.
-        Aenean nec molestie leo. Aenean suscipit purus eget est dictum, vel tristique lectus fermentum.
-        Curabitur imperdiet finibus volutpat.
-      </Paragraph>
-      <Paragraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget pulvinar ipsum, ut sodales odio.
-        Cras dui ipsum, aliquet eget nibh ut, sollicitudin pharetra risus.
-      </Paragraph>
-      <Paragraph>
-        Aliquam erat volutpat. Morbi posuere, elit vel faucibus mattis, orci nisl suscipit justo,
-        vel maximus ante libero eget nibh. Maecenas non arcu a sapien maximus commodo.
-        Aenean nec molestie leo. Aenean suscipit purus eget est dictum, vel tristique lectus fermentum.
-        Curabitur imperdiet finibus volutpat.
-      </Paragraph>
-      <Paragraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget pulvinar ipsum, ut sodales odio.
-        Cras dui ipsum, aliquet eget nibh ut, sollicitudin pharetra risus.
-      </Paragraph>
-      <Paragraph>
-        Aliquam erat volutpat. Morbi posuere, elit vel faucibus mattis, orci nisl suscipit justo,
-        vel maximus ante libero eget nibh. Maecenas non arcu a sapien maximus commodo.
-        Aenean nec molestie leo. Aenean suscipit purus eget est dictum, vel tristique lectus fermentum.
-        Curabitur imperdiet finibus volutpat.
-      </Paragraph>
-    </>
-  );
-
   return (
     <Container width="full">
       <Grid md={3} className="border-t border-black-50">
@@ -119,15 +75,15 @@ export const ScrollyTelling = () => {
         <div className="relative bg-fog-light text-gc-black rs-py-6 rs-px-4">
           <section ref={section1Ref}>
             <Heading font="serif">Heading 1</Heading>
-            {Paragraphs}
+            <Paragraphs />
           </section>
           <section ref={section2Ref} className="rs-mt-6">
             <Heading font="serif" size={3}>Heading 2</Heading>
-            {Paragraphs}
+            <Paragraphs />
           </section>
           <section ref={section3Ref} className="rs-mt-6">
             <Heading font="serif" size={3}>Heading 3</Heading>
-            {Paragraphs}
+            <Paragraphs />
           </section>
         </div>
       </Grid>
@@ -213,17 +169,17 @@ export const ScrollyTelling = () => {
         <div className="relative bg-gc-black text-white rs-py-6 rs-px-4">
           <section ref={section4Ref}>
             <Heading font="serif">Heading 4</Heading>
-            {Paragraphs}
+            <Paragraphs />
           </section>
           <section ref={section5Ref} className="rs-mt-6">
             <Heading font="serif" size={3}>Heading 5</Heading>
-            {Paragraphs}
-            {Paragraphs}
+            <Paragraphs />
+            <Paragraphs />
           </section>
           <section ref={section6Ref} className="rs-mt-6">
             <Heading font="serif" size={3}>Heading 6</Heading>
-            {Paragraphs}
-            {Paragraphs}
+            <Paragraphs />
+            <Paragraphs />
           </section>
         </div>
       </Grid>
@@ -251,15 +207,15 @@ export const ScrollyTelling = () => {
         <div ref={chapter3Ref} className="relative bg-white text-gc-black rs-py-6 rs-px-4">
           <section>
             <Heading font="serif">Heading 7</Heading>
-            {Paragraphs}
+            <Paragraphs />
           </section>
           <section className="rs-mt-6">
             <Heading font="serif" size={3}>Heading 8</Heading>
-            {Paragraphs}
+            <Paragraphs />
           </section>
           <section className="rs-mt-6">
             <Heading font="serif" size={3}>Heading 9</Heading>
-            {Paragraphs}
+            <Paragraphs />
           </section>
         </div>
       </Grid>

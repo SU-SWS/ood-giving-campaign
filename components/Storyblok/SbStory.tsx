@@ -4,6 +4,7 @@ import { CreateBloks } from '@/components/CreateBloks';
 import { Masthead } from '@/components/Masthead';
 import { StoryHero, type StoryHeroProps } from '@/components/Hero';
 import { ScrollyTelling } from '@/components/ScrollyTelling/ScrollyTelling';
+import { ScrollyFullwidth } from '../ScrollyTelling/ScrollyFullwidth';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 
@@ -68,7 +69,10 @@ export const SbStory = ({
           />
         <CreateBloks blokSection={content} />
         {title?.includes('Immersive featured') && (
-          <ScrollyTelling />
+          <>
+            <ScrollyFullwidth />
+            <ScrollyTelling />
+          </>
         )}
         {getNumBloks(blok.ankle) > 0 && (
           <Image
