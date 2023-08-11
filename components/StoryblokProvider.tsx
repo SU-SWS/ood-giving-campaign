@@ -1,7 +1,7 @@
 'use client';
 
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
-import { LazyMotion, domAnimation } from 'framer-motion';
+import { LazyMotion, domAnimation, domMax } from 'framer-motion';
 import { SbBanner } from './Storyblok/SbBanner';
 import { SbBasicPage } from './Storyblok/SbBasicPage';
 import { SbBracketCard } from './Storyblok/SbBracketCard';
@@ -53,6 +53,6 @@ storyblokInit({
 
 export default function StoryblokProvider({ children }: { children: React.ReactNode }) {
   return (
-    <LazyMotion features={domAnimation}>{children}</LazyMotion>
+    <LazyMotion features={domMax}>{children}</LazyMotion>
   );
 };

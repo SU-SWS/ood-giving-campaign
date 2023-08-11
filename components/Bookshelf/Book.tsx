@@ -28,10 +28,11 @@ export const Book = ({
   return (
     <>
       <m.button
+        layout
         initial={false}
         onClick={() => setExpanded(isOpen ? false : i)}
         // animate={{ backgroundColor: isOpen ? '#FF0088' : '#0055FF' }}
-        className={cnb('relative transition-colors w-120 flex justify-center align-start shrink-0 rounded', buttonClassName)}
+        className={cnb('relative transition-colors mr-10 w-120 flex justify-center align-start shrink-0 rounded', buttonClassName)}
       >
         <Text
           color="white"
@@ -53,6 +54,7 @@ export const Book = ({
       <AnimatePresence initial={false}>
         {isOpen && (
           <m.section
+            layout
             key="content"
             initial="collapsed"
             animate="open"
@@ -65,11 +67,13 @@ export const Book = ({
                 opacity: 0, width: 0, scaleX: 0,
               },
             }}
-            transition={{ duration: 0.2, ease: 'easeIn' }}
-            style={{ willChange }}
-            className={cnb('origin-left flex bg-gradient-to-r via-fog-light via-20% to-fog-light rs-p-4 -ml-10 gap-30', contentClassName)}
+            transition={{ duration: 0.2, ease: 'easeInOut' }}
+            style={{ willChange, originX: 0 }}
+            className={cnb('flex', contentClassName)}
           >
-            {children}
+            <div className="-ml-10 mr-10 flex bg-gradient-to-r via-fog-light via-20% to-fog-light rs-p-3 gap-30">
+              {children}
+            </div>
           </m.section>
         )}
       </AnimatePresence>
