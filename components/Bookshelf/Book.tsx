@@ -37,6 +37,7 @@ export const Book = ({
         // animate={{ backgroundColor: isOpen ? '#FF0088' : '#0055FF' }}
         className={cnb('relative transition-colors mr-4 w-120 flex justify-center align-start shrink-0 rounded hocus-visible:underline decoration-white', buttonClassName)}
       >
+        <div className="absolute w-full h-full top-0 right-0 bg-gradient-to-r from-black-90/20 via-transparent to-black-90/20 mix-blend-overlay" />
         <Text
           color="white"
           font="serif"

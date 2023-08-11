@@ -6,7 +6,7 @@ import { Paragraph, Text } from '../Typography';
 import { Book } from './Book';
 
 export const Bookshelf = () => {
-  const [expanded, setExpanded] = useState<false | number>(false);
+  const [expanded, setExpanded] = useState<false | number>(4);
 
   return (
     <Container py={10}>
