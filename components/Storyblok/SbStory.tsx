@@ -5,6 +5,7 @@ import { Masthead } from '@/components/Masthead';
 import { StoryHero, type StoryHeroProps } from '@/components/Hero';
 import { ScrollyTelling } from '@/components/ScrollyTelling/ScrollyTelling';
 import { ScrollyFullwidth } from '../ScrollyTelling/ScrollyFullwidth';
+import { Bookshelf } from '../Bookshelf/Bookshelf';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 
@@ -68,6 +69,9 @@ export const SbStory = ({
             className="w-full"
           />
         <CreateBloks blokSection={content} />
+        {title?.includes('bookshelf') && (
+          <Bookshelf />
+        )}
         {title?.includes('Immersive featured') && (
           <>
             <ScrollyFullwidth />
