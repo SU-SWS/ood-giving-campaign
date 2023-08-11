@@ -19,6 +19,7 @@ export const Bookshelf = () => {
             i={1}
             expanded={expanded}
             setExpanded={setExpanded}
+            imgSrc="https://a-us.storyblok.com/f/1005200/755x477/659626090b/pallas-cat-manul-8.jpg"
             buttonClassName="bg-sky hocus:bg-sky-dark h-600"
             contentClassName="from-sky/30 h-600"
           >
@@ -49,11 +50,12 @@ export const Bookshelf = () => {
             i={2}
             expanded={expanded}
             setExpanded={setExpanded}
+            imgSrc="https://a-us.storyblok.com/f/1005200/2560x1708/08583a88a2/neukom_profjulianabidadanure_1464.jpg"
             buttonClassName="bg-spirited hocus:bg-spirited-dark h-[63rem]"
             contentClassName="from-spirited/30 h-[63rem]"
           >
             <img
-              src={getProcessedImage('https://a-us.storyblok.com/f/1005200/755x477/659626090b/pallas-cat-manul-8.jpg', '300x300')}
+              src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2560x1708/08583a88a2/neukom_profjulianabidadanure_1464.jpg', '300x300')}
               alt=""
               className="w-300 h-300 rounded-full"
             />
@@ -78,6 +80,7 @@ export const Bookshelf = () => {
             i={3}
             expanded={expanded}
             setExpanded={setExpanded}
+            imgSrc="https://a-us.storyblok.com/f/1005200/755x477/659626090b/pallas-cat-manul-8.jpg"
             buttonClassName="bg-palo-verde-dark hocus:bg-palo-alto h-[58rem]"
             contentClassName="from-palo-verde-dark/30 h-[58rem]"
           >

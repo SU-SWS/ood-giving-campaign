@@ -11,6 +11,7 @@ type BookProps = {
   setExpanded?: React.Dispatch<React.SetStateAction<number | false>>;
   buttonClassName?: string;
   contentClassName?: string;
+  imgSrc?: string;
 };
 
 export const Book = ({
@@ -21,6 +22,7 @@ export const Book = ({
   setExpanded,
   buttonClassName,
   contentClassName,
+  imgSrc,
 }: BookProps) => {
   const willChange = useWillChange();
   const isOpen = i === expanded;
@@ -32,7 +34,7 @@ export const Book = ({
         initial={false}
         onClick={() => setExpanded(isOpen ? false : i)}
         // animate={{ backgroundColor: isOpen ? '#FF0088' : '#0055FF' }}
-        className={cnb('relative transition-colors mr-10 w-120 flex justify-center align-start shrink-0 rounded', buttonClassName)}
+        className={cnb('relative transition-colors mr-4 w-120 flex justify-center align-start shrink-0 rounded', buttonClassName)}
       >
         <Text
           color="white"
@@ -46,7 +48,7 @@ export const Book = ({
           {name}
         </Text>
         <img
-          src={getProcessedImage('https://a-us.storyblok.com/f/1005200/755x477/659626090b/pallas-cat-manul-8.jpg', '100x100')}
+          src={getProcessedImage(imgSrc, '100x100')}
           alt=""
           className="rounded-full w-80 h-80 absolute left-20 bottom-15"
         />
@@ -71,7 +73,7 @@ export const Book = ({
             style={{ willChange, originX: 0 }}
             className={cnb('flex', contentClassName)}
           >
-            <div className="-ml-10 mr-10 flex bg-gradient-to-r via-fog-light via-20% to-fog-light rs-p-3 gap-30">
+            <div className="-ml-4 mr-4 flex bg-gradient-to-r via-fog-light via-20% to-fog-light rs-p-3 gap-30">
               {children}
             </div>
           </m.section>
