@@ -1,6 +1,7 @@
 import { m, AnimatePresence, useWillChange } from 'framer-motion';
 import { cnb } from 'cnbuilder';
-import { Text } from '../Typography';
+import { FlexBox } from '../FlexBox';
+import { Heading, Text } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 
 type BookProps = {
@@ -34,7 +35,7 @@ export const Book = ({
         initial={false}
         onClick={() => setExpanded(isOpen ? false : i)}
         // animate={{ backgroundColor: isOpen ? '#FF0088' : '#0055FF' }}
-        className={cnb('relative transition-colors mr-4 w-120 flex justify-center align-start shrink-0 rounded', buttonClassName)}
+        className={cnb('relative transition-colors mr-4 w-120 flex justify-center align-start shrink-0 rounded hocus-visible:underline decoration-white', buttonClassName)}
       >
         <Text
           color="white"
@@ -71,11 +72,18 @@ export const Book = ({
             }}
             transition={{ duration: 0.2, ease: 'easeInOut' }}
             style={{ willChange, originX: 0 }}
-            className={cnb('flex', contentClassName)}
           >
-            <div className="-ml-4 mr-4 flex bg-gradient-to-r via-fog-light via-20% to-fog-light rs-p-3 gap-30">
-              {children}
-            </div>
+            <FlexBox className={cnb('-ml-4 mr-4 bg-gradient-to-r via-fog-light via-20% to-fog-light rs-p-3 gap-30', contentClassName)}>
+              <img
+                src={getProcessedImage(imgSrc, '300x300')}
+                alt=""
+                className="w-240 h-240 rounded-full"
+              />
+              <div>
+                <Heading size={3} font="serif" weight="bold" className="mb-0">{name}</Heading>
+                {children}
+              </div>
+            </FlexBox>
           </m.section>
         )}
       </AnimatePresence>
