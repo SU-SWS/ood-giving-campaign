@@ -33,9 +33,10 @@ export const Book = ({
       <m.button
         layout
         initial={false}
+        aria-expanded={isOpen}
         onClick={() => setExpanded(isOpen ? false : i)}
         // animate={{ backgroundColor: isOpen ? '#FF0088' : '#0055FF' }}
-        className={cnb('relative transition-colors mr-4 w-120 flex justify-center align-start shrink-0 rounded hocus-visible:underline decoration-white', buttonClassName)}
+        className={cnb('group relative transition-colors mr-4 w-120 flex justify-center align-start shrink-0 rounded hocus-visible:underline decoration-white', buttonClassName)}
       >
         <div className="absolute w-full h-full top-0 right-0 bg-gradient-to-r from-black-90/20 via-transparent to-black-90/20 mix-blend-overlay" />
         <Text
@@ -52,7 +53,7 @@ export const Book = ({
         <img
           src={getProcessedImage(imgSrc, '100x100')}
           alt=""
-          className="rounded-full w-80 h-80 absolute left-20 bottom-15"
+          className="rounded-full w-80 h-80 absolute left-20 bottom-15 group-hocus-visible:border-2 group-hocus-visible:border-white"
         />
       </m.button>
       <AnimatePresence initial={false}>
