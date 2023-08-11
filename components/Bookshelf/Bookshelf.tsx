@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { LayoutGroup } from "framer-motion";
+import { LayoutGroup } from 'framer-motion';
 import { cnb } from 'cnbuilder';
 import { Container } from '../Container';
 import { FlexBox } from '../FlexBox';
