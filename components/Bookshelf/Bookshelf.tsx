@@ -11,7 +11,7 @@ export const Bookshelf = () => {
 
   return (
     <Container py={10}>
-      <FlexBox className="gap-10 overflow-hidden" alignItems="end">
+      <FlexBox className="gap-10 overflow-hidden w-11/12 mx-auto relative top-8" alignItems="end">
         <Book
           name="Khushmita Dhabhai"
           i={1}
@@ -38,8 +38,7 @@ export const Bookshelf = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras bibendum est magna,
             et iaculis eros faucibus varius. Lorem ipsum dolor sit amet,
             consectetur adipiscing elit. Cras bibendum est magna, et iaculis eros faucibus varius.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras bibendum est magna,
-            et iaculis eros faucibus varius. Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </Paragraph>
           </div>
         </Book>
@@ -68,9 +67,7 @@ export const Bookshelf = () => {
             <Paragraph noMargin variant="card" className="rs-mt-2">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras bibendum est magna,
             et iaculis eros faucibus varius. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Cras bibendum est magna, et iaculis eros faucibus varius.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras bibendum est magna,
-            et iaculis eros faucibus varius. Lorem ipsum dolor sit amet.
+            consectetur adipiscing elit. Cras bibendum est magna.
             </Paragraph>
           </div>
         </Book>
@@ -99,13 +96,14 @@ export const Bookshelf = () => {
             <Paragraph noMargin variant="card" className="rs-mt-2">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras bibendum est magna,
             et iaculis eros faucibus varius. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Cras bibendum est magna, et iaculis eros faucibus varius.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras bibendum est magna,
-            et iaculis eros faucibus varius. Lorem ipsum dolor sit amet.
+            consectetur adipiscing elit. Cras bibendum est magna.
             </Paragraph>
           </div>
         </Book>
       </FlexBox>
+      <div
+        className="w-full flex justify-center shrink-0 -z-10 relative h-0 border-b-[1.6rem] border-b-black-10 border-l-[2rem] border-l-transparent border-r-[2rem] border-r-transparent before:content-[''] before:absolute before:top-16 before:bg-gradient-to-t before:from-fog-light before:to-white before:h-26 before:w-[calc(100%+4rem)] before:z-[2] after:content-[''] after:h-80 after:w-[calc(100%+4rem)] after:absolute after:top-42 after:block after:bg-gradient-to-b after:from-black-40/70 after:via-black-10/30 after:via-30% after:to-transparent after:-z-1 after:[clip-path:polygon(0%_0%,100%_0%,97%_100%,3%_100%)]"
+      />
     </Container>
   );
 };

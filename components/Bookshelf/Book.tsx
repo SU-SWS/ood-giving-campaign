@@ -31,21 +31,19 @@ export const Book = ({
         initial={false}
         onClick={() => setExpanded(isOpen ? false : i)}
         // animate={{ backgroundColor: isOpen ? '#FF0088' : '#0055FF' }}
-        className={cnb('relative transition-colors', buttonClassName)}
+        className={cnb('relative transition-colors w-120 flex justify-center align-start shrink-0 rounded', buttonClassName)}
       >
-        <div className="w-120 flex justify-center align-start">
-          <Text
-            color="white"
-            font="serif"
-            size={2}
-            leading="tight"
-            align="right"
-            weight="semibold"
-            className="text-vertical-lr -rotate-180 mt-30"
-          >
-            {name}
-          </Text>
-        </div>
+        <Text
+          color="white"
+          font="serif"
+          size={2}
+          leading="tight"
+          align="right"
+          weight="semibold"
+          className="text-vertical-lr -rotate-180 mt-30"
+        >
+          {name}
+        </Text>
         <img
           src={getProcessedImage('https://a-us.storyblok.com/f/1005200/755x477/659626090b/pallas-cat-manul-8.jpg', '100x100')}
           alt=""
@@ -67,7 +65,7 @@ export const Book = ({
                 opacity: 0, width: 0, scaleX: 0,
               },
             }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.2, ease: 'easeIn' }}
             style={{ willChange }}
             className={cnb('origin-left flex bg-gradient-to-r via-fog-light via-20% to-fog-light rs-p-4 -ml-10 gap-30', contentClassName)}
           >
