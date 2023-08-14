@@ -10,6 +10,7 @@ type AnimateInViewProps = {
   duration?: number;
   delay?: number;
   children: React.ReactNode;
+  className?: string;
 };
 
 export const AnimateInView = ({
@@ -18,6 +19,7 @@ export const AnimateInView = ({
   duration = 0.6,
   delay,
   children,
+  className,
   ...props
 }: AnimateInViewProps) => {
   const ref = useRef(null);
@@ -40,6 +42,7 @@ export const AnimateInView = ({
       }}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
+      className={className}
       {...props}
     >
       {children}
