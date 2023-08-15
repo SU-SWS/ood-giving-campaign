@@ -23,8 +23,6 @@ export const MulticolumnStory = () => {
     target: bigImageRef,
     offset: ['-30vh', '100%'],
   });
-  const animateOpacity = useTransform(bigImageProgress, [0, 0.2, 0.6, 1], [0.5, 1, 1,  0.5]);
-  const animateScale = useTransform(bigImageProgress, [0, 0.2, 0.6, 1], [0.7, 1, 1, 0.7]);
 
   return (
     <>
@@ -70,7 +68,7 @@ export const MulticolumnStory = () => {
         </Grid>
       </Container>
       <figure>
-        <AnimateInView animation="sharpen" once={false} duration={1} className="w-full overflow-hidden">
+        <AnimateInView animation="sharpen" once={false} duration={1.6} className="w-full">
           <img
             loading="eager"
             src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2499x1667/53d21f92bf/farm_1208.jpg', '2000x0')}
@@ -85,7 +83,7 @@ export const MulticolumnStory = () => {
       <Container bgColor="white" className="3xl:px-100" pt={10}>
         <Grid lg={12} gap="default" alignItems="start">
           <figure className="rs-mb-8 col-span-5">
-            <AnimateInView animation="zoomSharpen" once={false} delay={0.1}>
+            <AnimateInView animation="sharpen" duration={1} once={false} delay={0.1}>
               <div className="w-full overflow-hidden">
                 <img
                   loading="eager"
@@ -102,7 +100,7 @@ export const MulticolumnStory = () => {
           <div className="col-span-6 col-start-7">
             <Grid lg={6} gap="default">
               <div className="mt-[49rem] col-span-4 col-start-3">
-                <AnimateInView animation="zoomSharpen" once={false} delay={0.2}>
+                <AnimateInView animation="sharpen" duration={1} once={false} delay={0.2}>
                   <Text size={1} as="blockquote" font="serif" weight="semibold" leading="cozy">
                     “In the 1920s, about 25 percent of the population was involved in farming, including many of our grandparents, but in the U.S. today, less than 1 percent of the population has a job in agriculture. Our food systems seem far removed from everyday life and a world away from most students.”
                   </Text>
@@ -112,7 +110,7 @@ export const MulticolumnStory = () => {
                 </AnimateInView>
               </div>
               <figure className="rs-mb-8 col-span-5 rs-mt-9">
-                <AnimateInView animation="zoomSharpen" once={false}>
+                <AnimateInView animation="sharpen" duration={1} once={false} delay={0.2}>
                   <div className="w-full overflow-hidden">
                     <img
                       loading="eager"
@@ -152,7 +150,7 @@ export const MulticolumnStory = () => {
           </AnimateInView>
         </Grid>
         <Grid lg={12} gap="default" pb={9}>
-          <AnimateInView animation="zoomSharpen" once={false} className="col-span-5 col-start-7 rs-mt-9">
+          <AnimateInView animation="sharpen" duration={1} once={false} className="col-span-5 col-start-7 rs-mt-9">
             <Text as="blockquote" weight="semibold" leading="display" size={4} font="serif">
               “Literacy around food and the environment benefits everyone.”
             </Text>
@@ -179,7 +177,7 @@ export const MulticolumnStory = () => {
           </AnimateInView>
         </Grid>
         <Grid lg={12} gap="default" py={9}>
-          <AnimateInView animation="zoomSharpen" once={false} delay={0.2} className="col-span-3 col-start-2 mt-[49rem]">
+          <AnimateInView animation="sharpen" once={false} duration={1} delay={0.2} className="col-span-3 col-start-2 mt-[49rem]">
             <Text size={2} as="blockquote" font="serif" weight="semibold" leading="cozy">
               “Whether it’s clean water, healthful food, or clean air, we know these problems are not insular. They’re issues for all of us.”
             </Text>
@@ -187,9 +185,9 @@ export const MulticolumnStory = () => {
               Angela Nomellini, organic farm owner in NY
             </Text>
           </AnimateInView>
-          <AnimateInView animation="zoomSharpen" once={false} className="col-span-5 col-start-6">
+          <AnimateInView animation="sharpen" once={false} duration={1} className="col-span-5 col-start-6">
             <figure>
-              <div className="w-full overflow-hidden">
+              <div className="w-full">
                 <img
                   loading="eager"
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2560x1708/0160f8e7a6/farm_1157.jpg', '1000x0')}
@@ -230,7 +228,7 @@ export const MulticolumnStory = () => {
         </Grid>
       </m.div>
       <figure>
-        <AnimateInView animation="sharpen" once={false} duration={1} className="w-full overflow-hidden">
+        <AnimateInView animation="sharpen" once={false} duration={1.6} className="w-full overflow-hidden bg-[#dce9f7]">
           <img
             loading="eager"
             src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2507x1672/dd4107f447/farm_1201.jpg', '2000x0')}
