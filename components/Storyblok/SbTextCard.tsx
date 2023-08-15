@@ -1,7 +1,7 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { type AnimationType } from '../Animate';
 import { TextCard } from '../TextCard/TextCard';
-import { ColSpanType } from '../TextCard/TextCard.styles';
+import { type ColSpanType } from '../TextCard/TextCard.styles';
 import { type BgTextColorPairBlackWhiteType } from '@/utilities/datasource';
 
 type SbTextCardProps = {

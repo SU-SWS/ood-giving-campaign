@@ -1,6 +1,7 @@
 export const fontFamilies = {
   sans: 'font-sans',
   serif: 'font-serif',
+  mono: 'font-mono',
   druk: 'font-druk',
   'druk-wide': 'font-druk-wide',
 };

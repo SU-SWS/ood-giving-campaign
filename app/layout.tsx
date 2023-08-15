@@ -1,5 +1,6 @@
 import './globals.css';
-import { Source_Sans_3, Source_Serif_4 } from 'next/font/google';
+import { cnb } from 'cnbuilder';
+import { Source_Sans_3, Source_Serif_4, Source_Code_Pro } from 'next/font/google';
 import localFont from 'next/font/local';
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
 import StoryblokProvider from '@/components/StoryblokProvider';
@@ -38,6 +39,14 @@ const source_serif = Source_Serif_4({
   variable: '--font-source-serif',
 });
 
+const source_code = Source_Code_Pro({
+  subsets: ['latin'],
+  weight: '700',
+  style: ['normal'],
+  display: 'swap',
+  variable: '--font-mono',
+});
+
 const stanford = localFont({
   src: '../public/fonts/stanford.woff2',
   weight: '300',
@@ -57,9 +66,14 @@ export default function RootLayout({ children }: LayoutProps) {
     <StoryblokProvider>
       <html
         lang="en"
-        className={
-          `${source_sans.variable} ${source_serif.variable} ${druk.variable} ${druk_wide.variable} ${stanford.variable}`
-        }
+        className={cnb(
+          source_sans.variable,
+          source_serif.variable,
+          source_code.variable,
+          druk.variable,
+          druk_wide.variable,
+          stanford.variable,
+        )}
       >
         {/* Absolutely necessary to have a body tag here, otherwise your components won't get any interactivity */}
         <body>

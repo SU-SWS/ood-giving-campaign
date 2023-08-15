@@ -5,6 +5,7 @@ import { Masthead } from '@/components/Masthead';
 import { StoryHero, type StoryHeroProps } from '@/components/Hero';
 import { ScrollyTelling } from '@/components/ScrollyTelling/ScrollyTelling';
 import { ScrollyFullwidth } from '../ScrollyTelling/ScrollyFullwidth';
+import { ProgressStory } from '../StoryPoC/ProgressStory';
 import { Bookshelf } from '../Bookshelf/Bookshelf';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
@@ -43,31 +44,38 @@ export const SbStory = ({
     <Masthead isLight={isLightHero} />
     <main id="main-content">
       <article>
-        <StoryHero
-          title={title}
-          dek={dek}
-          byline={byline}
-          publishedDate={publishedDate}
-          heroImage={heroImage}
-          aspectRatio={aspectRatio}
-          mobileImage={mobileImage}
-          mobileAspectRatio={mobileAspectRatio}
-          alt={alt}
-          caption={caption}
-          isLightHero={isLightHero}
-          isVerticalHero={isVerticalHero}
-          isLeftImage={isLeftImage}
-          tabColor={tabColor}
-          topics={topics}
-        />
-        <Image
-            width={2000}
-            height={40}
-            alt=""
-            loading="lazy"
-            src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/c4777a4925/steve-johnson-cropped-2000x40-01.jpg') || ''}
-            className="w-full"
-          />
+        {!(title?.includes('Whereas') || title?.includes('Progress')) && (
+          <>
+            <StoryHero
+              title={title}
+              dek={dek}
+              byline={byline}
+              publishedDate={publishedDate}
+              heroImage={heroImage}
+              aspectRatio={aspectRatio}
+              mobileImage={mobileImage}
+              mobileAspectRatio={mobileAspectRatio}
+              alt={alt}
+              caption={caption}
+              isLightHero={isLightHero}
+              isVerticalHero={isVerticalHero}
+              isLeftImage={isLeftImage}
+              tabColor={tabColor}
+              topics={topics}
+            />
+            <Image
+              width={2000}
+              height={40}
+              alt=""
+              loading="lazy"
+              src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/c4777a4925/steve-johnson-cropped-2000x40-01.jpg') || ''}
+              className="w-full"
+            />
+          </>
+        )}
+        {title?.includes('Progress') && (
+          <ProgressStory />
+        )}
         <CreateBloks blokSection={content} />
         {title?.includes('bookshelf') && (
           <Bookshelf />
