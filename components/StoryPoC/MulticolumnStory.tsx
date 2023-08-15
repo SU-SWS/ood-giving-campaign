@@ -11,7 +11,7 @@ export const MulticolumnStory = () => {
   const { scrollYProgress } = useScroll({
     target: bgChangeRef,
   });
-  const animateBgColor = useTransform(scrollYProgress, [0, 0.5, 1], ['#FFF', '#FEF9E7', '#dce9f7']);
+  const animateBgColor = useTransform(scrollYProgress, [0, 0.2, 0.9, 1], ['#FFF', '#FEF9E7', '#dce9f7', '#fff']);
 
   return (
     <>
