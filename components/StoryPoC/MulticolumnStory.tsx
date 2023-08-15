@@ -1,13 +1,8 @@
 import { useRef } from 'react';
-import { cnb } from 'cnbuilder';
-import {
-  useInView, useScroll, m, useTransform,
-} from 'framer-motion';
+import { useScroll, m, useTransform } from 'framer-motion';
 import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
 import { Grid } from '../Grid';
-import { FlexBox } from '../FlexBox';
-import { Parallax } from '../Parallax/Parallax';
 import { Heading, Paragraph, Text } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 
@@ -17,12 +12,6 @@ export const MulticolumnStory = () => {
     target: bgChangeRef,
   });
   const animateBgColor = useTransform(scrollYProgress, [0, 0.5, 1], ['#FFF', '#FEF9E7', '#dce9f7']);
-
-  const bigImageRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress: bigImageProgress } = useScroll({
-    target: bigImageRef,
-    offset: ['-30vh', '100%'],
-  });
 
   return (
     <>
