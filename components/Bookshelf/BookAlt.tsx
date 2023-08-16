@@ -47,7 +47,7 @@ export const BookAlt = ({
           alt=""
           className="w-full h-full object-cover object-left-top"
         />
-        <span className="absolute block bottom-0 right-0 bg-gradient-to-t from-black via-50% via-black/60 w-full h-1/2" />
+        <span className="absolute block bottom-0 right-0 bg-gradient-to-t from-gc-black via-50% via-gc-black/50 w-full h-2/5 group-hocus-visible:h-1/2 transition-all" />
         <Text
           as="span"
           color="white"
@@ -67,7 +67,7 @@ export const BookAlt = ({
           <HeroIcon
             noBaseStyle
             icon={isOpen ? 'minus' : 'plus'}
-            className="w-75 h-75 border-2 border-white rounded-full p-19 mb-04em"
+            className="w-75 h-75 border-2 border-white rounded-full p-19 mb-04em group-hocus-visible:border-dashed group-hocus-visible:bg-gc-black"
           />
           <Text as="span" font="serif" color="white" variant="caption">
             {isOpen ? 'minimize' : 'explore'}
