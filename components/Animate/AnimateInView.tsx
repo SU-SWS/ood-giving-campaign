@@ -10,6 +10,7 @@ type AnimateInViewProps = {
   duration?: number;
   delay?: number;
   children: React.ReactNode;
+  className?: string;
 };
 
 export const AnimateInView = ({
