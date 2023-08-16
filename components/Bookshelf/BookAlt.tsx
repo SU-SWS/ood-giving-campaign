@@ -47,7 +47,7 @@ export const BookAlt = ({
           alt=""
           className="w-full h-full object-cover object-left-top"
         />
-        <span className="absolute block bottom-0 right-0 bg-gradient-to-t from-black/70 via-50% via-black/60 w-full h-1/2" />
+        <span className="absolute block bottom-0 right-0 bg-gradient-to-t from-black via-50% via-black/60 w-full h-1/2" />
         <Text
           as="span"
           color="white"
@@ -58,21 +58,21 @@ export const BookAlt = ({
           align="left"
           className={cnb(
             !isOpen && expanded ? '-rotate-180 left-140 [writing-mode:vertical-rl] h-400' : 'rs-px-2',
-            'block transition-transform origin-top-left relative z-10 bottom-400 group-hocus:no-underline',
+            'block transition-transform origin-top-left relative z-10 bottom-[38rem] group-hocus:no-underline',
           )}
         >
           {title}
         </Text>
-        <span className="flex flex-col items-center absolute bottom-95 right-[5.3rem] text-white">
+        <FlexBox direction="col" alignItems="center" className="absolute bottom-50 3xl:bottom-95 right-[5.3rem] text-white">
           <HeroIcon
             noBaseStyle
             icon={isOpen ? 'minus' : 'plus'}
             className="w-75 h-75 border-2 border-white rounded-full p-19 mb-04em"
           />
           <Text as="span" font="serif" color="white" variant="caption">{isOpen ? 'minimize' : 'explore'}</Text>
-        </span>
+        </FlexBox>
         {isOpen && (
-          <Paragraph variant="card" color="white" leading="display" className="absolute bottom-150 z-20 rs-px-3 max-w-[74rem]" align="left">
+          <Paragraph variant="card" color="white" leading="snug" className="absolute bottom-150 z-20 rs-px-3 max-w-[74rem]" align="left">
             {body}
           </Paragraph>
         )}
