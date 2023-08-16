@@ -2,6 +2,7 @@ import { m, AnimatePresence, useWillChange } from 'framer-motion';
 import { cnb } from 'cnbuilder';
 import { FlexBox } from '../FlexBox';
 import { Heading, Text, Paragraph } from '../Typography';
+import { HeroIcon } from '../HeroIcon';
 import { ImageOverlay } from '../ImageOverlay';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 
@@ -42,12 +43,13 @@ export const BookAlt = ({
         )}
       >
         <img
-          src={getProcessedImage(imgSrc, '1400x1300')}
+          src={getProcessedImage(imgSrc, '1400x1200')}
           alt=""
           className="w-full h-full object-cover object-left-top"
         />
-        <div className="absolute top-0 right-0 bg-gradient-to-t from-black/70 via-50% via-transparent w-full h-full" />
+        <span className="absolute block bottom-0 right-0 bg-gradient-to-t from-black/70 via-50% via-black/60 w-full h-1/2" />
         <Text
+          as="span"
           color="white"
           font="mono"
           size={4}
@@ -56,13 +58,21 @@ export const BookAlt = ({
           align="left"
           className={cnb(
             !isOpen && expanded ? '-rotate-180 left-140 [writing-mode:vertical-rl] h-400' : 'rs-px-2',
-            'transition-transform origin-top-left relative z-10 bottom-300 group-hocus:no-underline',
+            'block transition-transform origin-top-left relative z-10 bottom-400 group-hocus:no-underline',
           )}
         >
           {title}
         </Text>
+        <span className="flex flex-col items-center absolute bottom-95 right-[5.3rem] text-white">
+          <HeroIcon
+            noBaseStyle
+            icon={isOpen ? 'minus' : 'plus'}
+            className="w-75 h-75 border-2 border-white rounded-full p-19 mb-04em"
+          />
+          <Text as="span" font="serif" color="white" variant="caption">{isOpen ? 'minimize' : 'explore'}</Text>
+        </span>
         {isOpen && (
-          <Paragraph variant="card" color="white" leading="display" className="absolute bottom-60 z-20 rs-px-3 max-w-[74rem]" align="left">
+          <Paragraph variant="card" color="white" leading="display" className="absolute bottom-150 z-20 rs-px-3 max-w-[74rem]" align="left">
             {body}
           </Paragraph>
         )}
