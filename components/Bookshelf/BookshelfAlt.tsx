@@ -6,11 +6,11 @@ import { Paragraph, Text } from '../Typography';
 import { BookAlt } from './BookAlt';
 
 export const BookshelfAlt = () => {
-  const [expanded, setExpanded] = useState<false | number>(4);
+  const [expanded, setExpanded] = useState<false | number>(false);
 
   return (
-    <Container bgColor="white" py={10} className="relative 3xl:px-100">
-      <FlexBox className="overflow-hidden mx-auto relative top-8 gap-48" alignItems="end">
+    <Container bgColor="white" py={7} className="relative 3xl:px-100">
+      <FlexBox className="overflow-hidden mx-auto relative top-8 gap-20 2xl:gap-48" alignItems="end">
         <LayoutGroup>
           <BookAlt
             title="Impact on campus"

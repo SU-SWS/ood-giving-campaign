@@ -35,16 +35,16 @@ export const BookAlt = ({
         aria-expanded={isOpen}
         onClick={() => setExpanded(isOpen ? false : i)}
         className={cnb(
-          'group relative transition-all top-0 overflow-hidden bg-black-50 h-1200 shrink-0 rounded-[5rem]',
-          isOpen ? 'w-1200 !h-600 -top-600' : 'w-[calc((100%_-_144px_-_1200px)/3)]',
-          expanded === false ? '!w-[calc((100%_-_144px)/4)]' : '',
+          'group relative transition-all top-0 overflow-hidden bg-black-50 h-900 2xl:h-1200 shrink-0 rounded-[3rem] 2xl:rounded-[5rem]',
+          isOpen ? 'w-[calc(100%_-_60px_-_120px*3)] 2xl:w-[calc(100%_-_144px_-_180px*3)]' : 'w-120 2xl:w-180',
+          expanded === false ? '!w-[calc((100%_-_60px)/4)] 2xl:!w-[calc((100%_-_144px)/4)]' : '',
           buttonClassName,
         )}
       >
         <img
-          src={getProcessedImage(imgSrc, '1200x1200')}
+          src={getProcessedImage(imgSrc, '1400x1300')}
           alt=""
-          className="w-full h-full object-cover object-top"
+          className="w-full h-full object-cover object-left-top"
         />
         <div className="absolute top-0 right-0 bg-gradient-to-t from-black/70 via-50% via-transparent w-full h-full" />
         <Text
@@ -55,7 +55,7 @@ export const BookAlt = ({
           weight="bold"
           align="left"
           className={cnb(
-            !isOpen && expanded ? '-rotate-180 left-[7vw] [writing-mode:vertical-rl] h-400' : 'rs-px-2',
+            !isOpen && expanded ? '-rotate-180 left-140 [writing-mode:vertical-rl] h-400' : 'rs-px-2',
             'transition-transform origin-top-left relative z-10 bottom-300 group-hocus:no-underline',
           )}
         >
