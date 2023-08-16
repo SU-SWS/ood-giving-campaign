@@ -4,6 +4,7 @@ import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
 import { Grid } from '../Grid';
 import { ImageOverlay } from '../ImageOverlay';
+import { BookshelfAlt } from '../Bookshelf/BookshelfAlt';
 import { Heading, Paragraph, Text } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 
@@ -75,10 +76,14 @@ export const ProgressStory = () => {
                   Impact means that knowing who we help can change the way we work.
                 </Paragraph>
               </div>
+              <Paragraph color="black-40" variant="caption" align="right" className="rs-mt-8" noMargin>
+                Photo credit lorem ipsum dolar sit amet vestibulum perimentium.
+              </Paragraph>
             </div>
           </Grid>
         </div>
       </Container>
+      <BookshelfAlt />
     </div>
   );
 };
