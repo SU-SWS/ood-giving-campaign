@@ -18,7 +18,7 @@ export const BookshelfAlt = () => {
             i={1}
             expanded={expanded}
             setExpanded={setExpanded}
-            imgSrc="https://a-us.storyblok.com/f/1005200/755x477/659626090b/pallas-cat-manul-8.jpg"
+            imgSrc="https://a-us.storyblok.com/f/1005200/2042x1359/5b3f36eca9/21664-19-0027_cmyk-1.jpg"
             buttonClassName=""
             contentClassName=""
           />
@@ -38,7 +38,7 @@ export const BookshelfAlt = () => {
             i={3}
             expanded={expanded}
             setExpanded={setExpanded}
-            imgSrc="https://a-us.storyblok.com/f/1005200/548x547/b3f12028fc/image.jpg"
+            imgSrc="https://a-us.storyblok.com/f/1005200/2907x1848/07079af822/mayer-tawfik-py2v6tuygqw-unsplash_cmyk-1.jpg"
             buttonClassName=""
             contentClassName=""
           />
@@ -48,7 +48,7 @@ export const BookshelfAlt = () => {
             i={4}
             expanded={expanded}
             setExpanded={setExpanded}
-            imgSrc="https://a-us.storyblok.com/f/1005200/548x545/3236b55dee/column-15.jpg"
+            imgSrc="https://a-us.storyblok.com/f/1005200/3089x2048/f97d5d20f7/21664-15-0018.jpg"
             buttonClassName=""
             contentClassName=""
           />

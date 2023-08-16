@@ -43,7 +43,7 @@ export const BookAlt = ({
         )}
       >
         <img
-          src={getProcessedImage(imgSrc, '1400x1200')}
+          src={getProcessedImage(imgSrc, '1600x1300')}
           alt=""
           className="w-full h-full object-cover object-left-top"
         />
