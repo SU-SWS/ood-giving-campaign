@@ -6,6 +6,7 @@ import { StoryHero, type StoryHeroProps } from '@/components/Hero';
 import { ScrollyTelling } from '@/components/ScrollyTelling/ScrollyTelling';
 import { ScrollyFullwidth } from '../ScrollyTelling/ScrollyFullwidth';
 import { ProgressStory } from '../StoryPoC/ProgressStory';
+import { MulticolumnStory } from '../StoryPoC/MulticolumnStory';
 import { Bookshelf } from '../Bookshelf/Bookshelf';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
@@ -75,6 +76,9 @@ export const SbStory = ({
         )}
         {title?.includes('Progress') && (
           <ProgressStory />
+        )}
+        {title?.includes('Whereas') && (
+          <MulticolumnStory />
         )}
         <CreateBloks blokSection={content} />
         {title?.includes('bookshelf') && (
