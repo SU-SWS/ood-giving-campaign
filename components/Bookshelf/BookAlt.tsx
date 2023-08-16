@@ -57,8 +57,8 @@ export const BookAlt = ({
           weight="bold"
           align="left"
           className={cnb(
-            !isOpen && expanded ? '-rotate-180 left-140 [writing-mode:vertical-rl] h-400' : 'rs-px-2',
-            'block transition-transform origin-top-left relative z-10 bottom-[38rem] group-hocus:no-underline',
+            !isOpen && expanded ? '-rotate-180 left-140 bottom-300 [writing-mode:vertical-rl] h-400' : 'rs-px-2 bottom-350',
+            'block transition-transform origin-top-left relative z-10 group-hocus:no-underline',
           )}
         >
           {title}
@@ -69,10 +69,12 @@ export const BookAlt = ({
             icon={isOpen ? 'minus' : 'plus'}
             className="w-75 h-75 border-2 border-white rounded-full p-19 mb-04em"
           />
-          <Text as="span" font="serif" color="white" variant="caption">{isOpen ? 'minimize' : 'explore'}</Text>
+          <Text as="span" font="serif" color="white" variant="caption">
+            {isOpen ? 'minimize' : 'explore'}
+          </Text>
         </FlexBox>
         {isOpen && (
-          <Paragraph variant="card" color="white" leading="snug" className="absolute bottom-150 z-20 rs-px-3 max-w-[74rem]" align="left">
+          <Paragraph variant="card" color="white" leading="snug" className="absolute bottom-100 z-20 rs-px-3 max-w-[74rem]" align="left">
             {body}
           </Paragraph>
         )}
