@@ -76,14 +76,50 @@ export const ProgressStory = () => {
                   Impact means that knowing who we help can change the way we work.
                 </Paragraph>
               </div>
-              <Paragraph color="black-40" variant="caption" align="right" className="rs-mt-8" noMargin>
-                Photo credit lorem ipsum dolar sit amet vestibulum perimentium.
-              </Paragraph>
             </div>
           </Grid>
         </div>
+        <Paragraph color="black-40" variant="caption" align="right" className="rs-mt-8 absolute bottom-60 right-100 z-20" noMargin>
+          Photo credit lorem ipsum dolar sit amet vestibulum perimentium.
+        </Paragraph>
       </Container>
       <BookshelfAlt />
+      <Container bgColor="black" width="full" className="relative -mt-2">
+        <img
+          src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2100x1350/02b8df40d3/21664-12-0011_cmyk-1.jpg', '2000x1200')}
+          alt=""
+          loading="eager"
+          className="relative w-full h-full object-cover object-top"
+        />
+        <div
+          className="absolute w-full h-full top-0 left-0 bg-gradient-to-b from-gc-black via-gc-black/20 via-40% to-gc-black z-10"
+        />
+        <div className="absolute top-0 r-0 w-full 3xl:px-100 z-20">
+          <Grid lg={12} className="w-full" gap="default">
+            <div className="3xl:col-start-5 col-span-12 3xl:col-span-8 cc mt-[25vw]">
+              <div className="columns-2 [column-gap:5rem] rs-mt-5">
+                <Paragraph>
+                  For more than 130 years, we have strived to build a better world. THE WORK IS FAR FROM OVER.
+                  Only together can we ensure a future united through diversity, safeguarded through sustainability,
+                  where collective problems are solved with collective solutions.
+                </Paragraph>
+                <Paragraph>
+                  If there’s a change that needs to be made, this is how we’ll make it. If there’s darkness ahead,
+                  this is how we’ll shine a light. The world has never moved faster,
+                  and our challenges have never been more urgent.
+                  If the future is already here, then what we do today has never mattered more.
+                </Paragraph>
+                <Paragraph weight="bold">
+                  There is nothing we can do that we cannot do better, together.
+                </Paragraph>
+              </div>
+            </div>
+          </Grid>
+        </div>
+        <Paragraph color="black-40" variant="caption" align="right" className="rs-mt-8 absolute bottom-60 right-100 z-20" noMargin>
+          Photo credit lorem ipsum dolar sit amet vestibulum perimentium.
+        </Paragraph>
+      </Container>
     </div>
   );
 };
