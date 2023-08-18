@@ -36,14 +36,14 @@
     "cnbuilder": "^3.1.0",
     "framer-motion": "^10.15.0",
     "netlify-plugin-vault-variables": "^1.0.7",
-    "next": "^13.4.9",
+    "next": "^13.4.18",
     "node-vault": "^0.9.22",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "storyblok-rich-text-react-renderer-ts": "^3.2.0"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^4.39.3",
+    "@netlify/plugin-nextjs": "^4.40.0",
     "@tailwindcss/container-queries": "^0.1.1",
     "@types/node": "^20.4.7",
     "@types/react": "^18.2.18",
@@ -51,7 +51,7 @@
     "autoprefixer": "^10.4.14",
     "decanter": "^7.1.1",
     "eslint": "^8.46.0",
-    "eslint-config-next": "^13.4.13",
+    "eslint-config-next": "^13.4.18",
     "postcss": "^8.4.27",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.1.6"
