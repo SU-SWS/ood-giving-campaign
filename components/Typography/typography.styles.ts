@@ -1,6 +1,7 @@
 export const fontFamilies = {
   sans: 'font-sans',
   serif: 'font-serif',
+  mono: 'font-mono',
   druk: 'font-druk',
   'druk-wide': 'font-druk-wide',
 };
@@ -57,6 +58,7 @@ export const textColors = {
   'cool-grey': 'text-cool-grey',
   white: 'text-white',
   'black-20': 'text-black-20',
+  'black-40': 'text-black-40',
   'black-60': 'text-black-60',
   'black-80': 'text-black-80',
 };

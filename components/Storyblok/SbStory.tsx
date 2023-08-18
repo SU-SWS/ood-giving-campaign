@@ -5,6 +5,7 @@ import { Masthead } from '@/components/Masthead';
 import { StoryHero, type StoryHeroProps } from '@/components/Hero';
 import { ScrollyTelling } from '@/components/ScrollyTelling/ScrollyTelling';
 import { ScrollyFullwidth } from '../ScrollyTelling/ScrollyFullwidth';
+import { ProgressStory } from '../StoryPoC/ProgressStory';
 import { MulticolumnStory } from '../StoryPoC/MulticolumnStory';
 import { Bookshelf } from '../Bookshelf/Bookshelf';
 import { getNumBloks } from '@/utilities/getNumBloks';
@@ -72,6 +73,9 @@ export const SbStory = ({
               className="w-full"
             />
           </>
+        )}
+        {title?.includes('Progress') && (
+          <ProgressStory />
         )}
         {title?.includes('Whereas') && (
           <MulticolumnStory />
