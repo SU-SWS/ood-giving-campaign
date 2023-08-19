@@ -53,14 +53,19 @@ async function getStoryData(params: { slug: string[] }) {
 };
 
 export async function generateMetadata({ params }: { params: ParamsType }): Promise<Metadata> {
-  const { data } = await getStoryData(params);
-  const blok = data.story.content;
+  try {
+    const { data } = await getStoryData(params);
+    const blok = data.story.content;
 
-  let slug: string = params.slug ? params.slug.join('/') : '';
-  const meta = getPageMetadata({ blok, slug });
+    let slug: string = params.slug ? params.slug.join('/') : '';
+    const meta = getPageMetadata({ blok, slug });
 
-  return meta;
-}
+    return meta;
+  } catch (error) {
+    throw new Error('Failed to generate metadata');
+  }
+};
+
 
 export default async function Page({ params }: { params: ParamsType }) {
   const { data } = await getStoryData(params);
