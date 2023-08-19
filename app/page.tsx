@@ -15,9 +15,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Home() {
   const { data } = await fetchData();
+  const bridgeOptions = { resolveRelations };
 
   return (
-    <StoryblokStory story={data.story} />
+    <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} />
   );
 }
 

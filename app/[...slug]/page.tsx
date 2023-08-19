@@ -64,8 +64,9 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
 
 export default async function Page({ params }: { params: ParamsType }) {
   const { data } = await getStoryData(params);
+  const bridgeOptions = { resolveRelations };
 
   return (
-    <StoryblokStory story={data.story} />
+    <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} />
   );
 };
