@@ -39,7 +39,6 @@ export const VideoScrollStory = () => {
           ref={videoRef}
           muted
           playsInline
-          preload="auto"
           loop
           src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/fb44369daa/output_960.mp4')}
           className="block w-full h-full object-cover"
