@@ -86,7 +86,6 @@ export const BubbleLink = ({
 );
 
 export const ChatbotStory = () => {
-  const bgImage = `url('${getProcessedImage('https://a-us.storyblok.com/f/1005200/2560x1708/a3b9a247de/bellsbooks_0127.jpg', '2000x0')}')`;
   const gradient = 'linear-gradient(0deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.03)), linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(164.96deg, rgba(171, 171, 171, 0.1) 20.36%, rgba(0, 0, 0, 0.1) 66.37%)';
   const wrapperRef = useRef(null);
   const ref = useRef(null);
@@ -125,6 +124,10 @@ export const ChatbotStory = () => {
   }, [isScrolling, intervalCount, wrapperRef.current?.scrollHeight]);
 
   const [q1Choice, setQ1Choice] = useState<'learning' | 'poverty' | null>(null);
+  const bgImage = `url('${getProcessedImage(
+    q1Choice === 'learning' ? 'https://a-us.storyblok.com/f/1005200/2560x1708/a3b9a247de/bellsbooks_0127.jpg' : 'https://a-us.storyblok.com/f/1005200/4000x2250/0c54166208/vlad-hilitanu-pt7qzb4zlww-unsplash.jpg',
+    '2000x0',
+  )}')`;
 
   return (
     <Container
@@ -137,7 +140,7 @@ export const ChatbotStory = () => {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
       }}
-      className="rs-py-8 overflow-hidden"
+      className="rs-py-8 overflow-hidden transition-all duration-1000"
     >
       <div
         className="relative w-450 h-800 mx-auto backdrop-blur-lg rounded-[4rem] overflow-hidden"
@@ -189,7 +192,7 @@ export const ChatbotStory = () => {
           </Bubble>
           <BubbleButton
             className="mt-30"
-            bubbleClassName={q1Choice !== 'learning' ? 'children:transition-colors children:border children:!border-dashed children:!border-white children:!bg-transparent' : ''}
+            bubbleClassName={q1Choice !== 'learning' ? 'children:transition-colors children:hocus:border-solid children:border children:border-dashed children:!border-white children:!bg-transparent' : ''}
             delay={10.5}
             onClick={() => setQ1Choice('learning')}
           >
@@ -197,7 +200,7 @@ export const ChatbotStory = () => {
           </BubbleButton>
           <BubbleButton
             className="mt-10"
-            bubbleClassName={q1Choice !== 'poverty' ? 'children:transition-colors children:border children:!border-dashed children:!border-white children:!bg-transparent' : ''}
+            bubbleClassName={q1Choice !== 'poverty' ? 'children:transition-colors children:hocus:border-solid children:border children:border-dashed children:!border-white children:!bg-transparent' : ''}
             delay={10.5}
             onClick={() => setQ1Choice('poverty')}
           >
