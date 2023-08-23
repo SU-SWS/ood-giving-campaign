@@ -1,6 +1,8 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { cnb } from 'cnbuilder';
-import { useScroll, m, useTransform } from 'framer-motion';
+import {
+  useScroll, m, useTransform, useInView,
+} from 'framer-motion';
 import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
 import { Grid } from '../Grid';
@@ -19,7 +21,7 @@ const Bubble = ({
 }: BubbleProps) => {
 
   return (
-    <AnimateInView animation="zoomIn" delay={delay} duration={0.2} className={className}>
+    <AnimateInView animation="bubble" delay={delay} duration={0.2} className={className}>
       <Text
         color="white"
         leading="display"
@@ -36,16 +38,15 @@ const Bubble = ({
 
 const BubbleButton = ({
   children, className, ...props
-}: React.ButtonHTMLAttributes<HTMLButtonElement>) => (
+}: React.ButtonHTMLAttributes<HTMLButtonElement> & BubbleProps) => (
   <button
     type="button"
     className={cnb(
       'block mr-0 ml-auto w-fit text-left',
       className,
     )}
-    {...props}
   >
-    <Bubble type="me">
+    <Bubble type="me" {...props}>
       {children}
     </Bubble>
   </button>
@@ -54,6 +55,41 @@ const BubbleButton = ({
 export const ChatbotStory = () => {
   const bgImage = `url('${getProcessedImage('https://a-us.storyblok.com/f/1005200/2560x1708/a3b9a247de/bellsbooks_0127.jpg', '2000x0')}')`;
   const gradient = 'linear-gradient(0deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.03)), linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(164.96deg, rgba(171, 171, 171, 0.1) 20.36%, rgba(0, 0, 0, 0.1) 66.37%)';
+  const wrapperRef = useRef(null);
+  const ref = useRef(null);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const [intervalCount, setIntervalCount] = useState(0);
+
+  useEffect(() => {
+    const wrapper = wrapperRef.current;
+
+    const handleScrollStart = () => {
+      setIsScrolling(true);
+    };
+
+    const handleScrollEnd = () => {
+      setIsScrolling(false);
+    };
+
+    wrapper.addEventListener('scroll', handleScrollStart);
+    wrapper.addEventListener('scrollend', handleScrollEnd);
+
+    const interval = setInterval(() => {
+      if (!isScrolling && intervalCount < 10 && wrapper.scrollHeight > 640) {
+        wrapper.scrollTo(0, wrapper.scrollHeight);
+        console.log(wrapper.scrollHeight);
+        setIntervalCount(prevCount => prevCount + 1);
+      } else if (intervalCount >= 10) {
+        clearInterval(interval); // Clear interval after 10 intervals
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+      wrapper.removeEventListener('scroll', handleScrollStart);
+      wrapper.removeEventListener('scrollend', handleScrollEnd);
+    };
+  }, [isScrolling, intervalCount, wrapperRef.current?.scrollHeight]);
 
   return (
     <Container
@@ -70,6 +106,7 @@ export const ChatbotStory = () => {
       <div
         className="relative w-450 h-800 mx-auto backdrop-blur-xl rounded-[4rem] overflow-hidden"
         style={{ background: gradient }}
+        ref={ref}
       >
         <div className="fixed top-0 h-90 w-full z-10 bg-white/10">
           <img
@@ -77,8 +114,9 @@ export const ChatbotStory = () => {
             alt=""
             className="rounded-full w-50 h-50 ml-30 mt-20"
           />
+          {/* <button onClick={scrollToBottom}>test</button> */}
         </div>
-        <div className="absolute overflow-y-scroll top-90 p-30 z-0 min-h-[64rem] max-h-[64rem] overflow-hidden">
+        <div className="absolute overflow-y-scroll top-90 p-30 z-0 max-h-[64rem] overflow-hidden" ref={wrapperRef}>
           <Bubble delay={0.5}>
             Greetings my human friend!
           </Bubble>
@@ -109,10 +147,10 @@ export const ChatbotStory = () => {
           <Bubble delay={9.5} className="mt-10">
             Do me a favor. Could you pick which topic you’re interested in? 👇
           </Bubble>
-          <BubbleButton className="mt-30">
+          <BubbleButton className="mt-30" delay={10.5}>
             1. How AI transforms the future of learning
           </BubbleButton>
-          <BubbleButton className="mt-10">
+          <BubbleButton className="mt-10" delay={10.5}>
             2. How AI harnesses satellite imagery to help fight poverty
           </BubbleButton>
         </div>
