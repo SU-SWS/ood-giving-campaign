@@ -1,24 +1,27 @@
 'use client';
+
 import { useRef } from 'react';
-import { useScroll, m, useTransform } from 'framer-motion';
-import { scroll } from 'framer-motion/dom';
+import {
+  useScroll, useMotionValueEvent,
+} from 'framer-motion';
 import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
 import { Grid } from '../Grid';
 import { Heading, Paragraph, Text } from '../Typography';
-import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { getMaskedAsset } from '@/utilities/getMaskedAsset';
 
 export const VideoScrollStory = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: contentRef,
+    offset: ['-100vh', 'end end'],
+  });
   const video = videoRef.current;
-  video?.pause();
-
-  // Scrub through the video on scroll
-  scroll((progress) => {
-    if (video?.readyState) {
-      video.currentTime = video?.duration * progress;
+  // Tie scrollYProgress to the video time
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    if (video) {
+      video.currentTime = latest * video?.duration;
     }
   });
 
