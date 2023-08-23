@@ -20,7 +20,8 @@ export const VideoScrollStory = () => {
   const video = videoRef.current;
   // Tie scrollYProgress to the video time
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-    if (video) {
+    if (video && video?.readyState) {
+      video.pause();
       video.currentTime = latest * video?.duration;
     }
   });
@@ -37,12 +38,18 @@ export const VideoScrollStory = () => {
         /> */}
         <video
           ref={videoRef}
+          preload="auto"
           muted
           playsInline
           loop
-          src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/fb44369daa/output_960.mp4')}
           className="block w-full h-full object-cover"
-        />
+        >
+          <source
+            src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/fb44369daa/output_960.mp4')}
+            type="video/mp4"
+          />
+          <p>Your browser does not support HTML video.</p>
+        </video>
         <div className="absolute top-0 r-0 w-full h-full bg-robins-egg mix-blend-difference" />
       </div>
       <div ref={contentRef} className="relative w-2/3 lg:w-1/3 mx-auto text-white z-10 rs-py-10">
