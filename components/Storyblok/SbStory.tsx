@@ -8,6 +8,7 @@ import { ScrollyFullwidth } from '../ScrollyTelling/ScrollyFullwidth';
 import { ProgressStory } from '../StoryPoC/ProgressStory';
 import { MulticolumnStory } from '../StoryPoC/MulticolumnStory';
 import { ChatbotStory } from '../StoryPoC/ChatbotStory';
+import { VideoScrollStory } from '../StoryPoC/VideoScrollStory';
 import { Bookshelf } from '../Bookshelf/Bookshelf';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
@@ -79,6 +80,9 @@ export const SbStory = ({
         )}
         {title?.includes('Progress') && (
           <ProgressStory />
+        )}
+        {title?.includes('Video scrolling') && (
+          <VideoScrollStory />
         )}
         {title?.includes('Chatbot') && (
           <ChatbotStory />
