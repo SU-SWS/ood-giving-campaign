@@ -38,7 +38,7 @@ export const VideoScrollStory = () => {
           playsInline
           preload="auto"
           loop
-          src="https://assets.codepen.io/39255/output_960.mp4"
+          src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/fb44369daa/output_960.mp4')}
           className="block w-full h-full object-cover"
         />
         <div className="absolute top-0 r-0 w-full h-full bg-robins-egg mix-blend-difference" />
