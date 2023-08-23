@@ -7,6 +7,7 @@ import { ScrollyTelling } from '@/components/ScrollyTelling/ScrollyTelling';
 import { ScrollyFullwidth } from '../ScrollyTelling/ScrollyFullwidth';
 import { ProgressStory } from '../StoryPoC/ProgressStory';
 import { MulticolumnStory } from '../StoryPoC/MulticolumnStory';
+import { ChatbotStory } from '../StoryPoC/ChatbotStory';
 import { Bookshelf } from '../Bookshelf/Bookshelf';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
@@ -17,6 +18,7 @@ type SbStoryProps = {
     content?: SbBlokData[];
     ankle?: SbBlokData[];
   } & StoryHeroProps;
+  slug?: string;
 };
 
 export const SbStory = ({
@@ -40,6 +42,7 @@ export const SbStory = ({
     ankle,
   },
   blok,
+  slug,
 }: SbStoryProps) => (
   <div {...storyblokEditable(blok)}>
     <Masthead isLight={isLightHero} />
@@ -76,6 +79,9 @@ export const SbStory = ({
         )}
         {title?.includes('Progress') && (
           <ProgressStory />
+        )}
+        {title?.includes('Chatbot') && (
+          <ChatbotStory />
         )}
         {title?.includes('Whereas') && (
           <MulticolumnStory />

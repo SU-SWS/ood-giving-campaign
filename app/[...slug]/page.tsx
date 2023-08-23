@@ -39,7 +39,7 @@ async function generateStaticParams() {
 // Make sure to not export the below functions otherwise there will be a typescript error
 // https://github.com/vercel/next.js/discussions/48724
 async function getStoryData(params: { slug: string[] }) {
-  let slug: string = params.slug ? params.slug.join('/') : 'home';
+  let slug: string = params.slug ? params.slug.join('/') : '';
   let sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',
     cv: activeEnv === 'development' ? Date.now() : undefined,
@@ -65,8 +65,9 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
 export default async function Page({ params }: { params: ParamsType }) {
   const { data } = await getStoryData(params);
   const bridgeOptions = { resolveRelations };
+  let slug: string = params.slug ? params.slug.join('/') : '';
 
   return (
-    <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} />
+    <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} slug={slug} />
   );
 };
