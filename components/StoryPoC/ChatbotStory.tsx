@@ -39,10 +39,11 @@ const Bubble = ({
 
 type BubbleButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & BubbleProps & {
   onClick: (choice: string | null) => void;
+  bubbleClassName?: string;
 };
 
 const BubbleButton = ({
-  children, onClick, className, ...props
+  children, onClick, className, bubbleClassName, ...props
 }: BubbleButtonProps) => (
   <button
     type="button"
@@ -52,7 +53,7 @@ const BubbleButton = ({
       className,
     )}
   >
-    <Bubble type="me" {...props}>
+    <Bubble type="me" className={bubbleClassName} {...props}>
       {children}
     </Bubble>
   </button>
@@ -69,17 +70,23 @@ type BubbleLinkProps = {
 export const BubbleLink = ({
   imageSrc, heading, linkText, href, className,
 }: BubbleLinkProps) => (
-  <Link href={href}>
+  <div className={cnb('relative w-300 rounded-[2rem] overflow-hidden', className)}>
     <img
-      src={getProcessedImage(imageSrc, '100x100')}
+      src={getProcessedImage(imageSrc, '300x150')}
       alt=""
-      className="rounded-full w-50 h-50 ml-30 mt-20"
+      className=""
+      loading="eager"
     />
-
-  </Link>
+    <div className="bg-black pt-8 pb-12 px-14">
+      <Heading as="h3" color="white" font="sans" size="base" leading="tight" className="mb-03em">
+        <Link target="_blank" href={href} className="stretched-link font-semibold text-white text-19 leading-none hocus:text-white">
+          {heading}
+        </Link>
+      </Heading>
+      <Text className="text-13">{linkText}</Text>
+    </div>
+  </div>
 );
-
-
 
 export const ChatbotStory = () => {
   const bgImage = `url('${getProcessedImage('https://a-us.storyblok.com/f/1005200/2560x1708/a3b9a247de/bellsbooks_0127.jpg', '2000x0')}')`;
@@ -104,12 +111,12 @@ export const ChatbotStory = () => {
     wrapper.addEventListener('scrollend', handleScrollEnd);
 
     const interval = setInterval(() => {
-      if (!isScrolling && intervalCount < 10 && wrapper.scrollHeight > 640) {
+      if (!isScrolling && intervalCount < 20 && wrapper.scrollHeight > 651) {
         wrapper.scrollTo(0, wrapper.scrollHeight);
         console.log(wrapper.scrollHeight);
         setIntervalCount(prevCount => prevCount + 1);
-      } else if (intervalCount >= 10) {
-        clearInterval(interval); // Clear interval after 10 intervals
+      } else if (intervalCount >= 20) {
+        clearInterval(interval);
       }
     }, 1000);
 
@@ -120,7 +127,7 @@ export const ChatbotStory = () => {
     };
   }, [isScrolling, intervalCount, wrapperRef.current?.scrollHeight]);
 
-  const [q1choice, setQ1Choice] = useState<'learning' | 'poverty' | null>(null);
+  const [q1Choice, setQ1Choice] = useState<'learning' | 'poverty' | null>(null);
 
   return (
     <Container
@@ -178,21 +185,44 @@ export const ChatbotStory = () => {
           <Bubble delay={9.5} className="mt-10">
             Do me a favor. Could you pick which topic you’re interested in? <span className="animate-bounce inline-block">👇</span>
           </Bubble>
-          <BubbleButton className="mt-30" delay={10.5} onClick={() => setQ1Choice('learning')}>
+          <BubbleButton
+            className="mt-30"
+            bubbleClassName={q1Choice !== 'learning' ? 'children:transition-colors children:border children:!border-dashed children:!border-white children:!bg-transparent' : ''}
+            delay={10.5}
+            onClick={() => setQ1Choice('learning')}
+          >
             1. How AI transforms the future of learning
           </BubbleButton>
-          <BubbleButton className="mt-10" delay={10.5} onClick={() => setQ1Choice('poverty')}>
+          <BubbleButton
+            className="mt-10"
+            bubbleClassName={q1Choice !== 'poverty' ? 'children:transition-colors children:border children:!border-dashed children:!border-white children:!bg-transparent' : ''}
+            delay={10.5}
+            onClick={() => setQ1Choice('poverty')}
+          >
             2. How AI harnesses satellite imagery to help fight poverty
           </BubbleButton>
-          {q1choice === 'learning' && (
-            <Bubble>
-              Choice 1
-            </Bubble>
-          )}
-          {q1choice === 'poverty' && (
-            <Bubble>
-              Choice 2
-            </Bubble>
+          {q1Choice && (
+            <div className="mt-30">
+              <Bubble>
+                {q1Choice === 'learning' ? 'Great choice 😊' : 'Sure thing 😎'}
+              </Bubble>
+              <Bubble delay={1} className="mt-10">
+                I believe this is what you’re looking for
+              </Bubble>
+              <AnimateInView delay={2} animation="bubble">
+                <BubbleLink
+                  href={q1Choice === 'learning' ? '/stories/poc-bookshelf-idea' : '/stories/harnessing-satellite-imagery-ai-to-help-fight-poverty'}
+                  imageSrc={
+                    q1Choice === 'learning'
+                    ? 'https://a-us.storyblok.com/f/1005200/5464x8192/b7ce105227/greenlibrary_0533_v1.jpg'
+                    : 'https://a-us.storyblok.com/f/1005200/2515x1677/0873de1701/rumseymapcenter_0659.jpg'
+                  }
+                  heading={q1Choice === 'learning' ? 'How AI transforms the future of learning' : 'How AI harnesses satellite imagery to help fight poverty'}
+                  linkText="giving.stanford.edu"
+                  className="mt-10"
+                />
+              </AnimateInView>
+            </div>
           )}
         </div>
         <div className="fixed bottom-0 h-70 w-full z-10 backdrop-blur-xl">
