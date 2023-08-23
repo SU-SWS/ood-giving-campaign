@@ -1,13 +1,10 @@
 import { useRef, useState, useEffect } from 'react';
 import { cnb } from 'cnbuilder';
-import {
-  useScroll, m, useTransform, useInView,
-} from 'framer-motion';
 import Link from 'next/link';
 import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
-import { Grid } from '../Grid';
-import { Heading, Paragraph, Text } from '../Typography';
+import { FlexBox } from '../FlexBox';
+import { Heading, Text } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 
 type BubbleProps = {
@@ -136,24 +133,29 @@ export const ChatbotStory = () => {
       style={{
         backgroundImage: bgImage,
         backgroundPosition: 'center center',
+        backgroundAttachment: 'fixed',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
       }}
       className="rs-py-8 overflow-hidden"
     >
       <div
-        className="relative w-450 h-800 mx-auto backdrop-blur-xl rounded-[4rem] overflow-hidden"
+        className="relative w-450 h-800 mx-auto backdrop-blur-lg rounded-[4rem] overflow-hidden"
         style={{ background: gradient }}
         ref={ref}
       >
-        <div className="fixed top-0 h-90 w-full z-10 bg-white/10">
+        <FlexBox alignItems="center" className="relative h-90 w-full z-10 bg-white/10 py-20 px-30">
           <img
             src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2560x1708/08583a88a2/neukom_profjulianabidadanure_1464.jpg', '100x100')}
             alt=""
-            className="rounded-full w-50 h-50 ml-30 mt-20"
+            className="rounded-full w-50 h-50 ml-30"
           />
-          {/* <button onClick={scrollToBottom}>test</button> */}
-        </div>
+          <div className="ml-10">
+            <div className="text-19 leading-none font-semibold">Beep Boop Beep</div>
+            <div className="inline-block text-16 leading-none text-black-20">Online</div>
+            <div className="inline-block w-8 h-8 bg-green-400 rounded-full ml-6" />
+          </div>
+        </FlexBox>
         <div className="absolute overflow-y-scroll top-90 p-30 z-0 max-h-[64rem] overflow-hidden" ref={wrapperRef}>
           <Bubble delay={0.5}>
             Greetings my human friend!
