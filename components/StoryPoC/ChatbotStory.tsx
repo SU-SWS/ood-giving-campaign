@@ -3,6 +3,7 @@ import { cnb } from 'cnbuilder';
 import {
   useScroll, m, useTransform, useInView,
 } from 'framer-motion';
+import Link from 'next/link';
 import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
 import { Grid } from '../Grid';
@@ -36,11 +37,16 @@ const Bubble = ({
   );
 };
 
+type BubbleButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & BubbleProps & {
+  onClick: (choice: string | null) => void;
+};
+
 const BubbleButton = ({
-  children, className, ...props
-}: React.ButtonHTMLAttributes<HTMLButtonElement> & BubbleProps) => (
+  children, onClick, className, ...props
+}: BubbleButtonProps) => (
   <button
     type="button"
+    onClick={onClick}
     className={cnb(
       'block mr-0 ml-auto w-fit text-left',
       className,
@@ -51,6 +57,29 @@ const BubbleButton = ({
     </Bubble>
   </button>
 );
+
+type BubbleLinkProps = {
+  imageSrc?: string;
+  heading?: string;
+  linkText?: string;
+  href: string;
+  className?: string;
+};
+
+export const BubbleLink = ({
+  imageSrc, heading, linkText, href, className,
+}: BubbleLinkProps) => (
+  <Link href={href}>
+    <img
+      src={getProcessedImage(imageSrc, '100x100')}
+      alt=""
+      className="rounded-full w-50 h-50 ml-30 mt-20"
+    />
+
+  </Link>
+);
+
+
 
 export const ChatbotStory = () => {
   const bgImage = `url('${getProcessedImage('https://a-us.storyblok.com/f/1005200/2560x1708/a3b9a247de/bellsbooks_0127.jpg', '2000x0')}')`;
@@ -90,6 +119,8 @@ export const ChatbotStory = () => {
       wrapper.removeEventListener('scrollend', handleScrollEnd);
     };
   }, [isScrolling, intervalCount, wrapperRef.current?.scrollHeight]);
+
+  const [q1choice, setQ1Choice] = useState<'learning' | 'poverty' | null>(null);
 
   return (
     <Container
@@ -145,14 +176,24 @@ export const ChatbotStory = () => {
             You’re asking the right bot 🤖
           </Bubble>
           <Bubble delay={9.5} className="mt-10">
-            Do me a favor. Could you pick which topic you’re interested in? 👇
+            Do me a favor. Could you pick which topic you’re interested in? <span className="animate-bounce inline-block">👇</span>
           </Bubble>
-          <BubbleButton className="mt-30" delay={10.5}>
+          <BubbleButton className="mt-30" delay={10.5} onClick={() => setQ1Choice('learning')}>
             1. How AI transforms the future of learning
           </BubbleButton>
-          <BubbleButton className="mt-10" delay={10.5}>
+          <BubbleButton className="mt-10" delay={10.5} onClick={() => setQ1Choice('poverty')}>
             2. How AI harnesses satellite imagery to help fight poverty
           </BubbleButton>
+          {q1choice === 'learning' && (
+            <Bubble>
+              Choice 1
+            </Bubble>
+          )}
+          {q1choice === 'poverty' && (
+            <Bubble>
+              Choice 2
+            </Bubble>
+          )}
         </div>
         <div className="fixed bottom-0 h-70 w-full z-10 backdrop-blur-xl">
 
