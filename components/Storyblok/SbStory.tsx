@@ -49,7 +49,7 @@ export const SbStory = ({
     <Masthead isLight={isLightHero} />
     <main id="main-content">
       <article>
-        {!(title?.includes('Whereas') || title?.includes('Progress')) && (
+        {!(title?.includes('Whereas') || title?.includes('Progress') || title?.includes('Video')) && (
           <>
             <StoryHero
               title={title}
