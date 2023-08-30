@@ -47,14 +47,14 @@ export const VideoScrollStory = () => {
       </div>
       <div ref={contentRef} className="relative w-2/3 lg:w-1/3 mx-auto text-white z-10 rs-py-10 -mt-[80vh]">
         <section>
-          <AnimateInView animation="fadeIn" duration={0.6} className="w-[200%] -ml-[50%] mb-500">
+          <AnimateInView animation="fadeIn" duration={0.6} className="lg:w-[200%] lg:-ml-[50%] mb-500">
             <Heading
               leading="tight"
               align="center"
               font="serif"
               weight="semibold"
               size={6}
-              className="mb-02em"
+              className="mb-02em max-w-1200"
             >
               Heading lorem ipsum universe
             </Heading>
