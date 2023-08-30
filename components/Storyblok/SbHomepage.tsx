@@ -1,5 +1,4 @@
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
-import Image from 'next/image';
 import { CreateBloks } from '../CreateBloks';
 import { Heading } from '../Typography';
 import { HomepageHero } from '../Homepage/HomepageHero';
@@ -63,7 +62,7 @@ export const SbHomepagePage = ({
       <div>
         <Heading as="h1" srOnly>{title || 'Homepage'}</Heading>
         <HomepageHero />
-        <Image
+        <img
           width={2000}
           height={40}
           alt=""
@@ -95,7 +94,7 @@ export const SbHomepagePage = ({
           </FindPurposeSection>
         <CreateBloks blokSection={content} />
         {getNumBloks(ankle) > 0 && (
-          <Image
+          <img
             width={2000}
             height={40}
             alt=""

@@ -1,5 +1,4 @@
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
-import Image from 'next/image';
 import { CreateBloks } from '../CreateBloks';
 import { Hero } from '../Hero/Hero';
 import { Masthead } from '../Masthead';
@@ -33,7 +32,7 @@ export const SbBasicPage = ({
         <Hero heading={title} />
         <CreateBloks blokSection={content} />
         {getNumBloks(ankle) > 0 && (
-          <Image
+          <img
             width={2000}
             height={40}
             alt=""

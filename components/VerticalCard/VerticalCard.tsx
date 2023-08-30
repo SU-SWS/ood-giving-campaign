@@ -1,5 +1,4 @@
 import { cnb } from 'cnbuilder';
-import Image from 'next/image';
 import { AnimateInView, type AnimationType } from '../Animate';
 import { CtaLink } from '../Cta/CtaLink';
 import { Heading, type HeadingType, Paragraph } from '../Typography';
@@ -56,7 +55,7 @@ export const VerticalCard = ({
       <div className={styles.cardWrapper}>
         {imageSrc && (
           <div className={styles.imageWrapper}>
-            <Image
+            <img
               alt=""
               width={600}
               height={600}

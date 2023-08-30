@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { Paragraph, Heading, Text } from '../Typography';
 import { Container } from '../Container';
 import { Grid } from '../Grid';
@@ -10,7 +9,7 @@ import { initiatives, themes } from '@/utilities/routes';
 
 export const LocalFooter = () => (
   <>
-    <Image
+    <img
       width={2000}
       height={40}
       alt=""

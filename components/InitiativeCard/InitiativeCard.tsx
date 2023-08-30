@@ -1,5 +1,4 @@
 import { HTMLAttributes } from 'react';
-import Image from 'next/image';
 import { cnb } from 'cnbuilder';
 import { AnimateInView, type AnimationType } from '../Animate';
 import { CtaLink } from '../Cta/CtaLink';
@@ -47,7 +46,7 @@ export const InitiativeCard = ({
     >
       <div className={styles.topWrapper}>
         <div className={styles.imageWrapper}>
-          <Image
+          <img
             width={600}
             height={800}
             alt=""

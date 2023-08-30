@@ -1,5 +1,4 @@
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
-import Image from 'next/image';
 import { CreateBloks } from '@/components/CreateBloks';
 import { Masthead } from '@/components/Masthead';
 import { StoryHero, type StoryHeroProps } from '@/components/Hero';
@@ -68,7 +67,7 @@ export const SbStory = ({
               tabColor={tabColor}
               topics={topics}
             />
-            <Image
+            <img
               width={2000}
               height={40}
               alt=""
@@ -101,7 +100,7 @@ export const SbStory = ({
           </>
         )}
         {getNumBloks(blok.ankle) > 0 && (
-          <Image
+          <img
             width={2000}
             height={40}
             alt=""
