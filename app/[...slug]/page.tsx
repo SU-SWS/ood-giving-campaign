@@ -14,7 +14,7 @@ type ParamsType = {
   slug: string[];
 };
 
-async function generateStaticParams() {
+export async function generateStaticParams() {
   const storyblokApi: StoryblokClient = getStoryblokApi();
   let sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',
