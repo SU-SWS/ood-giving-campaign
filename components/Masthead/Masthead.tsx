@@ -5,17 +5,16 @@ import {
 } from 'framer-motion';
 import { cnb } from 'cnbuilder';
 import { FlexBox } from '../FlexBox';
-import { Logo } from '../Logo';
-import { CtaLink, CtaButton, type CtaVariantType } from '../Cta';
+import { LogoLockup } from '@/components/Logo/LogoLockup';
+import { CtaLink, type CtaVariantType } from '../Cta';
 import { ood } from '@/utilities/externalLinks';
-import { HeroIcon } from '../HeroIcon';
 
 type MastheadProps = HTMLAttributes<HTMLDivElement> & {
   isLight?: boolean;
 };
 
 export const Masthead = ({ isLight, className }: MastheadProps) => {
-  const slideDistance = 86;
+  const slideDistance = 76;
   const threshold = 200;
 
   const { scrollY } = useScroll();
@@ -57,47 +56,32 @@ export const Masthead = ({ isLight, className }: MastheadProps) => {
     <m.div
       className={cnb(
         'w-full fixed top-0 z-50 transition-colors will-change-transform',
-        !isAtTop && isScrollingBack ? 'bg-gc-black border-b border-b-black-80' : 'bg-transparent border-b-transparent',
+        !isAtTop && isScrollingBack ? 'bg-gc-black border-b border-b-black-80 h-60 lg:h-[6.8rem]' : 'bg-transparent border-b-transparent h-[7.6rem]',
         className,
       )}
       animate={{ y: isVisible ? 0 : -slideDistance, opacity: isVisible ? 1 : 0 }}
-      transition={{ duration: 0.2, delay: 0, ease: 'easeInOut' }}
-      style={{ height: slideDistance, willChange }}
+      transition={{ duration: 0.2, delay: !isAtTop && isScrollingBack ? 0.4 : 0, ease: 'easeInOut' }}
     >
       <FlexBox
         justifyContent="between"
         alignItems="center"
-        className={cnb('cc transition py-18 3xl:px-100', !isAtTop ? 'lg:py-3' : 'md:py-26')}
+        className={cnb('cc transition 3xl:px-100 py-12', !isAtTop ? 'lg:py-6' : 'md:py-26')}
       >
-        <Logo
-          color={isLight && isAtTop ? 'black' : 'white'}
+        <LogoLockup
           isLink
-          className={cnb('w-170 sm:w-240 transition-[width] !duration-100', isAtTop ? 'lg:w-[32rem]' : 'lg:w-280')}
+          color={isLight && isAtTop ? 'default' : 'white'}
+          text="Giving"
+          className=""
         />
         {/* The scale3d here solves a Firefox only rendering bug with blurry curved borders when using transform */}
-        <FlexBox alignItems="center" className={cnb('su-transition-all', isAtTop ? '' : 'origin-right lg:[transform:scale3d(0.75,0.75,0.75)]')}>
+        <FlexBox alignItems="center" className={cnb('transition-all', isAtTop ? '' : 'origin-right lg:[transform:scale3d(0.75,0.75,0.75)]')}>
           <CtaLink
             href={ood.give}
             variant={ctaVariant}
             color="current"
-            className={cnb(
-              'rounded-bl-[1.4rem] lg:rounded-bl-[2rem]',
-              isAtTop ? 'mt-10 lg:mt-26' : 'mt-5 lg:mt-16',
-            )}
           >
             Make a gift
           </CtaLink>
-          <CtaButton
-            onClick={() => alert('Hello world')}
-            variant={ctaVariant}
-            color="current"
-            className={cnb(
-              '-ml-2 rounded-tr-[1.4rem] lg:rounded-tr-[2rem]',
-              isAtTop ? '-mt-10 lg:-mt-26' : '-mt-5 lg:-mt-10',
-            )}
-          >
-            <HeroIcon icon="menu" title="Main menu" noBaseStyle className="w-20 lg:w-32 group-hocus:scale-y-75 will-change-transform" />
-          </CtaButton>
         </FlexBox>
       </FlexBox>
     </m.div>

@@ -7,6 +7,8 @@ import { ScrollyTelling } from '@/components/ScrollyTelling/ScrollyTelling';
 import { ScrollyFullwidth } from '../ScrollyTelling/ScrollyFullwidth';
 import { ProgressStory } from '../StoryPoC/ProgressStory';
 import { MulticolumnStory } from '../StoryPoC/MulticolumnStory';
+import { ChatbotStory } from '../StoryPoC/ChatbotStory';
+import { VideoScrollStory } from '../StoryPoC/VideoScrollStory';
 import { Bookshelf } from '../Bookshelf/Bookshelf';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
@@ -17,6 +19,7 @@ type SbStoryProps = {
     content?: SbBlokData[];
     ankle?: SbBlokData[];
   } & StoryHeroProps;
+  slug?: string;
 };
 
 export const SbStory = ({
@@ -40,12 +43,13 @@ export const SbStory = ({
     ankle,
   },
   blok,
+  slug,
 }: SbStoryProps) => (
   <div {...storyblokEditable(blok)}>
     <Masthead isLight={isLightHero} />
     <main id="main-content">
       <article>
-        {!(title?.includes('Whereas') || title?.includes('Progress')) && (
+        {!(title?.includes('Whereas') || title?.includes('Progress') || title?.includes('Video')) && (
           <>
             <StoryHero
               title={title}
@@ -76,6 +80,12 @@ export const SbStory = ({
         )}
         {title?.includes('Progress') && (
           <ProgressStory />
+        )}
+        {title?.includes('Video scrolling') && (
+          <VideoScrollStory />
+        )}
+        {title?.includes('Chatbot') && (
+          <ChatbotStory />
         )}
         {title?.includes('Whereas') && (
           <MulticolumnStory />
