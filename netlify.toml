@@ -2,7 +2,12 @@
 # ##############################################################################
 [build]
   command = "npm run build"
-  publish = ".next"
+  publish = "out"
+
+[build.environment]
+  # For apps that use next export to generate static HTML
+  # set the NETLIFY_NEXT_PLUGIN_SKIP to true.
+  NETLIFY_NEXT_PLUGIN_SKIP="true"
 
 # PLUGINS
 # ##############################################################################
