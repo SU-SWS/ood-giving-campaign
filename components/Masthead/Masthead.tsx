@@ -65,7 +65,7 @@ export const Masthead = ({ isLight, className }: MastheadProps) => {
       <FlexBox
         justifyContent="between"
         alignItems="center"
-        className={cnb('cc transition 3xl:px-100 py-12', !isAtTop ? 'lg:py-6' : 'md:py-26')}
+        className={cnb('cc transition 3xl:px-100 py-12', !isAtTop ? 'lg:py-11' : 'md:py-26')}
       >
         <LogoLockup
           isLink
@@ -74,7 +74,7 @@ export const Masthead = ({ isLight, className }: MastheadProps) => {
           className=""
         />
         {/* The scale3d here solves a Firefox only rendering bug with blurry curved borders when using transform */}
-        <FlexBox alignItems="center" className={cnb('transition-all', isAtTop ? '' : 'origin-right lg:[transform:scale3d(0.75,0.75,0.75)]')}>
+        <FlexBox alignItems="center">
           <CtaLink
             href={ood.give}
             variant={ctaVariant}
