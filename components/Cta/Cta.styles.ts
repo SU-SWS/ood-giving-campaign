@@ -31,6 +31,7 @@ export const ctaVariants = {
   'close-x': 'leading-none',
   chip: 'inline-block leading-display no-underline text-current rounded-full border-2 border-current hocus:text-current font-normal underline-offset-4 decoration-transparent hocus-visible:decoration-current hocus-visible:decoration-2',
   storyCardTag: 'inline-block text-current hocus:text-current font-normal decoration-2 underline-offset-4 decoration-black-50 hocus:decoration-current hocus:decoration-4',
+  brochure: 'inline-block font-bold font-serif no-underline leading-none text-gc-black hocus:text-gc-black',
   unset: '',
 };
 
@@ -75,6 +76,7 @@ export const ctaSizes: CtaSizeObjectType = {
   close: 'text-18 md:text-21',
   chip: 'py-7 px-22 text-18',
   storyCardTag: 'text-16 lg:text-18',
+  brochure: 'text-20 xl:text-30',
   unset: '',
 };
 
@@ -94,6 +96,7 @@ export const ctaSizeMap: CtaSizeMapType = {
   back: 'back',
   chip: 'chip',
   storyCardTag: 'storyCardTag',
+  brochure: 'brochure',
   unset: 'unset',
 };
 
