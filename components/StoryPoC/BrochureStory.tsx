@@ -40,44 +40,92 @@ export const BrochureStory = () => {
         </Paragraph>
       </Container>
       {/* Chapter 1 */}
-      <article className="relative bg-white text-gc-black mx-25 rs-px-1 rs-py-1 rs-mt-10 lg:h-1000">
-        <FlexBox alignItems="start" className="flex-col lg:flex-row lg:gap-x-80 3xl:gap-x-120">
-          <figure>
-            <div className="max-h-900 overflow-hidden">
-              <img
-                src={getProcessedImage('https://a-us.storyblok.com/f/1005200/883x1040/d7d568e264/21664-15-0029_cmyk-1.jpg', '1000x1100')}
-                className=""
-                alt=""
-              />
-            </div>
-            <Text variant="caption" color="black-80" className="mt-03em">
-              Caption/credit lorem ipsum dolar sit amet vestibulum perimentium
-            </Text>
-          </figure>
-          <div className="mt-40 2xl:mt-60 3xl:mt-90 text-gc-black lg:w-1/2 rs-pr-6 shrink-0">
-            <Text font="serif" size={2} className="rs-mb-0">Chapter 1.</Text>
-            <Heading leading="tight" className="type-5 3xl:type-6 3xl:mb-100 mb-60">
-              Preparing citizens and leaders
-            </Heading>
-            <Grid xxl={2} gap="default" alignItems="start">
-              <div>
-                <Paragraph font="serif" weight="bold" size={1} leading="display" noMargin>
-                  To change the world, one must first learn to engage with the world.
-                </Paragraph>
-              </div>
-              <div>
-                <Paragraph noMargin leading="snug">
-                  Through a combination of groundbreaking new curriculum, enhanced resources and financial aid,
-                  and revitalized residential experiences, Stanford will create a culture that prepares students
-                  to live, work,and serve as active citizens, for the good of the world.
-                  This includes an embedded focus on character, community, civic engagement, and ethics,
-                  undergirded by an inclusive worldview.
-                </Paragraph>
+      <article className="relative bg-white text-gc-black mx-25 rs-mt-10 lg:h-1000 overflow-hidden">
+        <Grid xs={2} className="relative grid w-[200%] lg:h-1000">
+          {/* Stack 1 - cover */}
+          <div className="lg:h-1000 relative bg-white rs-p-1">
+            <Grid lg={12} alignItems="start" className="lg:h-full lg:gap-x-80 3xl:gap-x-120">
+              <figure className="h-full flex flex-col overflow-hidden lg:col-span-6 2xl:col-span-5 4xl:col-span-6">
+                <div className="overflow-hidden grow">
+                  <img
+                    src={getProcessedImage('https://a-us.storyblok.com/f/1005200/883x1040/d7d568e264/21664-15-0029_cmyk-1.jpg', '1000x1100')}
+                    className="object-cover w-full h-full"
+                    alt=""
+                  />
+                </div>
+                <Text variant="caption" color="black-80" className="mt-03em shrink-0">
+                  Caption/credit lorem ipsum dolar sit amet vestibulum perimentium
+                </Text>
+              </figure>
+              <div className="mt-40 2xl:mt-60 3xl:mt-90 text-gc-black rs-pr-6 shrink-0 lg:col-span-6 2xl:col-span-7 4xl:col-span-6">
+                <Text font="serif" size={2} className="rs-mb-0">Chapter 1.</Text>
+                <Heading leading="tight" className="type-5 3xl:type-6 3xl:mb-100 mb-60">
+                  Preparing citizens and leaders
+                </Heading>
+                <Grid xxl={2} gap="default" alignItems="start">
+                  <div>
+                    <Paragraph font="serif" weight="bold" size={1} leading="display" noMargin>
+                      To change the world, one must first learn to engage with the world.
+                    </Paragraph>
+                  </div>
+                  <div>
+                    <Paragraph noMargin leading="snug">
+                      Through a combination of groundbreaking new curriculum, enhanced resources and financial aid,
+                      and revitalized residential experiences, Stanford will create a culture that prepares students
+                      to live, work,and serve as active citizens, for the good of the world.
+                      This includes an embedded focus on character, community, civic engagement, and ethics,
+                      undergirded by an inclusive worldview.
+                    </Paragraph>
+                  </div>
+                </Grid>
               </div>
             </Grid>
+            <CtaButton icon="arrow-right" variant="brochure" color="black" className="rs-mt-3 xl:!absolute bottom-70 right-80">Continue reading</CtaButton>
           </div>
-        </FlexBox>
-        <CtaButton icon="arrow-right" variant="brochure" color="black" className="rs-mt-3 xl:!absolute bottom-70 right-80">Continue reading</CtaButton>
+          {/* Stack 2 */}
+          <div className="lg:h-1000 relative">
+            {/* Stack 2 - slide 1 */}
+            <div className="h-full relative bg-white rs-p-1">
+              <Grid lg={12} alignItems="start" className="lg:h-full lg:gap-x-80 3xl:gap-x-120">
+                <figure className="h-full flex flex-col overflow-hidden lg:col-span-6 2xl:col-span-5 4xl:col-span-6">
+                  <div className="overflow-hidden grow">
+                    <img
+                      src={getProcessedImage('https://a-us.storyblok.com/f/1005200/883x1040/d7d568e264/21664-15-0029_cmyk-1.jpg', '1000x1100')}
+                      className="object-cover w-full h-full"
+                      alt=""
+                    />
+                  </div>
+                  <Text variant="caption" color="black-80" className="mt-03em shrink-0">
+                    Caption/credit lorem ipsum dolar sit amet vestibulum perimentium
+                  </Text>
+                </figure>
+                <div className="mt-40 2xl:mt-60 3xl:mt-90 text-gc-black rs-pr-6 shrink-0 lg:col-span-6 2xl:col-span-7 4xl:col-span-6">
+                  <Text font="serif" size={2} className="rs-mb-0">Chapter 1.</Text>
+                  <Heading leading="tight" className="type-5 3xl:type-6 3xl:mb-100 mb-60">
+                    Preparing citizens and leaders
+                  </Heading>
+                  <Grid xxl={2} gap="default" alignItems="start">
+                    <div>
+                      <Paragraph font="serif" weight="bold" size={1} leading="display" noMargin>
+                        To change the world, one must first learn to engage with the world.
+                      </Paragraph>
+                    </div>
+                    <div>
+                      <Paragraph noMargin leading="snug">
+                        Through a combination of groundbreaking new curriculum, enhanced resources and financial aid,
+                        and revitalized residential experiences, Stanford will create a culture that prepares students
+                        to live, work,and serve as active citizens, for the good of the world.
+                        This includes an embedded focus on character, community, civic engagement, and ethics,
+                        undergirded by an inclusive worldview.
+                      </Paragraph>
+                    </div>
+                  </Grid>
+                </div>
+              </Grid>
+              <CtaButton icon="arrow-right" variant="brochure" color="black" className="rs-mt-3 xl:!absolute bottom-70 right-80">Continue reading</CtaButton>
+            </div>
+          </div>
+        </Grid>
       </article>
       <Text icon="arrow-down" font="serif" weight="bold" size={1} align="center" className="rs-mt-0">More sections</Text>
       {/* Chapter 2 */}
