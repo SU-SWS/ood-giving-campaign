@@ -123,7 +123,7 @@ export const BrochureStory = () => {
                   </Text>
                 </figure>
                 <div className="mt-40 3xl:mt-60 text-gc-black rs-pr-5 shrink-0 lg:col-span-6 2xl:col-span-7 4xl:col-span-6">
-                  <Heading as="h3" leading="tight" className="type-5 rs-mb-3">
+                  <Heading as="h3" leading="tight" size="f5" className="rs-mb-3">
                     The future grows on a farm
                   </Heading>
                   <Grid xxl={2} gap="default" alignItems="start">
@@ -180,7 +180,7 @@ export const BrochureStory = () => {
             >
               <Grid lg={12} alignItems="start" className="lg:h-full">
                 <div className="rs-p-4 h-full bg-illuminating text-gc-black rs-pr-5 shrink-0 col-span-12 3xl:col-start-2 3xl:col-span-11 4xl:col-start-3 4xl:col-span-10">
-                  <Heading as="h3" leading="tight" size={5} className="rs-mb-3 max-w-1000">
+                  <Heading as="h3" leading="tight" size="f5" className="rs-mb-3 max-w-1000">
                     How can we live more meaningful lives?
                   </Heading>
                   <Grid xxl={4} alignItems="start" className="gap-x-1em">
@@ -205,6 +205,24 @@ export const BrochureStory = () => {
                       <Paragraph leading="snug" variant="card" noMargin>
                         Through meaningful discourse, respectful debate, and collaboration,
                         we prepare students to become better citizens in their communities and leaders in the world.
+                      </Paragraph>
+                    </div>
+                    <div className="2xl:col-span-2">
+                      <Grid xxl={2} className="gap-x-1em">
+                        <Paragraph leading="snug" variant="card">
+                          And it is the bridge connecting Jane and Leland Stanford’s conviction that education should be
+                          a vehicle to “correct inequalities “with our hope that Stanford graduates
+                          will work to shape a world that needs less correcting.
+                        </Paragraph>
+                        <Paragraph leading="snug" variant="card">
+                          A comprehensive, need-based financial aid program makes it possible for all admitted students
+                          to thrive, from the moment they arrive on the Farm to their last, wacky, step off campus.
+                        </Paragraph>
+                      </Grid>
+                      <Paragraph weight="bold" font="serif" leading="display" size={1} noMargin className="2xl:w-4/5 mx-auto">
+                        Financial aid is a bridge that connects talented and ambitious students with vibrant,
+                        dynamic, and transformative educational opportunities, ensuring that Stanford is not an
+                        island accessible only to those fortunate enough to be financially secure.
                       </Paragraph>
                     </div>
                   </Grid>
