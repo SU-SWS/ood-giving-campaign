@@ -14,10 +14,10 @@ import { CtaButton } from '../Cta';
 
 export const BrochureStory = () => {
   const bgImage = getProcessedImage('https://a-us.storyblok.com/f/1005200/3089x2048/aee2ea28c6/21664-18-0021_cmyk.jpg', '2000x0');
-  const [isMoved, setIsMoved] = useState(false);
+  const [isCurrent, setIsCurrent] = useState<false | number>(false);
 
-  const handleButtonClick = () => {
-    setIsMoved(!isMoved);
+  const handleButtonClick = (i: number) => {
+    setIsCurrent(i);
   };
 
   return (
@@ -87,7 +87,7 @@ export const BrochureStory = () => {
               </div>
             </Grid>
             <CtaButton
-              onClick={handleButtonClick}
+              onClick={() => handleButtonClick(1)}
               icon="arrow-right"
               variant="brochure"
               color="black"
@@ -101,10 +101,10 @@ export const BrochureStory = () => {
             {/* Stack 2 - slide 1 */}
             <m.div
               className="h-full relative bg-illuminating rs-px-1 rs-pt-1 rs-pb-2"
-              aria-hidden={isMoved}
+              aria-hidden={isCurrent !== 1}
               initial={{ x: 0, visibility: 'hidden' }}
-              animate={{ x: isMoved ? '-100%' : 0, visibility: isMoved ? 'visible' : 'hidden' }}
-              transition={{ duration: 0.6, ease: 'easeIn' }}
+              animate={{ x: isCurrent ? '-100%' : 0, visibility: isCurrent? 'visible' : 'hidden' }}
+              transition={{ duration: 0.5 }}
             >
               <Grid lg={12} alignItems="start" className="lg:h-full lg:gap-x-80 3xl:gap-x-100 4xl:gap-x-120">
                 <figure className="h-full flex flex-col overflow-hidden lg:col-span-6 2xl:col-span-5 4xl:col-span-6">
@@ -131,7 +131,7 @@ export const BrochureStory = () => {
                       <Paragraph font="serif" weight="bold" size={1} leading="display">
                         To change the world, one must first learn to engage with the world.
                       </Paragraph>
-                      <Paragraph noMargin leading="snug">
+                      <Paragraph noMargin leading="snug" variant="card">
                         Ready to equip the next generation of leaders with skills to promote the public welfare and act
                         for the good of the world. To define personal success as inexorably linked to the
                         success of others. To act not only as individuals, but as members of society—global citizens
@@ -141,14 +141,14 @@ export const BrochureStory = () => {
                       </Paragraph>
                     </div>
                     <div>
-                      <Paragraph leading="snug">
+                      <Paragraph leading="snug" variant="card">
                         It’s urgent that students find expanded opportunities to match a rapidly changing society.
                         When polarization is the norm and “social” media is anything but,
                         it’s imperative that we build inclusive communities outside the classroom.
                         Residential neighborhoods, community centers, and athletic opportunities that develop leaders
                         on and off the field provide connection and a rallying point for everyone at Stanford.
                       </Paragraph>
-                      <Paragraph weight="bold" leading="snug">
+                      <Paragraph weight="bold" variant="card" leading="snug">
                         Every student, regardless of background or identity, deserves to feel a sense of belonging.
                         If we are to continue to invite future movers, shakers, and game-changers of our world,
                         our doors must always be wide open.
@@ -157,7 +157,15 @@ export const BrochureStory = () => {
                   </Grid>
                 </div>
               </Grid>
-              <CtaButton icon="arrow-right" variant="brochure" color="black" className="rs-mt-3 xl:!absolute bottom-60 right-70">Continue reading</CtaButton>
+              <CtaButton
+                onClick={() => handleButtonClick(2)}
+                icon="arrow-right"
+                variant="brochure"
+                color="black"
+                className="rs-mt-3 xl:!absolute bottom-60 right-70"
+              >
+                Next
+              </CtaButton>
             </m.div>
             {/* Stack 2 - slide 2 */}
             <m.div
@@ -165,42 +173,38 @@ export const BrochureStory = () => {
               style={{
                 backgroundImage: `url('${getProcessedImage('https://a-us.storyblok.com/f/1005200/4000x3000/63a5df0536/ben-koorengevel-4wiwwdrbrw0-unsplash_cmyk.jpg', '2000x0')}')`,
               }}
-              aria-hidden={isMoved}
-              // initial={{ x: 0, visibility: 'hidden' }}
-              // animate={{ x: isMoved ? '-100%' : 0, visibility: isMoved ? 'visible' : 'hidden' }}
-              // transition={{ duration: 0.6, ease: 'easeIn' }}
+              aria-hidden={isCurrent === 2}
+              initial={{ x: 0, visibility: 'hidden' }}
+              animate={{ x: isCurrent === 2 ? '-100%' : 0, visibility: isCurrent === 2 ? 'visible' : 'hidden' }}
+              transition={{ duration: 0.5, ease: 'easeIn' }}
             >
               <Grid lg={12} alignItems="start" className="lg:h-full">
-                <div className="rs-p-5 h-full bg-illuminating text-gc-black rs-pr-5 shrink-0 col-span-12 2xl:col-start-2 2xl:col-span-11 4xl:col-start-3 4xl:col-span-10">
+                <div className="rs-p-4 h-full bg-illuminating text-gc-black rs-pr-5 shrink-0 col-span-12 3xl:col-start-2 3xl:col-span-11 4xl:col-start-3 4xl:col-span-10">
                   <Heading as="h3" leading="tight" size={5} className="rs-mb-3 max-w-1000">
                     How can we live more meaningful lives?
                   </Heading>
-                  <Grid xxl={2} gap="default" alignItems="start">
+                  <Grid xxl={4} alignItems="start" className="gap-x-1em">
                     <div>
-                      <Paragraph font="serif" weight="bold" size={1} leading="display">
-                        To change the world, one must first learn to engage with the world.
+                      <Paragraph leading="snug" variant="card">
+                        Thanks to the Civic, Liberal, and Global Education (COLLEGE) core curriculum,
+                        answering that question is how students start their time at Stanford. The course Why College?
+                        Your Education and the Good Life introduces first-year students to the idea of liberal
+                        education, explains its goals and history.
                       </Paragraph>
-                      <Paragraph noMargin leading="snug">
-                        Ready to equip the next generation of leaders with skills to promote the public welfare and act
-                        for the good of the world. To define personal success as inexorably linked to the
-                        success of others.To act not only as individuals, but as members of society—global citizens
-                        who embrace diversity of thought and experience. Through shared experiences,
-                        Stanford undergraduates gain a sense of community and belonging that fosters
-                        both intellectual and personal growth.
+                      <Paragraph leading="snug" variant="card" noMargin>
+                        Led by Dan Edelstein, director of Stanford Introductory Studies and the William H.
+                        Bonsall Professor in French in the School of Humanities and Sciences.
                       </Paragraph>
                     </div>
                     <div>
-                      <Paragraph leading="snug">
-                        It’s urgent that students find expanded opportunities to match a rapidly changing society.
-                        When polarization is the norm and “social” media is anything but,
-                        it’s imperative that we build inclusive communities outside the classroom.
-                        Residential neighborhoods, community centers, and athletic opportunities that develop leaders
-                        on and off the field provide connection and a rallying point for everyone at Stanford.
+                      <Paragraph leading="snug" variant="card">
+                        Three different themes help students think about their core values,
+                        engage with one another productively—even over contentious topics—and leave
+                        Stanford with the skills and knowledge to understand current challenges in a global context.
                       </Paragraph>
-                      <Paragraph weight="bold" leading="snug">
-                        Every student, regardless of background or identity, deserves to feel a sense of belonging.
-                        If we are to continue to invite future movers, shakers, and game-changers of our world,
-                        our doors must always be wide open.
+                      <Paragraph leading="snug" variant="card" noMargin>
+                        Through meaningful discourse, respectful debate, and collaboration,
+                        we prepare students to become better citizens in their communities and leaders in the world.
                       </Paragraph>
                     </div>
                   </Grid>
