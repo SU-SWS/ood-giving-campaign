@@ -104,7 +104,7 @@ export const BrochureStory = () => {
               aria-hidden={isMoved}
               initial={{ x: 0, visibility: 'hidden' }}
               animate={{ x: isMoved ? '-100%' : 0, visibility: isMoved ? 'visible' : 'hidden' }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, ease: 'easeIn' }}
             >
               <Grid lg={12} alignItems="start" className="lg:h-full lg:gap-x-80 3xl:gap-x-100 4xl:gap-x-120">
                 <figure className="h-full flex flex-col overflow-hidden lg:col-span-6 2xl:col-span-5 4xl:col-span-6">
@@ -125,6 +125,55 @@ export const BrochureStory = () => {
                 <div className="mt-40 3xl:mt-60 text-gc-black rs-pr-5 shrink-0 lg:col-span-6 2xl:col-span-7 4xl:col-span-6">
                   <Heading as="h3" leading="tight" className="type-5 rs-mb-3">
                     The future grows on a farm
+                  </Heading>
+                  <Grid xxl={2} gap="default" alignItems="start">
+                    <div>
+                      <Paragraph font="serif" weight="bold" size={1} leading="display">
+                        To change the world, one must first learn to engage with the world.
+                      </Paragraph>
+                      <Paragraph noMargin leading="snug">
+                        Ready to equip the next generation of leaders with skills to promote the public welfare and act
+                        for the good of the world. To define personal success as inexorably linked to the
+                        success of others. To act not only as individuals, but as members of society—global citizens
+                        who embrace diversity of thought and experience. Through shared experiences,
+                        Stanford undergraduates gain a sense of community and belonging that fosters
+                        both intellectual and personal growth.
+                      </Paragraph>
+                    </div>
+                    <div>
+                      <Paragraph leading="snug">
+                        It’s urgent that students find expanded opportunities to match a rapidly changing society.
+                        When polarization is the norm and “social” media is anything but,
+                        it’s imperative that we build inclusive communities outside the classroom.
+                        Residential neighborhoods, community centers, and athletic opportunities that develop leaders
+                        on and off the field provide connection and a rallying point for everyone at Stanford.
+                      </Paragraph>
+                      <Paragraph weight="bold" leading="snug">
+                        Every student, regardless of background or identity, deserves to feel a sense of belonging.
+                        If we are to continue to invite future movers, shakers, and game-changers of our world,
+                        our doors must always be wide open.
+                      </Paragraph>
+                    </div>
+                  </Grid>
+                </div>
+              </Grid>
+              <CtaButton icon="arrow-right" variant="brochure" color="black" className="rs-mt-3 xl:!absolute bottom-60 right-70">Continue reading</CtaButton>
+            </m.div>
+            {/* Stack 2 - slide 2 */}
+            <m.div
+              className="h-full relative bg-poppy rs-px-6 rs-pt-6 rs-pb-3 bg-no-repeat bg-cover bg-bottom -mt-1000"
+              style={{
+                backgroundImage: `url('${getProcessedImage('https://a-us.storyblok.com/f/1005200/4000x3000/63a5df0536/ben-koorengevel-4wiwwdrbrw0-unsplash_cmyk.jpg', '2000x0')}')`,
+              }}
+              aria-hidden={isMoved}
+              // initial={{ x: 0, visibility: 'hidden' }}
+              // animate={{ x: isMoved ? '-100%' : 0, visibility: isMoved ? 'visible' : 'hidden' }}
+              // transition={{ duration: 0.6, ease: 'easeIn' }}
+            >
+              <Grid lg={12} alignItems="start" className="lg:h-full">
+                <div className="rs-p-5 h-full bg-illuminating text-gc-black rs-pr-5 shrink-0 col-span-12 2xl:col-start-2 2xl:col-span-11 4xl:col-start-3 4xl:col-span-10">
+                  <Heading as="h3" leading="tight" size={5} className="rs-mb-3 max-w-1000">
+                    How can we live more meaningful lives?
                   </Heading>
                   <Grid xxl={2} gap="default" alignItems="start">
                     <div>
@@ -157,7 +206,7 @@ export const BrochureStory = () => {
                   </Grid>
                 </div>
               </Grid>
-              <CtaButton icon="arrow-right" variant="brochure" color="black" className="rs-mt-3 xl:!absolute bottom-60 right-70">Continue reading</CtaButton>
+              <CtaButton icon="close" variant="brochure" color="black" className="rs-mt-3 xl:!absolute bottom-100 right-150">Close</CtaButton>
             </m.div>
           </div>
         </Grid>
