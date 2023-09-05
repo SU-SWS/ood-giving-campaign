@@ -48,7 +48,7 @@ export const BrochureStory = () => {
       <article className="relative bg-white text-gc-black mx-25 rs-mt-10 lg:h-1000 overflow-hidden">
         <Grid xs={2} className="relative grid w-[200%] lg:h-1000">
           {/* Stack 1 - cover */}
-          <div className="lg:h-1000 relative bg-white rs-px-1 rs-pt-1 rs-pb-2">
+          <div className="lg:h-1000 relative bg-white rs-px-1 rs-pt-1 rs-pb-2" aria-hidden={!!isCurrent}>
             <Grid lg={12} alignItems="start" className="lg:h-full lg:gap-x-80 3xl:gap-x-120">
               <figure className="h-full flex flex-col overflow-hidden lg:col-span-6 2xl:col-span-5 4xl:col-span-6">
                 <div className="overflow-hidden grow">
@@ -87,6 +87,7 @@ export const BrochureStory = () => {
             </Grid>
             <CtaButton
               onClick={() => handleButtonClick(1)}
+              disabled={!!isCurrent}
               icon="arrow-right"
               variant="brochure"
               color="black"
@@ -158,6 +159,7 @@ export const BrochureStory = () => {
               </Grid>
               <CtaButton
                 onClick={() => handleButtonClick(2)}
+                disabled={isCurrent !== 1}
                 icon="arrow-right"
                 variant="brochure"
                 color="black"
@@ -172,7 +174,7 @@ export const BrochureStory = () => {
               style={{
                 backgroundImage: `url('${getProcessedImage('https://a-us.storyblok.com/f/1005200/4000x3000/63a5df0536/ben-koorengevel-4wiwwdrbrw0-unsplash_cmyk.jpg', '2000x0')}')`,
               }}
-              aria-hidden={isCurrent === 2}
+              aria-hidden={isCurrent !== 2}
               initial={{ x: 0, visibility: 'hidden' }}
               animate={{ x: isCurrent === 2 ? '-100%' : 0, visibility: isCurrent === 2 ? 'visible' : 'hidden' }}
               transition={{ duration: 0.5, ease: 'easeIn' }}
