@@ -1,13 +1,12 @@
 'use client';
-import { useRef, useState } from 'react';
-import { useScroll, m, useTransform } from 'framer-motion';
-import { AnimateInView } from '../Animate';
+
+import { useState } from 'react';
+import { m } from 'framer-motion';
 import { Container } from '../Container';
 import { Grid } from '../Grid';
 import { Heading, Paragraph, Text } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { Paragraphs } from '../Temporary/Paragraphs';
-import { FlexBox } from '../FlexBox';
+
 import { CtaButton } from '../Cta';
 import { BrochureChapter2 } from './BrochureChapter2';
 
@@ -91,7 +90,7 @@ export const BrochureStory = () => {
               icon="arrow-right"
               variant="brochure"
               color="black"
-              className="rs-mt-3 xl:!absolute bottom-60 right-70"
+              className="rs-mt-3 absolute bottom-60 right-70"
             >
               Continue reading
             </CtaButton>
@@ -102,8 +101,8 @@ export const BrochureStory = () => {
             <m.div
               className="h-full relative bg-illuminating rs-px-1 rs-pt-1 rs-pb-2"
               aria-hidden={isCurrent !== 1}
-              initial={{ x: 0, visibility: 'hidden' }}
-              animate={{ x: isCurrent ? '-100%' : 0, visibility: isCurrent? 'visible' : 'hidden' }}
+              initial={{ x: 0 }}
+              animate={{ x: isCurrent ? '-100%' : 0 }}
               transition={{ duration: 0.5 }}
             >
               <Grid lg={12} alignItems="start" className="lg:h-full lg:gap-x-80 3xl:gap-x-100 4xl:gap-x-120">
@@ -163,7 +162,7 @@ export const BrochureStory = () => {
                 icon="arrow-right"
                 variant="brochurePoppy"
                 color="black"
-                className="rs-mt-3 xl:!absolute bottom-60 right-70"
+                className="rs-mt-3 absolute bottom-60 right-70"
               >
                 Next
               </CtaButton>
@@ -175,8 +174,8 @@ export const BrochureStory = () => {
                 backgroundImage: `url('${getProcessedImage('https://a-us.storyblok.com/f/1005200/4000x3000/63a5df0536/ben-koorengevel-4wiwwdrbrw0-unsplash_cmyk.jpg', '2000x0')}')`,
               }}
               aria-hidden={isCurrent !== 2}
-              initial={{ x: 0, visibility: 'hidden' }}
-              animate={{ x: isCurrent === 2 ? '-100%' : 0, visibility: isCurrent === 2 ? 'visible' : 'hidden' }}
+              initial={{ x: 0 }}
+              animate={{ x: isCurrent === 2 ? '-100%' : 0 }}
               transition={{ duration: 0.5, ease: 'easeIn' }}
             >
               <Grid lg={12} alignItems="start" className="lg:h-full">
@@ -235,7 +234,7 @@ export const BrochureStory = () => {
                 icon="close"
                 variant="brochurePoppy"
                 color="black"
-                className="rs-mt-3 xl:!absolute bottom-100 right-150"
+                className="rs-mt-3 absolute bottom-100 right-150"
               >
                 Close
               </CtaButton>

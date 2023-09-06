@@ -1,4 +1,5 @@
 'use client';
+
 import { useRef, useState } from 'react';
 import { useScroll, m, useTransform } from 'framer-motion';
 import { AnimateInView } from '../Animate';
@@ -64,7 +65,7 @@ export const BrochureChapter2 = () => {
             icon="arrow-right"
             variant="brochure"
             color="black"
-            className="rs-mt-3 xl:!absolute bottom-60 right-70"
+            className="rs-mt-3 absolute bottom-60 right-70"
           >
             Continue reading
           </CtaButton>
@@ -109,7 +110,7 @@ export const BrochureChapter2 = () => {
               icon="arrow-right"
               variant="brochurePoppy"
               color="black"
-              className="rs-mt-3 xl:!absolute bottom-60 right-70"
+              className="rs-mt-3 absolute bottom-60 right-70"
             >
               Next
             </CtaButton>
@@ -175,35 +176,37 @@ export const BrochureChapter2 = () => {
               icon="arrow-right"
               variant="brochure"
               color="white"
-              className="rs-mt-3 xl:!absolute bottom-60 right-70"
+              className="rs-mt-3 absolute bottom-60 right-70"
             >
               Next
             </CtaButton>
           </m.div>
           {/* Stack 2 - slide 3 */}
           <m.div
-            className="h-full relative bg-poppy rs-px-6 rs-pt-6 rs-pb-3 bg-no-repeat text-white bg-cover bg-bottom -mt-1000"
+            className="flex items-center justify-center h-full relative bg-poppy bg-no-repeat text-white bg-cover bg-bottom -mt-1000"
             style={{
-              backgroundImage: `url('${getProcessedImage('https://a-us.storyblok.com/f/1005200/5257x3474/ce5b07b9df/jeremy-thomas-4dpaqftbvka-unsplash.jpg', '2000x1000')}')`,
+              backgroundImage: `url('${getProcessedImage('https://a-us.storyblok.com/f/1005200/2187x1445/aefa943697/jeremy-thomas-4dpaqftbvka-unsplash-1.jpg', '2000x1000')}')`,
             }}
             aria-hidden={isCurrent !== 3}
             initial={{ x: 0 }}
             animate={{ x: isCurrent === 3 ? '-100%' : 0 }}
             transition={{ duration: 0.5, ease: 'easeIn' }}
           >
-            <Text size={2} color="white" font="serif" weight="bold">
-              Room to discover
-            </Text>
-            <Text size={2} color="white" font="serif" weight="bold">
-              freedom to explore
-            </Text>
+            <div>
+              <Text size={5} color="white" font="serif" weight="bold" align="center" className="text-shadow-lg">
+                Room to discover
+              </Text>
+              <Text size={5} color="white" font="serif" weight="bold" align="center" className="text-shadow-lg">
+                freedom to explore
+              </Text>
+            </div>
             <CtaButton
               disabled={isCurrent !== 3}
               onClick={() => handleButtonClick(false)}
               icon="close"
               variant="brochure"
               color="white"
-              className="rs-mt-3 xl:!absolute bottom-100 right-150"
+              className="absolute bottom-60 right-70"
             >
               Close
             </CtaButton>
