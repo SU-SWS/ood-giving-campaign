@@ -15,6 +15,10 @@ const mainNavBase = 'group bg-clip-padding inline-block border-2 font-normal dec
 const mainNavWhite = 'text-white border-white bg-gc-black hocus:text-white hocus:decoration-white hocus:ring-white';
 const mainNavDark = 'text-gc-black border-gc-black hocus:text-gc-black hocus:decoration-gc-black hocus:ring-gc-black';
 
+const brochureBase = 'inline-block font-bold font-serif no-underline hocus:no-underline leading-none text-gc-black hocus:text-gc-black bg-gradient-to-b bg-no-repeat bg-[0_100%] bg-[length:0_5px] hocus:bg-[length:calc(100%-1.3em)_5px]';
+const brochureIlluminating = 'from-illuminating to-illuminating';
+const brochurePoppy = 'from-poppy to-poppy';
+
 export const ctaVariants = {
   solid: 'block w-fit relative z-[10] font-normal decoration-2 decoration-transparent underline-offset-4 hocus:decoration-white/80 leading-display bg-digital-red text-white hocus:text-white border-2 border-digital-red-light focus-visible:outline-none after:block after:content-[""] after:absolute after:top-0 after:left-0 after:w-[0] after:h-full after:bg-gradient-to-r after:from-cardinal-red after:to-cardinal-red-dark after:transition-all after:z-[-1] hocus:after:w-full overflow-hidden',
   inline: 'inline underline decoration-1 hocus:decoration-2 underline-offset-2',
@@ -31,7 +35,8 @@ export const ctaVariants = {
   'close-x': 'leading-none',
   chip: 'inline-block leading-display no-underline text-current rounded-full border-2 border-current hocus:text-current font-normal underline-offset-4 decoration-transparent hocus-visible:decoration-current hocus-visible:decoration-2',
   storyCardTag: 'inline-block text-current hocus:text-current font-normal decoration-2 underline-offset-4 decoration-black-50 hocus:decoration-current hocus:decoration-4',
-  brochure: 'inline-block font-bold font-serif no-underline leading-none text-gc-black hocus:text-gc-black',
+  brochure: `${brochureBase} ${brochureIlluminating}`,
+  brochurePoppy: `${brochureBase} ${brochurePoppy}`,
   unset: '',
 };
 
@@ -76,7 +81,7 @@ export const ctaSizes: CtaSizeObjectType = {
   close: 'text-18 md:text-21',
   chip: 'py-7 px-22 text-18',
   storyCardTag: 'text-16 lg:text-18',
-  brochure: 'text-20 xl:text-30',
+  brochure: 'text-20 xl:text-30 py-12',
   unset: '',
 };
 
@@ -97,6 +102,7 @@ export const ctaSizeMap: CtaSizeMapType = {
   chip: 'chip',
   storyCardTag: 'storyCardTag',
   brochure: 'brochure',
+  brochurePoppy: 'brochure',
   unset: 'unset',
 };
 

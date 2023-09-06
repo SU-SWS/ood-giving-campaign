@@ -15,7 +15,7 @@ export const BrochureStory = () => {
   const bgImage = getProcessedImage('https://a-us.storyblok.com/f/1005200/3089x2048/aee2ea28c6/21664-18-0021_cmyk.jpg', '2000x0');
   const [isCurrent, setIsCurrent] = useState<false | number>(false);
 
-  const handleButtonClick = (i: number) => {
+  const handleButtonClick = (i: number | false) => {
     setIsCurrent(i);
   };
 
@@ -161,7 +161,7 @@ export const BrochureStory = () => {
                 onClick={() => handleButtonClick(2)}
                 disabled={isCurrent !== 1}
                 icon="arrow-right"
-                variant="brochure"
+                variant="brochurePoppy"
                 color="black"
                 className="rs-mt-3 xl:!absolute bottom-60 right-70"
               >
@@ -229,7 +229,16 @@ export const BrochureStory = () => {
                   </Grid>
                 </div>
               </Grid>
-              <CtaButton icon="close" variant="brochure" color="black" className="rs-mt-3 xl:!absolute bottom-100 right-150">Close</CtaButton>
+              <CtaButton
+                disabled={isCurrent !== 2}
+                onClick={() => handleButtonClick(false)}
+                icon="close"
+                variant="brochurePoppy"
+                color="black"
+                className="rs-mt-3 xl:!absolute bottom-100 right-150"
+              >
+                Close
+              </CtaButton>
             </m.div>
           </div>
         </Grid>
