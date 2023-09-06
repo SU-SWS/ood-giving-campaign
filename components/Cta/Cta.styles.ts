@@ -15,7 +15,7 @@ const mainNavBase = 'group bg-clip-padding inline-block border-2 font-normal dec
 const mainNavWhite = 'text-white border-white bg-gc-black hocus:text-white hocus:decoration-white hocus:ring-white';
 const mainNavDark = 'text-gc-black border-gc-black hocus:text-gc-black hocus:decoration-gc-black hocus:ring-gc-black';
 
-const brochureBase = 'inline-block font-bold font-serif no-underline hocus:no-underline leading-none text-gc-black hocus:text-gc-black bg-gradient-to-b bg-no-repeat bg-[0_100%] bg-[length:0_5px] hocus:bg-[length:calc(100%-1.3em)_5px]';
+const brochureBase = 'inline-block font-bold font-serif no-underline hocus:no-underline leading-none text-current hocus:!text-current bg-gradient-to-b bg-no-repeat bg-[0_100%] bg-[length:0_5px] hocus:bg-[length:calc(100%-1.3em)_5px]';
 const brochureIlluminating = 'from-illuminating to-illuminating';
 const brochurePoppy = 'from-poppy to-poppy';
 

@@ -75,8 +75,8 @@ export const BrochureChapter2 = () => {
           <m.div
             className="h-full relative bg-illuminating"
             aria-hidden={isCurrent !== 1}
-            initial={{ x: 0, visibility: 'hidden' }}
-            animate={{ x: isCurrent ? '-100%' : 0, visibility: isCurrent? 'visible' : 'hidden' }}
+            initial={{ x: 0 }}
+            animate={{ x: isCurrent ? '-100%' : 0 }}
             transition={{ duration: 0.5 }}
           >
             <Grid lg={2} alignItems="stretch" className="lg:h-full">
@@ -116,58 +116,54 @@ export const BrochureChapter2 = () => {
           </m.div>
           {/* Stack 2 - slide 2 */}
           <m.div
-            className="h-full relative bg-illuminating rs-px-1 rs-pt-1 rs-pb-2 -mt-1000"
+            className="h-full relative bg-black-90 text-white rs-px-1 rs-pt-1 rs-pb-2 -mt-1000"
             aria-hidden={isCurrent !== 2}
-            initial={{ x: 0, visibility: 'hidden' }}
-            animate={{ x: isCurrent === 2? '-100%' : 0, visibility: isCurrent === 2? 'visible' : 'hidden' }}
+            initial={{ x: 0 }}
+            animate={{ x: isCurrent && isCurrent >= 2 ? '-100%' : 0 }}
             transition={{ duration: 0.5 }}
           >
             <Grid lg={12} alignItems="start" className="lg:h-full lg:gap-x-80 3xl:gap-x-100 4xl:gap-x-120">
               <figure className="h-full flex flex-col overflow-hidden lg:col-span-6 2xl:col-span-5 4xl:col-span-6">
                 <div className="overflow-hidden grow">
                   <img
-                    src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2560x1708/e68ba35533/farm_1193_cmyk.jpg', '1000x1000')}
+                    src={getProcessedImage('https://a-us.storyblok.com/f/1005200/7211x4810/bca2dd7c52/20220217_the_faces_of_ruth_asawa_n6a0428_cmyk.jpg', '1000x1000')}
                     className="object-cover w-full h-full"
                     alt=""
                   />
                 </div>
-                <Text variant="caption" color="black" className="mt-03em shrink-0 max-w-prose-wide">
+                <Text variant="caption" color="white" className="mt-03em shrink-0 max-w-prose-wide">
                   The O’Donohue Family Stanford Educational Farm is Stanford’s living laboratory for
                   sustainable agriculture.Through workshops, wellness courses, and volunteer opportunities students
                   and members of the general public can come together to get hands-on experience in sustainable
                   small-scale and urban agriculture.
                 </Text>
               </figure>
-              <div className="mt-40 3xl:mt-60 text-gc-black rs-pr-5 shrink-0 lg:col-span-6 2xl:col-span-7 4xl:col-span-6">
+              <div className="mt-40 3xl:mt-60 text-white rs-pr-5 shrink-0 lg:col-span-6 2xl:col-span-7 4xl:col-span-6">
                 <Heading as="h3" leading="tight" size="f5" className="rs-mb-3">
-                  The future grows on a farm
+                  Where art and community come together
                 </Heading>
                 <Grid xxl={2} gap="default" alignItems="start">
                   <div>
-                    <Paragraph font="serif" weight="bold" size={1} leading="display">
-                      To change the world, one must first learn to engage with the world.
+                    <Paragraph variant="card" weight="bold" leading="snug">
+                      Artists of Asian descent have created work as varied and rich as their lives and histories
+                      – yet their contributions have remained in the shadows of American art.
+                      The Asian American art initiative is helping elevate their vital work
+                      to its rightful place in American art.
                     </Paragraph>
                     <Paragraph noMargin leading="snug" variant="card">
-                      Ready to equip the next generation of leaders with skills to promote the public welfare and act
-                      for the good of the world. To define personal success as inexorably linked to the
-                      success of others. To act not only as individuals, but as members of society—global citizens
-                      who embrace diversity of thought and experience. Through shared experiences,
-                      Stanford undergraduates gain a sense of community and belonging that fosters
-                      both intellectual and personal growth.
+                      Thanks in part to a Humanities Seed Grant, the AAAI is making targeted acquisitions,
+                      providing meaningful opportunities for engagement, and bringing works of art to life for
+                      new audiences. As a result, the Cantor Arts Center now houses one of the country’s
+                      biggest collections of Asian American art.
                     </Paragraph>
                   </div>
                   <div>
                     <Paragraph leading="snug" variant="card">
-                      It’s urgent that students find expanded opportunities to match a rapidly changing society.
-                      When polarization is the norm and “social” media is anything but,
-                      it’s imperative that we build inclusive communities outside the classroom.
-                      Residential neighborhoods, community centers, and athletic opportunities that develop leaders
-                      on and off the field provide connection and a rallying point for everyone at Stanford.
-                    </Paragraph>
-                    <Paragraph weight="bold" variant="card" leading="snug">
-                      Every student, regardless of background or identity, deserves to feel a sense of belonging.
-                      If we are to continue to invite future movers, shakers, and game-changers of our world,
-                      our doors must always be wide open.
+                      Through scholarship, accessibility, and outreach, the AAAI encourages audiences to navigate the
+                      complexity of the term “Asian American” itself. In a time fraught with racism, discrimination,
+                      and xenophobia, art that sheds light on these struggles is edifying and essential,
+                      providing us with a common experience through which discussion and understanding flourish
+                      between all members of society truly thriving and barely surviving.
                     </Paragraph>
                   </div>
                 </Grid>
@@ -178,7 +174,7 @@ export const BrochureChapter2 = () => {
               disabled={isCurrent !== 2}
               icon="arrow-right"
               variant="brochure"
-              color="black"
+              color="white"
               className="rs-mt-3 xl:!absolute bottom-60 right-70"
             >
               Next
@@ -186,13 +182,13 @@ export const BrochureChapter2 = () => {
           </m.div>
           {/* Stack 2 - slide 3 */}
           <m.div
-            className="h-full relative bg-poppy rs-px-6 rs-pt-6 rs-pb-3 bg-no-repeat bg-cover bg-bottom -mt-1000"
+            className="h-full relative bg-poppy rs-px-6 rs-pt-6 rs-pb-3 bg-no-repeat text-white bg-cover bg-bottom -mt-1000"
             style={{
               backgroundImage: `url('${getProcessedImage('https://a-us.storyblok.com/f/1005200/5257x3474/ce5b07b9df/jeremy-thomas-4dpaqftbvka-unsplash.jpg', '2000x1000')}')`,
             }}
             aria-hidden={isCurrent !== 3}
-            initial={{ x: 0, visibility: 'hidden' }}
-            animate={{ x: isCurrent === 3 ? '-100%' : 0, visibility: isCurrent === 3 ? 'visible' : 'hidden' }}
+            initial={{ x: 0 }}
+            animate={{ x: isCurrent === 3 ? '-100%' : 0 }}
             transition={{ duration: 0.5, ease: 'easeIn' }}
           >
             <Text size={2} color="white" font="serif" weight="bold">
@@ -206,7 +202,7 @@ export const BrochureChapter2 = () => {
               onClick={() => handleButtonClick(false)}
               icon="close"
               variant="brochure"
-              color="black"
+              color="white"
               className="rs-mt-3 xl:!absolute bottom-100 right-150"
             >
               Close
