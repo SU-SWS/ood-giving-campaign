@@ -1,15 +1,10 @@
 'use client';
 
-import { useRef, useState } from 'react';
-import { useScroll, m, useTransform } from 'framer-motion';
-import { AnimatedText } from '../AnimatedText/AnimatedText';
-import { AnimateInView } from '../Animate';
-import { Container } from '../Container';
+import { useState } from 'react';
+import { m } from 'framer-motion';
 import { Grid } from '../Grid';
 import { Heading, Paragraph, Text } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { Paragraphs } from '../Temporary/Paragraphs';
-import { FlexBox } from '../FlexBox';
 import { CtaButton } from '../Cta';
 
 export const BrochureChapter2 = () => {
