@@ -12,8 +12,12 @@ export const cta = 'group hocus:underline transition-all';
 const ghostSwipeBase = 'relative z-[10] block w-fit decoration-2 decoration-transparent underline-offset-4 hocus:decoration-white/80 font-normal leading-display hocus:text-white border-2 border-current hocus:border-digital-red-light focus-visible:outline-none after:block after:content-[""] after:absolute after:top-0 after:left-0 after:w-[0] after:h-full after:bg-gradient-to-r after:from-digital-red after:to-cardinal-red after:transition-all after:z-[-1] hocus:after:w-full overflow-hidden';
 
 const mainNavBase = 'group bg-clip-padding inline-block border-2 font-normal decoration-transparent decoration-1 underline-offset-4  hocus:ring-1 hocus:ring-inset';
-const mainNavWhite = 'text-white border-white hocus:text-white hocus:decoration-white hocus:ring-white';
+const mainNavWhite = 'text-white border-white bg-gc-black hocus:text-white hocus:decoration-white hocus:ring-white';
 const mainNavDark = 'text-gc-black border-gc-black hocus:text-gc-black hocus:decoration-gc-black hocus:ring-gc-black';
+
+const brochureBase = 'inline-block font-bold font-serif no-underline hocus:no-underline leading-none text-current hocus:!text-current bg-gradient-to-b bg-no-repeat bg-[0_100%] bg-[length:0_5px] hocus:bg-[length:calc(100%-1.3em)_5px]';
+const brochureIlluminating = 'from-illuminating to-illuminating';
+const brochurePoppy = 'from-poppy to-poppy';
 
 export const ctaVariants = {
   solid: 'block w-fit relative z-[10] font-normal decoration-2 decoration-transparent underline-offset-4 hocus:decoration-white/80 leading-display bg-digital-red text-white hocus:text-white border-2 border-digital-red-light focus-visible:outline-none after:block after:content-[""] after:absolute after:top-0 after:left-0 after:w-[0] after:h-full after:bg-gradient-to-r after:from-cardinal-red after:to-cardinal-red-dark after:transition-all after:z-[-1] hocus:after:w-full overflow-hidden',
@@ -24,13 +28,15 @@ export const ctaVariants = {
   'ghost-swipe-overlay': `${ghostSwipeBase} bg-black-true/40`, // Use for split poster over images
   link: 'font-normal decoration-transparent hocus:decoration-current leading-display text-current hocus:text-current hocus:decoration-2 focus-visible:ring-2 focus-visible:ring-lagunita-light focus-visible:outline-none focus-visible:rounded underline-offset-4',
   back: 'inline-block font-normal no-underline leading-none group-hocus:underline text-black hocus:text-lagunita focus-visible:ring-2 focus-visible:ring-lagunita-light focus-visible:ring-offset-4 focus:outline-none rounded-[1px]',
-  mainNav: `${mainNavBase} ${mainNavWhite} hocus-visible:bg-sapphire/50`, // Main nav buttons at the top of the page
+  mainNav: `${mainNavBase} ${mainNavWhite} hocus-visible:bg-digital-red`, // Main nav buttons at the top of the page
   mainNavUp: `${mainNavBase} ${mainNavWhite} hocus-visible:bg-digital-red`, // Main nav buttons when scrolling up
   mainNavBlack: `${mainNavBase} ${mainNavDark} hocus-visible:bg-lime`, // Main nav buttons when scrolling up
   close: 'inline-block font-semibold leading-none text-lagunita hocus:text-lagunita-dark focus:outline-none',
   'close-x': 'leading-none',
   chip: 'inline-block leading-display no-underline text-current rounded-full border-2 border-current hocus:text-current font-normal underline-offset-4 decoration-transparent hocus-visible:decoration-current hocus-visible:decoration-2',
   storyCardTag: 'inline-block text-current hocus:text-current font-normal decoration-2 underline-offset-4 decoration-black-50 hocus:decoration-current hocus:decoration-4',
+  brochure: `${brochureBase} ${brochureIlluminating}`,
+  brochurePoppy: `${brochureBase} ${brochurePoppy}`,
   unset: '',
 };
 
@@ -70,10 +76,12 @@ export const ctaSizes: CtaSizeObjectType = {
   large: 'pl-28 pr-26 pt-16 pb-17 lg:pr-40 lg:pl-44 lg:pt-20 lg:pb-22 text-18 lg:text-24',
   link: 'text-16 lg:text-20',
   mainNav: 'text-14 px-10 pt-8 pb-9 lg:px-22 lg:py-15 lg:text-20',
+  mainNavUp: 'text-14 px-10 pt-7 pb-8 lg:px-16 lg:py-11 lg:text-15',
   back: 'text-16',
   close: 'text-18 md:text-21',
   chip: 'py-7 px-22 text-18',
   storyCardTag: 'text-16 lg:text-18',
+  brochure: 'text-20 xl:text-30 py-12',
   unset: '',
 };
 
@@ -85,7 +93,7 @@ export const ctaSizeMap: CtaSizeMapType = {
   'ghost-swipe': 'default',
   'ghost-swipe-overlay': 'default',
   mainNav: 'mainNav',
-  mainNavUp: 'mainNav',
+  mainNavUp: 'mainNavUp',
   mainNavBlack: 'mainNav',
   link: 'unset',
   close: 'close',
@@ -93,6 +101,8 @@ export const ctaSizeMap: CtaSizeMapType = {
   back: 'back',
   chip: 'chip',
   storyCardTag: 'storyCardTag',
+  brochure: 'brochure',
+  brochurePoppy: 'brochure',
   unset: 'unset',
 };
 

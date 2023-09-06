@@ -42,7 +42,7 @@ const child = {
 
 return (
   <m.span
-    className="flex flex-wrap gap-x-[0.5em]"
+    className="flex flex-wrap gap-x-[0.3em] w-fit"
     variants={container}
     initial="hidden"
     animate="visible"

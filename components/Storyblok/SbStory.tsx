@@ -10,6 +10,7 @@ import { MulticolumnStory } from '../StoryPoC/MulticolumnStory';
 import { ChatbotStory } from '../StoryPoC/ChatbotStory';
 import { VideoScrollStory } from '../StoryPoC/VideoScrollStory';
 import { Bookshelf } from '../Bookshelf/Bookshelf';
+import { BrochureStory } from '../StoryPoC/BrochureStory';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 
@@ -49,7 +50,7 @@ export const SbStory = ({
     <Masthead isLight={isLightHero} />
     <main id="main-content">
       <article>
-        {!(title?.includes('Whereas') || title?.includes('Progress') || title?.includes('Video')) && (
+        {!(title?.includes('Whereas') || title?.includes('Progress') || title?.includes('Video') || title?.includes('Solve')) && (
           <>
             <StoryHero
               title={title}
@@ -77,6 +78,9 @@ export const SbStory = ({
               className="w-full"
             />
           </>
+        )}
+        {title?.includes('Solve') && (
+          <BrochureStory />
         )}
         {title?.includes('Progress') && (
           <ProgressStory />

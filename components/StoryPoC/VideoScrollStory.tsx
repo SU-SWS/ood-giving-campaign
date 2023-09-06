@@ -1,15 +1,10 @@
-'use client';
 import { useRef } from 'react';
 import { useScroll, m, useTransform } from 'framer-motion';
-import { scroll } from 'framer-motion/dom';
 import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
-import { Grid } from '../Grid';
 import { Heading, Paragraph, Text } from '../Typography';
-import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { getMaskedAsset } from '@/utilities/getMaskedAsset';
 import { colorNameToHex } from '@/utilities/colorPalettePlugin';
-import { Paragraphs } from '../Temporary/Paragraphs';
 
 export const VideoScrollStory = () => {
   const contentRef = useRef<HTMLDivElement>(null);

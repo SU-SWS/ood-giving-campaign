@@ -80,4 +80,4 @@ export const textVariants = {
   overview: 'overview',
 };
 
-export const iconStyle = 'inline-block shrink-0 w-[1.2em] mr-04em';
+export const iconStyle = 'inline-block shrink-0 w-09em ml-03em -mt-01em';
