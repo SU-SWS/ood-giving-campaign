@@ -73,10 +73,53 @@ export const BrochureChapter2 = () => {
         <div className="lg:h-1000 relative">
           {/* Stack 2 - slide 1 */}
           <m.div
-            className="h-full relative bg-illuminating rs-px-1 rs-pt-1 rs-pb-2"
+            className="h-full relative bg-illuminating"
             aria-hidden={isCurrent !== 1}
             initial={{ x: 0, visibility: 'hidden' }}
             animate={{ x: isCurrent ? '-100%' : 0, visibility: isCurrent? 'visible' : 'hidden' }}
+            transition={{ duration: 0.5 }}
+          >
+            <Grid lg={2} alignItems="stretch" className="lg:h-full">
+              <div className="relative">
+                <img
+                  src={getProcessedImage('https://a-us.storyblok.com/f/1005200/4000x2667/70562b0528/180914-1368_cmyk.jpg', '1500x1000')}
+                  className="object-cover w-full h-full object-left"
+                  loading="eager"
+                  alt=""
+                />
+                <Text align="center" size="f9" weight="bold" font="serif" leading="display" color="white" className="h-1000 text-vertical-lr absolute top-0 right-0 rotate-180">
+                  Duality is
+                </Text>
+              </div>
+              <div className="relative">
+                <img
+                  src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1858x1202/7a7e53079e/070201-021_cmyk.jpg', '1000x1000')}
+                  className="object-cover w-full h-full"
+                  loading="eager"
+                  alt=""
+                />
+                <Text align="center" size="f9" weight="bold" font="serif" leading="trim" color="white" className="h-1000 text-vertical-lr absolute top-0 left-0 rotate-180">
+                  in our DNA
+                </Text>
+              </div>
+            </Grid>
+            <CtaButton
+              onClick={() => handleButtonClick(2)}
+              disabled={isCurrent !== 1}
+              icon="arrow-right"
+              variant="brochurePoppy"
+              color="black"
+              className="rs-mt-3 xl:!absolute bottom-60 right-70"
+            >
+              Next
+            </CtaButton>
+          </m.div>
+          {/* Stack 2 - slide 2 */}
+          <m.div
+            className="h-full relative bg-illuminating rs-px-1 rs-pt-1 rs-pb-2 -mt-1000"
+            aria-hidden={isCurrent !== 2}
+            initial={{ x: 0, visibility: 'hidden' }}
+            animate={{ x: isCurrent === 2? '-100%' : 0, visibility: isCurrent === 2? 'visible' : 'hidden' }}
             transition={{ duration: 0.5 }}
           >
             <Grid lg={12} alignItems="start" className="lg:h-full lg:gap-x-80 3xl:gap-x-100 4xl:gap-x-120">
@@ -131,8 +174,8 @@ export const BrochureChapter2 = () => {
               </div>
             </Grid>
             <CtaButton
-              onClick={() => handleButtonClick(2)}
-              disabled={isCurrent !== 1}
+              onClick={() => handleButtonClick(3)}
+              disabled={isCurrent !== 2}
               icon="arrow-right"
               variant="brochure"
               color="black"
@@ -141,69 +184,25 @@ export const BrochureChapter2 = () => {
               Next
             </CtaButton>
           </m.div>
-          {/* Stack 2 - slide 2 */}
+          {/* Stack 2 - slide 3 */}
           <m.div
             className="h-full relative bg-poppy rs-px-6 rs-pt-6 rs-pb-3 bg-no-repeat bg-cover bg-bottom -mt-1000"
             style={{
-              backgroundImage: `url('${getProcessedImage('https://a-us.storyblok.com/f/1005200/4000x3000/63a5df0536/ben-koorengevel-4wiwwdrbrw0-unsplash_cmyk.jpg', '2000x0')}')`,
+              backgroundImage: `url('${getProcessedImage('https://a-us.storyblok.com/f/1005200/5257x3474/ce5b07b9df/jeremy-thomas-4dpaqftbvka-unsplash.jpg', '2000x1000')}')`,
             }}
-            aria-hidden={isCurrent !== 2}
+            aria-hidden={isCurrent !== 3}
             initial={{ x: 0, visibility: 'hidden' }}
-            animate={{ x: isCurrent === 2 ? '-100%' : 0, visibility: isCurrent === 2 ? 'visible' : 'hidden' }}
+            animate={{ x: isCurrent === 3 ? '-100%' : 0, visibility: isCurrent === 3 ? 'visible' : 'hidden' }}
             transition={{ duration: 0.5, ease: 'easeIn' }}
           >
-            <Grid lg={12} alignItems="start" className="lg:h-full">
-              <div className="rs-p-4 h-full bg-illuminating text-gc-black rs-pr-5 shrink-0 col-span-12 3xl:col-start-2 3xl:col-span-11 4xl:col-start-3 4xl:col-span-10">
-                <Heading as="h3" leading="tight" size="f5" className="rs-mb-3 max-w-1000">
-                  How can we live more meaningful lives?
-                </Heading>
-                <Grid xxl={4} alignItems="start" className="gap-x-1em">
-                  <div>
-                    <Paragraph leading="snug" variant="card">
-                      Thanks to the Civic, Liberal, and Global Education (COLLEGE) core curriculum,
-                      answering that question is how students start their time at Stanford. The course Why College?
-                      Your Education and the Good Life introduces first-year students to the idea of liberal
-                      education, explains its goals and history.
-                    </Paragraph>
-                    <Paragraph leading="snug" variant="card" noMargin>
-                      Led by Dan Edelstein, director of Stanford Introductory Studies and the William H.
-                      Bonsall Professor in French in the School of Humanities and Sciences.
-                    </Paragraph>
-                  </div>
-                  <div>
-                    <Paragraph leading="snug" variant="card">
-                      Three different themes help students think about their core values,
-                      engage with one another productively—even over contentious topics—and leave
-                      Stanford with the skills and knowledge to understand current challenges in a global context.
-                    </Paragraph>
-                    <Paragraph leading="snug" variant="card" noMargin>
-                      Through meaningful discourse, respectful debate, and collaboration,
-                      we prepare students to become better citizens in their communities and leaders in the world.
-                    </Paragraph>
-                  </div>
-                  <div className="2xl:col-span-2">
-                    <Grid xxl={2} className="gap-x-1em">
-                      <Paragraph leading="snug" variant="card">
-                        And it is the bridge connecting Jane and Leland Stanford’s conviction that education should be
-                        a vehicle to “correct inequalities “with our hope that Stanford graduates
-                        will work to shape a world that needs less correcting.
-                      </Paragraph>
-                      <Paragraph leading="snug" variant="card">
-                        A comprehensive, need-based financial aid program makes it possible for all admitted students
-                        to thrive, from the moment they arrive on the Farm to their last, wacky, step off campus.
-                      </Paragraph>
-                    </Grid>
-                    <Paragraph weight="bold" font="serif" leading="display" size={1} noMargin className="2xl:w-4/5 mx-auto">
-                      Financial aid is a bridge that connects talented and ambitious students with vibrant,
-                      dynamic, and transformative educational opportunities, ensuring that Stanford is not an
-                      island accessible only to those fortunate enough to be financially secure.
-                    </Paragraph>
-                  </div>
-                </Grid>
-              </div>
-            </Grid>
+            <Text size={2} color="white" font="serif" weight="bold">
+              Room to discover
+            </Text>
+            <Text size={2} color="white" font="serif" weight="bold">
+              freedom to explore
+            </Text>
             <CtaButton
-              disabled={isCurrent !== 2}
+              disabled={isCurrent !== 3}
               onClick={() => handleButtonClick(false)}
               icon="close"
               variant="brochure"
