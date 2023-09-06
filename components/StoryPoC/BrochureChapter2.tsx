@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react';
 import { useScroll, m, useTransform } from 'framer-motion';
+import { AnimatedText } from '../AnimatedText/AnimatedText';
 import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
 import { Grid } from '../Grid';

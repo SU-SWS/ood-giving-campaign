@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { m } from 'framer-motion';
+import { AnimatedText } from '../AnimatedText/AnimatedText';
 import { Container } from '../Container';
 import { Grid } from '../Grid';
 import { Heading, Paragraph, Text } from '../Typography';
@@ -9,6 +10,7 @@ import { getProcessedImage } from '@/utilities/getProcessedImage';
 
 import { CtaButton } from '../Cta';
 import { BrochureChapter2 } from './BrochureChapter2';
+import { AnimateInView } from '../Animate';
 
 export const BrochureStory = () => {
   const bgImage = getProcessedImage('https://a-us.storyblok.com/f/1005200/3089x2048/aee2ea28c6/21664-18-0021_cmyk.jpg', '2000x0');
@@ -26,10 +28,15 @@ export const BrochureStory = () => {
       style={{ backgroundImage: `url('${bgImage}')` }}
     >
       <Container pb={10}>
-        <Heading as="h1" align="center" leading="tight" className="max-w-[110rem] mx-auto">
-          <Text size="f7" font="serif" className="block rs-mb-4">Solved for now.</Text>
-          <Text size="f8" font="serif" className="block italic">To shape what’s next.</Text>
-        </Heading>
+        <Heading as="h1" srOnly>Solve for now. To shape what’s next.</Heading>
+        <Text font="serif" weight="bold" leading="tight" align="center" aria-hidden className="max-w-[110rem] mx-auto">
+          <Text as="span" size="f7" font="serif" className="block rs-mb-4 children:mx-auto">
+            <AnimatedText text="Solved for now." />
+          </Text>
+          <AnimateInView animation="sharpen" delay={1} duration={0.6} >
+            <Text size="f8" font="serif" className="block italic">To shape what’s next.</Text>
+          </AnimateInView>
+        </Text>
         <div className="rs-mt-7 font-semibold">
           <Text variant="card" align="center">
             by Sarah Jane Staats
