@@ -22,7 +22,7 @@ export const ScrollyDataViz = () => {
 
   return (
     <Container width="full">
-      <Grid md={3} className="border-t border-black-50">
+      <Grid md={3} className="border-t border-black-20">
         <div className={cnb(
           'sticky top-0 self-start h-screen col-span-2 bg-gradient-to-t from-poppy/70 to-illuminating',
           section1InView ? '' : '',
@@ -31,7 +31,7 @@ export const ScrollyDataViz = () => {
           <FlexBox className="h-full" alignItems="center">
             <div className="relative bg-white border-black-50 border-r uppercase font-bold">
               <Text align="center" font="druk-wide" leading="normal" className="text-vertical-lr -rotate-180 h-screen">
-                Chapter 1
+                Chapter 4s
               </Text>
             </div>
             <div className="w-4/5 mx-auto">
