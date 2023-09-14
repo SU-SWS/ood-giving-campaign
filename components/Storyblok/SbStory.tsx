@@ -5,6 +5,7 @@ import { Masthead } from '@/components/Masthead';
 import { StoryHero, type StoryHeroProps } from '@/components/Hero';
 import { ScrollyTelling } from '@/components/ScrollyTelling/ScrollyTelling';
 import { ScrollyFullwidth } from '../ScrollyTelling/ScrollyFullwidth';
+import { ScrollyDataViz } from '../ScrollyTelling/ScrollyDataViz';
 import { ProgressStory } from '../StoryPoC/ProgressStory';
 import { MulticolumnStory } from '../StoryPoC/MulticolumnStory';
 import { ChatbotStory } from '../StoryPoC/ChatbotStory';
@@ -102,6 +103,7 @@ export const SbStory = ({
           <>
             <ScrollyFullwidth />
             <ScrollyTelling />
+            <ScrollyDataViz />
           </>
         )}
         {getNumBloks(blok.ankle) > 0 && (
