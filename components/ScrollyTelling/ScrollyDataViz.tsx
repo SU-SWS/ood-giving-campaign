@@ -1,21 +1,16 @@
 import { useRef } from 'react';
-import {
-  useInView, useScroll, m, useTransform,
-} from 'framer-motion';
+import { useInView } from 'framer-motion';
 import { cnb } from 'cnbuilder';
 import { Container } from '../Container';
 import { FlexBox } from '../FlexBox';
 import { Grid } from '../Grid';
-import { Heading, Paragraph, Text } from '../Typography';
+import { Heading, Text } from '../Typography';
 import { Paragraphs } from '../Temporary/Paragraphs';
-import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { getMaskedAsset } from '@/utilities/getMaskedAsset';
 
 export const ScrollyDataViz = () => {
-  // Chapter 1
+  // Chapter 4
   const section1Ref = useRef<HTMLDivElement>(null);
   const section2Ref = useRef<HTMLDivElement>(null);
-  const section3Ref = useRef<HTMLDivElement>(null);
   const section1InView = useInView(section1Ref);
   const section2InView = useInView(section2Ref);
   const section2AtTop = !section1InView && section2InView;
@@ -23,15 +18,11 @@ export const ScrollyDataViz = () => {
   return (
     <Container width="full">
       <Grid md={3} className="border-t border-black-20">
-        <div className={cnb(
-          'sticky top-0 self-start h-screen col-span-2 bg-gradient-to-t from-poppy/70 to-illuminating',
-          section1InView ? '' : '',
-          section2AtTop ? '' : '',
-          )}>
+        <div className="sticky top-0 self-start h-screen col-span-2 bg-gradient-to-t from-poppy/70 to-illuminating">
           <FlexBox className="h-full" alignItems="center">
             <div className="relative bg-white border-black-50 border-r uppercase font-bold">
               <Text align="center" font="druk-wide" leading="normal" className="text-vertical-lr -rotate-180 h-screen">
-                Chapter 4s
+                Chapter 4
               </Text>
             </div>
             <div className="w-4/5 mx-auto">
