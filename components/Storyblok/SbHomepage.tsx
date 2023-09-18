@@ -8,6 +8,7 @@ import { Masthead } from '../Masthead';
 import { ThemeSection } from '../Homepage/ThemeSection';
 import { FindPurposeSection } from '../Homepage/FindPurposeSection';
 import { ProgressStorySection } from '../Homepage/ProgressStorySection';
+import { Changemaker } from '../Homepage/Changemaker';
 import { BlockBanner } from '../Homepage/BlockBanner';
 import { BelowBlockBanner } from '../Homepage/BelowBlockBanner';
 import { getNumBloks } from '@/utilities/getNumBloks';
@@ -93,6 +94,7 @@ export const SbHomepagePage = ({
           <FindPurposeSection>
             <CreateBloks blokSection={findPurpose} />
           </FindPurposeSection>
+          <Changemaker />
         <CreateBloks blokSection={content} />
         {getNumBloks(ankle) > 0 && (
           <Image

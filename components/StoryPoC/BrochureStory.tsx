@@ -7,7 +7,6 @@ import { Container } from '../Container';
 import { Grid } from '../Grid';
 import { Heading, Paragraph, Text } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-
 import { CtaButton } from '../Cta';
 import { BrochureChapter2 } from './BrochureChapter2';
 import { AnimateInView } from '../Animate';

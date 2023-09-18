@@ -5,84 +5,70 @@ import {
   Heading, type HeadingType, Paragraph, Text,
 } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import * as styles from './PortraitCard.styles';
+import * as styles from './ChangemakerCard.styles';
+import { ImageOverlay } from '../ImageOverlay';
 
-export type PortraitCardProps = React.HTMLAttributes<HTMLDivElement> & {
+export type ChangemakerCardProps = React.HTMLAttributes<HTMLDivElement> & {
   heading?: string;
   headingLevel?: HeadingType;
   body?: string;
-  quote?: string;
-  source1?: string;
-  source2?: string;
   imageSrc?: string;
   imageFocus?: string;
-  curve?: styles.CurvesType;
   ctaLabel?: string;
   ctaSrText?: string;
   animation?: AnimationType;
   delay?: number;
 };
 
-export const PortraitCard = ({
+export const ChangemakerCard = ({
   heading,
   headingLevel = 'h3',
   body,
-  quote,
-  source1,
-  source2,
   imageSrc,
   imageFocus,
-  curve,
   ctaLabel,
   ctaSrText,
   animation = 'none',
   delay,
   className,
   ...props
-}: PortraitCardProps) => (
+}: ChangemakerCardProps) => (
   <AnimateInView animation={animation} delay={delay}>
     <article
-      className={cnb(styles.root, styles.curves[curve], className)}
+      className={cnb(styles.root, className)}
       {...props}
     >
       <div>
-        {imageSrc && (
+        {/* {imageSrc && (
           <div className={cnb(styles.imageWrapper)}>
             <img
               alt=""
-              width={700}
-              height={1400}
+              width={500}
+              height={1000}
               loading="lazy"
-              src={getProcessedImage(imageSrc, '700x1400', imageFocus)}
+              src={getProcessedImage(imageSrc, '500x1000', imageFocus)}
             />
+          </div>
+        )} */}
+        {imageSrc && (
+          <div className={cnb(styles.imageWrapper)}>
+            <ImageOverlay imageSrc={getProcessedImage(imageSrc, '500x1000', imageFocus)} overlay="black-gradient" />
           </div>
         )}
         <div className={styles.content}>
           {heading && (
             <Heading
               as={headingLevel}
+              size={3}
               leading="tight"
+              align="center"
+              className={styles.heading}
             >
               {heading}
             </Heading>
           )}
           {body && (
-            <Paragraph variant="card" noMargin>{body}</Paragraph>
-          )}
-          {quote && (
-            <Text as="blockquote" size={2} color="white" font="serif" weight="bold" leading="display">
-              {`“${quote}”`}
-            </Text>
-          )}
-          {source1 && (
-            <Text variant="card" color="white" leading="snug" className="mt-06em">
-              {source1}
-            </Text>
-          )}
-          {source2 && (
-            <Text variant="card" color="white" leading="snug">
-              {source2}
-            </Text>
+            <Paragraph variant="card" align="center" noMargin>{body}</Paragraph>
           )}
           {ctaLabel && (
             <CtaButton
@@ -90,6 +76,7 @@ export const PortraitCard = ({
               variant="link"
               icon="arrow-right"
               srText={ctaSrText}
+              className={styles.cta}
             >
               {ctaLabel}
             </CtaButton>
