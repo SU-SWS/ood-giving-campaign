@@ -50,7 +50,7 @@ export const Changemaker = () => {
             body="Lorem Ipsum Dolar Sit"
           />
           <ChangemakerCard
-            imageSrc="https://a-us.storyblok.com/f/1005200/878x1801/d031207128/person.jpg"
+            imageSrc="https://a-us.storyblok.com/f/1005200/878x1801/64a0a4257d/gobi.jpg"
             heading="Gopi Goda"
             body="Lorem Ipsum Dolar Sit"
           />

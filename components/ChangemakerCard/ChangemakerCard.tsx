@@ -18,6 +18,8 @@ export type ChangemakerCardProps = React.HTMLAttributes<HTMLDivElement> & {
   ctaSrText?: string;
   animation?: AnimationType;
   delay?: number;
+  // children serves as what's on the back of the card
+  children?: React.ReactNode;
 };
 
 export const ChangemakerCard = ({
@@ -30,6 +32,7 @@ export const ChangemakerCard = ({
   ctaSrText,
   animation = 'none',
   delay,
+  children,
   className,
   ...props
 }: ChangemakerCardProps) => (
@@ -38,49 +41,48 @@ export const ChangemakerCard = ({
       className={cnb(styles.root, className)}
       {...props}
     >
-      <div>
-        {/* {imageSrc && (
-          <div className={cnb(styles.imageWrapper)}>
-            <img
-              alt=""
-              width={500}
-              height={1000}
-              loading="lazy"
-              src={getProcessedImage(imageSrc, '500x1000', imageFocus)}
-            />
+      <div className={styles.cardInner}>
+        {/* Front of the card */}
+        <div className={styles.cardFront}>
+          {imageSrc && (
+            <div className={cnb(styles.imageWrapper)}>
+              <ImageOverlay
+                imageSrc={getProcessedImage(imageSrc, '500x1000', imageFocus)}
+                overlay="black-gradient"
+              />
+            </div>
+          )}
+          <div className={styles.content}>
+            {heading && (
+              <Heading
+                as={headingLevel}
+                size={3}
+                leading="tight"
+                align="center"
+                className={styles.heading}
+              >
+                {heading}
+              </Heading>
+            )}
+            {body && (
+              <Paragraph variant="card" align="center" noMargin>{body}</Paragraph>
+            )}
+            {ctaLabel && (
+              <CtaButton
+                color="white"
+                variant="link"
+                icon="arrow-right"
+                srText={ctaSrText}
+                className={styles.cta}
+              >
+                {ctaLabel}
+              </CtaButton>
+            )}
           </div>
-        )} */}
-        {imageSrc && (
-          <div className={cnb(styles.imageWrapper)}>
-            <ImageOverlay imageSrc={getProcessedImage(imageSrc, '500x1000', imageFocus)} overlay="black-gradient" />
-          </div>
-        )}
-        <div className={styles.content}>
-          {heading && (
-            <Heading
-              as={headingLevel}
-              size={3}
-              leading="tight"
-              align="center"
-              className={styles.heading}
-            >
-              {heading}
-            </Heading>
-          )}
-          {body && (
-            <Paragraph variant="card" align="center" noMargin>{body}</Paragraph>
-          )}
-          {ctaLabel && (
-            <CtaButton
-              color="white"
-              variant="link"
-              icon="arrow-right"
-              srText={ctaSrText}
-              className={styles.cta}
-            >
-              {ctaLabel}
-            </CtaButton>
-          )}
+        </div>
+        {/* Back of the card */}
+        <div className={styles.cardBack}>
+          {children}
         </div>
       </div>
     </article>
