@@ -33,27 +33,59 @@ export const Changemaker = () => {
           change, and try again.<br />
           Meet some of them.
         </Paragraph>
-        <Grid xl={4} pt={7} gap="default">
+        <Grid md={2} xxl={4} pt={7} gap="default">
           <ChangemakerCard
             imageSrc="https://a-us.storyblok.com/f/1005200/878x1800/523e07bc72/person.jpg"
             heading="Alvin Pearman"
             body="Lorem Ipsum Dolar Sit"
-          />
+          >
+            <Paragraph variant="card">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Etiam tempor sed tellus ac vulputate. Morbi varius ornare arcu,
+              quis scelerisque urna ultricies sed. Nunc eu est leo.
+            </Paragraph>
+            <Paragraph variant="card" noMargin>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Etiam tempor sed tellus ac vulputate.
+            </Paragraph>
+          </ChangemakerCard>
           <ChangemakerCard
             imageSrc="https://a-us.storyblok.com/f/1005200/878x1800/4535e9548c/person.jpg"
             heading="Andrii Torchylo"
             body="Lorem Ipsum Dolar Sit"
-          />
+          >
+            <Paragraph variant="card" noMargin>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Etiam tempor sed tellus ac vulputate. Morbi varius ornare arcu,
+              quis scelerisque urna ultricies sed. Nunc eu est leo.
+            </Paragraph>
+          </ChangemakerCard>
           <ChangemakerCard
             imageSrc="https://a-us.storyblok.com/f/1005200/878x1801/5177958b81/person.jpg"
             heading="Misan Rewane"
             body="Lorem Ipsum Dolar Sit"
-          />
+          >
+            <Paragraph variant="card">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Etiam tempor sed tellus ac vulputate. Morbi varius ornare arcu,
+              quis scelerisque urna ultricies sed. Nunc eu est leo.
+            </Paragraph>
+            <Paragraph variant="card" noMargin>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Etiam tempor sed tellus ac vulputate.
+            </Paragraph>
+          </ChangemakerCard>
           <ChangemakerCard
             imageSrc="https://a-us.storyblok.com/f/1005200/878x1801/64a0a4257d/gobi.jpg"
             heading="Gopi Goda"
             body="Lorem Ipsum Dolar Sit"
-          />
+          >
+            <Paragraph variant="card">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Etiam tempor sed tellus ac vulputate. Morbi varius ornare arcu,
+              quis scelerisque urna ultricies sed. Nunc eu est leo.
+            </Paragraph>
+          </ChangemakerCard>
         </Grid>
       </Container>
     </Container>

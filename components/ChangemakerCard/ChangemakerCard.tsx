@@ -4,9 +4,12 @@ import { CtaButton } from '../Cta/CtaButton';
 import {
   Heading, type HeadingType, Paragraph, Text,
 } from '../Typography';
+import { FlexBox } from '../FlexBox';
+import { HeroIcon } from '../HeroIcon';
+import { ImageOverlay } from '../ImageOverlay';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import * as styles from './ChangemakerCard.styles';
-import { ImageOverlay } from '../ImageOverlay';
+
 
 export type ChangemakerCardProps = React.HTMLAttributes<HTMLDivElement> & {
   heading?: string;
@@ -39,6 +42,7 @@ export const ChangemakerCard = ({
   <AnimateInView animation={animation} delay={delay}>
     <article
       className={cnb(styles.root, className)}
+      tabIndex={0}
       {...props}
     >
       <div className={styles.cardInner}>
@@ -68,22 +72,23 @@ export const ChangemakerCard = ({
               <Paragraph variant="card" align="center" noMargin>{body}</Paragraph>
             )}
             {ctaLabel && (
-              <CtaButton
-                color="white"
-                variant="link"
-                icon="arrow-right"
-                srText={ctaSrText}
-                className={styles.cta}
-              >
-                {ctaLabel}
-              </CtaButton>
+              <FlexBox direction="col" alignItems="center" className="absolute bottom-50 3xl:bottom-95 right-[5.3rem] text-white">
+                <HeroIcon
+                  noBaseStyle
+                  icon='plus'
+                  className="w-75 h-75 border-2 border-white rounded-full p-19 mb-04em group-hocus-visible:border-dashed group-hocus-visible:bg-gc-black"
+                />
+                <Text as="span" font="serif" color="white" variant="caption">
+                  {ctaLabel}
+                </Text>
+              </FlexBox>
             )}
           </div>
         </div>
         {/* Back of the card */}
-        <div className={styles.cardBack}>
+        <FlexBox direction="col" justifyContent="center" className={styles.cardBack}>
           {children}
-        </div>
+        </FlexBox>
       </div>
     </article>
   </AnimateInView>
