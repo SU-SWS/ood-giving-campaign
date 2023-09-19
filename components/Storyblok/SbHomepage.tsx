@@ -8,6 +8,7 @@ import { Masthead } from '../Masthead';
 import { ThemeSection } from '../Homepage/ThemeSection';
 import { FindPurposeSection } from '../Homepage/FindPurposeSection';
 import { ProgressStorySection } from '../Homepage/ProgressStorySection';
+import { Changemaker } from '../Homepage/Changemaker';
 import { BlockBanner } from '../Homepage/BlockBanner';
 import { BelowBlockBanner } from '../Homepage/BelowBlockBanner';
 import { getNumBloks } from '@/utilities/getNumBloks';
@@ -63,25 +64,25 @@ export const SbHomepagePage = ({
       <div>
         <Heading as="h1" srOnly>{title || 'Homepage'}</Heading>
         <HomepageHero />
-        <Image
-          width={2000}
-          height={40}
-          alt=""
-          loading="lazy"
-          src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/f23b53c0e4/steve-johnson-cropped-2000x40-02.jpg') || ''}
-          className="w-full"
-        />
-        <Intro text={intro} />
+          {/* <Image
+            width={2000}
+            height={40}
+            alt=""
+            loading="lazy"
+            src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/f23b53c0e4/steve-johnson-cropped-2000x40-02.jpg') || ''}
+            className="w-full"
+          /> */}
+          {/* <Intro text={intro} />
           <ThemeSection
             themeCardDiscovery={themeCardDiscovery}
             themeCardCitizen={themeCardCitizen}
             themeCardAcceleration={themeCardAcceleration}
             themeCardPlanet={themeCardPlanet}
-          />
+          /> */}
           <ProgressStorySection bgImage={progressImage}>
             <CreateBloks blokSection={progressStories} />
           </ProgressStorySection>
-          <BlockBanner
+          {/* <BlockBanner
             imageSrc={getProcessedImage(blockBannerImage, '2000x0')}
             phrase1={phrase1}
             phrase2={phrase2}
@@ -92,9 +93,10 @@ export const SbHomepagePage = ({
           </BelowBlockBanner>
           <FindPurposeSection>
             <CreateBloks blokSection={findPurpose} />
-          </FindPurposeSection>
+          </FindPurposeSection> */}
+          <Changemaker />
         <CreateBloks blokSection={content} />
-        {getNumBloks(ankle) > 0 && (
+        {/* {getNumBloks(ankle) > 0 && (
           <Image
             width={2000}
             height={40}
@@ -103,7 +105,7 @@ export const SbHomepagePage = ({
             src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/c4777a4925/steve-johnson-cropped-2000x40-01.jpg') || ''}
             className="w-full"
           />
-        )}
+        )} */}
         <CreateBloks blokSection={ankle} />
       </div>
     </main>
