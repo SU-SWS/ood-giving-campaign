@@ -52,7 +52,7 @@ export const ChangemakerCard = ({
             <div className={cnb(styles.imageWrapper)}>
               <ImageOverlay
                 imageSrc={getProcessedImage(imageSrc, '500x1000', imageFocus)}
-                overlay="black-gradient"
+                overlay="black-gradient-dark"
               />
             </div>
           )}
@@ -71,18 +71,16 @@ export const ChangemakerCard = ({
             {body && (
               <Paragraph variant="card" align="center" noMargin>{body}</Paragraph>
             )}
-            {ctaLabel && (
-              <FlexBox direction="col" alignItems="center" className="absolute bottom-50 3xl:bottom-95 right-[5.3rem] text-white">
-                <HeroIcon
-                  noBaseStyle
-                  icon='plus'
-                  className="w-75 h-75 border-2 border-white rounded-full p-19 mb-04em group-hocus-visible:border-dashed group-hocus-visible:bg-gc-black"
-                />
-                <Text as="span" font="serif" color="white" variant="caption">
-                  {ctaLabel}
-                </Text>
-              </FlexBox>
-            )}
+            <FlexBox direction="col" alignItems="center" className="absolute bottom-50 right-36 text-white">
+              <HeroIcon
+                noBaseStyle
+                icon='cursor'
+                className="w-65 h-65 border-2 border-white rounded-full p-16"
+              />
+              <Text as="span" font="serif" color="white" variant="caption">
+                {ctaLabel}
+              </Text>
+            </FlexBox>
           </div>
         </div>
         {/* Back of the card */}

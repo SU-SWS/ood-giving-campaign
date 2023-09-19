@@ -2,13 +2,12 @@
 
 import { useState } from 'react';
 import { m } from 'framer-motion';
-import { AnimatedText } from '../AnimatedText/AnimatedText';
+import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
 import { Grid } from '../Grid';
 import { Heading, Paragraph, Text } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { CtaButton } from '../Cta';
-import { AnimateInView } from '../Animate';
 import { ChangemakerCard } from '@/components/ChangemakerCard';
 
 export const Changemaker = () => {
@@ -23,21 +22,37 @@ export const Changemaker = () => {
       py={10}
     >
       <Container>
-        <Text font="serif" weight="bold" leading="tight" align="center" aria-hidden className="max-w-[110rem] mx-auto">
-          <Text as="span" size="f7" font="serif" className="block rs-mb-4 children:mx-auto children:justify-center">
-            <AnimatedText text="Makers. Doers. Boundary Pushers. Risk-takers." />
-          </Text>
-        </Text>
-        <Paragraph size={2} weight="semibold" noMargin font="serif" align="center" className="max-w-900 mx-auto rs-my-4" leading="display">
-          The Stanford community overflows with curious people unafraid to try,
-          change, and try again.<br />
-          Meet some of them.
-        </Paragraph>
+        <Heading size="f7" font="serif" leading="tight" align="center" className="max-w-[110rem] mx-auto rs-mb-4">
+          <AnimateInView animation="slideInFromRight">
+            <Text as="span" font="serif" className="block">
+              Makers. Doers.
+            </Text>
+          </AnimateInView>
+          <AnimateInView animation="slideInFromLeft" delay={0.2}>
+            <Text as="span" font="serif" className="block">
+              Boundary Pushers.
+            </Text>
+          </AnimateInView>
+          <AnimateInView animation="slideInFromRight" delay={0.4}>
+            <Text as="span" font="serif" className="block">
+              Risk-takers.
+            </Text>
+          </AnimateInView>
+        </Heading>
+        <AnimateInView animation="slideUp" delay={0.5}>
+          <Paragraph size={2} weight="semibold" noMargin font="serif" align="center" className="max-w-900 mx-auto rs-my-4" leading="display">
+            The Stanford community overflows with curious people unafraid to try,
+            change, and try again.<br />
+            Meet some of them.
+          </Paragraph>
+        </AnimateInView>
         <Grid md={2} xxl={4} pt={7} gap="default">
           <ChangemakerCard
             imageSrc="https://a-us.storyblok.com/f/1005200/878x1800/523e07bc72/person.jpg"
             heading="Alvin Pearman"
             body="Lorem Ipsum Dolar Sit"
+            animation="slideUp"
+            delay={0.2}
           >
             <Paragraph variant="card">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -53,6 +68,8 @@ export const Changemaker = () => {
             imageSrc="https://a-us.storyblok.com/f/1005200/878x1800/4535e9548c/person.jpg"
             heading="Andrii Torchylo"
             body="Lorem Ipsum Dolar Sit"
+            animation="slideUp"
+            delay={0.4}
           >
             <Paragraph variant="card" noMargin>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -64,6 +81,8 @@ export const Changemaker = () => {
             imageSrc="https://a-us.storyblok.com/f/1005200/878x1801/5177958b81/person.jpg"
             heading="Misan Rewane"
             body="Lorem Ipsum Dolar Sit"
+            animation="slideUp"
+            delay={0.6}
           >
             <Paragraph variant="card">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -79,6 +98,8 @@ export const Changemaker = () => {
             imageSrc="https://a-us.storyblok.com/f/1005200/878x1801/64a0a4257d/gobi.jpg"
             heading="Gopi Goda"
             body="Lorem Ipsum Dolar Sit"
+            animation="slideUp"
+            delay={0.8}
           >
             <Paragraph variant="card">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.

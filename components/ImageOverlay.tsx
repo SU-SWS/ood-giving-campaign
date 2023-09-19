@@ -8,6 +8,7 @@ export const overlays = {
   'black-70': 'bg-black-true/70',
   'black-80': 'bg-black-true/80',
   'black-gradient': 'bg-gradient-to-b from-transparent via-black-true/20 to-black-true/50',
+  'black-gradient-dark': 'bg-gradient-to-b from-transparent via-black-true/30 to-black-true/80',
   'black-top-bottom': 'bg-gradient-to-b from-gc-black via-transparent via-40% to-gc-black',
   'black-top-sm': 'bg-gradient-to-b from-gc-black via-periwinkle via-20% to-transparent',
 };
