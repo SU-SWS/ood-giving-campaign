@@ -1,13 +1,10 @@
 'use client';
 
-import { useState } from 'react';
-import { m } from 'framer-motion';
 import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
 import { Grid } from '../Grid';
 import { Heading, Paragraph, Text } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { CtaButton } from '../Cta';
 import { ChangemakerCard } from '@/components/ChangemakerCard';
 
 export const Changemaker = () => {
