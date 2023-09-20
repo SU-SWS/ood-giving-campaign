@@ -9,6 +9,7 @@ import { ThemeSection } from '../Homepage/ThemeSection';
 import { FindPurposeSection } from '../Homepage/FindPurposeSection';
 import { ProgressStorySection } from '../Homepage/ProgressStorySection';
 import { Changemaker } from '../Homepage/Changemaker';
+import { IdealFellow } from '../Homepage/IdealFellow';
 import { BlockBanner } from '../Homepage/BlockBanner';
 import { BelowBlockBanner } from '../Homepage/BelowBlockBanner';
 import { getNumBloks } from '@/utilities/getNumBloks';
@@ -79,6 +80,7 @@ export const SbHomepagePage = ({
             themeCardAcceleration={themeCardAcceleration}
             themeCardPlanet={themeCardPlanet}
           /> */}
+          <IdealFellow />
           <ProgressStorySection bgImage={progressImage}>
             <CreateBloks blokSection={progressStories} />
           </ProgressStorySection>
