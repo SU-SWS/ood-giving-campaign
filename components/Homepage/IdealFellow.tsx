@@ -25,7 +25,7 @@ export const IdealFellow = () => {
         <Text as="span" font="serif" weight="semibold" italic size="f9" className="leading-[0.9] block">what’s</Text>
         <Text as="span" font="serif" weight="semibold" italic size="f9" className="leading-[0.9] block">next</Text>
       </Heading>
-      <div className="absolute bottom-300 right-0 bg-black-60/30 backdrop-blur-xl w-5/12 rs-px-4 rs-pt-5 rs-pb-1">
+      <div className="absolute bottom-300 right-0 bg-black-50/50 backdrop-blur-xl w-5/12 rs-px-4 rs-pt-5 rs-pb-1">
         <Text variant="caption" color="white" className="mb-04em">Preparing citizens</Text>
         <Heading color="white" weight="normal">
           2022-23 IDEAL fellow Hector Callejas untangles racial inequality
