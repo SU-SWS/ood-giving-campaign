@@ -1,5 +1,3 @@
-'use client';
-
 import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
 import { Grid } from '../Grid';
