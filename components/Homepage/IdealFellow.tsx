@@ -1,8 +1,11 @@
+import Link from 'next/link';
 import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
 import { Heading, Text } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { Parallax } from '../Parallax/Parallax';
+import { HeroIcon } from '../HeroIcon';
+import { Hero } from '../Hero';
 
 export const IdealFellow = () => {
   const bgImage = getProcessedImage('https://a-us.storyblok.com/f/1005200/2560x1707/c4fba877e8/firefly-20230919145441.png', '2000x1600');
@@ -25,18 +28,21 @@ export const IdealFellow = () => {
         <Text as="span" font="serif" weight="semibold" italic size="f9" className="leading-[0.9] block">what’s</Text>
         <Text as="span" font="serif" weight="semibold" italic size="f9" className="leading-[0.9] block">next</Text>
       </Heading>
-      <div className="absolute bottom-300 right-0 bg-black-50/50 backdrop-blur-xl w-5/12 rs-px-4 rs-pt-5 rs-pb-1">
-        <Text variant="caption" color="white" className="mb-04em">Preparing citizens</Text>
-        <Heading color="white" weight="normal">
-          2022-23 IDEAL fellow Hector Callejas untangles racial inequality
-        </Heading>
+      <div className="group hover:backdrop-blur-sm transition-all absolute bottom-200 right-0 bg-black-50/50 backdrop-blur-xl w-5/12 rs-px-4 rs-pt-4 rs-pb-1">
+        <Text variant="caption" color="white" weight="semibold" className="mb-04em">Preparing citizens</Text>
+        <Link href="/stories/poc-solve-for-now" className="no-underline stretched-link">
+          <Heading color="white" weight="normal" className="decoration-4 decoration-transparent underline-offset-8 group-hocus-within:underline  group-hocus-within:decoration-digital-red-light transition-colors">
+            Untangling the web of racial inequality
+            <HeroIcon icon="arrow-right" noBaseStyle className="inline-block group-hocus-within:translate-x-[0.2em] bg-digital-red rounded-full p-12 ml-05em children:stroke-[2px] w-08em" />
+          </Heading>
+        </Link>
         <Text variant="card" color="white">
           by Sarah Jane Staats
         </Text>
         <Text variant="card" color="white">
           May 5, 2023
         </Text>
-        <Text variant="caption" color="white" className="rs-mt-3 -mr-30" align="right">
+        <Text variant="caption" color="white" className="rs-mt-5 -mr-30" align="right">
           Photo: 2022-23 IDEAL Fellow Hector Callejas
         </Text>
       </div>
