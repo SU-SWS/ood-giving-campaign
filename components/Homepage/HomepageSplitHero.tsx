@@ -1,7 +1,5 @@
-'use client';
-
-import { useRef } from 'react';
-import { useScroll, useSpring, m } from 'framer-motion';
+import { m } from 'framer-motion';
+import { AnimatedText } from '../AnimatedText/AnimatedText';
 import { Container } from '../Container';
 import { Grid } from '../Grid';
 import { Heading, Paragraph, Text } from '../Typography';
@@ -11,7 +9,6 @@ import { getProcessedImage } from '@/utilities/getProcessedImage';
 
 export const HomepageSplitHero = () => {
   const bg = getProcessedImage('https://a-us.storyblok.com/f/1005200/2100x2028/bef2e6a13e/masthead-top-structured.jpg', '3000x0');
-  const introRef = useRef<HTMLDivElement>(null);
 
   return (
     <Container width="full" bgColor="black" className="relative overflow-hidden">
@@ -93,22 +90,22 @@ export const HomepageSplitHero = () => {
         </div>
       </div>
       <Container bgColor="black" py={7} className="relative z-10 bg-gradient-to-t from-gc-black to-[#020002]">
-          <AnimateInView delay={0.2} animation="slideUp">
-            <div className="mx-auto max-w-1200">
-              <Heading size="f7" weight="normal" leading="tight" className="rs-mb-6">
-                <span className="italic">We’re</span> all in this <span className="italic">together</span>.
-              </Heading>
-              <div className="max-w-1200 rs-ml-0">
-                <Paragraph size={2} weight="normal" leading="snug" className="max-w-1000 ml-0 mr-auto">
-                  Sustaining a thriving planet. Accelerating solutions and empowering the next generation of leaders.
-                </Paragraph>
-                <Paragraph size={2} weight="normal" leading="snug" className="max-w-1000 ml-0 mr-auto">
-                  Meet your community of changemakers, explore what you’re passionate about, and join the conversation.
-                </Paragraph>
-              </div>
-            </div>
+        <div className="mx-auto max-w-1200">
+          <AnimateInView animation="slideUp">
+            <Heading size="f7" weight="normal" leading="tight" className="rs-mb-6">
+              <span className="italic">We’re</span> all in this <span className="italic">together</span>.
+            </Heading>
           </AnimateInView>
-        </Container>
+          <AnimateInView delay={0.2} animation="slideUp" className="max-w-1200 rs-ml-0">
+            <Paragraph size={2} weight="normal" leading="snug" className="max-w-1000 ml-0 mr-auto">
+              Sustaining a thriving planet. Accelerating solutions and empowering the next generation of leaders.
+            </Paragraph>
+            <Paragraph size={2} weight="normal" leading="snug" className="max-w-1000 ml-0 mr-auto">
+              Meet your community of changemakers, explore what you’re passionate about, and join the conversation.
+            </Paragraph>
+          </AnimateInView>
+        </div>
+      </Container>
     </Container>
   );
 };
