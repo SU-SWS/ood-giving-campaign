@@ -16,66 +16,78 @@ export const HomepageSplitHero = () => {
   return (
     <Container width="full" bgColor="black" className="relative overflow-hidden">
       <div
-        className="relative pb-[27vw] bg-black-true pt-[18vw] xl:pt-[15vw] bg-no-repeat bg-cover [background-position-y:100px]"
+        className="relative pb-[27vw] bg-black-true pt-[18vw] xl:pt-[15vw] 3xl:pt-[14vw] bg-no-repeat bg-cover [background-position-y:100px]"
         style={{ backgroundImage: `url('${bg}')` }}
       >
         <Heading as="h1" srOnly>Homepage</Heading>
         <div className="absolute top-0 h-[50vw] 2xl:h-[40vw] 3xl:h-[35vw] w-full bg-gradient-to-b from-[#191e3e] via-[#263588] via-40% to-transparent" />
         <div className="relative">
           <div className="relative cc">
-            <Grid md={2} className="relative w-[70vw] mx-auto 4xl:w-[85vw] 4xl:max-w-[140rem]">
-              <div className="relative w-full">
+            <Grid xs={2} className="relative w-[70vw] mx-auto 4xl:w-[85vw] 4xl:max-w-[140rem]">
+              <AnimateInView duration={0.3} animation="slideDown" className="relative w-full">
+                <m.img
+                  src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/45d9a3d22a/frame-97.jpg', '700x700')}
+                  alt=""
+                  loading="eager"
+                  initial={{ opacity: 1 }}
+                  animate={{ opacity: 0 }}
+                  transition={{ duration: 1, delay: 0.6 }}
+                  className="absolute top-0 right-0 w-full h-full object-cover mix-blend-lighten -scale-x-100"
+                />
                 <img
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/cb35b9488b/frame-96.jpg', '700x700')}
                   alt=""
                   loading="eager"
                   className="w-full h-full object-cover"
                 />
-                {/* <div className="absolute -top-[7vw] -right-[1vw] w-[44vw] 4xl:w-[106rem]">
-                  <Text font="serif" weight="semibold" size="f5" leading="none" italic>
-                    How will we
-                  </Text>
-                  <Text font="druk" size="hero" leading="none">
-                    come together
-                  </Text>
-                </div> */}
-              </div>
-              <div className="relative w-full">
+              </AnimateInView>
+              <AnimateInView duration={0.3} animation="slideUp" className="relative w-full">
+                <m.img
+                  src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/cb35b9488b/frame-96.jpg', '700x700')}
+                  alt=""
+                  loading="eager"
+                  initial={{ opacity: 1 }}
+                  animate={{ opacity: 0 }}
+                  transition={{ duration: 1, delay: 0.6 }}
+                  className="absolute top-0 right-0 w-full h-full object-cover mix-blend-lighten -scale-x-100"
+                />
                 <img
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/45d9a3d22a/frame-97.jpg', '700x700')}
                   alt=""
                   loading="eager"
                   className="w-full h-full object-cover"
                 />
-                {/* <div className="absolute -bottom-100 -right-[6vw] w-[36vw] 4xl:w-[120%] text-right">
-                  <Text font="serif" weight="semibold" size="f5" leading="none" italic>
-                    all in service of
-                  </Text>
-                  <Text font="druk" size="hero" leading="none">
-                    Tomorrow?
-                  </Text>
-                </div> */}
-              </div>
+              </AnimateInView>
             </Grid>
           </div>
           <div className="absolute w-full top-0 left-0">
-            <Grid md={2}>
-              <div className="relative -top-[6.5vw] right-0 justify-self-end">
+            <Grid xs={2}>
+              <AnimateInView
+                animation="slideInFromLeft"
+                delay={0.6}
+                duration={0.3}
+                className="relative -top-[6.5vw] right-0 justify-self-end"
+              >
                 <Text font="serif" weight="semibold" size="f5" leading="none" italic>
                   How will we
                 </Text>
                 <Text font="druk" size="hero" leading="none">
                   come together
                 </Text>
-              </div>
-              <div className="relative -right-[7vw] top-[27vw] 4xl:top-[57rem] type-4 xl:type-5 justify-self-start">
+              </AnimateInView>
+              <AnimateInView
+                animation="slideInFromRight"
+                delay={0.6}
+                duration={0.3}
+                className="relative -right-[7vw] top-[27vw] 4xl:top-[57rem] type-4 xl:type-5 justify-self-start"
+              >
                 <Text font="serif" weight="semibold" leading="none" align="right" italic>
                   all in service of
                 </Text>
                 <Text font="druk" size="hero" leading="none" align="right">
                   Tomorrow?
                 </Text>
-              </div>
+              </AnimateInView>
             </Grid>
           </div>
         </div>
@@ -83,7 +95,7 @@ export const HomepageSplitHero = () => {
       <Container bgColor="black" py={7} className="relative z-10 bg-gradient-to-t from-gc-black to-[#020002]">
           <AnimateInView delay={0.2} animation="slideUp">
             <div className="mx-auto max-w-1200">
-              <Heading size="f7" weight="normal" className="rs-mb-6">
+              <Heading size="f7" weight="normal" leading="tight" className="rs-mb-6">
                 <span className="italic">We’re</span> all in this <span className="italic">together</span>.
               </Heading>
               <div className="max-w-1200 rs-ml-0">
