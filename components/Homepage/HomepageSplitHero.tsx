@@ -20,6 +20,7 @@ export const HomepageSplitHero = () => {
         className="relative pb-[25vw] bg-black-true pt-[17vw] bg-no-repeat bg-cover [background-position-y:100px]"
         style={{ backgroundImage: `url('${bg}')` }}
       >
+        <Heading as="h1" srOnly>Homepage</Heading>
         <div className="absolute top-0 h-[50vw] 2xl:h-[40vw] 3xl:h-[35vw] w-full bg-gradient-to-b from-[#191e3e] via-[#263588] via-40% to-transparent" />
         <div className="cc">
           <Grid md={2} className="relative w-4/5 mx-auto">
