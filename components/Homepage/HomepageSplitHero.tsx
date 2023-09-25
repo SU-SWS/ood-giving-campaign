@@ -1,5 +1,4 @@
 import { m } from 'framer-motion';
-import { AnimatedText } from '../AnimatedText/AnimatedText';
 import { Container } from '../Container';
 import { Grid } from '../Grid';
 import { Heading, Paragraph, Text } from '../Typography';
@@ -13,14 +12,14 @@ export const HomepageSplitHero = () => {
   return (
     <Container width="full" bgColor="black" className="relative overflow-hidden">
       <div
-        className="relative pb-[27vw] bg-black-true pt-[18vw] xl:pt-[15vw] 3xl:pt-[14vw] bg-no-repeat bg-cover [background-position-y:100px]"
+        className="relative pb-[27vw] bg-black-true pt-[22vw] xl:pt-[18vw] 2xl:pt-[16vw] 4xl:pt-[34rem] bg-no-repeat bg-cover [background-position-y:160px]"
         style={{ backgroundImage: `url('${bg}')` }}
       >
         <Heading as="h1" srOnly>Homepage</Heading>
         <div className="absolute top-0 h-[50vw] 2xl:h-[40vw] 3xl:h-[35vw] w-full bg-gradient-to-b from-[#191e3e] via-[#263588] via-40% to-transparent" />
         <div className="relative">
           <div className="relative cc">
-            <Grid xs={2} className="relative w-[70vw] mx-auto 4xl:w-[85vw] 4xl:max-w-[140rem]">
+            <Grid xs={2} className="relative w-[70vw] mx-auto 4xl:max-w-[140rem]">
               <AnimateInView duration={0.3} animation="slideDown" className="relative w-full">
                 <m.img
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/45d9a3d22a/frame-97.jpg', '700x700')}
@@ -63,7 +62,7 @@ export const HomepageSplitHero = () => {
                 animation="slideInFromLeft"
                 delay={0.6}
                 duration={0.3}
-                className="relative -top-[6.5vw] right-0 justify-self-end"
+                className="relative -top-[10vw] xl:-top-[8vw] 4xl:-top-[16rem] right-0 justify-self-end"
               >
                 <Text font="serif" weight="semibold" size="f5" leading="none" italic>
                   How will we
