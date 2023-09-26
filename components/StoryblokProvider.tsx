@@ -1,14 +1,16 @@
 'use client';
 
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
-import { LazyMotion, domAnimation, domMax } from 'framer-motion';
+import { LazyMotion, domMax } from 'framer-motion';
 import { SbBanner } from './Storyblok/SbBanner';
 import { SbBasicPage } from './Storyblok/SbBasicPage';
+import { SbBlurryPoster } from './Storyblok/SbBlurryPoster';
 import { SbBracketCard } from './Storyblok/SbBracketCard';
 import { SbCta } from './Storyblok/SbCta';
 import { SbGrid } from './Storyblok/SbGrid';
 import { SbGridAlternating } from './Storyblok/SbGridAlternating';
-import { SbHomepagePage } from './Storyblok/SbHomepage';
+import { SbHomepage } from './Storyblok/SbHomepage';
+import { SbHomepageMvp } from './Storyblok/SbHomepageMvp';
 import { SbInitiativeCard } from './Storyblok/SbInitiativeCard';
 import { SbLogo } from './Storyblok/SbLogo';
 import { SbPortraitCard } from './Storyblok/SbPortraitCard';
@@ -24,11 +26,13 @@ import { SbWysiwyg } from './Storyblok/SbWysiwyg';
 const components = {
   sbBanner: SbBanner,
   sbBasicPage: SbBasicPage,
+  sbBlurryPoster: SbBlurryPoster,
   sbBracketCard: SbBracketCard,
   sbCta: SbCta,
   sbGrid: SbGrid,
   sbGridAlternating: SbGridAlternating,
-  sbHomepage: SbHomepagePage,
+  sbHomepage: SbHomepage,
+  sbHomepageMvp: SbHomepageMvp,
   sbInitiativeCard: SbInitiativeCard,
   sbLogo: SbLogo,
   sbPortraitCard: SbPortraitCard,

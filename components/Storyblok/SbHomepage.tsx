@@ -17,7 +17,7 @@ import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { type SbImageType } from './Storyblok.types';
 
-type SbHomepagePageProps = {
+type SbHomepageProps = {
   blok: {
     _uid: string;
     title?: string;
@@ -39,7 +39,7 @@ type SbHomepagePageProps = {
   };
 };
 
-export const SbHomepagePage = ({
+export const SbHomepage = ({
   blok: {
     title,
     intro,
@@ -59,7 +59,7 @@ export const SbHomepagePage = ({
     ankle,
   },
   blok,
-}: SbHomepagePageProps) => (
+}: SbHomepageProps) => (
   <div {...storyblokEditable(blok)}>
     <Masthead />
     <main id="main-content">

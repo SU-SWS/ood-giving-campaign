@@ -1,4 +1,4 @@
-import { storyblokEditable } from '@storyblok/react/rsc';
+import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import { Grid, type GridGapType, type GridNumColsType } from '../Grid';
 import { CreateBloks } from '../CreateBloks';
 
@@ -6,7 +6,7 @@ type SbGridProps = {
   blok: {
     _uid: string;
     gap?: GridGapType;
-    items: any[];
+    items: SbBlokData[];
     /**
      * Currently we're only providing 1-4 columns in Storyblok even though GridNumColsType also supports 6 and 12
      * We could add support for 6 and 12 in the future if needed

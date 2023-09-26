@@ -11,6 +11,11 @@ import {
   type TextAlignType,
 } from './Typography';
 
+/**
+ * TW classes used in Richtext WYSIWYG to pre-generate
+ * -top-04em (used in BlurryPoster)
+ */
+
 export type RichTextProps = {
   wysiwyg: StoryblokRichtext;
   isLightText?: boolean;
@@ -71,7 +76,7 @@ export const RichText = ({
         const headingSize = 7 - level;
 
         return (
-          <Heading as={`h${level}`} size={headingSize as FontSizeType}>
+          <Heading as={`h${level}`} size={headingSize as FontSizeType} leading="tight">
             {children}
           </Heading>
         );
