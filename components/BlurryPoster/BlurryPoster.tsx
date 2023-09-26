@@ -1,8 +1,9 @@
 import { HTMLAttributes } from 'react';
 import { Container } from '../Container';
-import { FlexBox } from '../FlexBox';
 import { Grid } from '../Grid';
-import { Heading, Paragraph, Text, type HeadingType } from '../Typography';
+import {
+  Heading, Paragraph, Text, type HeadingType,
+} from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import * as styles from './BlurryPoster.styles';
 
