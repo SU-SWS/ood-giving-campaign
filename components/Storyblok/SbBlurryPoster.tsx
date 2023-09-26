@@ -14,6 +14,8 @@ type SbBlurryPosterProps = {
     headingLevel?: HeadingType;
     isSmallHeading?: boolean;
     body: string;
+    byline?: string;
+    publishedDate?: string;
     cta?: SbBlokData[];
     image?: SbImageType;
     bgImage?: SbImageType;
@@ -26,6 +28,8 @@ export const SbBlurryPoster = ({
     headingLevel,
     isSmallHeading,
     body,
+    byline,
+    publishedDate,
     cta,
     image: { filename, focus } = {},
     bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
@@ -41,6 +45,8 @@ export const SbBlurryPoster = ({
       headingLevel={headingLevel}
       isSmallHeading={isSmallHeading}
       body={body}
+      byline={byline}
+      publishedDate={publishedDate}
       cta={Cta}
       imageSrc={filename}
       imageFocus={focus}
