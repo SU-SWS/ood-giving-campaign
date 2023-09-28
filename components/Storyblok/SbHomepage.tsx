@@ -1,19 +1,23 @@
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
+import Image from 'next/image';
 import { CreateBloks } from '../CreateBloks';
 import { Heading } from '../Typography';
 import { HomepageHero } from '../Homepage/HomepageHero';
+import { HomepageSplitHero } from '../Homepage/HomepageSplitHero';
 import { Intro } from '../Homepage/Intro';
 import { Masthead } from '../Masthead';
 import { ThemeSection } from '../Homepage/ThemeSection';
 import { FindPurposeSection } from '../Homepage/FindPurposeSection';
 import { ProgressStorySection } from '../Homepage/ProgressStorySection';
+import { Changemaker } from '../Homepage/Changemaker';
+import { IdealFellow } from '../Homepage/IdealFellow';
 import { BlockBanner } from '../Homepage/BlockBanner';
 import { BelowBlockBanner } from '../Homepage/BelowBlockBanner';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { type SbImageType } from './Storyblok.types';
 
-type SbHomepagePageProps = {
+type SbHomepageProps = {
   blok: {
     _uid: string;
     title?: string;
@@ -35,7 +39,7 @@ type SbHomepagePageProps = {
   };
 };
 
-export const SbHomepagePage = ({
+export const SbHomepage = ({
   blok: {
     title,
     intro,
@@ -55,22 +59,14 @@ export const SbHomepagePage = ({
     ankle,
   },
   blok,
-}: SbHomepagePageProps) => (
+}: SbHomepageProps) => (
   <div {...storyblokEditable(blok)}>
     <Masthead />
     <main id="main-content">
       <div>
         <Heading as="h1" srOnly>{title || 'Homepage'}</Heading>
         <HomepageHero />
-        <img
-          width={2000}
-          height={40}
-          alt=""
-          loading="lazy"
-          src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/f23b53c0e4/steve-johnson-cropped-2000x40-02.jpg') || ''}
-          className="w-full"
-        />
-        <Intro text={intro} />
+          <Intro text={intro} />
           <ThemeSection
             themeCardDiscovery={themeCardDiscovery}
             themeCardCitizen={themeCardCitizen}
@@ -93,19 +89,8 @@ export const SbHomepagePage = ({
             <CreateBloks blokSection={findPurpose} />
           </FindPurposeSection>
         <CreateBloks blokSection={content} />
-        {getNumBloks(ankle) > 0 && (
-          <img
-            width={2000}
-            height={40}
-            alt=""
-            loading="lazy"
-            src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/c4777a4925/steve-johnson-cropped-2000x40-01.jpg') || ''}
-            className="w-full"
-          />
-        )}
         <CreateBloks blokSection={ankle} />
       </div>
     </main>
   </div>
 );
-
