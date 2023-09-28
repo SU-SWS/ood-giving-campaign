@@ -9,7 +9,7 @@ type BookProps = {
   children: React.ReactNode;
   i?: number;
   expanded?: false | number;
-  setExpanded?: React.Dispatch<React.SetStateAction<number | false>>;
+  setExpanded?: React.Dispatch<React.SetStateAction<false | number>>;
   buttonClassName?: string;
   contentClassName?: string;
   imgSrc?: string;

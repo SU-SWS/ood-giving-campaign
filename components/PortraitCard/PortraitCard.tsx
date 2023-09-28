@@ -62,7 +62,6 @@ export const PortraitCard = ({
             <Heading
               as={headingLevel}
               leading="tight"
-              className={styles.heading}
             >
               {heading}
             </Heading>
@@ -91,7 +90,6 @@ export const PortraitCard = ({
               variant="link"
               icon="arrow-right"
               srText={ctaSrText}
-              className={styles.ctaLink}
             >
               {ctaLabel}
             </CtaButton>

@@ -1,5 +1,6 @@
 import {
   ArrowUpIcon,
+  ArrowDownIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
   ArrowUpRightIcon,
@@ -7,6 +8,7 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
   ChevronUpIcon,
+  CursorArrowRaysIcon,
   EnvelopeIcon,
   LinkIcon,
   MinusIcon,
@@ -23,6 +25,7 @@ export const iconMap = {
   'arrow-right': ArrowRightIcon,
   'arrow-left': ArrowLeftIcon,
   'arrow-up': ArrowUpIcon,
+  'arrow-down': ArrowDownIcon,
   back: ArrowLeftIcon,
   'chevron-down': ChevronDownIcon,
   'chevron-right': ChevronRightIcon,
@@ -30,6 +33,7 @@ export const iconMap = {
   'triangle-down': PlayIcon,
   'triangle-right': PlayIcon,
   'triangle-up': PlayIcon,
+  cursor: CursorArrowRaysIcon,
   close: XMarkIcon,
   email: EnvelopeIcon,
   external: ArrowUpRightIcon,
@@ -72,5 +76,4 @@ export const iconBaseStyle: IconBaseStyleType = {
   more: 'w-08em',
   plus: 'w-08em',
   right: 'w-08em',
-  up: 'w-1em',
 };

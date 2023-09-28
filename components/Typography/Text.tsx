@@ -70,6 +70,7 @@ export const Text = ({
         )
       }
     >
+      {children}
       {icon && (
         <HeroIcon
           icon={icon}
@@ -78,7 +79,6 @@ export const Text = ({
           {...iProps}
         />
       )}
-      {children}
     </AsComponent>
   );
 };

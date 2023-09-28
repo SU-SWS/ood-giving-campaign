@@ -58,6 +58,9 @@ module.exports = function () {
       '.gc-splash': {
         fontSize: 'clamp(5.8rem, 8.95vw + 2.58rem, 16rem)',
       },
+      '.hero': {
+        fontSize: 'clamp(5.5rem, 7.71vw - 0.42rem, 15rem)',
+      },
     };
 
     addComponents(components);

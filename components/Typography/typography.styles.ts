@@ -33,6 +33,7 @@ export const fontSizes = {
   f9: 'fluid-type-9',
   // Curated font size for homepage hero slightly smaller than f9
   splash: 'gc-splash',
+  hero: 'hero',
 };
 
 // Line heights
@@ -72,12 +73,16 @@ export const textVariants = {
   subheading: 'subheading',
   /**
    * Campaign typography styles
-   * (-gc ones are Deccanter styles with Campaign modifications)
+   * (-gc ones are Decanter styles with Campaign modifications)
    */
   caption: 'gc-caption',
   card: 'gc-card',
   intro: 'gc-intro-text',
+  /**
+   * Campaign only styles
+   * No gc- prefix because no Decanter equivalent
+   */
   overview: 'overview',
 };
 
-export const iconStyle = 'inline-block shrink-0 w-[1.2em] mr-04em';
+export const iconStyle = 'inline-block shrink-0 w-09em ml-03em -mt-01em';

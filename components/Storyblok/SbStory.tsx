@@ -4,11 +4,13 @@ import { Masthead } from '@/components/Masthead';
 import { StoryHero, type StoryHeroProps } from '@/components/Hero';
 import { ScrollyTelling } from '@/components/ScrollyTelling/ScrollyTelling';
 import { ScrollyFullwidth } from '../ScrollyTelling/ScrollyFullwidth';
+import { ScrollyDataViz } from '../ScrollyTelling/ScrollyDataViz';
 import { ProgressStory } from '../StoryPoC/ProgressStory';
 import { MulticolumnStory } from '../StoryPoC/MulticolumnStory';
 import { ChatbotStory } from '../StoryPoC/ChatbotStory';
 import { VideoScrollStory } from '../StoryPoC/VideoScrollStory';
 import { Bookshelf } from '../Bookshelf/Bookshelf';
+import { BrochureStory } from '../StoryPoC/BrochureStory';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 
@@ -48,7 +50,7 @@ export const SbStory = ({
     <Masthead isLight={isLightHero} />
     <main id="main-content">
       <article>
-        {!(title?.includes('Whereas') || title?.includes('Progress') || title?.includes('Video')) && (
+        {!(title?.includes('Whereas') || title?.includes('Progress') || title?.includes('Video') || title?.includes('Solve')) && (
           <>
             <StoryHero
               title={title}
@@ -77,6 +79,9 @@ export const SbStory = ({
             />
           </>
         )}
+        {title?.includes('Solve') && (
+          <BrochureStory />
+        )}
         {title?.includes('Progress') && (
           <ProgressStory />
         )}
@@ -97,6 +102,7 @@ export const SbStory = ({
           <>
             <ScrollyFullwidth />
             <ScrollyTelling />
+            <ScrollyDataViz />
           </>
         )}
         {getNumBloks(blok.ankle) > 0 && (
