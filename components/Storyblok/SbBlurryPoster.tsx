@@ -1,11 +1,8 @@
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
-import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { BlurryPoster } from '../BlurryPoster';
 import { CreateBloks } from '../CreateBloks';
-import { RichText } from '../RichText';
 import { type HeadingType } from '../Typography';
 import { type SbImageType } from './Storyblok.types';
-import { hasRichText } from '@/utilities/hasRichText';
 
 type SbBlurryPosterProps = {
   blok: {
@@ -13,13 +10,14 @@ type SbBlurryPosterProps = {
     heading?: string;
     headingLevel?: HeadingType;
     isSmallHeading?: boolean;
+    imageOnLeft?: boolean;
     body: string;
     byline?: string;
     publishedDate?: string;
     cta?: SbBlokData[];
     image?: SbImageType;
     bgImage?: SbImageType;
-  },
+  }
 };
 
 export const SbBlurryPoster = ({
@@ -27,6 +25,7 @@ export const SbBlurryPoster = ({
     heading,
     headingLevel,
     isSmallHeading,
+    imageOnLeft,
     body,
     byline,
     publishedDate,
@@ -44,6 +43,7 @@ export const SbBlurryPoster = ({
       heading={heading}
       headingLevel={headingLevel}
       isSmallHeading={isSmallHeading}
+      imageOnLeft={imageOnLeft}
       body={body}
       byline={byline}
       publishedDate={publishedDate}

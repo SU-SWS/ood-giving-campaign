@@ -6,10 +6,12 @@ import {
 } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import * as styles from './BlurryPoster.styles';
+import { image } from '../Banner';
 
 type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   bgImageSrc?: string;
   bgImageFocus?: string;
+  imageOnLeft?: boolean;
   headingLevel?: HeadingType;
   heading?: string;
   isSmallHeading?: boolean;
@@ -25,6 +27,7 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
 export const BlurryPoster = ({
   bgImageSrc,
   bgImageFocus,
+  imageOnLeft,
   heading,
   headingLevel = 'h2',
   isSmallHeading,
@@ -50,14 +53,14 @@ export const BlurryPoster = ({
     <Container {...props} bgColor="black" width="full" className={styles.root} style={bgImageStyle}>
       <div className={styles.blurWrapper}>
         <Grid lg={2} className="cc rs-py-8">
-          <div className="z-10 rs-pr-2">
+          <div className={styles.contentWrapper(imageOnLeft)}>
             {heading &&  (
               <Heading
                 size={isSmallHeading ? 'f8' : 'f9'}
                 font="druk"
                 color="white"
                 leading="none"
-                className="rs-mt-7 rs-mb-5 lg:w-[140%]"
+                className={styles.heading(imageOnLeft)}
               >
                 {heading}
               </Heading>
@@ -82,7 +85,7 @@ export const BlurryPoster = ({
               </div>
             )}
           </div>
-          <div>
+          <div className={styles.imageWrapper(imageOnLeft)}>
             <img
               src={getProcessedImage(imageSrc, '1200x1600', imageFocus)}
               alt=""
