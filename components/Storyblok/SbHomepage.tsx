@@ -65,20 +65,18 @@ export const SbHomepage = ({
     <main id="main-content">
       <div>
         <Heading as="h1" srOnly>{title || 'Homepage'}</Heading>
-        <HomepageSplitHero />
-          {/* <Intro text={intro} />
+        <HomepageHero />
+          <Intro text={intro} />
           <ThemeSection
             themeCardDiscovery={themeCardDiscovery}
             themeCardCitizen={themeCardCitizen}
             themeCardAcceleration={themeCardAcceleration}
             themeCardPlanet={themeCardPlanet}
-          /> */}
-          <IdealFellow />
+          />
           <ProgressStorySection bgImage={progressImage}>
             <CreateBloks blokSection={progressStories} />
           </ProgressStorySection>
-          <Changemaker />
-          {/* <BlockBanner
+          <BlockBanner
             imageSrc={getProcessedImage(blockBannerImage, '2000x0')}
             phrase1={phrase1}
             phrase2={phrase2}
@@ -89,7 +87,7 @@ export const SbHomepage = ({
           </BelowBlockBanner>
           <FindPurposeSection>
             <CreateBloks blokSection={findPurpose} />
-          </FindPurposeSection> */}
+          </FindPurposeSection>
         <CreateBloks blokSection={content} />
         <CreateBloks blokSection={ankle} />
       </div>
