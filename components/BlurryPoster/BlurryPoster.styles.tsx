@@ -1,4 +1,4 @@
-import { cnb } from "cnbuilder";
+import { cnb } from 'cnbuilder';
 
 export const root = 'relative bg-no-repeat bg-cover bg-center overflow-hidden';
 export const blurWrapper = 'w-full h-full backdrop-blur-md';
