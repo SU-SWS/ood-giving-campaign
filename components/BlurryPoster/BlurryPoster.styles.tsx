@@ -12,13 +12,13 @@ export const heading = (imageOnLeft: boolean) => cnb('mb-0 -mt-01em', {
 });
 
 export const contentWrapper = (imageOnLeft: boolean) => cnb('relative z-10', {
-  'order-last lg:rs-pl-4': imageOnLeft,
-  'order-first lg:rs-pr-2': !imageOnLeft,
+  'order-last': imageOnLeft,
+  'order-first': !imageOnLeft,
 });
 
-export const bodyWrapper = (imageOnLeft: boolean) => imageOnLeft ? 'cc-right' : 'cc-left';
+export const bodyWrapper = (imageOnLeft: boolean) => imageOnLeft ? 'cc-right lg:rs-pl-4' : 'cc-left lg:rs-pr-2';
 
-export const imageWrapper = (imageOnLeft: boolean) => cnb('', {
+export const imageWrapper = (imageOnLeft: boolean) => cnb('shrink-0', {
   'order-first cc-left': imageOnLeft,
   'cc-right': !imageOnLeft,
 });
