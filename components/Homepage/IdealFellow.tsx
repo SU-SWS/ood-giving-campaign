@@ -5,12 +5,11 @@ import { Heading, Text } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { Parallax } from '../Parallax/Parallax';
 import { HeroIcon } from '../HeroIcon';
-import { Hero } from '../Hero';
 
 export const IdealFellow = () => {
   const bgImage = getProcessedImage('https://a-us.storyblok.com/f/1005200/2560x1707/c4fba877e8/firefly-20230919145441.png', '2000x1600');
   return (
-    <Container width="full" bgColor="white" className="h-800 lg:h-[150rem] overflow-hidden relative">
+    <Container width="full" bgColor="white" className="h-800 lg:h-[150rem] overflow-hidden relative -mb-100">
       <Parallax offset={100}>
         <div
           style={{ backgroundImage: `url('${bgImage}'` }}

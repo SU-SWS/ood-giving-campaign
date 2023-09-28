@@ -1,4 +1,4 @@
-import { storyblokEditable } from '@storyblok/react/rsc';
+import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { Banner } from '../Banner';
 import { CreateBloks } from '../CreateBloks';
@@ -13,7 +13,7 @@ type SbBannerProps = {
     heading?: string;
     isSmallHeading?: boolean;
     body: StoryblokRichtext;
-    cta?: any[];
+    cta?: SbBlokData[];
     image?: SbImageType;
     bgColor?: BgTextColorPairBlackWhiteType;
   };

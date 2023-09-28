@@ -12,10 +12,9 @@ export const HomepageSplitHero = () => {
   return (
     <Container width="full" bgColor="black" className="relative overflow-hidden">
       <div
-        className="relative pb-[27vw] bg-black-true pt-[22vw] xl:pt-[18vw] 2xl:pt-[16vw] 4xl:pt-[34rem] bg-no-repeat bg-cover [background-position-y:160px]"
+        className="relative pb-[27vw] bg-black-true pt-[24vw] md:pt-[22vw] xl:pt-[18vw] 2xl:pt-[16vw] 4xl:pt-[34rem] bg-no-repeat bg-cover [background-position-y:160px]"
         style={{ backgroundImage: `url('${bg}')` }}
       >
-        <Heading as="h1" srOnly>Homepage</Heading>
         <div className="absolute top-0 h-[50vw] 2xl:h-[40vw] 3xl:h-[35vw] w-full bg-gradient-to-b from-[#191e3e] via-[#263588] via-40% to-transparent" />
         <div className="relative">
           <div className="relative cc">

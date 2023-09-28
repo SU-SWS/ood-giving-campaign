@@ -17,7 +17,7 @@ import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { type SbImageType } from './Storyblok.types';
 
-type SbHomepagePageProps = {
+type SbHomepageProps = {
   blok: {
     _uid: string;
     title?: string;
@@ -39,7 +39,7 @@ type SbHomepagePageProps = {
   };
 };
 
-export const SbHomepagePage = ({
+export const SbHomepage = ({
   blok: {
     title,
     intro,
@@ -59,26 +59,24 @@ export const SbHomepagePage = ({
     ankle,
   },
   blok,
-}: SbHomepagePageProps) => (
+}: SbHomepageProps) => (
   <div {...storyblokEditable(blok)}>
     <Masthead />
     <main id="main-content">
       <div>
         <Heading as="h1" srOnly>{title || 'Homepage'}</Heading>
-        <HomepageSplitHero />
-          {/* <Intro text={intro} />
+        <HomepageHero />
+          <Intro text={intro} />
           <ThemeSection
             themeCardDiscovery={themeCardDiscovery}
             themeCardCitizen={themeCardCitizen}
             themeCardAcceleration={themeCardAcceleration}
             themeCardPlanet={themeCardPlanet}
-          /> */}
-          <IdealFellow />
+          />
           <ProgressStorySection bgImage={progressImage}>
             <CreateBloks blokSection={progressStories} />
           </ProgressStorySection>
-          <Changemaker />
-          {/* <BlockBanner
+          <BlockBanner
             imageSrc={getProcessedImage(blockBannerImage, '2000x0')}
             phrase1={phrase1}
             phrase2={phrase2}
@@ -89,7 +87,7 @@ export const SbHomepagePage = ({
           </BelowBlockBanner>
           <FindPurposeSection>
             <CreateBloks blokSection={findPurpose} />
-          </FindPurposeSection> */}
+          </FindPurposeSection>
         <CreateBloks blokSection={content} />
         <CreateBloks blokSection={ankle} />
       </div>
