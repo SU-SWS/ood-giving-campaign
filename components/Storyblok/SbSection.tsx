@@ -1,5 +1,5 @@
 import { cnb } from 'cnbuilder';
-import { storyblokEditable } from '@storyblok/react/rsc';
+import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import { CreateBloks } from '../CreateBloks';
 import { FlexBox } from '../FlexBox';
 import {
@@ -12,7 +12,7 @@ import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities
 type SbSectionProps = {
   blok: {
     _uid: string;
-    content?: any[];
+    content?: SbBlokData[];
     superhead?: string;
     heading?: string;
     headingLevel?: HeadingType;

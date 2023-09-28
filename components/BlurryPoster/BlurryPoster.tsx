@@ -1,12 +1,14 @@
 import { HTMLAttributes } from 'react';
+import { cnb } from 'cnbuilder';
 import { Container } from '../Container';
 import { Grid } from '../Grid';
+import { FlexBox } from '../FlexBox';
 import {
   Heading, Paragraph, Text, type HeadingType,
 } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import * as styles from './BlurryPoster.styles';
-import { image } from '../Banner';
+import { accentBgColors, type AccentColorType } from '@/utilities/datasource';
 
 type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   bgImageSrc?: string;
@@ -21,6 +23,7 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   publishedDate?: string;
   imageSrc?: string;
   imageFocus?: string;
+  tabColor?: AccentColorType;
   cta?: React.ReactNode;
 };
 
@@ -37,6 +40,7 @@ export const BlurryPoster = ({
   publishedDate,
   imageSrc,
   imageFocus,
+  tabColor,
   cta,
   className,
   ...props
@@ -52,38 +56,49 @@ export const BlurryPoster = ({
   return (
     <Container {...props} bgColor="black" width="full" className={styles.root} style={bgImageStyle}>
       <div className={styles.blurWrapper}>
-        <Grid lg={2} className="cc rs-py-8">
+        <Grid lg={2} className="w-full rs-py-8">
           <div className={styles.contentWrapper(imageOnLeft)}>
-            {heading &&  (
-              <Heading
-                size={isSmallHeading ? 'f8' : 'f9'}
-                font="druk"
-                color="white"
-                leading="none"
-                className={styles.heading(imageOnLeft)}
-              >
-                {heading}
-              </Heading>
-            )}
-            {customHeading && (
-              <div className="rs-mt-7 rs-mb-5">
-                {customHeading}
-              </div>
-            )}
-            {body && (
-              <Paragraph size={2} color="white" leading="display">{body}</Paragraph>
-            )}
-            {byline && (
-              <Text>{byline}</Text>
-            )}
-            {date && (
-              <time dateTime={publishedDate}>{formattedDate}</time>
-            )}
-            {cta && (
-              <div className="rs-mt-4">
-                {cta}
-              </div>
-            )}
+            <FlexBox className={styles.headingWrapper(imageOnLeft)}>
+              {tabColor && (
+                <div className={cnb(
+                  'block w-8 md:w-20 lg:w-40',
+                  accentBgColors[tabColor],
+                  )}
+                />
+              )}
+              {heading &&  (
+                <Heading
+                  size={isSmallHeading ? 'f8' : 'f9'}
+                  font="druk"
+                  color="white"
+                  leading="none"
+                  className={styles.heading(imageOnLeft)}
+                >
+                  {heading}
+                </Heading>
+              )}
+              {customHeading && (
+                <div className="rs-mt-7 rs-mb-5">
+                  {customHeading}
+                </div>
+              )}
+            </FlexBox>
+            <div className={styles.bodyWrapper(imageOnLeft)}>
+              {body && (
+                <Paragraph size={2} color="white" leading="display">{body}</Paragraph>
+              )}
+              {byline && (
+                <Text>{byline}</Text>
+              )}
+              {date && (
+                <time dateTime={publishedDate}>{formattedDate}</time>
+              )}
+              {cta && (
+                <div className="rs-mt-4">
+                  {cta}
+                </div>
+              )}
+            </div>
           </div>
           <div className={styles.imageWrapper(imageOnLeft)}>
             <img
