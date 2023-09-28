@@ -12,13 +12,13 @@ export const heading = (imageOnLeft: boolean) => cnb('mb-0 -mt-01em', {
 });
 
 export const contentWrapper = (imageOnLeft: boolean) => cnb('relative z-10', {
-  'order-last': imageOnLeft,
-  'order-first': !imageOnLeft,
+  'lg:order-last': imageOnLeft,
+  'lg:order-first': !imageOnLeft,
 });
 
-export const bodyWrapper = (imageOnLeft: boolean) => imageOnLeft ? 'cc-right lg:rs-pl-4' : 'cc-left lg:rs-pr-2';
+export const bodyWrapper = (imageOnLeft: boolean) => imageOnLeft ? 'cc 3xl:pr-[calc(100%-750px)] lg:rs-pl-4' : 'cc 3xl:pl-[calc(100%-750px)] lg:rs-pr-2';
 
-export const imageWrapper = (imageOnLeft: boolean) => cnb('shrink-0', {
-  'order-first cc-left': imageOnLeft,
-  'cc-right': !imageOnLeft,
+export const imageWrapper = (imageOnLeft: boolean) => cnb('mt-30 md:mt-50 lg:mt-0 shrink-0 cc', {
+  'lg:order-first 3xl:pl-[calc(100%-750px)]': imageOnLeft,
+  ' 3xl:pr-[calc(100%-750px)]': !imageOnLeft,
 });

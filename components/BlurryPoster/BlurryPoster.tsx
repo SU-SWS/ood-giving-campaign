@@ -104,7 +104,12 @@ export const BlurryPoster = ({
             <img
               src={getProcessedImage(imageSrc, '1200x1600', imageFocus)}
               alt=""
-              className="h-full w-full object-cover object-center"
+              className="h-full w-full object-cover object-center hidden lg:block"
+            />
+            <img
+              src={getProcessedImage(imageSrc, '800x400', imageFocus)}
+              alt=""
+              className="h-full w-full object-cover object-center lg:hidden"
             />
           </div>
         </Grid>
