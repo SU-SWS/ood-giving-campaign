@@ -8,7 +8,7 @@ import {
 } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import * as styles from './BlurryPoster.styles';
-import { accentBgColors, type AccentColorType } from '@/utilities/datasource';
+import { accentBorderColors, type AccentColorType } from '@/utilities/datasource';
 
 type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   bgImageSrc?: string;
@@ -59,23 +59,25 @@ export const BlurryPoster = ({
         <Grid lg={2} className="w-full rs-py-8">
           <div className={styles.contentWrapper(imageOnLeft)}>
             <FlexBox className={styles.headingWrapper(imageOnLeft)}>
-              {tabColor && (
+              {/* {tabColor && (
                 <div className={cnb(
                   'block w-8 md:w-20 lg:w-40',
                   accentBgColors[tabColor],
                   )}
                 />
-              )}
+              )} */}
               {heading &&  (
-                <Heading
-                  size={isSmallHeading ? 'f8' : 'f9'}
-                  font="druk"
-                  color="white"
-                  leading="none"
-                  className={styles.heading(imageOnLeft)}
-                >
-                  {heading}
-                </Heading>
+                <div className={styles.headingInnerWrapper(imageOnLeft)}>
+                  <Heading
+                    size={isSmallHeading ? 'f8' : 'f9'}
+                    font="druk"
+                    color="white"
+                    leading="none"
+                    className={cnb(styles.heading(imageOnLeft), accentBorderColors[tabColor])}
+                  >
+                    {heading}
+                  </Heading>
+                </div>
               )}
               {customHeading && (
                 <div className="rs-mt-7 rs-mb-5">
