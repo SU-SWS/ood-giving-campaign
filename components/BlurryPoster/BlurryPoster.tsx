@@ -17,7 +17,6 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   headingLevel?: HeadingType;
   heading?: string;
   isSmallHeading?: boolean;
-  customHeading?: React.ReactNode;
   body?: string;
   byline?: string;
   publishedDate?: string;
@@ -34,7 +33,6 @@ export const BlurryPoster = ({
   heading,
   headingLevel = 'h2',
   isSmallHeading,
-  customHeading,
   body,
   byline,
   publishedDate,
@@ -59,29 +57,17 @@ export const BlurryPoster = ({
         <Grid lg={2} className="w-full rs-py-8">
           <div className={styles.contentWrapper(imageOnLeft)}>
             <FlexBox className={styles.headingWrapper(imageOnLeft)}>
-              {/* {tabColor && (
-                <div className={cnb(
-                  'block w-8 md:w-20 lg:w-40',
-                  accentBgColors[tabColor],
-                  )}
-                />
-              )} */}
               {heading &&  (
                 <div className={styles.headingInnerWrapper(imageOnLeft)}>
                   <Heading
-                    size={isSmallHeading ? 'f8' : 'f9'}
+                    // size={isSmallHeading ? 'f8' : 'f9'}
                     font="druk"
                     color="white"
                     leading="none"
-                    className={cnb(styles.heading(imageOnLeft), accentBorderColors[tabColor])}
+                    className={cnb(styles.heading(imageOnLeft, isSmallHeading), accentBorderColors[tabColor])}
                   >
                     {heading}
                   </Heading>
-                </div>
-              )}
-              {customHeading && (
-                <div className="rs-mt-7 rs-mb-5">
-                  {customHeading}
                 </div>
               )}
             </FlexBox>
@@ -102,18 +88,20 @@ export const BlurryPoster = ({
               )}
             </div>
           </div>
-          <div className={styles.imageWrapper(imageOnLeft)}>
-            <img
-              src={getProcessedImage(imageSrc, '1200x1600', imageFocus)}
-              alt=""
-              className="h-full w-full object-cover object-center hidden lg:block"
-            />
-            <img
-              src={getProcessedImage(imageSrc, '800x400', imageFocus)}
-              alt=""
-              className="h-full w-full object-cover object-center lg:hidden"
-            />
-          </div>
+          {imageSrc && (
+            <div className={styles.imageWrapper(imageOnLeft)}>
+              <img
+                src={getProcessedImage(imageSrc, '900x1200', imageFocus)}
+                alt=""
+                className="h-full w-full object-cover object-center hidden lg:block"
+              />
+              <img
+                src={getProcessedImage(imageSrc, '800x400', imageFocus)}
+                alt=""
+                className="h-full w-full object-cover object-center lg:hidden"
+              />
+            </div>
+          )}
         </Grid>
       </div>
     </Container>
