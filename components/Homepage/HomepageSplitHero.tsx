@@ -94,7 +94,7 @@ export const HomepageSplitHero = () => {
               <span className="italic">We’re</span> all in this <span className="italic">together</span>.
             </Heading>
           </AnimateInView>
-          <AnimateInView delay={0.2} animation="slideUp" className="max-w-1200 rs-ml-0">
+          <AnimateInView delay={0.2} animation="slideUp" className="max-w-1200 xl:ml-08em">
             <Paragraph size={2} weight="normal" leading="snug" className="max-w-1000 ml-0 mr-auto">
               Sustaining a thriving planet. Accelerating solutions and empowering the next generation of leaders.
             </Paragraph>

@@ -3,6 +3,7 @@ import { BlurryPoster } from '../BlurryPoster';
 import { CreateBloks } from '../CreateBloks';
 import { type HeadingType } from '../Typography';
 import { type SbImageType } from './Storyblok.types';
+import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
 
 type SbBlurryPosterProps = {
   blok: {
@@ -17,6 +18,9 @@ type SbBlurryPosterProps = {
     cta?: SbBlokData[];
     image?: SbImageType;
     bgImage?: SbImageType;
+    tabColor?: {
+      value?: PaletteAccentHexColorType;
+    }
   }
 };
 
@@ -32,6 +36,7 @@ export const SbBlurryPoster = ({
     cta,
     image: { filename, focus } = {},
     bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
+    tabColor: { value: tabColorValue } = {},
   },
   blok,
 }: SbBlurryPosterProps) => {
@@ -52,6 +57,7 @@ export const SbBlurryPoster = ({
       imageFocus={focus}
       bgImageSrc={bgImageSrc}
       bgImageFocus={bgImageFocus}
+      tabColor={paletteAccentColors[tabColorValue]}
     />
   );
 };
