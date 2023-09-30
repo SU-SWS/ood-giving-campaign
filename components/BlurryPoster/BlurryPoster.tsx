@@ -54,17 +54,16 @@ export const BlurryPoster = ({
   return (
     <Container {...props} bgColor="black" width="full" className={styles.root} style={bgImageStyle}>
       <div className={styles.blurWrapper}>
-        <Grid lg={2} className="w-full rs-py-8">
+        <Grid lg={2} className={styles.grid}>
           <div className={styles.contentWrapper(imageOnLeft)}>
             <FlexBox className={styles.headingWrapper(imageOnLeft)}>
               {heading &&  (
-                <div className={styles.headingInnerWrapper(imageOnLeft)}>
+                <div className={cnb(styles.headingInnerWrapper(imageOnLeft), accentBorderColors[tabColor])}>
                   <Heading
-                    // size={isSmallHeading ? 'f8' : 'f9'}
                     font="druk"
                     color="white"
                     leading="none"
-                    className={cnb(styles.heading(imageOnLeft, isSmallHeading), accentBorderColors[tabColor])}
+                    className={styles.heading(imageOnLeft, isSmallHeading)}
                   >
                     {heading}
                   </Heading>
@@ -82,26 +81,28 @@ export const BlurryPoster = ({
                 <time dateTime={publishedDate}>{formattedDate}</time>
               )}
               {cta && (
-                <div className="rs-mt-4">
+                <div className={styles.cta}>
                   {cta}
                 </div>
               )}
             </div>
           </div>
-          {imageSrc && (
-            <div className={styles.imageWrapper(imageOnLeft)}>
-              <img
-                src={getProcessedImage(imageSrc, '900x1200', imageFocus)}
-                alt=""
-                className="h-full w-full object-cover object-center hidden lg:block"
-              />
-              <img
-                src={getProcessedImage(imageSrc, '800x400', imageFocus)}
-                alt=""
-                className="h-full w-full object-cover object-center lg:hidden"
-              />
-            </div>
-          )}
+          <div className={styles.imageWrapper(imageOnLeft)}>
+            {imageSrc && (
+              <>
+                <img
+                  src={getProcessedImage(imageSrc, '900x1200', imageFocus)}
+                  alt=""
+                  className={styles.image}
+                />
+                <img
+                  src={getProcessedImage(imageSrc, '800x400', imageFocus)}
+                  alt=""
+                  className={styles.imageMobile}
+                />
+              </>
+            )}
+          </div>
         </Grid>
       </div>
     </Container>
