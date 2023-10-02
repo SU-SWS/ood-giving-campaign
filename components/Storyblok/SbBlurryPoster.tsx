@@ -2,13 +2,14 @@ import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import { BlurryPoster } from '../BlurryPoster';
 import { CreateBloks } from '../CreateBloks';
 import { type HeadingType } from '../Typography';
-import { type SbImageType } from './Storyblok.types';
+import { type SbImageType, type SbTypographyProps } from './Storyblok.types';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
 
 type SbBlurryPosterProps = {
   blok: {
     _uid: string;
     heading?: string;
+    customHeading?: SbTypographyProps[];
     headingLevel?: HeadingType;
     isSmallHeading?: boolean;
     imageOnLeft?: boolean;
@@ -27,6 +28,7 @@ type SbBlurryPosterProps = {
 export const SbBlurryPoster = ({
   blok: {
     heading,
+    customHeading,
     headingLevel,
     isSmallHeading,
     imageOnLeft,
@@ -46,6 +48,7 @@ export const SbBlurryPoster = ({
     <BlurryPoster
       {...storyblokEditable(blok)}
       heading={heading}
+      customHeading={customHeading}
       headingLevel={headingLevel}
       isSmallHeading={isSmallHeading}
       imageOnLeft={imageOnLeft}

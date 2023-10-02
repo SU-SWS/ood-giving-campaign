@@ -1,5 +1,6 @@
-import { HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
+import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
 import { Grid } from '../Grid';
 import { FlexBox } from '../FlexBox';
@@ -7,8 +8,9 @@ import {
   Heading, Paragraph, Text, type HeadingType,
 } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import * as styles from './BlurryPoster.styles';
 import { accentBorderColors, type AccentColorType } from '@/utilities/datasource';
+import { type SbTypographyProps } from '../Storyblok/Storyblok.types';
+import * as styles from './BlurryPoster.styles';
 
 type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   bgImageSrc?: string;
@@ -16,6 +18,7 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   imageOnLeft?: boolean;
   headingLevel?: HeadingType;
   heading?: string;
+  customHeading?: SbTypographyProps[];
   isSmallHeading?: boolean;
   body?: string;
   byline?: string;
@@ -31,6 +34,7 @@ export const BlurryPoster = ({
   bgImageFocus,
   imageOnLeft,
   heading,
+  customHeading,
   headingLevel = 'h2',
   isSmallHeading,
   body,
@@ -57,8 +61,12 @@ export const BlurryPoster = ({
         <Grid lg={2} className={styles.grid}>
           <div className={styles.contentWrapper(imageOnLeft)}>
             <FlexBox className={styles.headingWrapper(imageOnLeft)}>
-              {heading &&  (
-                <div className={cnb(styles.headingInnerWrapper(imageOnLeft), accentBorderColors[tabColor])}>
+              <AnimateInView
+                animation={imageOnLeft ? 'slideInFromRight' : 'slideInFromLeft'}
+                className={cnb(styles.headingInnerWrapper(imageOnLeft), accentBorderColors[tabColor])}
+              >
+                {/* Render all Druk font heading if custom heading is not entered */}
+                {heading && !customHeading && (
                   <Heading
                     font="druk"
                     color="white"
@@ -67,12 +75,30 @@ export const BlurryPoster = ({
                   >
                     {heading}
                   </Heading>
-                </div>
-              )}
+                )}
+                {/* Render custom mixed typography heading if entered */}
+                {customHeading && (
+                  <Heading size="base" leading="none" className={styles.customHeading(imageOnLeft)}>
+                    {customHeading.map(({text, font, italic}) => (
+                      <Text
+                        as="span"
+                        key={text}
+                        font={font}
+                        leading="none"
+                        weight={font === 'druk' ? 'black' : 'normal'}
+                        italic={italic}
+                        className={styles.customHeadingText(font, isSmallHeading)}
+                      >
+                        {text}
+                      </Text>
+                    ))}
+                  </Heading>
+                )}
+              </AnimateInView>
             </FlexBox>
             <div className={styles.bodyWrapper(imageOnLeft)}>
               {body && (
-                <Paragraph size={2} color="white" leading="display">{body}</Paragraph>
+                <Paragraph variant="overview" weight="normal" color="white" leading="display">{body}</Paragraph>
               )}
               {byline && (
                 <Text>{byline}</Text>
@@ -89,7 +115,7 @@ export const BlurryPoster = ({
           </div>
           <div className={styles.imageWrapper(imageOnLeft)}>
             {imageSrc && (
-              <>
+              <AnimateInView animation="zoomSharpen" duration={1} className="h-full w-full">
                 <img
                   src={getProcessedImage(imageSrc, '900x1200', imageFocus)}
                   alt=""
@@ -100,7 +126,7 @@ export const BlurryPoster = ({
                   alt=""
                   className={styles.imageMobile}
                 />
-              </>
+              </AnimateInView>
             )}
           </div>
         </Grid>
