@@ -1,5 +1,6 @@
 import { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
+import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
 import { Grid } from '../Grid';
 import { FlexBox } from '../FlexBox';
@@ -60,7 +61,10 @@ export const BlurryPoster = ({
         <Grid lg={2} className={styles.grid}>
           <div className={styles.contentWrapper(imageOnLeft)}>
             <FlexBox className={styles.headingWrapper(imageOnLeft)}>
-              <div className={cnb(styles.headingInnerWrapper(imageOnLeft), accentBorderColors[tabColor])}>
+              <AnimateInView
+                animation={imageOnLeft ? 'slideInFromRight' : 'slideInFromLeft'}
+                className={cnb(styles.headingInnerWrapper(imageOnLeft), accentBorderColors[tabColor])}
+              >
                 {/* Render all Druk font heading if custom heading is not entered */}
                 {heading && !customHeading && (
                   <Heading
@@ -90,7 +94,7 @@ export const BlurryPoster = ({
                     ))}
                   </Heading>
                 )}
-              </div>
+              </AnimateInView>
             </FlexBox>
             <div className={styles.bodyWrapper(imageOnLeft)}>
               {body && (
@@ -111,7 +115,7 @@ export const BlurryPoster = ({
           </div>
           <div className={styles.imageWrapper(imageOnLeft)}>
             {imageSrc && (
-              <>
+              <AnimateInView animation="zoomSharpen" duration={1}>
                 <img
                   src={getProcessedImage(imageSrc, '900x1200', imageFocus)}
                   alt=""
@@ -122,7 +126,7 @@ export const BlurryPoster = ({
                   alt=""
                   className={styles.imageMobile}
                 />
-              </>
+              </AnimateInView>
             )}
           </div>
         </Grid>
