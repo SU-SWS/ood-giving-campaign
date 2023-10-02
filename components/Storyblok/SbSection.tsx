@@ -3,11 +3,14 @@ import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import { CreateBloks } from '../CreateBloks';
 import { FlexBox } from '../FlexBox';
 import {
-  Heading, type HeadingType, SrOnlyText, Text,
+  Heading, type HeadingType, SrOnlyText, Text, Paragraph,
 } from '../Typography';
 import { Container, type BgColorType } from '../Container';
-import { accentBgColors, type AccentColorType, type PaddingType } from '@/utilities/datasource';
+import { ImageOverlay } from '../ImageOverlay';
+import { accentBgColors, type PaddingType } from '@/utilities/datasource';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
+import { type SbImageType } from './Storyblok.types';
+import { getProcessedImage } from '@/utilities/getProcessedImage';
 
 type SbSectionProps = {
   blok: {
@@ -15,11 +18,14 @@ type SbSectionProps = {
     content?: SbBlokData[];
     superhead?: string;
     heading?: string;
+    isSmallHeading?: boolean;
     headingLevel?: HeadingType;
+    subheading?: string;
     barColor?: {
       value?: PaletteAccentHexColorType;
     }
     bgColor?: BgColorType;
+    bgImage?: SbImageType;
     paddingTop?: PaddingType;
     paddingBottom?: PaddingType;
   };
@@ -30,9 +36,12 @@ export const SbSection = ({
     content,
     superhead,
     heading,
+    isSmallHeading,
     headingLevel,
+    subheading,
     barColor: { value: barColorValue } = {},
     bgColor,
+    bgImage: { filename, focus } = {},
     paddingTop,
     paddingBottom,
   },
@@ -46,8 +55,11 @@ export const SbSection = ({
     pb={paddingBottom}
     className="relative overflow-hidden"
   >
+    {filename && (
+      <ImageOverlay imageSrc={getProcessedImage(filename, '2000x1600', focus)} overlay={bgColor === 'black' ? 'black-70' : 'white-70'} />
+    )}
     {(heading || superhead) && (
-      <FlexBox className="rs-mb-6">
+      <FlexBox className="relative z-10">
         {barColorValue && (
           <div className={cnb(
             'block w-8 md:w-20 lg:w-40',
@@ -62,14 +74,14 @@ export const SbSection = ({
         )}
         >
           {superhead && (
-            <Text size={2} leading="tight" font="serif" aria-hidden>
+            <Text size={2} leading="tight" font="serif" weight="semibold" aria-hidden>
               {superhead}
             </Text>
           )}
           {heading && (
             <Heading
               as={headingLevel}
-              size="splash"
+              size={isSmallHeading ? 'f8' : 'splash'}
               leading="none"
               uppercase
               font="druk"
@@ -81,7 +93,20 @@ export const SbSection = ({
         </div>
       </FlexBox>
     )}
-    <Container>
+    {subheading && (
+      <Container>
+        <Paragraph
+          variant="overview"
+          weight="normal"
+          color={bgColor === 'black' ? 'black-20' : 'black-80'}
+          noMargin
+          className="relative z-10 max-w-prose ml-0 rs-mt-3"
+        >
+          {subheading}
+        </Paragraph>
+      </Container>
+    )}
+    <Container className="rs-mt-8">
       <CreateBloks blokSection={content} isDarkTheme={bgColor === 'black'} />
     </Container>
   </Container>
