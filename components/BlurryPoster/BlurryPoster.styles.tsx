@@ -45,5 +45,6 @@ export const imageWrapper = (imageOnLeft: boolean) => cnb('w-full mt-30 md:mt-50
   'lg:order-first 3xl:pl-[calc(100%-750px)] lg:pr-0': imageOnLeft,
   ' 3xl:pr-[calc(100%-750px)] lg:pl-0': !imageOnLeft,
 });
+export const imageInnerWrapper = 'h-full w-full';
 export const image = 'h-full w-full object-cover object-center hidden lg:block';
 export const imageMobile = 'h-full w-full object-cover object-center lg:hidden';

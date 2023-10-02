@@ -115,7 +115,7 @@ export const BlurryPoster = ({
           </div>
           <div className={styles.imageWrapper(imageOnLeft)}>
             {imageSrc && (
-              <AnimateInView animation="zoomSharpen" duration={1} className="h-full w-full">
+              <AnimateInView animation="zoomSharpen" duration={1} className={styles.imageInnerWrapper}>
                 <img
                   src={getProcessedImage(imageSrc, '900x1200', imageFocus)}
                   alt=""
