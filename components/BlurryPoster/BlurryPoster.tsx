@@ -7,8 +7,9 @@ import {
   Heading, Paragraph, Text, type HeadingType,
 } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import * as styles from './BlurryPoster.styles';
 import { accentBorderColors, type AccentColorType } from '@/utilities/datasource';
+import { type SbTypographyProps } from '../Storyblok/Storyblok.types';
+import * as styles from './BlurryPoster.styles';
 
 type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   bgImageSrc?: string;
@@ -16,6 +17,7 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   imageOnLeft?: boolean;
   headingLevel?: HeadingType;
   heading?: string;
+  customHeading?: SbTypographyProps[];
   isSmallHeading?: boolean;
   body?: string;
   byline?: string;
@@ -31,6 +33,7 @@ export const BlurryPoster = ({
   bgImageFocus,
   imageOnLeft,
   heading,
+  customHeading,
   headingLevel = 'h2',
   isSmallHeading,
   body,
@@ -57,8 +60,9 @@ export const BlurryPoster = ({
         <Grid lg={2} className={styles.grid}>
           <div className={styles.contentWrapper(imageOnLeft)}>
             <FlexBox className={styles.headingWrapper(imageOnLeft)}>
-              {heading &&  (
-                <div className={cnb(styles.headingInnerWrapper(imageOnLeft), accentBorderColors[tabColor])}>
+              <div className={cnb(styles.headingInnerWrapper(imageOnLeft), accentBorderColors[tabColor])}>
+                {/* Render all Druk font heading if custom heading is not entered */}
+                {heading && !customHeading && (
                   <Heading
                     font="druk"
                     color="white"
@@ -67,12 +71,30 @@ export const BlurryPoster = ({
                   >
                     {heading}
                   </Heading>
-                </div>
-              )}
+                )}
+                {/* Render custom mixed typography heading if entered */}
+                {customHeading && (
+                  <Heading size="base" leading="none" className={styles.customHeading(imageOnLeft)}>
+                    {customHeading.map(({text, font, italic}) => (
+                      <Text
+                        as="span"
+                        key={text}
+                        font={font}
+                        leading="none"
+                        weight={font === 'druk' ? 'black' : 'normal'}
+                        italic={italic}
+                        className={styles.customHeadingText(font, isSmallHeading)}
+                      >
+                        {text}
+                      </Text>
+                    ))}
+                  </Heading>
+                )}
+              </div>
             </FlexBox>
             <div className={styles.bodyWrapper(imageOnLeft)}>
               {body && (
-                <Paragraph size={2} color="white" leading="display">{body}</Paragraph>
+                <Paragraph variant="overview" weight="normal" color="white" leading="display">{body}</Paragraph>
               )}
               {byline && (
                 <Text>{byline}</Text>

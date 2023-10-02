@@ -35,3 +35,12 @@ export type SbLinkType =
     linktype?: 'email';
     [k: string]: any;
   };
+
+/**
+ * Reusable types for custom Storyblok components
+ */
+export type SbTypographyProps = {
+  text?: string;
+  font?: 'druk' | 'serif';
+  italic?: boolean;
+}
