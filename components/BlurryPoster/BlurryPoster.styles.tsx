@@ -26,7 +26,7 @@ export const heading = (imageOnLeft: boolean, isSmallHeading: boolean) => cnb('m
 export const customHeading = (imageOnLeft: boolean) => cnb('flex flex-wrap gap-x-[1em] items-center mb-0 -mt-05em lg:-mt-08em children:inline-block', {
   '3xl:pl-[calc(100%-750px-40px)] lg:w-[140%] xl:w-[130%]': !imageOnLeft,
 });
-export const customHeadingText = (font: 'druk' | 'serif', isSmallHeading: boolean) => cnb('first:ml-0 last:mr-0', {
+export const customHeadingText = (font: 'druk' | 'serif', isSmallHeading: boolean) => cnb('hyphens-auto first:ml-0 last:mr-0', {
   'fluid-type-7': font === 'druk',
   'md:fluid-type-9' : font === 'druk' && !isSmallHeading,
   'md:fluid-type-8 lg:fluid-type-7 3xl:fluid-type-8 4xl:text-[17.1rem]' : font === 'druk' && isSmallHeading,

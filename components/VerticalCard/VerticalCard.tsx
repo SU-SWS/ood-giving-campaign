@@ -99,8 +99,8 @@ export const VerticalCard = ({
           </CtaLink>
         )}
       </div>
-      {/* Display max 3 topic tags */}
-      {!!taxonomy?.length && (
+      {/* No taxonomy for MVP; display max 3 topic tags */}
+      {/* {!!taxonomy?.length && (
         <ul className={styles.taxonomy(!!tabColor)}>
           {taxonomy.slice(0, 3).map((item) => (
             <li key={item} className={styles.taxonomyItem}>
@@ -108,7 +108,7 @@ export const VerticalCard = ({
             </li>
           ))}
         </ul>
-      )}
+      )} */}
     </article>
   </AnimateInView>
 );
