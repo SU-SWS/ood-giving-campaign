@@ -11,7 +11,7 @@ export const overlays = {
   'black-gradient-dark': 'bg-gradient-to-b from-transparent via-black-true/30 to-black-true/80',
   'black-top-bottom': 'bg-gradient-to-b from-gc-black via-transparent via-40% to-gc-black',
   'black-top-sm': 'bg-gradient-to-b from-gc-black via-periwinkle via-20% to-transparent',
-  'white-70': 'bg-white/70',
+  'white-90': 'bg-white/90',
 };
 export type OverlayType = keyof typeof overlays | '';
 

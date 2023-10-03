@@ -7,6 +7,7 @@ import {
 } from '../Typography';
 import { Container, type BgColorType } from '../Container';
 import { ImageOverlay } from '../ImageOverlay';
+import { WidthBox, type WidthType } from '../WidthBox';
 import { accentBgColors, type PaddingType } from '@/utilities/datasource';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
 import { type SbImageType } from './Storyblok.types';
@@ -56,7 +57,7 @@ export const SbSection = ({
     className="relative overflow-hidden"
   >
     {filename && (
-      <ImageOverlay imageSrc={getProcessedImage(filename, '2000x1600', focus)} overlay={bgColor === 'black' ? 'black-70' : 'white-70'} />
+      <ImageOverlay imageSrc={getProcessedImage(filename, '2000x1600', focus)} overlay={bgColor === 'black' ? 'black-70' : 'white-90'} />
     )}
     {(heading || superhead) && (
       <FlexBox className="relative z-10">
@@ -106,7 +107,7 @@ export const SbSection = ({
         </Paragraph>
       </Container>
     )}
-    <Container className="rs-mt-8">
+    <Container pt={8} width="full">
       <CreateBloks blokSection={content} isDarkTheme={bgColor === 'black'} />
     </Container>
   </Container>
