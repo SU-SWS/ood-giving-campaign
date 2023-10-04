@@ -10,7 +10,6 @@ const activeEnv = process.env.NODE_ENV || 'development';
 
 type PathsType = {
   slug: string[];
-  fallback: boolean;
 };
 
 type Props = {
@@ -75,10 +74,8 @@ export async function generateStaticParams(): Promise<any[]> {
     }
     const slug:string = links[linkKey].slug;
     let splittedSlug = slug.split('/');
-    paths.push({ slug: splittedSlug, fallback: false });
+    paths.push({ slug: splittedSlug });
   });
-
-  console.log('GENERATED PAGE PATHS', paths);
 
   // Return a list of paths and no fallback.
   return paths;
