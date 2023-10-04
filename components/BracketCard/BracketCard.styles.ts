@@ -1,6 +1,6 @@
 import { cnb } from 'cnbuilder';
 
-export const root = 'group relative mx-auto cc';
+export const root = 'group relative mx-auto w-full';
 export const grid = (textOnLeft: boolean) => cnb(
   'flex -mt-[40vw] sm:mt-0 sm:ml-0 w-[calc(100%_+_7rem)] sm:w-full sm:grid sm:grid-cols-12 sm:absolute sm:top-0 sm:bottom-[4vw] 3xl:bottom-70',
   textOnLeft ? '-mr-70' : '-ml-70',
