@@ -5,9 +5,6 @@ import {
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { getPageMetadata } from '@/utilities/getPageMetadata';
 import { notFound } from 'next/navigation';
-
-const activeEnv = process.env.NODE_ENV || 'development';
-
 type PathsType = {
   slug: string[];
 };
@@ -19,7 +16,8 @@ type Props = {
 
 // Make sure to not export the below functions otherwise there will be a typescript error
 // https://github.com/vercel/next.js/discussions/48724
-async function getStoryData(params: { slug: string[] }) {
+export async function getStoryData(params: { slug: string[] }) {
+  const activeEnv = process.env.NODE_ENV || 'development';
   let slug: string = params.slug ? params.slug.join('/') : '';
   let sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',
@@ -61,6 +59,7 @@ export async function generateMetadata({ params }: Props, parent: ResolvingMetad
  * Generate static paths for the inside pages.
  */
 export async function generateStaticParams(): Promise<any[]> {
+  const activeEnv = process.env.NODE_ENV || 'development';
   const storyblokApi: StoryblokClient = getStoryblokApi();
   let sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',
