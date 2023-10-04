@@ -39,6 +39,7 @@
 
 # FUNCTIONS
 # ##############################################################################
+# Problem log: https://answers.netlify.com/t/runtime-importmoduleerror-error-cannot-find-module-styled-jsx-style/102375/11
 [functions]
   node_bundler = "esbuild"
-  external_node_modules = ["styled-jsx"]
+  external_node_modules = ["styled-jsx/style"]
