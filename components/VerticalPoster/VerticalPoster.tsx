@@ -17,6 +17,7 @@ type VerticalPosterProps = HTMLAttributes<HTMLDivElement> & {
   imageOnLeft?: boolean;
   headingLevel?: HeadingType;
   heading?: string;
+  subheading?: string;
   customHeading?: SbTypographyProps[];
   isSmallHeading?: boolean;
   body?: string;
@@ -35,6 +36,7 @@ export const VerticalPoster = ({
   customHeading,
   headingLevel = 'h2',
   isSmallHeading,
+  subheading,
   body,
   byline,
   publishedDate,
@@ -48,34 +50,31 @@ export const VerticalPoster = ({
   const date = publishedDate && new Date(publishedDate);
   const formattedDate = date && date.toLocaleDateString('en-US', {
     month: 'long',
-    day: '2-digit',
+    day: 'numeric',
     year: 'numeric',
   });
 
   return (
-    <Container {...props} bgColor="black" width="full" className={styles.root} style={bgImageStyle}>
+    <Container {...props} bgColor="white" width="full" className={styles.root}>
       <div className={styles.blurWrapper}>
         <Grid lg={2} className={styles.grid}>
-          <div className={styles.contentWrapper(imageOnLeft)}>
-            <FlexBox className={styles.headingWrapper(imageOnLeft)}>
-              <AnimateInView
-                animation={imageOnLeft ? 'slideInFromRight' : 'slideInFromLeft'}
-                className={cnb(styles.headingInnerWrapper(imageOnLeft))}
-              >
+          <FlexBox direction="col" alignItems="center" justifyContent="center" className={styles.contentWrapper(imageOnLeft)}>
+            <FlexBox className={styles.headingWrapper}>
+              <AnimateInView animation='slideUp'>
                 {/* Render all Druk font heading if custom heading is not entered */}
                 {heading && !customHeading && (
                   <Heading
                     font="druk"
-                    color="white"
+                    align="center"
                     leading="none"
-                    className={styles.heading(imageOnLeft, isSmallHeading)}
+                    className={styles.heading(isSmallHeading)}
                   >
                     {heading}
                   </Heading>
                 )}
                 {/* Render custom mixed typography heading if entered */}
                 {customHeading && (
-                  <Heading size="base" leading="none" className={styles.customHeading(imageOnLeft)}>
+                  <Heading size="base" align="center" leading="none" className={styles.customHeading}>
                     {customHeading.map(({text, font, italic}) => (
                       <Text
                         as="span"
@@ -93,24 +92,35 @@ export const VerticalPoster = ({
                 )}
               </AnimateInView>
             </FlexBox>
-            <div className={styles.bodyWrapper(imageOnLeft)}>
-              {body && (
-                <Paragraph variant="overview" weight="normal" color="white" leading="display">{body}</Paragraph>
-              )}
-              {byline && (
-                <Text>{byline}</Text>
-              )}
-              {date && (
-                <time dateTime={publishedDate}>{formattedDate}</time>
-              )}
-              {cta && (
-                <div className={styles.cta}>
-                  {cta}
-                </div>
-              )}
-            </div>
-          </div>
-          <div className={styles.imageWrapper(imageOnLeft)}>
+            {subheading && (
+              <Text font="serif" italic size={2} align="center">
+                {subheading}
+              </Text>
+            )}
+            {body && (
+              <Paragraph
+                variant="overview"
+                align="center"
+                weight="normal"
+                leading="display"
+                className="rs-mt-3"
+              >
+                {body}
+              </Paragraph>
+            )}
+            {byline && (
+              <Text align="center">{byline}</Text>
+            )}
+            {date && (
+              <time dateTime={publishedDate} className="text-center">{formattedDate}</time>
+            )}
+            {cta && (
+              <div className={styles.cta}>
+                {cta}
+              </div>
+            )}
+          </FlexBox>
+          <div className={styles.imageWrapper(imageOnLeft)} style={bgImageStyle}>
             {imageSrc && (
               <AnimateInView animation="zoomSharpen" duration={1} className={styles.imageInnerWrapper}>
                 <img

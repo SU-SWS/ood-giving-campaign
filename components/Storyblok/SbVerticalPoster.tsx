@@ -11,6 +11,7 @@ type SbVerticalPosterProps = {
     customHeading?: SbTypographyProps[];
     headingLevel?: HeadingType;
     isSmallHeading?: boolean;
+    subheading?: string;
     imageOnLeft?: boolean;
     body: string;
     byline?: string;
@@ -27,6 +28,7 @@ export const SbVerticalPoster = ({
     customHeading,
     headingLevel,
     isSmallHeading,
+    subheading,
     imageOnLeft,
     body,
     byline,
@@ -46,6 +48,7 @@ export const SbVerticalPoster = ({
       customHeading={customHeading}
       headingLevel={headingLevel}
       isSmallHeading={isSmallHeading}
+      subheading={subheading}
       imageOnLeft={imageOnLeft}
       body={body}
       byline={byline}

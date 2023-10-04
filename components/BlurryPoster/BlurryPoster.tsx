@@ -51,7 +51,7 @@ export const BlurryPoster = ({
   const date = publishedDate && new Date(publishedDate);
   const formattedDate = date && date.toLocaleDateString('en-US', {
     month: 'long',
-    day: '2-digit',
+    day: 'numeric',
     year: 'numeric',
   });
 
