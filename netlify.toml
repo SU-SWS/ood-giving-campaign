@@ -35,3 +35,10 @@
     Strict-Transport-Security = "max-age=2592000"
     Permissions-Policy = "vibrate=(), geolocation=(), midi=(), notifications=(), push=(), microphone=(), camera=(), magnetometer=(), gyroscope=(), speaker=()"
     X-Robots-Tag = "noindex, nofollow"
+
+
+# FUNCTIONS
+# ##############################################################################
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["styled-jsx"]
