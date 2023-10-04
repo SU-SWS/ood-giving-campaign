@@ -16,7 +16,7 @@ type Props = {
 
 // Make sure to not export the below functions otherwise there will be a typescript error
 // https://github.com/vercel/next.js/discussions/48724
-export async function getStoryData(params: { slug: string[] }) {
+const getStoryData = async (params: { slug: string[] }) => {
   const activeEnv = process.env.NODE_ENV || 'development';
   let slug: string = params.slug ? params.slug.join('/') : '';
   let sbParams: ISbStoriesParams = {
