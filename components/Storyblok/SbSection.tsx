@@ -64,7 +64,7 @@ export const SbSection = ({
       <FlexBox className={cnb('relative z-10', rightAlignHeader ? 'mr-0 ml-auto' : 'ml-0')}>
         {barColorValue && (
           <div className={cnb(
-            'block w-8 md:w-20 lg:w-40',
+            'block w-10 sm:w-14 md:w-20 lg:w-30 xl:w-40',
             rightAlignHeader ? 'order-last' : 'order-first',
             accentBgColors[paletteAccentColors[barColorValue]],
           )}
@@ -72,8 +72,8 @@ export const SbSection = ({
         )}
         <div className={cnb(
           'cc whitespace-pre-line w-full 3xl:max-w-[90%]',
-          barColorValue && !rightAlignHeader ? '-ml-8 md:-ml-20 lg:-ml-40' : '',
-          barColorValue && rightAlignHeader ? '-mr-8 md:-mr-20 lg:-mr-40' : '',
+          barColorValue && !rightAlignHeader ? '-ml-10 sm:-ml-14 md:-ml-20 lg:-ml-30 xl:-ml-40' : '',
+          barColorValue && rightAlignHeader ? '-mr-10 sm:-mr-14 md:-mr-20 lg:-mr-30 xl:-mr-40' : '',
           superhead ? '' : '-mt-05em',
         )}
         >
