@@ -35,9 +35,8 @@
     "@storyblok/react": "^2.4.0",
     "cnbuilder": "^3.1.0",
     "framer-motion": "^10.15.0",
-    "next": "^13.4",
-    "storyblok-rich-text-react-renderer-ts": "^3.2.0",
-    "styled-jsx": "^5.1.2"
+    "next": "~13.4.0",
+    "storyblok-rich-text-react-renderer-ts": "^3.2.0"
   },
   "peerDependencies": {
     "react": "^18.2",
