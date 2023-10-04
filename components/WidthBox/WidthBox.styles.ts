@@ -15,4 +15,8 @@ export const widthClasses = {
     column: 'sm:col-span-12 xl:col-span-10',
     columnStart: 'xl:col-start-2',
   },
+  12: {
+    column: '',
+    columnStart: '',
+  },
 };

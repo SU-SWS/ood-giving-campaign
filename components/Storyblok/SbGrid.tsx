@@ -7,7 +7,10 @@ type SbGridProps = {
   blok: {
     _uid: string;
     gap?: GridGapType;
+    boundingWidth?: 'site' | 'full';
     width?: WidthType;
+    align?: 'left' | 'center';
+    rtl?: boolean;
     items: SbBlokData[];
     /**
      * Currently we're only providing 1-4 columns in Storyblok even though GridNumColsType also supports 6 and 12
@@ -25,7 +28,10 @@ type SbGridProps = {
 export const SbGrid = ({
   blok: {
     gap,
-    width = 'full',
+    boundingWidth = 'full',
+    width,
+    align,
+    rtl,
     items,
     xs,
     sm,
@@ -38,7 +44,9 @@ export const SbGrid = ({
 }: SbGridProps) => (
   <WidthBox
     {...storyblokEditable(blok)}
+    boundingWidth={boundingWidth}
     width={width}
+    align={align}
   >
     <Grid
       xs={xs}
@@ -48,6 +56,7 @@ export const SbGrid = ({
       xl={xl}
       xxl={xxl}
       gap={gap}
+      rtl={rtl}
     >
       <CreateBloks blokSection={items} />
     </Grid>

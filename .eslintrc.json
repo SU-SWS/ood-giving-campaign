@@ -42,6 +42,7 @@
     "import/no-unresolved": 0,
     "import/export": 0,
     "func-names": 0,
-    "semi": [1, "always"] // 1 is for warning
+    "semi": [1, "always"], // 1 is for warning
+    "@next/next/no-img-element": 0
   }
 }

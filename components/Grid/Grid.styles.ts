@@ -50,6 +50,8 @@ export const gridNumCols = {
   },
 };
 
+export const rtl = '[direction:rtl] children:[direction:ltr]';
+
 export const gridGaps = {
   default: 'grid-gap',
   card: 'grid-gap gap-y-50 xl:gap-y-70',
@@ -92,7 +94,7 @@ export const gridAlignItems = {
 };
 
 // Styles for the alternating grid
-export const alternatingGridWrapper = 'relative mx-auto';
+export const alternatingGridWrapper = 'relative mx-auto cc';
 
 export const centerline = 'hidden md:block w-2 absolute top-0 left-1/2 -ml-1 h-full origin-top bg-current';
 
