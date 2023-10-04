@@ -19,5 +19,6 @@ const prebuildScripts = async () => {
     ),
   );
 };
+console.log('********* END PREBUILDING');
 
 prebuildScripts();
