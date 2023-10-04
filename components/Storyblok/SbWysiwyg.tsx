@@ -12,6 +12,7 @@ type SbWysiwygProps = {
     // TODO: I might remove this option and just pass down the color from the parent
     isLightText?: boolean;
     textAlign?: TextAlignType;
+    boundingWidth?: 'site' | 'full';
     width?: WidthType;
     spacingTop?: PaddingType;
     spacingBottom?: PaddingType;
@@ -24,7 +25,8 @@ export const SbWysiwyg = ({
     content,
     isLightText,
     textAlign,
-    width = 'full',
+    boundingWidth = 'full',
+    width,
     spacingTop,
     spacingBottom,
   },
@@ -33,6 +35,7 @@ export const SbWysiwyg = ({
 }: SbWysiwygProps) => (
   <WidthBox
     {...storyblokEditable(blok)}
+    boundingWidth={boundingWidth}
     width={width}
     pt={spacingTop}
     pb={spacingBottom}

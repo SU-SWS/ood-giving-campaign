@@ -21,6 +21,7 @@ type SbSectionProps = {
     isSmallHeading?: boolean;
     headingLevel?: HeadingType;
     subheading?: string;
+    rightAlignHeader?: boolean;
     barColor?: {
       value?: PaletteAccentHexColorType;
     }
@@ -39,6 +40,7 @@ export const SbSection = ({
     isSmallHeading,
     headingLevel,
     subheading,
+    rightAlignHeader,
     barColor: { value: barColorValue } = {},
     bgColor,
     bgImage: { filename, focus } = {},
@@ -56,25 +58,27 @@ export const SbSection = ({
     className="relative overflow-hidden"
   >
     {filename && (
-      <ImageOverlay imageSrc={getProcessedImage(filename, '2000x1600', focus)} overlay={bgColor === 'black' ? 'black-70' : 'white-70'} />
+      <ImageOverlay imageSrc={getProcessedImage(filename, '2000x1600', focus)} overlay={bgColor === 'black' ? 'black-70' : 'white-90'} />
     )}
     {(heading || superhead) && (
-      <FlexBox className="relative z-10">
+      <FlexBox className={cnb('relative z-10', rightAlignHeader ? 'mr-0 ml-auto' : 'ml-0')}>
         {barColorValue && (
           <div className={cnb(
-            'block w-8 md:w-20 lg:w-40',
+            'block w-10 sm:w-14 md:w-20 lg:w-30 xl:w-40',
+            rightAlignHeader ? 'order-last' : 'order-first',
             accentBgColors[paletteAccentColors[barColorValue]],
           )}
           />
         )}
         <div className={cnb(
-          'cc whitespace-pre-line w-full 3xl:max-w-3/5',
-          barColorValue ? '-ml-8 md:-ml-20 lg:-ml-40' : '',
+          'cc whitespace-pre-line w-full 3xl:max-w-[90%]',
+          barColorValue && !rightAlignHeader ? '-ml-10 sm:-ml-14 md:-ml-20 lg:-ml-30 xl:-ml-40' : '',
+          barColorValue && rightAlignHeader ? '-mr-10 sm:-mr-14 md:-mr-20 lg:-mr-30 xl:-mr-40' : '',
           superhead ? '' : '-mt-05em',
         )}
         >
           {superhead && (
-            <Text size={2} leading="tight" font="serif" weight="semibold" aria-hidden>
+            <Text size={2} leading="tight" font="serif" weight="semibold" align={rightAlignHeader ? 'right' : 'left'} aria-hidden>
               {superhead}
             </Text>
           )}
@@ -85,6 +89,7 @@ export const SbSection = ({
               leading="none"
               uppercase
               font="druk"
+              align={rightAlignHeader ? 'right' : 'left'}
               className="mb-0"
             >
               {superhead && <SrOnlyText>{`${superhead}:`}</SrOnlyText>}{heading}
@@ -98,15 +103,16 @@ export const SbSection = ({
         <Paragraph
           variant="overview"
           weight="normal"
+          align={rightAlignHeader ? 'right' : 'left'}
           color={bgColor === 'black' ? 'black-20' : 'black-80'}
           noMargin
-          className="relative z-10 max-w-prose ml-0 rs-mt-3"
+          className={cnb('relative z-10 max-w-prose ml-0 rs-mt-3', rightAlignHeader ? 'mr-0 ml-auto' : 'ml-0')}
         >
           {subheading}
         </Paragraph>
       </Container>
     )}
-    <Container className="rs-mt-8">
+    <Container pt={8} width="full">
       <CreateBloks blokSection={content} isDarkTheme={bgColor === 'black'} />
     </Container>
   </Container>
