@@ -37,7 +37,6 @@ async function getStoryData(params: { slug: string[] }) {
   }
 };
 
-
 const Page = async ({ params }: Props) => {
   const { data } = await getStoryData(params);
   const bridgeOptions = { resolveRelations };

@@ -7,7 +7,7 @@ interface LazyMotionProviderProps {
 const LazyMotionProvider = ({ children }: LazyMotionProviderProps) => {
   return (
     <LazyMotion features={domMax}>
-      <>{children}</>
+      {children}
     </LazyMotion>
   );
 };
