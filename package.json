@@ -53,7 +53,6 @@
     "eslint-config-next": "^13.4.13",
     "netlify-plugin-vault-variables": "^1.0.7",
     "postcss": "^8.4.27",
-    "tailwindcss": "^3.3.3",
     "typescript": "^5.1.6"
   }
 }

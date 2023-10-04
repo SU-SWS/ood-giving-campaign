@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { useRef } from 'react';
 import { useScroll, m, useTransform } from 'framer-motion';
 import { AnimateInView } from '../Animate';

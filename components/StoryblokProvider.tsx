@@ -1,7 +1,6 @@
 'use client';
 
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
-import { LazyMotion, domMax } from 'framer-motion';
 import { SbBanner } from './Storyblok/SbBanner';
 import { SbBasicPage } from './Storyblok/SbBasicPage';
 import { SbBlurryPoster } from './Storyblok/SbBlurryPoster';
@@ -56,7 +55,5 @@ storyblokInit({
 });
 
 export default function StoryblokProvider({ children }: { children: React.ReactNode }) {
-  return (
-    <LazyMotion features={domMax}>{children}</LazyMotion>
-  );
+  return children;
 };
