@@ -30,7 +30,7 @@ async function getStoryData(params: { slug: string[] }) {
   const storyblokApi: StoryblokClient = getStoryblokApi();
 
   try {
-  const story = await storyblokApi?.get(`cdn/stories/${slug}`, sbParams);
+  const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
   return story;
   } catch (error) {
     notFound();
