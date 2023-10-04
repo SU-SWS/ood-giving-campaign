@@ -9,7 +9,7 @@ export const imageWrapper = 'transition-all aspect-w-1 aspect-h-1 overflow-hidde
 export const image = 'object-cover w-full h-full group-hocus-within:scale-105 transition-transform';
 
 export const heading = (hasTabColor: boolean) => cnb('rs-mt-1 pr-18 rs-mb-neg1 text-current', {
-  '@200:border-l-[1.2rem] @xs:border-l-[1.8rem] @200:px-16 @320:pl-20 @320:pr-30 @xs:pr-36': hasTabColor,
+  '@200:border-l-[1.2rem] @xs:border-l-[1.8rem] @200:px-16 @320:pr-30 @xs:pl-20 @xs:pr-36': hasTabColor,
 });
 
 export const headingLink = 'stretched-link no-underline !font-bold !leading-tight';
