@@ -1,5 +1,4 @@
 import React, { HTMLAttributes } from 'react';
-import { cnb } from 'cnbuilder';
 import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
 import { Grid } from '../Grid';
@@ -72,7 +71,7 @@ export const VerticalPoster = ({
                     font="druk"
                     align="center"
                     leading="none"
-                    className={styles.heading(isSmallHeading)}
+                    className={styles.heading(isSmallHeading, !!bgImageSrc)}
                     style={bgImageStyle}
                   >
                     {heading}
@@ -80,7 +79,7 @@ export const VerticalPoster = ({
                 )}
                 {/* Render custom mixed typography heading if entered */}
                 {!!customHeading?.length && (
-                  <Heading size="base" align="center" leading="none" className={styles.customHeading} style={bgImageStyle}>
+                  <Heading size="base" align="center" leading="none" className={styles.customHeading(!!bgImageSrc)} style={bgImageStyle}>
                     {customHeading.map(({text, font, italic}) => (
                       <Text
                         as="span"
@@ -109,16 +108,21 @@ export const VerticalPoster = ({
                 align="center"
                 weight="normal"
                 leading="display"
-                className="rs-mt-3"
+                className={styles.body}
+                noMargin
               >
                 {body}
               </Paragraph>
             )}
-            {byline && (
-              <Text align="center">{byline}</Text>
-            )}
-            {date && (
-              <time dateTime={publishedDate} className="text-center">{formattedDate}</time>
+            {(byline || publishedDate) && (
+              <div className={styles.metadata}>
+                {byline && (
+                  <Text align="center">{byline}</Text>
+                )}
+                {date && (
+                  <time dateTime={publishedDate} className={styles.date}>{formattedDate}</time>
+                )}
+              </div>
             )}
             {cta && (
               <div className={styles.cta}>
