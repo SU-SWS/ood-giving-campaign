@@ -13,6 +13,7 @@ type SbBlurryPosterProps = {
     headingLevel?: HeadingType;
     isSmallHeading?: boolean;
     imageOnLeft?: boolean;
+    addDarkOverlay?: boolean;
     body: string;
     byline?: string;
     publishedDate?: string;
@@ -32,6 +33,7 @@ export const SbBlurryPoster = ({
     headingLevel,
     isSmallHeading,
     imageOnLeft,
+    addDarkOverlay,
     body,
     byline,
     publishedDate,
@@ -52,6 +54,7 @@ export const SbBlurryPoster = ({
       headingLevel={headingLevel}
       isSmallHeading={isSmallHeading}
       imageOnLeft={imageOnLeft}
+      addDarkOverlay={addDarkOverlay}
       body={body}
       byline={byline}
       publishedDate={publishedDate}

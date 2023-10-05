@@ -20,6 +20,7 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   heading?: string;
   customHeading?: SbTypographyProps[];
   isSmallHeading?: boolean;
+  addDarkOverlay?: boolean;
   body?: string;
   byline?: string;
   publishedDate?: string;
@@ -37,6 +38,7 @@ export const BlurryPoster = ({
   customHeading,
   headingLevel = 'h2',
   isSmallHeading,
+  addDarkOverlay,
   body,
   byline,
   publishedDate,
@@ -57,7 +59,7 @@ export const BlurryPoster = ({
 
   return (
     <Container {...props} bgColor="black" width="full" className={styles.root} style={bgImageStyle}>
-      <div className={styles.blurWrapper}>
+      <div className={styles.blurWrapper(addDarkOverlay)}>
         <Grid lg={2} className={styles.grid}>
           <div className={styles.contentWrapper(imageOnLeft)}>
             <FlexBox className={styles.headingWrapper(imageOnLeft)}>
