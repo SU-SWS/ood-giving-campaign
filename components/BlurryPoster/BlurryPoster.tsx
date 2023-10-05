@@ -68,7 +68,7 @@ export const BlurryPoster = ({
                 className={cnb(styles.headingInnerWrapper(imageOnLeft), accentBorderColors[tabColor])}
               >
                 {/* Render all Druk font heading if custom heading is not entered */}
-                {heading && !customHeading && (
+                {heading && !customHeading?.length && (
                   <Heading
                     font="druk"
                     color="white"
@@ -79,7 +79,7 @@ export const BlurryPoster = ({
                   </Heading>
                 )}
                 {/* Render custom mixed typography heading if entered */}
-                {customHeading && (
+                {!!customHeading?.length && (
                   <Heading size="base" leading="none" className={styles.customHeading(imageOnLeft)}>
                     {customHeading.map(({text, font, italic}) => (
                       <Text
