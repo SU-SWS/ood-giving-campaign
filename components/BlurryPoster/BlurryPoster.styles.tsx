@@ -3,7 +3,7 @@ import { cnb } from 'cnbuilder';
 export const root = 'relative bg-no-repeat bg-cover bg-center overflow-hidden break-words';
 export const blurWrapper = (addDarkOverlay: boolean) => cnb(
   'w-full h-full backdrop-blur-md bg-gradient-to-b from-black-true/40',
-  addDarkOverlay ? 'lg:from-black-true/30' : 'lg:bg-none'
+  addDarkOverlay ? 'lg:from-black-true/30' : 'lg:bg-none',
 );
 
 export const grid = 'w-full rs-py-8';
