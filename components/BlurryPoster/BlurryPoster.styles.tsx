@@ -13,7 +13,7 @@ export const contentWrapper = (imageOnLeft: boolean) => cnb('relative z-10', {
 export const headingWrapper = (imageOnLeft: boolean) => cnb('lg:rs-mt-7 rs-mb-5', {
   'lg:w-[120%] lg:-ml-[20%] 3xl:w-auto 3xl:-ml-200 lg:mr-0' : imageOnLeft,
 });
-export const headingInnerWrapper = (imageOnLeft: boolean) => cnb('border-l-[1rem] sm:border-l-[1.4rem] md:border-l-[2rem] pl-10 pr-20 sm:pl-16 sm:pr-30 md:pl-30 md:pr-50', {
+export const headingInnerWrapper = (imageOnLeft: boolean) => cnb('w-full border-l-[1rem] sm:border-l-[1.4rem] md:border-l-[2rem] pl-10 pr-20 sm:pl-16 sm:pr-30 md:pl-30 md:pr-50', {
   'lg:border-l-0 lg:border-r-[3rem] xl:border-r-[4rem] lg:pl-0 lg:pr-50 xl:pr-60': imageOnLeft,
   'lg:border-l-[3rem] xl:border-l-[4rem] lg:pl-50 xl:pl-60 lg:pr-0 3xl:pl-[calc(100%-750px-40px)] lg:w-[140%] xl:w-[120%]': !imageOnLeft,
 });

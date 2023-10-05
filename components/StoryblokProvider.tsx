@@ -21,6 +21,7 @@ import { SbStoryCard } from './Storyblok/SbStoryCard';
 import { SbTextCard } from './Storyblok/SbTextCard';
 import { SbThemeCard } from './Storyblok/SbThemeCard';
 import { SbTriangle } from './Storyblok/SbTriangle';
+import { SbVerticalPoster } from './Storyblok/SbVerticalPoster';
 import { SbWysiwyg } from './Storyblok/SbWysiwyg';
 
 const components = {
@@ -43,6 +44,7 @@ const components = {
   sbThemeCard: SbThemeCard,
   sbTriangle: SbTriangle,
   sbStoryCard: SbStoryCard,
+  sbVerticalPoster: SbVerticalPoster,
   sbWysiwyg: SbWysiwyg,
 };
 

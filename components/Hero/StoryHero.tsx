@@ -54,7 +54,7 @@ export const StoryHero = ({
   const formattedDate = date && date.toLocaleDateString('en-US', {
     weekday: 'long',
     month: 'long',
-    day: '2-digit',
+    day: 'numeric',
     year: 'numeric',
   });
 
