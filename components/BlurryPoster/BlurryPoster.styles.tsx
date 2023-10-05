@@ -1,7 +1,10 @@
 import { cnb } from 'cnbuilder';
 
 export const root = 'relative bg-no-repeat bg-cover bg-center overflow-hidden break-words';
-export const blurWrapper = 'w-full h-full backdrop-blur-md';
+export const blurWrapper = (addDarkOverlay: boolean) => cnb(
+  'w-full h-full backdrop-blur-md bg-gradient-to-b from-black-true/40',
+  addDarkOverlay ? 'lg:from-black-true/30' : 'lg:bg-none',
+);
 
 export const grid = 'w-full rs-py-8';
 
@@ -19,8 +22,8 @@ export const headingInnerWrapper = (imageOnLeft: boolean) => cnb('w-full border-
 });
 export const heading = (imageOnLeft: boolean, isSmallHeading: boolean) => cnb('mb-0 -mt-01em fluid-type-7', {
   '3xl:pl-[calc(100%-750px-40px)] lg:w-[140%] xl:w-[130%]': !imageOnLeft,
-  'mt-01em md:fluid-type-8 lg:fluid-type-7 3xl:fluid-type-8 4xl:text-[17.1rem]': isSmallHeading,
-  'mt-01em md:fluid-type-9': !isSmallHeading,
+  'md:fluid-type-8 lg:fluid-type-7 3xl:fluid-type-8 4xl:text-[17.1rem]': isSmallHeading,
+  'md:fluid-type-9': !isSmallHeading,
 });
 
 export const customHeading = (imageOnLeft: boolean) => cnb('flex flex-wrap gap-x-[1em] items-center mb-0 -mt-05em lg:-mt-08em children:inline-block', {
