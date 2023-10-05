@@ -11,12 +11,12 @@ export const contentWrapper = (imageOnLeft: boolean) => cnb('relative px-[6vw] p
 });
 
 export const headingWrapper = '-mt-1em rs-mb-5';
-export const heading = (isSmallHeading: boolean) => cnb('mb-0 fluid-type-7', {
+export const heading = (isSmallHeading: boolean) => cnb('mb-0 fluid-type-7 bg-fixed bg-clip-text text-black/40 bg-fixed bg-cover bg-center bg-no-repeat', {
   'mt-01em md:fluid-type-8 lg:fluid-type-7 3xl:fluid-type-8 4xl:text-[17.1rem]': isSmallHeading,
   'mt-01em md:fluid-type-9': !isSmallHeading,
 });
 
-export const customHeading = 'flex flex-col mb-0 children:block';
+export const customHeading = 'flex flex-col mb-0 children:block bg-clip-text text-black/40 bg-fixed bg-cover bg-center bg-no-repeat';
 export const customHeadingText = (font: 'druk' | 'serif', isSmallHeading: boolean) => cnb('hyphens-auto first:ml-0 last:mr-0', {
   'fluid-type-7': font === 'druk',
   'md:fluid-type-9' : font === 'druk' && !isSmallHeading,

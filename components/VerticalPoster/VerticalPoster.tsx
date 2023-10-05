@@ -58,7 +58,12 @@ export const VerticalPoster = ({
     <Container {...props} bgColor="white" width="full" className={styles.root}>
       <div className={styles.blurWrapper}>
         <Grid lg={2} className={styles.grid}>
-          <FlexBox direction="col" alignItems="center" justifyContent="center" className={styles.contentWrapper(imageOnLeft)}>
+          <FlexBox
+            direction="col"
+            alignItems="center"
+            justifyContent="center"
+            className={styles.contentWrapper(imageOnLeft)}
+          >
             <FlexBox className={styles.headingWrapper}>
               <AnimateInView animation='slideUp'>
                 {/* Render all Druk font heading if custom heading is not entered */}
@@ -68,13 +73,14 @@ export const VerticalPoster = ({
                     align="center"
                     leading="none"
                     className={styles.heading(isSmallHeading)}
+                    style={bgImageStyle}
                   >
                     {heading}
                   </Heading>
                 )}
                 {/* Render custom mixed typography heading if entered */}
                 {customHeading && (
-                  <Heading size="base" align="center" leading="none" className={styles.customHeading}>
+                  <Heading size="base" align="center" leading="none" className={styles.customHeading} style={bgImageStyle}>
                     {customHeading.map(({text, font, italic}) => (
                       <Text
                         as="span"
