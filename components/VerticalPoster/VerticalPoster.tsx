@@ -67,7 +67,7 @@ export const VerticalPoster = ({
             <FlexBox className={styles.headingWrapper}>
               <AnimateInView animation='slideUp'>
                 {/* Render all Druk font heading if custom heading is not entered */}
-                {heading && !customHeading && (
+                {heading && !customHeading?.length && (
                   <Heading
                     font="druk"
                     align="center"
@@ -79,7 +79,7 @@ export const VerticalPoster = ({
                   </Heading>
                 )}
                 {/* Render custom mixed typography heading if entered */}
-                {customHeading && (
+                {!!customHeading?.length && (
                   <Heading size="base" align="center" leading="none" className={styles.customHeading} style={bgImageStyle}>
                     {customHeading.map(({text, font, italic}) => (
                       <Text
