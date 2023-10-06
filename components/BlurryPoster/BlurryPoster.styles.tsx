@@ -1,10 +1,11 @@
 import { cnb } from 'cnbuilder';
 
 export const root = 'relative bg-no-repeat bg-cover bg-center overflow-hidden break-words';
-export const blurWrapper = (addDarkOverlay: boolean, type: 'hero' | 'poster') => cnb(
+export const blurWrapper = (addDarkOverlay: boolean, type: 'hero' | 'poster', bgColor: 'black' | 'white') => cnb(
   'w-full h-full backdrop-blur-md ', {
-    'bg-black-true/40': type === 'hero' && addDarkOverlay,
-    'bg-gradient-to-b from-black-true/40 lg:from-black-true/30': type === 'poster' && addDarkOverlay,
+    'bg-black-true/40': type === 'hero' && addDarkOverlay && bgColor === 'black',
+    'bg-gradient-to-b from-black-true/40 lg:from-black-true/30': type === 'poster' && addDarkOverlay && bgColor === 'black',
+    'bg-white/80' : type === 'hero' && bgColor === 'white',
   },
 );
 

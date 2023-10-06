@@ -130,6 +130,7 @@ export const StoryHeroMvp = ({
         body={dek}
         imageSrc={filename}
         bgImageSrc={bgImageSrc}
+        bgColor={isLightHero ? 'white' : 'black'}
         addDarkOverlay={addDarkOverlay}
         imageOnLeft={imageOnLeft}
         tabColor={paletteAccentColors[tabColorValue]}

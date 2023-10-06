@@ -12,10 +12,15 @@ import { accentBorderColors, type AccentColorType } from '@/utilities/datasource
 import { type SbTypographyProps } from '../Storyblok/Storyblok.types';
 import * as styles from './BlurryPoster.styles';
 
+/**
+ * This is used for the BlurryPoster (featured story poster) and the StoryHeroMvp components.
+ */
+
 type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   type?: 'hero' | 'poster';
   bgImageSrc?: string;
   bgImageFocus?: string;
+  bgColor?: 'black' | 'white';
   imageOnLeft?: boolean;
   headingLevel?: HeadingType;
   heading?: string;
@@ -36,6 +41,7 @@ export const BlurryPoster = ({
   type = 'poster',
   bgImageSrc,
   bgImageFocus,
+  bgColor = 'black',
   imageOnLeft,
   heading,
   headingFont = 'druk',
@@ -62,8 +68,8 @@ export const BlurryPoster = ({
   });
 
   return (
-    <Container {...props} bgColor="black" width="full" className={styles.root} style={bgImageStyle}>
-      <div className={styles.blurWrapper(addDarkOverlay, type)}>
+    <Container {...props} bgColor={bgColor} width="full" className={styles.root} style={bgImageStyle}>
+      <div className={styles.blurWrapper(addDarkOverlay, type, bgColor)}>
         <Grid lg={2} pt={type === 'hero' ? 9 : 8} pb={8} className={styles.grid}>
           <div className={styles.contentWrapper(imageOnLeft)}>
             <FlexBox className={styles.headingWrapper(imageOnLeft, headingFont)}>
@@ -76,7 +82,6 @@ export const BlurryPoster = ({
                   <Heading
                     as={headingLevel}
                     font={headingFont}
-                    color="white"
                     leading={headingFont === 'druk' ? 'none' : 'display'}
                     className={styles.heading(imageOnLeft, isSmallHeading, headingFont)}
                   >
@@ -110,7 +115,13 @@ export const BlurryPoster = ({
             </FlexBox>
             <div className={styles.bodyWrapper(imageOnLeft)}>
               {body && (
-                <Paragraph variant="overview" weight="normal" color="white" leading="display">{body}</Paragraph>
+                <Paragraph
+                  variant="overview"
+                  weight="normal"
+                  leading="display"
+                >
+                  {body}
+                </Paragraph>
               )}
               {byline && (
                 <Text>{byline}</Text>
@@ -129,7 +140,7 @@ export const BlurryPoster = ({
             {imageSrc && (
               <AnimateInView animation="zoomSharpen" duration={1} className={styles.imageInnerWrapper}>
                 <img
-                  src={getProcessedImage(imageSrc, '900x1200', imageFocus)}
+                  src={getProcessedImage(imageSrc, type === 'hero' ? '900x1600' : '900x1200', imageFocus)}
                   alt=""
                   className={styles.image}
                 />
