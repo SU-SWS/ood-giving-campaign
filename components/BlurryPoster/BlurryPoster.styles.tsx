@@ -3,12 +3,12 @@ import { cnb } from 'cnbuilder';
 export const root = 'relative bg-no-repeat bg-cover bg-center overflow-hidden break-words';
 export const blurWrapper = (addDarkOverlay: boolean, type: 'hero' | 'poster') => cnb(
   'w-full h-full backdrop-blur-md ', {
-    'bg-black-true/50': type === 'hero' && addDarkOverlay,
+    'bg-black-true/40': type === 'hero' && addDarkOverlay,
     'bg-gradient-to-b from-black-true/40 lg:from-black-true/30': type === 'poster' && addDarkOverlay,
   },
 );
 
-export const grid = 'w-full rs-py-8';
+export const grid = 'w-full';
 
 export const contentWrapper = (imageOnLeft: boolean) => cnb('relative z-10', {
   'lg:order-last': imageOnLeft,
@@ -23,8 +23,8 @@ export const headingInnerWrapper = (imageOnLeft: boolean, headingFont?: 'druk' |
   'lg:border-l-0 lg:border-r-[3rem] xl:border-r-[4rem] lg:pl-0 lg:pr-50 xl:pr-60': imageOnLeft,
   'lg:border-l-[3rem] xl:border-l-[4rem] lg:pl-50 xl:pl-60 lg:pr-0 3xl:pl-[calc(100%-750px-40px)]': !imageOnLeft,
   'lg:w-[140%] xl:w-[120%]': !imageOnLeft && headingFont === 'druk',
-  'lg:pl-60': imageOnLeft && headingFont === 'serif',
-  'lg:pr-60': !imageOnLeft && headingFont === 'serif',
+  'lg:pl-40 2xl:pl-60': imageOnLeft && headingFont === 'serif',
+  'lg:pr-40 2xl:pr-60': !imageOnLeft && headingFont === 'serif',
 });
 export const heading = (imageOnLeft: boolean, isSmallHeading: boolean, headingFont?: 'druk' | 'serif') => cnb('mb-0 -mt-01em', {
   '3xl:pl-[calc(100%-750px-40px)] lg:w-[140%] xl:w-[130%]': !imageOnLeft && headingFont === 'druk',
@@ -46,8 +46,8 @@ export const customHeadingText = (font: 'druk' | 'serif', isSmallHeading: boolea
 });
 
 export const bodyWrapper = (imageOnLeft: boolean) => cnb('cc w-full', {
-  '3xl:pr-[calc(100%-750px)] lg:pl-60': imageOnLeft,
-  '3xl:pl-[calc(100%-750px)] lg:pr-60': !imageOnLeft,
+  '3xl:pr-[calc(100%-750px)] lg:pl-40 2xl:pl-60': imageOnLeft,
+  '3xl:pl-[calc(100%-750px)] lg:pr-40 2xl:pr-60': !imageOnLeft,
 });
 
 export const cta = 'rs-mt-4';

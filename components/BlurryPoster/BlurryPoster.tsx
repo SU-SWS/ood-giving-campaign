@@ -64,7 +64,7 @@ export const BlurryPoster = ({
   return (
     <Container {...props} bgColor="black" width="full" className={styles.root} style={bgImageStyle}>
       <div className={styles.blurWrapper(addDarkOverlay, type)}>
-        <Grid lg={2} className={styles.grid}>
+        <Grid lg={2} pt={type === 'hero' ? 9 : 8} pb={8} className={styles.grid}>
           <div className={styles.contentWrapper(imageOnLeft)}>
             <FlexBox className={styles.headingWrapper(imageOnLeft, headingFont)}>
               <AnimateInView
