@@ -18,6 +18,7 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   imageOnLeft?: boolean;
   headingLevel?: HeadingType;
   heading?: string;
+  headingFont?: 'serif' | 'druk';
   customHeading?: SbTypographyProps[];
   isSmallHeading?: boolean;
   addDarkOverlay?: boolean;
@@ -35,6 +36,7 @@ export const BlurryPoster = ({
   bgImageFocus,
   imageOnLeft,
   heading,
+  headingFont = 'druk',
   customHeading,
   headingLevel = 'h2',
   isSmallHeading,
@@ -65,22 +67,28 @@ export const BlurryPoster = ({
             <FlexBox className={styles.headingWrapper(imageOnLeft)}>
               <AnimateInView
                 animation={imageOnLeft ? 'slideInFromRight' : 'slideInFromLeft'}
-                className={cnb(styles.headingInnerWrapper(imageOnLeft), accentBorderColors[tabColor])}
+                className={cnb(styles.headingInnerWrapper(imageOnLeft, headingFont), accentBorderColors[tabColor])}
               >
                 {/* Render all Druk font heading if custom heading is not entered */}
                 {heading && !customHeading?.length && (
                   <Heading
-                    font="druk"
+                    as={headingLevel}
+                    font={headingFont}
                     color="white"
-                    leading="none"
-                    className={styles.heading(imageOnLeft, isSmallHeading)}
+                    leading={headingFont === 'druk' ? 'none' : 'display'}
+                    className={styles.heading(imageOnLeft, isSmallHeading, headingFont)}
                   >
                     {heading}
                   </Heading>
                 )}
                 {/* Render custom mixed typography heading if entered */}
                 {!!customHeading?.length && (
-                  <Heading size="base" leading="none" className={styles.customHeading(imageOnLeft)}>
+                  <Heading
+                    as={headingLevel}
+                    size="base"
+                    leading="none"
+                    className={styles.customHeading(imageOnLeft, headingFont)}
+                  >
                     {customHeading.map(({text, font, italic}) => (
                       <Text
                         as="span"
