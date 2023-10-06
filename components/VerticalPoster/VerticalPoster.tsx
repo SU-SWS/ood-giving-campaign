@@ -1,5 +1,4 @@
 import React, { HTMLAttributes } from 'react';
-import { cnb } from 'cnbuilder';
 import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
 import { Grid } from '../Grid';
@@ -8,29 +7,27 @@ import {
   Heading, Paragraph, Text, type HeadingType,
 } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { accentBorderColors, type AccentColorType } from '@/utilities/datasource';
 import { type SbTypographyProps } from '../Storyblok/Storyblok.types';
-import * as styles from './BlurryPoster.styles';
+import * as styles from './VerticalPoster.styles';
 
-type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
+type VerticalPosterProps = HTMLAttributes<HTMLDivElement> & {
   bgImageSrc?: string;
   bgImageFocus?: string;
   imageOnLeft?: boolean;
   headingLevel?: HeadingType;
   heading?: string;
+  subheading?: string;
   customHeading?: SbTypographyProps[];
   isSmallHeading?: boolean;
-  addDarkOverlay?: boolean;
   body?: string;
   byline?: string;
   publishedDate?: string;
   imageSrc?: string;
   imageFocus?: string;
-  tabColor?: AccentColorType;
   cta?: React.ReactNode;
 };
 
-export const BlurryPoster = ({
+export const VerticalPoster = ({
   bgImageSrc,
   bgImageFocus,
   imageOnLeft,
@@ -38,18 +35,17 @@ export const BlurryPoster = ({
   customHeading,
   headingLevel = 'h2',
   isSmallHeading,
-  addDarkOverlay,
+  subheading,
   body,
   byline,
   publishedDate,
   imageSrc,
   imageFocus,
-  tabColor,
   cta,
   className,
   ...props
-}: BlurryPosterProps) => {
-  const bgImageStyle = bgImageSrc ? { backgroundImage: `url('${getProcessedImage(bgImageSrc, '1800x1200', bgImageFocus)}')` } : undefined;
+}: VerticalPosterProps) => {
+  const bgImageStyle = bgImageSrc ? { backgroundImage: `url('${getProcessedImage(bgImageSrc, '1200x1600', bgImageFocus)}')` } : undefined;
   const date = publishedDate && new Date(publishedDate);
   const formattedDate = date && date.toLocaleDateString('en-US', {
     month: 'long',
@@ -58,29 +54,32 @@ export const BlurryPoster = ({
   });
 
   return (
-    <Container {...props} bgColor="black" width="full" className={styles.root} style={bgImageStyle}>
-      <div className={styles.blurWrapper(addDarkOverlay)}>
+    <Container {...props} bgColor="white" width="full" className={styles.root}>
+      <div className={styles.blurWrapper}>
         <Grid lg={2} className={styles.grid}>
-          <div className={styles.contentWrapper(imageOnLeft)}>
-            <FlexBox className={styles.headingWrapper(imageOnLeft)}>
-              <AnimateInView
-                animation={imageOnLeft ? 'slideInFromRight' : 'slideInFromLeft'}
-                className={cnb(styles.headingInnerWrapper(imageOnLeft), accentBorderColors[tabColor])}
-              >
+          <FlexBox
+            direction="col"
+            alignItems="center"
+            justifyContent="center"
+            className={styles.contentWrapper(imageOnLeft)}
+          >
+            <FlexBox className={styles.headingWrapper}>
+              <AnimateInView animation='slideUp'>
                 {/* Render all Druk font heading if custom heading is not entered */}
                 {heading && !customHeading?.length && (
                   <Heading
                     font="druk"
-                    color="white"
+                    align="center"
                     leading="none"
-                    className={styles.heading(imageOnLeft, isSmallHeading)}
+                    className={styles.heading(isSmallHeading, !!bgImageSrc)}
+                    style={bgImageStyle}
                   >
                     {heading}
                   </Heading>
                 )}
                 {/* Render custom mixed typography heading if entered */}
                 {!!customHeading?.length && (
-                  <Heading size="base" leading="none" className={styles.customHeading(imageOnLeft)}>
+                  <Heading size="base" align="center" leading="none" className={styles.customHeading(!!bgImageSrc)} style={bgImageStyle}>
                     {customHeading.map(({text, font, italic}) => (
                       <Text
                         as="span"
@@ -98,24 +97,40 @@ export const BlurryPoster = ({
                 )}
               </AnimateInView>
             </FlexBox>
-            <div className={styles.bodyWrapper(imageOnLeft)}>
-              {body && (
-                <Paragraph variant="overview" weight="normal" color="white" leading="display">{body}</Paragraph>
-              )}
-              {byline && (
-                <Text>{byline}</Text>
-              )}
-              {date && (
-                <time dateTime={publishedDate}>{formattedDate}</time>
-              )}
-              {cta && (
-                <div className={styles.cta}>
-                  {cta}
-                </div>
-              )}
-            </div>
-          </div>
-          <div className={styles.imageWrapper(imageOnLeft)}>
+            {subheading && (
+              <Text font="serif" italic size={2} align="center">
+                {subheading}
+              </Text>
+            )}
+            {body && (
+              <Paragraph
+                variant="overview"
+                align="center"
+                weight="normal"
+                leading="display"
+                className={styles.body}
+                noMargin
+              >
+                {body}
+              </Paragraph>
+            )}
+            {(byline || publishedDate) && (
+              <div className={styles.metadata}>
+                {byline && (
+                  <Text align="center">{byline}</Text>
+                )}
+                {date && (
+                  <time dateTime={publishedDate} className={styles.date}>{formattedDate}</time>
+                )}
+              </div>
+            )}
+            {cta && (
+              <div className={styles.cta}>
+                {cta}
+              </div>
+            )}
+          </FlexBox>
+          <div className={styles.imageWrapper(imageOnLeft)} style={bgImageStyle}>
             {imageSrc && (
               <AnimateInView animation="zoomSharpen" duration={1} className={styles.imageInnerWrapper}>
                 <img

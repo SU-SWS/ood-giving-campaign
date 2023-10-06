@@ -69,7 +69,7 @@ export const VerticalCard = ({
         {heading && (
           <Heading
             as={headingLevel}
-            size={isSmallHeading ? 3 : 4}
+            size={isSmallHeading ? 2 : 3}
             leading="tight"
             className={cnb(styles.heading(!!tabColor), accentBorderColors[tabColor])}
           >

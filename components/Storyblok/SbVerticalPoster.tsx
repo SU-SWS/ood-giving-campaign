@@ -1,60 +1,55 @@
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
-import { BlurryPoster } from '../BlurryPoster';
+import { VerticalPoster } from '../VerticalPoster';
 import { CreateBloks } from '../CreateBloks';
 import { type HeadingType } from '../Typography';
 import { type SbImageType, type SbTypographyProps } from './Storyblok.types';
-import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
 
-type SbBlurryPosterProps = {
+type SbVerticalPosterProps = {
   blok: {
     _uid: string;
     heading?: string;
     customHeading?: SbTypographyProps[];
     headingLevel?: HeadingType;
     isSmallHeading?: boolean;
+    subheading?: string;
     imageOnLeft?: boolean;
-    addDarkOverlay?: boolean;
     body: string;
     byline?: string;
     publishedDate?: string;
     cta?: SbBlokData[];
     image?: SbImageType;
     bgImage?: SbImageType;
-    tabColor?: {
-      value?: PaletteAccentHexColorType;
-    }
   }
 };
 
-export const SbBlurryPoster = ({
+export const SbVerticalPoster = ({
   blok: {
     heading,
     customHeading,
     headingLevel,
     isSmallHeading,
+    subheading,
     imageOnLeft,
-    addDarkOverlay,
     body,
     byline,
     publishedDate,
     cta,
     image: { filename, focus } = {},
     bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
-    tabColor: { value: tabColorValue } = {},
   },
   blok,
-}: SbBlurryPosterProps) => {
+}: SbVerticalPosterProps) => {
   const Cta = <CreateBloks blokSection={cta} />;
 
   return (
-    <BlurryPoster
+    <VerticalPoster
       {...storyblokEditable(blok)}
       heading={heading}
       customHeading={customHeading}
       headingLevel={headingLevel}
       isSmallHeading={isSmallHeading}
+      subheading={subheading}
       imageOnLeft={imageOnLeft}
-      addDarkOverlay={addDarkOverlay}
       body={body}
       byline={byline}
       publishedDate={publishedDate}
@@ -63,7 +58,6 @@ export const SbBlurryPoster = ({
       imageFocus={focus}
       bgImageSrc={bgImageSrc}
       bgImageFocus={bgImageFocus}
-      tabColor={paletteAccentColors[tabColorValue]}
     />
   );
 };

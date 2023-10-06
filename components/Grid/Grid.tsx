@@ -12,6 +12,7 @@ import * as types from './Grid.types';
 export type GridProps = HTMLAttributes<HTMLElement> & {
   as?: types.GridElementType;
   gap?: types.GridGapType;
+  rtl?: boolean;
   xs?: types.GridNumColsType;
   sm?: types.GridNumColsType;
   md?: types.GridNumColsType;
@@ -30,6 +31,7 @@ export type GridProps = HTMLAttributes<HTMLElement> & {
 export const Grid = ({
   as: AsComponent = 'div',
   gap,
+  rtl,
   xs,
   sm,
   md,
@@ -52,6 +54,7 @@ export const Grid = ({
     className={cnb(
       'grid',
       gap ? styles.gridGaps[gap] : '',
+      rtl ? styles.rtl : '',
       xs ? styles.gridNumCols.xs[xs] : '',
       sm ? styles.gridNumCols.sm[sm] : '',
       md ? styles.gridNumCols.md[md] : '',
