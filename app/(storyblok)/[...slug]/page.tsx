@@ -40,7 +40,7 @@ const Page = async ({ params }: Props) => {
   let slug: string = params.slug ? params.slug.join('/') : '';
 
   return (
-    <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} slug={slug} />
+    <p>Aaaaaah yeah. Server content.</p>
   );
 };
 
