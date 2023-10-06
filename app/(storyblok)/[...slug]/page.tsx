@@ -1,10 +1,10 @@
-import { Metadata, ResolvingMetadata } from 'next';
-import {
- getStoryblokApi, ISbStoriesParams, StoryblokClient, StoryblokStory,
-} from '@storyblok/react/rsc';
-import { resolveRelations } from '@/utilities/resolveRelations';
-import { getPageMetadata } from '@/utilities/getPageMetadata';
-import { notFound } from 'next/navigation';
+// import { Metadata, ResolvingMetadata } from 'next';
+// import {
+//  getStoryblokApi, ISbStoriesParams, StoryblokClient, StoryblokStory,
+// } from '@storyblok/react/rsc';
+// import { resolveRelations } from '@/utilities/resolveRelations';
+// import { getPageMetadata } from '@/utilities/getPageMetadata';
+// import { notFound } from 'next/navigation';
 type PathsType = {
   slug: string[];
 };
@@ -16,44 +16,47 @@ type Props = {
 
 // Make sure to not export the below functions otherwise there will be a typescript error
 // https://github.com/vercel/next.js/discussions/48724
-const getStoryData = async (params: { slug: string[] }) => {
-  const activeEnv = process.env.NODE_ENV || 'development';
-  let slug: string = params.slug ? params.slug.join('/') : '';
-  let sbParams: ISbStoriesParams = {
-    version: activeEnv === 'development' ? 'draft' : 'published',
-    cv: activeEnv === 'development' ? Date.now() : undefined,
-    resolve_relations: resolveRelations,
-  };
-  const storyblokApi: StoryblokClient = getStoryblokApi();
+// const getStoryData = async (params: { slug: string[] }) => {
+//   const activeEnv = process.env.NODE_ENV || 'development';
+//   let slug: string = params.slug ? params.slug.join('/') : '';
+//   let sbParams: ISbStoriesParams = {
+//     version: activeEnv === 'development' ? 'draft' : 'published',
+//     cv: activeEnv === 'development' ? Date.now() : undefined,
+//     resolve_relations: resolveRelations,
+//   };
+//   const storyblokApi: StoryblokClient = getStoryblokApi();
 
-  try {
-  const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
-  return story;
-  } catch (error) {
-    notFound();
-  }
-};
+//   try {
+//   const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
+//   return story;
+//   } catch (error) {
+//     notFound();
+//   }
+// };
 
 const Page = async ({ params }: Props) => {
-  const { data } = await getStoryData(params);
-  const bridgeOptions = { resolveRelations };
+  // const { data } = await getStoryData(params);
+  // const bridgeOptions = { resolveRelations };
   let slug: string = params.slug ? params.slug.join('/') : '';
 
   return (
-    <p>Aaaaaah yeah. Server content.</p>
+    <>
+      <h1>{params.slug}</h1>
+      <p>Aaaaaah yeah. Server content.</p>
+    </>
   );
 };
 
 /**
  * Generate metadata for the inside pages.
  */
-export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
-  const { data } = await getStoryData(params);
-  const blok = data.story.content;
-  let slug: string = params.slug ? params.slug.join('/') : '';
-  const meta = getPageMetadata({ blok, slug });
-  return meta;
-}
+// export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
+//   const { data } = await getStoryData(params);
+//   const blok = data.story.content;
+//   let slug: string = params.slug ? params.slug.join('/') : '';
+//   const meta = getPageMetadata({ blok, slug });
+//   return meta;
+// }
 
 /**
  * Generate static paths for the inside pages.
