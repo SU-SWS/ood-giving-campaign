@@ -120,6 +120,7 @@ export const StoryHeroMvp = ({
     >
       <BlurryPoster
         type="hero"
+        isTwoCol={useTwoColLayout}
         heading={title}
         customHeading={customHeading}
         headingLevel="h1"
