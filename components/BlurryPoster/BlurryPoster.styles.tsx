@@ -1,9 +1,11 @@
 import { cnb } from 'cnbuilder';
 
 export const root = 'relative bg-no-repeat bg-cover bg-center overflow-hidden break-words';
-export const blurWrapper = (addDarkOverlay: boolean) => cnb(
-  'w-full h-full backdrop-blur-md bg-gradient-to-b from-black-true/40',
-  addDarkOverlay ? 'lg:from-black-true/30' : 'lg:bg-none',
+export const blurWrapper = (addDarkOverlay: boolean, type: 'hero' | 'poster') => cnb(
+  'w-full h-full backdrop-blur-md ', {
+    'bg-black-true/50': type === 'hero' && addDarkOverlay,
+    'bg-gradient-to-b from-black-true/40 lg:from-black-true/30': type === 'poster' && addDarkOverlay,
+  },
 );
 
 export const grid = 'w-full rs-py-8';
@@ -13,18 +15,23 @@ export const contentWrapper = (imageOnLeft: boolean) => cnb('relative z-10', {
   'lg:order-first': !imageOnLeft,
 });
 
-export const headingWrapper = (imageOnLeft: boolean) => cnb('lg:rs-mt-7 rs-mb-5', {
-  'lg:w-[120%] lg:-ml-[20%] 3xl:w-auto 3xl:-ml-200 lg:mr-0' : imageOnLeft,
+export const headingWrapper = (imageOnLeft: boolean, headingFont?: 'druk' | 'serif') => cnb('lg:rs-mt-7 rs-mb-5', {
+  '' : imageOnLeft,
+  'lg:mr-0 lg:w-[120%] lg:-ml-[20%] 3xl:w-auto 3xl:-ml-200': imageOnLeft && headingFont === 'druk',
 });
 export const headingInnerWrapper = (imageOnLeft: boolean, headingFont?: 'druk' | 'serif') => cnb('w-full border-l-[1rem] sm:border-l-[1.4rem] md:border-l-[2rem] pl-10 pr-20 sm:pl-16 sm:pr-30 md:pl-30 md:pr-50', {
   'lg:border-l-0 lg:border-r-[3rem] xl:border-r-[4rem] lg:pl-0 lg:pr-50 xl:pr-60': imageOnLeft,
-  'lg:border-l-[3rem] xl:border-l-[4rem] lg:pl-50 xl:pl-60 lg:pr-0 3xl:pl-[calc(100%-750px-40px)] lg:w-[140%] xl:w-[120%]': !imageOnLeft,
+  'lg:border-l-[3rem] xl:border-l-[4rem] lg:pl-50 xl:pl-60 lg:pr-0 3xl:pl-[calc(100%-750px-40px)]': !imageOnLeft,
+  'lg:w-[140%] xl:w-[120%]': !imageOnLeft && headingFont === 'druk',
+  'lg:pl-60': imageOnLeft && headingFont === 'serif',
+  'lg:pr-60': !imageOnLeft && headingFont === 'serif',
 });
 export const heading = (imageOnLeft: boolean, isSmallHeading: boolean, headingFont?: 'druk' | 'serif') => cnb('mb-0 -mt-01em', {
   '3xl:pl-[calc(100%-750px-40px)] lg:w-[140%] xl:w-[130%]': !imageOnLeft && headingFont === 'druk',
   'fluid-type-7 md:fluid-type-8 lg:fluid-type-7 3xl:fluid-type-8 4xl:text-[17.1rem]': isSmallHeading && headingFont === 'druk',
   'fluid-type-7 md:fluid-type-9': !isSmallHeading && headingFont === 'druk',
-  'type-6' : headingFont === 'serif',
+  'fluid-type-6' : headingFont === 'serif' && !isSmallHeading,
+  'fluid-type-5' : headingFont === 'serif' && isSmallHeading,
 });
 
 export const customHeading = (imageOnLeft: boolean, headingFont?: 'druk' | 'serif') => cnb('flex flex-wrap gap-x-[1em] items-center mb-0 -mt-05em lg:-mt-08em children:inline-block', {

@@ -13,6 +13,7 @@ import { type SbTypographyProps } from '../Storyblok/Storyblok.types';
 import * as styles from './BlurryPoster.styles';
 
 type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
+  type?: 'hero' | 'poster';
   bgImageSrc?: string;
   bgImageFocus?: string;
   imageOnLeft?: boolean;
@@ -32,6 +33,7 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
 };
 
 export const BlurryPoster = ({
+  type = 'poster',
   bgImageSrc,
   bgImageFocus,
   imageOnLeft,
@@ -61,10 +63,10 @@ export const BlurryPoster = ({
 
   return (
     <Container {...props} bgColor="black" width="full" className={styles.root} style={bgImageStyle}>
-      <div className={styles.blurWrapper(addDarkOverlay)}>
+      <div className={styles.blurWrapper(addDarkOverlay, type)}>
         <Grid lg={2} className={styles.grid}>
           <div className={styles.contentWrapper(imageOnLeft)}>
-            <FlexBox className={styles.headingWrapper(imageOnLeft)}>
+            <FlexBox className={styles.headingWrapper(imageOnLeft, headingFont)}>
               <AnimateInView
                 animation={imageOnLeft ? 'slideInFromRight' : 'slideInFromLeft'}
                 className={cnb(styles.headingInnerWrapper(imageOnLeft, headingFont), accentBorderColors[tabColor])}

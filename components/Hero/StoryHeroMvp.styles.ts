@@ -1,6 +1,6 @@
 import { cnb } from 'cnbuilder';
 
-export const root = 'pt-80 md:pt-120 lg:pt-150 relative';
+export const root = 'relative';
 
 export const content = (hasHeroImage: boolean, isVerticalHero: boolean, isLeftImage: boolean) => cnb({
   'rs-mt-10 xl:mt-[32.7rem]': !hasHeroImage,

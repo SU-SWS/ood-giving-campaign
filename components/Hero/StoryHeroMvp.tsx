@@ -10,17 +10,20 @@ import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities
 import { accentBorderColors, type AccentBorderColorType } from '@/utilities/datasource';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { slugify } from '@/utilities/slugify';
-import { type SbImageType } from '../Storyblok/Storyblok.types';
+import { type SbImageType, type SbTypographyProps } from '../Storyblok/Storyblok.types';
 import * as styles from './StoryHeroMvp.styles';
 
 export type StoryHeroMvpProps = {
   title: string;
-  headingFont?: 'serif' | 'druk' | 'druk-small';
+  customHeading?: SbTypographyProps[];
+  headingFont?: 'serif' | 'druk';
+  isSmallHeading?: boolean;
   byline?: string;
   publishedDate?: string;
   dek?: string;
   heroImage?: SbImageType;
   bgImage?: SbImageType;
+  addDarkOverlay?: boolean;
   aspectRatio?: styles.ImageCropType;
   mobileImage?: SbImageType;
   mobileAspectRatio?: styles.ImageCropType;
@@ -38,13 +41,16 @@ export type StoryHeroMvpProps = {
 
 export const StoryHeroMvp = ({
   title,
+  customHeading,
   headingFont,
+  isSmallHeading,
   byline,
   dek,
   publishedDate,
   heroImage: { filename, focus } = {},
   mobileImage: { filename: mobileFilename, focus: mobileFocus } = {},
   bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
+  addDarkOverlay,
   imageOnLeft,
   alt,
   caption,
@@ -110,22 +116,23 @@ export const StoryHeroMvp = ({
       as="header"
       width="full"
       bgColor={isLightHero ? 'white' : 'black'}
-      pb={8}
       className={styles.root}
     >
       <BlurryPoster
+        type="hero"
         heading={title}
+        customHeading={customHeading}
         headingLevel="h1"
-        headingFont={headingFont === 'serif' ? 'serif' : 'druk'}
-        isSmallHeading={headingFont !== 'druk'}
+        headingFont={headingFont === 'druk' ? 'druk' : 'serif'}
+        isSmallHeading={isSmallHeading}
         byline={byline}
         publishedDate={formattedDate}
         body={dek}
         imageSrc={filename}
         bgImageSrc={bgImageSrc}
+        addDarkOverlay={addDarkOverlay}
         imageOnLeft={imageOnLeft}
         tabColor={paletteAccentColors[tabColorValue]}
-        addDarkOverlay
       />
     </Container>
   );

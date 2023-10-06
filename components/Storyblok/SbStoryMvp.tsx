@@ -27,13 +27,16 @@ type SbStoryMvpProps = {
 export const SbStoryMvp = ({
   blok: {
     title,
+    customHeading,
     headingFont,
+    isSmallHeading,
     byline,
     dek,
     publishedDate,
     heroImage,
     mobileImage,
     bgImage,
+    addDarkOverlay,
     aspectRatio,
     mobileAspectRatio,
     alt,
@@ -57,7 +60,9 @@ export const SbStoryMvp = ({
           <>
             <StoryHeroMvp
               title={title}
+              customHeading={customHeading}
               headingFont={headingFont}
+              isSmallHeading={isSmallHeading}
               dek={dek}
               byline={byline}
               publishedDate={publishedDate}
@@ -66,6 +71,7 @@ export const SbStoryMvp = ({
               mobileImage={mobileImage}
               mobileAspectRatio={mobileAspectRatio}
               bgImage={bgImage}
+              addDarkOverlay={addDarkOverlay}
               imageOnLeft={isLeftImage}
               alt={alt}
               caption={caption}
