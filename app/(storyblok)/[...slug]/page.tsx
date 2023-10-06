@@ -58,26 +58,26 @@ export async function generateMetadata({ params }: Props, parent: ResolvingMetad
 /**
  * Generate static paths for the inside pages.
  */
-export async function generateStaticParams(): Promise<any[]> {
-  const activeEnv = process.env.NODE_ENV || 'development';
-  const storyblokApi: StoryblokClient = getStoryblokApi();
-  let sbParams: ISbStoriesParams = {
-    version: activeEnv === 'development' ? 'draft' : 'published',
-    cv: activeEnv === 'development' ? Date.now() : undefined,
-  };
-  const { data: { links } } = await storyblokApi.get('cdn/links', sbParams);
-  let paths: PathsType[] = [];
-  Object.keys(links).forEach((linkKey) => {
-    if (links[linkKey].is_folder || links[linkKey].slug === 'home') {
-      return;
-    }
-    const slug:string = links[linkKey].slug;
-    let splittedSlug = slug.split('/');
-    paths.push({ slug: splittedSlug });
-  });
+// export async function generateStaticParams(): Promise<any[]> {
+//   const activeEnv = process.env.NODE_ENV || 'development';
+//   const storyblokApi: StoryblokClient = getStoryblokApi();
+//   let sbParams: ISbStoriesParams = {
+//     version: activeEnv === 'development' ? 'draft' : 'published',
+//     cv: activeEnv === 'development' ? Date.now() : undefined,
+//   };
+//   const { data: { links } } = await storyblokApi.get('cdn/links', sbParams);
+//   let paths: PathsType[] = [];
+//   Object.keys(links).forEach((linkKey) => {
+//     if (links[linkKey].is_folder || links[linkKey].slug === 'home') {
+//       return;
+//     }
+//     const slug:string = links[linkKey].slug;
+//     let splittedSlug = slug.split('/');
+//     paths.push({ slug: splittedSlug });
+//   });
 
-  // Return a list of paths and no fallback.
-  return paths;
-};
+//   // Return a list of paths and no fallback.
+//   return paths;
+// };
 
 export default Page;
