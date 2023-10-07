@@ -31,7 +31,7 @@ export const headingInnerWrapper = (
 ) => cnb('w-full border-l-[1rem] sm:border-l-[1.4rem] md:border-l-[2rem]', {
   'lg:border-l-0 lg:border-r-[3rem] xl:border-r-[4rem] lg:pl-0 lg:pr-50 xl:pr-60': imageOnLeft,
   'pl-10 pr-20 sm:pl-16 sm:pr-30 md:pl-30 md:pr-50': isTwoCol,
-  'cc lg:border-l-[3rem] xl:border-l-[4rem]' : !isTwoCol,
+  'lg:border-l-[3rem] xl:border-l-[4rem] cc pl-10 sm:pl-16 md:pl-30 lg:pl-50 xl:pl-60 3xl:pl-[calc(50%-750px-40px)]' : !isTwoCol,
   'lg:border-l-[3rem] xl:border-l-[4rem] lg:pl-50 xl:pl-60 lg:pr-0 3xl:pl-[calc(100%-750px-40px)]': !imageOnLeft && isTwoCol,
   'lg:w-[140%] xl:w-[120%]': !imageOnLeft && headingFont === 'druk' && isTwoCol,
   'lg:pl-40 2xl:pl-60': imageOnLeft && headingFont === 'serif',
@@ -46,8 +46,8 @@ export const heading = (
   '3xl:pl-[calc(100%-750px-40px)] lg:w-[140%] xl:w-[130%]': !imageOnLeft && headingFont === 'druk' && isTwoCol,
   'fluid-type-7 md:fluid-type-8 lg:fluid-type-7 3xl:fluid-type-8 4xl:text-[17.1rem]': isSmallHeading && headingFont === 'druk',
   'fluid-type-7 md:fluid-type-9': !isSmallHeading && headingFont === 'druk',
-  'fluid-type-6' : headingFont === 'serif' && !isSmallHeading,
-  'fluid-type-5' : headingFont === 'serif' && isSmallHeading,
+  'fluid-type-5 lg:fluid-type-6 xl:max-w-1200' : headingFont === 'serif' && !isSmallHeading,
+  'fluid-type-5 xl:max-w-1200' : headingFont === 'serif' && isSmallHeading,
 });
 
 export const customHeading = (
