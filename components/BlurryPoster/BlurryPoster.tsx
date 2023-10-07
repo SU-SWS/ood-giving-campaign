@@ -141,22 +141,22 @@ export const BlurryPoster = ({
               )}
             </div>
           </div>
-          <div className={styles.imageWrapper(imageOnLeft)}>
+          <Container width={isTwoCol ? 'full' : 'site'} className={styles.imageWrapper(imageOnLeft, isTwoCol, !!imageSrc)}>
             {imageSrc && (
               <AnimateInView animation="zoomSharpen" duration={1} className={styles.imageInnerWrapper}>
                 <img
-                  src={getProcessedImage(imageSrc, type === 'hero' ? '900x1600' : '900x1200', imageFocus)}
+                  src={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '900x1200', imageFocus)}
                   alt=""
                   className={styles.image}
                 />
                 <img
-                  src={getProcessedImage(imageSrc, '800x400', imageFocus)}
+                  src={getProcessedImage(imageSrc, type === 'hero' ? '1000x1000' : '1000x500', imageFocus)}
                   alt=""
                   className={styles.imageMobile}
                 />
               </AnimateInView>
             )}
-          </div>
+          </Container>
         </Grid>
       </div>
     </Container>

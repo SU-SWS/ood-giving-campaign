@@ -21,7 +21,6 @@ export const headingWrapper = (
   headingFont?: 'druk' | 'serif',
   isTwoCol?: boolean,
 ) => cnb('lg:rs-mt-7 rs-mb-5', {
-  '' : imageOnLeft,
   'lg:mr-0 lg:w-[120%] lg:-ml-[20%] 3xl:w-auto 3xl:-ml-200': imageOnLeft && headingFont === 'druk' && isTwoCol,
 });
 export const headingInnerWrapper = (
@@ -73,9 +72,11 @@ export const bodyWrapper = (imageOnLeft?: boolean, isTwoCol?: boolean) => cnb('c
 
 export const cta = 'rs-mt-4';
 
-export const imageWrapper = (imageOnLeft?: boolean, isTwoCol?: boolean) => cnb('w-full mt-30 md:mt-50 lg:mt-0 shrink-0 cc', {
+export const imageWrapper = (imageOnLeft?: boolean, isTwoCol?: boolean, hasImage?: boolean) => cnb('w-full cc', {
   'lg:order-first 3xl:pl-[calc(100%-750px)] lg:pr-0': imageOnLeft && isTwoCol,
-  ' 3xl:pr-[calc(100%-750px)] lg:pl-0': !imageOnLeft,
+  '3xl:pr-[calc(100%-750px)] lg:pl-0': !imageOnLeft && isTwoCol,
+  'lg:mt-0' : isTwoCol,
+  'rs-mt-6' : hasImage,
 });
 export const imageInnerWrapper = 'h-full w-full';
 export const image = 'h-full w-full object-cover object-center hidden lg:block';
