@@ -60,7 +60,7 @@ export const customHeadingText = (font?: 'druk' | 'serif', isSmallHeading?: bool
   'fluid-type-7': font === 'druk',
   'md:fluid-type-9' : font === 'druk' && !isSmallHeading,
   'md:fluid-type-8 lg:fluid-type-7 3xl:fluid-type-8 4xl:text-[17.1rem]' : font === 'druk' && isSmallHeading,
-  'mx-01em md:mx-03em mt-01em fluid-type-4 md:fluid-type-5 font-semibold md:font-normal': font === 'serif',
+  'mx-01em mt-01em fluid-type-4 md:fluid-type-5 font-semibold md:font-normal': font === 'serif',
   'md:type-4 3xl:fluid-type-5' : font === 'serif' && isSmallHeading,
 });
 
