@@ -23,13 +23,15 @@ export const contentWrapper = (imageOnLeft?: boolean, isTwoCol?: boolean) => cnb
 });
 
 export const headingWrapper = (
-  hasImage?: boolean,
+  type?: 'hero' | 'poster',
+  hasHeroImage?: boolean, // Hero image is the foreground image
   imageOnLeft?: boolean,
   headingFont?: 'druk' | 'serif',
   isTwoCol?: boolean,
 ) => cnb('rs-mb-5', {
-  'rs-mt-10': !hasImage && !isTwoCol,
-  'lg:rs-mt-7': isTwoCol,
+  'rs-mt-10': !hasHeroImage && !isTwoCol && type === 'hero',
+  'rs-mt-7': hasHeroImage && type === 'hero',
+  'lg:rs-mt-7': type === 'poster',
   'lg:mr-0 lg:w-[120%] lg:-ml-[20%] 3xl:w-auto 3xl:-ml-200': imageOnLeft && headingFont === 'druk' && isTwoCol,
 });
 export const headingInnerWrapper = (

@@ -79,7 +79,7 @@ export const BlurryPoster = ({
       <div className={styles.blurWrapper(addBgBlur, addDarkOverlay, type, bgColor)}>
         <Grid lg={isTwoCol ? 2 : 1} pt={type === 'hero' ? 9 : 8} pb={8} className={styles.grid}>
           <div className={styles.contentWrapper(imageOnLeft, isTwoCol)}>
-            <FlexBox className={styles.headingWrapper(!!imageSrc, imageOnLeft, headingFont, isTwoCol)}>
+            <FlexBox className={styles.headingWrapper(type, !!imageSrc, imageOnLeft, headingFont, isTwoCol)}>
               <AnimateInView
                 animation={imageOnLeft ? 'slideInFromRight' : 'slideInFromLeft'}
                 className={cnb(styles.headingInnerWrapper(imageOnLeft, headingFont, isTwoCol), accentBorderColors[tabColor])}
