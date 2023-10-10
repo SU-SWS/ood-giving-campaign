@@ -53,7 +53,7 @@ export const Masthead = ({ isLight, className }: MastheadProps) => {
   }
 
   return (
-    <m.div
+    <m.header
       className={cnb(
         'w-full fixed top-0 z-50 transition-colors will-change-transform',
         !isAtTop && isScrollingBack ? 'bg-gc-black border-b border-b-black-80 h-60 lg:h-[6.8rem]' : 'bg-transparent border-b-transparent h-[7.6rem]',
@@ -65,7 +65,7 @@ export const Masthead = ({ isLight, className }: MastheadProps) => {
       <FlexBox
         justifyContent="between"
         alignItems="center"
-        className={cnb('cc transition 3xl:px-100 py-12', !isAtTop ? 'lg:py-11' : 'md:py-26')}
+        className={cnb('cc transition py-12', !isAtTop ? 'lg:py-11' : 'md:py-26')}
       >
         <LogoLockup
           isLink
@@ -84,6 +84,6 @@ export const Masthead = ({ isLight, className }: MastheadProps) => {
           </CtaLink>
         </FlexBox>
       </FlexBox>
-    </m.div>
+    </m.header>
   );
 };

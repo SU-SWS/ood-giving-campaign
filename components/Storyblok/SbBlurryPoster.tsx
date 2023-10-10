@@ -49,9 +49,12 @@ export const SbBlurryPoster = ({
   return (
     <BlurryPoster
       {...storyblokEditable(blok)}
+      type="poster"
       heading={heading}
       customHeading={customHeading}
       headingLevel={headingLevel}
+      isTwoCol
+      addBgBlur
       isSmallHeading={isSmallHeading}
       imageOnLeft={imageOnLeft}
       addDarkOverlay={addDarkOverlay}

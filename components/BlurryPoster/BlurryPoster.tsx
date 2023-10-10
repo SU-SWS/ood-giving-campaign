@@ -12,14 +12,26 @@ import { accentBorderColors, type AccentColorType } from '@/utilities/datasource
 import { type SbTypographyProps } from '../Storyblok/Storyblok.types';
 import * as styles from './BlurryPoster.styles';
 
+/**
+ * This is used for the BlurryPoster (featured story poster) and the StoryHeroMvp components.
+ */
+
 type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
+  type?: 'hero' | 'poster';
+  /**
+   * Use two col layout except for story heroes with horizontal foreground image or no foreground image
+   */
+  isTwoCol?: boolean;
   bgImageSrc?: string;
   bgImageFocus?: string;
+  bgColor?: 'black' | 'white';
   imageOnLeft?: boolean;
   headingLevel?: HeadingType;
   heading?: string;
+  headingFont?: 'serif' | 'druk';
   customHeading?: SbTypographyProps[];
   isSmallHeading?: boolean;
+  addBgBlur?: boolean;
   addDarkOverlay?: boolean;
   body?: string;
   byline?: string;
@@ -31,13 +43,18 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
 };
 
 export const BlurryPoster = ({
+  type = 'poster',
+  isTwoCol,
   bgImageSrc,
   bgImageFocus,
+  bgColor = 'black',
   imageOnLeft,
   heading,
+  headingFont = 'druk',
   customHeading,
   headingLevel = 'h2',
   isSmallHeading,
+  addBgBlur,
   addDarkOverlay,
   body,
   byline,
@@ -58,29 +75,34 @@ export const BlurryPoster = ({
   });
 
   return (
-    <Container {...props} bgColor="black" width="full" className={styles.root} style={bgImageStyle}>
-      <div className={styles.blurWrapper(addDarkOverlay)}>
-        <Grid lg={2} className={styles.grid}>
-          <div className={styles.contentWrapper(imageOnLeft)}>
-            <FlexBox className={styles.headingWrapper(imageOnLeft)}>
+    <Container {...props} bgColor={bgColor} width="full" className={styles.root} style={bgImageStyle}>
+      <div className={styles.blurWrapper(addBgBlur, addDarkOverlay, type, bgColor)}>
+        <Grid lg={isTwoCol ? 2 : 1} pt={type === 'hero' ? 9 : 8} pb={8} className={styles.grid}>
+          <div className={styles.contentWrapper(imageOnLeft, isTwoCol)}>
+            <FlexBox className={styles.headingWrapper(type, !!imageSrc, imageOnLeft, headingFont, isTwoCol)}>
               <AnimateInView
                 animation={imageOnLeft ? 'slideInFromRight' : 'slideInFromLeft'}
-                className={cnb(styles.headingInnerWrapper(imageOnLeft), accentBorderColors[tabColor])}
+                className={cnb(styles.headingInnerWrapper(imageOnLeft, headingFont, isTwoCol), accentBorderColors[tabColor])}
               >
                 {/* Render all Druk font heading if custom heading is not entered */}
                 {heading && !customHeading?.length && (
                   <Heading
-                    font="druk"
-                    color="white"
-                    leading="none"
-                    className={styles.heading(imageOnLeft, isSmallHeading)}
+                    as={headingLevel}
+                    font={headingFont}
+                    leading={headingFont === 'druk' ? 'none' : 'display'}
+                    className={styles.heading(imageOnLeft, isSmallHeading, headingFont, isTwoCol)}
                   >
                     {heading}
                   </Heading>
                 )}
                 {/* Render custom mixed typography heading if entered */}
                 {!!customHeading?.length && (
-                  <Heading size="base" leading="none" className={styles.customHeading(imageOnLeft)}>
+                  <Heading
+                    as={headingLevel}
+                    size="base"
+                    leading="none"
+                    className={styles.customHeading(imageOnLeft, headingFont, isTwoCol)}
+                  >
                     {customHeading.map(({text, font, italic}) => (
                       <Text
                         as="span"
@@ -98,9 +120,15 @@ export const BlurryPoster = ({
                 )}
               </AnimateInView>
             </FlexBox>
-            <div className={styles.bodyWrapper(imageOnLeft)}>
+            <div className={styles.bodyWrapper(imageOnLeft, isTwoCol)}>
               {body && (
-                <Paragraph variant="overview" weight="normal" color="white" leading="display">{body}</Paragraph>
+                <Paragraph
+                  variant="overview"
+                  weight="normal"
+                  leading="display"
+                >
+                  {body}
+                </Paragraph>
               )}
               {byline && (
                 <Text>{byline}</Text>
@@ -115,22 +143,22 @@ export const BlurryPoster = ({
               )}
             </div>
           </div>
-          <div className={styles.imageWrapper(imageOnLeft)}>
+          <Container width={isTwoCol ? 'full' : 'site'} className={styles.imageWrapper(imageOnLeft, isTwoCol, !!imageSrc)}>
             {imageSrc && (
               <AnimateInView animation="zoomSharpen" duration={1} className={styles.imageInnerWrapper}>
                 <img
-                  src={getProcessedImage(imageSrc, '900x1200', imageFocus)}
+                  src={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '900x1200', imageFocus)}
                   alt=""
                   className={styles.image}
                 />
                 <img
-                  src={getProcessedImage(imageSrc, '800x400', imageFocus)}
+                  src={getProcessedImage(imageSrc, type === 'hero' ? '1000x1000' : '1000x500', imageFocus)}
                   alt=""
                   className={styles.imageMobile}
                 />
               </AnimateInView>
             )}
-          </div>
+          </Container>
         </Grid>
       </div>
     </Container>

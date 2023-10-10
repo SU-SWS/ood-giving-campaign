@@ -1,23 +1,23 @@
 import React from 'react';
-import { cnb } from 'cnbuilder';
 import { Container } from '../Container';
-import { CtaLink } from '../Cta';
-import { Grid } from '../Grid';
-import { FlexBox } from '../FlexBox';
-import { Heading, Text, Paragraph } from '../Typography';
+import { BlurryPoster } from '../BlurryPoster';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
-import { accentBorderColors } from '@/utilities/datasource';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { slugify } from '@/utilities/slugify';
-import { type SbImageType } from '../Storyblok/Storyblok.types';
-import * as styles from './StoryHero.styles';
+import { type SbImageType, type SbTypographyProps } from '../Storyblok/Storyblok.types';
+import * as styles from './StoryHeroMvp.styles';
 
-export type StoryHeroProps = {
+export type StoryHeroMvpProps = {
   title: string;
+  customHeading?: SbTypographyProps[];
+  headingFont?: 'serif' | 'druk';
+  isSmallHeading?: boolean;
   byline?: string;
   publishedDate?: string;
   dek?: string;
   heroImage?: SbImageType;
+  bgImage?: SbImageType;
+  addBgBlur?: boolean;
+  addDarkOverlay?: boolean;
   aspectRatio?: styles.ImageCropType;
   mobileImage?: SbImageType;
   mobileAspectRatio?: styles.ImageCropType;
@@ -32,13 +32,19 @@ export type StoryHeroProps = {
   topics?: string[];
 };
 
-export const StoryHero = ({
+export const StoryHeroMvp = ({
   title,
+  customHeading,
+  headingFont,
+  isSmallHeading,
   byline,
   dek,
   publishedDate,
   heroImage: { filename, focus } = {},
   mobileImage: { filename: mobileFilename, focus: mobileFocus } = {},
+  bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
+  addBgBlur,
+  addDarkOverlay,
   alt,
   caption,
   isVerticalHero = false,
@@ -48,7 +54,7 @@ export const StoryHero = ({
   mobileAspectRatio = '1x1',
   tabColor: { value: tabColorValue } = {},
   topics,
-}: StoryHeroProps) => {
+}: StoryHeroMvpProps) => {
   const useTwoColLayout = isVerticalHero && !!filename;
   const date = publishedDate && new Date(publishedDate);
   const formattedDate = date && date.toLocaleDateString('en-US', {
@@ -103,75 +109,29 @@ export const StoryHero = ({
       as="header"
       width="full"
       bgColor={isLightHero ? 'white' : 'black'}
-      pb={8}
       className={styles.root}
     >
-      <Grid lg={useTwoColLayout ? 2 : 1} alignItems="start">
-        <div className={styles.content(!!filename, isVerticalHero, isLeftImage)}>
-          <div className={cnb(
-            styles.tabSection(!!tabColorValue, isVerticalHero, isLeftImage),
-            accentBorderColors[paletteAccentColors[tabColorValue]],
-          )}
-          >
-            <Heading
-              as="h1"
-              leading="tight"
-              className={styles.heading(!!filename, !!tabColorValue, isVerticalHero, isLeftImage)}
-            >
-              {title}
-            </Heading>
-            {(byline || date) && (
-              <div className={styles.storyInfo(!!filename, !!tabColorValue, isVerticalHero, isLeftImage)}>
-                {byline && (
-                  <Text>{byline}</Text>
-                )}
-                {date && (
-                  <time dateTime={publishedDate}>{formattedDate}</time>
-                )}
-              </div>
-            )}
-          </div>
-          <div className={styles.chipDek(!!filename, isVerticalHero, isLeftImage)}>
-            <Heading srOnly>Top 3 related topics</Heading>
-            {/* Display max 3 topic tags */}
-            {!!topics?.length && (
-              <FlexBox wrap="wrap" as="ul" className={styles.taxonomy}>
-                {topics.slice(0, 3).map((topic) => (
-                  <li key={topic} className={styles.taxonomyItem}>
-                    <CtaLink href={`/stories?topic=${slugify(topic)}`} variant="chip">{topic}</CtaLink>
-                  </li>
-                ))}
-              </FlexBox>
-            )}
-            <Paragraph
-              variant="overview"
-              font="serif"
-              className={styles.body(!!filename, isVerticalHero)}
-            >
-              {dek}
-            </Paragraph>
-          </div>
-        </div>
-        {filename && (
-          <figure>
-            <div className={styles.imageWrapper(isVerticalHero, isLeftImage)}>
-              {RenderedMobileImage}
-              {RenderedDesktopImage}
-            </div>
-            {caption && (
-              <figcaption className={styles.caption(isVerticalHero, isLeftImage)}>
-                <Text
-                  variant="caption"
-                  color={isLightHero ? 'black-80' : 'black-20'}
-                  className={styles.captionText(isVerticalHero, isLeftImage)}
-                >
-                  {caption}
-                </Text>
-              </figcaption>
-            )}
-          </figure>
-        )}
-      </Grid>
+      <BlurryPoster
+        type="hero"
+        isTwoCol={useTwoColLayout}
+        heading={title}
+        customHeading={customHeading}
+        headingLevel="h1"
+        headingFont={headingFont === 'druk' ? 'druk' : 'serif'}
+        isSmallHeading={isSmallHeading}
+        byline={byline}
+        publishedDate={formattedDate}
+        body={dek}
+        imageSrc={filename}
+        imageFocus={focus}
+        bgImageSrc={bgImageSrc}
+        bgImageFocus={bgImageFocus}
+        bgColor={isLightHero ? 'white' : 'black'}
+        addBgBlur={addBgBlur}
+        addDarkOverlay={addDarkOverlay}
+        imageOnLeft={isLeftImage}
+        tabColor={paletteAccentColors[tabColorValue]}
+      />
     </Container>
   );
 };
