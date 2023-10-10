@@ -1,4 +1,3 @@
-import React from 'react';
 import { cnb } from 'cnbuilder';
 import { Container } from '../Container';
 import { CtaLink } from '../Cta';

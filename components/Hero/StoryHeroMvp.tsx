@@ -1,4 +1,3 @@
-import React from 'react';
 import { Container } from '../Container';
 import { BlurryPoster } from '../BlurryPoster';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';

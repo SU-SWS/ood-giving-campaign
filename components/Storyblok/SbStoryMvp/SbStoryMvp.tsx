@@ -3,21 +3,24 @@ import Image from 'next/image';
 import { CreateBloks } from '@/components/CreateBloks';
 import { Masthead } from '@/components/Masthead';
 import { StoryHeroMvp, type StoryHeroMvpProps } from '@/components/Hero';
+import { SbAboveContent } from './SbAboveContent';
 import { ScrollyTelling } from '@/components/ScrollyTelling/ScrollyTelling';
-import { ScrollyFullwidth } from '../ScrollyTelling/ScrollyFullwidth';
-import { ScrollyDataViz } from '../ScrollyTelling/ScrollyDataViz';
-import { ProgressStory } from '../StoryPoC/ProgressStory';
-import { MulticolumnStory } from '../StoryPoC/MulticolumnStory';
-import { ChatbotStory } from '../StoryPoC/ChatbotStory';
-import { VideoScrollStory } from '../StoryPoC/VideoScrollStory';
-import { Bookshelf } from '../Bookshelf/Bookshelf';
-import { BrochureStory } from '../StoryPoC/BrochureStory';
+import { ScrollyFullwidth } from '../../ScrollyTelling/ScrollyFullwidth';
+import { ScrollyDataViz } from '../../ScrollyTelling/ScrollyDataViz';
+import { ProgressStory } from '../../StoryPoC/ProgressStory';
+import { MulticolumnStory } from '../../StoryPoC/MulticolumnStory';
+import { ChatbotStory } from '../../StoryPoC/ChatbotStory';
+import { VideoScrollStory } from '../../StoryPoC/VideoScrollStory';
+import { Bookshelf } from '../../Bookshelf/Bookshelf';
+import { BrochureStory } from '../../StoryPoC/BrochureStory';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 
 type SbStoryMvpProps = {
   blok: {
     _uid: string;
+    intro?: SbBlokData[];
+    sidebar?: SbBlokData[];
     content?: SbBlokData[];
     ankle?: SbBlokData[];
   } & StoryHeroMvpProps;
@@ -47,6 +50,9 @@ export const SbStoryMvp = ({
     isLightHero,
     tabColor,
     topics,
+    // page regions
+    intro,
+    sidebar,
     content,
     ankle,
   },
@@ -91,6 +97,9 @@ export const SbStoryMvp = ({
               className="w-full"
             />
           </>
+        )}
+        {getNumBloks(blok.intro) > 0 && (
+          <SbAboveContent intro={intro} sidebar={sidebar} />
         )}
         {title?.includes('Solve') && (
           <BrochureStory />
