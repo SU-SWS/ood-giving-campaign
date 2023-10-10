@@ -74,6 +74,8 @@ export const SbSection = ({
           'cc whitespace-pre-line w-full 3xl:max-w-[90%]',
           barColorValue && !rightAlignHeader ? '-ml-10 sm:-ml-14 md:-ml-20 lg:-ml-30 xl:-ml-40' : '',
           barColorValue && rightAlignHeader ? '-mr-10 sm:-mr-14 md:-mr-20 lg:-mr-30 xl:-mr-40' : '',
+          !barColorValue && !rightAlignHeader ? 'ml-0' : '',
+          !barColorValue && rightAlignHeader ? 'mr-0' : '',
           superhead ? '' : '-mt-05em',
         )}
         >
