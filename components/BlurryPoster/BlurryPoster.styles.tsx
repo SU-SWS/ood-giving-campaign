@@ -23,11 +23,12 @@ export const contentWrapper = (imageOnLeft?: boolean, isTwoCol?: boolean) => cnb
 });
 
 export const headingWrapper = (
+  hasImage?: boolean,
   imageOnLeft?: boolean,
   headingFont?: 'druk' | 'serif',
   isTwoCol?: boolean,
 ) => cnb('rs-mb-5', {
-  'rs-mt-7': !isTwoCol,
+  'rs-mt-10': !hasImage && !isTwoCol,
   'lg:rs-mt-7': isTwoCol,
   'lg:mr-0 lg:w-[120%] lg:-ml-[20%] 3xl:w-auto 3xl:-ml-200': imageOnLeft && headingFont === 'druk' && isTwoCol,
 });
