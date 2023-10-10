@@ -36,6 +36,7 @@ export const SbStoryMvp = ({
     heroImage,
     mobileImage,
     bgImage,
+    addBgBlur,
     addDarkOverlay,
     aspectRatio,
     mobileAspectRatio,
@@ -71,13 +72,13 @@ export const SbStoryMvp = ({
               mobileImage={mobileImage}
               mobileAspectRatio={mobileAspectRatio}
               bgImage={bgImage}
+              addBgBlur={addBgBlur}
               addDarkOverlay={addDarkOverlay}
-              imageOnLeft={isLeftImage}
+              isLeftImage={isLeftImage}
               alt={alt}
               caption={caption}
               isLightHero={isLightHero}
               isVerticalHero={isVerticalHero}
-              isLeftImage={isLeftImage}
               tabColor={tabColor}
               topics={topics}
             />

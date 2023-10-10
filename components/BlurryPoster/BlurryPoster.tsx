@@ -31,6 +31,7 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   headingFont?: 'serif' | 'druk';
   customHeading?: SbTypographyProps[];
   isSmallHeading?: boolean;
+  addBgBlur?: boolean;
   addDarkOverlay?: boolean;
   body?: string;
   byline?: string;
@@ -43,7 +44,7 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
 
 export const BlurryPoster = ({
   type = 'poster',
-  isTwoCol = true,
+  isTwoCol,
   bgImageSrc,
   bgImageFocus,
   bgColor = 'black',
@@ -53,6 +54,7 @@ export const BlurryPoster = ({
   customHeading,
   headingLevel = 'h2',
   isSmallHeading,
+  addBgBlur,
   addDarkOverlay,
   body,
   byline,
@@ -74,9 +76,9 @@ export const BlurryPoster = ({
 
   return (
     <Container {...props} bgColor={bgColor} width="full" className={styles.root} style={bgImageStyle}>
-      <div className={styles.blurWrapper(addDarkOverlay, type, bgColor)}>
+      <div className={styles.blurWrapper(addBgBlur, addDarkOverlay, type, bgColor)}>
         <Grid lg={isTwoCol ? 2 : 1} pt={type === 'hero' ? 9 : 8} pb={8} className={styles.grid}>
-          <div className={styles.contentWrapper(imageOnLeft)}>
+          <div className={styles.contentWrapper(imageOnLeft, isTwoCol)}>
             <FlexBox className={styles.headingWrapper(imageOnLeft, headingFont, isTwoCol)}>
               <AnimateInView
                 animation={imageOnLeft ? 'slideInFromRight' : 'slideInFromLeft'}

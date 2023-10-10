@@ -1,8 +1,14 @@
 import { cnb } from 'cnbuilder';
 
 export const root = 'relative bg-no-repeat bg-cover bg-center overflow-hidden break-words';
-export const blurWrapper = (addDarkOverlay: boolean, type: 'hero' | 'poster', bgColor: 'black' | 'white') => cnb(
-  'w-full h-full backdrop-blur-md ', {
+export const blurWrapper = (
+  addBgBlur?: boolean,
+  addDarkOverlay?: boolean,
+  type?: 'hero' | 'poster',
+  bgColor?: 'black' | 'white',
+) => cnb(
+  'w-full h-full', {
+    'backdrop-blur-md' : addBgBlur,
     'bg-black-true/40': type === 'hero' && addDarkOverlay && bgColor === 'black',
     'bg-gradient-to-b from-black-true/40 lg:from-black-true/30': type === 'poster' && addDarkOverlay && bgColor === 'black',
     'bg-white/80' : type === 'hero' && bgColor === 'white',
@@ -11,9 +17,9 @@ export const blurWrapper = (addDarkOverlay: boolean, type: 'hero' | 'poster', bg
 
 export const grid = 'w-full';
 
-export const contentWrapper = (imageOnLeft?: boolean) => cnb('relative z-10', {
-  'lg:order-last': imageOnLeft,
-  'lg:order-first': !imageOnLeft,
+export const contentWrapper = (imageOnLeft?: boolean, isTwoCol?: boolean) => cnb('relative z-10', {
+  'lg:order-last': imageOnLeft && isTwoCol,
+  'lg:order-first': !imageOnLeft && isTwoCol,
 });
 
 export const headingWrapper = (
@@ -28,7 +34,7 @@ export const headingInnerWrapper = (
   headingFont?: 'druk' | 'serif',
   isTwoCol?: boolean,
 ) => cnb('w-full border-l-[1rem] sm:border-l-[1.4rem] md:border-l-[2rem]', {
-  'lg:border-l-0 lg:border-r-[3rem] xl:border-r-[4rem] lg:pl-0 lg:pr-50 xl:pr-60': imageOnLeft,
+  'lg:border-l-0 lg:border-r-[3rem] xl:border-r-[4rem] lg:pl-0 lg:pr-50 xl:pr-60': imageOnLeft && isTwoCol,
   'pl-10 pr-20 sm:pl-16 sm:pr-30 md:pl-30 md:pr-50': isTwoCol,
   'lg:border-l-[3rem] xl:border-l-[4rem] cc pl-10 sm:pl-16 md:pl-30 lg:pl-50 xl:pl-60 3xl:pl-[calc(50%-750px-40px)]' : !isTwoCol,
   'lg:border-l-[3rem] xl:border-l-[4rem] lg:pl-50 xl:pl-60 lg:pr-0 3xl:pl-[calc(100%-750px-40px)]': !imageOnLeft && isTwoCol,

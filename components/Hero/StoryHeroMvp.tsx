@@ -23,11 +23,11 @@ export type StoryHeroMvpProps = {
   dek?: string;
   heroImage?: SbImageType;
   bgImage?: SbImageType;
+  addBgBlur?: boolean;
   addDarkOverlay?: boolean;
   aspectRatio?: styles.ImageCropType;
   mobileImage?: SbImageType;
   mobileAspectRatio?: styles.ImageCropType;
-  imageOnLeft?: boolean;
   alt?: string;
   caption?: string;
   isVerticalHero?: boolean;
@@ -50,8 +50,8 @@ export const StoryHeroMvp = ({
   heroImage: { filename, focus } = {},
   mobileImage: { filename: mobileFilename, focus: mobileFocus } = {},
   bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
+  addBgBlur,
   addDarkOverlay,
-  imageOnLeft,
   alt,
   caption,
   isVerticalHero = false,
@@ -130,10 +130,13 @@ export const StoryHeroMvp = ({
         publishedDate={formattedDate}
         body={dek}
         imageSrc={filename}
+        imageFocus={focus}
         bgImageSrc={bgImageSrc}
+        bgImageFocus={bgImageFocus}
         bgColor={isLightHero ? 'white' : 'black'}
+        addBgBlur={addBgBlur}
         addDarkOverlay={addDarkOverlay}
-        imageOnLeft={imageOnLeft}
+        imageOnLeft={isLeftImage}
         tabColor={paletteAccentColors[tabColorValue]}
       />
     </Container>
