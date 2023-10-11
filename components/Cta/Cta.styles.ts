@@ -82,7 +82,7 @@ export const ctaSizes: CtaSizeObjectType = {
   chip: 'py-7 px-22 text-18',
   storyCardTag: 'text-16 lg:text-18',
   brochure: 'text-20 xl:text-30 py-12',
-  unset: '!p-0',
+  unset: '',
 };
 
 export const ctaSizeMap: CtaSizeMapType = {
@@ -95,7 +95,7 @@ export const ctaSizeMap: CtaSizeMapType = {
   mainNav: 'mainNav',
   mainNavUp: 'mainNavUp',
   mainNavBlack: 'mainNav',
-  link: 'link',
+  link: 'unset',
   close: 'close',
   'close-x': 'unset',
   back: 'back',
