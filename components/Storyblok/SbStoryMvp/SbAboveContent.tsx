@@ -16,7 +16,7 @@ export const SbAboveContent = ({
   <Container pt={9} className="relative overflow-hidden">
     <Grid md={12} gap="default">
       {sidebar && (
-        <aside className="md:col-span-10 md:col-start-2 lg:order-last lg:col-span-5 lg:col-start-8 xl:col-span-5 xl:col-start-8 2xl:col-span-4 2xl:col-start-8">
+        <aside className="rs-mb-3 md:mb-0 md:col-span-10 md:col-start-2 lg:order-last lg:col-span-5 lg:col-start-8 xl:col-span-5 xl:col-start-8 2xl:col-span-4 2xl:col-start-8">
           <CreateBloks blokSection={sidebar} />
         </aside>
       )}
