@@ -51,7 +51,7 @@ export const SidebarCard = ({
       className={cnb(styles.root, accentBgColors[bgColor], className)}
       {...props}
     >
-      <div className={cnb(styles.content(!!bgColor), accentBorderColors[barColor])}>
+      <div className={cnb(styles.content(!!bgColor, !!barColor, barOnRight), accentBorderColors[barColor])}>
         {superhead && (
           <Text weight="semibold" aria-hidden>{superhead}</Text>
         )}
