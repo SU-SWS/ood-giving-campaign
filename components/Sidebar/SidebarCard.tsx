@@ -1,8 +1,13 @@
 import { cnb } from 'cnbuilder';
 import { AnimateInView, type AnimationType } from '../Animate';
-import { CtaLink } from '../Cta/CtaLink';
-import { Heading, type HeadingType, Paragraph } from '../Typography';
-import { accentBorderColors, type AccentBorderColorType } from '@/utilities/datasource';
+import { Container } from '../Container';
+import { Heading, type HeadingType, Text } from '../Typography';
+import {
+  accentBorderColors,
+  accentBgColors,
+  type AccentBorderColorType,
+  type AccentColorType,
+} from '@/utilities/datasource';
 import * as styles from './SidebarCard.styles';
 
 /**
@@ -15,18 +20,20 @@ export type SidebarCardProps = React.HTMLAttributes<HTMLDivElement> & {
   isSmallHeading?: boolean;
   superhead?: string;
   barColor?: AccentBorderColorType;
-  bgColor?: 'black' | 'white';
+  bgColor?: AccentColorType;
   cta?: React.ReactNode;
-  children?: React.ReactNode;
   animation?: AnimationType;
   delay?: number;
+  children?: React.ReactNode;
 };
 
 export const SidebarCard = ({
   heading,
   headingLevel = 'h3',
   isSmallHeading,
+  superhead,
   barColor,
+  bgColor,
   cta,
   animation,
   delay,
@@ -35,11 +42,19 @@ export const SidebarCard = ({
   ...props
 }: SidebarCardProps) => (
   <AnimateInView animation={animation} delay={delay}>
-    <article
-      className={cnb(styles.root, className)}
+    <Container
+      as="article"
+      width="full"
+      py={3}
+      className={cnb(styles.root, accentBgColors[bgColor], className)}
       {...props}
     >
+      <Text weight="semibold" aria-hidden>{superhead}</Text>
+      <Heading size={isSmallHeading ? 2 : 3} className="rs-mb-2">
+        <Text srOnly>{superhead}: </Text>{heading}
+      </Heading>
       {children}
-    </article>
+      {cta}
+    </Container>
   </AnimateInView>
 );

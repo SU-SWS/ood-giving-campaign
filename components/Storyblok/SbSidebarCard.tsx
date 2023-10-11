@@ -11,10 +11,14 @@ export type SbSidebarCardProps = Omit<SbStoryCardProps, 'isSmallHeading'> & {
     _uid: string;
     heading?: string;
     headingLevel?: HeadingType;
+    isSmallHeading?: boolean;
     superhead?: string;
     content?: SbBlokData[];
     cta?: SbBlokData[];
     barColor?: {
+      value?: PaletteAccentHexColorType;
+    }
+    bgColor?: {
       value?: PaletteAccentHexColorType;
     }
     animation?: AnimationType;
@@ -26,10 +30,12 @@ export const SbSidebarCard = ({
   blok: {
     heading,
     headingLevel,
+    isSmallHeading,
     superhead,
     content,
     cta,
     barColor: { value } = {},
+    bgColor: { value: bgColorValue } = {},
     animation,
     delay,
   },
@@ -43,8 +49,10 @@ export const SbSidebarCard = ({
       {...storyblokEditable(blok)}
       heading={heading}
       headingLevel={headingLevel}
+      isSmallHeading={isSmallHeading}
       superhead={superhead}
       barColor={paletteAccentColors[value]}
+      bgColor={paletteAccentColors[bgColorValue]}
       cta={Cta}
     >
       {Content}

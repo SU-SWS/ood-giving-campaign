@@ -1,1 +1,1 @@
-export const root = 'relative overflow-hidden';
+export const root = 'relative overflow-hidden rs-px-3';
