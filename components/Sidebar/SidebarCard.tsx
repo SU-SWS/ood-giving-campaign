@@ -56,7 +56,7 @@ export const SidebarCard = ({
           <Text weight="semibold" aria-hidden>{superhead}</Text>
         )}
         {heading && (
-          <Heading size={isSmallHeading ? 2 : 3} className="rs-mb-3">
+          <Heading as={headingLevel} size={isSmallHeading ? 2 : 3} className="rs-mb-3">
             {superhead && <Text srOnly>{superhead}: </Text>}{heading}
           </Heading>
         )}
