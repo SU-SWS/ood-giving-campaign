@@ -1,4 +1,4 @@
-import { cnb } from "cnbuilder";
+import { cnb } from 'cnbuilder';
 
 export const root = 'relative overflow-hidden';
 
