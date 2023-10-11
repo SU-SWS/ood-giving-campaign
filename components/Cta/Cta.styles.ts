@@ -26,7 +26,7 @@ export const ctaVariants = {
   ghost: ' block w-fit font-normal leading-display bg-transparent hocus:text-current border-2 border-current focus-visible:outline-none underline-offset-4 decoration-transparent hocus:decoration-current',
   'ghost-swipe': `${ghostSwipeBase} bg-transparent`,
   'ghost-swipe-overlay': `${ghostSwipeBase} bg-black-true/40`, // Use for split poster over images
-  link: 'inline-block w-fit font-normal decoration-transparent hocus:decoration-current leading-display text-current hocus:text-current hocus:decoration-2 focus-visible:ring-2 focus-visible:ring-lagunita-light focus-visible:outline-none focus-visible:rounded underline-offset-4',
+  link: '!p-0 inline-block w-fit font-normal decoration-transparent hocus:decoration-current leading-display text-current hocus:text-current hocus:decoration-2 focus-visible:ring-2 focus-visible:ring-lagunita-light focus-visible:outline-none focus-visible:rounded underline-offset-4',
   back: 'inline-block font-normal no-underline leading-none group-hocus:underline text-black hocus:text-lagunita focus-visible:ring-2 focus-visible:ring-lagunita-light focus-visible:ring-offset-4 focus:outline-none rounded-[1px]',
   mainNav: `${mainNavBase} ${mainNavWhite} hocus-visible:bg-digital-red`, // Main nav buttons at the top of the page
   mainNavUp: `${mainNavBase} ${mainNavWhite} hocus-visible:bg-digital-red`, // Main nav buttons when scrolling up
@@ -75,6 +75,7 @@ export const ctaSizes: CtaSizeObjectType = {
   default: 'pt-9 pb-10 pl-18 pr-16 lg:pl-22 lg:pr-20 lg:pt-10 lg:pb-11 text-16 lg:text-20',
   large: 'pl-28 pr-26 pt-16 pb-17 lg:pr-40 lg:pl-44 lg:pt-20 lg:pb-22 text-18 lg:text-24',
   link: 'text-16 lg:text-20',
+  linkLarge: 'text-18 lg:text-24',
   mainNav: 'text-14 px-10 pt-8 pb-9 lg:px-22 lg:py-15 lg:text-20',
   mainNavUp: 'text-14 px-10 pt-7 pb-8 lg:px-16 lg:py-11 lg:text-15',
   back: 'text-16',
@@ -95,7 +96,7 @@ export const ctaSizeMap: CtaSizeMapType = {
   mainNav: 'mainNav',
   mainNavUp: 'mainNavUp',
   mainNavBlack: 'mainNav',
-  link: 'unset',
+  link: 'link',
   close: 'close',
   'close-x': 'unset',
   back: 'back',

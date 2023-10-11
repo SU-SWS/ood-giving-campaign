@@ -8,7 +8,8 @@ export const content = (
   barOnRight?: boolean,
 ) => cnb('', {
   'rs-py-1': hasBgColor,
-  'rs-pr-1 rs-pl-3 border-r-[2rem]': hasBarColor && barOnRight,
-  'rs-pl-1 rs-pr-3 border-l-[2rem]': hasBarColor && !barOnRight,
+  'rs-py-0': !hasBgColor,
+  'rs-pr-1 rs-pl-3 border-r-[1.4rem] xl:border-r-[2rem]': hasBarColor && barOnRight,
+  'rs-pl-1 rs-pr-3 border-l-[1.4rem] xl:border-l-[2rem]': hasBarColor && !barOnRight,
   'rs-px-3': !hasBarColor,
 });

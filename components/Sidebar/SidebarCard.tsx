@@ -47,7 +47,7 @@ export const SidebarCard = ({
     <Container
       as="article"
       width="full"
-      py={3}
+      py={bgColor ? 3 : undefined}
       className={cnb(styles.root, accentBgColors[bgColor], className)}
       {...props}
     >
