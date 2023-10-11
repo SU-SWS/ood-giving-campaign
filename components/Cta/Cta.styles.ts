@@ -75,7 +75,6 @@ export const ctaSizes: CtaSizeObjectType = {
   default: 'pt-9 pb-10 pl-18 pr-16 lg:pl-22 lg:pr-20 lg:pt-10 lg:pb-11 text-16 lg:text-20',
   large: 'pl-28 pr-26 pt-16 pb-17 lg:pr-40 lg:pl-44 lg:pt-20 lg:pb-22 text-18 lg:text-24',
   link: 'text-16 lg:text-20',
-  linkLarge: 'text-18 lg:text-24',
   mainNav: 'text-14 px-10 pt-8 pb-9 lg:px-22 lg:py-15 lg:text-20',
   mainNavUp: 'text-14 px-10 pt-7 pb-8 lg:px-16 lg:py-11 lg:text-15',
   back: 'text-16',
