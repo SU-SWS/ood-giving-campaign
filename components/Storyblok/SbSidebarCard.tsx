@@ -18,6 +18,7 @@ export type SbSidebarCardProps = Omit<SbStoryCardProps, 'isSmallHeading'> & {
     barColor?: {
       value?: PaletteAccentHexColorType;
     }
+    barOnRight?: boolean;
     bgColor?: {
       value?: PaletteAccentHexColorType;
     }
@@ -35,6 +36,7 @@ export const SbSidebarCard = ({
     content,
     cta,
     barColor: { value } = {},
+    barOnRight,
     bgColor: { value: bgColorValue } = {},
     animation,
     delay,
@@ -52,6 +54,7 @@ export const SbSidebarCard = ({
       isSmallHeading={isSmallHeading}
       superhead={superhead}
       barColor={paletteAccentColors[value]}
+      barOnRight={barOnRight}
       bgColor={paletteAccentColors[bgColorValue]}
       cta={Cta}
     >

@@ -20,6 +20,7 @@ export type SidebarCardProps = React.HTMLAttributes<HTMLDivElement> & {
   isSmallHeading?: boolean;
   superhead?: string;
   barColor?: AccentBorderColorType;
+  barOnRight?: boolean;
   bgColor?: AccentColorType;
   cta?: React.ReactNode;
   animation?: AnimationType;
@@ -33,6 +34,7 @@ export const SidebarCard = ({
   isSmallHeading,
   superhead,
   barColor,
+  barOnRight,
   bgColor,
   cta,
   animation,
@@ -49,12 +51,22 @@ export const SidebarCard = ({
       className={cnb(styles.root, accentBgColors[bgColor], className)}
       {...props}
     >
-      <Text weight="semibold" aria-hidden>{superhead}</Text>
-      <Heading size={isSmallHeading ? 2 : 3} className="rs-mb-2">
-        <Text srOnly>{superhead}: </Text>{heading}
-      </Heading>
-      {children}
-      {cta}
+      <div className={cnb(styles.content(!!bgColor), accentBorderColors[barColor])}>
+        {superhead && (
+          <Text weight="semibold" aria-hidden>{superhead}</Text>
+        )}
+        {heading && (
+          <Heading size={isSmallHeading ? 2 : 3} className="rs-mb-3">
+            {superhead && <Text srOnly>{superhead}: </Text>}{heading}
+          </Heading>
+        )}
+        {children}
+        {cta && (
+          <div className="rs-mt-3">
+            {cta}
+          </div>
+        )}
+      </div>
     </Container>
   </AnimateInView>
 );
