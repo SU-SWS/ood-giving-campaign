@@ -30,7 +30,7 @@ export const ctaVariants = {
   back: 'inline-block font-normal no-underline leading-none group-hocus:underline text-black hocus:text-lagunita focus-visible:ring-2 focus-visible:ring-lagunita-light focus-visible:ring-offset-4 focus:outline-none rounded-[1px]',
   mainNav: `${mainNavBase} ${mainNavWhite} hocus-visible:bg-digital-red`, // Main nav buttons at the top of the page
   mainNavUp: `${mainNavBase} ${mainNavWhite} hocus-visible:bg-digital-red`, // Main nav buttons when scrolling up
-  mainNavBlack: `${mainNavBase} ${mainNavDark} hocus-visible:bg-lime`, // Main nav buttons when scrolling up
+  mainNavBlack: `${mainNavBase} ${mainNavDark} hocus-visible:bg-digital-red`, // Main nav buttons when scrolling up
   close: 'inline-block font-semibold leading-none text-lagunita hocus:text-lagunita-dark focus:outline-none',
   'close-x': 'leading-none',
   chip: 'inline-block leading-display no-underline text-current rounded-full border-2 border-current hocus:text-current font-normal underline-offset-4 decoration-transparent hocus-visible:decoration-current hocus-visible:decoration-2',
@@ -82,7 +82,7 @@ export const ctaSizes: CtaSizeObjectType = {
   chip: 'py-7 px-22 text-18',
   storyCardTag: 'text-16 lg:text-18',
   brochure: 'text-20 xl:text-30 py-12',
-  unset: '',
+  unset: '!p-0',
 };
 
 export const ctaSizeMap: CtaSizeMapType = {
