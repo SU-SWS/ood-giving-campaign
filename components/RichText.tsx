@@ -75,8 +75,8 @@ export const RichText = ({
     nodeResolvers: {
       heading: (children, props) => {
         const { level } = props;
-        // This gets you type-1 for h6, type-2 for h5, type-3 for h4 and so on
-        const headingSize = type === 'default' ? 7 - level : 1;
+        // This gets you type-4 for h2, type-3 for h3, etc.
+        const headingSize = type === 'default' ? 6 - level : 1;
 
         return (
           <Heading as={`h${level}`} size={headingSize as FontSizeType} leading="tight">

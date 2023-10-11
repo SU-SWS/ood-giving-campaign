@@ -37,7 +37,7 @@ export const SidebarCard = ({
   barOnRight,
   bgColor,
   cta,
-  animation,
+  animation = 'slideUp',
   delay,
   children,
   className,
