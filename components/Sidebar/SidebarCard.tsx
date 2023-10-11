@@ -10,10 +10,6 @@ import {
 } from '@/utilities/datasource';
 import * as styles from './SidebarCard.styles';
 
-/**
- * Currently, both Theme Card and Story Card use this component.
- */
-
 export type SidebarCardProps = React.HTMLAttributes<HTMLDivElement> & {
   heading?: string;
   headingLevel?: HeadingType;
@@ -53,16 +49,16 @@ export const SidebarCard = ({
     >
       <div className={cnb(styles.content(!!bgColor, !!barColor, barOnRight), accentBorderColors[barColor])}>
         {superhead && (
-          <Text weight="semibold" aria-hidden>{superhead}</Text>
+          <Text weight="semibold" aria-hidden={!!heading}>{superhead}</Text>
         )}
         {heading && (
-          <Heading as={headingLevel} size={isSmallHeading ? 2 : 3} className="rs-mb-3">
+          <Heading as={headingLevel} size={isSmallHeading ? 2 : 3} className={styles.heading}>
             {superhead && <Text srOnly>{superhead}: </Text>}{heading}
           </Heading>
         )}
         {children}
         {cta && (
-          <div className="rs-mt-3">
+          <div className={styles.cta}>
             {cta}
           </div>
         )}

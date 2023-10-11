@@ -18,3 +18,6 @@ export const content = (
   'rs-px-3': !hasBarColor && hasBgColor,
   'px-0': !hasBarColor && !hasBgColor,
 });
+
+export const heading = 'rs-mb-3';
+export const cta = 'rs-mt-3';

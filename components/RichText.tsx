@@ -75,7 +75,8 @@ export const RichText = ({
     nodeResolvers: {
       heading: (children, props) => {
         const { level } = props;
-        // This gets you type-4 for h2, type-3 for h3, etc.
+        // All heading sizes are type-1 if using the "card" type WYSIWYG
+        // For regular main content WYSIWYC, this gets you type-4 for h2, type-3 for h3, etc.
         const headingSize = type === 'default' ? 6 - level : 1;
 
         return (

@@ -1,4 +1,3 @@
-import { cnb } from 'cnbuilder';
 import { type SbBlokData } from '@storyblok/react/rsc';
 import { CreateBloks } from '@/components/CreateBloks';
 import { Container } from '@/components/Container';
