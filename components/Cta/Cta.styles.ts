@@ -26,11 +26,11 @@ export const ctaVariants = {
   ghost: ' block w-fit font-normal leading-display bg-transparent hocus:text-current border-2 border-current focus-visible:outline-none underline-offset-4 decoration-transparent hocus:decoration-current',
   'ghost-swipe': `${ghostSwipeBase} bg-transparent`,
   'ghost-swipe-overlay': `${ghostSwipeBase} bg-black-true/40`, // Use for split poster over images
-  link: 'font-normal decoration-transparent hocus:decoration-current leading-display text-current hocus:text-current hocus:decoration-2 focus-visible:ring-2 focus-visible:ring-lagunita-light focus-visible:outline-none focus-visible:rounded underline-offset-4',
+  link: '!p-0 inline-block w-fit font-normal decoration-transparent hocus:decoration-current leading-display text-current hocus:text-current hocus:decoration-2 focus-visible:ring-2 focus-visible:ring-lagunita-light focus-visible:outline-none focus-visible:rounded underline-offset-4',
   back: 'inline-block font-normal no-underline leading-none group-hocus:underline text-black hocus:text-lagunita focus-visible:ring-2 focus-visible:ring-lagunita-light focus-visible:ring-offset-4 focus:outline-none rounded-[1px]',
   mainNav: `${mainNavBase} ${mainNavWhite} hocus-visible:bg-digital-red`, // Main nav buttons at the top of the page
   mainNavUp: `${mainNavBase} ${mainNavWhite} hocus-visible:bg-digital-red`, // Main nav buttons when scrolling up
-  mainNavBlack: `${mainNavBase} ${mainNavDark} hocus-visible:bg-lime`, // Main nav buttons when scrolling up
+  mainNavBlack: `${mainNavBase} ${mainNavDark} hocus-visible:bg-digital-red`, // Main nav buttons when scrolling up
   close: 'inline-block font-semibold leading-none text-lagunita hocus:text-lagunita-dark focus:outline-none',
   'close-x': 'leading-none',
   chip: 'inline-block leading-display no-underline text-current rounded-full border-2 border-current hocus:text-current font-normal underline-offset-4 decoration-transparent hocus-visible:decoration-current hocus-visible:decoration-2',

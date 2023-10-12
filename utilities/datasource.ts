@@ -9,9 +9,11 @@ export const accentBgColors = {
   'robins-egg': 'bg-robins-egg',
   sapphire: 'bg-sapphire',
   spirited: 'bg-spirited',
+  white: 'bg-white',
   'cardinal-red': 'bg-cardinal-red',
   'digital-red': 'bg-digital-red',
   'digital-red-light': 'bg-digital-red-light',
+  'digital-red-xlight': 'bg-digital-red-xlight',
 };
 export type AccentColorType = keyof typeof accentBgColors;
 
@@ -26,9 +28,11 @@ export const accentBorderColors = {
   'robins-egg': 'border-robins-egg',
   sapphire: 'border-sapphire',
   spirited: 'border-spirited',
+  white: 'border-white',
   'cardinal-red': 'border-cardinal-red',
   'digital-red': 'border-digital-red',
   'digital-red-light': 'border-digital-red-light',
+  'digital-red-xlight': 'border-digital-red-xlight',
 };
 export type AccentBorderColorType = AccentColorType;
 
