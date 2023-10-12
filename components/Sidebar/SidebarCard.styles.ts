@@ -8,7 +8,7 @@ export const content = (
   barOnRight?: boolean,
 ) => cnb('', {
   'rs-py-1': hasBgColor,
-  'rs-py-0': !hasBgColor,
+  'rs-py-2': !hasBgColor,
   'pr-0': !hasBgColor && hasBarColor && !barOnRight,
   'pl-0': !hasBgColor && hasBarColor && barOnRight,
   'rs-pl-3 @2xl:pl-95': hasBgColor && hasBarColor && barOnRight,
