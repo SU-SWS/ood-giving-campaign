@@ -26,6 +26,7 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   bgImageFocus?: string;
   bgColor?: 'black' | 'white';
   imageOnLeft?: boolean;
+  superhead?: string;
   headingLevel?: HeadingType;
   heading?: string;
   headingFont?: 'serif' | 'druk';
@@ -49,6 +50,7 @@ export const BlurryPoster = ({
   bgImageFocus,
   bgColor = 'black',
   imageOnLeft,
+  superhead,
   heading,
   headingFont = 'druk',
   customHeading,
@@ -78,8 +80,11 @@ export const BlurryPoster = ({
     <Container {...props} bgColor={bgColor} width="full" className={styles.root} style={bgImageStyle}>
       <div className={styles.blurWrapper(addBgBlur, addDarkOverlay, type, bgColor)}>
         <Grid lg={isTwoCol ? 2 : 1} pt={type === 'hero' ? 9 : 8} pb={8} className={styles.grid}>
-          <div className={styles.contentWrapper(imageOnLeft, isTwoCol)}>
-            <FlexBox className={styles.headingWrapper(type, !!imageSrc, imageOnLeft, headingFont, isTwoCol)}>
+          <div className={styles.contentWrapper(type, !!imageSrc, imageOnLeft, isTwoCol)}>
+            {superhead && (
+              <Text size={1} aria-hidden={!!heading} className={styles.superhead(imageOnLeft)}>{superhead}</Text>
+            )}
+            <FlexBox className={styles.headingWrapper(imageOnLeft, headingFont, isTwoCol)}>
               <AnimateInView
                 animation={imageOnLeft ? 'slideInFromRight' : 'slideInFromLeft'}
                 className={cnb(styles.headingInnerWrapper(imageOnLeft, headingFont, isTwoCol), accentBorderColors[tabColor])}
