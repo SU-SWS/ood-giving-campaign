@@ -14,7 +14,7 @@ export const SbAboveContent = ({
   intro,
   sidebar,
 }: SbAboveContentProps) => (
-  <Container pt={9} className="relative overflow-hidden">
+  <Container pt={9} pb={8} className="relative overflow-hidden">
     <CreateBloks blokSection={aboveSidebar} />
     <Grid md={12} gap="default">
       <div className="rs-mb-3 lg:mb-0 md:col-span-10 md:col-start-2 lg:col-span-7 xl:col-span-5 xl:col-start-4 2xl:col-span-5 2xl:col-start-4">

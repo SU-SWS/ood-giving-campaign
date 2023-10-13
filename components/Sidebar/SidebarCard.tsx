@@ -44,7 +44,7 @@ export const SidebarCard = ({
       as="article"
       width="full"
       py={bgColor ? 3 : undefined}
-      className={cnb(styles.root, accentBgColors[bgColor], className)}
+      className={cnb(styles.root(!!bgColor), accentBgColors[bgColor], className)}
       {...props}
     >
       <div className={cnb(styles.content(!!bgColor, !!barColor, barOnRight), accentBorderColors[barColor])}>
@@ -57,7 +57,7 @@ export const SidebarCard = ({
           </Heading>
         )}
         {children}
-        {cta && (
+        {!!cta && (
           <div className={styles.cta}>
             {cta}
           </div>
