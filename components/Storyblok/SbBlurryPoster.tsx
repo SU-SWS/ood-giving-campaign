@@ -8,6 +8,7 @@ import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities
 type SbBlurryPosterProps = {
   blok: {
     _uid: string;
+    superhead?: string;
     heading?: string;
     customHeading?: SbTypographyProps[];
     headingLevel?: HeadingType;
@@ -28,6 +29,7 @@ type SbBlurryPosterProps = {
 
 export const SbBlurryPoster = ({
   blok: {
+    superhead,
     heading,
     customHeading,
     headingLevel,
@@ -50,6 +52,7 @@ export const SbBlurryPoster = ({
     <BlurryPoster
       {...storyblokEditable(blok)}
       type="poster"
+      superhead={superhead}
       heading={heading}
       customHeading={customHeading}
       headingLevel={headingLevel}
