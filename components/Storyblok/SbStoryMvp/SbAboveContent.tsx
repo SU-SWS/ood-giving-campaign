@@ -22,7 +22,7 @@ export const SbAboveContent = ({
       </div>
       {sidebar && (
         <aside className="md:col-span-10 md:col-start-2 lg:col-span-5 lg:col-start-8 xl:col-span-4 xl:col-start-9 2xl:col-span-4 2xl:col-start-9">
-          <div className="2xl:max-w-[90%] 3xl:max-w-[88%] mr-0 ml-auto">
+          <div className="2xl:max-w-[90%] mr-0 ml-auto">
             <CreateBloks blokSection={sidebar} />
           </div>
         </aside>
