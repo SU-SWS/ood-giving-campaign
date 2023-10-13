@@ -4,7 +4,6 @@ import { Heading } from '../Typography';
 import { HomepageSplitHero } from '../Homepage/HomepageSplitHero';
 import { Masthead } from '../Masthead';
 import { Changemaker } from '../Homepage/Changemaker';
-import { IdealFellow } from '../Homepage/IdealFellow';
 
 type SbHomepageMvpProps = {
   blok: {
@@ -31,7 +30,6 @@ export const SbHomepageMvp = ({
       <div>
         <Heading as="h1" srOnly>{title || 'Homepage'}</Heading>
         <HomepageSplitHero />
-        <IdealFellow />
         <CreateBloks blokSection={content} />
         <Changemaker />
         <CreateBloks blokSection={ankle} />

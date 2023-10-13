@@ -10,28 +10,38 @@ export const blurWrapper = (
   'w-full h-full', {
     'backdrop-blur-md' : addBgBlur,
     'bg-black-true/40': type === 'hero' && addDarkOverlay && bgColor === 'black',
-    'bg-gradient-to-b from-black-true/40 lg:from-black-true/30': type === 'poster' && addDarkOverlay && bgColor === 'black',
+    'bg-gradient-to-b from-black-true/50': type === 'poster' && bgColor === 'black',
+    'lg:from-black-true/30': type === 'poster' && addDarkOverlay && bgColor === 'black',
+    'lg:bg-none': type === 'poster' && bgColor === 'black' && !addDarkOverlay,
     'bg-white/80' : type === 'hero' && bgColor === 'white',
   },
 );
 
 export const grid = 'w-full';
 
-export const contentWrapper = (imageOnLeft?: boolean, isTwoCol?: boolean) => cnb('relative z-10', {
+export const contentWrapper = (
+  type?: 'hero' | 'poster',
+  hasHeroImage?: boolean, // Hero image is the foreground image
+  imageOnLeft?: boolean,
+  isTwoCol?: boolean,
+) => cnb('relative z-10', {
+  'rs-mt-10': !hasHeroImage && !isTwoCol && type === 'hero',
+  'rs-mt-7': hasHeroImage && type === 'hero',
+  'lg:rs-mt-6': type === 'poster',
   'lg:order-last': imageOnLeft && isTwoCol,
   'lg:order-first': !imageOnLeft && isTwoCol,
 });
 
+export const superhead = (imageOnLeft?: boolean) => cnb('cc rs-mb-1 w-full', {
+  'lg:pl-40 2xl:pl-60 3xl:pr-[calc(100%-750px)]': imageOnLeft,
+  'lg:pr-40 2xl:pr-60 3xl:pl-[calc(100%-750px)]': !imageOnLeft,
+});
+
 export const headingWrapper = (
-  type?: 'hero' | 'poster',
-  hasHeroImage?: boolean, // Hero image is the foreground image
   imageOnLeft?: boolean,
   headingFont?: 'druk' | 'serif',
   isTwoCol?: boolean,
 ) => cnb('rs-mb-5', {
-  'rs-mt-10': !hasHeroImage && !isTwoCol && type === 'hero',
-  'rs-mt-7': hasHeroImage && type === 'hero',
-  'lg:rs-mt-7': type === 'poster',
   'lg:mr-0 lg:w-[120%] lg:-ml-[20%] 3xl:w-auto 3xl:-ml-200': imageOnLeft && headingFont === 'druk' && isTwoCol,
 });
 export const headingInnerWrapper = (
