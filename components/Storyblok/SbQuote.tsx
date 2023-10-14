@@ -11,6 +11,7 @@ export type SbQuoteProps = {
     _uid: string;
     teaser?: string;
     body?: string;
+    isLargeTeaser?: boolean;
     isLargeBody?: boolean;
     source?: string;
     barColor?: {
@@ -29,6 +30,7 @@ export const SbQuote = ({
   blok: {
     teaser,
     body,
+    isLargeTeaser,
     isLargeBody,
     source,
     barColor: { value } = {},
@@ -44,6 +46,7 @@ export const SbQuote = ({
       {...storyblokEditable(blok)}
       teaser={teaser}
       body={body}
+      isLargeTeaser={isLargeTeaser}
       isLargeBody={isLargeBody}
       source={source}
       barColor={paletteAccentColors[value]}
