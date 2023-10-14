@@ -117,7 +117,7 @@ export const SbSection = ({
           </Paragraph>
         </Container>
       )}
-      <Container pt={hasHeader ? 8 : undefined} width="full">
+      <Container pt={hasHeader ? 8 : undefined} width="full" className="relative z-10">
         <CreateBloks blokSection={content} isDarkTheme={bgColor === 'black'} />
       </Container>
     </Container>
