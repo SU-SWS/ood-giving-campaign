@@ -5,9 +5,9 @@ import { FlexBox } from '../FlexBox';
 import { Text } from '../Typography';
 import {
   accentBorderColors,
-  accentBgColors,
+  accentTextColors,
   type AccentBorderColorType,
-  type AccentColorType,
+  type AccentTextColorType,
 } from '@/utilities/datasource';
 import * as styles from './Quote.styles';
 
@@ -19,9 +19,8 @@ export type QuoteProps = React.HTMLAttributes<HTMLDivElement> & {
   isLargeBody?: boolean;
   isMinimal?: boolean;
   barColor?: AccentBorderColorType;
-  quoteColor?: AccentBorderColorType;
+  quoteColor?: AccentTextColorType;
   quoteOnRight?: boolean;
-  bgColor?: AccentColorType;
   animation?: AnimationType;
   delay?: number;
 };
@@ -34,7 +33,6 @@ export const Quote = ({
   quoteColor,
   barColor,
   quoteOnRight,
-  bgColor,
   animation = 'slideUp',
   delay,
   children,
@@ -45,13 +43,17 @@ export const Quote = ({
     <Container
       as="article"
       width="full"
-      py={bgColor ? 3 : undefined}
-      className={cnb(styles.root, accentBgColors[bgColor], className)}
+      className={cnb(styles.root, className)}
       {...props}
     >
       {teaser && (
         <FlexBox className="w-fit gap-10" direction={quoteOnRight ? 'row-reverse' : 'row'}>
-          <Text font="druk" className="shrink-0 text-[26rem] leading-[0] mt-[9.2rem]">{quoteOnRight ? '”' : '“'}</Text>
+          <Text
+            font="druk"
+            className={cnb('shrink-0 text-[26rem] leading-[0] mt-[9.2rem]', accentTextColors[quoteColor])}
+          >
+            {quoteOnRight ? '”' : '“'}
+          </Text>
           <Text size="f4" leading="none" font="druk" className="rs-mb-0 grow-0 w-fit">{teaser}</Text>
         </FlexBox>
       )}

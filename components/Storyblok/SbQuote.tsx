@@ -1,7 +1,10 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { Quote } from '../Quote';
 import { type AnimationType } from '../Animate';
-import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
+import {
+  paletteAccentColors,
+  type PaletteAccentHexColorType,
+} from '@/utilities/colorPalettePlugin';
 
 export type SbQuoteProps = {
   blok: {
@@ -14,7 +17,7 @@ export type SbQuoteProps = {
       value?: PaletteAccentHexColorType;
     }
     quoteOnRight?: boolean;
-    bgColor?: {
+    quoteColor?: {
       value?: PaletteAccentHexColorType;
     }
     animation?: AnimationType;
@@ -30,7 +33,7 @@ export const SbQuote = ({
     source,
     barColor: { value } = {},
     quoteOnRight,
-    bgColor: { value: bgColorValue } = {},
+    quoteColor: { value: quoteColorValue } = {},
     animation,
     delay,
   },
@@ -45,7 +48,7 @@ export const SbQuote = ({
       source={source}
       barColor={paletteAccentColors[value]}
       quoteOnRight={quoteOnRight}
-      bgColor={paletteAccentColors[bgColorValue]}
+      quoteColor={paletteAccentColors[quoteColorValue]}
     />
   );
 };
