@@ -48,7 +48,7 @@ export const Quote = ({
     <Container
       as="article"
       width="full"
-      py={addDarkOverlay ? 4 : undefined}
+      py={addDarkOverlay && !isMinimal ? 4 : undefined}
       className={cnb(styles.root(isMinimal, addDarkOverlay, quoteOnRight, !!barColor), className)}
       {...props}
     >
