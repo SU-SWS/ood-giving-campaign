@@ -7,7 +7,7 @@ export const root = (
   hasBar?: boolean,
 ) => cnb('relative break-words', {
   'max-w-[90%] sm:max-w-[80%] mx-auto md:max-w-full': isMinimal && !addDarkOverlay,
-  'bg-gc-black/50 backdrop-blur-sm': addDarkOverlay,
+  'bg-gc-black/50 backdrop-blur-sm': addDarkOverlay && !isMinimal,
   'rs-pl-4': !quoteOnRight && (!isMinimal || addDarkOverlay),
   'rs-pr-4': quoteOnRight && (!isMinimal || addDarkOverlay),
   'rs-px-4': addDarkOverlay && !hasBar,
