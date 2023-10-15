@@ -11,6 +11,8 @@ export type SbQuoteProps = {
     _uid: string;
     teaser?: string;
     body?: string;
+    addDarkOverlay?: boolean;
+    isMinimal?: boolean;
     isLargeTeaser?: boolean;
     isLargeBody?: boolean;
     source?: string;
@@ -30,6 +32,8 @@ export const SbQuote = ({
   blok: {
     teaser,
     body,
+    addDarkOverlay,
+    isMinimal,
     isLargeTeaser,
     isLargeBody,
     source,
@@ -46,6 +50,8 @@ export const SbQuote = ({
       {...storyblokEditable(blok)}
       teaser={teaser}
       body={body}
+      addDarkOverlay={addDarkOverlay}
+      isMinimal={isMinimal}
       isLargeTeaser={isLargeTeaser}
       isLargeBody={isLargeBody}
       source={source}

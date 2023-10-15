@@ -69,39 +69,29 @@ export const SbStoryMvp = ({
       <main id="main-content">
         <article>
           {!(title?.includes('Whereas') || title?.includes('Progress') || title?.includes('Video') || title?.includes('Solve')) && (
-            <>
-              <StoryHeroMvp
-                title={title}
-                customHeading={customHeading}
-                headingFont={headingFont}
-                isSmallHeading={isSmallHeading}
-                dek={dek}
-                byline={byline}
-                publishedDate={publishedDate}
-                heroImage={heroImage}
-                aspectRatio={aspectRatio}
-                mobileImage={mobileImage}
-                mobileAspectRatio={mobileAspectRatio}
-                bgImage={bgImage}
-                addBgBlur={addBgBlur}
-                addDarkOverlay={addDarkOverlay}
-                isLeftImage={isLeftImage}
-                alt={alt}
-                caption={caption}
-                isLightHero={isLightHero}
-                isVerticalHero={isVerticalHero}
-                tabColor={tabColor}
-                topics={topics}
-              />
-              <Image
-                width={2000}
-                height={40}
-                alt=""
-                loading="lazy"
-                src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/c4777a4925/steve-johnson-cropped-2000x40-01.jpg') || ''}
-                className="w-full"
-              />
-            </>
+            <StoryHeroMvp
+              title={title}
+              customHeading={customHeading}
+              headingFont={headingFont}
+              isSmallHeading={isSmallHeading}
+              dek={dek}
+              byline={byline}
+              publishedDate={publishedDate}
+              heroImage={heroImage}
+              aspectRatio={aspectRatio}
+              mobileImage={mobileImage}
+              mobileAspectRatio={mobileAspectRatio}
+              bgImage={bgImage}
+              addBgBlur={addBgBlur}
+              addDarkOverlay={addDarkOverlay}
+              isLeftImage={isLeftImage}
+              alt={alt}
+              caption={caption}
+              isLightHero={isLightHero}
+              isVerticalHero={isVerticalHero}
+              tabColor={tabColor}
+              topics={topics}
+            />
           )}
           {showAboveContent && (
             <SbAboveContent aboveSidebar={aboveSidebar} intro={intro} sidebar={sidebar} />

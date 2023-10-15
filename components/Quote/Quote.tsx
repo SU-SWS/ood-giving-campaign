@@ -16,6 +16,7 @@ export type QuoteProps = React.HTMLAttributes<HTMLDivElement> & {
   teaser?: string;
   body?: string;
   source?: string;
+  addDarkOverlay?: boolean;
   isLargeTeaser?: boolean;
   isLargeBody?: boolean;
   isMinimal?: boolean;
@@ -29,6 +30,8 @@ export type QuoteProps = React.HTMLAttributes<HTMLDivElement> & {
 export const Quote = ({
   teaser,
   body,
+  addDarkOverlay,
+  isMinimal,
   isLargeTeaser,
   isLargeBody,
   source,
@@ -45,7 +48,8 @@ export const Quote = ({
     <Container
       as="article"
       width="full"
-      className={cnb(styles.root, className)}
+      py={addDarkOverlay ? 4 : undefined}
+      className={cnb(styles.root(isMinimal, addDarkOverlay, quoteOnRight, !!barColor), className)}
       {...props}
     >
       <div className={cnb(styles.content(!!barColor, quoteOnRight), accentBorderColors[barColor])}>
@@ -59,7 +63,9 @@ export const Quote = ({
             >
               {quoteOnRight ? '”' : '“'}
             </Text>
-            <Text size={isLargeTeaser ? 'f5' : 'f4'} leading="none" font="druk" className="rs-mb-0 grow-0 w-fit">{teaser}</Text>
+            <Text size={isLargeTeaser ? 'f5' : 'f4'} leading="none" font="druk" className={styles.teaser}>
+              {teaser}
+            </Text>
           </FlexBox>
         )}
         {body && (
@@ -70,13 +76,13 @@ export const Quote = ({
             leading="display"
             size={isLargeBody ? 2 : undefined}
             font="serif"
-            className="mt-02em first:mt-0"
+            className={styles.body(isLargeBody)}
           >
             {body}
           </Text>
         )}
         {source && (
-          <Text variant="card" font="serif" className="rs-mt-1 whitespace-pre-line">{source}</Text>
+          <Text variant="card" font="serif" className={styles.source}>{source}</Text>
         )}
       </div>
     </Container>
