@@ -57,9 +57,7 @@ export const Quote = ({
           <FlexBox className="w-fit gap-9" direction={quoteOnRight ? 'row-reverse' : 'row'}>
             <Text
               font="druk"
-              className={cnb(
-                'shrink-0 leading-[0]', isLargeTeaser ? 'text-[32rem] mt-[11.4rem]' : 'text-[26rem] mt-[9.2rem]',
-                accentTextColors[quoteColor])}
+              className={cnb(styles.quoteMark(isLargeTeaser), accentTextColors[quoteColor])}
             >
               {quoteOnRight ? '”' : '“'}
             </Text>
