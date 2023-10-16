@@ -1,6 +1,7 @@
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import Image from 'next/image';
 import { CreateBloks } from '@/components/CreateBloks';
+import { Container } from '@/components/Container';
 import { Masthead } from '@/components/Masthead';
 import { StoryHeroMvp, type StoryHeroMvpProps } from '@/components/Hero';
 import { SbAboveContent } from './SbAboveContent';
@@ -67,7 +68,7 @@ export const SbStoryMvp = ({
     <div {...storyblokEditable(blok)}>
       <Masthead isLight={isLightHero} />
       <main id="main-content">
-        <article>
+        <Container as="article" width="full" pb={9}>
           {!(title?.includes('Whereas') || title?.includes('Progress') || title?.includes('Video') || title?.includes('Solve')) && (
             <StoryHeroMvp
               title={title}
@@ -122,18 +123,18 @@ export const SbStoryMvp = ({
               <ScrollyDataViz />
             </>
           )}
-          {getNumBloks(blok.ankle) > 0 && (
-            <Image
-              width={2000}
-              height={40}
-              alt=""
-              loading="lazy"
-              src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/c4777a4925/steve-johnson-cropped-2000x40-01.jpg') || ''}
-              className="w-full"
-            />
-          )}
-          <CreateBloks blokSection={ankle} />
-        </article>
+        </Container>
+        {getNumBloks(blok.ankle) > 0 && (
+          <Image
+            width={2000}
+            height={40}
+            alt=""
+            loading="lazy"
+            src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/c4777a4925/steve-johnson-cropped-2000x40-01.jpg') || ''}
+            className="w-full"
+          />
+        )}
+        <CreateBloks blokSection={ankle} />
       </main>
     </div>
   );
