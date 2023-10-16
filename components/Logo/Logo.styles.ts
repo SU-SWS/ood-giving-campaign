@@ -14,11 +14,12 @@ export const link = (color: LogoColorType) => cnb('group block no-underline focu
   'focus-visible:ring-white': color === 'white',
 });
 
-// Giving Logo styles
-export const root = 'lockup no-underline inline-block font-normal';
-export const logo = 'text-[1.43em] leading-half mt-[0.27em]';
-export const bar = 'w-1 h-1em mx-03em';
-export const text = 'text-[0.95em] sm:text-[1.1em] mt-[0.25em]';
+// Giving Stories Logo styles
+export const root = 'no-underline inline-block font-normal';
+export const contentWrapper = 'flex-col sm:flex-row items-start sm:items-center';
+export const logo = 'text-19 sm:text-[1.43em] leading-half mt-[0.27em]';
+export const bar = 'hidden sm:block w-1 h-1em mx-03em';
+export const text = 'text-15 sm:text-[0.95em] sm:text-[1.05em] mt-[0.25em]';
 export const textColor = {
   default: 'text-gc-black',
   white: 'text-white',

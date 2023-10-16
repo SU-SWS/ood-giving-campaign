@@ -28,7 +28,7 @@ export const LogoLockup = ({
 
   // Partials
   const LockupContent = (
-    <FlexBox alignItems="center">
+    <FlexBox className={styles.contentWrapper}>
       <StanfordLogo
         color={color === 'white' ? 'white' : 'cardinal-red'}
         isLink={false}

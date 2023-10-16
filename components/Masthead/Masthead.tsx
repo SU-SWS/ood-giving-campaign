@@ -8,6 +8,7 @@ import { FlexBox } from '../FlexBox';
 import { LogoLockup } from '@/components/Logo/LogoLockup';
 import { CtaLink, type CtaVariantType } from '../Cta';
 import { ood } from '@/utilities/externalLinks';
+import * as styles from './Masthead.styles';
 
 type MastheadProps = HTMLAttributes<HTMLDivElement> & {
   isLight?: boolean;
@@ -70,8 +71,8 @@ export const Masthead = ({ isLight, className }: MastheadProps) => {
         <LogoLockup
           isLink
           color={isLight && isAtTop ? 'default' : 'white'}
-          text="Giving"
-          className=""
+          text="Giving Stories"
+          className={styles.lockup}
         />
         {/* The scale3d here solves a Firefox only rendering bug with blurry curved borders when using transform */}
         <FlexBox alignItems="center">
