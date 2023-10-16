@@ -1,6 +1,6 @@
 import { cnb } from 'cnbuilder';
 
-export const root = 'relative overflow-hidden @container';
+export const root = (hasBgColor?: boolean) => cnb('relative overflow-hidden @container', hasBgColor ? 'text-gc-black' : '');
 
 export const content = (
   hasBgColor?: boolean,

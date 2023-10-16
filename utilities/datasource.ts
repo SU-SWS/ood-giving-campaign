@@ -36,6 +36,25 @@ export const accentBorderColors = {
 };
 export type AccentBorderColorType = AccentColorType;
 
+export const accentTextColors = {
+  flamingo: 'text-flamingo',
+  fuchsia: 'text-fuchsia',
+  lavender: 'text-lavender',
+  lime: 'text-lime',
+  'palo-alto': 'text-palo-alto',
+  periwinkle: 'text-periwinkle',
+  poppy: 'text-poppy',
+  'robins-egg': 'text-robins-egg',
+  sapphire: 'text-sapphire',
+  spirited: 'text-spirited',
+  white: 'text-white',
+  'cardinal-red': 'text-cardinal-red',
+  'digital-red': 'text-digital-red',
+  'digital-red-light': 'text-digital-red-light',
+  'digital-red-xlight': 'text-digital-red-xlight',
+};
+export type AccentTextColorType = keyof typeof accentTextColors;
+
 // TODO: We might be not need this
 export const storyHeroAspectRatios = {
   '1x1': 'aspect-w-1 aspect-h-1',
