@@ -15,6 +15,7 @@ import { SbHomepageMvp } from './Storyblok/SbHomepageMvp';
 import { SbInitiativeCard } from './Storyblok/SbInitiativeCard';
 import { SbLogo } from './Storyblok/SbLogo';
 import { SbPortraitCard } from './Storyblok/SbPortraitCard';
+import { SbQuote } from './Storyblok/SbQuote';
 import { SbSection } from './Storyblok/SbSection';
 import { SbSidebarCard } from './Storyblok/SbSidebarCard';
 import { SbSplitPoster } from './Storyblok/SbSplitPoster';
@@ -41,6 +42,7 @@ const components = {
   sbInitiativeCard: SbInitiativeCard,
   sbLogo: SbLogo,
   sbPortraitCard: SbPortraitCard,
+  sbQuote: SbQuote,
   sbSection: SbSection,
   sbSidebarCard: SbSidebarCard,
   sbSplitPoster: SbSplitPoster,

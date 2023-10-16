@@ -1,12 +1,12 @@
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import { CreateBloks } from '../CreateBloks';
 import { SidebarCard } from '../Sidebar';
-import { type SbStoryCardProps } from './SbStoryCard';
 import { type AnimationType } from '../Animate';
 import { type HeadingType } from '../Typography';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
+import { getNumBloks } from '@/utilities/getNumBloks';
 
-export type SbSidebarCardProps = Omit<SbStoryCardProps, 'isSmallHeading'> & {
+export type SbSidebarCardProps = {
   blok: {
     _uid: string;
     heading?: string;
@@ -43,8 +43,8 @@ export const SbSidebarCard = ({
   },
   blok,
 }: SbSidebarCardProps) => {
-  const Content = <CreateBloks blokSection={content} />;
-  const Cta = <CreateBloks blokSection={cta} />;
+  const Content = !!getNumBloks(content) ? <CreateBloks blokSection={content} /> : undefined;
+  const Cta = !!getNumBloks(cta) ? <CreateBloks blokSection={cta} /> : undefined;
 
   return (
     <SidebarCard
