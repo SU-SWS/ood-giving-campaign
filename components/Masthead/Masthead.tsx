@@ -74,8 +74,16 @@ export const Masthead = ({ isLight, className }: MastheadProps) => {
           text="Giving Stories"
           className={styles.lockup}
         />
-        {/* The scale3d here solves a Firefox only rendering bug with blurry curved borders when using transform */}
-        <FlexBox alignItems="center">
+        <FlexBox alignItems="center" className={styles.ctaWrapper}>
+          <CtaLink
+            href={ood.giving}
+            variant="mastheadGiving"
+            color="white"
+            icon="external"
+            animate="top-right"
+          >
+            Giving to Stanford
+          </CtaLink>
           <CtaLink
             href={ood.give}
             variant={ctaVariant}
