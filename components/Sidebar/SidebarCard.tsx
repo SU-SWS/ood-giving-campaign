@@ -57,7 +57,7 @@ export const SidebarCard = ({
           </Heading>
         )}
         {children}
-        {!!cta && (
+        {cta && (
           <div className={styles.cta}>
             {cta}
           </div>

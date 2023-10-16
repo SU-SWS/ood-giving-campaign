@@ -54,7 +54,7 @@ export const Quote = ({
     >
       <div className={cnb(styles.content(!!barColor, quoteOnRight), accentBorderColors[barColor])}>
         {teaser && (
-          <FlexBox className="w-fit gap-9" direction={quoteOnRight ? 'row-reverse' : 'row'}>
+          <FlexBox className={styles.teaserWrapper} direction={quoteOnRight ? 'row-reverse' : 'row'}>
             <Text
               font="druk"
               className={cnb(styles.quoteMark(isLargeTeaser), accentTextColors[quoteColor])}

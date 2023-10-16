@@ -17,6 +17,7 @@ export const content = (hasBar?: boolean, quoteOnRight?: boolean) => cnb('', {
   'border-r-[1.4rem] 2xl:border-r-[2rem] rs-pr-2' : hasBar && !quoteOnRight,
   'border-l-[1.4rem] 2xl:border-l-[2rem] rs-pl-2' : hasBar && quoteOnRight,
 });
+export const teaserWrapper = 'w-fit gap-9';
 export const quoteMark = (isLargeTeaser?: boolean) => cnb('shrink-0 leading-[0]', {
   'text-[clamp(16rem,7.46vw+13.31rem,26rem)] mt-[clamp(5.7rem,2.61vw+4.76rem,9.2rem)]': !isLargeTeaser,
   'text-[clamp(17rem,11.19vw+12.97rem,32rem)] mt-[clamp(6rem,4.03vw+4.55rem,11.4rem)]': isLargeTeaser,
