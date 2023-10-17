@@ -13,6 +13,9 @@ const nextConfig = {
       },
     ],
   },
+  env: {
+    DEPLOY_PRIME_URL: process.env.DEPLOY_PRIME_URL,
+  },
 };
 
 module.exports = nextConfig;
