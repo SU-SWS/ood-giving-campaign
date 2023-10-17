@@ -12,10 +12,10 @@ export const HomepageSplitHero = () => {
   return (
     <Container width="full" bgColor="black" className="relative overflow-hidden">
       <div
-        className="relative pb-[27vw] bg-black-true pt-[24vw] md:pt-[22vw] xl:pt-[18vw] 2xl:pt-[16vw] 4xl:pt-[34rem] bg-no-repeat bg-cover [background-position-y:160px]"
+        className="relative pb-[27vw] bg-black-true pt-[45vw] sm:pt-[24vw] md:pt-[22vw] xl:pt-[18vw] 2xl:pt-[16vw] 4xl:pt-[34rem] bg-no-repeat bg-cover [background-position-y:160px]"
         style={{ backgroundImage: `url('${bg}')` }}
       >
-        <div className="absolute top-0 h-[50vw] 2xl:h-[40vw] 3xl:h-[35vw] w-full bg-gradient-to-b from-[#191e3e] via-[#263588] via-40% to-transparent" />
+        <div className="absolute top-0 h-[100vw] sm:h-[50vw] 2xl:h-[40vw] 3xl:h-[35vw] w-full bg-gradient-to-b from-[#191e3e] via-[#263588] via-40% to-transparent" />
         <div className="relative">
           <div className="relative cc">
             <Grid xs={2} className="relative w-[70vw] mx-auto 4xl:max-w-[140rem]">
@@ -56,49 +56,47 @@ export const HomepageSplitHero = () => {
             </Grid>
           </div>
           <div className="absolute w-full top-0 left-0">
-            <Grid xs={2}>
-              <AnimateInView
-                animation="slideInFromLeft"
-                delay={0.6}
-                duration={0.3}
-                className="relative -top-[10vw] xl:-top-[8vw] 4xl:-top-[16rem] right-0 justify-self-end"
-              >
-                <Text font="serif" weight="semibold" size="f5" leading="none" italic>
-                  How will we
-                </Text>
-                <Text font="druk" size="hero" leading="none">
-                  come together
-                </Text>
-              </AnimateInView>
-              <AnimateInView
-                animation="slideInFromRight"
-                delay={0.6}
-                duration={0.3}
-                className="relative -right-[7vw] top-[27vw] 4xl:top-[57rem] type-4 xl:type-5 justify-self-start"
-              >
-                <Text font="serif" weight="semibold" leading="none" align="right" italic>
-                  all in service of
-                </Text>
-                <Text font="druk" size="hero" leading="none" align="right">
-                  Tomorrow?
-                </Text>
-              </AnimateInView>
-            </Grid>
+            <AnimateInView
+              animation="slideInFromLeft"
+              delay={0.6}
+              duration={0.3}
+              className="relative -top-[10vw] xl:-top-[8vw] 4xl:-top-[16rem] right-0 justify-self-end"
+            >
+              <Text font="serif" weight="semibold" leading="none" italic className="text-[clamp(2.5rem,2.74vw+1.51rem,7rem)]">
+                How will we
+              </Text>
+              <Text font="druk" size="hero" leading="none">
+                come together
+              </Text>
+            </AnimateInView>
+            <AnimateInView
+              animation="slideInFromRight"
+              delay={0.6}
+              duration={0.3}
+              className="relative top-[16vw] 4xl:top-[57rem] justify-self-start"
+            >
+              <Text font="serif" weight="semibold" leading="none" align="right" italic className="text-[clamp(2.5rem,2.74vw+1.51rem,7rem)]">
+                all in service of
+              </Text>
+              <Text font="druk" size="hero" leading="none" align="right">
+                Tomorrow?
+              </Text>
+            </AnimateInView>
           </div>
         </div>
       </div>
       <Container bgColor="black" py={7} className="relative z-10 bg-gradient-to-t from-gc-black to-[#020002]">
         <div className="mx-auto max-w-1200">
           <AnimateInView animation="slideUp">
-            <Heading size="f7" weight="normal" leading="tight" className="rs-mb-6">
-              <span className="italic">We’re</span> all in this <span className="italic">together</span>.
+            <Heading size="f5" leading="tight">
+              We’re all in this together.
             </Heading>
           </AnimateInView>
-          <AnimateInView delay={0.2} animation="slideUp" className="max-w-1200 xl:ml-08em">
-            <Paragraph size={2} weight="normal" leading="snug" className="max-w-1000 ml-0 mr-auto">
+          <AnimateInView delay={0.2} animation="slideUp" className="xl:ml-06em">
+            <Paragraph size={1} weight="normal" leading="snug" className="max-w-[50ch] ml-0 mr-auto">
               Sustaining a thriving planet. Accelerating solutions and empowering the next generation of leaders.
             </Paragraph>
-            <Paragraph size={2} weight="normal" leading="snug" className="max-w-1000 ml-0 mr-auto">
+            <Paragraph size={1} weight="normal" leading="snug" className="max-w-[50ch] ml-0 mr-auto">
               Meet your community of changemakers, explore what you’re passionate about, and join the conversation.
             </Paragraph>
           </AnimateInView>

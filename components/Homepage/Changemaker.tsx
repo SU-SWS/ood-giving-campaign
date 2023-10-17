@@ -11,7 +11,7 @@ export const Changemaker = () => {
   return (
     <Container
       width="full"
-      className="relative bg-fixed bg-no-repeat bg-top bg-cover"
+      className="relative overflow-hidden bg-fixed bg-no-repeat bg-top bg-cover"
       bgColor="black"
       style={{ backgroundImage: `url('${bgImage}')` }}
       py={10}
