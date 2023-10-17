@@ -78,7 +78,6 @@ export const Masthead = ({ isLight, className }: MastheadProps) => {
           <CtaLink
             href={ood.giving}
             variant="mastheadGiving"
-            color="white"
             icon="external"
             animate="top-right"
           >
