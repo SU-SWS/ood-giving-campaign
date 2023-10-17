@@ -31,7 +31,7 @@ export const ctaVariants = {
   mainNav: `${mainNavBase} ${mainNavWhite} hocus-visible:bg-digital-red`, // Main nav buttons at the top of the page
   mainNavUp: `${mainNavBase} ${mainNavWhite} hocus-visible:bg-digital-red`, // Main nav buttons when scrolling up
   mainNavBlack: `${mainNavBase} ${mainNavDark} hocus-visible:bg-digital-red`, // Main nav buttons when scrolling up
-  mastheadGiving: 'inline-block w-fit font-normal decoration-transparent hocus:decoration-white leading-display text-white hocus:text-white hocus:decoration-2 focus-visible:ring-2 focus-visible:ring-digital-red-light focus-visible:outline-none focus-visible:rounded underline-offset-4',
+  mastheadGiving: 'inline-block w-fit font-normal decoration-transparent hocus:decoration-white leading-display text-white hocus:text-white hocus:decoration-2 focus-visible:ring-2 focus-visible:ring-digital-red-xlight ring-offset-4 focus-visible:ring-offset-black focus-visible:outline-none focus-visible:rounded underline-offset-4',
   close: 'inline-block font-semibold leading-none text-digital-red-light hocus:text-digital-red-xlight focus:outline-none',
   'close-x': 'leading-none',
   chip: 'inline-block leading-display no-underline text-current rounded-full border-2 border-current hocus:text-current font-normal underline-offset-4 decoration-transparent hocus-visible:decoration-current hocus-visible:decoration-2',
