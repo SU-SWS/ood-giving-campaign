@@ -54,5 +54,8 @@
     "netlify-plugin-vault-variables": "^1.0.7",
     "postcss": "^8.4.27",
     "typescript": "^5.1"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }

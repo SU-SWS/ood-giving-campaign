@@ -55,7 +55,7 @@ const stanford = localFont({
 });
 
 storyblokInit({
-  accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
+  accessToken: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN,
   use: [apiPlugin],
   apiOptions: {
     region: 'us',

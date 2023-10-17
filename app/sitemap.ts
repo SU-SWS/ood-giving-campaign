@@ -1,18 +1,32 @@
 import { MetadataRoute } from 'next';
+import StoryblokClient from 'storyblok-js-client';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: 'https://acme.com',
-      lastModified: new Date(),
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+
+  const storyblokClient = new StoryblokClient({
+    accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
+    cache: {
+      clear: 'auto',
+      type: 'memory',
     },
-    {
-      url: 'https://acme.com/about',
-      lastModified: new Date(),
-    },
-    {
-      url: 'https://acme.com/blog',
-      lastModified: new Date(),
-    },
-  ];
+    region: 'us',
+  });
+
+  // Fetch all the stories from SB.
+  // We use the `cdn/stories` endpoint because it has the last published time which `cdn/links` does not.
+  const response = await storyblokClient.getAll('cdn/stories', {
+    version: 'published',
+    cv: Date.now(),
+  });
+
+  const ret = response.map((story) => {
+    return {
+      url: story.path ?? `/${story.full_slug}`,
+      lastModified: new Date(story.published_at),
+      changeFrequency: 'daily', // Added in 13.4.5
+      priority: 0.5, // Added in 13.4.5
+    };
+  });
+
+  return ret;
 }
