@@ -9,7 +9,7 @@ export const blurWrapper = (
 ) => cnb(
   'w-full h-full', {
     'backdrop-blur-md' : addBgBlur,
-    'bg-black-true/40': type === 'hero' && addDarkOverlay && bgColor === 'black',
+    'bg-black-true/60 md:bg-black-true/40': type === 'hero' && addDarkOverlay && bgColor === 'black',
     'bg-gradient-to-b from-black-true/50': type === 'poster' && bgColor === 'black',
     'lg:from-black-true/30': type === 'poster' && addDarkOverlay && bgColor === 'black',
     'lg:bg-none': type === 'poster' && bgColor === 'black' && !addDarkOverlay,

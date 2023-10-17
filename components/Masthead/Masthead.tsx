@@ -8,6 +8,7 @@ import { FlexBox } from '../FlexBox';
 import { LogoLockup } from '@/components/Logo/LogoLockup';
 import { CtaLink, type CtaVariantType } from '../Cta';
 import { ood } from '@/utilities/externalLinks';
+import * as styles from './Masthead.styles';
 
 type MastheadProps = HTMLAttributes<HTMLDivElement> & {
   isLight?: boolean;
@@ -65,16 +66,23 @@ export const Masthead = ({ isLight, className }: MastheadProps) => {
       <FlexBox
         justifyContent="between"
         alignItems="center"
-        className={cnb('cc transition py-12', !isAtTop ? 'lg:py-11' : 'md:py-26')}
+        className={cnb('cc 3xl:px-100 transition py-12', !isAtTop ? 'lg:py-11' : 'sm:py-13 lg:py-20')}
       >
         <LogoLockup
           isLink
           color={isLight && isAtTop ? 'default' : 'white'}
-          text="Giving"
-          className=""
+          text="Giving Stories"
+          className={styles.lockup}
         />
-        {/* The scale3d here solves a Firefox only rendering bug with blurry curved borders when using transform */}
-        <FlexBox alignItems="center">
+        <FlexBox alignItems="center" className={styles.ctaWrapper}>
+          <CtaLink
+            href={ood.giving}
+            variant="mastheadGiving"
+            icon="external"
+            animate="top-right"
+          >
+            Giving to Stanford
+          </CtaLink>
           <CtaLink
             href={ood.give}
             variant={ctaVariant}
