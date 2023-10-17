@@ -19,7 +19,7 @@ export const root = 'no-underline inline-block font-normal';
 export const contentWrapper = 'flex-col sm:flex-row items-start sm:items-center';
 export const logo = 'text-19 sm:text-[1.43em] leading-half mt-[0.27em]';
 export const bar = 'hidden sm:block w-1 h-1em mx-03em';
-export const text = 'text-15 md:text-[0.95em] sm:text-[1.05em] mt-[0.25em]';
+export const text = 'text-15 sm:text-[1.05em] mt-[0.25em]';
 export const textColor = {
   default: 'text-gc-black',
   white: 'text-white',
