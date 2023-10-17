@@ -42,7 +42,7 @@ export const Banner = ({
             </Heading>
           )}
           {body && (
-            <Text font="serif" variant="overview" weight="semibold" className={styles.body}>
+            <Text font="serif" variant="overview" weight="normal" className={styles.body}>
               {body}
             </Text>
           )}

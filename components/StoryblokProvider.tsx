@@ -5,6 +5,7 @@ import { SbBanner } from './Storyblok/SbBanner';
 import { SbBasicPage } from './Storyblok/SbBasicPage';
 import { SbBlurryPoster } from './Storyblok/SbBlurryPoster';
 import { SbBracketCard } from './Storyblok/SbBracketCard';
+import { SbCardWysiwyg } from './Storyblok/SbCardWysiwyg';
 import { SbCta } from './Storyblok/SbCta';
 import { SbGrid } from './Storyblok/SbGrid';
 import { SbGridAlternating } from './Storyblok/SbGridAlternating';
@@ -13,10 +14,12 @@ import { SbHomepageMvp } from './Storyblok/SbHomepageMvp';
 import { SbInitiativeCard } from './Storyblok/SbInitiativeCard';
 import { SbLogo } from './Storyblok/SbLogo';
 import { SbPortraitCard } from './Storyblok/SbPortraitCard';
+import { SbQuote } from './Storyblok/SbQuote';
 import { SbSection } from './Storyblok/SbSection';
+import { SbSidebarCard } from './Storyblok/SbSidebarCard';
 import { SbSplitPoster } from './Storyblok/SbSplitPoster';
 import { SbStory } from './Storyblok/SbStory';
-import { SbStoryMvp } from './Storyblok/SbStoryMvp';
+import { SbStoryMvp } from './Storyblok/SbStoryMvp/SbStoryMvp';
 import { SbStoryCard } from './Storyblok/SbStoryCard';
 import { SbTextCard } from './Storyblok/SbTextCard';
 import { SbThemeCard } from './Storyblok/SbThemeCard';
@@ -29,6 +32,7 @@ const components = {
   sbBasicPage: SbBasicPage,
   sbBlurryPoster: SbBlurryPoster,
   sbBracketCard: SbBracketCard,
+  sbCardWysiwyg: SbCardWysiwyg,
   sbCta: SbCta,
   sbGrid: SbGrid,
   sbGridAlternating: SbGridAlternating,
@@ -37,7 +41,9 @@ const components = {
   sbInitiativeCard: SbInitiativeCard,
   sbLogo: SbLogo,
   sbPortraitCard: SbPortraitCard,
+  sbQuote: SbQuote,
   sbSection: SbSection,
+  sbSidebarCard: SbSidebarCard,
   sbSplitPoster: SbSplitPoster,
   sbStory: SbStory,
   sbStoryMvp: SbStoryMvp,

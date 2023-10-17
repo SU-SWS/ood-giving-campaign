@@ -18,6 +18,8 @@ import {
 
 export type RichTextProps = {
   wysiwyg: StoryblokRichtext;
+  // "default" is for main content, e.g., Story body content
+  type?: 'default' | 'card';
   isLightText?: boolean;
   textAlign?: TextAlignType;
   className?: string;
@@ -25,6 +27,7 @@ export type RichTextProps = {
 
 export const RichText = ({
   wysiwyg,
+  type,
   isLightText,
   textAlign = 'left',
   className,
@@ -72,8 +75,9 @@ export const RichText = ({
     nodeResolvers: {
       heading: (children, props) => {
         const { level } = props;
-        // This gets you type-1 for h6, type-2 for h5, type-3 for h4 and so on
-        const headingSize = 7 - level;
+        // All heading sizes are type-1 if using the "card" type WYSIWYG
+        // For regular main content WYSIWYG, this gets you type-4 for h2, type-3 for h3, etc.
+        const headingSize = type === 'default' ? 6 - level : 1;
 
         return (
           <Heading as={`h${level}`} size={headingSize as FontSizeType} leading="tight">
@@ -81,6 +85,11 @@ export const RichText = ({
           </Heading>
         );
       },
+      paragraph: (children) => (
+        <Paragraph variant={type === 'card' ? 'card' : 'none'}>
+          {children}
+        </Paragraph>
+      ),
     },
     blokResolvers: {
       sbCta: (props) => (
@@ -91,7 +100,7 @@ export const RichText = ({
       ),
     },
     defaultBlokResolver: (name) => (
-      <Paragraph weight="bold">
+      <Paragraph weight="bold" variant={type === 'card' ? 'card' : 'none'}>
         Missing blok resolver for blok type {name}.
       </Paragraph>
     ),
