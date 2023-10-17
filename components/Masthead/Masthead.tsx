@@ -66,7 +66,7 @@ export const Masthead = ({ isLight, className }: MastheadProps) => {
       <FlexBox
         justifyContent="between"
         alignItems="center"
-        className={cnb('cc 3xl:px-100 transition py-12', !isAtTop ? 'lg:py-11' : 'sm:py-13 lg:py-20')}
+        className={cnb('cc 3xl:px-100 4xl:px-[calc((100%-1800px)/2)] transition py-12', !isAtTop ? 'lg:py-11' : 'sm:py-13 lg:py-20')}
       >
         <LogoLockup
           isLink

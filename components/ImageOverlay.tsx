@@ -12,17 +12,20 @@ export const overlays = {
   'black-top-bottom': 'bg-gradient-to-b from-gc-black via-transparent via-40% to-gc-black',
   'black-top-sm': 'bg-gradient-to-b from-gc-black via-periwinkle via-20% to-transparent',
   'white-90': 'bg-white/90',
+  'homepage-hero': 'bg-gradient-to-b from-[#263588] to-transparent',
 };
 export type OverlayType = keyof typeof overlays | '';
 
 type ImageOverlayProps = Omit<HTMLAttributes<HTMLImageElement>, 'src'> & {
   imageSrc?: string;
   overlay?: OverlayType;
+  overlayClasses?: string;
 };
 
 export const ImageOverlay = ({
   imageSrc,
   overlay = 'black-40',
+  overlayClasses,
   className,
   ...props
 }: ImageOverlayProps) => (
@@ -39,6 +42,7 @@ export const ImageOverlay = ({
         className={cnb(
           'absolute w-full h-full top-0 left-0',
           overlays[overlay],
+          overlayClasses,
         )}
       />
     )}
