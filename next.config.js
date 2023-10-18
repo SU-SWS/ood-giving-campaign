@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    logging: {
-      level: 'verbose',
-    },
+    logging: 'verbose',
   },
   images: {
     remotePatterns: [
