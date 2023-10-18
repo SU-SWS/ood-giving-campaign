@@ -6,7 +6,9 @@ import { AnimateInView } from '../Animate';
 import { ImageOverlay } from '../ImageOverlay';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 
-
+/**
+ * This is the homepage hero for the MVP site.
+ */
 export const HomepageSplitHero = () => {
   const bg = getProcessedImage('https://a-us.storyblok.com/f/1005200/2100x2028/bef2e6a13e/masthead-top-structured.jpg', '3200x0');
 
@@ -15,10 +17,10 @@ export const HomepageSplitHero = () => {
       <div
         className="relative max-h-[180rem] bg-black-true pt-[35vw] sm:pt-[24vw] 2xl:pt-[16vw] 4xl:pt-[32rem] pb-[50vw] sm:pb-[32vw] 4xl:pb-[70rem]"
       >
-        <ImageOverlay imageSrc={bg} overlay="homepage-hero" overlayClasses="mix-blend-lighten" />
+        <ImageOverlay imageSrc={bg} overlay="homepage-hero" loading="eager" overlayClasses="mix-blend-lighten" />
         <div className="relative">
           <div className="relative cc">
-            <Grid xs={2} className="relative w-[70vw] mx-auto 4xl:max-w-[140rem]">
+            <Grid xs={2} className="relative w-11/12 sm:w-[70vw] mx-auto 4xl:max-w-[140rem]">
               <AnimateInView duration={0.3} animation="slideDown" className="relative w-full">
                 <m.img
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/45d9a3d22a/frame-97.jpg', '700x700')}

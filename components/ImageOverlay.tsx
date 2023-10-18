@@ -20,12 +20,14 @@ type ImageOverlayProps = Omit<HTMLAttributes<HTMLImageElement>, 'src'> & {
   imageSrc?: string;
   overlay?: OverlayType;
   overlayClasses?: string;
+  loading?: 'lazy' | 'eager';
 };
 
 export const ImageOverlay = ({
   imageSrc,
   overlay = 'black-40',
   overlayClasses,
+  loading = 'lazy',
   className,
   ...props
 }: ImageOverlayProps) => (
@@ -33,7 +35,7 @@ export const ImageOverlay = ({
     <img
       src={imageSrc}
       alt=""
-      loading="lazy"
+      loading={loading}
       className="absolute w-full h-full object-cover top-0 left-0"
       {...props}
     />
