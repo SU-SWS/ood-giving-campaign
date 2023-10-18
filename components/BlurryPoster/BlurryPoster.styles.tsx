@@ -11,7 +11,7 @@ export const blurWrapper = (
     'backdrop-blur-md' : addBgBlur,
     'bg-black-true/60 md:bg-black-true/40': type === 'hero' && addDarkOverlay && bgColor === 'black',
     'bg-gradient-to-b from-black-true/50': type === 'poster' && bgColor === 'black',
-    'lg:from-black-true/30': type === 'poster' && addDarkOverlay && bgColor === 'black',
+    'lg:from-black-true/20 lg:to-black-true/70': type === 'poster' && addDarkOverlay && bgColor === 'black',
     'lg:bg-none': type === 'poster' && bgColor === 'black' && !addDarkOverlay,
     'bg-white/80' : type === 'hero' && bgColor === 'white',
   },
