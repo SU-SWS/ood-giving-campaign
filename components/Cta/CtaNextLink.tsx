@@ -13,7 +13,7 @@ export type CtaNextLinkProps = CtaCommonProps & LinkProps & {
 
 export const CtaNextLink = React.forwardRef<HTMLAnchorElement, CtaNextLinkProps>((props, ref) => {
   const {
-    href,
+    href = '',
     variant = 'link',
     color,
     size,

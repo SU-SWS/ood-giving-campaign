@@ -6,6 +6,7 @@ import { type CtaCommonProps } from './Cta.types';
 import { CtaExternalLink } from './CtaExternalLink';
 import { CtaNextLink } from './CtaNextLink';
 import { type SbLinkType } from '../Storyblok/Storyblok.types';
+import { UrlObject } from 'url';
 //import { useAddUtmParams } from '../../hooks/useAddUtmParams';
 
 /**
@@ -14,7 +15,7 @@ import { type SbLinkType } from '../Storyblok/Storyblok.types';
  */
 export type CtaLinkProps = Omit<LinkProps, 'href'> & React.ComponentPropsWithoutRef<'a'> & CtaCommonProps & {
   sbLink?: SbLinkType;
-  href?: string;
+  href?: string | UrlObject;
 };
 
 export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
