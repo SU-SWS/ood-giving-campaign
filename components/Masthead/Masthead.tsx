@@ -1,7 +1,8 @@
 'use client';
+
 import { useEffect, useState, HTMLAttributes } from 'react';
 import {
-  m, useMotionValueEvent, useScroll, useVelocity, useWillChange,
+  m, useMotionValueEvent, useScroll, useVelocity,
 } from 'framer-motion';
 import { cnb } from 'cnbuilder';
 import { FlexBox } from '../FlexBox';
@@ -58,18 +59,14 @@ export const Masthead = ({ isLight, className }: MastheadProps) => {
 
   return (
     <m.header
-      className={cnb(
-        'w-full fixed top-0 z-50 transition-colors will-change-transform',
-        !isAtTop && isScrollingBack ? 'bg-gc-black border-b border-b-black-80 h-60 lg:h-[6.8rem]' : 'bg-transparent border-b-transparent h-[7.6rem]',
-        className,
-      )}
+      className={cnb(styles.root(isAtTop, isScrollingBack), className)}
       animate={{ y: isVisible ? 0 : -slideDistance, opacity: isVisible ? 1 : 0 }}
       transition={{ duration: 0.2, delay: !isAtTop && isScrollingBack ? 0.4 : 0, ease: 'easeInOut' }}
     >
       <FlexBox
         justifyContent="between"
         alignItems="center"
-        className={cnb('cc 3xl:px-100 4xl:px-[calc((100%-1800px)/2)] transition py-12', !isAtTop ? 'lg:py-11' : 'sm:py-13 lg:py-20')}
+        className={styles.wrapper(isAtTop)}
       >
         <LogoLockup
           isLink
