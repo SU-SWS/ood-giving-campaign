@@ -5,38 +5,40 @@ import { Heading, Paragraph, Text } from '../Typography';
 import { AnimateInView } from '../Animate';
 import { ImageOverlay } from '../ImageOverlay';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
+import * as styles from './HomepageSplitHero.styles';
 
 /**
  * This is the homepage hero for the MVP site.
  */
 export const HomepageSplitHero = () => {
   const bg = getProcessedImage('https://a-us.storyblok.com/f/1005200/2100x2028/bef2e6a13e/masthead-top-structured.jpg', '3200x0');
-  const mobileBg = getProcessedImage('https://a-us.storyblok.com/f/1005200/1901x1643/342467c886/progress-dish-mobile.jpg', '1200x0');
+  const mobileBg = getProcessedImage('https://a-us.storyblok.com/f/1005200/1901x1643/342467c886/progress-dish-mobile.jpg', '1000x0');
 
   return (
-    <Container width="full" bgColor="black" className="relative overflow-hidden">
-      <div
-        className="relative max-h-[180rem] bg-black-true pt-170 sm:pt-[24vw] 2xl:pt-[16vw] 4xl:pt-[32rem] pb-[50vw] sm:pb-[40vw] lg:pb-[40vw] 2xl:pb-[36vw] 4xl:pb-[64rem]"
-      >
-        <ImageOverlay
-          imageSrc={bg}
-          overlay="homepage-hero"
-          loading="eager"
-          overlayClasses="mix-blend-lighten"
-          className="hidden sm:block"
-        />
+    <Container width="full" bgColor="black" className={styles.root}>
+      <div className={styles.imageGridWrapper}>
+        {/* SM and up background image */}
         <ImageOverlay
           imageSrc={mobileBg}
           overlay="homepage-hero"
           loading="eager"
           overlayClasses="mix-blend-lighten"
-          className="sm:hidden"
+          className={styles.mobileBg}
         />
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-bl from-[#001c36ab] via-transparent via-60%" />
+        {/* XS background image */}
+        <ImageOverlay
+          imageSrc={bg}
+          overlay="homepage-hero"
+          loading="eager"
+          overlayClasses="mix-blend-lighten"
+          className={styles.bg}
+        />
+        <div className={styles.gradientOverlay} />
         <div className="relative">
-          <div className="relative cc">
-            <Grid xs={2} className="relative w-11/12 sm:w-[70vw] mx-auto 4xl:max-w-[140rem]">
-              <AnimateInView duration={0.3} animation="slideDown" className="relative w-full aspect-w-2 aspect-h-3 sm:aspect-w-1 sm:aspect-h-1">
+          <Container className="relative">
+            {/* Two column grid with the 2 face images */}
+            <Grid xs={2} className={styles.imageGrid}>
+              <AnimateInView duration={0.3} animation="slideDown" className={styles.imageWrapper}>
                 <img
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/cb35b9488b/frame-96.jpg', '700x700')}
                   alt=""
@@ -53,7 +55,7 @@ export const HomepageSplitHero = () => {
                   className="absolute top-0 right-0 w-full h-full object-cover object-left mix-blend-lighten -scale-x-100"
                 />
               </AnimateInView>
-              <AnimateInView duration={0.3} animation="slideUp" className="relative w-full aspect-w-2 aspect-h-3 sm:aspect-w-1 sm:aspect-h-1">
+              <AnimateInView duration={0.3} animation="slideUp" className={styles.imageWrapper}>
                 <img
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/45d9a3d22a/frame-97.jpg', '700x700')}
                   alt=""
@@ -71,7 +73,7 @@ export const HomepageSplitHero = () => {
                 />
               </AnimateInView>
             </Grid>
-          </div>
+          </Container>
           <div className="absolute w-full h-full flex flex-col justify-between top-0 left-0 cc 3xl:px-100 4xl:px-[calc((100%-1800px)/2)]">
             <AnimateInView
               animation="slideInFromLeft"

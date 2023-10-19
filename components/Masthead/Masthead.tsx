@@ -71,7 +71,7 @@ export const Masthead = ({ isLight, className }: MastheadProps) => {
         <LogoLockup
           isLink
           color={isLight && isAtTop ? 'default' : 'white'}
-          text="Giving Stories"
+          text="Impact Stories"
           className={styles.lockup}
         />
         <FlexBox alignItems="center" className={styles.ctaWrapper}>
