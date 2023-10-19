@@ -58,7 +58,7 @@ async function getStoryData(params: { slug: string[] }) {
   let slug = params.slug ? params.slug.join('/') : 'home';
   let sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',
-    cv: Date.now(),
+    cv: activeEnv === 'development' ? Date.now() : undefined,
     resolve_relations: resolveRelations,
   };
   const storyblokApi: StoryblokClient = getStoryblokApi();
