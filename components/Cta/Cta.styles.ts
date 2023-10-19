@@ -11,9 +11,13 @@ export const cta = 'group hocus:underline transition-all';
 
 const ghostSwipeBase = 'relative z-[10] block w-fit decoration-2 decoration-transparent underline-offset-4 hocus:decoration-white/80 font-normal leading-display hocus:text-white border-2 border-current hocus:border-digital-red-light focus-visible:outline-none after:block after:content-[""] after:absolute after:top-0 after:left-0 after:w-[0] after:h-full after:bg-gradient-to-r after:from-digital-red after:to-cardinal-red after:transition-all after:z-[-1] hocus:after:w-full overflow-hidden';
 
-const mainNavBase = 'group bg-clip-padding inline-block border-2 font-normal decoration-transparent decoration-1 underline-offset-4  hocus:ring-1 hocus:ring-inset';
+const mainNavBase = 'group bg-clip-padding inline-block border-2 font-normal decoration-transparent decoration-1 underline-offset-4 hocus:ring-1 hocus:ring-inset';
 const mainNavWhite = 'text-white border-white bg-gc-black hocus:text-white hocus:decoration-white hocus:ring-white';
-const mainNavDark = 'text-gc-black border-gc-black hocus:text-gc-black hocus:decoration-gc-black hocus:ring-gc-black';
+const mainNavDark = 'text-gc-black border-gc-black bg-white hocus:text-gc-black hocus:decoration-gc-black hocus:ring-gc-black';
+
+const mastheadGivingBase = 'inline-block w-fit font-normal decoration-transparent leading-display hocus:decoration-2 focus-visible:ring-2 focus-visible:ring-digital-red-xlight ring-offset-4 focus-visible:outline-none focus-visible:rounded underline-offset-4';
+const mastheadGivingWhite = 'text-white hocus:text-white hocus:decoration-white focus-visible:ring-offset-black';
+const mastheadGivingDark = 'text-gc-black hocus:text-gc-black hocus:decoration-gc-black focus-visible:ring-offset-white';
 
 const brochureBase = 'inline-block font-bold font-serif no-underline hocus:no-underline leading-none text-current hocus:!text-current bg-gradient-to-b bg-no-repeat bg-[0_100%] bg-[length:0_5px] hocus:bg-[length:calc(100%-1.3em)_5px]';
 const brochureIlluminating = 'from-illuminating to-illuminating';
@@ -30,8 +34,9 @@ export const ctaVariants = {
   back: 'inline-block font-normal no-underline leading-none group-hocus:underline text-black hocus:text-digital-red focus-visible:ring-2 focus-visible:ring-digital-red-light focus-visible:ring-offset-4 focus:outline-none rounded-[1px]',
   mainNav: `${mainNavBase} ${mainNavWhite} hocus-visible:bg-digital-red`, // Main nav buttons at the top of the page
   mainNavUp: `${mainNavBase} ${mainNavWhite} hocus-visible:bg-digital-red`, // Main nav buttons when scrolling up
-  mainNavBlack: `${mainNavBase} ${mainNavDark} hocus-visible:bg-digital-red`, // Main nav buttons when scrolling up
-  mastheadGiving: 'inline-block w-fit font-normal decoration-transparent hocus:decoration-white leading-display text-white hocus:text-white hocus:decoration-2 focus-visible:ring-2 focus-visible:ring-digital-red-xlight ring-offset-4 focus-visible:ring-offset-black focus-visible:outline-none focus-visible:rounded underline-offset-4',
+  mainNavBlack: `${mainNavBase} ${mainNavDark} hocus-visible:bg-lime`, // Main nav buttons light mode story pages
+  mastheadGiving: `${mastheadGivingBase} ${mastheadGivingWhite}`, // Giving link regular dark pages
+  mastheadGivingBlack: `${mastheadGivingBase} ${mastheadGivingDark}`, // Giving link light mode story pages
   close: 'inline-block font-semibold leading-none text-digital-red-light hocus:text-digital-red-xlight focus:outline-none',
   'close-x': 'leading-none',
   chip: 'inline-block leading-display no-underline text-current rounded-full border-2 border-current hocus:text-current font-normal underline-offset-4 decoration-transparent hocus-visible:decoration-current hocus-visible:decoration-2',
@@ -98,6 +103,7 @@ export const ctaSizeMap: CtaSizeMapType = {
   mainNavUp: 'mainNavUp',
   mainNavBlack: 'mainNav',
   mastheadGiving: 'mastheadGiving',
+  mastheadGivingBlack: 'mastheadGiving',
   link: 'unset',
   close: 'close',
   'close-x': 'unset',

@@ -20,7 +20,6 @@ export const Masthead = ({ isLight, className }: MastheadProps) => {
 
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
-  const willChange = useWillChange();
 
   const [isScrollingBack, setIsScrollingBack] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
@@ -46,11 +45,15 @@ export const Masthead = ({ isLight, className }: MastheadProps) => {
   ]);
 
   let ctaVariant: CtaVariantType = 'mainNav';
+  let givingLinkVariant: CtaVariantType = 'mastheadGiving';
+
   if (!isAtTop && isScrollingBack) {
     ctaVariant = 'mainNavUp';
+    givingLinkVariant = 'mastheadGiving';
   }
   if (isLight && isAtTop) {
     ctaVariant = 'mainNavBlack';
+    givingLinkVariant = 'mastheadGivingBlack';
   }
 
   return (
@@ -77,8 +80,9 @@ export const Masthead = ({ isLight, className }: MastheadProps) => {
         <FlexBox alignItems="center" className={styles.ctaWrapper}>
           <CtaLink
             href={ood.giving}
-            variant="mastheadGiving"
+            variant={givingLinkVariant}
             icon="external"
+            color="current"
             animate="top-right"
           >
             Giving to Stanford
