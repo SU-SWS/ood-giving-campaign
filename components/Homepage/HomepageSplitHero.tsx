@@ -18,10 +18,17 @@ export const HomepageSplitHero = () => {
         className="relative max-h-[180rem] bg-black-true pt-[35vw] sm:pt-[24vw] 2xl:pt-[16vw] 4xl:pt-[32rem] pb-[50vw] sm:pb-[32vw] 4xl:pb-[70rem]"
       >
         <ImageOverlay imageSrc={bg} overlay="homepage-hero" loading="eager" overlayClasses="mix-blend-lighten" />
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-bl from-[#001c36ab] via-transparent via-60%" />
         <div className="relative">
           <div className="relative cc">
             <Grid xs={2} className="relative w-11/12 sm:w-[70vw] mx-auto 4xl:max-w-[140rem]">
-              <AnimateInView duration={0.3} animation="slideDown" className="relative w-full">
+              <AnimateInView duration={0.3} animation="slideDown" className="relative w-full aspect-w-2 aspect-h-3 sm:aspect-w-1 sm:aspect-h-1">
+                <img
+                  src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/cb35b9488b/frame-96.jpg', '700x700')}
+                  alt=""
+                  loading="eager"
+                  className="w-full h-full object-cover object-right"
+                />
                 <m.img
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/45d9a3d22a/frame-97.jpg', '700x700')}
                   alt=""
@@ -29,16 +36,16 @@ export const HomepageSplitHero = () => {
                   initial={{ opacity: 1 }}
                   animate={{ opacity: 0 }}
                   transition={{ duration: 1, delay: 0.6 }}
-                  className="absolute top-0 right-0 w-full h-full object-cover mix-blend-lighten -scale-x-100"
-                />
-                <img
-                  src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/cb35b9488b/frame-96.jpg', '700x700')}
-                  alt=""
-                  loading="eager"
-                  className="w-full h-full object-cover"
+                  className="absolute top-0 right-0 w-full h-full object-cover object-left mix-blend-lighten -scale-x-100"
                 />
               </AnimateInView>
-              <AnimateInView duration={0.3} animation="slideUp" className="relative w-full">
+              <AnimateInView duration={0.3} animation="slideUp" className="relative w-full aspect-w-2 aspect-h-3 sm:aspect-w-1 sm:aspect-h-1">
+                <img
+                  src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/45d9a3d22a/frame-97.jpg', '700x700')}
+                  alt=""
+                  loading="eager"
+                  className="w-full h-full object-cover object-left"
+                />
                 <m.img
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/cb35b9488b/frame-96.jpg', '700x700')}
                   alt=""
@@ -46,13 +53,7 @@ export const HomepageSplitHero = () => {
                   initial={{ opacity: 1 }}
                   animate={{ opacity: 0 }}
                   transition={{ duration: 1, delay: 0.6 }}
-                  className="absolute top-0 right-0 w-full h-full object-cover mix-blend-lighten -scale-x-100"
-                />
-                <img
-                  src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/45d9a3d22a/frame-97.jpg', '700x700')}
-                  alt=""
-                  loading="eager"
-                  className="w-full h-full object-cover"
+                  className="absolute top-0 right-0 w-full h-full object-cover object-right mix-blend-lighten -scale-x-100"
                 />
               </AnimateInView>
             </Grid>

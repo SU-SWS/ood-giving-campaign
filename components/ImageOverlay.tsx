@@ -11,7 +11,7 @@ export const overlays = {
   'black-gradient-dark': 'bg-gradient-to-b from-transparent via-black-true/30 to-black-true/80', // Changemaker cards
   'black-top-bottom': 'bg-gradient-to-b from-gc-black via-transparent via-40% to-gc-black',
   'white-90': 'bg-white/90',
-  'homepage-hero': 'bg-gradient-to-b from-[#182671]',
+  'homepage-hero': 'bg-gradient-to-b from-[#223494]',
 };
 export type OverlayType = keyof typeof overlays | '';
 
