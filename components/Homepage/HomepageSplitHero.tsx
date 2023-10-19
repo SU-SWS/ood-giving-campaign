@@ -1,5 +1,7 @@
 import { m } from 'framer-motion';
+import { cnb } from 'cnbuilder';
 import { Container } from '../Container';
+import { FlexBox } from '../FlexBox';
 import { Grid } from '../Grid';
 import { Heading, Paragraph, Text } from '../Typography';
 import { AnimateInView } from '../Animate';
@@ -43,7 +45,7 @@ export const HomepageSplitHero = () => {
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/cb35b9488b/frame-96.jpg', '700x700')}
                   alt=""
                   loading="eager"
-                  className="w-full h-full object-cover object-right"
+                  className={cnb(styles.imageBottomLayerCommon, 'object-right')}
                 />
                 <m.img
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/45d9a3d22a/frame-97.jpg', '700x700')}
@@ -52,7 +54,7 @@ export const HomepageSplitHero = () => {
                   initial={{ opacity: 1 }}
                   animate={{ opacity: 0 }}
                   transition={{ duration: 1, delay: 0.6 }}
-                  className="absolute top-0 right-0 w-full h-full object-cover object-left mix-blend-lighten -scale-x-100"
+                  className={cnb(styles.imageTopLayerCommon, 'object-left')}
                 />
               </AnimateInView>
               <AnimateInView duration={0.3} animation="slideUp" className={styles.imageWrapper}>
@@ -60,7 +62,7 @@ export const HomepageSplitHero = () => {
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/45d9a3d22a/frame-97.jpg', '700x700')}
                   alt=""
                   loading="eager"
-                  className="w-full h-full object-cover object-left"
+                  className={cnb(styles.imageBottomLayerCommon, 'object-left')}
                 />
                 <m.img
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/cb35b9488b/frame-96.jpg', '700x700')}
@@ -69,19 +71,19 @@ export const HomepageSplitHero = () => {
                   initial={{ opacity: 1 }}
                   animate={{ opacity: 0 }}
                   transition={{ duration: 1, delay: 0.6 }}
-                  className="absolute top-0 right-0 w-full h-full object-cover object-right mix-blend-lighten -scale-x-100"
+                  className={cnb(styles.imageTopLayerCommon, 'object-right')}
                 />
               </AnimateInView>
             </Grid>
           </Container>
-          <div className="absolute w-full h-full flex flex-col justify-between top-0 left-0 cc 3xl:px-100 4xl:px-[calc((100%-1800px)/2)]">
+          <FlexBox direction="col" justifyContent="between" className={styles.textFlexbox}>
             <AnimateInView
               animation="slideInFromLeft"
               delay={0.6}
               duration={0.3}
-              className="relative -top-65 sm:-top-[10vw] xl:-top-[8vw] 4xl:-top-[15rem] right-0"
+              className={styles.textWrapperTop}
             >
-              <Text font="serif" weight="semibold" leading="none" italic className="text-[clamp(2.5rem,2.74vw+1.51rem,7rem)]">
+              <Text font="serif" weight="semibold" leading="none" italic className={styles.serifText}>
                 How will we
               </Text>
               <Text font="druk" size="hero" leading="none">
@@ -92,34 +94,32 @@ export const HomepageSplitHero = () => {
               animation="slideInFromRight"
               delay={0.6}
               duration={0.3}
-              className="relative top-[12%]"
+              className={styles.textWrapperBottom}
             >
-              <Text font="serif" weight="semibold" leading="none" align="right" italic className="text-[clamp(2.5rem,2.74vw+1.51rem,7rem)]">
+              <Text font="serif" weight="semibold" leading="none" align="right" italic className={styles.serifText}>
                 all in service of
               </Text>
               <Text font="druk" size="hero" leading="none" align="right">
                 Tomorrow?
               </Text>
             </AnimateInView>
-          </div>
+          </FlexBox>
         </div>
       </div>
-      <Container bgColor="black" pt={2} pb={7} className="relative z-10 bg-gradient-to-t from-gc-black to-[#020002]">
-        <div className="mx-auto max-w-1500">
-          <AnimateInView animation="slideUp">
-            <Heading size="f5" leading="tight">
-              We’re all in this together.
-            </Heading>
-          </AnimateInView>
-          <AnimateInView delay={0.2} animation="slideUp" className="md:ml-06em">
-            <Paragraph size={1} weight="normal" leading="snug" className="max-w-[50ch] ml-0 mr-auto">
-              Sustaining a thriving planet. Accelerating solutions and empowering the next generation of leaders.
-            </Paragraph>
-            <Paragraph size={1} weight="normal" leading="snug" className="max-w-[50ch] ml-0 mr-auto">
-              Meet your community of changemakers, explore what you’re passionate about, and join the conversation.
-            </Paragraph>
-          </AnimateInView>
-        </div>
+      <Container bgColor="black" pt={2} pb={7} className={styles.introWrapper}>
+        <AnimateInView animation="slideUp">
+          <Heading size="f5" leading="tight">
+            We’re all in this together.
+          </Heading>
+        </AnimateInView>
+        <AnimateInView delay={0.2} animation="slideUp" className={styles.introBodyWrapper}>
+          <Paragraph size={1} weight="normal" leading="snug" className={styles.introParagraph}>
+            Sustaining a thriving planet. Accelerating solutions and empowering the next generation of leaders.
+          </Paragraph>
+          <Paragraph size={1} weight="normal" leading="snug" className={styles.introParagraph}>
+            Meet your community of changemakers, explore what you’re passionate about, and join the conversation.
+          </Paragraph>
+        </AnimateInView>
       </Container>
     </Container>
   );
