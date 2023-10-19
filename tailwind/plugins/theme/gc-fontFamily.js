@@ -8,6 +8,5 @@ module.exports = function () {
     'druk': ['var(--font-druk)', 'sans-serif'],
     'druk-wide': ['var(--font-druk-wide)', 'sans-serif'],
     'stanford': ['var(--font-stanford)', 'serif'],
-    'mono': ['var(--font-mono)', 'monospace'],
   };
 };

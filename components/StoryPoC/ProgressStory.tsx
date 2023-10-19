@@ -11,19 +11,19 @@ export const ProgressStory = () => {
     <div className="bg-gc-black">
       <Container as="header" bgColor="black" pb={9} className="relative 3xl:px-100 pt-[15vw]">
         <img
-          src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2100x2028/bef2e6a13e/masthead-top-structured.jpg', '2000x0')}
+          src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1901x1643/e36a942af8/progress-dish-cropped.jpg', '2000x0')}
           alt=""
           loading="eager"
           className="absolute w-full h-full object-cover object-top top-0 left-0"
         />
         <Grid lg={12} className="relative" gap="default">
           <AnimateInView animation="slideUp" className="relative z-10 max-w-1200 col-span-12 2xl:col-start-2 2xl:col-span-8">
-            <Heading as="h1" font="mono" size="f7" leading="tight" className="rs-mb-1">
+            <Heading as="h1" size="f7" leading="tight" className="rs-mb-1">
               <AnimatedText text="Progress is nothing without purpose" />
             </Heading>
             <Text color="white">by Sarah Jane Staats</Text>
             <Text color="white">May 5, 2023</Text>
-            <Paragraph font="serif" weight="semibold" leading="display" size={2} noMargin className="mt-[35vw] max-w-1200">
+            <Paragraph leading="display" size={2} noMargin className="rs-mt-9 max-w-1200 pb-[30vw]">
               Stanford, at its heart, is a community of changemakers. Where there is doubt, we make discoveries.
               Where there are fundamental questions, we make discoveries. Where there is need, we make a difference.
               Our aim is to leave the world better than we found it.
@@ -40,11 +40,11 @@ export const ProgressStory = () => {
           className="relative w-full h-full object-cover object-top"
         />
         <div
-          className="absolute w-full h-full top-0 left-0 bg-gradient-to-b from-gc-black via-transparent via-40% to-gc-black z-10"
+          className="absolute w-full h-full top-0 left-0 bg-gradient-to-b from-[#020002] via-transparent via-40% to-gc-black z-10"
         />
         <div className="absolute top-0 r-0 w-full 3xl:px-100 z-20">
           <Grid lg={12} className="w-full" gap="default">
-            <Heading font="mono" size="f8" uppercase className="col-start-2 col-span-11 mt-[30vw] mb-0">
+            <Heading font="druk" size="f8" uppercase className="col-start-2 col-span-11 mt-[30vw] mb-0">
               Impact
             </Heading>
           </Grid>

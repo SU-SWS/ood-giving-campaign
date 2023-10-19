@@ -40,14 +40,6 @@ const source_serif = Source_Serif_4({
   variable: '--font-source-serif',
 });
 
-const source_code = Source_Code_Pro({
-  subsets: ['latin'],
-  weight: '700',
-  style: ['normal'],
-  display: 'swap',
-  variable: '--font-mono',
-});
-
 const stanford = localFont({
   src: '../public/fonts/stanford.woff2',
   weight: '300',
@@ -71,7 +63,6 @@ export default function RootLayout({ children }: LayoutProps) {
           className={cnb(
             source_sans.variable,
             source_serif.variable,
-            source_code.variable,
             druk.variable,
             druk_wide.variable,
             stanford.variable,
