@@ -71,7 +71,6 @@ export default function RootLayout({ children }: LayoutProps) {
           {/* Absolutely necessary to have a body tag here, otherwise your components won't get any interactivity */}
           <body>
             <FlexBox justifyContent="between" direction="col" className="min-h-screen relative">
-              <Skiplink />
               {children}
               <footer>
                 <LocalFooter />
