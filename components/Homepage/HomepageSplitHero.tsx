@@ -1,25 +1,52 @@
 import { m } from 'framer-motion';
+import { cnb } from 'cnbuilder';
 import { Container } from '../Container';
+import { FlexBox } from '../FlexBox';
 import { Grid } from '../Grid';
 import { Heading, Paragraph, Text } from '../Typography';
 import { AnimateInView } from '../Animate';
+import { ImageOverlay } from '../ImageOverlay';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
+import * as styles from './HomepageSplitHero.styles';
 
-
+/**
+ * This is the homepage hero for the MVP site.
+ */
 export const HomepageSplitHero = () => {
-  const bg = getProcessedImage('https://a-us.storyblok.com/f/1005200/2100x2028/bef2e6a13e/masthead-top-structured.jpg', '3000x0');
+  const bg = getProcessedImage('https://a-us.storyblok.com/f/1005200/2100x2028/bef2e6a13e/masthead-top-structured.jpg', '3200x0');
+  const mobileBg = getProcessedImage('https://a-us.storyblok.com/f/1005200/1901x1643/342467c886/progress-dish-mobile.jpg', '1000x0');
 
   return (
-    <Container width="full" bgColor="black" className="relative overflow-hidden">
-      <div
-        className="relative pb-[27vw] bg-black-true pt-[24vw] md:pt-[22vw] xl:pt-[18vw] 2xl:pt-[16vw] 4xl:pt-[34rem] bg-no-repeat bg-cover [background-position-y:160px]"
-        style={{ backgroundImage: `url('${bg}')` }}
-      >
-        <div className="absolute top-0 h-[50vw] 2xl:h-[40vw] 3xl:h-[35vw] w-full bg-gradient-to-b from-[#191e3e] via-[#263588] via-40% to-transparent" />
+    <Container width="full" bgColor="black" className={styles.root}>
+      <div className={styles.imageGridWrapper}>
+        {/* SM and up background image */}
+        <ImageOverlay
+          imageSrc={mobileBg}
+          overlay="homepage-hero"
+          loading="eager"
+          overlayClasses="mix-blend-lighten"
+          className={styles.mobileBg}
+        />
+        {/* XS background image */}
+        <ImageOverlay
+          imageSrc={bg}
+          overlay="homepage-hero"
+          loading="eager"
+          overlayClasses="mix-blend-lighten"
+          className={styles.bg}
+        />
+        <div className={styles.gradientOverlay} />
         <div className="relative">
-          <div className="relative cc">
-            <Grid xs={2} className="relative w-[70vw] mx-auto 4xl:max-w-[140rem]">
-              <AnimateInView duration={0.3} animation="slideDown" className="relative w-full">
+          <Container className="relative">
+            {/* Two column grid with the 2 face images */}
+            <Grid xs={2} className={styles.imageGrid}>
+              <AnimateInView duration={0.3} animation="slideDown" className={styles.imageWrapper}>
+                <img
+                  src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/cb35b9488b/frame-96.jpg', '700x700')}
+                  alt=""
+                  loading="eager"
+                  className={cnb(styles.imageBottomLayerCommon, 'object-right')}
+                />
                 <m.img
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/45d9a3d22a/frame-97.jpg', '700x700')}
                   alt=""
@@ -27,16 +54,16 @@ export const HomepageSplitHero = () => {
                   initial={{ opacity: 1 }}
                   animate={{ opacity: 0 }}
                   transition={{ duration: 1, delay: 0.6 }}
-                  className="absolute top-0 right-0 w-full h-full object-cover mix-blend-lighten -scale-x-100"
-                />
-                <img
-                  src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/cb35b9488b/frame-96.jpg', '700x700')}
-                  alt=""
-                  loading="eager"
-                  className="w-full h-full object-cover"
+                  className={cnb(styles.imageTopLayerCommon, 'object-left')}
                 />
               </AnimateInView>
-              <AnimateInView duration={0.3} animation="slideUp" className="relative w-full">
+              <AnimateInView duration={0.3} animation="slideUp" className={styles.imageWrapper}>
+                <img
+                  src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/45d9a3d22a/frame-97.jpg', '700x700')}
+                  alt=""
+                  loading="eager"
+                  className={cnb(styles.imageBottomLayerCommon, 'object-left')}
+                />
                 <m.img
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/cb35b9488b/frame-96.jpg', '700x700')}
                   alt=""
@@ -44,65 +71,55 @@ export const HomepageSplitHero = () => {
                   initial={{ opacity: 1 }}
                   animate={{ opacity: 0 }}
                   transition={{ duration: 1, delay: 0.6 }}
-                  className="absolute top-0 right-0 w-full h-full object-cover mix-blend-lighten -scale-x-100"
-                />
-                <img
-                  src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/45d9a3d22a/frame-97.jpg', '700x700')}
-                  alt=""
-                  loading="eager"
-                  className="w-full h-full object-cover"
+                  className={cnb(styles.imageTopLayerCommon, 'object-right')}
                 />
               </AnimateInView>
             </Grid>
-          </div>
-          <div className="absolute w-full top-0 left-0">
-            <Grid xs={2}>
-              <AnimateInView
-                animation="slideInFromLeft"
-                delay={0.6}
-                duration={0.3}
-                className="relative -top-[10vw] xl:-top-[8vw] 4xl:-top-[16rem] right-0 justify-self-end"
-              >
-                <Text font="serif" weight="semibold" size="f5" leading="none" italic>
-                  How will we
-                </Text>
-                <Text font="druk" size="hero" leading="none">
-                  come together
-                </Text>
-              </AnimateInView>
-              <AnimateInView
-                animation="slideInFromRight"
-                delay={0.6}
-                duration={0.3}
-                className="relative -right-[7vw] top-[27vw] 4xl:top-[57rem] type-4 xl:type-5 justify-self-start"
-              >
-                <Text font="serif" weight="semibold" leading="none" align="right" italic>
-                  all in service of
-                </Text>
-                <Text font="druk" size="hero" leading="none" align="right">
-                  Tomorrow?
-                </Text>
-              </AnimateInView>
-            </Grid>
-          </div>
+          </Container>
+          <FlexBox direction="col" justifyContent="between" className={styles.textFlexbox}>
+            <AnimateInView
+              animation="slideInFromLeft"
+              delay={0.6}
+              duration={0.3}
+              className={styles.textWrapperTop}
+            >
+              <Text font="serif" weight="semibold" leading="none" italic className={styles.serifText}>
+                How will we
+              </Text>
+              <Text font="druk" size="hero" leading="none">
+                come together
+              </Text>
+            </AnimateInView>
+            <AnimateInView
+              animation="slideInFromRight"
+              delay={0.6}
+              duration={0.3}
+              className={styles.textWrapperBottom}
+            >
+              <Text font="serif" weight="semibold" leading="none" align="right" italic className={styles.serifText}>
+                all in service of
+              </Text>
+              <Text font="druk" size="hero" leading="none" align="right">
+                Tomorrow?
+              </Text>
+            </AnimateInView>
+          </FlexBox>
         </div>
       </div>
-      <Container bgColor="black" py={7} className="relative z-10 bg-gradient-to-t from-gc-black to-[#020002]">
-        <div className="mx-auto max-w-1200">
-          <AnimateInView animation="slideUp">
-            <Heading size="f7" weight="normal" leading="tight" className="rs-mb-6">
-              <span className="italic">We’re</span> all in this <span className="italic">together</span>.
-            </Heading>
-          </AnimateInView>
-          <AnimateInView delay={0.2} animation="slideUp" className="max-w-1200 xl:ml-08em">
-            <Paragraph size={2} weight="normal" leading="snug" className="max-w-1000 ml-0 mr-auto">
-              Sustaining a thriving planet. Accelerating solutions and empowering the next generation of leaders.
-            </Paragraph>
-            <Paragraph size={2} weight="normal" leading="snug" className="max-w-1000 ml-0 mr-auto">
-              Meet your community of changemakers, explore what you’re passionate about, and join the conversation.
-            </Paragraph>
-          </AnimateInView>
-        </div>
+      <Container bgColor="black" pt={2} pb={7} className={styles.introWrapper}>
+        <AnimateInView animation="slideUp">
+          <Heading size="f5" leading="tight">
+            We’re all in this together.
+          </Heading>
+        </AnimateInView>
+        <AnimateInView delay={0.2} animation="slideUp" className={styles.introBodyWrapper}>
+          <Paragraph size={1} weight="normal" leading="snug" className={styles.introParagraph}>
+            Sustaining a thriving planet. Accelerating solutions and empowering the next generation of leaders.
+          </Paragraph>
+          <Paragraph size={1} weight="normal" leading="snug" className={styles.introParagraph}>
+            Meet your community of changemakers, explore what you’re passionate about, and join the conversation.
+          </Paragraph>
+        </AnimateInView>
       </Container>
     </Container>
   );

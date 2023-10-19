@@ -1,4 +1,5 @@
 'use client';
+
 import { useRef, useState } from 'react';
 import {
   m, useReducedMotion, useScroll, useTransform, useSpring,
@@ -10,6 +11,11 @@ import { HeroIcon } from '../HeroIcon';
 import { OnPurpo, Ose } from '../Logo';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { getMaskedAsset } from '@/utilities/getMaskedAsset';
+
+/**
+ * This is the previous version of the homepage hero with the video background loop.
+ * Keeping it for now since we might go back to this after MVP.
+ */
 
 export const HomepageHero = () => {
   const prefersReduceMotion = useReducedMotion();

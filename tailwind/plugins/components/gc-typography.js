@@ -59,7 +59,7 @@ module.exports = function () {
         fontSize: 'clamp(5.8rem, 8.95vw + 2.58rem, 16rem)',
       },
       '.hero': {
-        fontSize: 'clamp(5.5rem, 7.71vw - 0.42rem, 15rem)',
+        fontSize: 'clamp(4.5rem, 7.01vw + 1.98rem, 16rem)',
       },
     };
 

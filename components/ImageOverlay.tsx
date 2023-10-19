@@ -8,21 +8,25 @@ export const overlays = {
   'black-70': 'bg-black-true/70',
   'black-80': 'bg-black-true/80',
   'black-gradient': 'bg-gradient-to-b from-transparent via-black-true/20 to-black-true/50',
-  'black-gradient-dark': 'bg-gradient-to-b from-transparent via-black-true/30 to-black-true/80',
+  'black-gradient-dark': 'bg-gradient-to-b from-transparent via-black-true/30 to-black-true/80', // Changemaker cards
   'black-top-bottom': 'bg-gradient-to-b from-gc-black via-transparent via-40% to-gc-black',
-  'black-top-sm': 'bg-gradient-to-b from-gc-black via-periwinkle via-20% to-transparent',
   'white-90': 'bg-white/90',
+  'homepage-hero': 'bg-gradient-to-b from-[#223494]',
 };
 export type OverlayType = keyof typeof overlays | '';
 
 type ImageOverlayProps = Omit<HTMLAttributes<HTMLImageElement>, 'src'> & {
   imageSrc?: string;
   overlay?: OverlayType;
+  overlayClasses?: string;
+  loading?: 'lazy' | 'eager';
 };
 
 export const ImageOverlay = ({
   imageSrc,
   overlay = 'black-40',
+  overlayClasses,
+  loading = 'lazy',
   className,
   ...props
 }: ImageOverlayProps) => (
@@ -30,8 +34,8 @@ export const ImageOverlay = ({
     <img
       src={imageSrc}
       alt=""
-      loading="lazy"
-      className="absolute w-full h-full object-cover top-0 left-0"
+      loading={loading}
+      className={cnb('absolute w-full h-full object-cover top-0 left-0', className)}
       {...props}
     />
     {overlay && (
@@ -39,6 +43,7 @@ export const ImageOverlay = ({
         className={cnb(
           'absolute w-full h-full top-0 left-0',
           overlays[overlay],
+          overlayClasses,
         )}
       />
     )}

@@ -11,7 +11,7 @@ export const blurWrapper = (
     'backdrop-blur-md' : addBgBlur,
     'bg-black-true/60 md:bg-black-true/40': type === 'hero' && addDarkOverlay && bgColor === 'black',
     'bg-gradient-to-b from-black-true/50': type === 'poster' && bgColor === 'black',
-    'lg:from-black-true/30': type === 'poster' && addDarkOverlay && bgColor === 'black',
+    'lg:from-black-true/20 lg:to-black-true/70': type === 'poster' && addDarkOverlay && bgColor === 'black',
     'lg:bg-none': type === 'poster' && bgColor === 'black' && !addDarkOverlay,
     'bg-white/80' : type === 'hero' && bgColor === 'white',
   },
@@ -74,7 +74,7 @@ export const customHeading = (
   imageOnLeft?: boolean,
   headingFont?: 'druk' | 'serif',
   isTwoCol?: boolean,
-) => cnb('flex flex-wrap gap-x-[1em] items-center mb-0 -mt-05em lg:-mt-08em children:inline-block', {
+) => cnb('flex flex-wrap gap-x-[1em] items-center mb-0 -mt-02em md:-mt-05em lg:-mt-08em children:inline-block', {
   '3xl:pl-[calc(100%-750px-40px)] lg:w-[140%] xl:w-[130%]': !imageOnLeft && headingFont === 'druk' && isTwoCol,
 });
 export const customHeadingText = (font?: 'druk' | 'serif', isSmallHeading?: boolean) => cnb('hyphens-auto first:ml-0 last:mr-0', {
