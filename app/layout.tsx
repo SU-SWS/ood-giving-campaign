@@ -1,6 +1,6 @@
 import './globals.css';
 import { cnb } from 'cnbuilder';
-import { Source_Sans_3, Source_Serif_4, Source_Code_Pro } from 'next/font/google';
+import { Source_Sans_3, Source_Serif_4 } from 'next/font/google';
 import localFont from 'next/font/local';
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
 import StoryblokProvider from '@/components/StoryblokProvider';
@@ -8,7 +8,6 @@ import LazyMotionProvider from '@/components/LazyMotionProvider';
 import { FlexBox } from '@/components/FlexBox';
 import { LocalFooter } from '@/components/LocalFooter';
 import { GlobalFooter } from '@/components/GlobalFooter';
-import { Skiplink } from '@/components/SkipLink';
 
 type LayoutProps = {
   children: React.ReactNode,
