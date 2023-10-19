@@ -4,7 +4,7 @@ export const root = (isAtTop?: boolean, isScrollingBack?: boolean) => cnb(
   'w-full fixed top-0 z-50 transition-colors will-change-transform',
   !isAtTop && isScrollingBack ?
   'bg-gc-black border-b border-b-black-80 h-60 lg:h-[6.8rem]'
-  : 'bg-transparent border-b-transparent h-[7.6rem]'
+  : 'bg-transparent border-b-transparent h-[7.6rem]',
 );
 
 // Use a wider centered container (1800px wide at 4XL (2000px) breakpoint)
