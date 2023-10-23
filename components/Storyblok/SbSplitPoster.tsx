@@ -1,9 +1,10 @@
-import { storyblokEditable } from '@storyblok/react/rsc';
+import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import { CreateBloks } from '../CreateBloks';
 import { type HeadingType } from '../Typography';
 import { type SbImageType } from './Storyblok.types';
 import { SplitPoster } from '../SplitPoster';
 import { type BgTextColorPairType } from '@/utilities/datasource';
+import { getNumBloks } from '@/utilities/getNumBloks';
 
 export type SbSplitPosterProps = {
   blok: {
@@ -23,8 +24,8 @@ export type SbSplitPosterProps = {
     addImageOverlayLeft?: boolean;
     imageRight?: SbImageType;
     addImageOverlayRight?: boolean;
-    ctaLeft?: any[];
-    ctaRight?: any[];
+    ctaLeft?: SbBlokData[];
+    ctaRight?: SbBlokData[];
   };
 };
 

@@ -51,8 +51,7 @@ export const BookAlt = ({
         <Text
           as="span"
           color="white"
-          font="mono"
-          size={4}
+          size={3}
           leading="none"
           weight="bold"
           align="left"

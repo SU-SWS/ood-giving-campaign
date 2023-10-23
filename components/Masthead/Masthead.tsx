@@ -8,6 +8,7 @@ import { cnb } from 'cnbuilder';
 import { FlexBox } from '../FlexBox';
 import { LogoLockup } from '@/components/Logo/LogoLockup';
 import { CtaLink, type CtaVariantType } from '../Cta';
+import { Skiplink } from '../SkipLink';
 import { ood } from '@/utilities/externalLinks';
 import * as styles from './Masthead.styles';
 
@@ -63,6 +64,7 @@ export const Masthead = ({ isLight, className }: MastheadProps) => {
       animate={{ y: isVisible ? 0 : -slideDistance, opacity: isVisible ? 1 : 0 }}
       transition={{ duration: 0.2, delay: !isAtTop && isScrollingBack ? 0.4 : 0, ease: 'easeInOut' }}
     >
+      <Skiplink />
       <FlexBox
         justifyContent="between"
         alignItems="center"
