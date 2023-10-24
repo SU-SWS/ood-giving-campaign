@@ -32,9 +32,9 @@ export const contentWrapper = (
   'lg:order-first': !imageOnLeft && isTwoCol,
 });
 
-export const superhead = (imageOnLeft?: boolean) => cnb('cc rs-mb-1 w-full', {
-  'lg:pl-40 2xl:pl-60 3xl:pr-[calc(100%-750px)]': imageOnLeft,
-  'lg:pr-40 2xl:pr-60 3xl:pl-[calc(100%-750px)]': !imageOnLeft,
+export const superhead = (imageOnLeft?: boolean, isTwoCol?: boolean) => cnb('cc rs-mb-1 w-full', {
+  'lg:pl-40 2xl:pl-60 3xl:pr-[calc(100%-750px)]': imageOnLeft && isTwoCol,
+  'lg:pr-40 2xl:pr-60 3xl:pl-[calc(100%-750px)]': !imageOnLeft && isTwoCol,
 });
 
 export const headingWrapper = (

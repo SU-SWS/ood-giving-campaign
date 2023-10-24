@@ -68,7 +68,7 @@ export const BlurryPoster = ({
   className,
   ...props
 }: BlurryPosterProps) => {
-  const bgImageStyle = bgImageSrc ? { backgroundImage: `url('${getProcessedImage(bgImageSrc, '1800x1200', bgImageFocus)}')` } : undefined;
+  const bgImageStyle = bgImageSrc ? { backgroundImage: `url('${getProcessedImage(bgImageSrc, '2100x1400', bgImageFocus)}')` } : undefined;
   const date = publishedDate && new Date(publishedDate);
   const formattedDate = date && date.toLocaleDateString('en-US', {
     month: 'long',
@@ -82,12 +82,21 @@ export const BlurryPoster = ({
         <Grid lg={isTwoCol ? 2 : 1} pt={type === 'hero' ? 9 : 8} pb={8} className={styles.grid}>
           <div className={styles.contentWrapper(type, !!imageSrc, imageOnLeft, isTwoCol)}>
             {superhead && (
-              <Text size={1} aria-hidden={!!heading} className={styles.superhead(imageOnLeft)}>{superhead}</Text>
+              <Text
+                size={1}
+                aria-hidden={!!heading}
+                className={styles.superhead(imageOnLeft, isTwoCol)}
+              >
+                {superhead}
+              </Text>
             )}
             <FlexBox className={styles.headingWrapper(imageOnLeft, headingFont, isTwoCol)}>
               <AnimateInView
                 animation={imageOnLeft ? 'slideInFromRight' : 'slideInFromLeft'}
-                className={cnb(styles.headingInnerWrapper(imageOnLeft, headingFont, isTwoCol), accentBorderColors[tabColor])}
+                className={cnb(
+                  styles.headingInnerWrapper(imageOnLeft, headingFont, isTwoCol),
+                  accentBorderColors[tabColor],
+                )}
               >
                 {/* Render all Druk font heading if custom heading is not entered */}
                 {heading && !customHeading?.length && (
