@@ -35,7 +35,7 @@
     "@storyblok/react": "^2.4.0",
     "cnbuilder": "^3.1.0",
     "framer-motion": "^10.15.0",
-    "next": "13.4.9",
+    "next": "13.5.0",
     "react-player": "^2.13.0",
     "storyblok-rich-text-react-renderer-ts": "^3.2.0"
   },
