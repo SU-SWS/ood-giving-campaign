@@ -1,9 +1,11 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
+import { type MediaAspectRatioType } from '@/utilities/datasource';
+import { type WidthType } from '../WidthBox';
+import { type PaddingType } from '@/utilities/datasource';
 import { hasRichText } from '@/utilities/hasRichText';
 import { EmbedMedia } from '../EmbedMedia';
 import { RichText } from '../RichText';
-import { type MediaAspectRatioType } from '@/utilities/datasource';
 
 type SbEmbedMediaProps = {
   blok: {
@@ -11,6 +13,11 @@ type SbEmbedMediaProps = {
     mediaUrl: string;
     caption?: StoryblokRichtext;
     aspectRatio?: MediaAspectRatioType;
+    boundingWidth?: 'site' | 'full';
+    width?: WidthType;
+    spacingTop?: PaddingType;
+    spacingBottom?: PaddingType;
+    isCaptionInset?: boolean;
   };
 };
 
@@ -19,6 +26,11 @@ export const SbEmbedMedia = ({
     mediaUrl,
     caption,
     aspectRatio,
+    boundingWidth = 'full',
+    width,
+    spacingTop,
+    spacingBottom,
+    isCaptionInset,
   },
   blok,
 }: SbEmbedMediaProps) => {
@@ -30,6 +42,11 @@ export const SbEmbedMedia = ({
       mediaUrl={mediaUrl}
       caption={Caption}
       aspectRatio={aspectRatio}
+      boundingWidth={boundingWidth}
+      width={width}
+      spacingTop={spacingTop}
+      spacingBottom={spacingBottom}
+      isCaptionInset={isCaptionInset}
     />
   );
 };

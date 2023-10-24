@@ -19,10 +19,6 @@ module.exports = function () {
         fontSize: '0.93em',
         lineHeight: theme('lineHeight.snug'),
       },
-      '.gc-caption': {
-        fontSize: '0.81em',
-        lineHeight: theme('lineHeight.display'),
-      },
       '.gc-intro-text': {
         ...theme('decanter.typography.type2'),
         lineHeight: theme('lineHeight.cozy'),
