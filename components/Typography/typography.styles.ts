@@ -74,7 +74,7 @@ export const textVariants = {
    * Campaign typography styles
    * (-gc ones are Decanter styles with Campaign modifications)
    */
-  caption: 'gc-caption',
+  caption: 'caption',
   card: 'gc-card',
   intro: 'gc-intro-text',
   /**
