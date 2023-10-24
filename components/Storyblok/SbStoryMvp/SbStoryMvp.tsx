@@ -32,6 +32,7 @@ type SbStoryMvpProps = {
 export const SbStoryMvp = ({
   blok: {
     title,
+    superhead,
     customHeading,
     headingFont,
     isSmallHeading,
@@ -72,6 +73,7 @@ export const SbStoryMvp = ({
           {!(title?.includes('Whereas') || title?.includes('Progress') || title?.includes('Video') || title?.includes('Solve')) && (
             <StoryHeroMvp
               title={title}
+              superhead={superhead}
               customHeading={customHeading}
               headingFont={headingFont}
               isSmallHeading={isSmallHeading}
