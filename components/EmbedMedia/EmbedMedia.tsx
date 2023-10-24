@@ -1,15 +1,19 @@
 import { useEffect, useState } from 'react';
 import { cnb } from 'cnbuilder';
 import ReactPlayer from 'react-player/lazy';
+import { Text } from '../Typography';
+import { type MediaAspectRatioType, mediaAspectRatios } from '@/utilities/datasource';
 
 type EmbedMediaProps = React.HTMLAttributes<HTMLDivElement> & {
   mediaUrl: string;
   caption?: React.ReactNode;
+  aspectRatio?: MediaAspectRatioType;
 };
 
 export const EmbedMedia = ({
   mediaUrl,
   caption,
+  aspectRatio,
   className,
 }: EmbedMediaProps) => {
   /**
@@ -24,16 +28,23 @@ export const EmbedMedia = ({
   }, []);
 
   return (
-    <div className="aspect-w-16 aspect-h-9">
-      {hasWindow && (
-        <ReactPlayer
-          url={mediaUrl}
-          controls
-          width="100%"
-          height="100%"
-        />
+    <figure>
+      {/* Extra classnames passed into wrapper for Vimeo responsive bug */}
+      <div className={cnb(mediaAspectRatios[aspectRatio], 'children:!w-full children:!h-full')}>
+        {hasWindow && (
+          <ReactPlayer
+            width="100%"
+            height="100%"
+            url={mediaUrl}
+            controls
+          />
+        )}
+      </div>
+      {caption && (
+        <figcaption className='children:children:text-black-70 gc-caption mt-09em children:children:leading-display max-w-prose-wide'>
+          {caption}
+        </figcaption>
       )}
-      {caption}
-    </div>
+    </figure>
   );
 };
