@@ -36,6 +36,7 @@
     "cnbuilder": "^3.1.0",
     "framer-motion": "^10.15.0",
     "next": "13.4.9",
+    "react-player": "^2.13.0",
     "storyblok-rich-text-react-renderer-ts": "^3.2.0"
   },
   "peerDependencies": {
