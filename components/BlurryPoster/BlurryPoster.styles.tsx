@@ -1,13 +1,17 @@
 import { cnb } from 'cnbuilder';
 
-export const root = 'relative bg-no-repeat bg-cover bg-center overflow-hidden break-words';
+export const root = 'relative bg-no-repeat bg-cover overflow-hidden break-words';
+
+export const bgImageMobile = 'absolute top-0 left-0 w-full h-full object-cover lg:hidden';
+export const bgImage = 'absolute top-0 left-0 w-full h-full object-cover hidden lg:block';
+
 export const blurWrapper = (
   addBgBlur?: boolean,
   addDarkOverlay?: boolean,
   type?: 'hero' | 'poster',
   bgColor?: 'black' | 'white',
 ) => cnb(
-  'w-full h-full', {
+  'relative w-full h-full z-10', {
     'backdrop-blur-md' : addBgBlur,
     'bg-black-true/60 md:bg-black-true/40': type === 'hero' && addDarkOverlay && bgColor === 'black',
     'bg-gradient-to-b from-black-true/50': type === 'poster' && bgColor === 'black',
@@ -26,6 +30,7 @@ export const contentWrapper = (
   isTwoCol?: boolean,
 ) => cnb('relative z-10', {
   'rs-mt-10': !hasHeroImage && !isTwoCol && type === 'hero',
+  'rs-mt-5': !hasHeroImage && isTwoCol && type === 'hero',
   'rs-mt-7': hasHeroImage && type === 'hero',
   'lg:rs-mt-6': type === 'poster',
   'lg:order-last': imageOnLeft && isTwoCol,
@@ -41,7 +46,7 @@ export const headingWrapper = (
   imageOnLeft?: boolean,
   headingFont?: 'druk' | 'serif',
   isTwoCol?: boolean,
-) => cnb('rs-mb-5', {
+) => cnb('rs-mb-8', {
   'lg:mr-0 lg:w-[120%] lg:-ml-[20%] 3xl:w-auto 3xl:-ml-200': imageOnLeft && headingFont === 'druk' && isTwoCol,
 });
 export const headingInnerWrapper = (
@@ -74,7 +79,7 @@ export const customHeading = (
   imageOnLeft?: boolean,
   headingFont?: 'druk' | 'serif',
   isTwoCol?: boolean,
-) => cnb('flex flex-wrap gap-x-[1em] items-center mb-0 -mt-02em md:-mt-05em lg:-mt-08em children:inline-block', {
+) => cnb('flex flex-wrap gap-x-[0.6em] md:gap-x-[1em] items-center mb-0 -mt-02em md:-mt-05em lg:-mt-08em children:inline-block', {
   '3xl:pl-[calc(100%-750px-40px)] lg:w-[140%] xl:w-[130%]': !imageOnLeft && headingFont === 'druk' && isTwoCol,
 });
 export const customHeadingText = (font?: 'druk' | 'serif', isSmallHeading?: boolean) => cnb('hyphens-auto first:ml-0 last:mr-0', {

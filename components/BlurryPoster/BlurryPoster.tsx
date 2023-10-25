@@ -24,6 +24,7 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   isTwoCol?: boolean;
   bgImageSrc?: string;
   bgImageFocus?: string;
+  bgImageAlt?: string;
   bgColor?: 'black' | 'white';
   imageOnLeft?: boolean;
   superhead?: string;
@@ -39,6 +40,7 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   publishedDate?: string;
   imageSrc?: string;
   imageFocus?: string;
+  alt?: string;
   tabColor?: AccentColorType;
   cta?: React.ReactNode;
 };
@@ -48,6 +50,7 @@ export const BlurryPoster = ({
   isTwoCol,
   bgImageSrc,
   bgImageFocus,
+  bgImageAlt,
   bgColor = 'black',
   imageOnLeft,
   superhead,
@@ -63,12 +66,12 @@ export const BlurryPoster = ({
   publishedDate,
   imageSrc,
   imageFocus,
+  alt,
   tabColor,
   cta,
   className,
   ...props
 }: BlurryPosterProps) => {
-  const bgImageStyle = bgImageSrc ? { backgroundImage: `url('${getProcessedImage(bgImageSrc, '2100x1400', bgImageFocus)}')` } : undefined;
   const date = publishedDate && new Date(publishedDate);
   const formattedDate = date && date.toLocaleDateString('en-US', {
     month: 'long',
@@ -77,7 +80,17 @@ export const BlurryPoster = ({
   });
 
   return (
-    <Container {...props} bgColor={bgColor} width="full" className={styles.root} style={bgImageStyle}>
+    <Container {...props} bgColor={bgColor} width="full" className={styles.root}>
+      <img
+        src={getProcessedImage(bgImageSrc, '1200x1200', bgImageFocus)}
+        alt={bgImageAlt || ''}
+        className={styles.bgImageMobile}
+      />
+      <img
+        src={getProcessedImage(bgImageSrc, '2000x1200', bgImageFocus)}
+        alt={bgImageAlt || ''}
+        className={styles.bgImage}
+      />
       <div className={styles.blurWrapper(addBgBlur, addDarkOverlay, type, bgColor)}>
         <Grid lg={isTwoCol ? 2 : 1} pt={type === 'hero' ? 9 : 8} pb={8} className={styles.grid}>
           <div className={styles.contentWrapper(type, !!imageSrc, imageOnLeft, isTwoCol)}>
@@ -162,12 +175,12 @@ export const BlurryPoster = ({
               <AnimateInView animation="zoomSharpen" duration={1} className={styles.imageInnerWrapper}>
                 <img
                   src={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '900x1200', imageFocus)}
-                  alt=""
+                  alt={alt || ''}
                   className={styles.image}
                 />
                 <img
                   src={getProcessedImage(imageSrc, type === 'hero' ? '1000x1000' : '1000x500', imageFocus)}
-                  alt=""
+                  alt={alt || ''}
                   className={styles.imageMobile}
                 />
               </AnimateInView>
