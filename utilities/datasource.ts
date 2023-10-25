@@ -73,6 +73,16 @@ export const storyHeroAspectRatiosDesktop = {
   'free': '',
 };
 
+export const mediaAspectRatios = {
+  '1x1': 'aspect-w-1 aspect-h-1',
+  '3x2': 'aspect-w-3 aspect-h-2',
+  '4x3': 'aspect-w-4 aspect-h-3',
+  '4x5': 'aspect-w-4 aspect-h-5',
+  '9x16': 'aspect-w-9 aspect-h-16',
+  '16x9': 'aspect-w-16 aspect-h-9',
+};
+export type MediaAspectRatioType = keyof typeof mediaAspectRatios;
+
 // Many components have dark and light themes - these are the basic options
 export const bgTextColorPairsBlackWhite = {
   black: 'bg-gc-black text-white',

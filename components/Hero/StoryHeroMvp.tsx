@@ -7,6 +7,7 @@ import * as styles from './StoryHeroMvp.styles';
 
 export type StoryHeroMvpProps = {
   title: string;
+  superhead?: string;
   customHeading?: SbTypographyProps[];
   headingFont?: 'serif' | 'druk';
   isSmallHeading?: boolean;
@@ -15,6 +16,7 @@ export type StoryHeroMvpProps = {
   dek?: string;
   heroImage?: SbImageType;
   bgImage?: SbImageType;
+  bgImageAlt?: string;
   addBgBlur?: boolean;
   addDarkOverlay?: boolean;
   aspectRatio?: styles.ImageCropType;
@@ -33,6 +35,7 @@ export type StoryHeroMvpProps = {
 
 export const StoryHeroMvp = ({
   title,
+  superhead,
   customHeading,
   headingFont,
   isSmallHeading,
@@ -42,19 +45,18 @@ export const StoryHeroMvp = ({
   heroImage: { filename, focus } = {},
   mobileImage: { filename: mobileFilename, focus: mobileFocus } = {},
   bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
+  bgImageAlt,
   addBgBlur,
   addDarkOverlay,
   alt,
-  caption,
   isVerticalHero = false,
   isLeftImage = false,
   isLightHero = false,
   aspectRatio = isVerticalHero ? '5x8' : '2x1',
   mobileAspectRatio = '1x1',
   tabColor: { value: tabColorValue } = {},
-  topics,
 }: StoryHeroMvpProps) => {
-  const useTwoColLayout = isVerticalHero && !!filename;
+  const useTwoColLayout = isVerticalHero;
   const date = publishedDate && new Date(publishedDate);
   const formattedDate = date && date.toLocaleDateString('en-US', {
     weekday: 'long',
@@ -114,6 +116,7 @@ export const StoryHeroMvp = ({
         type="hero"
         isTwoCol={useTwoColLayout}
         heading={title}
+        superhead={superhead}
         customHeading={customHeading}
         headingLevel="h1"
         headingFont={headingFont === 'druk' ? 'druk' : 'serif'}
@@ -123,8 +126,10 @@ export const StoryHeroMvp = ({
         body={dek}
         imageSrc={filename}
         imageFocus={focus}
+        alt={alt}
         bgImageSrc={bgImageSrc}
         bgImageFocus={bgImageFocus}
+        bgImageAlt={bgImageAlt}
         bgColor={isLightHero ? 'white' : 'black'}
         addBgBlur={addBgBlur}
         addDarkOverlay={addDarkOverlay}
