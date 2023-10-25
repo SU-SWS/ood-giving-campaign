@@ -2,9 +2,7 @@ import './globals.css';
 import { cnb } from 'cnbuilder';
 import { Source_Sans_3, Source_Serif_4 } from 'next/font/google';
 import localFont from 'next/font/local';
-import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
 import StoryblokProvider from '@/components/StoryblokProvider';
-import LazyMotionProvider from '@/components/LazyMotionProvider';
 import { FlexBox } from '@/components/FlexBox';
 import { LocalFooter } from '@/components/LocalFooter';
 import { GlobalFooter } from '@/components/GlobalFooter';
@@ -45,18 +43,9 @@ const stanford = localFont({
   variable: '--font-stanford',
 });
 
-storyblokInit({
-  accessToken: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN,
-  use: [apiPlugin],
-  apiOptions: {
-    region: 'us',
-  },
-});
-
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <StoryblokProvider>
-      <LazyMotionProvider>
         <html
           lang="en"
           className={cnb(
@@ -78,7 +67,6 @@ export default function RootLayout({ children }: LayoutProps) {
             </FlexBox>
           </body>
         </html>
-      </LazyMotionProvider>
     </StoryblokProvider>
   );
 }

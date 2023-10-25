@@ -1,5 +1,4 @@
 'use client';
-
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
 import { SbBanner } from './Storyblok/SbBanner';
 import { SbBasicPage } from './Storyblok/SbBasicPage';

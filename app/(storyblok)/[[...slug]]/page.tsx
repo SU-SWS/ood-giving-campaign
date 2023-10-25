@@ -1,13 +1,10 @@
 import { Metadata } from 'next';
-import {
-  getStoryblokApi,
-  ISbStoriesParams,
-  StoryblokClient,
-} from '@storyblok/react/rsc';
+import { ISbStoriesParams } from '@storyblok/js';
 import StoryblokStory from '@storyblok/react/story';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { getPageMetadata } from '@/utilities/getPageMetadata';
 import { notFound } from 'next/navigation';
+import { SBClient } from '@/utilities/storyblokClient';
 
 const activeEnv = process.env.NODE_ENV || 'development';
 
@@ -19,6 +16,8 @@ type ParamsType = {
   slug: string[];
 };
 
+
+
 // Control what happens when a dynamic segment is visited that was not generated with generateStaticParams.
 export const dynamicParams = false;
 
@@ -26,8 +25,7 @@ export const dynamicParams = false;
  * Generate the list of stories to statically render.
  */
 export async function generateStaticParams() {
-  // Client in the App router is tied to the front end initialization.
-  const storyblokApi: StoryblokClient = getStoryblokApi();
+  const { storyblokApi } = SBClient;
   let sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',
     cv: activeEnv === 'development' ? Date.now() : undefined,
@@ -55,13 +53,13 @@ export async function generateStaticParams() {
  * https://github.com/vercel/next.js/discussions/48724
  */
 async function getStoryData(params: { slug: string[] }) {
+  const { storyblokApi } = SBClient;
   let slug = params.slug ? params.slug.join('/') : 'home';
   let sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',
     cv: activeEnv === 'development' ? Date.now() : undefined,
     resolve_relations: resolveRelations,
   };
-  const storyblokApi: StoryblokClient = getStoryblokApi();
 
   try {
     const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
