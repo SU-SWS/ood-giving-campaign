@@ -20,6 +20,7 @@ type SbBlurryPosterProps = {
     publishedDate?: string;
     cta?: SbBlokData[];
     image?: SbImageType;
+    alt?: string;
     bgImage?: SbImageType;
     tabColor?: {
       value?: PaletteAccentHexColorType;
@@ -41,6 +42,7 @@ export const SbBlurryPoster = ({
     publishedDate,
     cta,
     image: { filename, focus } = {},
+    alt,
     bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
     tabColor: { value: tabColorValue } = {},
   },
@@ -67,6 +69,7 @@ export const SbBlurryPoster = ({
       cta={Cta}
       imageSrc={filename}
       imageFocus={focus}
+      alt={alt}
       bgImageSrc={bgImageSrc}
       bgImageFocus={bgImageFocus}
       tabColor={paletteAccentColors[tabColorValue]}

@@ -31,6 +31,7 @@ export const SbStoryMvp = ({
     heroImage,
     mobileImage,
     bgImage,
+    bgImageAlt,
     addBgBlur,
     addDarkOverlay,
     aspectRatio,
@@ -73,6 +74,7 @@ export const SbStoryMvp = ({
             mobileImage={mobileImage}
             mobileAspectRatio={mobileAspectRatio}
             bgImage={bgImage}
+            bgImageAlt={bgImageAlt}
             addBgBlur={addBgBlur}
             addDarkOverlay={addDarkOverlay}
             isLeftImage={isLeftImage}
