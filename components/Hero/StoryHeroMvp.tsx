@@ -7,6 +7,7 @@ import * as styles from './StoryHeroMvp.styles';
 
 export type StoryHeroMvpProps = {
   title: string;
+  superhead?: string;
   customHeading?: SbTypographyProps[];
   headingFont?: 'serif' | 'druk';
   isSmallHeading?: boolean;
@@ -33,6 +34,7 @@ export type StoryHeroMvpProps = {
 
 export const StoryHeroMvp = ({
   title,
+  superhead,
   customHeading,
   headingFont,
   isSmallHeading,
@@ -114,6 +116,7 @@ export const StoryHeroMvp = ({
         type="hero"
         isTwoCol={useTwoColLayout}
         heading={title}
+        superhead={superhead}
         customHeading={customHeading}
         headingLevel="h1"
         headingFont={headingFont === 'druk' ? 'druk' : 'serif'}
