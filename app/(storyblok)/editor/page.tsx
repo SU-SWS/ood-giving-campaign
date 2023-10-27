@@ -1,10 +1,9 @@
-import { Metadata } from 'next';
+import crypto from 'crypto';
 import {
   ISbStoriesParams, getStoryblokApi, storyblokInit, apiPlugin, StoryblokStory, StoryblokClient,
 } from '@storyblok/react/rsc';
 import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
-import { getPageMetadata } from '@/utilities/getPageMetadata';
 import { notFound } from 'next/navigation';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
 
@@ -87,9 +86,35 @@ async function getStoryData({ path }: PageProps['searchParams']) {
 };
 
 /**
+ * Validate the editor token.
+ *
+ * We expect 1 hour as the time of a token being valid.
+ * So basically that an editor will work max 1 hour on one page
+ * before switching to another entry inside the editor or refreshing the browser window.
+ * You can extend that by adjusting 3600 with the value you need.
+ */
+const validateEditor = (searchParams: PageProps['searchParams']) => {
+  let validationString = searchParams['_storyblok_tk[space_id]'] + ':' + process.env.STORYBLOK_ACCESS_TOKEN + ':' + searchParams['_storyblok_tk[timestamp]'];
+  let validationToken = crypto.createHash('sha1').update(validationString).digest('hex');
+  if (searchParams['_storyblok_tk[token]'] == validationToken &&
+      Number(searchParams['_storyblok_tk[timestamp]']) > Math.floor(Date.now()/1000)-3600) {
+      // you're in the edit mode.
+      return true;
+  }
+  // Something didn't work out.
+  return false;
+};
+
+/**
  * Fetch the path data for the page and render it.
  */
 export default async function Page({ searchParams }: PageProps) {
+
+  // Not a valid editor token.
+  if (!validateEditor(searchParams)) {
+    notFound();
+  }
+
   const { data } = await getStoryData(searchParams);
 
   // Failed to fetch from API because story slug was not found.
