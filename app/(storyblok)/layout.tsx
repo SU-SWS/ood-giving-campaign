@@ -3,9 +3,5 @@ type StoryblokLayoutProps = {
 };
 
 export default function StoryblokLayout({ children }: StoryblokLayoutProps) {
-  return (
-    <>
-      {children}
-    </>
-  );
+  return children;
 }

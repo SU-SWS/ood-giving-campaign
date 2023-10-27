@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { ISbStoriesParams } from '@storyblok/js';
-import StoryblokStory from '@storyblok/react/story';
+import { StoryblokComponent, storyblokInit, apiPlugin, StoryblokStory } from '@storyblok/react/rsc';
+import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { getPageMetadata } from '@/utilities/getPageMetadata';
 import { notFound } from 'next/navigation';
@@ -15,8 +16,6 @@ type PathsType = {
 type ParamsType = {
   slug: string[];
 };
-
-
 
 // Control what happens when a dynamic segment is visited that was not generated with generateStaticParams.
 export const dynamicParams = false;
@@ -96,6 +95,18 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
 }
 
 /**
+ * Init on the server.
+ */
+storyblokInit({
+  accessToken: process.env.STORYBLOK_ACCESS_TOKEN, // Preview token because this is in server side.
+  use: [apiPlugin],
+  apiOptions: {
+    region: 'us',
+  },
+  components: Components,
+});
+
+/**
  * Fetch the path data for the page and render it.
  */
 export default async function Page({ params }: { params: ParamsType }) {
@@ -106,9 +117,9 @@ export default async function Page({ params }: { params: ParamsType }) {
     notFound();
   }
 
-  const bridgeOptions = { resolveRelations };
-  let slug = params.slug ? params.slug.join('/') : '';
+  console.log('Story Data', data.story.content);
+
   return (
-    <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} slug={slug} />
+    <StoryblokStory story={data.story} />
   );
 };

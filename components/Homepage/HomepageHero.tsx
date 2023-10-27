@@ -63,6 +63,8 @@ export const HomepageHero = () => {
   });
   const onPurposeY = useTransform(onPurposeSpring, [0, 1], ['0%', '10%']);
 
+  let i = 1;
+
   return (
     <div ref={heroRef} className="relative w-full bg-gc-sky overflow-hidden">
       <div>
@@ -94,7 +96,7 @@ export const HomepageHero = () => {
       >
         <Heading as="h2" size="f8" leading="none" font="druk" color="white">
           {lines.map((text) => (
-            <div key={text.substring(0, 2)}>
+            <div key={`${text}-${++i}`}>
               {text}
             </div>
           ))}

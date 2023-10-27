@@ -26,7 +26,7 @@ import { SbTriangle } from './Storyblok/SbTriangle';
 import { SbVerticalPoster } from './Storyblok/SbVerticalPoster';
 import { SbWysiwyg } from './Storyblok/SbWysiwyg';
 
-const components = {
+export const components = {
   sbBanner: SbBanner,
   sbBasicPage: SbBasicPage,
   sbBlurryPoster: SbBlurryPoster,
@@ -55,7 +55,7 @@ const components = {
 };
 
 storyblokInit({
-  accessToken: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN,
+  accessToken: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN, // Public token because this is in client side code.
   use: [apiPlugin],
   apiOptions: {
     region: 'us',

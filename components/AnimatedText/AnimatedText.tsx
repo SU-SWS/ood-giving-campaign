@@ -50,7 +50,7 @@ return (
     {words.map((word, index) => (
       <m.span
         variants={child}
-        key={index}
+        key={`${word}-${index}`}
       >
         {word}
       </m.span>

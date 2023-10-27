@@ -3,6 +3,7 @@ import { cnb } from 'cnbuilder';
 import { Source_Sans_3, Source_Serif_4 } from 'next/font/google';
 import localFont from 'next/font/local';
 import StoryblokProvider from '@/components/StoryblokProvider';
+import LazyMotionProvider from '@/components/LazyMotionProvider';
 import { FlexBox } from '@/components/FlexBox';
 import { LocalFooter } from '@/components/LocalFooter';
 import { GlobalFooter } from '@/components/GlobalFooter';
@@ -45,7 +46,7 @@ const stanford = localFont({
 
 export default function RootLayout({ children }: LayoutProps) {
   return (
-    <StoryblokProvider>
+      <LazyMotionProvider>
         <html
           lang="en"
           className={cnb(
@@ -67,6 +68,6 @@ export default function RootLayout({ children }: LayoutProps) {
             </FlexBox>
           </body>
         </html>
-    </StoryblokProvider>
+      </LazyMotionProvider>
   );
 }
