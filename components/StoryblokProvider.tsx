@@ -26,6 +26,7 @@ import { SbThemeCard } from './Storyblok/SbThemeCard';
 import { SbTriangle } from './Storyblok/SbTriangle';
 import { SbVerticalPoster } from './Storyblok/SbVerticalPoster';
 import { SbWysiwyg } from './Storyblok/SbWysiwyg';
+import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
 
 export const components = {
   sbBanner: SbBanner,
@@ -64,10 +65,8 @@ storyblokInit({
   },
   components,
   enableFallbackComponent: true,
-  customFallbackComponent: ({blok}) => {
-    return (
-      <div className='rs-p-6 bg-red-600'><h2 className='text-white'>{blok.component} component is missing from the codebase.</h2><p className='text-white'>Source blok UID: {blok._uid}</p></div>
-    );
+  customFallbackComponent: (component) => {
+    return <ComponentNotFound component={component} />;
   },
 });
 

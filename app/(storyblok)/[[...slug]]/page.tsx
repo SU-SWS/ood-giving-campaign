@@ -7,6 +7,7 @@ import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { getPageMetadata } from '@/utilities/getPageMetadata';
 import { notFound } from 'next/navigation';
+import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
 
 const activeEnv = process.env.NODE_ENV || 'development';
 
@@ -38,10 +39,8 @@ storyblokInit({
   },
   components: Components,
   enableFallbackComponent: true,
-  customFallbackComponent: ({blok}) => {
-    return (
-      <div className='rs-p-6 bg-red-600'><h2 className='text-white'>{blok.component} component is missing from the codebase.</h2><p className='text-white'>Source blok UID: {blok._uid}</p></div>
-    );
+  customFallbackComponent: (component) => {
+    return <ComponentNotFound component={component} />;
   },
 });
 

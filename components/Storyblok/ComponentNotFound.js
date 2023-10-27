@@ -1,5 +1,5 @@
-const ComponentNotFound = ({ component }) => (
-  <div>Component {component} is not defined. Add it to components.js</div>
+const ComponentNotFound = ({ component: { blok } }) => (
+  <div className='rs-p-6 bg-red-600'><h2 className='text-white'>{blok.component} component is missing from the codebase.</h2><p className='text-white'>Source blok UID: {blok._uid}</p></div>
 );
 
 export default ComponentNotFound;
