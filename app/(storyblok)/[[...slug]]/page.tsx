@@ -24,6 +24,7 @@ export const dynamicParams = false;
 
 // Storyblok bridge options.
 const bridgeOptions = {
+  resolveRelations,
   preventClicks: true,
   resolveLinks: 'story',
 };
