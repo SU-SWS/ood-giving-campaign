@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import { ISbStoriesParams } from '@storyblok/js';
-import { StoryblokComponent, storyblokInit, apiPlugin, StoryblokStory } from '@storyblok/react/rsc';
+import {
+ getStoryblokApi, storyblokInit, apiPlugin, StoryblokStory,
+} from '@storyblok/react/rsc';
 import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { getPageMetadata } from '@/utilities/getPageMetadata';
 import { notFound } from 'next/navigation';
-import { SBClient } from '@/utilities/storyblokClient';
 
 const activeEnv = process.env.NODE_ENV || 'development';
 
@@ -20,11 +21,35 @@ type ParamsType = {
 // Control what happens when a dynamic segment is visited that was not generated with generateStaticParams.
 export const dynamicParams = false;
 
+// Storyblok bridge options.
+const bridgeOptions = {
+  preventClicks: true,
+  resolveLinks: 'story',
+};
+
+/**
+ * Init on the server.
+ */
+storyblokInit({
+  accessToken: process.env.STORYBLOK_ACCESS_TOKEN, // Preview token because this is in server side.
+  use: [apiPlugin],
+  apiOptions: {
+    region: 'us',
+  },
+  components: Components,
+  enableFallbackComponent: true,
+  customFallbackComponent: ({blok}) => {
+    return (
+      <div className='rs-p-6 bg-red-600'><h2 className='text-white'>{blok.component} component is missing from the codebase.</h2><p className='text-white'>Source blok UID: {blok._uid}</p></div>
+    );
+  },
+});
+
 /**
  * Generate the list of stories to statically render.
  */
 export async function generateStaticParams() {
-  const { storyblokApi } = SBClient;
+  const storyblokApi = getStoryblokApi();
   let sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',
     cv: activeEnv === 'development' ? Date.now() : undefined,
@@ -52,7 +77,7 @@ export async function generateStaticParams() {
  * https://github.com/vercel/next.js/discussions/48724
  */
 async function getStoryData(params: { slug: string[] }) {
-  const { storyblokApi } = SBClient;
+  const storyblokApi = getStoryblokApi();
   let slug = params.slug ? params.slug.join('/') : 'home';
   let sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',
@@ -95,18 +120,6 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
 }
 
 /**
- * Init on the server.
- */
-storyblokInit({
-  accessToken: process.env.STORYBLOK_ACCESS_TOKEN, // Preview token because this is in server side.
-  use: [apiPlugin],
-  apiOptions: {
-    region: 'us',
-  },
-  components: Components,
-});
-
-/**
  * Fetch the path data for the page and render it.
  */
 export default async function Page({ params }: { params: ParamsType }) {
@@ -117,9 +130,7 @@ export default async function Page({ params }: { params: ParamsType }) {
     notFound();
   }
 
-  console.log('Story Data', data.story.content);
-
   return (
-    <StoryblokStory story={data.story} />
+    <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} />
   );
 };

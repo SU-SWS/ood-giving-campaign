@@ -46,6 +46,7 @@ const stanford = localFont({
 
 export default function RootLayout({ children }: LayoutProps) {
   return (
+    <StoryblokProvider>
       <LazyMotionProvider>
         <html
           lang="en"
@@ -69,5 +70,6 @@ export default function RootLayout({ children }: LayoutProps) {
           </body>
         </html>
       </LazyMotionProvider>
+    </StoryblokProvider>
   );
 }
