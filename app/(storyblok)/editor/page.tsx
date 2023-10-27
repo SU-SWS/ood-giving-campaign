@@ -65,8 +65,10 @@ async function getStoryData({ path }: PageProps['searchParams']) {
     resolve_relations: resolveRelations,
   };
 
+  const slug = path.replace(/\/$/, '') || 'home'; // Remove trailing slash or if no slash, use home.
+
   try {
-    const story = await storyblokApi.get(`cdn/stories/${path}`, sbParams);
+    const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
     return story;
   } catch (error) {
     if (typeof error === 'string') {

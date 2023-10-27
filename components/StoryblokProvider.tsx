@@ -27,7 +27,6 @@ import { SbTriangle } from './Storyblok/SbTriangle';
 import { SbVerticalPoster } from './Storyblok/SbVerticalPoster';
 import { SbWysiwyg } from './Storyblok/SbWysiwyg';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
-import { access } from 'fs';
 
 export const components = {
   sbBanner: SbBanner,
@@ -72,9 +71,15 @@ export default function StoryblokProvider({ children, isEditor = false }: Provid
       accessToken = urlParams.get('token') || accessToken;
     }
   }
+  // Temporarily override console.error to squeltch errors from Storyblok.
+  // Storyblok Init wants an api key but I don't want it in the client side code nor do I want to fetch from
+  // Storyblok's api on the front end.
+  const originalConsoleError = console.error;
+  console.error = () => {};
 
+  // Init the Storyblok client so we can use the Storyblok components.
   storyblokInit({
-    accessToken, // Public token because this is in client side code.
+    accessToken,
     use: [apiPlugin],
     apiOptions: {
       region: 'us',
@@ -85,6 +90,9 @@ export default function StoryblokProvider({ children, isEditor = false }: Provid
       return <ComponentNotFound component={component} />;
     },
   });
+
+  // Return the console.error to its original state.
+  console.error = originalConsoleError;
 
   return children;
 };
