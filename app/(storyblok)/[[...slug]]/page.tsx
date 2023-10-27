@@ -25,6 +25,7 @@ export const dynamicParams = false;
 const bridgeOptions = {
   resolveRelations,
   resolveLinks: 'story',
+  preventClicks: true,
 };
 
 /**
