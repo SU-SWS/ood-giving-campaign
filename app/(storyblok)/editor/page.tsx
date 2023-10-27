@@ -10,12 +10,20 @@ import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
 
 const activeEnv = process.env.NODE_ENV || 'development';
 
-type PathsType = {
-  slug: string[];
-};
-
-type ParamsType = {
-  slug: string[];
+type PageProps = {
+  searchParams: {
+    accessToken: string,
+    path: string,
+    _storyblok: string, // ID of space (eg: 1005200)
+    _storyblok_c: string,
+    _storyblok_version: string,
+    _storyblok_lang: string,
+    _storyblok_release: string, // number as a string eg: '0'
+    _storyblok_rl: string, // eg: '1698435696245'
+    '_storyblok_tk[space_id]': string, // eg: '1005200'
+    '_storyblok_tk[timestamp]': string, // eg: '1698435695'
+    '_storyblok_tk[token]': string // eg: '654efea80d36a0b2bas3640ea937b0e0d4cc0234'
+  };
 };
 
 // Control what happens when a dynamic segment is visited that was not generated with generateStaticParams.
@@ -24,6 +32,7 @@ export const dynamicParams = false;
 // Storyblok bridge options.
 const bridgeOptions = {
   resolveRelations,
+  preventClicks: true,
   resolveLinks: 'story',
 };
 
@@ -44,47 +53,21 @@ storyblokInit({
 });
 
 /**
- * Generate the list of stories to statically render.
- */
-export async function generateStaticParams() {
-  const storyblokApi: StoryblokClient = getStoryblokApi();
-  let sbParams: ISbStoriesParams = {
-    version: activeEnv === 'development' ? 'draft' : 'published',
-    cv: activeEnv === 'development' ? Date.now() : undefined,
-  };
-
-  // Use the `cdn/links` endpoint to get a list of all stories without all the extra data.
-  const response = await storyblokApi.getAll('cdn/links', sbParams);
-  const stories = response.filter((link) => link.is_folder === false);
-  let paths: PathsType[] = [];
-
-  stories.forEach((story) => {
-    // If the path is explicitly set, use that, otherwise use the slug.
-    const slug = story.path ?? story.slug;
-    let splitSlug = slug.split('/');
-    paths.push({ slug: splitSlug });
-  });
-
-  return paths;
-};
-
-/**
  * Get the data out of the Storyblok API for the page.
  *
  * Make sure to not export the below functions otherwise there will be a typescript error
  * https://github.com/vercel/next.js/discussions/48724
  */
-async function getStoryData(params: { slug: string[] }) {
+async function getStoryData({ path }: PageProps['searchParams']) {
   const storyblokApi: StoryblokClient = getStoryblokApi();
-  let slug = params.slug ? params.slug.join('/') : 'home';
   let sbParams: ISbStoriesParams = {
-    version: activeEnv === 'development' ? 'draft' : 'published',
+    version: 'draft',
     cv: activeEnv === 'development' ? Date.now() : undefined,
     resolve_relations: resolveRelations,
   };
 
   try {
-    const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
+    const story = await storyblokApi.get(`cdn/stories/${path}`, sbParams);
     return story;
   } catch (error) {
     if (typeof error === 'string') {
@@ -104,24 +87,10 @@ async function getStoryData(params: { slug: string[] }) {
 };
 
 /**
- * Generate the SEO metadata for the page.
- */
-export async function generateMetadata({ params }: { params: ParamsType }): Promise<Metadata> {
-  const { data } = await getStoryData(params);
-  if (data === 404) {
-    return {};
-  }
-  const blok = data.story.content;
-  let slug = params.slug ? params.slug.join('/') : '';
-  const meta = getPageMetadata({ blok, slug });
-  return meta;
-}
-
-/**
  * Fetch the path data for the page and render it.
  */
-export default async function Page({ params }: { params: ParamsType }) {
-  const { data } = await getStoryData(params);
+export default async function Page({ searchParams }: PageProps) {
+  const { data } = await getStoryData(searchParams);
 
   // Failed to fetch from API because story slug was not found.
   if (data === 404) {

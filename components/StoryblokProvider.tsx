@@ -27,6 +27,7 @@ import { SbTriangle } from './Storyblok/SbTriangle';
 import { SbVerticalPoster } from './Storyblok/SbVerticalPoster';
 import { SbWysiwyg } from './Storyblok/SbWysiwyg';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
+import { access } from 'fs';
 
 export const components = {
   sbBanner: SbBanner,
@@ -57,19 +58,33 @@ export const components = {
   sbWysiwyg: SbWysiwyg,
 };
 
-storyblokInit({
-  accessToken: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN, // Public token because this is in client side code.
-  use: [apiPlugin],
-  apiOptions: {
-    region: 'us',
-  },
-  components,
-  enableFallbackComponent: true,
-  customFallbackComponent: (component) => {
-    return <ComponentNotFound component={component} />;
-  },
-});
+interface ProviderProps {
+  children: React.ReactNode;
+  isEditor?: boolean;
+};
 
-export default function StoryblokProvider({ children }: { children: React.ReactNode }) {
+export default function StoryblokProvider({ children, isEditor = false }: ProviderProps) {
+
+  let accessToken = ''; // No access token because this is in client side code.
+  if (isEditor) {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      accessToken = urlParams.get('token') || accessToken;
+    }
+  }
+
+  storyblokInit({
+    accessToken, // Public token because this is in client side code.
+    use: [apiPlugin],
+    apiOptions: {
+      region: 'us',
+    },
+    components,
+    enableFallbackComponent: true,
+    customFallbackComponent: (component) => {
+      return <ComponentNotFound component={component} />;
+    },
+  });
+
   return children;
 };

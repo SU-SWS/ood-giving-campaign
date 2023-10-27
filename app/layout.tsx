@@ -2,7 +2,6 @@ import './globals.css';
 import { cnb } from 'cnbuilder';
 import { Source_Sans_3, Source_Serif_4 } from 'next/font/google';
 import localFont from 'next/font/local';
-import StoryblokProvider from '@/components/StoryblokProvider';
 import LazyMotionProvider from '@/components/LazyMotionProvider';
 import { FlexBox } from '@/components/FlexBox';
 import { LocalFooter } from '@/components/LocalFooter';
@@ -46,30 +45,28 @@ const stanford = localFont({
 
 export default function RootLayout({ children }: LayoutProps) {
   return (
-    <StoryblokProvider>
-      <LazyMotionProvider>
-        <html
-          lang="en"
-          className={cnb(
-            source_sans.variable,
-            source_serif.variable,
-            druk.variable,
-            druk_wide.variable,
-            stanford.variable,
-          )}
-        >
-          {/* Absolutely necessary to have a body tag here, otherwise your components won't get any interactivity */}
-          <body>
-            <FlexBox justifyContent="between" direction="col" className="min-h-screen relative">
-              {children}
-              <footer>
-                <LocalFooter />
-                <GlobalFooter />
-              </footer>
-            </FlexBox>
-          </body>
-        </html>
-      </LazyMotionProvider>
-    </StoryblokProvider>
+    <LazyMotionProvider>
+      <html
+        lang="en"
+        className={cnb(
+          source_sans.variable,
+          source_serif.variable,
+          druk.variable,
+          druk_wide.variable,
+          stanford.variable,
+        )}
+      >
+        {/* Absolutely necessary to have a body tag here, otherwise your components won't get any interactivity */}
+        <body>
+          <FlexBox justifyContent="between" direction="col" className="min-h-screen relative">
+            {children}
+            <footer>
+              <LocalFooter />
+              <GlobalFooter />
+            </footer>
+          </FlexBox>
+        </body>
+      </html>
+    </LazyMotionProvider>
   );
 }
