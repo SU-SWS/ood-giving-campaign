@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
-import { ISbStoriesParams } from '@storyblok/js';
 import {
- getStoryblokApi, storyblokInit, apiPlugin, StoryblokStory,
+  ISbStoriesParams, getStoryblokApi, storyblokInit, apiPlugin, StoryblokStory,
 } from '@storyblok/react/rsc';
 import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
