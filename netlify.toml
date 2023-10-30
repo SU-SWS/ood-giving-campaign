@@ -26,9 +26,10 @@
 [[plugins]]
   package = '/plugins/netlify-plugin-contextual-auth'
   [plugins.inputs]
-    username = ''
+    username = 'Stanford'
     password = '0nPurrpose'
     context = ['branch-deploy', 'deploy-preview', 'production']
+    file = '.next/_headers'
 
 # HEADERS
 # ##############################################################################
