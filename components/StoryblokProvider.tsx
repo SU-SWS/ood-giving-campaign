@@ -10,6 +10,7 @@ import { SbCta } from './Storyblok/SbCta';
 import { SbEmbedMedia } from './Storyblok/SbEmbedMedia';
 import { SbGrid } from './Storyblok/SbGrid';
 import { SbGridAlternating } from './Storyblok/SbGridAlternating';
+import { SbFeatureMasonry } from './Storyblok/SbFeatureMasonry';
 import { SbHomepage } from './Storyblok/SbHomepage';
 import { SbHomepageMvp } from './Storyblok/SbHomepageMvp';
 import { SbInitiativeCard } from './Storyblok/SbInitiativeCard';
@@ -38,6 +39,7 @@ const components = {
   sbEmbedMedia: SbEmbedMedia,
   sbGrid: SbGrid,
   sbGridAlternating: SbGridAlternating,
+  sbFeatureMasonry: SbFeatureMasonry,
   sbHomepage: SbHomepage,
   sbHomepageMvp: SbHomepageMvp,
   sbInitiativeCard: SbInitiativeCard,
