@@ -1,8 +1,10 @@
 import React from 'react';
 import { Container } from '@/components/Container';
 import { Grid } from '@/components/Grid';
+import { FlexBox } from '@/components/FlexBox';
 import { EmbedMedia } from '@/components/EmbedMedia';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
+
 
 type FeatureMasonryProps = React.HTMLAttributes<HTMLDivElement> & {
   videoUrl?: string;
@@ -28,13 +30,13 @@ export const FeatureMasonry = ({
   return (
     <Container {...props} width="full">
       <Grid sm={12} gap="default">
-        <div className="md:col-span-7 bg-fog-light">
+        <FlexBox alignItems="center" className="md:col-span-7 bg-fog-light">
           <EmbedMedia
             mediaUrl={audioUrl}
             className="rs-px-6"
-            aspectRatio="3x1"
+            aspectRatio="4x1"
           />
-        </div>
+        </FlexBox>
         <div className="md:col-span-5 w-full h-full">
           <img
             src={getProcessedImage(imageSrc1, '1200x800', imageFocus1)}

@@ -77,6 +77,7 @@ export const mediaAspectRatios = {
   '1x1': 'aspect-w-1 aspect-h-1',
   '3x1': 'aspect-w-3 aspect-h-1',
   '3x2': 'aspect-w-3 aspect-h-2',
+  '4x1': 'aspect-w-4 aspect-h-1',
   '4x3': 'aspect-w-4 aspect-h-3',
   '4x5': 'aspect-w-4 aspect-h-5',
   '5x2': 'aspect-w-5 aspect-h-2',
