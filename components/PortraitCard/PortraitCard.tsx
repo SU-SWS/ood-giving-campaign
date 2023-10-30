@@ -1,5 +1,5 @@
 import { cnb } from 'cnbuilder';
-import {AnimateInView, type AnimationType } from '../Animate';
+import { AnimateInView, type AnimationType } from '../Animate';
 import { CtaButton } from '../Cta/CtaButton';
 import {
   Heading, type HeadingType, Paragraph, Text,
