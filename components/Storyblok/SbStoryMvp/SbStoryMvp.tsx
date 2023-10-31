@@ -2,6 +2,7 @@ import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import { CreateBloks } from '@/components/CreateBloks';
 import { Container } from '@/components/Container';
 import { Masthead } from '@/components/Masthead';
+import { SocialSharing } from '@/components/SocialSharing';
 import { StoryHeroMvp, type StoryHeroMvpProps } from '@/components/Hero';
 import { SbAboveContent } from './SbAboveContent';
 import { getNumBloks } from '@/utilities/getNumBloks';
@@ -85,6 +86,7 @@ export const SbStoryMvp = ({
             tabColor={tabColor}
             topics={topics}
           />
+          <SocialSharing />
           {showAboveContent && (
             <SbAboveContent aboveSidebar={aboveSidebar} intro={intro} sidebar={sidebar} />
           )}

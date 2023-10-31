@@ -72,7 +72,7 @@ export const iconBaseStyle: IconBaseStyleType = {
   email: 'w-[1.2em]',
   external: 'w-08em',
   left: 'w-08em',
-  link: '-mt-01em',
+  link: 'w-1em -mt-01em',
   more: 'w-08em',
   plus: 'w-08em',
   right: 'w-08em',
