@@ -23,6 +23,14 @@
     secretId = 'VAULT_SECRET_ID'
     roleId = 'VAULT_ROLE_ID'
 
+[[plugins]]
+  package = '/plugins/netlify-plugin-contextual-auth'
+  [plugins.inputs]
+    username = 'Stanford'
+    password = '0nPurrpose'
+    context = ['branch-deploy', 'deploy-preview', 'production']
+    file = '.next/_headers'
+
 # HEADERS
 # ##############################################################################
 [[headers]]
