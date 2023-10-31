@@ -1,6 +1,6 @@
 'use client';
 import { PopupButton } from '@typeform/embed-react';
-import { PopupOptions } from '@typeform/embed/types';
+import { type PopupOptions } from '@typeform/embed/types';
 import { dcnb, type ClassValue } from 'cnbuilder';
 
 type PopUpProps = PopupOptions & {
