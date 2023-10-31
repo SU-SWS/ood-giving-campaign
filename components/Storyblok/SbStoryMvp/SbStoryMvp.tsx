@@ -10,6 +10,7 @@ import { getNumBloks } from '@/utilities/getNumBloks';
 type SbStoryMvpProps = {
   blok: {
     _uid: string;
+    hideTopSocial?: boolean;
     aboveSidebar?: SbBlokData[];
     intro?: SbBlokData[];
     sidebar?: SbBlokData[];
@@ -45,6 +46,7 @@ export const SbStoryMvp = ({
     tabColor,
     topics,
     // page regions
+    hideTopSocial,
     aboveSidebar,
     intro,
     sidebar,
@@ -86,11 +88,12 @@ export const SbStoryMvp = ({
             tabColor={tabColor}
             topics={topics}
           />
-          <SocialSharing />
+          {!hideTopSocial && <SocialSharing slug={slug} isTop />}
           {showAboveContent && (
             <SbAboveContent aboveSidebar={aboveSidebar} intro={intro} sidebar={sidebar} />
           )}
           <CreateBloks blokSection={content} />
+          <SocialSharing slug={slug} />
         </Container>
         <CreateBloks blokSection={ankle} />
       </main>

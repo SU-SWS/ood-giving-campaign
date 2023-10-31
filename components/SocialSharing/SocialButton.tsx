@@ -8,7 +8,7 @@ export const SocialButton = ({ children, className, ...props }: SocialSharingPro
   return (
     <button
       type="button"
-      className={cnb('rounded-full flex items-center justify-center w-44 h-44 border-2 border-black', className)}
+      className={cnb('rounded-full flex items-center justify-center w-36 h-36 md:w-44 md:h-44 border-2 border-black', className)}
       {...props}
     >
       {children}
