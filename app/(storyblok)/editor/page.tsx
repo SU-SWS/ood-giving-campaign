@@ -58,7 +58,6 @@ storyblokInit({
  * https://github.com/vercel/next.js/discussions/48724
  */
 async function getStoryData({ path }: PageProps['searchParams']) {
-  console.log('Access token', process.env.STORYBLOK_ACCESS_TOKEN);
   const storyblokApi: StoryblokClient = getStoryblokApi();
   let sbParams: ISbStoriesParams = {
     version: 'draft',
@@ -97,18 +96,13 @@ async function getStoryData({ path }: PageProps['searchParams']) {
  * You can extend that by adjusting 3600 with the value you need.
  */
 const validateEditor = (searchParams: PageProps['searchParams']) => {
-  console.log('Search Params', searchParams);
   const validationString = searchParams['_storyblok_tk[space_id]'] + ':' + process.env.STORYBLOK_ACCESS_TOKEN + ':' + searchParams['_storyblok_tk[timestamp]'];
-  console.log('Validation String', validationString);
   const validationToken = crypto.createHash('sha1').update(validationString).digest('hex');
-  console.log('Validation Token', validationToken);
   if (searchParams['_storyblok_tk[token]'] == validationToken &&
       Number(searchParams['_storyblok_tk[timestamp]']) > Math.floor(Date.now()/1000)-3600) {
       // you're in the edit mode.
-      console.log('Validated token and request');
       return true;
   }
-  console.log('Did not validate token and request');
   // Something didn't work out.
   return false;
 };
@@ -124,7 +118,6 @@ export default async function Page({ searchParams }: PageProps) {
   }
 
   const { data } = await getStoryData(searchParams);
-  console.log('Got data', data);
 
   // Failed to fetch from API because story slug was not found.
   if (data === 404) {
