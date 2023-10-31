@@ -1,8 +1,11 @@
 import { Container } from '../Container';
 import { BlurryPoster } from '../BlurryPoster';
+import { CreateBloks } from '../CreateBloks';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
+import { getNumBloks } from '@/utilities/getNumBloks';
 import { type SbImageType, type SbTypographyProps } from '../Storyblok/Storyblok.types';
+import { type SbBlokData } from '@storyblok/react/rsc';
 import * as styles from './StoryHeroMvp.styles';
 
 export type StoryHeroMvpProps = {
@@ -31,6 +34,7 @@ export type StoryHeroMvpProps = {
     value?: PaletteAccentHexColorType;
   }
   topics?: string[];
+  heroTexturedBar?: SbBlokData[];
 };
 
 export const StoryHeroMvp = ({
@@ -55,6 +59,7 @@ export const StoryHeroMvp = ({
   aspectRatio = isVerticalHero ? '5x8' : '2x1',
   mobileAspectRatio = '1x1',
   tabColor: { value: tabColorValue } = {},
+  heroTexturedBar,
 }: StoryHeroMvpProps) => {
   const useTwoColLayout = isVerticalHero;
   const date = publishedDate && new Date(publishedDate);
@@ -136,6 +141,9 @@ export const StoryHeroMvp = ({
         imageOnLeft={isLeftImage}
         tabColor={paletteAccentColors[tabColorValue]}
       />
+      {!!getNumBloks(heroTexturedBar) && (
+        <CreateBloks blokSection={heroTexturedBar} />
+      )}
     </Container>
   );
 };
