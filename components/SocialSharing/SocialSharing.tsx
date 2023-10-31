@@ -15,11 +15,17 @@ import { config } from '@/utilities/config';
 import * as styles from './SocialSharing.styles';
 
 type SocialSharingProps = React.HTMLAttributes<HTMLDivElement> & {
-  slug?: string;
+  slug: string;
+  title?: string;
   isTop?: boolean; // The widget at the top of the story has different styles
 };
 
-export const SocialSharing = ({ slug, isTop, className }: SocialSharingProps) => {
+export const SocialSharing = ({
+  slug,
+  title,
+  isTop,
+  className,
+}: SocialSharingProps) => {
   const [copiedText, copy] = useCopyToClipboard();
   const [buttonState, setButtonState] = useState('default');
 
@@ -33,31 +39,48 @@ export const SocialSharing = ({ slug, isTop, className }: SocialSharingProps) =>
     }, 5000);
   };
 
+  const safeUrl = encodeURIComponent(`${config.siteUrlProd}/${slug}`);
+  const facebookBaseURL = 'https://www.facebook.com/sharer/sharer.php?u=';
+  const twitterBaseURL = 'https://twitter.com/intent/tweet?url=';
+  const linkedinBaseURL = 'https://www.linkedin.com/shareArticle?mini=true&url=';
+
   return (
-    <Container pt={8}>
+    <Container pt={8} className={className}>
       <WidthBox width="6">
         <FlexBox alignItems="center" justifyContent="between" className={styles.flexbox(isTop)}>
-          <Heading as="h2" font="sans" size="base" weight="semibold" leading="none" className="mb-0">
+          <Heading as="h2" font="sans" size="base" weight="semibold" leading="none" className={styles.heading}>
             Share this story
           </Heading>
-          <FlexBox className="gap-6 md:gap-12">
+          <FlexBox className={styles.buttonWrapper}>
             <SocialButton
               onClick={handleCopyClick}
               aria-label={buttonState === 'copied' ? 'URL has been copied' : 'Copy story URL'}
             >
-              {buttonState === 'copied' ? <HeroIcon icon="copy" /> : <LinkIcon />}
+              {buttonState === 'copied' ? <HeroIcon icon="copy" /> : <LinkIcon aria-hidden width="20" />}
             </SocialButton>
-            <SocialButton aria-label="Share this story via email">
-              <EmailIcon />
+            <SocialButton
+              aria-label="Share via email"
+              href={`mailto:?subject=${title ? title : 'Check out this story'}&body=${safeUrl}`}
+            >
+              <EmailIcon aria-hidden width="18" />
             </SocialButton>
-            <SocialButton aria-label="Share this story on Facebook">
-              <FacebookF />
+            <SocialButton
+              aria-label="Share on Facebook"
+              href={`${facebookBaseURL}${safeUrl}`}
+            >
+              <FacebookF aria-hidden width="12" />
             </SocialButton>
-            <SocialButton aria-label="Share this story on X">
-              <TwitterX />
+            <SocialButton
+              aria-label="Share on X (formerly Twitter)"
+              href={`${twitterBaseURL}${safeUrl}${title ? `&text=${title}` : ''}`}
+            >
+              <TwitterX aria-hidden width="18" />
             </SocialButton>
-            <SocialButton aria-label="Share this story on LinkedIn">
-              <LinkedinIn />
+            <SocialButton
+              aria-label="Share on LinkedIn"
+              href={`${linkedinBaseURL}${safeUrl}`}
+            >
+              <LinkedinIn aria-hidden width="17" />
             </SocialButton>
           </FlexBox>
         </FlexBox>

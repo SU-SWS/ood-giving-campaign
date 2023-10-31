@@ -1,17 +1,35 @@
 import { cnb } from 'cnbuilder';
+import * as styles from './SocialSharing.styles';
 
-type SocialSharingProps = React.HTMLAttributes<HTMLButtonElement> & {
+type SocialSharingProps = React.HTMLAttributes<HTMLButtonElement> & Omit<React.HTMLAttributes<HTMLAnchorElement>, 'href'> & {
+  href?: string;
   children?: React.ReactNode;
 };
 
-export const SocialButton = ({ children, className, ...props }: SocialSharingProps) => {
+export const SocialButton = ({
+  href,
+  children,
+  className,
+  ...props
+}: SocialSharingProps) => {
   return (
-    <button
-      type="button"
-      className={cnb('rounded-full flex items-center justify-center w-36 h-36 md:w-44 md:h-44 border-2 border-black', className)}
-      {...props}
-    >
-      {children}
-    </button>
+    <>
+      {href ? (
+        <a
+          href={href}
+          className={cnb(styles.button, className)}
+          {...props}>
+          {children }
+        </a>
+      ) : (
+        <button
+          type="button"
+          className={cnb(styles.button, className)}
+          {...props}
+        >
+          {children}
+        </button>
+      )}
+    </>
   );
 };

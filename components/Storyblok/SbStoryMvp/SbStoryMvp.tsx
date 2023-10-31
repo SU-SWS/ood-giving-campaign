@@ -88,12 +88,12 @@ export const SbStoryMvp = ({
             tabColor={tabColor}
             topics={topics}
           />
-          {!hideTopSocial && <SocialSharing slug={slug} isTop />}
+          {!hideTopSocial && !!slug && <SocialSharing title={title} slug={slug} isTop />}
           {showAboveContent && (
             <SbAboveContent aboveSidebar={aboveSidebar} intro={intro} sidebar={sidebar} />
           )}
           <CreateBloks blokSection={content} />
-          <SocialSharing slug={slug} />
+          {!!slug && <SocialSharing title={title} slug={slug} />}
         </Container>
         <CreateBloks blokSection={ankle} />
       </main>
