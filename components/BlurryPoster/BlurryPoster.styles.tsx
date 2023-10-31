@@ -46,7 +46,7 @@ export const headingWrapper = (
   imageOnLeft?: boolean,
   headingFont?: 'druk' | 'serif',
   isTwoCol?: boolean,
-) => cnb('rs-mb-8', {
+) => cnb('rs-mb-7', {
   'lg:mr-0 lg:w-[120%] lg:-ml-[20%] 3xl:w-auto 3xl:-ml-200': imageOnLeft && headingFont === 'druk' && isTwoCol,
 });
 export const headingInnerWrapper = (
