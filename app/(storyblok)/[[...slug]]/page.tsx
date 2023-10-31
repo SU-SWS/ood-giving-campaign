@@ -76,8 +76,8 @@ export async function generateStaticParams() {
  */
 async function getStoryData(params: { slug: string[] }) {
   const storyblokApi: StoryblokClient = getStoryblokApi();
-  let slug = params.slug ? params.slug.join('/') : 'home';
-  let sbParams: ISbStoriesParams = {
+  const slug = params.slug ? params.slug.join('/') : 'home';
+  const sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',
     cv: activeEnv === 'development' ? Date.now() : undefined,
     resolve_relations: resolveRelations,
@@ -112,7 +112,7 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
     return {};
   }
   const blok = data.story.content;
-  let slug = params.slug ? params.slug.join('/') : '';
+  const slug = params.slug ? params.slug.join('/') : '';
   const meta = getPageMetadata({ blok, slug });
   return meta;
 }
@@ -122,7 +122,8 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
  */
 export default async function Page({ params }: { params: ParamsType }) {
   const { data } = await getStoryData(params);
-
+  const slug = params.slug ? params.slug.join('/') : '';
+  
   // Failed to fetch from API because story slug was not found.
   if (data === 404) {
     notFound();
