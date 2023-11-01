@@ -26,3 +26,5 @@ export const image = (renderTwoImages: boolean) => cnb(
   renderTwoImages ? 'hidden lg:block' : '',
 );
 export const mobileImage = 'w-full h-full lg:hidden';
+export const captionWrapper = 'mt-08em';
+export const caption = 'max-w-prose-wide text-black-70';
