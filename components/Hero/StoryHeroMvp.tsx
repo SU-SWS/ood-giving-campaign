@@ -150,7 +150,6 @@ export const StoryHeroMvp = ({
         <Container bgColor="white" className="mt-06em">
           <Text
             id="story-hero-caption"
-            color="black-80"
             variant="caption"
             leading="display"
             className="max-w-prose-wide text-black-70"
