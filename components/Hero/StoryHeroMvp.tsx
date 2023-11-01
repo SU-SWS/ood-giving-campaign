@@ -147,12 +147,13 @@ export const StoryHeroMvp = ({
         <CreateBloks blokSection={heroTexturedBar} />
       )}
       {caption && (
-        <Container bgColor="white" className="mt-06em">
+        <Container bgColor="white" className={styles.captionWrapper}>
           <Text
+            // id is for aria-describedby in the images since we can't use figcaption here
             id="story-hero-caption"
             variant="caption"
             leading="display"
-            className="max-w-prose-wide text-black-70"
+            className={styles.caption}
           >
             {caption}
           </Text>
