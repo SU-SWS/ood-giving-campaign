@@ -1,8 +1,12 @@
-import { Container } from '../Container';
-import { BlurryPoster } from '../BlurryPoster';
+import { Container } from '@/components/Container';
+import { BlurryPoster } from '@/components/BlurryPoster';
+import { CreateBloks } from '@/components/CreateBloks';
+import { Text } from '@/components/Typography';
+import { type SbImageType, type SbTypographyProps } from '@/components/Storyblok/Storyblok.types';
+import { type SbBlokData } from '@storyblok/react/rsc';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { type SbImageType, type SbTypographyProps } from '../Storyblok/Storyblok.types';
+import { getNumBloks } from '@/utilities/getNumBloks';
 import * as styles from './StoryHeroMvp.styles';
 
 export type StoryHeroMvpProps = {
@@ -31,6 +35,7 @@ export type StoryHeroMvpProps = {
     value?: PaletteAccentHexColorType;
   }
   topics?: string[];
+  heroTexturedBar?: SbBlokData[];
 };
 
 export const StoryHeroMvp = ({
@@ -49,12 +54,14 @@ export const StoryHeroMvp = ({
   addBgBlur,
   addDarkOverlay,
   alt,
+  caption,
   isVerticalHero = false,
   isLeftImage = false,
   isLightHero = false,
   aspectRatio = isVerticalHero ? '5x8' : '2x1',
   mobileAspectRatio = '1x1',
   tabColor: { value: tabColorValue } = {},
+  heroTexturedBar,
 }: StoryHeroMvpProps) => {
   const useTwoColLayout = isVerticalHero;
   const date = publishedDate && new Date(publishedDate);
@@ -109,7 +116,6 @@ export const StoryHeroMvp = ({
     <Container
       as="header"
       width="full"
-      bgColor={isLightHero ? 'white' : 'black'}
       className={styles.root}
     >
       <BlurryPoster
@@ -135,7 +141,24 @@ export const StoryHeroMvp = ({
         addDarkOverlay={addDarkOverlay}
         imageOnLeft={isLeftImage}
         tabColor={paletteAccentColors[tabColorValue]}
+        caption={caption}
       />
+      {!!getNumBloks(heroTexturedBar) && (
+        <CreateBloks blokSection={heroTexturedBar} />
+      )}
+      {caption && (
+        <Container bgColor="white" className={styles.captionWrapper}>
+          <Text
+            // id is for aria-describedby in the images since we can't use figcaption here
+            id="story-hero-caption"
+            variant="caption"
+            leading="display"
+            className={styles.caption}
+          >
+            {caption}
+          </Text>
+        </Container>
+      )}
     </Container>
   );
 };

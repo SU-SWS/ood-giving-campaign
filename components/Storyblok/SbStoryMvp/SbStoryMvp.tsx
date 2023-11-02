@@ -45,6 +45,7 @@ export const SbStoryMvp = ({
     isLightHero,
     tabColor,
     topics,
+    heroTexturedBar,
     // page regions
     hideTopSocial,
     aboveSidebar,
@@ -87,6 +88,7 @@ export const SbStoryMvp = ({
             isVerticalHero={isVerticalHero}
             tabColor={tabColor}
             topics={topics}
+            heroTexturedBar={heroTexturedBar}
           />
           {!hideTopSocial && !!slug && <SocialSharing title={title} slug={slug} isTop />}
           {showAboveContent && (
