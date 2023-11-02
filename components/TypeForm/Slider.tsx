@@ -3,7 +3,7 @@ import { SliderButton } from '@typeform/embed-react';
 import { type SliderOptions } from '@typeform/embed/types';
 import { dcnb, type ClassValue } from 'cnbuilder';
 
-type SliderButtonProps = SliderOptions & {
+export type SliderProps = SliderOptions & {
   id: string;
   children: React.ReactNode;
   className?: ClassValue;
@@ -11,7 +11,7 @@ type SliderButtonProps = SliderOptions & {
 
 const Slider = ({
   id, children, className, ...rest
-}:SliderButtonProps) => {
+}:SliderProps) => {
   return (
     <SliderButton id={id} className={dcnb(className)} {...rest}>
       {children}
