@@ -74,7 +74,7 @@ export const ChangemakerCard = ({
             <FlexBox direction="col" alignItems="center" className="absolute bottom-50 right-36 text-white">
               <HeroIcon
                 noBaseStyle
-                icon='cursor'
+                icon='plus'
                 className="w-65 h-65 border-2 border-white rounded-full p-16"
               />
               <Text as="span" font="serif" color="white" variant="caption">
