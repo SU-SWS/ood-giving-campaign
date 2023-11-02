@@ -2,6 +2,7 @@ import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import { CreateBloks } from '../CreateBloks';
 import { Heading } from '../Typography';
 import { HomepageSplitHero } from '../Homepage/HomepageSplitHero';
+import { TogetherSection } from '../Homepage/TogetherSection';
 import { Masthead } from '../Masthead';
 import { Changemaker } from '../Homepage/Changemaker';
 
@@ -32,6 +33,7 @@ export const SbHomepageMvp = ({
         <HomepageSplitHero />
         <CreateBloks blokSection={content} />
         <Changemaker />
+        <TogetherSection />
         <CreateBloks blokSection={ankle} />
       </div>
     </main>
