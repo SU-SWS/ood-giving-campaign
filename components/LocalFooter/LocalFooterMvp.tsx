@@ -26,7 +26,7 @@ export const LocalFooterMvp = () => (
         <li><CtaLink color="white" href={links.ood.leadership} size="large">Leadership</CtaLink></li>
         <li><CtaLink color="white" href={links.ood.waysToGive} size="large">How to make a gift</CtaLink></li>
       </FlexBox>
-      <Grid lg={2} pt={8} gap="default" className="w-full xl:gap-x-[7vw] 3xl:gap-x-300">
+      <Grid lg={2} pt={8} gap="default" className="w-full lg:gap-x-[7vw] 3xl:gap-x-300">
         <div>
           <Heading as="h3" size={3}>
             Get the latest in your inbox
