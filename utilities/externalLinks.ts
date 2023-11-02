@@ -6,6 +6,8 @@
 export const ood = {
   give: 'https://give.stanford.edu/',
   giving: 'https://giving.stanford.edu/',
+  newsletterSignUp: 'https://TODO',
+  waysToGive: 'https://giving.stanford.edu/how-to-make-a-gift/',
 };
 
 export const schools = {

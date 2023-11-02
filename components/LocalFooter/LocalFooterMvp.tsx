@@ -5,6 +5,7 @@ import { LogoLockup } from '../Logo';
 import { CtaLink } from '../Cta';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { FlexBox } from '../FlexBox';
+import * as links from '@/utilities/externalLinks';
 
 export const LocalFooterMvp = () => (
   <Container as="nav" bgColor="black" py={10} aria-label="Local footer menu">
@@ -24,7 +25,14 @@ export const LocalFooterMvp = () => (
           <Paragraph variant="big">
             Sign up to receive Stanford’s storytelling newsletter.
           </Paragraph>
-          <CtaLink href="/" variant="solid">Sign up</CtaLink>
+          <CtaLink
+            // This might become a button to activate a Typeform widget in-situ
+            href={links.ood.newsletterSignUp}
+            variant="solid"
+            icon="arrow-right"
+          >
+            Sign up
+          </CtaLink>
         </div>
         <div>
           <Heading as="h3" size={3}>
@@ -33,7 +41,14 @@ export const LocalFooterMvp = () => (
           <Paragraph variant="big">
             With your support, this vision will become reality.
           </Paragraph>
-          <CtaLink href="/" variant="ghost-swipe" color="white">Find ways to give</CtaLink>
+          <CtaLink
+            href={links.ood.waysToGive}
+            variant="ghost-swipe"
+            color="white"
+            icon="arrow-right"
+          >
+            Find ways to give
+          </CtaLink>
         </div>
       </Grid>
     </div>
