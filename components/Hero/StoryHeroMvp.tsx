@@ -1,11 +1,12 @@
-import { Container } from '../Container';
-import { BlurryPoster } from '../BlurryPoster';
-import { CreateBloks } from '../CreateBloks';
+import { Container } from '@/components/Container';
+import { BlurryPoster } from '@/components/BlurryPoster';
+import { CreateBloks } from '@/components/CreateBloks';
+import { Text } from '@/components/Typography';
+import { type SbImageType, type SbTypographyProps } from '@/components/Storyblok/Storyblok.types';
+import { type SbBlokData } from '@storyblok/react/rsc';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { getNumBloks } from '@/utilities/getNumBloks';
-import { type SbImageType, type SbTypographyProps } from '../Storyblok/Storyblok.types';
-import { type SbBlokData } from '@storyblok/react/rsc';
 import * as styles from './StoryHeroMvp.styles';
 
 export type StoryHeroMvpProps = {
@@ -53,6 +54,7 @@ export const StoryHeroMvp = ({
   addBgBlur,
   addDarkOverlay,
   alt,
+  caption,
   isVerticalHero = false,
   isLeftImage = false,
   isLightHero = false,
@@ -114,7 +116,6 @@ export const StoryHeroMvp = ({
     <Container
       as="header"
       width="full"
-      bgColor={isLightHero ? 'white' : 'black'}
       className={styles.root}
     >
       <BlurryPoster
@@ -140,9 +141,23 @@ export const StoryHeroMvp = ({
         addDarkOverlay={addDarkOverlay}
         imageOnLeft={isLeftImage}
         tabColor={paletteAccentColors[tabColorValue]}
+        caption={caption}
       />
       {!!getNumBloks(heroTexturedBar) && (
         <CreateBloks blokSection={heroTexturedBar} />
+      )}
+      {caption && (
+        <Container bgColor="white" className={styles.captionWrapper}>
+          <Text
+            // id is for aria-describedby in the images since we can't use figcaption here
+            id="story-hero-caption"
+            variant="caption"
+            leading="display"
+            className={styles.caption}
+          >
+            {caption}
+          </Text>
+        </Container>
       )}
     </Container>
   );

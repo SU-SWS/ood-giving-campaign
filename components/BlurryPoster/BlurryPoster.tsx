@@ -43,6 +43,10 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   alt?: string;
   tabColor?: AccentColorType;
   cta?: React.ReactNode;
+  /**
+   * This isn't displayed in the component, aria-describedby will be added to the images if a caption exists
+   */
+  caption?: string;
 };
 
 export const BlurryPoster = ({
@@ -69,6 +73,7 @@ export const BlurryPoster = ({
   alt,
   tabColor,
   cta,
+  caption,
   className,
   ...props
 }: BlurryPosterProps) => {
@@ -86,11 +91,13 @@ export const BlurryPoster = ({
       <img
         src={getProcessedImage(bgImageSrc, '1200x1200', bgImageFocus)}
         alt={bgImageAlt || ''}
+        aria-describedby={caption ? 'story-hero-caption' : undefined}
         className={styles.bgImageMobile}
       />
       <img
         src={getProcessedImage(bgImageSrc, '2000x1200', bgImageFocus)}
         alt={bgImageAlt || ''}
+        aria-describedby={caption ? 'story-hero-caption' : undefined}
         className={styles.bgImage}
       />
       <div className={styles.blurWrapper(addBgBlur, addDarkOverlay, type, bgColor)}>
@@ -178,11 +185,13 @@ export const BlurryPoster = ({
                 <img
                   src={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '900x1200', imageFocus)}
                   alt={alt || ''}
+                  aria-describedby={caption ? 'story-hero-caption' : undefined}
                   className={styles.image}
                 />
                 <img
                   src={getProcessedImage(imageSrc, type === 'hero' ? '1000x1000' : '1000x500', imageFocus)}
                   alt={alt || ''}
+                  aria-describedby={caption ? 'story-hero-caption' : undefined}
                   className={styles.imageMobile}
                 />
               </AnimateInView>
