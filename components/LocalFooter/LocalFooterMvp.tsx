@@ -13,11 +13,12 @@ export const LocalFooterMvp = () => (
     bgColor="black"
     py={10}
     aria-label="Local footer menu"
-    className="relative overflow-hidden bg-no-repeat bg-bottom bg-contain"
+    className="relative overflow-hidden bg-no-repeat bg-bottom bg-cover md:bg-contain"
     style={{ backgroundImage: `url('${getProcessedImage('https://a-us.storyblok.com/f/1005200/3200x2134/f8433eac94/fdf67c168f2e36a6bc30c085eb392c13.jpg', '2000x0')}')` }}
   >
-    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black-true/60" />
-    <div className="relative z-10 w-full">
+    {/* <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black-true/60" /> */}
+    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black-true via-black-true/80 to-black-true/40" />
+    <FlexBox direction="col" className="items-start lg:items-center relative z-10 w-full">
       <LogoLockup text="Impact Stories" color="white" isLink className="text-[1.6em]" />
       <FlexBox wrap="wrap" className="list-unstyled divide-x divide-white children:inline-block children:mb-0 children:px-16 md:children:px-30 xl:children:px-48 children:leading-display first:children:pl-0 last:children:pr-0 lg:mx-auto w-fit rs-mt-2 gap-y-10">
         <li><CtaLink color="white" href={links.ood.giving} size="large">Giving to Stanford</CtaLink></li>
@@ -59,6 +60,6 @@ export const LocalFooterMvp = () => (
           </CtaLink>
         </div>
       </Grid>
-    </div>
+    </FlexBox>
   </Container>
 );
