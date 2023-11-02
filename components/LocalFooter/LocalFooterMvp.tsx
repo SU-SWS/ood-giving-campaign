@@ -19,14 +19,14 @@ export const LocalFooterMvp = () => (
     {/* <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black-true/60" /> */}
     <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black-true via-black-true/80 to-black-true/40" />
     <FlexBox direction="col" className="items-start lg:items-center relative z-10 w-full">
-      <LogoLockup text="Impact Stories" color="white" isLink className="text-[1.6em]" />
+      <LogoLockup text="Impact Stories" color="white" isLink className="scale-125 origin-left sm:scale-100 text-[1.6em]" />
       <FlexBox wrap="wrap" className="list-unstyled divide-x divide-white children:inline-block children:mb-0 children:px-16 md:children:px-30 xl:children:px-48 children:leading-display first:children:pl-0 last:children:pr-0 lg:mx-auto w-fit rs-mt-2 gap-y-10">
         <li><CtaLink color="white" href={links.ood.giving} size="large">Giving to Stanford</CtaLink></li>
         <li><CtaLink color="white" href={links.ood.contact} size="large">Contact us</CtaLink></li>
         <li><CtaLink color="white" href={links.ood.leadership} size="large">Leadership</CtaLink></li>
         <li><CtaLink color="white" href={links.ood.waysToGive} size="large">How to make a gift</CtaLink></li>
       </FlexBox>
-      <Grid lg={2} gap="default" pt={8}>
+      <Grid lg={2} pt={8} gap="default" className="w-full xl:gap-x-[7vw] 3xl:gap-x-300">
         <div>
           <Heading as="h3" size={3}>
             Get the latest in your inbox
