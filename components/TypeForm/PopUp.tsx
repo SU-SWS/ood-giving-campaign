@@ -1,7 +1,7 @@
 'use client';
 import { PopupButton } from '@typeform/embed-react';
 import { type PopupOptions } from '@typeform/embed/types';
-import { dcnb, type ClassValue } from 'cnbuilder';
+import { cnb, type ClassValue } from 'cnbuilder';
 
 export type PopUpProps = PopupOptions & {
   id: string;
@@ -13,7 +13,7 @@ const PopUp = ({
   id, children, className, ...rest
 }:PopUpProps) => {
   return (
-    <PopupButton noHeading id={id} className={dcnb(className)} {...rest}>
+    <PopupButton noHeading keepSession id={id} className={cnb(className)} {...rest}>
       {children}
     </PopupButton>
   );

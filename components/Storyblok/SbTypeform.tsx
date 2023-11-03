@@ -51,7 +51,6 @@ export const SbTypeform = ({
         <Slider
           {...storyblokEditable(blok)}
           id={id}
-          className="rs-6"
           autoClose={1000}
           disableScroll={disableScroll}
           enableSandbox={enableSandbox}

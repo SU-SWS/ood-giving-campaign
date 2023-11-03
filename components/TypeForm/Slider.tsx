@@ -1,7 +1,7 @@
 'use client';
 import { SliderButton } from '@typeform/embed-react';
 import { type SliderOptions } from '@typeform/embed/types';
-import { dcnb, type ClassValue } from 'cnbuilder';
+import { cnb, type ClassValue } from 'cnbuilder';
 
 export type SliderProps = SliderOptions & {
   id: string;
@@ -13,7 +13,7 @@ const Slider = ({
   id, children, className, ...rest
 }:SliderProps) => {
   return (
-    <SliderButton id={id} className={dcnb(className)} {...rest}>
+    <SliderButton noHeading keepSession id={id} className={cnb(className)} {...rest}>
       {children}
     </SliderButton>
   );

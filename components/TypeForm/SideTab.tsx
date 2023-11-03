@@ -20,7 +20,7 @@ const SideTab = ({
     return null;
   }
 
-  return <Sidetab id={id} {...rest} />;
+  return <Sidetab noHeading keepSession id={id} {...rest} />;
 };
 
 export { SideTab };

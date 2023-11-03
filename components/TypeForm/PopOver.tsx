@@ -17,7 +17,7 @@ const PopOver = ({id, ...rest}:PopOverProps) => {
     return null;
   }
 
-  return <Popover noHeading keepSession autoClose={30} id={id} {...rest} />;
+  return <Popover noHeading keepSession id={id} {...rest} />;
 };
 
 export { PopOver };
