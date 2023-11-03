@@ -2,6 +2,9 @@ import { storyblokEditable } from '@storyblok/react/rsc';
 import {
  PopOver, PopUp, SideTab, Slider, Widget,
 } from '@/components/TypeForm';
+import { Heading } from '@/components/Typography';
+import * as CTAStyles from '@/components/Cta/Cta.styles';
+import { dcnb } from 'cnbuilder';
 
 export type SbTypeformProps = {
   blok: {
@@ -12,6 +15,7 @@ export type SbTypeformProps = {
     embedType: 'slider' | 'popup' | 'popover' | 'sidetab' | 'widget';
     autoResize: boolean;
     fullScreen: boolean;
+    heading: string;
     hideFooter: boolean;
     hideHeader: boolean;
     buttonLabel: string;
@@ -33,6 +37,7 @@ export const SbTypeform = ({
     embedType,
     autoResize,
     fullScreen,
+    heading,
     hideFooter,
     hideHeader,
     buttonLabel,
@@ -44,23 +49,32 @@ export const SbTypeform = ({
   } = blok;
 
   const transitiveParams = transitiveSearchParams.split(`\n`);
+  const height = parseInt(embedHeight, 10);
+  const resize = autoResize || !height;
+  const styles = {
+    container: 'cc flex flex-col place-items-center rs-py-6',
+    heading: 'px-[40px] tf-sm:px-[80px] max-w-[878px]',
+    fauxCTA: dcnb(CTAStyles.cta, CTAStyles.ctaVariants.solid, CTAStyles.ctaSizes.large),
+  };
 
   switch (embedType) {
     case 'slider': {
       return (
-        <Slider
-          {...storyblokEditable(blok)}
-          id={id}
-          autoClose={1000}
-          disableScroll={disableScroll}
-          enableSandbox={enableSandbox}
-          hideFooter={hideFooter}
-          hideHeaders={hideHeader}
-          transitiveSearchParams={transitiveParams}
-          displayAsFullScreenModal={displayAsFullScreenModal}
-        >
-          {buttonLabel}
-        </Slider>
+        <div {...storyblokEditable(blok)} className={styles.container}>
+          <Heading as='h2' size={3} className={styles.heading}>{heading}</Heading>
+          <Slider
+            id={id}
+            autoClose={1000}
+            disableScroll={disableScroll}
+            enableSandbox={enableSandbox}
+            hideFooter={hideFooter}
+            hideHeaders={hideHeader}
+            transitiveSearchParams={transitiveParams}
+            displayAsFullScreenModal={displayAsFullScreenModal}
+          >
+            <span className={styles.fauxCTA}>{buttonLabel}</span>
+          </Slider>
+        </div>
       );
     }
     case 'sidetab': {
@@ -76,8 +90,8 @@ export const SbTypeform = ({
           hideFooter={hideFooter}
           transitiveSearchParams={transitiveParams}
           displayAsFullScreenModal={displayAsFullScreenModal}
-          autoResize={autoResize}
-          height={embedHeight}
+          autoResize={resize}
+          height={!resize ? embedHeight : undefined}
         />
       );
     }
@@ -93,47 +107,51 @@ export const SbTypeform = ({
           hideHeaders={hideHeader}
           transitiveSearchParams={transitiveParams}
           displayAsFullScreenModal={displayAsFullScreenModal}
-          autoResize={autoResize}
-          height={embedHeight}
+          autoResize={resize}
+          height={!resize ? embedHeight : undefined}
         />
       );
     }
     case 'popup': {
       return (
-        <PopUp
-          {...storyblokEditable(blok)}
-          id={id}
-          autoClose={1000}
-          fullScreen={fullScreen}
-          disableScroll={disableScroll}
-          enableSandbox={enableSandbox}
-          hideFooter={hideFooter}
-          hideHeaders={hideHeader}
-          transitiveSearchParams={transitiveParams}
-          displayAsFullScreenModal={displayAsFullScreenModal}
-          autoResize={autoResize}
-          height={embedHeight}>
-          {buttonLabel}
-        </PopUp>
+        <div {...storyblokEditable(blok)} className={styles.container}>
+          <Heading as='h2' size={3} className={styles.heading}>{heading}</Heading>
+          <PopUp
+            {...storyblokEditable(blok)}
+            id={id}
+            autoClose={1000}
+            fullScreen={fullScreen}
+            disableScroll={disableScroll}
+            enableSandbox={enableSandbox}
+            hideFooter={hideFooter}
+            hideHeaders={hideHeader}
+            transitiveSearchParams={transitiveParams}
+            displayAsFullScreenModal={displayAsFullScreenModal}
+            autoResize={resize}
+            height={!resize ? embedHeight : undefined}>
+            <span className={styles.fauxCTA}>{buttonLabel}</span>
+          </PopUp>
+        </div>
       );
     }
     case 'widget':
     default: {
       return (
-        <div {...storyblokEditable(blok)}>
+        <div {...storyblokEditable(blok)} className={styles.container}>
+          <Heading as='h2' size={3} className={styles.heading}>{heading}</Heading>
           <Widget
-            {...storyblokEditable(blok)}
             id={id}
             autoFocus={autoFocus}
             fullScreen={fullScreen}
             disableScroll={disableScroll}
             enableSandbox={enableSandbox}
-            height={embedHeight}
             hideFooter={hideFooter}
             hideHeaders={hideHeader}
             transitiveSearchParams={transitiveParams}
             displayAsFullScreenModal={displayAsFullScreenModal}
-            autoResize={autoResize}
+            autoResize={resize}
+            height={!resize ? embedHeight : undefined}
+            className='w-full'
           />
         </div>
       );
