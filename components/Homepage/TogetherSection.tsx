@@ -37,8 +37,8 @@ export const TogetherSection = () => {
       </Text>
       <Container>
         <img
-          src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1280x720/87e6131789/campusscene.gif')}
-          alt="Animated view of the Stanford Dish"
+          src={getProcessedImage('https://a-us.storyblok.com/f/1005200/3014x1979/5d314e43ba/together_h412-18.jpg', '1000x0')}
+          alt=""
           className="w-[86vw] sm:w-[60vw] xl:w-[42vw] mx-auto -mt-[13vw]"
         />
       </Container>
