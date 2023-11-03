@@ -1,4 +1,3 @@
-import { cnb } from 'cnbuilder';
 import { Container } from '../Container';
 import { WidthBox, type WidthType } from '../WidthBox';
 import { type PaddingType } from '@/utilities/datasource';
