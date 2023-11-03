@@ -31,7 +31,7 @@ export const TogetherSection = () => {
         align="center"
         leading="none"
         aria-hidden
-        className="text-[28vw] -ml-[0.04em]"
+        className="text-[28vw] -ml-[0.04em] tracking-wide"
       >
         Together
       </Text>
