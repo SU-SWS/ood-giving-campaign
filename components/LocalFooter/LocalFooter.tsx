@@ -1,11 +1,9 @@
-import Image from 'next/image';
 import { Paragraph, Heading, Text } from '../Typography';
 import { Container } from '../Container';
 import { Grid } from '../Grid';
 import { Logo } from '../Logo';
 import { CtaLink } from '../Cta';
 import { schools } from '@/utilities/externalLinks';
-import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { initiatives, themes } from '@/utilities/routes';
 
 export const LocalFooter = () => (
