@@ -38,7 +38,9 @@ export const TogetherSection = () => {
       <m.div
         aria-hidden
         className="font-druk uppercase text-center leading-none text-[28vw] -ml-[0.04em] tracking-wide z-0"
-        style={{ scale: scaleAnimation, opacity: opacityAnimation, letterSpacing: trackingAnimation, willChange }}
+        style={{
+          scale: scaleAnimation, opacity: opacityAnimation, letterSpacing: trackingAnimation, willChange,
+        }}
       >
         Together
       </m.div>
