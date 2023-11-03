@@ -4,7 +4,7 @@ import {
 } from '@/components/TypeForm';
 import { Heading } from '@/components/Typography';
 import * as CTAStyles from '@/components/Cta/Cta.styles';
-import { dcnb } from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 
 export type SbTypeformProps = {
   blok: {
@@ -25,6 +25,13 @@ export type SbTypeformProps = {
     transitiveSearchParams: string;
     displayAsFullScreenModal: boolean;
   };
+};
+
+// TODO: Move this to the non-storyblok Typeform component dir.
+export const styles = {
+  container: 'cc flex flex-col place-items-center rs-py-6',
+  heading: 'px-[40px] tf-sm:px-[80px] max-w-[878px]',
+  fauxCTA: cnb(CTAStyles.cta, CTAStyles.ctaVariants.solid, CTAStyles.ctaSizes.large),
 };
 
 export const SbTypeform = ({
@@ -51,11 +58,6 @@ export const SbTypeform = ({
   const transitiveParams = transitiveSearchParams.split(`\n`);
   const height = parseInt(embedHeight, 10);
   const resize = autoResize || !height;
-  const styles = {
-    container: 'cc flex flex-col place-items-center rs-py-6',
-    heading: 'px-[40px] tf-sm:px-[80px] max-w-[878px]',
-    fauxCTA: dcnb(CTAStyles.cta, CTAStyles.ctaVariants.solid, CTAStyles.ctaSizes.large),
-  };
 
   switch (embedType) {
     case 'slider': {
