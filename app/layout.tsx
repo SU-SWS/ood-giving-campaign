@@ -6,7 +6,7 @@ import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
 import StoryblokProvider from '@/components/StoryblokProvider';
 import LazyMotionProvider from '@/components/LazyMotionProvider';
 import { FlexBox } from '@/components/FlexBox';
-import { LocalFooter } from '@/components/LocalFooter';
+import { LocalFooterMvp } from '@/components/LocalFooter';
 import { GlobalFooter } from '@/components/GlobalFooter';
 
 type LayoutProps = {
@@ -72,7 +72,7 @@ export default function RootLayout({ children }: LayoutProps) {
             <FlexBox justifyContent="between" direction="col" className="min-h-screen relative">
               {children}
               <footer>
-                <LocalFooter />
+                <LocalFooterMvp />
                 <GlobalFooter />
               </footer>
             </FlexBox>
