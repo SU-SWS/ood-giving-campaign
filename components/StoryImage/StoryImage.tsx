@@ -9,6 +9,7 @@ import * as styles from './StoryImage.styles';
 type StoryImageProps = React.HTMLAttributes<HTMLDivElement> & {
   imageSrc: string;
   imageFocus?: string;
+  alt?: string;
   caption?: React.ReactNode;
   aspectRatio?: ImageAspectRatioType;
   boundingWidth?: 'site' | 'full';
@@ -21,6 +22,7 @@ type StoryImageProps = React.HTMLAttributes<HTMLDivElement> & {
 export const StoryImage = ({
   imageSrc,
   imageFocus,
+  alt,
   caption,
   aspectRatio,
   boundingWidth = 'full',
@@ -42,8 +44,8 @@ export const StoryImage = ({
       className={className}
     >
       <figure>
-        <div className={cnb(imageAspectRatios[aspectRatio], styles.mediaWrapper)}>
-          <img src={getProcessedImage(imageSrc)} alt="" className="object-cover" />
+        <div className={imageAspectRatios[aspectRatio]}>
+          <img src={getProcessedImage(imageSrc, '2000x0', imageFocus)} alt={alt || ''} className={styles.image} />
         </div>
         {caption && (
           <Container as="figcaption" width={isCaptionInset ? 'site' : 'full'}>

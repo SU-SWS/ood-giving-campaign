@@ -3,11 +3,15 @@ import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import { CreateBloks } from '../CreateBloks';
 import { FlexBox } from '../FlexBox';
 import {
-  Heading, type HeadingType, SrOnlyText, Text, Paragraph,
+  Heading,
+  type HeadingType,
+  SrOnlyText,
+  Text,
+  Paragraph,
 } from '../Typography';
 import { Container, type BgColorType } from '../Container';
 import { ImageOverlay } from '../ImageOverlay';
-import { accentBgColors, type PaddingType } from '@/utilities/datasource';
+import { accentBgColors, type PaddingType, type MarginType } from '@/utilities/datasource';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
 import { type SbImageType } from './Storyblok.types';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
@@ -29,6 +33,8 @@ type SbSectionProps = {
     bgImage?: SbImageType;
     paddingTop?: PaddingType;
     paddingBottom?: PaddingType;
+    marginTop?: MarginType;
+    marginBottom?: MarginType;
   };
 };
 
@@ -46,6 +52,8 @@ export const SbSection = ({
     bgImage: { filename, focus } = {},
     paddingTop,
     paddingBottom,
+    marginTop,
+    marginBottom,
   },
   blok,
 }: SbSectionProps) => {
@@ -58,10 +66,12 @@ export const SbSection = ({
       bgColor={bgColor}
       pt={paddingTop}
       pb={paddingBottom}
+      mt={marginTop}
+      mb={marginBottom}
       className="relative overflow-hidden"
     >
       {filename && (
-        <ImageOverlay imageSrc={getProcessedImage(filename, '2000x1600', focus)} overlay={bgColor === 'black' ? 'black-70' : 'white-90'} />
+        <ImageOverlay imageSrc={getProcessedImage(filename, '2000x1600', focus)} overlay={bgColor === 'black' ? 'black-60' : 'white-90'} />
       )}
       {(heading || superhead) && (
         <FlexBox className={cnb('relative z-10', rightAlignHeader ? 'mr-0 ml-auto' : 'ml-0')}>
