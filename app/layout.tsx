@@ -8,6 +8,7 @@ import LazyMotionProvider from '@/components/LazyMotionProvider';
 import { FlexBox } from '@/components/FlexBox';
 import { LocalFooterMvp } from '@/components/LocalFooter';
 import { GlobalFooter } from '@/components/GlobalFooter';
+import GAProvider from '@/components/GAProvider';
 
 type LayoutProps = {
   children: React.ReactNode,
@@ -55,30 +56,32 @@ storyblokInit({
 
 export default function RootLayout({ children }: LayoutProps) {
   return (
-    <StoryblokProvider>
-      <LazyMotionProvider>
-        <html
-          lang="en"
-          className={cnb(
-            source_sans.variable,
-            source_serif.variable,
-            druk.variable,
-            druk_wide.variable,
-            stanford.variable,
-          )}
-        >
-          {/* Absolutely necessary to have a body tag here, otherwise your components won't get any interactivity */}
-          <body>
-            <FlexBox justifyContent="between" direction="col" className="min-h-screen relative">
-              {children}
-              <footer>
-                <LocalFooterMvp />
-                <GlobalFooter />
-              </footer>
-            </FlexBox>
-          </body>
-        </html>
-      </LazyMotionProvider>
-    </StoryblokProvider>
+    <GAProvider>
+      <StoryblokProvider>
+        <LazyMotionProvider>
+          <html
+            lang="en"
+            className={cnb(
+              source_sans.variable,
+              source_serif.variable,
+              druk.variable,
+              druk_wide.variable,
+              stanford.variable,
+            )}
+          >
+            {/* Absolutely necessary to have a body tag here, otherwise your components won't get any interactivity */}
+            <body>
+              <FlexBox justifyContent="between" direction="col" className="min-h-screen relative">
+                {children}
+                <footer>
+                  <LocalFooterMvp />
+                  <GlobalFooter />
+                </footer>
+              </FlexBox>
+            </body>
+          </html>
+        </LazyMotionProvider>
+      </StoryblokProvider>
+    </GAProvider>
   );
 }

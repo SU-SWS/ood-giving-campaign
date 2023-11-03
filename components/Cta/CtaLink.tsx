@@ -7,7 +7,6 @@ import { CtaExternalLink } from './CtaExternalLink';
 import { CtaNextLink } from './CtaNextLink';
 import { type SbLinkType } from '../Storyblok/Storyblok.types';
 import { UrlObject } from 'url';
-//import { useAddUtmParams } from '../../hooks/useAddUtmParams';
 
 /**
  * Use this component for CTA links.
@@ -60,16 +59,12 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
       myLink = url || cachedUrl || href;
     }
 
-    // Add UTM params to internal links
-    //const myLinkWithUtm = useAddUtmParams(myLink);
-    const myLinkWithUtm = myLink;
-
     if (isInternal) {
       return (
         <CtaNextLink
           {...rest}
           ref={ref}
-          href={myLinkWithUtm}
+          href={myLink}
           target={target || undefined}
         />
       );
