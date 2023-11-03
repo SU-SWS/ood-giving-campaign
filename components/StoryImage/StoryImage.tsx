@@ -9,6 +9,7 @@ import * as styles from './StoryImage.styles';
 type StoryImageProps = React.HTMLAttributes<HTMLDivElement> & {
   imageSrc: string;
   imageFocus?: string;
+  isLoadingEager?: boolean;
   alt?: string;
   caption?: React.ReactNode;
   aspectRatio?: ImageAspectRatioType;
@@ -22,6 +23,7 @@ type StoryImageProps = React.HTMLAttributes<HTMLDivElement> & {
 export const StoryImage = ({
   imageSrc,
   imageFocus,
+  isLoadingEager,
   alt,
   caption,
   aspectRatio,
@@ -33,6 +35,9 @@ export const StoryImage = ({
   className,
   ...props
 }: StoryImageProps) => {
+  const cropSize = styles.imageCrops[aspectRatio];
+  const cropWidth = parseInt(cropSize?.split('x')[0], 10);
+  const cropHeight = parseInt(cropSize?.split('x')[1], 10);
 
   return (
     <WidthBox
@@ -45,7 +50,14 @@ export const StoryImage = ({
     >
       <figure>
         <div className={imageAspectRatios[aspectRatio]}>
-          <img src={getProcessedImage(imageSrc, '2000x0', imageFocus)} alt={alt || ''} className={styles.image} />
+          <img
+            src={getProcessedImage(imageSrc, cropSize, imageFocus)}
+            loading={isLoadingEager ? 'eager' : 'lazy'}
+            width={cropWidth}
+            height={cropHeight}
+            alt={alt || ''}
+            className={styles.image}
+          />
         </div>
         {caption && (
           <Container as="figcaption" width={isCaptionInset ? 'site' : 'full'}>
