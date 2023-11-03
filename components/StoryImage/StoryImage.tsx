@@ -1,0 +1,58 @@
+import { cnb } from 'cnbuilder';
+import { Container } from '../Container';
+import { WidthBox, type WidthType } from '../WidthBox';
+import { type PaddingType } from '@/utilities/datasource';
+import { imageAspectRatios, type ImageAspectRatioType } from '@/utilities/datasource';
+import { getProcessedImage } from '@/utilities/getProcessedImage';
+import * as styles from './StoryImage.styles';
+
+type StoryImageProps = React.HTMLAttributes<HTMLDivElement> & {
+  imageSrc: string;
+  imageFocus?: string;
+  caption?: React.ReactNode;
+  aspectRatio?: ImageAspectRatioType;
+  boundingWidth?: 'site' | 'full';
+  width?: WidthType;
+  spacingTop?: PaddingType;
+  spacingBottom?: PaddingType;
+  isCaptionInset?: boolean;
+};
+
+export const StoryImage = ({
+  imageSrc,
+  imageFocus,
+  caption,
+  aspectRatio,
+  boundingWidth = 'full',
+  width,
+  spacingTop,
+  spacingBottom,
+  isCaptionInset,
+  className,
+  ...props
+}: StoryImageProps) => {
+
+  return (
+    <WidthBox
+      {...props}
+      boundingWidth={boundingWidth}
+      width={width}
+      pt={spacingTop}
+      pb={spacingBottom}
+      className={className}
+    >
+      <figure>
+        <div className={cnb(imageAspectRatios[aspectRatio], styles.mediaWrapper)}>
+          <img src={getProcessedImage(imageSrc)} alt="" className="object-cover" />
+        </div>
+        {caption && (
+          <Container as="figcaption" width={isCaptionInset ? 'site' : 'full'}>
+            <div className={styles.caption}>
+              {caption}
+            </div>
+          </Container>
+        )}
+      </figure>
+    </WidthBox>
+  );
+};
