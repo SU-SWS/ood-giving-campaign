@@ -28,14 +28,13 @@ export const LocalFooterMvp = () => (
       </FlexBox>
       <Grid lg={2} pt={8} gap="default" className={styles.grid}>
         <div>
-          <Heading as="h3" size={3}>
+          <Heading as="h3" size={3} leading="tight">
             Get the latest in your inbox
           </Heading>
           <Paragraph variant="big" leading="display">
             Sign up to receive Stanford’s storytelling newsletter.
           </Paragraph>
           <CtaLink
-            // This might become a button to activate a Typeform widget in-situ
             href={links.ood.newsletterSignUp}
             variant="solid"
             icon="arrow-right"
@@ -44,7 +43,7 @@ export const LocalFooterMvp = () => (
           </CtaLink>
         </div>
         <div className={styles.column2}>
-          <Heading as="h3" size={3}>
+          <Heading as="h3" size={3} leading="tight">
             We can do this, together
           </Heading>
           <Paragraph variant="big" leading="display">
