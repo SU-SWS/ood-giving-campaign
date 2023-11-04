@@ -24,14 +24,13 @@ export default function GAProvider({ children }: { children: React.ReactNode }) 
       utm_term,
     };
 
-    // On first load, set the cookie.
-    setCookie(cookieName, UTMs, {
-      path: '/',
-      domain: window.location.hostname,
-      secure: true,
-      httpOnly: false,
-      sameSite: 'strict',
-    });
+    // UTM source is required.
+    if (UTMs.utm_source) {
+      setCookie(cookieName, JSON.stringify(UTMs), {
+        expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30),
+        path: '/',
+      });
+    }
 
     // Listen to all of the click events and add the UTM params to the outgoing location.
     document.addEventListener('click', (e) => {
@@ -39,7 +38,7 @@ export default function GAProvider({ children }: { children: React.ReactNode }) 
       if (!cookie) { return;}
 
       const utms = JSON.parse(cookie);
-      if (!utms || !utms.length) { return;}
+      if (!utms) { return;}
 
       // Get the element that was clicked on and make sure it is a link.
       const activeElement = document.activeElement;
