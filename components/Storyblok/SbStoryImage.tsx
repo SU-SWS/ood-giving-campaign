@@ -6,6 +6,7 @@ import { type PaddingType } from '@/utilities/datasource';
 import { hasRichText } from '@/utilities/hasRichText';
 import { StoryImage } from '../StoryImage';
 import { RichText } from '../RichText';
+import { type AnimationType } from '../Animate';
 import { type SbImageType } from './Storyblok.types';
 
 type SbStoryImageProps = {
@@ -20,6 +21,8 @@ type SbStoryImageProps = {
     spacingTop?: PaddingType;
     spacingBottom?: PaddingType;
     isCaptionInset?: boolean;
+    animation?: AnimationType;
+    delay?: number;
   };
 };
 
@@ -34,6 +37,8 @@ export const SbStoryImage = ({
     spacingTop,
     spacingBottom,
     isCaptionInset,
+    animation = 'none',
+    delay,
   },
   blok,
 }: SbStoryImageProps) => {
@@ -52,6 +57,8 @@ export const SbStoryImage = ({
       spacingTop={spacingTop}
       spacingBottom={spacingBottom}
       isCaptionInset={isCaptionInset}
+      animation={animation}
+      delay={delay}
     />
   );
 };

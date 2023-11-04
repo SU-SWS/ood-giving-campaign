@@ -1,8 +1,10 @@
+import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
 import { WidthBox, type WidthType } from '../WidthBox';
 import { type PaddingType } from '@/utilities/datasource';
 import { imageAspectRatios, type ImageAspectRatioType } from '@/utilities/datasource';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
+import { type AnimationType } from '../Animate';
 import * as styles from './StoryImage.styles';
 
 type StoryImageProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -17,6 +19,8 @@ type StoryImageProps = React.HTMLAttributes<HTMLDivElement> & {
   spacingTop?: PaddingType;
   spacingBottom?: PaddingType;
   isCaptionInset?: boolean;
+  animation?: AnimationType;
+  delay?: number;
 };
 
 export const StoryImage = ({
@@ -31,6 +35,8 @@ export const StoryImage = ({
   spacingTop,
   spacingBottom,
   isCaptionInset,
+  animation = 'none',
+  delay,
   className,
   ...props
 }: StoryImageProps) => {
@@ -47,25 +53,27 @@ export const StoryImage = ({
       pb={spacingBottom}
       className={className}
     >
-      <figure>
-        <div className={imageAspectRatios[aspectRatio]}>
-          <img
-            src={getProcessedImage(imageSrc, cropSize, imageFocus)}
-            loading={isLoadingEager ? 'eager' : 'lazy'}
-            width={cropWidth}
-            height={cropHeight}
-            alt={alt || ''}
-            className={styles.image}
-          />
-        </div>
-        {caption && (
-          <Container as="figcaption" width={isCaptionInset ? 'site' : 'full'}>
-            <div className={styles.caption}>
-              {caption}
-            </div>
-          </Container>
-        )}
-      </figure>
+      <AnimateInView animation={animation} delay={delay}>
+        <figure>
+          <div className={imageAspectRatios[aspectRatio]}>
+            <img
+              src={getProcessedImage(imageSrc, cropSize, imageFocus)}
+              loading={isLoadingEager ? 'eager' : 'lazy'}
+              width={cropWidth}
+              height={cropHeight}
+              alt={alt || ''}
+              className={styles.image}
+            />
+          </div>
+          {caption && (
+            <Container as="figcaption" width={isCaptionInset ? 'site' : 'full'}>
+              <div className={styles.caption}>
+                {caption}
+              </div>
+            </Container>
+          )}
+        </figure>
+      </AnimateInView>
     </WidthBox>
   );
 };
