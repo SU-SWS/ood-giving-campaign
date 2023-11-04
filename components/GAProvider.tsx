@@ -41,7 +41,7 @@ export default function GAProvider({ children }: { children: React.ReactNode }) 
       if (!cookie) { return;}
 
       const utms = JSON.parse(cookie);
-      if (!utms) { return;}
+      if (!utms.utm_source) { return;}
 
       // Get the element that was clicked on and make sure it is a link.
       const activeElement = document.activeElement;
