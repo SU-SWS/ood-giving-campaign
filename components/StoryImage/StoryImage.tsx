@@ -4,6 +4,7 @@ import { WidthBox, type WidthType } from '../WidthBox';
 import { type PaddingType } from '@/utilities/datasource';
 import { imageAspectRatios, type ImageAspectRatioType } from '@/utilities/datasource';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
+import { getSbImageSize } from '@/utilities/getSbImageSize';
 import { type AnimationType } from '../Animate';
 import * as styles from './StoryImage.styles';
 
@@ -40,9 +41,16 @@ export const StoryImage = ({
   className,
   ...props
 }: StoryImageProps) => {
+  const { width: originalWidth, height: originalHeight } = getSbImageSize(imageSrc);
   const cropSize = styles.imageCrops[aspectRatio];
+  /**
+   * Crop width and height are used for width and height attributes on the img element.
+   * They don't need to be exact as long as the aspect ratio is correct.
+   */
   const cropWidth = parseInt(cropSize?.split('x')[0], 10);
-  const cropHeight = parseInt(cropSize?.split('x')[1], 10);
+  const cropHeight = aspectRatio === 'free'
+    ? Math.round(originalHeight * 2000 / originalWidth)
+    : parseInt(cropSize?.split('x')[1], 10);
 
   return (
     <WidthBox
