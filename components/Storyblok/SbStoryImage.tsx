@@ -13,6 +13,7 @@ type SbStoryImageProps = {
   blok: {
     _uid: string;
     image: SbImageType;
+    alt?: string;
     isLoadingEager?: boolean;
     caption?: StoryblokRichtext;
     aspectRatio?: ImageAspectRatioType;
@@ -29,6 +30,7 @@ type SbStoryImageProps = {
 export const SbStoryImage = ({
   blok: {
     image: { filename, focus } = {},
+    alt,
     isLoadingEager,
     caption,
     aspectRatio,
@@ -49,6 +51,7 @@ export const SbStoryImage = ({
       {...storyblokEditable(blok)}
       imageSrc={filename}
       imageFocus={focus}
+      alt={alt}
       isLoadingEager={isLoadingEager}
       caption={Caption}
       aspectRatio={aspectRatio}
