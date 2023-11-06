@@ -28,6 +28,7 @@ import { SbTextCard } from './Storyblok/SbTextCard';
 import { SbTexturedBar } from './Storyblok/SbTexturedBar';
 import { SbThemeCard } from './Storyblok/SbThemeCard';
 import { SbTriangle } from './Storyblok/SbTriangle';
+import { SbTypeform } from './Storyblok/SbTypeform';
 import { SbVerticalPoster } from './Storyblok/SbVerticalPoster';
 import { SbWysiwyg } from './Storyblok/SbWysiwyg';
 
@@ -61,6 +62,7 @@ const components = {
   sbTriangle: SbTriangle,
   sbVerticalPoster: SbVerticalPoster,
   sbWysiwyg: SbWysiwyg,
+  sbTypeform: SbTypeform,
 };
 
 storyblokInit({
