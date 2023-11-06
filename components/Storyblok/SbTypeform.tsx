@@ -69,14 +69,13 @@ export const SbTypeform = ({
           <Heading as='h2' size={3} className={styles.heading}>{heading}</Heading>
           <Slider
             id={id}
-            autoClose={1000}
+            autoClose={10000}
             disableScroll={disableScroll}
             enableSandbox={enableSandbox}
             hideFooter={hideFooter}
             hideHeaders={hideHeader}
             transitiveSearchParams={transitiveParams}
             displayAsFullScreenModal={displayAsFullScreenModal}
-            opacity={opacity}
           >
             <span className={styles.fauxCTA}>{buttonLabel}</span>
           </Slider>
@@ -88,7 +87,7 @@ export const SbTypeform = ({
         <SideTab
           {...storyblokEditable(blok)}
           id={id}
-          autoClose={1000}
+          autoClose={10000}
           buttonText={buttonLabel}
           fullScreen={fullScreen}
           disableScroll={disableScroll}
@@ -97,7 +96,6 @@ export const SbTypeform = ({
           transitiveSearchParams={transitiveParams}
           displayAsFullScreenModal={displayAsFullScreenModal}
           autoResize={resize}
-          opacity={opacity}
           height={!resize ? embedHeight : undefined}
         />
       );
@@ -107,6 +105,7 @@ export const SbTypeform = ({
         <PopOver
           {...storyblokEditable(blok)}
           id={id}
+          autoClose={10000}
           fullScreen={fullScreen}
           disableScroll={disableScroll}
           enableSandbox={enableSandbox}
@@ -115,7 +114,6 @@ export const SbTypeform = ({
           transitiveSearchParams={transitiveParams}
           displayAsFullScreenModal={displayAsFullScreenModal}
           autoResize={resize}
-          opacity={opacity}
           height={!resize ? embedHeight : undefined}
         />
       );
@@ -127,7 +125,7 @@ export const SbTypeform = ({
           <PopUp
             {...storyblokEditable(blok)}
             id={id}
-            autoClose={1000}
+            autoClose={10000}
             fullScreen={fullScreen}
             disableScroll={disableScroll}
             enableSandbox={enableSandbox}
@@ -136,7 +134,6 @@ export const SbTypeform = ({
             transitiveSearchParams={transitiveParams}
             displayAsFullScreenModal={displayAsFullScreenModal}
             autoResize={resize}
-            opacity={opacity}
             height={!resize ? embedHeight : undefined}>
             <span className={styles.fauxCTA}>{buttonLabel}</span>
           </PopUp>
