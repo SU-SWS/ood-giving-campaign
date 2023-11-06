@@ -24,6 +24,7 @@ export type SbTypeformProps = {
     enableSandbox: boolean;
     transitiveSearchParams: string;
     displayAsFullScreenModal: boolean;
+    transparent: boolean;
   };
 };
 
@@ -52,12 +53,14 @@ export const SbTypeform = ({
     disableScroll,
     enableSandbox,
     transitiveSearchParams,
+    transparent,
     displayAsFullScreenModal,
   } = blok;
 
   const transitiveParams = transitiveSearchParams.split(`\n`);
   const height = parseInt(embedHeight, 10);
   const resize = autoResize || !height;
+  const opacity = transparent ? 0 : 100;
 
   switch (embedType) {
     case 'slider': {
@@ -73,6 +76,7 @@ export const SbTypeform = ({
             hideHeaders={hideHeader}
             transitiveSearchParams={transitiveParams}
             displayAsFullScreenModal={displayAsFullScreenModal}
+            opacity={opacity}
           >
             <span className={styles.fauxCTA}>{buttonLabel}</span>
           </Slider>
@@ -93,6 +97,7 @@ export const SbTypeform = ({
           transitiveSearchParams={transitiveParams}
           displayAsFullScreenModal={displayAsFullScreenModal}
           autoResize={resize}
+          opacity={opacity}
           height={!resize ? embedHeight : undefined}
         />
       );
@@ -110,6 +115,7 @@ export const SbTypeform = ({
           transitiveSearchParams={transitiveParams}
           displayAsFullScreenModal={displayAsFullScreenModal}
           autoResize={resize}
+          opacity={opacity}
           height={!resize ? embedHeight : undefined}
         />
       );
@@ -130,6 +136,7 @@ export const SbTypeform = ({
             transitiveSearchParams={transitiveParams}
             displayAsFullScreenModal={displayAsFullScreenModal}
             autoResize={resize}
+            opacity={opacity}
             height={!resize ? embedHeight : undefined}>
             <span className={styles.fauxCTA}>{buttonLabel}</span>
           </PopUp>
@@ -152,6 +159,7 @@ export const SbTypeform = ({
             transitiveSearchParams={transitiveParams}
             displayAsFullScreenModal={displayAsFullScreenModal}
             autoResize={resize}
+            opacity={opacity}
             height={!resize ? embedHeight : undefined}
             className='w-full'
           />
