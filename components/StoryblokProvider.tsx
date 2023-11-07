@@ -23,6 +23,7 @@ import { SbSplitPoster } from './Storyblok/SbSplitPoster';
 import { SbStory } from './Storyblok/SbStory';
 import { SbStoryMvp } from './Storyblok/SbStoryMvp/SbStoryMvp';
 import { SbStoryCard } from './Storyblok/SbStoryCard';
+import { SbStoryImage } from './Storyblok/SbStoryImage';
 import { SbTextCard } from './Storyblok/SbTextCard';
 import { SbTexturedBar } from './Storyblok/SbTexturedBar';
 import { SbThemeCard } from './Storyblok/SbThemeCard';
@@ -53,11 +54,12 @@ const components = {
   sbSplitPoster: SbSplitPoster,
   sbStory: SbStory,
   sbStoryMvp: SbStoryMvp,
+  sbStoryCard: SbStoryCard,
+  sbStoryImage: SbStoryImage,
   sbTextCard: SbTextCard,
   sbTexturedBar: SbTexturedBar,
   sbThemeCard: SbThemeCard,
   sbTriangle: SbTriangle,
-  sbStoryCard: SbStoryCard,
   sbVerticalPoster: SbVerticalPoster,
   sbWysiwyg: SbWysiwyg,
   sbTypeform: SbTypeform,

@@ -32,10 +32,10 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
-    "@storyblok/react": "^2.4.0",
+    "@storyblok/react": "^2.4.7",
     "@typeform/embed-react": "^3.8.0",
     "cnbuilder": "^3.1.0",
-    "framer-motion": "^10.15.0",
+    "framer-motion": "^10.16.4",
     "next": "13.4.9",
     "react-player": "^2.13.0",
     "storyblok-rich-text-react-renderer-ts": "^3.2.0",
@@ -50,12 +50,12 @@
     "@types/node": "^20.4.7",
     "@types/react": "^18.2",
     "@types/react-dom": "^18.2",
-    "autoprefixer": "^10.4.14",
-    "decanter": "^7.1.1",
+    "autoprefixer": "^10.4.16",
+    "decanter": "^7.1.2",
     "eslint": "^8.50.0",
     "eslint-config-next": "^13.4.13",
     "netlify-plugin-vault-variables": "^1.0.7",
-    "postcss": "^8.4.27",
+    "postcss": "^8.4.31",
     "typescript": "^5.1"
   },
   "engines": {
