@@ -2,7 +2,7 @@ import { storyblokEditable } from '@storyblok/react/rsc';
 import { AnimateInView, type AnimationType } from '@/components/Animate';
 import { Text } from '@/components/Typography';
 import { WidthBox } from '@/components/WidthBox';
-import { type PaddingType } from '@/utilities/datasource';
+import { type MarginType, type PaddingType } from '@/utilities/datasource';
 import {
   type FontFamilyType,
   type FontSizeType,
@@ -30,8 +30,10 @@ export type SbTextProps = {
     srOnly?: boolean;
     boundingWidth?: 'site' | 'full';
     width?: '12' | '10' | '8' | '6' | '4';
-    pt?: PaddingType;
-    pb?: PaddingType;
+    marginTop?: MarginType;
+    marginBottom?: MarginType;
+    paddingTop?: PaddingType;
+    paddingBottom?: PaddingType;
     animation?: AnimationType;
     delay?: number;
   };
@@ -51,8 +53,10 @@ export const SbText = ({
     italic,
     srOnly,
     boundingWidth,
-    pt,
-    pb,
+    marginTop,
+    marginBottom,
+    paddingTop,
+    paddingBottom,
     width,
     animation,
     delay,
@@ -63,8 +67,10 @@ export const SbText = ({
     <WidthBox
       boundingWidth={boundingWidth}
       width={width}
-      pt={pt}
-      pb={pb}
+      mt={marginTop}
+      mb={marginBottom}
+      pt={paddingTop}
+      pb={paddingBottom}
     >
       <Text
         as={headingLevel || 'div'}
@@ -77,7 +83,7 @@ export const SbText = ({
         weight={weight}
         italic={italic}
         srOnly={srOnly}
-        className="whitespace-pre-line"
+        className="whitespace-pre-line mb-0"
       >
         {text}
       </Text>
