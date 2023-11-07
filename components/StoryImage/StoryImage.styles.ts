@@ -1,3 +1,5 @@
+import { cnb } from 'cnbuilder';
+
 export const imageCrops = {
   '1x1': '1400x1400',
   '1x2': '1000x2000',
@@ -14,5 +16,9 @@ export const imageCrops = {
 };
 export type ImageCropType = keyof typeof imageCrops;
 
+export const root = (isFullHeight?: boolean) => cnb(isFullHeight ? 'h-full' : '');
+export const animateWrapper = (isFullHeight?: boolean) => cnb(isFullHeight ? 'h-full' : '');
+export const figure = (isFullHeight?: boolean) => cnb(isFullHeight ? 'h-full' : '');
+export const imageWrapper = (isFullHeight?: boolean) => cnb(isFullHeight ? 'h-full' : '');
 export const image = 'w-full h-full object-cover';
 export const caption = 'children:children:text-black-70 children:children:leading-display caption mt-1em max-w-prose-wide';

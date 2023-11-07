@@ -5,9 +5,9 @@ export const root = (
   addDarkOverlay?: boolean,
   quoteOnRight?: boolean,
   hasBar?: boolean,
-) => cnb('relative break-words', {
+) => cnb('relative break-words flex flex-col', {
   'max-w-[90%] sm:max-w-[80%] mx-auto md:max-w-full': isMinimal && !addDarkOverlay,
-  'bg-gc-black/50 backdrop-blur-sm': addDarkOverlay && !isMinimal,
+  'bg-gc-black/50 backdrop-blur-sm h-full children:mt-auto children:mb-0': addDarkOverlay && !isMinimal,
   'rs-pl-4': !quoteOnRight && (!isMinimal || addDarkOverlay),
   'rs-pr-4': quoteOnRight && (!isMinimal || addDarkOverlay),
   'rs-px-4': addDarkOverlay && !hasBar,

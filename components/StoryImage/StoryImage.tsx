@@ -1,3 +1,4 @@
+import { cnb } from 'cnbuilder';
 import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
 import { WidthBox, type WidthType } from '../WidthBox';
@@ -15,6 +16,7 @@ type StoryImageProps = React.HTMLAttributes<HTMLDivElement> & {
   alt?: string;
   caption?: React.ReactNode;
   aspectRatio?: ImageAspectRatioType;
+  isFullHeight?: boolean;
   boundingWidth?: 'site' | 'full';
   width?: WidthType;
   spacingTop?: PaddingType;
@@ -31,6 +33,7 @@ export const StoryImage = ({
   alt,
   caption,
   aspectRatio,
+  isFullHeight,
   boundingWidth = 'full',
   width,
   spacingTop,
@@ -59,11 +62,11 @@ export const StoryImage = ({
       width={width}
       pt={spacingTop}
       pb={spacingBottom}
-      className={className}
+      className={cnb(className, styles.root(isFullHeight))}
     >
-      <AnimateInView animation={animation} delay={delay}>
-        <figure>
-          <div className={imageAspectRatios[aspectRatio]}>
+      <AnimateInView animation={animation} delay={delay} className={styles.animateWrapper(isFullHeight)}>
+        <figure className={styles.figure(isFullHeight)}>
+          <div className={cnb(imageAspectRatios[aspectRatio], styles.imageWrapper(isFullHeight))}>
             <img
               src={getProcessedImage(imageSrc, cropSize, imageFocus)}
               loading={isLoadingEager ? 'eager' : 'lazy'}

@@ -17,6 +17,7 @@ type SbStoryImageProps = {
     isLoadingEager?: boolean;
     caption?: StoryblokRichtext;
     aspectRatio?: ImageAspectRatioType;
+    isFullHeight?: boolean;
     boundingWidth?: 'site' | 'full';
     width?: WidthType;
     spacingTop?: PaddingType;
@@ -34,6 +35,7 @@ export const SbStoryImage = ({
     isLoadingEager,
     caption,
     aspectRatio,
+    isFullHeight,
     boundingWidth = 'full',
     width,
     spacingTop,
@@ -55,6 +57,7 @@ export const SbStoryImage = ({
       isLoadingEager={isLoadingEager}
       caption={Caption}
       aspectRatio={aspectRatio}
+      isFullHeight={isFullHeight}
       boundingWidth={boundingWidth}
       width={width}
       spacingTop={spacingTop}
