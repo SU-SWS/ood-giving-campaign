@@ -170,6 +170,16 @@ export type PaddingType = keyof typeof paddingTops;
 // Add other margins as needed. Used for spacing between elements.
 export const marginVerticals = {
   none: 'my-0',
+  '01em': 'my-01em',
+  '02em': 'my-02em',
+  '03em': 'my-03em',
+  '04em': 'my-04em',
+  '05em': 'my-05em',
+  '06em': 'my-06em',
+  '07em': 'my-07em',
+  '08em': 'my-08em',
+  '09em': 'my-09em',
+  '1em': 'my-1em',
   base: 'rs-my-0',
   1: 'rs-my-1',
   2: 'rs-my-2',
