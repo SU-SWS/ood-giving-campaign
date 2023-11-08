@@ -63,7 +63,7 @@ export const ChangemakerCard = ({
       >
         <div ref={cardInnerRef} className={styles.cardInner}>
           {/* Front of the card */}
-          <div className={styles.cardFront}>
+          <div aria-hidden={isFlipped} className={styles.cardFront}>
             {imageSrc && (
               <div className={cnb(styles.imageWrapper)}>
                 <ImageOverlay
@@ -76,7 +76,7 @@ export const ChangemakerCard = ({
               {heading && (
                 <Heading
                   as={headingLevel}
-                  size={3}
+                  size={2}
                   leading="tight"
                   align="center"
                   className={styles.heading}
@@ -87,23 +87,21 @@ export const ChangemakerCard = ({
               {body && (
                 <Text variant="card" align="center">{body}</Text>
               )}
-              <FlexBox direction="col" alignItems="center" className="absolute bottom-50 right-36 text-white">
-                <button
-                  type="button"
-                  onClick={() => flipCard(180)}
-                  aria-label={`Flip card to read more about ${heading}`}
-                >
-                  <HeroIcon
-                    noBaseStyle
-                    icon='plus'
-                    className="w-65 h-65 border-2 border-white rounded-full p-16"
-                  />
-                </button>
-                <Text as="span" font="serif" color="white" variant="caption">
-                  {ctaLabel}
-                </Text>
-              </FlexBox>
             </div>
+            <button
+              type="button"
+              onClick={() => flipCard(180)}
+              aria-label={`Flip card to read more about ${heading}`}
+              className="absolute w-full h-full top-0 left-0"
+            >
+              <FlexBox direction="col" alignItems="center" className="absolute bottom-50 right-36 text-white">
+                <HeroIcon
+                  noBaseStyle
+                  icon='plus'
+                  className="w-65 h-65 border-2 border-white rounded-full p-16"
+                />
+              </FlexBox>
+            </button>
           </div>
           {/* Back of the card */}
           <FlexBox
@@ -112,18 +110,20 @@ export const ChangemakerCard = ({
             aria-hidden={!isFlipped}
           >
             {children}
-            <FlexBox direction="col" alignItems="center" className="absolute bottom-50 right-36 text-white">
-              <button type="button" onClick={() => flipCard(0)} aria-label="Dismiss">
+            <button
+              type="button"
+              onClick={() => flipCard(0)}
+              aria-label="Dismiss"
+              className="absolute w-full h-full top-0 left-0"
+            >
+              <FlexBox direction="col" alignItems="center" className="absolute bottom-50 right-36 text-white">
                 <HeroIcon
                   noBaseStyle
                   icon='plus'
                   className="w-65 h-65 border-2 border-white rounded-full p-16 rotate-45"
                 />
-              </button>
-              <Text as="span" font="serif" color="white" variant="caption">
-                {ctaLabel}
-              </Text>
-            </FlexBox>
+              </FlexBox>
+            </button>
           </FlexBox>
         </div>
       </article>

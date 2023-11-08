@@ -45,7 +45,7 @@ export const Changemaker = () => {
         <Grid md={2} xxl={4} pt={7} gap="default">
           <ChangemakerCard
             imageSrc="https://a-us.storyblok.com/f/1005200/878x1800/523e07bc72/person.jpg"
-            heading="Alvin Pearman"
+            heading="Yuhe Faye Wang"
             body="Lorem Ipsum Dolar Sit"
             animation="slideUp"
             delay={0.2}
@@ -62,7 +62,7 @@ export const Changemaker = () => {
           </ChangemakerCard>
           <ChangemakerCard
             imageSrc="https://a-us.storyblok.com/f/1005200/878x1800/4535e9548c/person.jpg"
-            heading="Andrii Torchylo"
+            heading="Lisa Goldman Rosas"
             body="Lorem Ipsum Dolar Sit"
             animation="slideUp"
             delay={0.4}
@@ -75,7 +75,7 @@ export const Changemaker = () => {
           </ChangemakerCard>
           <ChangemakerCard
             imageSrc="https://a-us.storyblok.com/f/1005200/878x1801/5177958b81/person.jpg"
-            heading="Misan Rewane"
+            heading="Jodie Anderson"
             body="Lorem Ipsum Dolar Sit"
             animation="slideUp"
             delay={0.6}
@@ -92,7 +92,7 @@ export const Changemaker = () => {
           </ChangemakerCard>
           <ChangemakerCard
             imageSrc="https://a-us.storyblok.com/f/1005200/878x1801/64a0a4257d/gobi.jpg"
-            heading="Gopi Goda"
+            heading="Kai Mottley"
             body="Lorem Ipsum Dolar Sit"
             animation="slideUp"
             delay={0.8}
