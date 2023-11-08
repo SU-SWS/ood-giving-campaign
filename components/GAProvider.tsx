@@ -1,6 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 import { setCookie, getCookie } from 'cookies-next';
+import { get } from 'http';
 
 export default function GAProvider({ children }: { children: React.ReactNode }) {
   const cookieName = 'SU-GC-UTMs';
@@ -36,16 +37,16 @@ export default function GAProvider({ children }: { children: React.ReactNode }) 
     }
 
     // Function to get the active anchor element that was clicked on if there is one.
-    const getActiveElement = (event: MouseEvent) => {
+    const getActiveElement = (event: MouseEvent):Element | null => {
 
       const target = event.target;
       if (target instanceof Element === false) { return null; }
 
       // If the target is a link.
-      if (target.tagName === 'A') { return target; }
+      if ((target as Element).tagName === 'A') { return target as Element; }
 
       // Start with the parent element of the target
-      let parentElement = (target as HTMLElement).parentElement;
+      let parentElement = (target as Element).parentElement;
 
       // Loop through the parent elements until an anchor element is found or parent becomes null
       while (parentElement !== null) {
@@ -69,7 +70,10 @@ export default function GAProvider({ children }: { children: React.ReactNode }) 
       if (!utms.utm_source) { return;}
 
       // Get the element that was clicked on and make sure it is a link.
-      const activeElement = document.activeElement !== document.body ? document.activeElement : getActiveElement(e);
+      let activeElement:Element;
+      if (document.activeElement === document.body) { activeElement = getActiveElement(e); }
+      if (!activeElement && document.activeElement instanceof Element && 'tagName' in document.activeElement) { activeElement = document.activeElement; }
+
       const isLink = activeElement && activeElement.tagName === 'A';
       if (!isLink) { return;}
 
