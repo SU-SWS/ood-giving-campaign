@@ -6,7 +6,7 @@ export default function GAProvider({ children }: { children: React.ReactNode }) 
   const cookieName = 'SU-GC-UTMs';
 
   useEffect(() => {
-    if (typeof window == 'undefined') {
+    if (typeof window === 'undefined') {
       return;
     }
 
@@ -29,11 +29,36 @@ export default function GAProvider({ children }: { children: React.ReactNode }) 
       setCookie(cookieName, UTMs, {
         path: '/',
         domain: window.location.hostname,
-        secure: true,
+        secure: window.location.protocol === 'https' ? true : false,
         httpOnly: false,
         sameSite: 'strict',
       });
     }
+
+    // Function to get the active anchor element that was clicked on if there is one.
+    const getActiveElement = (event: MouseEvent) => {
+
+      const target = event.target;
+      if (target instanceof Element === false) { return null; }
+
+      // If the target is a link.
+      if (target.tagName === 'A') { return target; }
+
+      // Start with the parent element of the target
+      let parentElement = (target as HTMLElement).parentElement;
+
+      // Loop through the parent elements until an anchor element is found or parent becomes null
+      while (parentElement !== null) {
+        // Check if the current parent element is an anchor element
+        if (parentElement.tagName === 'A') {
+          return parentElement; // Found an anchor element, so return it
+        }
+
+        parentElement = parentElement.parentElement; // Move up to the next parent element
+      }
+
+      return null; // No anchor element found in the parent elements
+    };
 
     // Listen to all of the click events and add the UTM params to the outgoing location.
     document.addEventListener('click', (e) => {
@@ -44,7 +69,7 @@ export default function GAProvider({ children }: { children: React.ReactNode }) 
       if (!utms.utm_source) { return;}
 
       // Get the element that was clicked on and make sure it is a link.
-      const activeElement = document.activeElement;
+      const activeElement = document.activeElement !== document.body ? document.activeElement : getActiveElement(e);
       const isLink = activeElement && activeElement.tagName === 'A';
       if (!isLink) { return;}
 
