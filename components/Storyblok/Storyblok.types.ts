@@ -43,4 +43,4 @@ export type SbTypographyProps = {
   text?: string;
   font?: 'druk' | 'serif';
   italic?: boolean;
-}
+};
