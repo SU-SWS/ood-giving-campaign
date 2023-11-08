@@ -1,10 +1,14 @@
 import React, { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
 import {
+  marginTops,
+  marginBottoms,
+  marginVerticals,
   paddingTops,
   paddingBottoms,
   paddingVerticals,
   type PaddingType,
+  type MarginType,
 } from '@/utilities/datasource';
 import * as styles from './Grid.styles';
 import * as types from './Grid.types';
@@ -23,6 +27,9 @@ export type GridProps = HTMLAttributes<HTMLElement> & {
   justifyItems?: types.GridJustifyItemsType,
   alignContent?: types.GridAlignContentType,
   alignItems?: types.GridAlignItemsType,
+  mt?: MarginType;
+  mb?: MarginType;
+  my?: MarginType;
   pt?: PaddingType;
   pb?: PaddingType;
   py?: PaddingType;
@@ -42,6 +49,9 @@ export const Grid = ({
   justifyItems,
   alignContent,
   alignItems,
+  mt,
+  mb,
+  my,
   pt,
   pb,
   py,
@@ -68,6 +78,9 @@ export const Grid = ({
       py ? paddingVerticals[py] : '',
       pt ? paddingTops[pt] : '',
       pb ? paddingBottoms[pb] : '',
+      mt ? marginTops[mt] : '',
+      mb ? marginBottoms[mb] : '',
+      my ? marginVerticals[my] : '',
       className,
     )}
   >

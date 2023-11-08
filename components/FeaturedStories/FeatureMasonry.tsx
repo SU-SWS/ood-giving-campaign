@@ -29,12 +29,11 @@ export const FeatureMasonry = ({
 }: FeatureMasonryProps) => {
   return (
     <Container {...props} width="full">
-      <Grid sm={12} gap="xs">
+      <Grid sm={12} gap="default">
         <FlexBox alignItems="center" className="md:col-span-7 bg-fog-light">
           <EmbedMedia
             mediaUrl={audioUrl}
-            className="rs-px-6"
-            aspectRatio="4x1"
+            className="lg:rs-px-6 lg:children:children:aspect-w-4 lg:children:children:aspect-h-1"
           />
         </FlexBox>
         <div className="md:col-span-5 w-full h-full">

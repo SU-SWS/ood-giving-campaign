@@ -24,6 +24,7 @@ import { SbStory } from './Storyblok/SbStory';
 import { SbStoryMvp } from './Storyblok/SbStoryMvp/SbStoryMvp';
 import { SbStoryCard } from './Storyblok/SbStoryCard';
 import { SbStoryImage } from './Storyblok/SbStoryImage';
+import { SbText } from './Storyblok/SbText';
 import { SbTextCard } from './Storyblok/SbTextCard';
 import { SbTexturedBar } from './Storyblok/SbTexturedBar';
 import { SbThemeCard } from './Storyblok/SbThemeCard';
@@ -56,6 +57,7 @@ const components = {
   sbStoryMvp: SbStoryMvp,
   sbStoryCard: SbStoryCard,
   sbStoryImage: SbStoryImage,
+  sbText: SbText,
   sbTextCard: SbTextCard,
   sbTexturedBar: SbTexturedBar,
   sbThemeCard: SbThemeCard,

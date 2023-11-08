@@ -169,7 +169,17 @@ export type PaddingType = keyof typeof paddingTops;
 
 // Add other margins as needed. Used for spacing between elements.
 export const marginVerticals = {
-  none: '',
+  none: 'my-0',
+  '01em': 'my-01em',
+  '02em': 'my-02em',
+  '03em': 'my-03em',
+  '04em': 'my-04em',
+  '05em': 'my-05em',
+  '06em': 'my-06em',
+  '07em': 'my-07em',
+  '08em': 'my-08em',
+  '09em': 'my-09em',
+  '1em': 'my-1em',
   base: 'rs-my-0',
   1: 'rs-my-1',
   2: 'rs-my-2',
@@ -184,7 +194,17 @@ export const marginVerticals = {
 };
 
 export const marginTops = {
-  none: '',
+  none: 'mt-0',
+  '01em': 'mt-01em',
+  '02em': 'mt-02em',
+  '03em': 'mt-03em',
+  '04em': 'mt-04em',
+  '05em': 'mt-05em',
+  '06em': 'mt-06em',
+  '07em': 'mt-07em',
+  '08em': 'mt-08em',
+  '09em': 'mt-09em',
+  '1em': 'mt-1em',
   base: 'rs-mt-0',
   1: 'rs-mt-1',
   2: 'rs-mt-2',
@@ -199,7 +219,17 @@ export const marginTops = {
 };
 
 export const marginBottoms = {
-  none: '',
+  none: 'mb-0',
+  '01em': 'mb-01em',
+  '02em': 'mb-02em',
+  '03em': 'mb-03em',
+  '04em': 'mb-04em',
+  '05em': 'mb-05em',
+  '06em': 'mb-06em',
+  '07em': 'mb-07em',
+  '08em': 'mb-08em',
+  '09em': 'mb-09em',
+  '1em': 'mb-1em',
   base: 'rs-mb-0',
   1: 'rs-mb-1',
   2: 'rs-mb-2',
