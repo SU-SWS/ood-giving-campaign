@@ -3,6 +3,7 @@ import { cnb } from 'cnbuilder';
 import {
   marginTops,
   marginBottoms,
+  marginVerticals,
   paddingTops,
   paddingBottoms,
   paddingVerticals,
@@ -28,6 +29,7 @@ export type GridProps = HTMLAttributes<HTMLElement> & {
   alignItems?: types.GridAlignItemsType,
   mt?: MarginType;
   mb?: MarginType;
+  my?: MarginType;
   pt?: PaddingType;
   pb?: PaddingType;
   py?: PaddingType;
@@ -49,6 +51,7 @@ export const Grid = ({
   alignItems,
   mt,
   mb,
+  my,
   pt,
   pb,
   py,
@@ -77,6 +80,7 @@ export const Grid = ({
       pb ? paddingBottoms[pb] : '',
       mt ? marginTops[mt] : '',
       mb ? marginBottoms[mb] : '',
+      my ? marginVerticals[my] : '',
       className,
     )}
   >
