@@ -4,6 +4,10 @@ import {
   paddingTops,
   paddingBottoms,
   paddingVerticals,
+  marginTops,
+  marginBottoms,
+  marginVerticals,
+  type MarginType,
   type PaddingType,
 } from '@/utilities/datasource';
 import * as styles from './Container.styles';
@@ -15,6 +19,9 @@ export type ContainerProps = HTMLAttributes<HTMLElement> & {
   pt?: PaddingType;
   pb?: PaddingType;
   py?: PaddingType;
+  mt?: MarginType;
+  mb?: MarginType;
+  my?: MarginType;
   bgColor?: types.BgColorType;
   style?: React.CSSProperties;
 };
@@ -25,6 +32,9 @@ export const Container = ({
   py,
   pt,
   pb,
+  mt,
+  mb,
+  my,
   bgColor,
   style,
   className,
@@ -39,6 +49,9 @@ export const Container = ({
       py ? paddingVerticals[py] : '',
       pt ? paddingTops[pt] : '',
       pb ? paddingBottoms[pb] : '',
+      my ? marginVerticals[my] : '',
+      mt ? marginTops[mt] : '',
+      mb ? marginBottoms[mb] : '',
       width ? styles.widths[width] : '',
       className,
     )}

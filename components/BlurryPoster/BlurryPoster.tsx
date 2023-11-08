@@ -125,7 +125,7 @@ export const BlurryPoster = ({
                   <Heading
                     as={headingLevel}
                     font={headingFont}
-                    leading={headingFont === 'druk' ? 'none' : 'display'}
+                    leading={headingFont === 'druk' ? 'none' : 'tight'}
                     className={styles.heading(imageOnLeft, isSmallHeading, headingFont, isTwoCol)}
                   >
                     {heading}

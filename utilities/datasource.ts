@@ -55,6 +55,22 @@ export const accentTextColors = {
 };
 export type AccentTextColorType = keyof typeof accentTextColors;
 
+export const imageAspectRatios = {
+  '1x1': 'aspect-w-1 aspect-h-1',
+  '1x2': 'aspect-w-1 aspect-h-2',
+  '2x1': 'aspect-w-2 aspect-h-1',
+  '2x3': 'aspect-w-2 aspect-h-3',
+  '3x2': 'aspect-w-3 aspect-h-2',
+  '3x4': 'aspect-w-3 aspect-h-4',
+  '4x3': 'aspect-w-4 aspect-h-3',
+  '5x8': 'aspect-w-5 aspect-h-8',
+  '8x5': 'aspect-w-8 aspect-h-5',
+  '9x16': 'aspect-w-9 aspect-h-16',
+  '16x9': 'aspect-w-16 aspect-h-9',
+  free: '',
+}
+export type ImageAspectRatioType = keyof typeof imageAspectRatios;
+
 // TODO: We might be not need this
 export const storyHeroAspectRatios = {
   '1x1': 'aspect-w-1 aspect-h-1',
@@ -152,8 +168,68 @@ export const paddingVerticals = {
 export type PaddingType = keyof typeof paddingTops;
 
 // Add other margins as needed. Used for spacing between elements.
+export const marginVerticals = {
+  none: 'my-0',
+  '01em': 'my-01em',
+  '02em': 'my-02em',
+  '03em': 'my-03em',
+  '04em': 'my-04em',
+  '05em': 'my-05em',
+  '06em': 'my-06em',
+  '07em': 'my-07em',
+  '08em': 'my-08em',
+  '09em': 'my-09em',
+  '1em': 'my-1em',
+  base: 'rs-my-0',
+  1: 'rs-my-1',
+  2: 'rs-my-2',
+  3: 'rs-my-3',
+  4: 'rs-my-4',
+  5: 'rs-my-5',
+  6: 'rs-my-6',
+  7: 'rs-my-7',
+  8: 'rs-my-8',
+  9: 'rs-my-9',
+  10: 'rs-my-10',
+};
+
+export const marginTops = {
+  none: 'mt-0',
+  '01em': 'mt-01em',
+  '02em': 'mt-02em',
+  '03em': 'mt-03em',
+  '04em': 'mt-04em',
+  '05em': 'mt-05em',
+  '06em': 'mt-06em',
+  '07em': 'mt-07em',
+  '08em': 'mt-08em',
+  '09em': 'mt-09em',
+  '1em': 'mt-1em',
+  base: 'rs-mt-0',
+  1: 'rs-mt-1',
+  2: 'rs-mt-2',
+  3: 'rs-mt-3',
+  4: 'rs-mt-4',
+  5: 'rs-mt-5',
+  6: 'rs-mt-6',
+  7: 'rs-mt-7',
+  8: 'rs-mt-8',
+  9: 'rs-mt-9',
+  10: 'rs-mt-10',
+};
+
 export const marginBottoms = {
-  none: '',
+  none: 'mb-0',
+  '01em': 'mb-01em',
+  '02em': 'mb-02em',
+  '03em': 'mb-03em',
+  '04em': 'mb-04em',
+  '05em': 'mb-05em',
+  '06em': 'mb-06em',
+  '07em': 'mb-07em',
+  '08em': 'mb-08em',
+  '09em': 'mb-09em',
+  '1em': 'mb-1em',
   base: 'rs-mb-0',
   1: 'rs-mb-1',
   2: 'rs-mb-2',
