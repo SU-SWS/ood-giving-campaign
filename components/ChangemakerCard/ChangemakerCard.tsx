@@ -1,5 +1,6 @@
 import { cnb } from 'cnbuilder';
 import { useRef, useState } from 'react';
+import { useOnClickOutside } from 'usehooks-ts';
 import { AnimateInView, type AnimationType } from '../Animate';
 import {
   Heading, type HeadingType, Text,
@@ -42,18 +43,25 @@ export const ChangemakerCard = ({
   const cardInnerRef = useRef<HTMLDivElement>(null);
   const [isFlipped, setIsFlipped] = useState(false);
 
-  // Toggle the card's flipped state and update isFlipped state
+  // Toggle the card's isFlipped state
   const toggleCard = () => {
     setIsFlipped(!isFlipped);
   };
 
-  // Onclick function to rotate cardInnerRef by 180 degrees in the Y axis
+  // Onclick function to rotate cardInnerRef around the Y axis
   const flipCard = (degrees: number) => {
     if (cardInnerRef.current) {
       cardInnerRef.current.style.transform = `rotateY(${degrees}deg)`;
       toggleCard();
     }
   };
+
+  // If card is flipped, clicking outside of the card will flip it back
+  useOnClickOutside(cardInnerRef, () => {
+    if (isFlipped) {
+      flipCard(0);
+    }
+  });
 
   return (
     <AnimateInView animation={animation} delay={delay}>
@@ -92,7 +100,7 @@ export const ChangemakerCard = ({
               type="button"
               onClick={() => flipCard(180)}
               aria-label={`Read more about ${heading}`}
-              className={styles.button}
+              className={cnb(styles.button, styles.buttonFront)}
             >
               <HeroIcon
                 noBaseStyle
@@ -112,7 +120,7 @@ export const ChangemakerCard = ({
               type="button"
               onClick={() => flipCard(0)}
               aria-label="Dismiss"
-              className={styles.button}
+              className={cnb(styles.button, styles.buttonBack)}
             >
               <HeroIcon
                 noBaseStyle
