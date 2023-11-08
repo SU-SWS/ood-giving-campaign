@@ -1,4 +1,5 @@
 import {
+  ArrowPathIcon,
   ArrowUpIcon,
   ArrowDownIcon,
   ArrowLeftIcon,
@@ -39,6 +40,7 @@ export const iconMap = {
   close: XMarkIcon,
   email: EnvelopeIcon,
   external: ArrowUpRightIcon,
+  flip: ArrowPathIcon,
   left: ArrowLeftIcon,
   link: LinkIcon,
   menu: Bars3Icon,

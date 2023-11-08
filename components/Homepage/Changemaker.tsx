@@ -55,7 +55,7 @@ export const Changemaker = () => {
               Etiam tempor sed tellus ac vulputate. Morbi varius ornare arcu,
               quis scelerisque urna ultricies sed. Nunc eu est leo.
             </Paragraph>
-            <Paragraph variant="card" noMargin>
+            <Paragraph variant="card">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Etiam tempor sed tellus ac vulputate.
             </Paragraph>

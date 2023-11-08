@@ -91,16 +91,14 @@ export const ChangemakerCard = ({
             <button
               type="button"
               onClick={() => flipCard(180)}
-              aria-label={`Flip card to read more about ${heading}`}
-              className="absolute w-full h-full top-0 left-0"
+              aria-label={`Read more about ${heading}`}
+              className={styles.button}
             >
-              <FlexBox direction="col" alignItems="center" className="absolute bottom-50 right-36 text-white">
-                <HeroIcon
-                  noBaseStyle
-                  icon='plus'
-                  className="w-65 h-65 border-2 border-white rounded-full p-16"
-                />
-              </FlexBox>
+              <HeroIcon
+                noBaseStyle
+                icon='flip'
+                className={styles.flipIcon}
+              />
             </button>
           </div>
           {/* Back of the card */}
@@ -114,15 +112,13 @@ export const ChangemakerCard = ({
               type="button"
               onClick={() => flipCard(0)}
               aria-label="Dismiss"
-              className="absolute w-full h-full top-0 left-0"
+              className={styles.button}
             >
-              <FlexBox direction="col" alignItems="center" className="absolute bottom-50 right-36 text-white">
-                <HeroIcon
-                  noBaseStyle
-                  icon='plus'
-                  className="w-65 h-65 border-2 border-white rounded-full p-16 rotate-45"
-                />
-              </FlexBox>
+              <HeroIcon
+                noBaseStyle
+                icon='flip'
+                className={styles.flipIcon}
+              />
             </button>
           </FlexBox>
         </div>
