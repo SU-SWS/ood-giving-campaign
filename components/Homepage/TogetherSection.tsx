@@ -2,7 +2,7 @@
 
 import { useRef } from 'react';
 import {
-  m, useScroll, useTransform, useWillChange,
+  m, useScroll, useTransform, useWillChange, useReducedMotion,
 } from 'framer-motion';
 import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
@@ -10,6 +10,7 @@ import { Heading, Paragraph, SrOnlyText } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 
 export const TogetherSection = () => {
+  const prefersReducedMotion = useReducedMotion();
   const sectionRef = useRef<HTMLDivElement>(null);
   const willChange = useWillChange();
   const { scrollYProgress } = useScroll({
@@ -20,12 +21,13 @@ export const TogetherSection = () => {
     target: sectionRef,
     offset: ['-80vh', '30vh'],
   });
-  const trackingAnimation = useTransform(scrollYProgress, [0, 1], ['0.3em', '0.025em']);
-  const scaleAnimation = useTransform(scrollYProgress, [0, 1], [3, 1]);
+  const trackingAnimation = useTransform(scrollYProgress, [0, 1], [prefersReducedMotion ? '0.05em' : '0.3em', '0.025em']);
+  const scaleAnimation = useTransform(scrollYProgress, [0, 1], [prefersReducedMotion ? 1.2: 3, 1]);
   const opacityAnimation = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const marginTopAnimation = useTransform(imageScrollYProgress, [0, 1], ['20vw', '-13vw']);
-  const imageScaleAnimation = useTransform(imageScrollYProgress, [0, 1], [3, 1]);
-  const imageOpacityAnimation = useTransform(imageScrollYProgress, [0, 0.5, 0.8, 1], [0, 0, 0.3, 1]);
+  const marginTopAnimation = useTransform(imageScrollYProgress, [0, 1], [prefersReducedMotion ? '-13vw' : '20vw', '-13vw']);
+  const imageScaleAnimation = useTransform(imageScrollYProgress, [0, 1], [prefersReducedMotion ? 1 : 3, 1]);
+  const imageOpacityAnimation = useTransform(imageScrollYProgress, [0, 0.5, 0.8, 1],
+    [prefersReducedMotion ? 0.7 : 0, prefersReducedMotion ? 0.8: 0, prefersReducedMotion ? 0.9 : 0.3, 1]);
 
   return (
     <div ref={sectionRef} className="relative overflow-hidden rs-pb-8 w-full bg-gc-black text-white">
