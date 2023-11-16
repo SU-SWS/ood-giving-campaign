@@ -10,7 +10,6 @@ type SbHomepageMvpProps = {
   blok: {
     _uid: string;
     title?: string;
-    intro: string;
     content?: SbBlokData[];
     ankle?: SbBlokData[];
   };
@@ -19,7 +18,6 @@ type SbHomepageMvpProps = {
 export const SbHomepageMvp = ({
   blok: {
     title,
-    intro,
     content,
     ankle,
   },
