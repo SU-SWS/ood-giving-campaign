@@ -3,6 +3,9 @@ export const AnimationMap = {
     hidden: {
       opacity: 0,
     },
+    hiddenReduced: {
+      opacity: 0,
+    },
     visible: {
       opacity: 1,
     },
@@ -11,6 +14,10 @@ export const AnimationMap = {
     hidden: {
       opacity: 0,
       scale: 0.6,
+    },
+    hiddenReduced: {
+      opacity: 0,
+      scale: 0.8,
     },
     visible: {
       opacity: 1,
@@ -23,6 +30,11 @@ export const AnimationMap = {
       scale: 0.6,
       filter: 'blur(20px)',
     },
+    hiddenReduced: {
+      opacity: 0.3,
+      scale: 0.8,
+      filter: 'blur(10px)',
+    },
     visible: {
       opacity: 1,
       scale: 1,
@@ -34,6 +46,10 @@ export const AnimationMap = {
       opacity: 0.3,
       filter: 'blur(20px)',
     },
+    hiddenReduced: {
+      opacity: 0.3,
+      filter: 'blur(10px)',
+    },
     visible: {
       opacity: 1,
       filter: 'blur(0px)',
@@ -43,6 +59,10 @@ export const AnimationMap = {
     hidden: {
       opacity: 0,
       x: -100,
+    },
+    hiddenReduced: {
+      opacity: 0,
+      x: 0,
     },
     visible: {
       opacity: 1,
@@ -54,6 +74,10 @@ export const AnimationMap = {
       opacity: 0,
       x: 100,
     },
+    hiddenReduced: {
+      opacity: 0,
+      x: 0,
+    },
     visible: {
       opacity: 1,
       x: 0,
@@ -63,6 +87,10 @@ export const AnimationMap = {
     hidden: {
       opacity: 0,
       y: 100,
+    },
+    hiddenReduced: {
+      opacity: 0,
+      y: 0,
     },
     visible: {
       opacity: 1,
@@ -74,6 +102,10 @@ export const AnimationMap = {
       opacity: 0,
       y: -100,
     },
+    hiddenReduced: {
+      opacity: 0,
+      y: 0,
+    },
     visible: {
       opacity: 1,
       y: 0,
@@ -83,6 +115,10 @@ export const AnimationMap = {
     hidden: {
       opacity: 0,
       height: 0,
+    },
+    hiddenReduced: {
+      opacity: 1,
+      height: 'auto',
     },
     visible: {
       opacity: 1,
