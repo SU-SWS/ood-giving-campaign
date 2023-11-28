@@ -154,6 +154,7 @@ export const SbTypeform = ({
             autoResize={resize}
             opacity={opacity}
             height={!resize ? embedHeight : undefined}
+            className='w-full'
           />
         </div>
       );
