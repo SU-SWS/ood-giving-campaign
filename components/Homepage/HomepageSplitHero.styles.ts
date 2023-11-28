@@ -17,5 +17,4 @@ export const textWrapperBottom = 'relative top-[12%]';
 export const serifText = 'text-[clamp(2.5rem,2.74vw+1.51rem,7rem)]';
 
 export const introWrapper = 'relative z-10 bg-gradient-to-t from-gc-black to-[#020002]';
-export const introBodyWrapper = 'md:ml-06em';
 export const introParagraph = 'max-w-[50ch] ml-0 mr-auto';

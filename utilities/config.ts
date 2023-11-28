@@ -2,8 +2,8 @@
  * Global variables for this project.
  */
 export const config = {
-  siteUrlProd: 'https://impactstories.stanford.edu',
-  siteTitle: 'Stanford Impact Stories',
+  siteUrlProd: 'https://momentum.stanford.edu',
+  siteTitle: 'Stanford Momentum',
   siteDescription: 'TBD', // TODO: Add generic site description as fallback for search engine if Storyblok SEO description is not provided
   assetCdn: 'https://assets.stanford.edu/',
   imageService: 'https://a-us.storyblok.com/',
