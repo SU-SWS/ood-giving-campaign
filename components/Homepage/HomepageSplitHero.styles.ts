@@ -12,10 +12,9 @@ export const imageTopLayerCommon = 'absolute top-0 right-0 w-full h-full object-
 export const imageBottomLayerCommon = 'w-full h-full object-cover';
 
 export const textFlexbox = 'absolute w-full h-full top-0 left-0 cc 3xl:px-100 4xl:px-[calc((100%-1800px)/2)]';
-export const textWrapperTop = 'relative -top-65 sm:-top-[10vw] xl:-top-[8vw] 4xl:-top-[15rem] right-0';
+export const textWrapperTop = 'relative -top-60 sm:-top-[10vw] xl:-top-[8vw] 4xl:-top-[15rem] right-0';
 export const textWrapperBottom = 'relative top-[12%]';
 export const serifText = 'text-[clamp(2.5rem,2.74vw+1.51rem,7rem)]';
 
 export const introWrapper = 'relative z-10 bg-gradient-to-t from-gc-black to-[#020002]';
-export const introBodyWrapper = 'md:ml-06em';
 export const introParagraph = 'max-w-[50ch] ml-0 mr-auto';

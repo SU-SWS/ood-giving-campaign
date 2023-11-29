@@ -30,16 +30,15 @@ export const Changemaker = () => {
             </Text>
           </AnimateInView>
           <AnimateInView animation="slideInFromRight" delay={0.4}>
-            <Text as="span" font="serif" className="block" italic>
+            <Text as="span" font="serif" className="block">
               Risk-takers.
             </Text>
           </AnimateInView>
         </Heading>
         <AnimateInView animation="slideUp" delay={0.5}>
-          <Paragraph size={2} weight="semibold" noMargin font="serif" align="center" className="max-w-900 mx-auto rs-my-4" leading="display">
+          <Paragraph size={2} weight="semibold" noMargin font="serif" align="center" className="max-w-700 mx-auto rs-my-4" leading="display">
             The Stanford community overflows with curious people unafraid to try,
-            change, and try again.<br />
-            Meet some of them.
+            change, and try again. Meet some of them.
           </Paragraph>
         </AnimateInView>
         <Grid md={2} xxl={4} pt={7} gap="default">
