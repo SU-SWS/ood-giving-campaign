@@ -1,7 +1,7 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
-import { ThemeCard } from '../VerticalCard';
-import { type AnimationType } from '../Animate';
-import { type HeadingType } from '../Typography';
+import { ThemeCard } from '@/components/ThemeCard';
+import { type AnimationType } from '@/components/Animate';
+import { type HeadingType } from '@/components/Typography';
 import { type SbImageType, type SbLinkType } from './Storyblok.types';
 
 export type SbThemeCardProps = {
