@@ -30,8 +30,7 @@ export type SbTypeformProps = {
 
 // TODO: Move this to the non-storyblok Typeform component dir.
 export const styles = {
-  container: 'cc flex flex-col place-items-center rs-py-6',
-  heading: 'px-[40px] tf-sm:px-[80px] max-w-[878px]',
+  container: 'cc flex flex-col place-items-center',
   fauxCTA: cnb(CTAStyles.cta, CTAStyles.ctaVariants.solid, CTAStyles.ctaSizes.large),
 };
 
@@ -66,7 +65,6 @@ export const SbTypeform = ({
     case 'slider': {
       return (
         <div {...storyblokEditable(blok)} className={styles.container}>
-          <Heading as='h2' size={3} className={styles.heading}>{heading}</Heading>
           <Slider
             id={id}
             autoClose={10000}
@@ -121,9 +119,7 @@ export const SbTypeform = ({
     case 'popup': {
       return (
         <div {...storyblokEditable(blok)} className={styles.container}>
-          <Heading as='h2' size={3} className={styles.heading}>{heading}</Heading>
           <PopUp
-            {...storyblokEditable(blok)}
             id={id}
             autoClose={10000}
             fullScreen={fullScreen}
@@ -134,7 +130,8 @@ export const SbTypeform = ({
             transitiveSearchParams={transitiveParams}
             displayAsFullScreenModal={displayAsFullScreenModal}
             autoResize={resize}
-            height={!resize ? embedHeight : undefined}>
+            height={!resize ? embedHeight : undefined}
+          >
             <span className={styles.fauxCTA}>{buttonLabel}</span>
           </PopUp>
         </div>
@@ -144,7 +141,6 @@ export const SbTypeform = ({
     default: {
       return (
         <div {...storyblokEditable(blok)} className={styles.container}>
-          <Heading as='h2' size={3} className={styles.heading}>{heading}</Heading>
           <Widget
             id={id}
             autoFocus={autoFocus}
