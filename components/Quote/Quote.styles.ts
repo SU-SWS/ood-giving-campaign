@@ -23,7 +23,7 @@ export const quoteMark = (isLargeTeaser?: boolean) => cnb('shrink-0 leading-[0]'
   'text-[clamp(17rem,11.19vw+12.97rem,32rem)] mt-[clamp(6rem,4.03vw+4.55rem,11.4rem)]': isLargeTeaser,
 });
 export const teaser = 'rs-mb-0 grow-0 w-fit max-w-[20ch]';
-export const body = (isLargeBody?: boolean) => cnb('mt-02em first:mt-0', {
+export const body = (isLargeBody?: boolean) => cnb('mt-02em first:mt-0 whitespace-pre-line', {
   'max-w-[55ch]': !isLargeBody,
   'max-w-[35ch]': isLargeBody,
 });

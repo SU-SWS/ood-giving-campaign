@@ -70,7 +70,7 @@ export const Quote = ({
         {body && (
           <Text
             as="blockquote"
-            weight={isLargeBody ? 'semibold' : 'normal'}
+            weight="semibold"
             variant={isLargeBody ? undefined : 'big'}
             leading="display"
             size={isLargeBody ? 2 : undefined}
@@ -81,7 +81,7 @@ export const Quote = ({
           </Text>
         )}
         {source && (
-          <Text variant="card" font="serif" className={styles.source}>{source}</Text>
+          <Text variant="card" className={styles.source}>{source}</Text>
         )}
       </div>
     </Container>
