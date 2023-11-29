@@ -3,7 +3,6 @@ import { cnb } from 'cnbuilder';
 import Link from 'next/link';
 import { LogoHorizontal } from './LogoHorizontal';
 import * as styles from './Logo.styles';
-//import { useAddUtmParams } from '../../hooks/useAddUtmParams';
 
 type LogoProps = HTMLAttributes<HTMLElement> & {
   color?: styles.LogoColorType;
@@ -22,7 +21,6 @@ export const Logo = ({
     <LogoHorizontal color={color} />
   );
 
-  //const homeLink = useAddUtmParams('/');
   const homeLink = '/';
 
   // Render logo as link if isLink is true
