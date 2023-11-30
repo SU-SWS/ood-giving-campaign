@@ -164,12 +164,13 @@ export const BlurryPoster = ({
                   {body}
                 </Paragraph>
               )}
-              {byline && (
+              {/* No authors and published dates for MVP */}
+              {/* {byline && (
                 <Text>{byline}</Text>
               )}
               {date && (
                 <time dateTime={publishedDate}>{formattedDate}</time>
-              )}
+              )} */}
               {cta && (
                 <div className={styles.cta}>
                   {cta}
