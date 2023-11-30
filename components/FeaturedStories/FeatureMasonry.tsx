@@ -51,9 +51,9 @@ export const FeatureMasonry = ({
               '1200x600',
               audioBgImageFocus,
             )}
-            overlay="black-60"
-            className="blur-sm"
+            overlay="black-10"
           />
+          <div className="absolute top-0 left-0 w-full h-full backdrop-blur-sm" />
           <EmbedMedia
             mediaUrl={audioUrl}
             className="relative z-10 rs-py-6 children:w-4/5 children:mx-auto lg:children:children:aspect-w-2 lg:children:children:aspect-h-1 xl:children:children:aspect-w-4 xl:children:children:aspect-h-1"
@@ -61,7 +61,7 @@ export const FeatureMasonry = ({
         </FlexBox>
         <FlexBox
           justifyContent="center"
-          className="relative lg:col-span-5 rs-py-6 px-36 xl:px-58 2xl:px-76 bg-black-70 text-white"
+          className="relative lg:col-span-5 rs-py-4 px-36 xl:px-58 2xl:px-76 bg-black-70 text-white"
         >
           <ImageOverlay
             imageSrc={getProcessedImage(

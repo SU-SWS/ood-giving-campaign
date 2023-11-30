@@ -75,7 +75,7 @@ export const Quote = ({
             leading="display"
             size={isLargeBody ? 2 : undefined}
             font="serif"
-            className={styles.body(isLargeBody)}
+            className={styles.body}
           >
             {body}
           </Text>
