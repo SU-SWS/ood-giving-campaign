@@ -8,36 +8,41 @@ import { hasRichText } from '@/utilities/hasRichText';
 export type SbFeatureMasonryProps = {
   blok: {
     _uid: string;
-    videoUrl?: string;
     audioUrl?: string;
+    audioBgImage?: SbImageType;
     image1?: SbImageType;
-    image2?: SbImageType;
-    quoteBody?: StoryblokRichtext;
+    quoteBody?: string;
+    quoteBgImage?: SbImageType;
+    videoUrl?: string;
+    caption?: string;
   };
 };
 
 export const SbFeatureMasonry = ({
   blok: {
-    videoUrl,
     audioUrl,
-    image1: { filename: imageSrc1, focus: imageFocus1 } = {},
-    image2: { filename: imageSrc2, focus: imageFocus2 } = {},
+    audioBgImage: { filename: audioBgImageSrc, focus: audioBgImagFocus } = {},
     quoteBody,
+    quoteBgImage: { filename: quoteBgImageSrc, focus: quoteBgImageFocus } = {},
+    image1: { filename: imageSrc1, focus: imageFocus1 } = {},
+    videoUrl,
+    caption,
   },
   blok,
 }: SbFeatureMasonryProps) => {
-  const QuoteBody = hasRichText(quoteBody) ? <RichText wysiwyg={quoteBody} isLightText /> : undefined;
-
   return (
     <FeatureMasonry
       {...storyblokEditable(blok)}
-      videoUrl={videoUrl}
       audioUrl={audioUrl}
+      audioBgImageSrc={audioBgImageSrc}
+      audioBgImageFocus={audioBgImagFocus}
+      quoteBody={quoteBody}
+      quoteBgImageSrc={quoteBgImageSrc}
+      quoteBgImageFocus={quoteBgImageFocus}
       imageSrc1={imageSrc1}
       imageFocus1={imageFocus1}
-      imageSrc2={imageSrc2}
-      imageFocus2={imageFocus2}
-      quoteBody={QuoteBody}
+      videoUrl={videoUrl}
+      caption={caption}
     />
   );
 };
