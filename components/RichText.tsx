@@ -3,6 +3,7 @@ import { cnb } from 'cnbuilder';
 import { CtaLink } from './Cta';
 import { SbCta } from './Storyblok/SbCta';
 import { SbTriangle } from './Storyblok/SbTriangle';
+import { SbText } from './Storyblok/SbText';
 import {
   Heading,
   type FontSizeType,
@@ -94,6 +95,9 @@ export const RichText = ({
     blokResolvers: {
       sbCta: (props) => (
         <SbCta blok={props} />
+      ),
+      sbText: (props) => (
+        <SbText blok={props} />
       ),
       sbTriangle: (props) => (
         <SbTriangle blok={props} />
