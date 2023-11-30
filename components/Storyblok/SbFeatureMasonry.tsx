@@ -1,18 +1,16 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { FeatureMasonry } from '@/components/FeaturedStories';
-import { RichText } from '@/components/RichText';
 import { type SbImageType } from './Storyblok.types';
-import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
-import { hasRichText } from '@/utilities/hasRichText';
 
 export type SbFeatureMasonryProps = {
   blok: {
     _uid: string;
     audioUrl?: string;
     audioBgImage?: SbImageType;
-    image1?: SbImageType;
     quoteBody?: string;
     quoteBgImage?: SbImageType;
+    image1?: SbImageType;
+    imageAlt1?: string;
     videoUrl?: string;
     caption?: string;
   };
@@ -25,24 +23,24 @@ export const SbFeatureMasonry = ({
     quoteBody,
     quoteBgImage: { filename: quoteBgImageSrc, focus: quoteBgImageFocus } = {},
     image1: { filename: imageSrc1, focus: imageFocus1 } = {},
+    imageAlt1,
     videoUrl,
     caption,
   },
   blok,
-}: SbFeatureMasonryProps) => {
-  return (
-    <FeatureMasonry
-      {...storyblokEditable(blok)}
-      audioUrl={audioUrl}
-      audioBgImageSrc={audioBgImageSrc}
-      audioBgImageFocus={audioBgImagFocus}
-      quoteBody={quoteBody}
-      quoteBgImageSrc={quoteBgImageSrc}
-      quoteBgImageFocus={quoteBgImageFocus}
-      imageSrc1={imageSrc1}
-      imageFocus1={imageFocus1}
-      videoUrl={videoUrl}
-      caption={caption}
-    />
-  );
-};
+}: SbFeatureMasonryProps) => (
+  <FeatureMasonry
+    {...storyblokEditable(blok)}
+    audioUrl={audioUrl}
+    audioBgImageSrc={audioBgImageSrc}
+    audioBgImageFocus={audioBgImagFocus}
+    quoteBody={quoteBody}
+    quoteBgImageSrc={quoteBgImageSrc}
+    quoteBgImageFocus={quoteBgImageFocus}
+    imageSrc1={imageSrc1}
+    imageFocus1={imageFocus1}
+    imageAlt1={imageAlt1}
+    videoUrl={videoUrl}
+    caption={caption}
+  />
+);

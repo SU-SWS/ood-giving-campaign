@@ -18,6 +18,7 @@ type FeatureMasonryProps = React.HTMLAttributes<HTMLDivElement> & {
   quoteBgImageFocus?: string;
   imageSrc1?: string;
   imageFocus1?: string;
+  imageAlt1?: string;
   videoUrl?: string;
   caption?: string;
 }
@@ -31,6 +32,7 @@ export const FeatureMasonry = ({
   quoteBgImageFocus,
   imageSrc1,
   imageFocus1,
+  imageAlt1,
   videoUrl,
   caption,
   className,
@@ -54,17 +56,17 @@ export const FeatureMasonry = ({
           />
           <EmbedMedia
             mediaUrl={audioUrl}
-            className="relative z-10 lg:children:w-4/5 lg:children:mx-auto lg:children:children:aspect-w-2 lg:children:children:aspect-h-1 xl:children:children:aspect-w-4 xl:children:children:aspect-h-1"
+            className="relative z-10 rs-py-6 children:w-4/5 children:mx-auto lg:children:children:aspect-w-2 lg:children:children:aspect-h-1 xl:children:children:aspect-w-4 xl:children:children:aspect-h-1"
           />
         </FlexBox>
         <FlexBox
           justifyContent="center"
-          className="relative lg:col-span-5 xl:h-500 rs-py-3 lg:px-36 xl:px-58 2xl:px-76 bg-black-70 text-white"
+          className="relative lg:col-span-5 rs-py-6 px-36 xl:px-58 2xl:px-76 bg-black-70 text-white"
         >
           <ImageOverlay
             imageSrc={getProcessedImage(
               quoteBgImageSrc,
-              '800x800',
+              '1200x800',
               quoteBgImageFocus,
             )}
             overlay="black-60"
@@ -83,14 +85,14 @@ export const FeatureMasonry = ({
         </FlexBox>
         <div className="lg:col-span-6 w-full h-full">
           <img
-            src={getProcessedImage(imageSrc1, '1200x600', imageFocus1)}
-            alt=""
+            src={getProcessedImage(imageSrc1, '800x450', imageFocus1)}
+            alt={imageAlt1 || ''}
             className="w-full h-full object-cover"
           />
         </div>
         <EmbedMedia
           mediaUrl={videoUrl}
-          className="lg:col-span-6"
+          className="lg:col-span-6 bg-black-70"
           aspectRatio="16x9"
         />
       </Grid>
