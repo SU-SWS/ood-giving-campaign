@@ -6,13 +6,9 @@ import { SbLinkType } from '../Storyblok/Storyblok.types';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { slugify } from '@/utilities/slugify';
 import { accentBorderColors, type AccentBorderColorType } from '@/utilities/datasource';
-import * as styles from './VerticalCard.styles';
+import * as styles from './StoryCard.styles';
 
-/**
- * Currently, both Theme Card and Story Card use this component.
- */
-
-export type VerticalCardProps = React.HTMLAttributes<HTMLDivElement> & {
+export type StoryCardProps = React.HTMLAttributes<HTMLDivElement> & {
   heading?: string;
   headingLevel?: HeadingType;
   isSmallHeading?: boolean;
@@ -20,8 +16,6 @@ export type VerticalCardProps = React.HTMLAttributes<HTMLDivElement> & {
   imageSrc?: string;
   imageFocus?: string;
   tabColor?: AccentBorderColorType;
-  ctaLabel?: string;
-  ctaSrText?: string;
   href?: string;
   link?: SbLinkType;
   taxonomy?: string[];
@@ -29,7 +23,7 @@ export type VerticalCardProps = React.HTMLAttributes<HTMLDivElement> & {
   delay?: number;
 };
 
-export const VerticalCard = ({
+export const StoryCard = ({
   heading,
   headingLevel = 'h3',
   isSmallHeading,
@@ -37,8 +31,6 @@ export const VerticalCard = ({
   imageSrc,
   imageFocus,
   tabColor,
-  ctaLabel,
-  ctaSrText,
   link,
   href = '',
   taxonomy,
@@ -46,7 +38,7 @@ export const VerticalCard = ({
   delay,
   className,
   ...props
-}: VerticalCardProps) => (
+}: StoryCardProps) => (
   <AnimateInView animation={animation} delay={delay}>
     <article
       className={cnb(styles.root, className)}
@@ -72,30 +64,13 @@ export const VerticalCard = ({
             leading="tight"
             className={cnb(styles.heading(!!tabColor), accentBorderColors[tabColor])}
           >
-            {(!ctaLabel && (link || href))
-              ? (
-                <CtaLink sbLink={link} href={href} className={styles.headingLink}>
-                  {heading}
-                </CtaLink>
-              ) : heading}
+            <CtaLink sbLink={link} href={href} className={styles.headingLink}>
+              {heading}
+            </CtaLink>
           </Heading>
         )}
         {body && (
-          <Paragraph variant="card" noMargin>{body}</Paragraph>
-        )}
-        {ctaLabel && (link || href) && (
-          <CtaLink
-            variant="solid"
-            curve="br"
-            icon="arrow-right"
-            animate="right"
-            srText={ctaSrText}
-            sbLink={link}
-            href={href}
-            className={styles.ctaLink}
-          >
-            {ctaLabel}
-          </CtaLink>
+          <Paragraph variant="card" noMargin className={styles.body}>{body}</Paragraph>
         )}
       </div>
       {/* No taxonomy for MVP; display max 3 topic tags */}
