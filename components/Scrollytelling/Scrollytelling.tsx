@@ -1,5 +1,3 @@
-import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
-import { type SbBlokData } from '@storyblok/react/rsc';
 import { Container } from '@/components/Container';
 import { Grid } from '@/components/Grid';
 import { ImageOverlay } from '@/components/ImageOverlay';
@@ -7,7 +5,6 @@ import { RichText } from '@/components/RichText';
 import { WidthBox } from '@/components/WidthBox';
 import { Heading, Text, type HeadingType } from '@/components/Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { hasRichText } from '@/utilities/hasRichText';
 import { type MarginType } from '@/utilities/datasource';
 
 
@@ -16,7 +13,7 @@ type ScrollytellingProps = React.HTMLAttributes<HTMLDivElement> & {
   headingLevel?: HeadingType;
   subheading?: string;
   content?: React.ReactNode;
-  caption?: StoryblokRichtext;
+  caption?: React.ReactNode;
   bgImageSrc?: string;
   bgImageFocus?: string;
   bgImageAlt?: string;
@@ -55,13 +52,10 @@ export const Scrollytelling = ({
       </Text>
       {children}
     </div>
-    {hasRichText(caption) && (
-      <WidthBox boundingWidth="site">
-        <RichText
-          wysiwyg={caption}
-          className="children:text-black-70 children:leading-display caption mt-1em max-w-prose-wide"
-        />
-      </WidthBox>
+    {caption && (
+      <Container>
+        {caption}
+      </Container>
     )}
   </Container>
 );
