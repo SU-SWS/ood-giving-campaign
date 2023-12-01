@@ -32,7 +32,7 @@ export const SbBanner = ({
   blok,
 }: SbBannerProps) => {
   const Cta = !!getNumBloks(cta) ? <CreateBloks blokSection={cta} /> : undefined;
-  const Body = hasRichText(body) ? <RichText wysiwyg={body} isLightText={bgColor === 'black'} /> : undefined;
+  const Body = hasRichText(body) ? <RichText wysiwyg={body} textColor={bgColor === 'black' ? 'white' : 'black'} /> : undefined;
 
   return (
     <Banner

@@ -21,7 +21,7 @@ export type RichTextProps = {
   wysiwyg: StoryblokRichtext;
   // "default" is for main content, e.g., Story body content
   type?: 'default' | 'card';
-  isLightText?: boolean;
+  textColor?: 'black' | 'white' | 'black-70';
   textAlign?: TextAlignType;
   className?: string;
 };
@@ -29,11 +29,16 @@ export type RichTextProps = {
 export const RichText = ({
   wysiwyg,
   type,
-  isLightText,
+  textColor = 'black',
   textAlign = 'left',
   className,
 }: RichTextProps) => {
-  const textColor = isLightText ? 'text-white print:text-gc-black' : 'text-gc-black';
+  const printColor = 'print:text-gc-black';
+  const textClasses = {
+    black: 'text-gc-black',
+    white: 'text-gc-white',
+    'black-70': 'text-gc-black-70',
+  };
 
   const rendered = render(wysiwyg, {
     markResolvers: {
@@ -62,7 +67,7 @@ export const RichText = ({
         return (
           <CtaLink
             sbLink={sbLink}
-            variant={isLightText ? 'inlineDark' : 'inline'}
+            variant={textColor === 'white' ? 'inlineDark' : 'inline'}
             className="children:inline"
             // Custom link attributes are not supported by the rich text renderer currently
             // Adding rel="noopener" for all eternal links for security reasons
@@ -115,7 +120,8 @@ export const RichText = ({
     <div
       className={cnb(
         'wysiwyg',
-        textColor,
+        textClasses[textColor],
+        printColor,
         textAligns[textAlign],
         className,
       )}

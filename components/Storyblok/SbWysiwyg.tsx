@@ -40,6 +40,11 @@ export const SbWysiwyg = ({
     pt={spacingTop}
     pb={spacingBottom}
   >
-    <RichText type="default" wysiwyg={content} isLightText={isDarkTheme || isLightText} textAlign={textAlign} />
+    <RichText
+      type="default"
+      wysiwyg={content}
+      textColor={isDarkTheme || isLightText ? 'white' : 'black'}
+      textAlign={textAlign}
+    />
   </WidthBox>
 );

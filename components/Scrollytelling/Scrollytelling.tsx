@@ -36,24 +36,26 @@ export const Scrollytelling = ({
   children,
   ...props
 }: ScrollytellingProps) => (
-  <Container width="full" className="relative" bgColor="black" mt={spacingTop} mb={spacingBottom} {...props}>
-    <div className="sticky top-0 h-screen w-full">
-      <ImageOverlay
-        imageSrc={getProcessedImage(bgImageSrc, '2000x0', bgImageFocus)}
-        overlay="black-50"
-      />
-    </div>
-    <div className="relative w-2/3 lg:w-1/3 mx-auto text-white z-10 rs-py-10">
-      <Heading as={headingLevel} color="white" align="center" className="mb-02em">
-        {heading}
-      </Heading>
-      <Text variant="subheading" align="center">
-        {subheading}
-      </Text>
-      {children}
-    </div>
+  <Container width="full" mt={spacingTop} mb={spacingBottom} {...props}>
+    <Container width="full" className="relative" bgColor="black">
+      <div className="sticky top-0 h-screen w-full">
+        <ImageOverlay
+          imageSrc={getProcessedImage(bgImageSrc, '2000x0', bgImageFocus)}
+          overlay="black-50"
+        />
+      </div>
+      <div className="relative w-2/3 lg:w-1/3 mx-auto text-white z-10 rs-py-10">
+        <Heading as={headingLevel} color="white" align="center" className="mb-02em">
+          {heading}
+        </Heading>
+        <Text variant="subheading" align="center">
+          {subheading}
+        </Text>
+        {children}
+      </div>
+    </Container>
     {caption && (
-      <Container>
+      <Container className="relative children:children:leading-display caption mt-07em max-w-prose-wide ml-0">
         {caption}
       </Container>
     )}

@@ -96,7 +96,7 @@ export const FeatureMasonry = ({
           aspectRatio="16x9"
         />
       </Grid>
-      <Text variant="caption" leading="display" className="text-black-70 max-w-prose-wide mt-1em">
+      <Text variant="caption" leading="display" className="text-black-70 max-w-prose-wide mt-1em whitespace-pre-line">
         {caption}
       </Text>
     </Container>

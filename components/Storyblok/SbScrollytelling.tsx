@@ -37,7 +37,7 @@ export const SbScrollytelling = ({
   },
   blok,
 }: SbScrollytellingProps) => {
-  const Caption = hasRichText(caption) ? <RichText wysiwyg={caption} /> : undefined;
+  const Caption = hasRichText(caption) ? <RichText textColor="black-70" wysiwyg={caption} /> : undefined;
 
   return (
     <Scrollytelling
