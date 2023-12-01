@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+import { m, useScroll, useTransform } from 'framer-motion';
 import { Container } from '@/components/Container';
 import { Grid } from '@/components/Grid';
 import { ImageOverlay } from '@/components/ImageOverlay';
@@ -34,33 +36,52 @@ export const Scrollytelling = ({
   spacingBottom,
   children,
   ...props
-}: ScrollytellingProps) => (
-  <Container width="full" mt={spacingTop} mb={spacingBottom} {...props}>
-    <Container width="full" className="relative" bgColor="black">
-      <div className="sticky top-0 h-screen w-full">
-        <ImageOverlay
-          imageSrc={getProcessedImage(bgImageSrc, '2000x0', bgImageFocus)}
-          overlay="black-50"
-        />
-      </div>
-      <div className="relative cc text-white z-10 rs-py-10">
-        <div className="w-full sm:w-2/3 lg:w-1/2 mx-auto">
-          <Heading as={headingLevel} color="white" align="center" className="mb-02em">
-            {heading}
-          </Heading>
-          <Text variant="subheading" align="center">
-            {subheading}
-          </Text>
-          <div className="rs-mt-6 grid gap-y-30 md:gap-y-40 xl:gap-y-60">
-            {children}
+}: ScrollytellingProps) => {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: contentRef,
+    offset: ['start center', 'end start'],
+  });
+  const animateOpacity = useTransform(scrollYProgress, [0, 0.1], ['0%', '100%']);
+  const animateScale = useTransform(scrollYProgress, [0, 0.2], [0.8, 1]);
+
+  return (
+    <Container width="full" mt={spacingTop} mb={spacingBottom} {...props}>
+      <Container width="full" className="relative" bgColor="black">
+        <m.div
+          className="sticky top-0 h-screen w-full"
+          style={{ scale: animateScale }}
+        >
+          <img
+            src={getProcessedImage(bgImageSrc, '2000x0', bgImageFocus)}
+            alt=""
+            loading="eager"
+            className="absolute w-full h-full object-cover top-0 left-0"
+          />
+          <m.div
+            className="absolute w-full h-full top-0 left-0 bg-black-true/50"
+            style={{ opacity: animateOpacity }}
+          />
+        </m.div>
+        <div ref={contentRef} className="relative cc text-white z-10 rs-py-10">
+          <div className="w-full sm:w-2/3 lg:w-1/2 mx-auto">
+            <Heading as={headingLevel} color="white" align="center" className="mb-02em">
+              {heading}
+            </Heading>
+            <Text variant="subheading" align="center">
+              {subheading}
+            </Text>
+            <div className="rs-mt-6 grid gap-y-30 md:gap-y-40 xl:gap-y-60">
+              {children}
+            </div>
           </div>
         </div>
-      </div>
-    </Container>
-    {caption && (
-      <Container className="relative children:children:leading-display caption mt-07em max-w-prose-wide ml-0">
-        {caption}
       </Container>
-    )}
-  </Container>
-);
+      {caption && (
+        <Container className="relative children:children:leading-display caption mt-07em max-w-prose-wide ml-0">
+          {caption}
+        </Container>
+      )}
+    </Container>
+  );
+};
