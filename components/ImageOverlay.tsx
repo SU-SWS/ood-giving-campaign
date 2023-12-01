@@ -5,6 +5,7 @@ export const overlays = {
   'black-10': 'bg-black-true/10',
   'black-30': 'bg-black-true/30',
   'black-40': 'bg-black-true/40',
+  'black-50': 'bg-black-true/50',
   'black-60': 'bg-black-true/60',
   'black-70': 'bg-black-true/70',
   'black-80': 'bg-black-true/80',
