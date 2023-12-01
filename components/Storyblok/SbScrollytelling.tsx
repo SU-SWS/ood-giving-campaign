@@ -4,8 +4,6 @@ import { Scrollytelling } from '@/components/Scrollytelling';
 import { type SbImageType } from './Storyblok.types';
 import { type HeadingType } from '../Typography';
 import { type MarginType } from '@/utilities/datasource';
-import { getNumBloks } from '@/utilities/getNumBloks';
-import { get } from 'http';
 
 type SbScrollytellingProps = {
   blok: {
