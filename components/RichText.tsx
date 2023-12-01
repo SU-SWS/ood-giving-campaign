@@ -36,8 +36,8 @@ export const RichText = ({
   const printColor = 'print:text-gc-black';
   const textClasses = {
     black: 'text-gc-black',
-    white: 'text-gc-white',
-    'black-70': 'text-gc-black-70',
+    white: 'text-white',
+    'black-70': 'text-black-70',
   };
 
   const rendered = render(wysiwyg, {
