@@ -3,9 +3,9 @@ import Image from 'next/image';
 import { CreateBloks } from '@/components/CreateBloks';
 import { Masthead } from '@/components/Masthead';
 import { StoryHero, type StoryHeroProps } from '@/components/Hero';
-import { ScrollyTelling } from '@/components/ScrollyTelling/ScrollyTelling';
-import { ScrollyFullwidth } from '../ScrollyTelling/ScrollyFullwidth';
-import { ScrollyDataViz } from '../ScrollyTelling/ScrollyDataViz';
+import { ScrollytellingDemo } from '@/components/Scrollytelling/ScrollytellingDemo';
+import { ScrollyFullwidth } from '../Scrollytelling/ScrollyFullwidth';
+import { ScrollyDataViz } from '../Scrollytelling/ScrollyDataViz';
 import { ProgressStory } from '../StoryPoC/ProgressStory';
 import { MulticolumnStory } from '../StoryPoC/MulticolumnStory';
 import { ChatbotStory } from '../StoryPoC/ChatbotStory';
@@ -102,7 +102,7 @@ export const SbStory = ({
         {title?.includes('Immersive featured') && (
           <>
             <ScrollyFullwidth />
-            <ScrollyTelling />
+            <ScrollytellingDemo />
             <ScrollyDataViz />
           </>
         )}
