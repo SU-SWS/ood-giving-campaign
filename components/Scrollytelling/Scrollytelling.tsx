@@ -1,7 +1,6 @@
 import { Container } from '@/components/Container';
 import { Grid } from '@/components/Grid';
 import { ImageOverlay } from '@/components/ImageOverlay';
-import { RichText } from '@/components/RichText';
 import { WidthBox } from '@/components/WidthBox';
 import { Heading, Text, type HeadingType } from '@/components/Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
@@ -44,14 +43,18 @@ export const Scrollytelling = ({
           overlay="black-50"
         />
       </div>
-      <div className="relative w-2/3 lg:w-1/3 mx-auto text-white z-10 rs-py-10">
-        <Heading as={headingLevel} color="white" align="center" className="mb-02em">
-          {heading}
-        </Heading>
-        <Text variant="subheading" align="center">
-          {subheading}
-        </Text>
-        {children}
+      <div className="relative cc text-white z-10 rs-py-10">
+        <div className="w-full sm:w-2/3 lg:w-1/2 mx-auto">
+          <Heading as={headingLevel} color="white" align="center" className="mb-02em">
+            {heading}
+          </Heading>
+          <Text variant="subheading" align="center">
+            {subheading}
+          </Text>
+          <div className="rs-mt-6 grid gap-y-30 md:gap-y-40 xl:gap-y-60">
+            {children}
+          </div>
+        </div>
       </div>
     </Container>
     {caption && (

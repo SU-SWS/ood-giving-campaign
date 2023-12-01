@@ -22,23 +22,35 @@ export type RichTextProps = {
   // "default" is for main content, e.g., Story body content
   type?: 'default' | 'card';
   textColor?: 'black' | 'white' | 'black-70';
+  bgColor?: 'black' | 'black-50' | 'black-60' | 'black-70' | 'white' | 'none';
   textAlign?: TextAlignType;
   className?: string;
+};
+
+const textClasses = {
+  black: 'text-gc-black',
+  white: 'text-white',
+  'black-70': 'text-black-70',
+};
+
+const bgClasses = {
+  black: 'bg-gc-black',
+  'black-50': 'bg-black-true/50',
+  'black-60': 'bg-black-true/60',
+  'black-70': 'bg-black-true/70',
+  white: 'bg-white',
+  none: '',
 };
 
 export const RichText = ({
   wysiwyg,
   type,
   textColor = 'black',
+  bgColor = 'none',
   textAlign = 'left',
   className,
 }: RichTextProps) => {
   const printColor = 'print:text-gc-black';
-  const textClasses = {
-    black: 'text-gc-black',
-    white: 'text-white',
-    'black-70': 'text-black-70',
-  };
 
   const rendered = render(wysiwyg, {
     markResolvers: {
@@ -121,6 +133,8 @@ export const RichText = ({
       className={cnb(
         'wysiwyg',
         textClasses[textColor],
+        bgClasses[bgColor],
+        bgColor !== 'none' ? 'rs-p-2 backdrop-blur-sm' : '',
         printColor,
         textAligns[textAlign],
         className,
