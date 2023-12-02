@@ -1,3 +1,4 @@
+import { bgImage } from './../components/BlurryPoster/BlurryPoster.styles';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { type SbImageType, type SbLinkType } from '@/components/Storyblok/Storyblok.types';
 import { config } from './config';
@@ -17,6 +18,7 @@ type PageMetadataProps = {
   blok: {
     title: string;
     heroImage?: SbImageType;
+    bgImage?: SbImageType;
     noindex?: boolean;
     canonicalUrl?: SbLinkType;
     seo?: SbSEOType;
@@ -28,6 +30,7 @@ export const getPageMetadata = ({
   blok: {
     title: pageTitle,
     heroImage: { filename = '', focus = '' } = {},
+    bgImage: { filename: bgFilename = '', focus: bgFocus = '' } = {},
     noindex = false,
     canonicalUrl,
     seo: {
@@ -50,7 +53,7 @@ export const getPageMetadata = ({
   const description = seoDescription || siteDescription;
   const ogTitle = og_title || title;
   const ogDescription = og_description || description;
-  const heroImageCropped = getProcessedImage(filename, '1200x630', focus);
+  const heroImageCropped = getProcessedImage(filename || bgFilename, '1200x630', focus || bgFocus);
 
   /**
    * The og_image and twitter_image fields provided by the Storyblok SEO plugin has no image focus support
