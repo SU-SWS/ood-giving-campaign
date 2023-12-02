@@ -1,9 +1,6 @@
 import { useRef } from 'react';
 import { m, useScroll, useTransform } from 'framer-motion';
 import { Container } from '@/components/Container';
-import { Grid } from '@/components/Grid';
-import { ImageOverlay } from '@/components/ImageOverlay';
-import { WidthBox } from '@/components/WidthBox';
 import { Heading, Text, type HeadingType } from '@/components/Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { type MarginType } from '@/utilities/datasource';
@@ -31,7 +28,7 @@ export const Scrollytelling = ({
   bgImageSrc,
   bgImageFocus,
   bgImageAlt,
-  contentAlign = 'left',
+  contentAlign = 'center',
   spacingTop,
   spacingBottom,
   children,

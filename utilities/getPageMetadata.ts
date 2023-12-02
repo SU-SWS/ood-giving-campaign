@@ -17,6 +17,7 @@ export type SbSEOType = {
 type PageMetadataProps = {
   blok: {
     title: string;
+    dek?: string;
     heroImage?: SbImageType;
     bgImage?: SbImageType;
     noindex?: boolean;
@@ -29,6 +30,7 @@ type PageMetadataProps = {
 export const getPageMetadata = ({
   blok: {
     title: pageTitle,
+    dek,
     heroImage: { filename = '', focus = '' } = {},
     bgImage: { filename: bgFilename = '', focus: bgFocus = '' } = {},
     noindex = false,
@@ -50,7 +52,7 @@ export const getPageMetadata = ({
   const { siteTitle, siteDescription, siteUrlProd: siteUrl } = config;
 
   const title = seoTitle || pageTitle;
-  const description = seoDescription || siteDescription;
+  const description = seoDescription || dek || siteDescription;
   const ogTitle = og_title || title;
   const ogDescription = og_description || description;
   const heroImageCropped = getProcessedImage(filename || bgFilename, '1200x630', focus || bgFocus);
