@@ -54,8 +54,7 @@ export const Scrollytelling = ({
         >
           <img
             src={getProcessedImage(bgImageSrc, '2000x0', bgImageFocus)}
-            alt=""
-            loading="eager"
+            alt={bgImageAlt || ''}
             className="absolute w-full h-full object-cover top-0 left-0"
           />
           <m.div
@@ -65,12 +64,22 @@ export const Scrollytelling = ({
         </m.div>
         <div ref={contentRef} className="relative cc text-white z-10 rs-py-10">
           <div className="w-full sm:w-2/3 xl:w-1/2 mx-auto">
-            <Heading as={headingLevel} size={5} color="white" align="center" className="mb-02em whitespace-pre-line">
-              {heading}
-            </Heading>
-            <Text variant="subheading" align="center">
-              {subheading}
-            </Text>
+            {heading && (
+              <Heading
+                as={headingLevel}
+                size={5}
+                color="white"
+                align="center"
+                className="mb-02em whitespace-pre-line"
+              >
+                {heading}
+              </Heading>
+            )}
+            {subheading && (
+              <Text variant="subheading" align="center">
+                {subheading}
+              </Text>
+            )}
             <div className="rs-mt-6 grid gap-y-30 md:gap-y-40 xl:gap-y-60">
               {children}
             </div>

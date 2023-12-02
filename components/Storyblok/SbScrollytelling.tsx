@@ -17,6 +17,7 @@ type SbScrollytellingProps = {
     content?: SbBlokData[];
     caption?: StoryblokRichtext;
     bgImage?: SbImageType;
+    bgImageAlt?: string;
     contentAlign?: 'left' | 'center' | 'right';
     spacingTop?: MarginType;
     spacingBottom?: MarginType;
@@ -31,6 +32,7 @@ export const SbScrollytelling = ({
     content,
     caption,
     bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
+    bgImageAlt,
     contentAlign,
     spacingTop,
     spacingBottom,
@@ -48,6 +50,7 @@ export const SbScrollytelling = ({
       caption={Caption}
       bgImageSrc={bgImageSrc}
       bgImageFocus={bgImageFocus}
+      bgImageAlt={bgImageAlt}
       contentAlign={contentAlign}
       spacingTop={spacingTop}
       spacingBottom={spacingBottom}
