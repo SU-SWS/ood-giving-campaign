@@ -64,8 +64,8 @@ export const Scrollytelling = ({
           />
         </m.div>
         <div ref={contentRef} className="relative cc text-white z-10 rs-py-10">
-          <div className="w-full sm:w-2/3 lg:w-1/2 mx-auto">
-            <Heading as={headingLevel} color="white" align="center" className="mb-02em">
+          <div className="w-full sm:w-2/3 xl:w-1/2 mx-auto">
+            <Heading as={headingLevel} color="white" align="center" className="mb-02em whitespace-pre-line">
               {heading}
             </Heading>
             <Text variant="subheading" align="center">
@@ -78,7 +78,7 @@ export const Scrollytelling = ({
         </div>
       </Container>
       {caption && (
-        <Container className="relative children:children:leading-display caption mt-07em max-w-prose-wide ml-0">
+        <Container className="relative children:children:leading-display caption mt-07em children:max-w-prose-wide ml-0">
           {caption}
         </Container>
       )}
