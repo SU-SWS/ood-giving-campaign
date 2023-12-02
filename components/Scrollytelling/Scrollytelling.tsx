@@ -65,7 +65,7 @@ export const Scrollytelling = ({
         </m.div>
         <div ref={contentRef} className="relative cc text-white z-10 rs-py-10">
           <div className="w-full sm:w-2/3 xl:w-1/2 mx-auto">
-            <Heading as={headingLevel} color="white" align="center" className="mb-02em whitespace-pre-line">
+            <Heading as={headingLevel} size={5} color="white" align="center" className="mb-02em whitespace-pre-line">
               {heading}
             </Heading>
             <Text variant="subheading" align="center">
