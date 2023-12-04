@@ -166,12 +166,13 @@ export const BlurryPoster = ({
                   {body}
                 </Paragraph>
               )}
-              {byline && (
+              {/* No authors and published dates for MVP */}
+              {/* {byline && (
                 <Text>{byline}</Text>
               )}
               {date && (
                 <time dateTime={publishedDate}>{formattedDate}</time>
-              )}
+              )} */}
               {cta && (
                 <div className={styles.cta}>
                   {cta}
@@ -189,7 +190,7 @@ export const BlurryPoster = ({
                   className={styles.image}
                 />
                 <img
-                  src={getProcessedImage(imageSrc, type === 'hero' ? '1000x1000' : '1000x500', imageFocus)}
+                  src={getProcessedImage(imageSrc, '1000x1000', imageFocus)}
                   alt={alt || ''}
                   aria-describedby={caption ? 'story-hero-caption' : undefined}
                   className={styles.imageMobile}

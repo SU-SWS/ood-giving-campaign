@@ -2,6 +2,7 @@ import { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
 
 export const overlays = {
+  'black-10': 'bg-black-true/10',
   'black-30': 'bg-black-true/30',
   'black-40': 'bg-black-true/40',
   'black-60': 'bg-black-true/60',
