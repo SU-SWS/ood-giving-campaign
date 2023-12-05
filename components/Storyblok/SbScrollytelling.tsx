@@ -2,7 +2,7 @@ import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { CreateBloks } from '@/components/CreateBloks';
 import { RichText } from '@/components/RichText';
-import { Scrollytelling } from '@/components/Scrollytelling';
+import { Scrollytelling, type OverlayType, type ContentAlignType } from '@/components/Scrollytelling';
 import { type SbImageType } from '@/components/Storyblok/Storyblok.types';
 import { type HeadingType } from '@/components/Typography';
 import { hasRichText } from '@/utilities/hasRichText';
@@ -18,7 +18,8 @@ type SbScrollytellingProps = {
     caption?: StoryblokRichtext;
     bgImage?: SbImageType;
     bgImageAlt?: string;
-    contentAlign?: 'left' | 'center' | 'right';
+    overlay?: OverlayType;
+    contentAlign?: ContentAlignType;
     spacingTop?: MarginType;
     spacingBottom?: MarginType;
   };
@@ -33,6 +34,7 @@ export const SbScrollytelling = ({
     caption,
     bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
     bgImageAlt,
+    overlay,
     contentAlign,
     spacingTop,
     spacingBottom,
@@ -51,6 +53,7 @@ export const SbScrollytelling = ({
       bgImageSrc={bgImageSrc}
       bgImageFocus={bgImageFocus}
       bgImageAlt={bgImageAlt}
+      overlay={overlay}
       contentAlign={contentAlign}
       spacingTop={spacingTop}
       spacingBottom={spacingBottom}

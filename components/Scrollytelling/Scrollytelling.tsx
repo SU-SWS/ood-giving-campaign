@@ -16,7 +16,8 @@ type ScrollytellingProps = React.HTMLAttributes<HTMLDivElement> & {
   bgImageSrc?: string;
   bgImageFocus?: string;
   bgImageAlt?: string;
-  contentAlign?: 'left' | 'center' | 'right';
+  overlay?: styles.OverlayType;
+  contentAlign?: styles.ContentAlignType;
   spacingTop?: MarginType;
   spacingBottom?: MarginType;
 };
@@ -29,6 +30,7 @@ export const Scrollytelling = ({
   bgImageSrc,
   bgImageFocus,
   bgImageAlt,
+  overlay,
   contentAlign = 'center',
   spacingTop,
   spacingBottom,
@@ -55,10 +57,12 @@ export const Scrollytelling = ({
             alt={bgImageAlt || ''}
             className={styles.image}
           />
-          <m.div
-            className={styles.imageOverlay}
-            style={{ opacity: animateOpacity }}
-          />
+          {overlay && overlay !== 'none' && (
+            <m.div
+              className={styles.imageOverlay(overlay)}
+              style={{ opacity: animateOpacity }}
+            />
+          )}
         </m.div>
         <div ref={contentRef} className={styles.content}>
           <div className={styles.contentWrapper(contentAlign)}>
