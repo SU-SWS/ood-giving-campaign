@@ -7,6 +7,7 @@ import { Heading, Text, type HeadingType } from '@/components/Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { type MarginType } from '@/utilities/datasource';
 import * as styles from './Scrollytelling.styles';
+import { AnimateInView } from '../Animate';
 
 
 type ScrollytellingProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -67,21 +68,26 @@ export const Scrollytelling = ({
         </m.div>
         <div ref={contentRef} className={styles.content}>
           <div className={styles.contentWrapper(contentAlign)}>
-            {heading && (
-              <Heading
-                as={headingLevel}
-                size={5}
-                color="white"
-                align="center"
-                className={styles.heading}
-              >
-                {heading}
-              </Heading>
-            )}
-            {subheading && (
-              <Text variant="subheading" align="center">
-                {subheading}
-              </Text>
+            {(heading || subheading) && (
+              <AnimateInView animation="slideUp" delay={0.1} className={styles.header}>
+                {heading && (
+                  <Heading
+                    as={headingLevel}
+                    size={5}
+                    color="white"
+                    align="center"
+                    className={styles.heading}
+                  >
+                    {heading}
+                  </Heading>
+
+                )}
+                {subheading && (
+                  <Text variant="subheading" align="center">
+                    {subheading}
+                  </Text>
+                )}
+              </AnimateInView>
             )}
             <div className={styles.children}>
               {children}
