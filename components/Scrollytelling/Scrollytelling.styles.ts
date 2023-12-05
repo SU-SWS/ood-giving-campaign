@@ -8,22 +8,22 @@ export const contentAligns = {
 export type ContentAlignType = keyof typeof contentAligns;
 
 export const overlays = {
-  none: '',
-  'black-20': 'bg-black-true/20',
-  'black-30': 'bg-black-true/30',
-  'black-40': 'bg-black-true/40',
-  'black-50': 'bg-black-true/50',
-  'black-60': 'bg-black-true/60',
-  'black-70': 'bg-black-true/70',
-  'black-gradient-to-r': 'bg-gradient-to-r from-black-true/50 to-transparent',
-  'black-gradient-to-l': 'bg-gradient-to-l from-black-true/50 to-transparent',
+  none: 'lg:bg-transparent',
+  'black-20': 'lg:bg-black-true/20',
+  'black-30': 'lg:bg-black-true/30',
+  'black-40': 'lg:bg-black-true/40',
+  'black-50': 'lg:bg-black-true/50',
+  'black-60': 'lg:bg-black-true/60',
+  'black-70': 'lg:bg-black-true/70',
+  'black-gradient-to-r': 'lg:bg-gradient-to-r lg:from-black-true/50 lg:to-transparent',
+  'black-gradient-to-l': 'lg:bg-gradient-to-l lg:from-black-true/50 lg:to-transparent',
 };
 export type OverlayType = keyof typeof overlays;
 
 export const wrapper = 'relative';
 export const imageWrapper = 'sticky top-0 h-screen w-full z-0';
 export const image = 'absolute w-full h-full object-cover top-0 left-0 z-0';
-export const imageOverlay = (overlay?: OverlayType) => cnb('absolute w-full h-full top-0 left-0 z-0', overlays[overlay]);
+export const imageOverlay = (overlay?: OverlayType) => cnb('absolute w-full h-full top-0 left-0 z-0 bg-black-true/50', overlays[overlay]);
 
 export const content = 'relative z-10 cc text-white rs-py-10';
 export const contentWrapper = (contentAlign: ContentAlignType) => cnb('w-full sm:w-2/3 xl:w-1/2', {

@@ -1,5 +1,7 @@
 import { useRef } from 'react';
-import { m, useScroll, useTransform } from 'framer-motion';
+import {
+  m, useScroll, useTransform, useWillChange,
+} from 'framer-motion';
 import { Container } from '@/components/Container';
 import { Heading, Text, type HeadingType } from '@/components/Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
@@ -37,6 +39,7 @@ export const Scrollytelling = ({
   children,
   ...props
 }: ScrollytellingProps) => {
+  const willChange = useWillChange();
   const contentRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: contentRef,
@@ -50,19 +53,17 @@ export const Scrollytelling = ({
       <Container width="full" bgColor="black" className={styles.wrapper} >
         <m.div
           className={styles.imageWrapper}
-          style={{ scale: animateScale }}
+          style={{ scale: animateScale, willChange }}
         >
           <img
             src={getProcessedImage(bgImageSrc, '2000x1500', bgImageFocus)}
             alt={bgImageAlt || ''}
             className={styles.image}
           />
-          {overlay && overlay !== 'none' && (
-            <m.div
-              className={styles.imageOverlay(overlay)}
-              style={{ opacity: animateOpacity }}
-            />
-          )}
+          <m.div
+            className={styles.imageOverlay(overlay)}
+            style={{ opacity: animateOpacity, willChange }}
+          />
         </m.div>
         <div ref={contentRef} className={styles.content}>
           <div className={styles.contentWrapper(contentAlign)}>
