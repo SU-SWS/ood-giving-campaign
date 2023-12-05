@@ -11,7 +11,6 @@ import {
 } from '@/utilities/datasource';
 import * as styles from './Quote.styles';
 
-
 export type QuoteProps = React.HTMLAttributes<HTMLDivElement> & {
   teaser?: string;
   body?: string;
@@ -46,14 +45,13 @@ export const Quote = ({
 }: QuoteProps) => (
   <AnimateInView animation={animation} delay={delay}>
     <Container
-      as="article"
       width="full"
       pt={addDarkOverlay && !isMinimal ? 6 : undefined}
       pb={addDarkOverlay && !isMinimal ? 4 : undefined}
       className={cnb(styles.root(isMinimal, addDarkOverlay, quoteOnRight, !!barColor), className)}
       {...props}
     >
-      <div className={cnb(styles.content(!!barColor, quoteOnRight), accentBorderColors[barColor])}>
+      <blockquote className={cnb(styles.content(!!barColor, quoteOnRight), accentBorderColors[barColor])}>
         {teaser && (
           <FlexBox className={styles.teaserWrapper} direction={quoteOnRight ? 'row-reverse' : 'row'}>
             <Text
@@ -69,7 +67,6 @@ export const Quote = ({
         )}
         {body && (
           <Text
-            as="blockquote"
             weight="semibold"
             variant={isLargeBody ? undefined : 'big'}
             leading="display"
@@ -83,7 +80,7 @@ export const Quote = ({
         {source && (
           <Text variant="card" className={styles.source}>{source}</Text>
         )}
-      </div>
+      </blockquote>
     </Container>
   </AnimateInView>
 );
