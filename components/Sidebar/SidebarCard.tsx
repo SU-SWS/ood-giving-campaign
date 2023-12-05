@@ -15,6 +15,7 @@ export type SidebarCardProps = React.HTMLAttributes<HTMLDivElement> & {
   headingLevel?: HeadingType;
   isSmallHeading?: boolean;
   superhead?: string;
+  isLightText?: boolean;
   barColor?: AccentBorderColorType;
   barOnRight?: boolean;
   bgColor?: AccentColorType;

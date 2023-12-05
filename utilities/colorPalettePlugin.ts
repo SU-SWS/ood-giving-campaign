@@ -23,6 +23,7 @@ export const paletteAccentColors: PaletteAccentColorType = {
   '#E50808': 'digital-red-light',
   '#F83535': 'digital-red-xlight',
   '#FFFFFF': 'white',
+  '#00000080': 'black-50',
 };
 
 /**
@@ -50,4 +51,5 @@ export const colorNameToHex = {
   'digital-red-xlight': '#F83535',
   white: '#FFFFFF',
   'plum-light': '#734675',
+  'black-50': '#00000080',
 };

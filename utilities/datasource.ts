@@ -14,6 +14,7 @@ export const accentBgColors = {
   'digital-red': 'bg-digital-red',
   'digital-red-light': 'bg-digital-red-light',
   'digital-red-xlight': 'bg-digital-red-xlight',
+  'black-50': 'bg-black-true/50',
 };
 export type AccentColorType = keyof typeof accentBgColors;
 
