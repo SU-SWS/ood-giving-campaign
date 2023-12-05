@@ -4,6 +4,7 @@ import { Container } from '@/components/Container';
 import { Heading, Text, type HeadingType } from '@/components/Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { type MarginType } from '@/utilities/datasource';
+import * as styles from './Scrollytelling.styles';
 
 
 type ScrollytellingProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -44,30 +45,30 @@ export const Scrollytelling = ({
 
   return (
     <Container width="full" mt={spacingTop} mb={spacingBottom} {...props}>
-      <Container width="full" className="relative" bgColor="black">
+      <Container width="full" bgColor="black" className={styles.wrapper} >
         <m.div
-          className="sticky top-0 h-screen w-full"
+          className={styles.imageWrapper}
           style={{ scale: animateScale }}
         >
           <img
-            src={getProcessedImage(bgImageSrc, '2000x0', bgImageFocus)}
+            src={getProcessedImage(bgImageSrc, '2000x1500', bgImageFocus)}
             alt={bgImageAlt || ''}
-            className="absolute w-full h-full object-cover top-0 left-0"
+            className={styles.image}
           />
           <m.div
-            className="absolute w-full h-full top-0 left-0 bg-black-true/50"
+            className={styles.imageOverlay}
             style={{ opacity: animateOpacity }}
           />
         </m.div>
-        <div ref={contentRef} className="relative cc text-white z-10 rs-py-10">
-          <div className="w-full sm:w-2/3 xl:w-1/2 mx-auto">
+        <div ref={contentRef} className={styles.content}>
+          <div className={styles.contentWrapper(contentAlign)}>
             {heading && (
               <Heading
                 as={headingLevel}
                 size={5}
                 color="white"
                 align="center"
-                className="mb-02em whitespace-pre-line"
+                className={styles.heading}
               >
                 {heading}
               </Heading>
@@ -77,14 +78,14 @@ export const Scrollytelling = ({
                 {subheading}
               </Text>
             )}
-            <div className="rs-mt-6 grid gap-y-30 md:gap-y-40 xl:gap-y-60">
+            <div className={styles.children}>
               {children}
             </div>
           </div>
         </div>
       </Container>
       {caption && (
-        <Container className="relative children:children:leading-display caption mt-07em children:max-w-prose-wide ml-0">
+        <Container className={styles.caption}>
           {caption}
         </Container>
       )}
