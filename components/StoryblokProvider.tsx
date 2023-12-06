@@ -16,6 +16,7 @@ import { SbInitiativeCard } from './Storyblok/SbInitiativeCard';
 import { SbLogo } from './Storyblok/SbLogo';
 import { SbPortraitCard } from './Storyblok/SbPortraitCard';
 import { SbQuote } from './Storyblok/SbQuote';
+import { SbScrollytelling } from './Storyblok/SbScrollytelling';
 import { SbSection } from './Storyblok/SbSection';
 import { SbSidebarCard } from './Storyblok/SbSidebarCard';
 import { SbSplitPoster } from './Storyblok/SbSplitPoster';
@@ -50,6 +51,7 @@ export const components = {
   sbLogo: SbLogo,
   sbPortraitCard: SbPortraitCard,
   sbQuote: SbQuote,
+  sbScrollytelling: SbScrollytelling,
   sbSection: SbSection,
   sbSidebarCard: SbSidebarCard,
   sbSplitPoster: SbSplitPoster,

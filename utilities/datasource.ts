@@ -94,6 +94,7 @@ export const mediaAspectRatios = {
   '3x1': 'aspect-w-3 aspect-h-1',
   '3x2': 'aspect-w-3 aspect-h-2',
   '4x1': 'aspect-w-4 aspect-h-1',
+  '4x2.77': 'aspect-w-4 aspect-h-[2.77]', // Videos shot by agency
   '4x3': 'aspect-w-4 aspect-h-3',
   '4x5': 'aspect-w-4 aspect-h-5',
   '5x2': 'aspect-w-5 aspect-h-2',
