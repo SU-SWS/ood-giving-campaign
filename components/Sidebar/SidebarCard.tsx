@@ -1,7 +1,9 @@
 import { cnb } from 'cnbuilder';
 import { AnimateInView, type AnimationType } from '../Animate';
 import { Container } from '../Container';
-import { Heading, type HeadingType, Text } from '../Typography';
+import {
+  Heading, type HeadingType, SrOnlyText, Text,
+} from '../Typography';
 import {
   accentBorderColors,
   accentBgColors,
@@ -54,7 +56,7 @@ export const SidebarCard = ({
         )}
         {heading && (
           <Heading as={headingLevel} size={isSmallHeading ? 2 : 3} className={styles.heading}>
-            {superhead && <Text srOnly>{superhead}: </Text>}{heading}
+            {superhead && <SrOnlyText>{`${superhead}: `}</SrOnlyText>}{heading}
           </Heading>
         )}
         {children}
