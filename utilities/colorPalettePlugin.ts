@@ -30,8 +30,11 @@ export const paletteAccentColors: PaletteAccentColorType = {
  * Writing all the hex colors out for PaletteAccentHexColorType since when I tried to use
  * keyof typeof paletteAccentColors, it infers that the type is string | number which is incorrect
  */
-export type PaletteAccentHexColorType = '#ECC7CD' | '#E31C79' | '#C5B4E3' | '#DBE442' | '#175E54' | '#485CC7' | '#E98300' | '#77C5D5' | '#005776' | '#E04F39' | '#8C1515' | '#B1040E' | '#E50808' | '#F83535' | '#FFFFFF';
+export type PaletteAccentHexColorType = '#ECC7CD' | '#E31C79' | '#C5B4E3' | '#DBE442' | '#175E54' | '#485CC7' | '#E98300' | '#77C5D5' | '#005776' | '#E04F39' | '#8C1515' | '#B1040E' | '#E50808' | '#F83535' | '#FFFFFF' | '#00000080';
 
+/**
+ * Use for Framer Motion color mapping animation only
+ */
 export const colorNameToHex = {
   flamingo: '#ECC7CD',
   fog: '#DAD7CB',

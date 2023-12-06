@@ -34,6 +34,7 @@ export const accentBorderColors = {
   'digital-red': 'border-digital-red',
   'digital-red-light': 'border-digital-red-light',
   'digital-red-xlight': 'border-digital-red-xlight',
+  'black-50': 'border-black-true/50',
 };
 export type AccentBorderColorType = AccentColorType;
 
@@ -53,8 +54,9 @@ export const accentTextColors = {
   'digital-red': 'text-digital-red',
   'digital-red-light': 'text-digital-red-light',
   'digital-red-xlight': 'text-digital-red-xlight',
+  'black-50': 'text-black-true/50',
 };
-export type AccentTextColorType = keyof typeof accentTextColors;
+export type AccentTextColorType = AccentColorType;
 
 export const imageAspectRatios = {
   '1x1': 'aspect-w-1 aspect-h-1',
@@ -69,7 +71,7 @@ export const imageAspectRatios = {
   '9x16': 'aspect-w-9 aspect-h-16',
   '16x9': 'aspect-w-16 aspect-h-9',
   free: '',
-}
+};
 export type ImageAspectRatioType = keyof typeof imageAspectRatios;
 
 // TODO: We might be not need this
