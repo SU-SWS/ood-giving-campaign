@@ -123,7 +123,7 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
 export default async function Page({ params }: { params: ParamsType }) {
   const { data } = await getStoryData(params);
   const slug = params.slug ? params.slug.join('/') : '';
-  
+
   // Failed to fetch from API because story slug was not found.
   if (data === 404) {
     notFound();
