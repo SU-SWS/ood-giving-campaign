@@ -10,6 +10,7 @@ import {
   type AccentTextColorType,
 } from '@/utilities/datasource';
 import * as styles from './Quote.styles';
+import { RichText } from '../RichText';
 
 export type QuoteProps = React.HTMLAttributes<HTMLDivElement> & {
   teaser?: string;
@@ -42,8 +43,9 @@ export const Quote = ({
   children,
   className,
   ...props
-}: QuoteProps) => (
-  <AnimateInView animation={animation} delay={delay}>
+}: QuoteProps) => {
+  const content = typeof body === 'string' ? body : <RichText wysiwyg={body} />;
+  return (<AnimateInView animation={animation} delay={delay}>
     <Container
       width="full"
       pt={addDarkOverlay && !isMinimal ? 6 : undefined}
@@ -74,7 +76,7 @@ export const Quote = ({
             font="serif"
             className={styles.body}
           >
-            {body}
+            {content}
           </Text>
         )}
         {source && (
@@ -82,5 +84,5 @@ export const Quote = ({
         )}
       </blockquote>
     </Container>
-  </AnimateInView>
-);
+  </AnimateInView>);
+};
