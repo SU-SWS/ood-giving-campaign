@@ -76,7 +76,7 @@ export const HomepageSplitHero = () => {
               </AnimateInView>
             </Grid>
           </Container>
-          <FlexBox direction="col" justifyContent="between" className={styles.textFlexbox}>
+          <FlexBox direction="col" justifyContent="between" className={styles.textFlexbox} aria-hidden>
             <AnimateInView
               animation="slideInFromLeft"
               delay={0.6}

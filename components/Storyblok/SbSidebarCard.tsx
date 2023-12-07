@@ -57,6 +57,8 @@ export const SbSidebarCard = ({
       barOnRight={barOnRight}
       bgColor={paletteAccentColors[bgColorValue]}
       cta={Cta}
+      animation={animation}
+      delay={delay}
     >
       {Content}
     </SidebarCard>

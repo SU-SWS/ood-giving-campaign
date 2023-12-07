@@ -44,3 +44,8 @@ export type SbTypographyProps = {
   font?: 'druk' | 'serif';
   italic?: boolean;
 };
+
+export type SbColorStopProps = {
+  stop: string;
+  hexColor: string;
+};
