@@ -69,7 +69,7 @@ export default function RootLayout({ children }: LayoutProps) {
             </FlexBox>
           </body>
         </html>
-      </LazyMotionProvide>
+      </LazyMotionProvider>
     </GAProvider>
   );
 }
