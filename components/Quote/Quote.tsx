@@ -60,7 +60,13 @@ export const Quote = ({
             >
               {quoteOnRight ? '”' : '“'}
             </Text>
-            <Text size={isLargeTeaser ? 'f5' : 'f4'} leading="none" font="druk" className={styles.teaser}>
+            <Text
+              size={isLargeTeaser ? 'f5' : 'f4'}
+              leading="none"
+              font="druk"
+              color={addDarkOverlay ? 'white' : 'black'}
+              className={styles.teaser}
+            >
               {teaser}
             </Text>
           </FlexBox>
@@ -72,13 +78,14 @@ export const Quote = ({
             leading="display"
             size={isLargeBody ? 2 : undefined}
             font="serif"
+            color={addDarkOverlay ? 'white' : 'black'}
             className={styles.body}
           >
             {body}
           </Text>
         )}
         {source && (
-          <Text variant="card" className={styles.source}>{source}</Text>
+          <Text variant="card" color={addDarkOverlay ? 'white' : 'black'} className={styles.source}>{source}</Text>
         )}
       </blockquote>
     </Container>

@@ -74,17 +74,22 @@ export const SbSection = ({
   const ref = useRef<HTMLDivElement>(null);
   const hasHeader = heading || superhead || subheading;
 
-  const stops: number[] = [];
-  const bgColors: string[] = [];
-  for (const element of bgColorStops) {
-    stops.push(parseFloat(element.stop));
-    bgColors.push(element.hexColor);
-  }
-
+  const stops = [];
+  const bgColors = [];
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start start', 'end start'],
   });
+
+  if (!!bgColorStops?.length) {
+    for (const element of bgColorStops) {
+      stops.push(parseFloat(element.stop));
+      bgColors.push(element.hexColor);
+    }
+  } else {
+    stops.push(0);
+    bgColors.push('transparent');
+  }
   const animatedBgColor = useTransform(scrollYProgress, stops, bgColors);
 
   return (
@@ -95,7 +100,7 @@ export const SbSection = ({
       className="relative overflow-hidden"
       {...storyblokEditable(blok)}
     >
-      <m.div ref={ref} style={{ backgroundColor: animatedBgColor }}>
+      <m.div ref={ref} style={{ backgroundColor: bgColorStops?.length > 1 ? animatedBgColor : undefined }}>
         <Container
           width="full"
           bgColor={bgColor}
