@@ -24,18 +24,18 @@ export const Changemaker = () => {
               Makers. Doers.
             </Text>
           </AnimateInView>
-          <AnimateInView animation="slideInFromLeft" delay={0.2}>
+          <AnimateInView animation="slideInFromLeft" delay={0.1}>
             <Text as="span" font="serif" className="block">
               Boundary Pushers.
             </Text>
           </AnimateInView>
-          <AnimateInView animation="slideInFromRight" delay={0.4}>
+          <AnimateInView animation="slideInFromRight" delay={0.2}>
             <Text as="span" font="serif" className="block">
               Risk-takers.
             </Text>
           </AnimateInView>
         </Heading>
-        <AnimateInView animation="slideUp" delay={0.5}>
+        <AnimateInView animation="slideUp" delay={0.4}>
           <Paragraph size={2} weight="semibold" noMargin font="serif" align="center" className="max-w-700 mx-auto rs-my-4" leading="display">
             The Stanford community overflows with curious people unafraid to try,
             change, and try again. Meet some of them.
