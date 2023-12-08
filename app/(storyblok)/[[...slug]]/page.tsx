@@ -9,6 +9,7 @@ import { notFound } from 'next/navigation';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
 
 const activeEnv = process.env.NODE_ENV || 'development';
+const dynamic = 'force-static';
 
 type PathsType = {
   slug: string[];
