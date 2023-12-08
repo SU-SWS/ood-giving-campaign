@@ -11,10 +11,11 @@ import {
 } from '@/utilities/datasource';
 import * as styles from './Quote.styles';
 import { RichText } from '../RichText';
+import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 
 export type QuoteProps = React.HTMLAttributes<HTMLDivElement> & {
   teaser?: string;
-  body?: string;
+  body?: string | StoryblokRichtext;
   source?: string;
   addDarkOverlay?: boolean;
   isLargeTeaser?: boolean;
