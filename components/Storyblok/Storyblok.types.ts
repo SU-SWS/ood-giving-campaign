@@ -44,3 +44,9 @@ export type SbTypographyProps = {
   font?: 'druk' | 'serif';
   italic?: boolean;
 };
+
+// Used for SbSection background color animation
+export type SbColorStopProps = {
+  stop: string;
+  hexColor: string;
+};

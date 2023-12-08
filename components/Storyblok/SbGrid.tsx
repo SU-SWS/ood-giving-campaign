@@ -1,7 +1,8 @@
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
-import { Grid, type GridGapType, type GridNumColsType } from '../Grid';
-import { WidthBox, type WidthType } from '../WidthBox';
-import { CreateBloks } from '../CreateBloks';
+import { Grid, type GridGapType, type GridNumColsType } from '@/components/Grid';
+import { WidthBox, type WidthType } from '@/components/WidthBox';
+import { CreateBloks } from '@/components/CreateBloks';
+import { type PaddingType, type MarginType } from '@/utilities/datasource';
 
 type SbGridProps = {
   blok: {
@@ -22,6 +23,10 @@ type SbGridProps = {
     lg?: GridNumColsType
     xl?: GridNumColsType
     xxl?: GridNumColsType
+    paddingTop?: PaddingType;
+    paddingBottom?: PaddingType;
+    marginTop?: MarginType;
+    marginBottom?: MarginType;
   };
 };
 
@@ -39,6 +44,10 @@ export const SbGrid = ({
     lg,
     xl,
     xxl,
+    paddingTop,
+    paddingBottom,
+    marginTop,
+    marginBottom,
   },
   blok,
 }: SbGridProps) => (
@@ -47,6 +56,10 @@ export const SbGrid = ({
     boundingWidth={boundingWidth}
     width={width}
     align={align}
+    mt={marginTop}
+    mb={marginBottom}
+    pt={paddingTop}
+    pb={paddingBottom}
   >
     <Grid
       xs={xs}
