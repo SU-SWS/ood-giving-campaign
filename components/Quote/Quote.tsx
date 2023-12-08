@@ -11,7 +11,6 @@ import {
 } from '@/utilities/datasource';
 import * as styles from './Quote.styles';
 
-
 export type QuoteProps = React.HTMLAttributes<HTMLDivElement> & {
   teaser?: string;
   body?: string;
@@ -46,14 +45,13 @@ export const Quote = ({
 }: QuoteProps) => (
   <AnimateInView animation={animation} delay={delay}>
     <Container
-      as="article"
       width="full"
       pt={addDarkOverlay && !isMinimal ? 6 : undefined}
       pb={addDarkOverlay && !isMinimal ? 4 : undefined}
       className={cnb(styles.root(isMinimal, addDarkOverlay, quoteOnRight, !!barColor), className)}
       {...props}
     >
-      <div className={cnb(styles.content(!!barColor, quoteOnRight), accentBorderColors[barColor])}>
+      <blockquote className={cnb(styles.content(!!barColor, quoteOnRight), accentBorderColors[barColor])}>
         {teaser && (
           <FlexBox className={styles.teaserWrapper} direction={quoteOnRight ? 'row-reverse' : 'row'}>
             <Text
@@ -62,28 +60,32 @@ export const Quote = ({
             >
               {quoteOnRight ? '”' : '“'}
             </Text>
-            <Text size={isLargeTeaser ? 'f5' : 'f4'} leading="none" font="druk" className={styles.teaser}>
+            <Text
+              size={isLargeTeaser ? 'f5' : 'f4'}
+              leading="none"
+              font="druk"
+              className={styles.teaser}
+            >
               {teaser}
             </Text>
           </FlexBox>
         )}
         {body && (
           <Text
-            as="blockquote"
-            weight={isLargeBody ? 'semibold' : 'normal'}
+            weight="semibold"
             variant={isLargeBody ? undefined : 'big'}
             leading="display"
             size={isLargeBody ? 2 : undefined}
             font="serif"
-            className={styles.body(isLargeBody)}
+            className={styles.body}
           >
             {body}
           </Text>
         )}
         {source && (
-          <Text variant="card" font="serif" className={styles.source}>{source}</Text>
+          <Text variant="card" className={styles.source}>{source}</Text>
         )}
-      </div>
+      </blockquote>
     </Container>
   </AnimateInView>
 );

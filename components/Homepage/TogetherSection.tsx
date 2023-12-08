@@ -33,13 +33,13 @@ export const TogetherSection = () => {
     <div ref={sectionRef} className="relative overflow-hidden rs-pb-8 w-full bg-gc-black text-white">
       <Container>
         <AnimateInView animation="slideUp">
-          <Heading size="f6" align="center" leading="tight" className="mx-auto max-w-[105rem]">
+          <Heading size="f5" align="center" leading="tight" className="mx-auto max-w-1000">
             True change will require all of us.
           </Heading>
         </AnimateInView>
         <AnimateInView animation="slideUp" delay={0.2}>
-          <Paragraph leading="display" align="center" size={2} className="max-w-900 mx-auto">
-            One changemaker is admirable. A community of changemakers is unstoppable.
+          <Paragraph leading="display" align="center" size={1} className="max-w-700 mx-auto">
+            One game changer is admirable. A community of game changers is unstoppable.
             There is nothing we can do that we cannot do better...
           </Paragraph>
           <SrOnlyText>together</SrOnlyText>

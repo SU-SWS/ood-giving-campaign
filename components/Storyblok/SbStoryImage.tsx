@@ -23,6 +23,7 @@ type SbStoryImageProps = {
     spacingTop?: PaddingType;
     spacingBottom?: PaddingType;
     isCaptionInset?: boolean;
+    isCaptionLight?: boolean;
     animation?: AnimationType;
     delay?: number;
   };
@@ -41,12 +42,13 @@ export const SbStoryImage = ({
     spacingTop,
     spacingBottom,
     isCaptionInset,
+    isCaptionLight,
     animation = 'none',
     delay,
   },
   blok,
 }: SbStoryImageProps) => {
-  const Caption = hasRichText(caption) ? <RichText wysiwyg={caption} /> : undefined;
+  const Caption = hasRichText(caption) ? <RichText textColor={isCaptionLight ? 'white' : 'black-70'} wysiwyg={caption} /> : undefined;
 
   return (
     <StoryImage

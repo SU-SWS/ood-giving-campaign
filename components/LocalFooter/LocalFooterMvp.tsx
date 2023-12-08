@@ -19,11 +19,10 @@ export const LocalFooterMvp = () => (
   >
     <div className={styles.overlay} />
     <FlexBox direction="col" className={styles.flexWrapper}>
-      <LogoLockup text="Impact Stories" color="white" isLink className={styles.logo} />
+      <LogoLockup text="Momentum" color="white" isLink className={styles.logo} />
       <FlexBox as="ul" wrap="wrap" className={styles.ul}>
         <li><CtaLink color="white" href={links.ood.giving} size="large">Giving to Stanford</CtaLink></li>
         <li><CtaLink color="white" href={links.ood.contact} size="large">Contact us</CtaLink></li>
-        <li><CtaLink color="white" href={links.ood.leadership} size="large">Leadership</CtaLink></li>
         <li><CtaLink color="white" href={links.ood.waysToGive} size="large">How to make a gift</CtaLink></li>
       </FlexBox>
       <Grid lg={2} pt={8} gap="default" className={styles.grid}>
@@ -32,7 +31,7 @@ export const LocalFooterMvp = () => (
             Get the latest in your inbox
           </Heading>
           <Paragraph variant="big" leading="display">
-            Sign up to receive Stanford’s storytelling newsletter.
+            Sign up to receive <em>The Moment</em> newsletter, telling the stories of Stanford’s impact.
           </Paragraph>
           <CtaLink
             href={links.ood.newsletterSignUp}

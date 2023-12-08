@@ -18,6 +18,7 @@ type SbEmbedMediaProps = {
     spacingTop?: PaddingType;
     spacingBottom?: PaddingType;
     isCaptionInset?: boolean;
+    isCaptionLight?: boolean;
   };
 };
 
@@ -31,10 +32,11 @@ export const SbEmbedMedia = ({
     spacingTop,
     spacingBottom,
     isCaptionInset,
+    isCaptionLight,
   },
   blok,
 }: SbEmbedMediaProps) => {
-  const Caption = hasRichText(caption) ? <RichText wysiwyg={caption} /> : undefined;
+  const Caption = hasRichText(caption) ? <RichText textColor={isCaptionLight ? 'white' : 'black-70'} wysiwyg={caption} /> : undefined;
 
   return (
     <EmbedMedia

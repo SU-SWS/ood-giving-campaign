@@ -58,6 +58,8 @@ export const SbQuote = ({
       barColor={paletteAccentColors[value]}
       quoteOnRight={quoteOnRight}
       quoteColor={paletteAccentColors[quoteColorValue]}
+      animation={animation}
+      delay={delay}
     />
   );
 };

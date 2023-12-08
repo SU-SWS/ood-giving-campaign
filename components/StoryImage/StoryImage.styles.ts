@@ -21,4 +21,4 @@ export const animateWrapper = (isFullHeight?: boolean) => cnb(isFullHeight ? 'h-
 export const figure = (isFullHeight?: boolean) => cnb(isFullHeight ? 'h-full' : '');
 export const imageWrapper = (isFullHeight?: boolean) => cnb(isFullHeight ? 'h-full' : '');
 export const image = 'w-full h-full object-cover';
-export const caption = 'children:children:text-black-70 children:children:leading-display caption mt-1em max-w-prose-wide';
+export const caption = 'children:children:leading-display caption mt-1em max-w-prose-wide';

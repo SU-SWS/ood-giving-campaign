@@ -3,6 +3,7 @@ import { cnb } from 'cnbuilder';
 import { CtaLink } from './Cta';
 import { SbCta } from './Storyblok/SbCta';
 import { SbTriangle } from './Storyblok/SbTriangle';
+import { SbText } from './Storyblok/SbText';
 import {
   Heading,
   type FontSizeType,
@@ -20,19 +21,36 @@ export type RichTextProps = {
   wysiwyg: StoryblokRichtext;
   // "default" is for main content, e.g., Story body content
   type?: 'default' | 'card';
-  isLightText?: boolean;
+  textColor?: 'black' | 'white' | 'black-70';
+  bgColor?: 'black' | 'black-50' | 'black-60' | 'black-70' | 'white' | 'none';
   textAlign?: TextAlignType;
   className?: string;
+};
+
+const textClasses = {
+  black: 'text-gc-black',
+  white: 'text-white',
+  'black-70': 'text-black-70',
+};
+
+const bgClasses = {
+  black: 'bg-gc-black',
+  'black-50': 'bg-black-true/50',
+  'black-60': 'bg-black-true/60',
+  'black-70': 'bg-black-true/70',
+  white: 'bg-white',
+  none: '',
 };
 
 export const RichText = ({
   wysiwyg,
   type,
-  isLightText,
+  textColor = 'black',
+  bgColor = 'none',
   textAlign = 'left',
   className,
 }: RichTextProps) => {
-  const textColor = isLightText ? 'text-white print:text-gc-black' : 'text-gc-black';
+  const printColor = 'print:text-gc-black';
 
   const rendered = render(wysiwyg, {
     markResolvers: {
@@ -61,7 +79,7 @@ export const RichText = ({
         return (
           <CtaLink
             sbLink={sbLink}
-            variant={isLightText ? 'inlineDark' : 'inline'}
+            variant={textColor === 'white' ? 'inlineDark' : 'inline'}
             className="children:inline"
             // Custom link attributes are not supported by the rich text renderer currently
             // Adding rel="noopener" for all eternal links for security reasons
@@ -95,6 +113,9 @@ export const RichText = ({
       sbCta: (props) => (
         <SbCta blok={props} />
       ),
+      sbText: (props) => (
+        <SbText blok={props} />
+      ),
       sbTriangle: (props) => (
         <SbTriangle blok={props} />
       ),
@@ -111,7 +132,10 @@ export const RichText = ({
     <div
       className={cnb(
         'wysiwyg',
-        textColor,
+        textClasses[textColor],
+        bgClasses[bgColor],
+        !!bgColor && bgColor !== 'none' ? 'rs-p-2 backdrop-blur-sm' : '',
+        printColor,
         textAligns[textAlign],
         className,
       )}

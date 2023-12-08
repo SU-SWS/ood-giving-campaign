@@ -11,7 +11,7 @@ import { Paragraphs } from '../Temporary/Paragraphs';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { getMaskedAsset } from '@/utilities/getMaskedAsset';
 
-export const ScrollyTelling = () => {
+export const ScrollytellingDemo = () => {
   // Chapter 1
   const section1Ref = useRef<HTMLDivElement>(null);
   const section2Ref = useRef<HTMLDivElement>(null);

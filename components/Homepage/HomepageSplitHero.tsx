@@ -76,7 +76,7 @@ export const HomepageSplitHero = () => {
               </AnimateInView>
             </Grid>
           </Container>
-          <FlexBox direction="col" justifyContent="between" className={styles.textFlexbox}>
+          <FlexBox direction="col" justifyContent="between" className={styles.textFlexbox} aria-hidden>
             <AnimateInView
               animation="slideInFromLeft"
               delay={0.6}
@@ -84,10 +84,10 @@ export const HomepageSplitHero = () => {
               className={styles.textWrapperTop}
             >
               <Text font="serif" weight="semibold" leading="none" italic className={styles.serifText}>
-                How will we
+                Our challenges
               </Text>
               <Text font="druk" size="hero" leading="none">
-                come together
+                are urgent
               </Text>
             </AnimateInView>
             <AnimateInView
@@ -97,10 +97,10 @@ export const HomepageSplitHero = () => {
               className={styles.textWrapperBottom}
             >
               <Text font="serif" weight="semibold" leading="none" align="right" italic className={styles.serifText}>
-                all in service of
+                Let’s face them
               </Text>
               <Text font="druk" size="hero" leading="none" align="right">
-                Tomorrow?
+                together
               </Text>
             </AnimateInView>
           </FlexBox>
@@ -109,15 +109,18 @@ export const HomepageSplitHero = () => {
       <Container bgColor="black" pt={2} pb={7} className={styles.introWrapper}>
         <AnimateInView animation="slideUp">
           <Heading size="f5" leading="tight">
-            We’re all in this together.
+            This is the moment.
           </Heading>
         </AnimateInView>
-        <AnimateInView delay={0.2} animation="slideUp" className={styles.introBodyWrapper}>
+        <AnimateInView delay={0.2} animation="slideUp">
           <Paragraph size={1} weight="normal" leading="snug" className={styles.introParagraph}>
-            Sustaining a thriving planet. Accelerating solutions and empowering the next generation of leaders.
+            For combating the climate crisis. For reducing inequality. For embedding ethics in all we do.
           </Paragraph>
           <Paragraph size={1} weight="normal" leading="snug" className={styles.introParagraph}>
-            Meet your community of changemakers, explore what you’re passionate about, and join the conversation.
+            Welcome to <em>Momentum</em>, telling the stories of Stanford’s impact.
+          </Paragraph>
+          <Paragraph size={1} weight="normal" leading="snug" className={styles.introParagraph}>
+            Come discover the work underway in four key thematic areas.
           </Paragraph>
         </AnimateInView>
       </Container>

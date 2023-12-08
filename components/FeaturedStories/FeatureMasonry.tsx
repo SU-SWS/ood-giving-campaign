@@ -3,64 +3,102 @@ import { Container } from '@/components/Container';
 import { Grid } from '@/components/Grid';
 import { FlexBox } from '@/components/FlexBox';
 import { EmbedMedia } from '@/components/EmbedMedia';
+import { ImageOverlay } from '@/components/ImageOverlay';
+import { Quote } from '@/components/Quote';
+import { Text } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 
 
 type FeatureMasonryProps = React.HTMLAttributes<HTMLDivElement> & {
-  videoUrl?: string;
   audioUrl?: string;
+  audioBgImageSrc?: string;
+  audioBgImageFocus?: string;
+  quoteBody?: string;
+  quoteBgImageSrc?: string;
+  quoteBgImageFocus?: string;
   imageSrc1?: string;
   imageFocus1?: string;
-  imageSrc2?: string;
-  imageFocus2?: string;
-  quoteBody?: React.ReactNode;
+  imageAlt1?: string;
+  videoUrl?: string;
+  caption?: string;
 }
 
 export const FeatureMasonry = ({
-  videoUrl,
   audioUrl,
+  audioBgImageSrc,
+  audioBgImageFocus,
+  quoteBody,
+  quoteBgImageSrc,
+  quoteBgImageFocus,
   imageSrc1,
   imageFocus1,
-  imageSrc2,
-  imageFocus2,
-  quoteBody,
+  imageAlt1,
+  videoUrl,
+  caption,
   className,
   ...props
 }: FeatureMasonryProps) => {
   return (
     <Container {...props} width="full">
-      <Grid sm={12} gap="default">
-        <FlexBox alignItems="center" className="md:col-span-7 bg-fog-light">
+      <Grid lg={12} gap="default">
+        <FlexBox
+          alignItems="center"
+          className="relative lg:col-span-7 bg-black-70 overflow-hidden"
+        >
+          <ImageOverlay
+            imageSrc={getProcessedImage(
+              audioBgImageSrc,
+              '1200x600',
+              audioBgImageFocus,
+            )}
+            overlay="black-10"
+          />
+          <div className="absolute top-0 left-0 w-full h-full backdrop-blur-sm" />
           <EmbedMedia
             mediaUrl={audioUrl}
-            className="lg:rs-px-6 lg:children:children:aspect-w-4 lg:children:children:aspect-h-1"
+            className="relative z-10 rs-py-6 children:w-4/5 children:mx-auto lg:children:children:aspect-w-2 lg:children:children:aspect-h-1 xl:children:children:aspect-w-4 xl:children:children:aspect-h-1"
           />
         </FlexBox>
-        <div className="md:col-span-5 w-full h-full">
-          <img
-            src={getProcessedImage(imageSrc1, '1200x800', imageFocus1)}
-            alt=""
-            className="w-full h-full object-cover"
+        <FlexBox
+          justifyContent="center"
+          className="relative lg:col-span-5 rs-py-4 px-36 xl:px-58 2xl:px-76 bg-black-70 text-white"
+        >
+          <ImageOverlay
+            imageSrc={getProcessedImage(
+              quoteBgImageSrc,
+              '1200x800',
+              quoteBgImageFocus,
+            )}
+            overlay="black-60"
           />
-        </div>
-        <div className="md:col-span-3 w-full h-full">
-          <img
-            src={getProcessedImage(imageSrc2, '900x900', imageFocus2)}
-            alt=""
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="md:col-span-3 bg-digital-red rs-p-2 text-white">
-          <div className="children:children:font-serif big leading-display">
-            {quoteBody}
+          <div className="place-self-center h-fit">
+            <Quote
+              teaser=" "
+              animation="slideUp"
+              quoteColor="flamingo"
+              body={quoteBody}
+              isLargeBody
+              source="Eden Hadar, ’26"
+              className="relative z-10 !pl-0"
+            />
           </div>
+        </FlexBox>
+        <div className="lg:col-span-6 w-full h-full">
+          <img
+            src={getProcessedImage(imageSrc1, '800x450', imageFocus1)}
+            alt={imageAlt1 || ''}
+            className="w-full h-full object-cover"
+          />
         </div>
         <EmbedMedia
           mediaUrl={videoUrl}
-          className="md:col-span-6"
+          className="lg:col-span-6 bg-black-70"
           aspectRatio="16x9"
         />
       </Grid>
+      <Text variant="caption" leading="display" className="text-black-70 max-w-prose-wide mt-1em whitespace-pre-line">
+        {caption}
+      </Text>
     </Container>
   );
 };
