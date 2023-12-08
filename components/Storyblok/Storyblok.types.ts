@@ -45,6 +45,7 @@ export type SbTypographyProps = {
   italic?: boolean;
 };
 
+// Used for SbSection background color animation
 export type SbColorStopProps = {
   stop: string;
   hexColor: string;

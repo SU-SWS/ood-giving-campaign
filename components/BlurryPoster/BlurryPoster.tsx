@@ -87,7 +87,7 @@ export const BlurryPoster = ({
   return (
     <Container {...props} bgColor={bgColor} width="full" className={styles.root}>
       <img
-        src={getProcessedImage(bgImageSrc, '1200x1200', bgImageFocus)}
+        src={getProcessedImage(bgImageSrc, '1000x1500', bgImageFocus)}
         alt={bgImageAlt || ''}
         aria-describedby={caption ? 'story-hero-caption' : undefined}
         className={styles.bgImageMobile}

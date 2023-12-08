@@ -71,9 +71,9 @@ export const SbSection = ({
   },
   blok,
 }: SbSectionProps) => {
-  const ref = useRef<HTMLDivElement>(null);
   const hasHeader = heading || superhead || subheading;
 
+  const ref = useRef<HTMLDivElement>(null);
   const stops = [];
   const bgColors = [];
   const { scrollYProgress } = useScroll({
@@ -81,12 +81,22 @@ export const SbSection = ({
     offset: ['start start', 'end start'],
   });
 
-  if (!!bgColorStops?.length) {
+  // bgColorStops is an array of objects with the shape {stop, hexColor}
+  if (bgColorStops?.length >= 2) {
+    /**
+     * If bgColorStops has at least 2 stops, we add background color animation
+     * This loop splits the array into two separate arrays, one for the stops and one for the colors
+     */
     for (const element of bgColorStops) {
       stops.push(parseFloat(element.stop));
       bgColors.push(element.hexColor);
     }
   } else {
+    /**
+     * If there is less than 2 stops, we push a single stop and color to the arrays
+     * We can't use the below Framer Motion useTransform hook conditionally,
+     * so we need to push a single stop and color for it to not throw an error
+     */
     stops.push(0);
     bgColors.push('transparent');
   }
@@ -100,7 +110,8 @@ export const SbSection = ({
       className="relative overflow-hidden"
       {...storyblokEditable(blok)}
     >
-      <m.div ref={ref} style={{ backgroundColor: bgColorStops?.length > 1 ? animatedBgColor : undefined }}>
+      {/* Add background color animation if there are at least 2 color stops */}
+      <m.div ref={ref} style={{ backgroundColor: bgColorStops?.length >= 2 ? animatedBgColor : undefined }}>
         <Container
           width="full"
           bgColor={bgColor}
