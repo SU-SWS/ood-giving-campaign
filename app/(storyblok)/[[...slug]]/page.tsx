@@ -9,7 +9,6 @@ import { notFound } from 'next/navigation';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
 
 const activeEnv = process.env.NODE_ENV || 'development';
-const dynamic = 'force-static';
 
 type PathsType = {
   slug: string[];
@@ -21,6 +20,7 @@ type ParamsType = {
 
 // Control what happens when a dynamic segment is visited that was not generated with generateStaticParams.
 export const dynamicParams = false;
+export const dynamic = 'force-static';
 
 // Storyblok bridge options.
 const bridgeOptions = {

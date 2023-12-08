@@ -4,7 +4,7 @@ type StoryblokLayoutProps = {
   children: React.ReactNode,
 };
 
-const dynamic = 'force-static';
+export const dynamic = 'force-static';
 
 export default function StoryblokLayout({ children }: StoryblokLayoutProps) {
   return (

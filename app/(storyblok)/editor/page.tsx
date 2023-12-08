@@ -27,6 +27,7 @@ type PageProps = {
 
 // Control what happens when a dynamic segment is visited that was not generated with generateStaticParams.
 export const dynamicParams = false;
+export const dynamic = 'force-dynamic';
 
 // Storyblok bridge options.
 const bridgeOptions = {
