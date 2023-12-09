@@ -15,7 +15,7 @@ import * as styles from './ChangemakerCard.styles';
 export type ChangemakerCardProps = React.HTMLAttributes<HTMLDivElement> & {
   heading?: string;
   headingLevel?: HeadingType;
-  body?: string;
+  subheading?: string;
   imageSrc?: string;
   imageFocus?: string;
   ctaLabel?: string;
@@ -29,7 +29,7 @@ export type ChangemakerCardProps = React.HTMLAttributes<HTMLDivElement> & {
 export const ChangemakerCard = ({
   heading,
   headingLevel = 'h3',
-  body,
+  subheading,
   imageSrc,
   imageFocus,
   ctaLabel,
@@ -92,8 +92,8 @@ export const ChangemakerCard = ({
                   {heading}
                 </Heading>
               )}
-              {body && (
-                <Text variant="card" align="center">{body}</Text>
+              {subheading && (
+                <Text variant="card" align="center">{subheading}</Text>
               )}
             </div>
             <button

@@ -5,7 +5,13 @@ import { Heading, Paragraph, Text } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { ChangemakerCard } from '@/components/ChangemakerCard';
 
-export const Changemaker = () => {
+type ChangemakerProps = React.HTMLAttributes<HTMLDivElement> & {
+  changemakerCards?: React.ReactNode;
+};
+
+export const Changemaker = ({
+  changemakerCards,
+}: ChangemakerProps) => {
   const bgImage = getProcessedImage('https://a-us.storyblok.com/f/1005200/3089x2048/aee2ea28c6/21664-18-0021_cmyk.jpg', '2000x0');
 
   return (
@@ -45,7 +51,7 @@ export const Changemaker = () => {
           <ChangemakerCard
             imageSrc="https://a-us.storyblok.com/f/1005200/878x1800/523e07bc72/person.jpg"
             heading="Yuhe Faye Wang"
-            body="Lorem Ipsum Dolar Sit"
+            subheading="Lorem Ipsum Dolar Sit"
             animation="slideUp"
             delay={0.2}
           >
@@ -62,7 +68,7 @@ export const Changemaker = () => {
           <ChangemakerCard
             imageSrc="https://a-us.storyblok.com/f/1005200/878x1800/4535e9548c/person.jpg"
             heading="Lisa Goldman Rosas"
-            body="Lorem Ipsum Dolar Sit"
+            subheading="Lorem Ipsum Dolar Sit"
             animation="slideUp"
             delay={0.4}
           >
@@ -75,7 +81,7 @@ export const Changemaker = () => {
           <ChangemakerCard
             imageSrc="https://a-us.storyblok.com/f/1005200/878x1801/5177958b81/person.jpg"
             heading="Jodie Anderson"
-            body="Lorem Ipsum Dolar Sit"
+            subheading="Lorem Ipsum Dolar Sit"
             animation="slideUp"
             delay={0.6}
           >
@@ -92,7 +98,7 @@ export const Changemaker = () => {
           <ChangemakerCard
             imageSrc="https://a-us.storyblok.com/f/1005200/878x1801/64a0a4257d/gobi.jpg"
             heading="Kai Mottley"
-            body="Lorem Ipsum Dolar Sit"
+            subheading="Lorem Ipsum Dolar Sit"
             animation="slideUp"
             delay={0.8}
           >
@@ -103,6 +109,7 @@ export const Changemaker = () => {
             </Paragraph>
           </ChangemakerCard>
         </Grid>
+        {changemakerCards}
       </Container>
     </Container>
   );

@@ -19,6 +19,10 @@ module.exports = function () {
         fontSize: '0.93em',
         lineHeight: theme('lineHeight.snug'),
       },
+      '.gc-changemaker': {
+        fontSize: '0.87em',
+        lineHeight: theme('lineHeight.display'),
+      },
       '.gc-intro-text': {
         ...theme('decanter.typography.type2'),
         lineHeight: theme('lineHeight.cozy'),

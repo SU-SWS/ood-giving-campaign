@@ -76,6 +76,7 @@ export const textVariants = {
    */
   caption: 'caption',
   card: 'gc-card',
+  changemaker: 'gc-changemaker',
   intro: 'gc-intro-text',
   /**
    * Campaign only styles
