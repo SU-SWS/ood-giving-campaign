@@ -1,8 +1,9 @@
 import { cnb } from 'cnbuilder';
-import {AnimateInView, type AnimationType } from '../Animate';
-import { CtaButton } from '../Cta/CtaButton';
+import { useRef, useState } from 'react';
+import { useOnClickOutside } from 'usehooks-ts';
+import { AnimateInView, type AnimationType } from '../Animate';
 import {
-  Heading, type HeadingType, Paragraph, Text,
+  Heading, type HeadingType, Text,
 } from '../Typography';
 import { FlexBox } from '../FlexBox';
 import { HeroIcon } from '../HeroIcon';
@@ -38,56 +39,98 @@ export const ChangemakerCard = ({
   children,
   className,
   ...props
-}: ChangemakerCardProps) => (
-  <AnimateInView animation={animation} delay={delay}>
-    <article
-      className={cnb(styles.root, className)}
-      tabIndex={0}
-      {...props}
-    >
-      <div className={styles.cardInner}>
-        {/* Front of the card */}
-        <div className={styles.cardFront}>
-          {imageSrc && (
-            <div className={cnb(styles.imageWrapper)}>
-              <ImageOverlay
-                imageSrc={getProcessedImage(imageSrc, '500x1000', imageFocus)}
-                overlay="black-gradient-dark"
-              />
+}: ChangemakerCardProps) => {
+  const cardInnerRef = useRef<HTMLDivElement>(null);
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  // Toggle the card's isFlipped state
+  const toggleCard = () => {
+    setIsFlipped(!isFlipped);
+  };
+
+  // Onclick function to rotate cardInnerRef around the Y axis
+  const flipCard = (degrees: number) => {
+    if (cardInnerRef.current) {
+      cardInnerRef.current.style.transform = `rotateY(${degrees}deg)`;
+      toggleCard();
+    }
+  };
+
+  // If card is flipped, clicking outside of the card will flip it back
+  useOnClickOutside(cardInnerRef, () => {
+    if (isFlipped) {
+      flipCard(0);
+    }
+  });
+
+  return (
+    <AnimateInView animation={animation} delay={delay}>
+      <article
+        className={cnb(styles.root, className)}
+        {...props}
+      >
+        <div ref={cardInnerRef} className={styles.cardInner}>
+          {/* Front of the card */}
+          <div aria-hidden={isFlipped} className={styles.cardFront}>
+            {imageSrc && (
+              <div className={cnb(styles.imageWrapper)}>
+                <ImageOverlay
+                  imageSrc={getProcessedImage(imageSrc, '500x1000', imageFocus)}
+                  overlay="black-gradient-dark"
+                />
+              </div>
+            )}
+            <div className={styles.content}>
+              {heading && (
+                <Heading
+                  as={headingLevel}
+                  size={2}
+                  leading="tight"
+                  align="center"
+                  className={styles.heading}
+                >
+                  {heading}
+                </Heading>
+              )}
+              {body && (
+                <Text variant="card" align="center">{body}</Text>
+              )}
             </div>
-          )}
-          <div className={styles.content}>
-            {heading && (
-              <Heading
-                as={headingLevel}
-                size={3}
-                leading="tight"
-                align="center"
-                className={styles.heading}
-              >
-                {heading}
-              </Heading>
-            )}
-            {body && (
-              <Paragraph variant="card" align="center" noMargin>{body}</Paragraph>
-            )}
-            <FlexBox direction="col" alignItems="center" className="absolute bottom-50 right-36 text-white">
+            <button
+              type="button"
+              onClick={() => flipCard(180)}
+              aria-label={`Read more about ${heading}`}
+              className={cnb(styles.button, styles.buttonFront)}
+            >
               <HeroIcon
                 noBaseStyle
-                icon='plus'
-                className="w-65 h-65 border-2 border-white rounded-full p-16"
+                icon='flip'
+                className={styles.flipIcon}
               />
-              <Text as="span" font="serif" color="white" variant="caption">
-                {ctaLabel}
-              </Text>
-            </FlexBox>
+            </button>
           </div>
+          {/* Back of the card */}
+          <FlexBox
+            direction="col"
+            className={styles.cardBack}
+            aria-hidden={!isFlipped}
+          >
+            {children}
+            <button
+              type="button"
+              onClick={() => flipCard(0)}
+              aria-label="Dismiss"
+              className={cnb(styles.button, styles.buttonBack)}
+            >
+              <HeroIcon
+                noBaseStyle
+                icon='flip'
+                className={styles.flipIcon}
+              />
+            </button>
+          </FlexBox>
         </div>
-        {/* Back of the card */}
-        <FlexBox direction="col" justifyContent="center" className={styles.cardBack}>
-          {children}
-        </FlexBox>
-      </div>
-    </article>
-  </AnimateInView>
-);
+      </article>
+    </AnimateInView>
+  );
+};

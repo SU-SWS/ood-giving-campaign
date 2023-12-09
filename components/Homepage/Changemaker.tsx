@@ -24,18 +24,18 @@ export const Changemaker = () => {
               Makers. Doers.
             </Text>
           </AnimateInView>
-          <AnimateInView animation="slideInFromLeft" delay={0.2}>
+          <AnimateInView animation="slideInFromLeft" delay={0.1}>
             <Text as="span" font="serif" className="block">
               Boundary Pushers.
             </Text>
           </AnimateInView>
-          <AnimateInView animation="slideInFromRight" delay={0.4}>
+          <AnimateInView animation="slideInFromRight" delay={0.2}>
             <Text as="span" font="serif" className="block">
               Risk-takers.
             </Text>
           </AnimateInView>
         </Heading>
-        <AnimateInView animation="slideUp" delay={0.5}>
+        <AnimateInView animation="slideUp" delay={0.4}>
           <Paragraph size={2} weight="semibold" noMargin font="serif" align="center" className="max-w-700 mx-auto rs-my-4" leading="display">
             The Stanford community overflows with curious people unafraid to try,
             change, and try again. Meet some of them.
@@ -44,7 +44,7 @@ export const Changemaker = () => {
         <Grid md={2} xxl={4} pt={7} gap="default">
           <ChangemakerCard
             imageSrc="https://a-us.storyblok.com/f/1005200/878x1800/523e07bc72/person.jpg"
-            heading="Alvin Pearman"
+            heading="Yuhe Faye Wang"
             body="Lorem Ipsum Dolar Sit"
             animation="slideUp"
             delay={0.2}
@@ -54,14 +54,14 @@ export const Changemaker = () => {
               Etiam tempor sed tellus ac vulputate. Morbi varius ornare arcu,
               quis scelerisque urna ultricies sed. Nunc eu est leo.
             </Paragraph>
-            <Paragraph variant="card" noMargin>
+            <Paragraph variant="card">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Etiam tempor sed tellus ac vulputate.
             </Paragraph>
           </ChangemakerCard>
           <ChangemakerCard
             imageSrc="https://a-us.storyblok.com/f/1005200/878x1800/4535e9548c/person.jpg"
-            heading="Andrii Torchylo"
+            heading="Lisa Goldman Rosas"
             body="Lorem Ipsum Dolar Sit"
             animation="slideUp"
             delay={0.4}
@@ -74,7 +74,7 @@ export const Changemaker = () => {
           </ChangemakerCard>
           <ChangemakerCard
             imageSrc="https://a-us.storyblok.com/f/1005200/878x1801/5177958b81/person.jpg"
-            heading="Misan Rewane"
+            heading="Jodie Anderson"
             body="Lorem Ipsum Dolar Sit"
             animation="slideUp"
             delay={0.6}
@@ -91,7 +91,7 @@ export const Changemaker = () => {
           </ChangemakerCard>
           <ChangemakerCard
             imageSrc="https://a-us.storyblok.com/f/1005200/878x1801/64a0a4257d/gobi.jpg"
-            heading="Gopi Goda"
+            heading="Kai Mottley"
             body="Lorem Ipsum Dolar Sit"
             animation="slideUp"
             delay={0.8}
