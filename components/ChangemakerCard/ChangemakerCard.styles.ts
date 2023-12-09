@@ -6,6 +6,6 @@ export const button = 'group/button absolute w-full h-full top-0 left-0 transiti
 export const buttonFront = 'group-aria-hidden/front:invisible';
 export const buttonBack = 'group-aria-hidden/back:invisible';
 export const flipIcon = 'absolute bottom-50 right-36 text-white w-65 h-65 border-2 border-white rounded-full p-16 group-hover/button:border-dashed group-hover/button:rotate-45 group-focus/button:border-dashed group-focus/button:rotate-45';
-export const cardBack = 'group/back backface-hidden absolute w-full h-full top-0 left-0 rs-px-2 rs-py-3 bg-gradient-to-b from-gc-black/40 to-gc-black/90 [transform:rotateY(180deg)] gc-card';
+export const cardBack = 'group/back backface-hidden absolute w-full h-full top-0 left-0 rs-px-2 rs-py-2 bg-gradient-to-b from-gc-black/70 to-gc-black/90 [transform:rotateY(180deg)] gc-changemaker';
 export const imageWrapper = 'overflow-hidden aspect-w-1 aspect-h-2';
 export const heading = 'mb-02em transition-opacity delay-100';
