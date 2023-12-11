@@ -47,68 +47,6 @@ export const Changemaker = ({
             change, and try again. Meet some of them.
           </Paragraph>
         </AnimateInView>
-        <Grid md={2} xxl={4} pt={7} gap="default">
-          <ChangemakerCard
-            imageSrc="https://a-us.storyblok.com/f/1005200/878x1800/523e07bc72/person.jpg"
-            heading="Yuhe Faye Wang"
-            subheading="Lorem Ipsum Dolar Sit"
-            animation="slideUp"
-            delay={0.2}
-          >
-            <Paragraph variant="card">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Etiam tempor sed tellus ac vulputate. Morbi varius ornare arcu,
-              quis scelerisque urna ultricies sed. Nunc eu est leo.
-            </Paragraph>
-            <Paragraph variant="card">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Etiam tempor sed tellus ac vulputate.
-            </Paragraph>
-          </ChangemakerCard>
-          <ChangemakerCard
-            imageSrc="https://a-us.storyblok.com/f/1005200/878x1800/4535e9548c/person.jpg"
-            heading="Lisa Goldman Rosas"
-            subheading="Lorem Ipsum Dolar Sit"
-            animation="slideUp"
-            delay={0.4}
-          >
-            <Paragraph variant="card" noMargin>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Etiam tempor sed tellus ac vulputate. Morbi varius ornare arcu,
-              quis scelerisque urna ultricies sed. Nunc eu est leo.
-            </Paragraph>
-          </ChangemakerCard>
-          <ChangemakerCard
-            imageSrc="https://a-us.storyblok.com/f/1005200/878x1801/5177958b81/person.jpg"
-            heading="Jodie Anderson"
-            subheading="Lorem Ipsum Dolar Sit"
-            animation="slideUp"
-            delay={0.6}
-          >
-            <Paragraph variant="card">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Etiam tempor sed tellus ac vulputate. Morbi varius ornare arcu,
-              quis scelerisque urna ultricies sed. Nunc eu est leo.
-            </Paragraph>
-            <Paragraph variant="card" noMargin>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Etiam tempor sed tellus ac vulputate.
-            </Paragraph>
-          </ChangemakerCard>
-          <ChangemakerCard
-            imageSrc="https://a-us.storyblok.com/f/1005200/878x1801/64a0a4257d/gobi.jpg"
-            heading="Kai Mottley"
-            subheading="Lorem Ipsum Dolar Sit"
-            animation="slideUp"
-            delay={0.8}
-          >
-            <Paragraph variant="card">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Etiam tempor sed tellus ac vulputate. Morbi varius ornare arcu,
-              quis scelerisque urna ultricies sed. Nunc eu est leo.
-            </Paragraph>
-          </ChangemakerCard>
-        </Grid>
         {changemakerCards}
       </Container>
     </Container>

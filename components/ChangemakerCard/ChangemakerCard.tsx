@@ -76,7 +76,7 @@ export const ChangemakerCard = ({
               <div className={cnb(styles.imageWrapper)}>
                 <ImageOverlay
                   imageSrc={getProcessedImage(imageSrc, '500x1000', imageFocus)}
-                  overlay="black-gradient-dark"
+                  overlay="gradient-changemaker"
                 />
               </div>
             )}

@@ -20,8 +20,12 @@ module.exports = function () {
         lineHeight: theme('lineHeight.snug'),
       },
       '.gc-changemaker': {
-        fontSize: '0.87em',
-        lineHeight: theme('lineHeight.display'),
+        fontSize: '1.5rem',
+        lineHeight: theme('lineHeight.snug'),
+        '@screen 3xl': {
+          fontSize: '1.6rem',
+          lineHeight: theme('lineHeight.cozy'),
+        },
       },
       '.gc-intro-text': {
         ...theme('decanter.typography.type2'),
