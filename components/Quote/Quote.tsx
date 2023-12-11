@@ -63,7 +63,12 @@ export const Quote = ({
             >
               {quoteOnRight ? '”' : '“'}
             </Text>
-            <Text size={isLargeTeaser ? 'f5' : 'f4'} leading="none" font="druk" className={styles.teaser}>
+            <Text
+              size={isLargeTeaser ? 'f5' : 'f4'}
+              leading="none"
+              font="druk"
+              className={styles.teaser}
+            >
               {teaser}
             </Text>
           </FlexBox>

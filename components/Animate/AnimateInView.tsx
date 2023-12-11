@@ -22,7 +22,7 @@ export const AnimateInView = ({
   className,
   ...props
 }: AnimateInViewProps) => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
   const isInView = useInView(ref, { once });
 
