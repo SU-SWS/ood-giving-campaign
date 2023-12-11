@@ -9,33 +9,37 @@ import { FlexBox } from '../FlexBox';
 import { HeroIcon } from '../HeroIcon';
 import { ImageOverlay } from '../ImageOverlay';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import * as styles from './ChangemakerCard.styles';
+import * as styles from './ChangemakerFlipCard.styles';
 
 
-export type ChangemakerCardProps = React.HTMLAttributes<HTMLDivElement> & {
+export type ChangemakerFlipCardProps = React.HTMLAttributes<HTMLDivElement> & {
   heading?: string;
   headingLevel?: HeadingType;
   subheading?: string;
   imageSrc?: string;
   imageFocus?: string;
+  ctaLabel?: string;
+  ctaSrText?: string;
   animation?: AnimationType;
   delay?: number;
   // children serves as what's on the back of the card
   children?: React.ReactNode;
 };
 
-export const ChangemakerCard = ({
+export const ChangemakerFlipCard = ({
   heading,
   headingLevel = 'h3',
   subheading,
   imageSrc,
   imageFocus,
+  ctaLabel,
+  ctaSrText,
   animation = 'none',
   delay,
   children,
   className,
   ...props
-}: ChangemakerCardProps) => {
+}: ChangemakerFlipCardProps) => {
   const cardInnerRef = useRef<HTMLDivElement>(null);
   const [isFlipped, setIsFlipped] = useState(false);
 

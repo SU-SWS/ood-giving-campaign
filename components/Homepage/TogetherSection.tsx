@@ -40,7 +40,7 @@ export const TogetherSection = () => {
         <AnimateInView animation="slideUp" delay={0.2}>
           <Paragraph leading="display" align="center" size={1} className="max-w-700 mx-auto">
             One game changer is admirable. A community of game changers is unstoppable.
-            There is nothing we can do that we cannot do better...
+            There is nothing we can do that we cannot do better …
           </Paragraph>
           <SrOnlyText>together</SrOnlyText>
         </AnimateInView>
