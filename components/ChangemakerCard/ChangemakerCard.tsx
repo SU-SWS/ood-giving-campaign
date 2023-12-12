@@ -37,25 +37,18 @@ export const ChangemakerCard = ({
   ...props
 }: ChangemakerCardProps) => {
   const cardInnerRef = useRef<HTMLDivElement>(null);
-  const [isFlipped, setIsFlipped] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const [isShown, setIsShown] = useState(false);
 
-  // Toggle the card's isFlipped state
+  // Toggle card content
   const toggleCard = () => {
-    setIsFlipped(!isFlipped);
+    setIsShown(!isShown);
   };
 
-  // Onclick function to rotate cardInnerRef around the Y axis
-  const flipCard = (degrees: number) => {
-    if (cardInnerRef.current) {
-      cardInnerRef.current.style.transform = `rotateY(${degrees}deg)`;
-      toggleCard();
-    }
-  };
-
-  // If card is flipped, clicking outside of the card will flip it back
+  // If card content is shown, clicking outside it will dismiss its
   useOnClickOutside(cardInnerRef, () => {
-    if (isFlipped) {
-      flipCard(0);
+    if (isShown) {
+      setIsShown(false);
     }
   });
 
@@ -67,7 +60,7 @@ export const ChangemakerCard = ({
       >
         <div ref={cardInnerRef} className={styles.cardInner}>
           {/* Front of the card */}
-          <div aria-hidden={isFlipped} className={styles.cardFront}>
+          <div aria-hidden={isShown} className={styles.cardFront}>
             {imageSrc && (
               <div className={cnb(styles.imageWrapper)}>
                 <ImageOverlay
@@ -92,39 +85,28 @@ export const ChangemakerCard = ({
                 <Text variant="card" align="center">{subheading}</Text>
               )}
             </div>
-            <button
-              type="button"
-              onClick={() => flipCard(180)}
-              aria-label={`Read more about ${heading}`}
-              className={cnb(styles.button, styles.buttonFront)}
-            >
-              <HeroIcon
-                noBaseStyle
-                icon='flip'
-                className={styles.flipIcon}
-              />
-            </button>
           </div>
-          {/* Back of the card */}
+          {/* Content layer */}
           <FlexBox
             direction="col"
-            className={styles.cardBack}
-            aria-hidden={!isFlipped}
+            className={styles.cardContent}
+            aria-hidden={!isShown}
           >
             {children}
-            <button
-              type="button"
-              onClick={() => flipCard(0)}
-              aria-label="Dismiss"
-              className={cnb(styles.button, styles.buttonBack)}
-            >
-              <HeroIcon
-                noBaseStyle
-                icon='flip'
-                className={styles.flipIcon}
-              />
-            </button>
           </FlexBox>
+          <button
+            ref={buttonRef}
+            type="button"
+            onClick={toggleCard}
+            aria-label={isShown ? 'Dismiss' : `Read more about ${heading}`}
+            className={cnb(styles.button, styles.buttonBack)}
+          >
+            <HeroIcon
+              noBaseStyle
+              icon='plus'
+              className={styles.flipIcon}
+            />
+          </button>
         </div>
       </article>
     </AnimateInView>

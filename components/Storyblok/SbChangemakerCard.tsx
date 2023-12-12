@@ -1,5 +1,4 @@
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
-import { StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { ChangemakerCard } from '@/components/ChangemakerCard';
 import { type AnimationType } from '@/components/Animate';
 import { type HeadingType } from '@/components/Typography';
