@@ -37,7 +37,7 @@
     "cnbuilder": "^3.1.0",
     "cookies-next": "^4.0.0",
     "framer-motion": "^10.16.4",
-    "next": "13.4.9",
+    "next": "13.5.1",
     "react-player": "^2.13.0",
     "storyblok-rich-text-react-renderer-ts": "^3.2.0",
     "usehooks-ts": "^2.9.1"
