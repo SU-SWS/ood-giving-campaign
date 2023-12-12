@@ -40,6 +40,7 @@ export const ChangemakerCard = ({
   const cardRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const contentId = useId();
+  const headingId = useId();
   const [isShown, toggle, setIsShown] = useToggle()
 
   // If card content is shown, clicking outside it will dismiss its
@@ -74,10 +75,11 @@ export const ChangemakerCard = ({
                 />
               </div>
             )}
-            <div className={styles.info}>
+            <FlexBox direction="col" className={styles.info}>
               {heading && (
                 <Heading
                   as={headingLevel}
+                  id={headingId}
                   size={2}
                   leading="tight"
                   align="center"
@@ -87,13 +89,14 @@ export const ChangemakerCard = ({
                 </Heading>
               )}
               {subheading && (
-                <Text variant="card" align="center">{subheading}</Text>
+                <Text variant="card" align="center" leading="display">{subheading}</Text>
               )}
-            </div>
+            </FlexBox>
           </div>
           {/* Content layer */}
           <FlexBox
             id={contentId}
+            aria-labelledby={headingId}
             direction="col"
             className={styles.cardContent}
             aria-hidden={!isShown}
