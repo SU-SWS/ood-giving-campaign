@@ -53,6 +53,8 @@ export const VerticalPoster = ({
     year: 'numeric',
   });
 
+  let i = 1;
+
   return (
     <Container {...props} bgColor="white" width="full" className={styles.root}>
       <div className={styles.blurWrapper}>
@@ -83,7 +85,7 @@ export const VerticalPoster = ({
                     {customHeading.map(({text, font, italic}) => (
                       <Text
                         as="span"
-                        key={text}
+                        key={`${text}-vert-poster-${++i}`}
                         font={font}
                         leading="none"
                         weight={font === 'druk' ? 'black' : 'normal'}

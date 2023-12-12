@@ -1,5 +1,4 @@
 'use client';
-
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
 import { SbBanner } from './Storyblok/SbBanner';
 import { SbBasicPage } from './Storyblok/SbBasicPage';
@@ -34,8 +33,9 @@ import { SbTriangle } from './Storyblok/SbTriangle';
 import { SbTypeform } from './Storyblok/SbTypeform';
 import { SbVerticalPoster } from './Storyblok/SbVerticalPoster';
 import { SbWysiwyg } from './Storyblok/SbWysiwyg';
+import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
 
-const components = {
+export const components = {
   sbBanner: SbBanner,
   sbBasicPage: SbBasicPage,
   sbBlurryPoster: SbBlurryPoster,
@@ -71,15 +71,42 @@ const components = {
   sbTypeform: SbTypeform,
 };
 
-storyblokInit({
-  accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
-  use: [apiPlugin],
-  apiOptions: {
-    region: 'us',
-  },
-  components,
-});
+interface ProviderProps {
+  children: React.ReactNode;
+  isEditor?: boolean;
+};
 
-export default function StoryblokProvider({ children }: { children: React.ReactNode }) {
+export default function StoryblokProvider({ children, isEditor = false }: ProviderProps) {
+
+  let accessToken = ''; // No access token because this is in client side code.
+  if (isEditor) {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      accessToken = urlParams.get('token') || accessToken;
+    }
+  }
+  // Temporarily override console.error to squeltch errors from Storyblok.
+  // Storyblok Init wants an api key but I don't want it in the client side code nor do I want to fetch from
+  // Storyblok's api on the front end.
+  const originalConsoleError = console.error;
+  console.error = () => {};
+
+  // Init the Storyblok client so we can use the Storyblok components.
+  storyblokInit({
+    accessToken,
+    use: [apiPlugin],
+    apiOptions: {
+      region: 'us',
+    },
+    components,
+    enableFallbackComponent: true,
+    customFallbackComponent: (component) => {
+      return <ComponentNotFound component={component} />;
+    },
+  });
+
+  // Return the console.error to its original state.
+  console.error = originalConsoleError;
+
   return children;
 };

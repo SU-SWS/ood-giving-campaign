@@ -2,7 +2,8 @@ import { storyblokEditable } from '@storyblok/react/rsc';
 import {
  PopOver, PopUp, SideTab, Slider, Widget,
 } from '@/components/TypeForm';
-import { Heading } from '@/components/Typography';
+import { Container } from '@/components/Container';
+import { type PaddingType } from '@/utilities/datasource';
 import * as CTAStyles from '@/components/Cta/Cta.styles';
 import { cnb } from 'cnbuilder';
 
@@ -25,10 +26,11 @@ export type SbTypeformProps = {
     transitiveSearchParams: string;
     displayAsFullScreenModal: boolean;
     transparent: boolean;
+    paddingTop: PaddingType;
+    paddingBottom: PaddingType;
   };
 };
 
-// TODO: Move this to the non-storyblok Typeform component dir.
 export const styles = {
   container: 'cc flex flex-col place-items-center',
   fauxCTA: cnb(CTAStyles.cta, CTAStyles.ctaVariants.solid, CTAStyles.ctaSizes.large),
@@ -44,7 +46,6 @@ export const SbTypeform = ({
     embedType,
     autoResize,
     fullScreen,
-    heading,
     hideFooter,
     hideHeader,
     buttonLabel,
@@ -54,6 +55,8 @@ export const SbTypeform = ({
     transitiveSearchParams,
     transparent,
     displayAsFullScreenModal,
+    paddingTop,
+    paddingBottom,
   } = blok;
 
   const transitiveParams = transitiveSearchParams.split(`\n`);
@@ -64,7 +67,13 @@ export const SbTypeform = ({
   switch (embedType) {
     case 'slider': {
       return (
-        <div {...storyblokEditable(blok)} className={styles.container}>
+        <Container
+          width="full"
+          pt={paddingTop}
+          pb={paddingBottom}
+          {...storyblokEditable(blok)}
+          className={styles.container}
+        >
           <Slider
             id={id}
             autoClose={10000}
@@ -77,7 +86,7 @@ export const SbTypeform = ({
           >
             <span className={styles.fauxCTA}>{buttonLabel}</span>
           </Slider>
-        </div>
+        </Container>
       );
     }
     case 'sidetab': {
@@ -118,7 +127,13 @@ export const SbTypeform = ({
     }
     case 'popup': {
       return (
-        <div {...storyblokEditable(blok)} className={styles.container}>
+        <Container
+          width="full"
+          pt={paddingTop}
+          pb={paddingBottom}
+          {...storyblokEditable(blok)}
+          className={styles.container}
+        >
           <PopUp
             id={id}
             autoClose={10000}
@@ -134,13 +149,19 @@ export const SbTypeform = ({
           >
             <span className={styles.fauxCTA}>{buttonLabel}</span>
           </PopUp>
-        </div>
+        </Container>
       );
     }
     case 'widget':
     default: {
       return (
-        <div {...storyblokEditable(blok)} className={styles.container}>
+        <Container
+          width="full"
+          pt={paddingTop}
+          pb={paddingBottom}
+          {...storyblokEditable(blok)}
+          className={styles.container}
+        >
           <Widget
             id={id}
             autoFocus={autoFocus}
@@ -156,7 +177,7 @@ export const SbTypeform = ({
             height={!resize ? embedHeight : undefined}
             className='w-full'
           />
-        </div>
+        </Container>
       );
     }
   }
