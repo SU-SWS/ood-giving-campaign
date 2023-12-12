@@ -1,6 +1,6 @@
 import { cnb } from 'cnbuilder';
-import { useRef, useState } from 'react';
-import { useOnClickOutside } from 'usehooks-ts';
+import { useId, useRef, useState } from 'react';
+import { useOnClickOutside, useToggle } from 'usehooks-ts';
 import { AnimateInView, type AnimationType } from '../Animate';
 import {
   Heading, type HeadingType, Text,
@@ -38,12 +38,8 @@ export const ChangemakerCard = ({
 }: ChangemakerCardProps) => {
   const cardInnerRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const [isShown, setIsShown] = useState(false);
-
-  // Toggle card content
-  const toggleCard = () => {
-    setIsShown(!isShown);
-  };
+  const contentId = useId();
+  const [isShown, toggle, setIsShown] = useToggle()
 
   // If card content is shown, clicking outside it will dismiss its
   useOnClickOutside(cardInnerRef, () => {
@@ -88,6 +84,7 @@ export const ChangemakerCard = ({
           </div>
           {/* Content layer */}
           <FlexBox
+            id={contentId}
             direction="col"
             className={styles.cardContent}
             aria-hidden={!isShown}
@@ -97,9 +94,11 @@ export const ChangemakerCard = ({
           <button
             ref={buttonRef}
             type="button"
-            onClick={toggleCard}
+            onClick={toggle}
             aria-label={isShown ? 'Dismiss' : `Read more about ${heading}`}
-            className={cnb(styles.button, styles.buttonBack)}
+            aria-controls={contentId}
+            aria-expanded={isShown}
+            className={styles.button}
           >
             <HeroIcon
               noBaseStyle
