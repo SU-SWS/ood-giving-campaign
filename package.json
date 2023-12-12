@@ -59,6 +59,9 @@
     "postcss": "^8.4.31",
     "typescript": "^5.1"
   },
+  "optionalDependencies": {
+    "local-ssl-proxy": "^2.0.5"
+  },
   "engines": {
     "node": ">=20.0.0"
   }

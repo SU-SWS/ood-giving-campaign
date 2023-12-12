@@ -84,6 +84,8 @@ export const BlurryPoster = ({
     year: 'numeric',
   });
 
+  let i = 1;
+
   return (
     <Container {...props} bgColor={bgColor} width="full" className={styles.root}>
       <img
@@ -140,7 +142,7 @@ export const BlurryPoster = ({
                     {customHeading.map(({text, font, italic}) => (
                       <Text
                         as="span"
-                        key={text}
+                        key={`${text}-${++i}`}
                         font={font}
                         leading="none"
                         weight={font === 'druk' ? 'black' : 'normal'}

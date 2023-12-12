@@ -1,30 +1,38 @@
-import { Metadata } from 'next';
+import crypto from 'crypto';
 import {
   ISbStoriesParams, getStoryblokApi, storyblokInit, apiPlugin, StoryblokStory, StoryblokClient,
 } from '@storyblok/react/rsc';
 import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
-import { getPageMetadata } from '@/utilities/getPageMetadata';
 import { notFound } from 'next/navigation';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
 
 const activeEnv = process.env.NODE_ENV || 'development';
 
-type PathsType = {
-  slug: string[];
-};
-
-type ParamsType = {
-  slug: string[];
+type PageProps = {
+  searchParams: {
+    accessToken: string,
+    path: string,
+    _storyblok: string, // ID of space (eg: 1005200)
+    _storyblok_c: string,
+    _storyblok_version: string,
+    _storyblok_lang: string,
+    _storyblok_release: string, // number as a string eg: '0'
+    _storyblok_rl: string, // eg: '1698435696245'
+    '_storyblok_tk[space_id]': string, // eg: '1005200'
+    '_storyblok_tk[timestamp]': string, // eg: '1698435695'
+    '_storyblok_tk[token]': string // eg: '654efea80d36a0b2bas3640ea937b0e0d4cc0234'
+  };
 };
 
 // Control what happens when a dynamic segment is visited that was not generated with generateStaticParams.
 export const dynamicParams = false;
-export const dynamic = 'force-static';
+export const dynamic = 'force-dynamic';
 
 // Storyblok bridge options.
 const bridgeOptions = {
   resolveRelations,
+  preventClicks: true,
   resolveLinks: 'story',
 };
 
@@ -45,44 +53,20 @@ storyblokInit({
 });
 
 /**
- * Generate the list of stories to statically render.
- */
-export async function generateStaticParams() {
-  const storyblokApi: StoryblokClient = getStoryblokApi();
-  let sbParams: ISbStoriesParams = {
-    version: activeEnv === 'development' ? 'draft' : 'published',
-    cv: activeEnv === 'development' ? Date.now() : undefined,
-  };
-
-  // Use the `cdn/links` endpoint to get a list of all stories without all the extra data.
-  const response = await storyblokApi.getAll('cdn/links', sbParams);
-  const stories = response.filter((link) => link.is_folder === false);
-  let paths: PathsType[] = [];
-
-  stories.forEach((story) => {
-    // If the path is explicitly set, use that, otherwise use the slug.
-    const slug = story.path ?? story.slug;
-    let splitSlug = slug.split('/');
-    paths.push({ slug: splitSlug });
-  });
-
-  return paths;
-};
-
-/**
  * Get the data out of the Storyblok API for the page.
  *
  * Make sure to not export the below functions otherwise there will be a typescript error
  * https://github.com/vercel/next.js/discussions/48724
  */
-async function getStoryData(params: { slug: string[] }) {
+async function getStoryData({ path }: PageProps['searchParams']) {
   const storyblokApi: StoryblokClient = getStoryblokApi();
-  const slug = params.slug ? params.slug.join('/') : 'home';
-  const sbParams: ISbStoriesParams = {
-    version: activeEnv === 'development' ? 'draft' : 'published',
+  let sbParams: ISbStoriesParams = {
+    version: 'draft',
     cv: activeEnv === 'development' ? Date.now() : undefined,
     resolve_relations: resolveRelations,
   };
+
+  const slug = path.replace(/\/$/, '') || 'home'; // Remove trailing slash or if no slash, use home.
 
   try {
     const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
@@ -105,25 +89,36 @@ async function getStoryData(params: { slug: string[] }) {
 };
 
 /**
- * Generate the SEO metadata for the page.
+ * Validate the editor token.
+ *
+ * We expect 1 hour as the time of a token being valid.
+ * So basically that an editor will work max 1 hour on one page
+ * before switching to another entry inside the editor or refreshing the browser window.
+ * You can extend that by adjusting 3600 with the value you need.
  */
-export async function generateMetadata({ params }: { params: ParamsType }): Promise<Metadata> {
-  const { data } = await getStoryData(params);
-  if (data === 404) {
-    return {};
+const validateEditor = (searchParams: PageProps['searchParams']) => {
+  const validationString = searchParams['_storyblok_tk[space_id]'] + ':' + process.env.STORYBLOK_ACCESS_TOKEN + ':' + searchParams['_storyblok_tk[timestamp]'];
+  const validationToken = crypto.createHash('sha1').update(validationString).digest('hex');
+  if (searchParams['_storyblok_tk[token]'] == validationToken &&
+      Number(searchParams['_storyblok_tk[timestamp]']) > Math.floor(Date.now()/1000)-3600) {
+      // you're in the edit mode.
+      return true;
   }
-  const blok = data.story.content;
-  const slug = params.slug ? params.slug.join('/') : '';
-  const meta = getPageMetadata({ blok, slug });
-  return meta;
-}
+  // Something didn't work out.
+  return false;
+};
 
 /**
  * Fetch the path data for the page and render it.
  */
-export default async function Page({ params }: { params: ParamsType }) {
-  const { data } = await getStoryData(params);
-  const slug = params.slug ? params.slug.join('/') : '';
+export default async function Page({ searchParams }: PageProps) {
+
+  // Not a valid editor token.
+  if (!validateEditor(searchParams)) {
+    notFound();
+  }
+
+  const { data } = await getStoryData(searchParams);
 
   // Failed to fetch from API because story slug was not found.
   if (data === 404) {
@@ -131,6 +126,6 @@ export default async function Page({ params }: { params: ParamsType }) {
   }
 
   return (
-    <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} slug={slug} />
+    <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} />
   );
 };
