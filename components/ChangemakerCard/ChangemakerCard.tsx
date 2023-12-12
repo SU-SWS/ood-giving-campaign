@@ -1,5 +1,5 @@
 import { cnb } from 'cnbuilder';
-import { useId, useRef, useState } from 'react';
+import { useId, useRef } from 'react';
 import { useOnClickOutside, useToggle } from 'usehooks-ts';
 import { AnimateInView, type AnimationType } from '../Animate';
 import {
@@ -9,6 +9,7 @@ import { FlexBox } from '../FlexBox';
 import { HeroIcon } from '../HeroIcon';
 import { ImageOverlay } from '../ImageOverlay';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
+import useEscape from '@/hooks/useEscape';
 import * as styles from './ChangemakerCard.styles';
 
 
@@ -20,7 +21,7 @@ export type ChangemakerCardProps = React.HTMLAttributes<HTMLDivElement> & {
   imageFocus?: string;
   animation?: AnimationType;
   delay?: number;
-  // children serves as what's on the back of the card
+  // children gets rendered as the content layer
   children?: React.ReactNode;
 };
 
@@ -36,13 +37,20 @@ export const ChangemakerCard = ({
   className,
   ...props
 }: ChangemakerCardProps) => {
-  const cardInnerRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const contentId = useId();
   const [isShown, toggle, setIsShown] = useToggle()
 
   // If card content is shown, clicking outside it will dismiss its
-  useOnClickOutside(cardInnerRef, () => {
+  useOnClickOutside(cardRef, () => {
+    if (isShown) {
+      setIsShown(false);
+    }
+  });
+
+  // If card content is shown, pressing escape will dismiss it
+  useEscape(() => {
     if (isShown) {
       setIsShown(false);
     }
@@ -51,10 +59,11 @@ export const ChangemakerCard = ({
   return (
     <AnimateInView animation={animation} delay={delay}>
       <article
+        ref={cardRef}
         className={cnb(styles.root, className)}
         {...props}
       >
-        <div ref={cardInnerRef} className={styles.cardInner}>
+        <div className={styles.cardInner}>
           {/* Front of the card */}
           <div aria-hidden={isShown} className={styles.cardFront}>
             {imageSrc && (
@@ -65,7 +74,7 @@ export const ChangemakerCard = ({
                 />
               </div>
             )}
-            <div className={styles.content}>
+            <div className={styles.info}>
               {heading && (
                 <Heading
                   as={headingLevel}
@@ -103,7 +112,7 @@ export const ChangemakerCard = ({
             <HeroIcon
               noBaseStyle
               icon='plus'
-              className={styles.flipIcon}
+              className={styles.icon}
             />
           </button>
         </div>
