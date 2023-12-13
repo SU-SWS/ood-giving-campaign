@@ -10,7 +10,7 @@ export const overlays = {
   'black-70': 'bg-black-true/70',
   'black-80': 'bg-black-true/80',
   'black-gradient': 'bg-gradient-to-b from-transparent via-black-true/20 to-black-true/50',
-  'black-gradient-dark': 'bg-gradient-to-b from-transparent via-black-true/30 to-black-true/80', // Changemaker cards
+  'gradient-changemaker': 'bg-gradient-to-t via-black-true/20 from-black-true/90', // Changemaker cards
   'black-top-bottom': 'bg-gradient-to-b from-gc-black via-transparent via-40% to-gc-black',
   'white-90': 'bg-white/90',
   'homepage-hero': 'bg-gradient-to-b from-[#223494]',
