@@ -56,6 +56,8 @@ export const Banner = ({
               alt=""
               src={getProcessedImage(imageSrc, '360x360', imageFocus)}
               className={styles.image}
+              width={360}
+              height={360}
             />
           </AnimateInView>
         </div>

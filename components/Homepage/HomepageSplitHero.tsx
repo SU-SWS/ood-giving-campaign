@@ -63,6 +63,8 @@ export const HomepageSplitHero = () => {
                   alt=""
                   loading="eager"
                   className={cnb(styles.imageBottomLayerCommon, 'object-left')}
+                  width={700}
+                  height={700}
                 />
                 <m.img
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/cb35b9488b/frame-96.jpg', '700x700')}
@@ -72,6 +74,8 @@ export const HomepageSplitHero = () => {
                   animate={{ opacity: 0 }}
                   transition={{ duration: 1, delay: 0.6 }}
                   className={cnb(styles.imageTopLayerCommon, 'object-right')}
+                  width={700}
+                  height={700}
                 />
               </AnimateInView>
             </Grid>

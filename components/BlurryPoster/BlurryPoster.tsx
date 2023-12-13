@@ -93,12 +93,16 @@ export const BlurryPoster = ({
         alt={bgImageAlt || ''}
         aria-describedby={caption ? 'story-hero-caption' : undefined}
         className={styles.bgImageMobile}
+        width={1000}
+        height={1500}
       />
       <img
         src={getProcessedImage(bgImageSrc, '2000x1200', bgImageFocus)}
         alt={bgImageAlt || ''}
         aria-describedby={caption ? 'story-hero-caption' : undefined}
         className={styles.bgImage}
+        width={2000}
+        height={1200}
       />
       <div className={styles.blurWrapper(addBgBlur, addDarkOverlay, type, bgColor)}>
         <Grid lg={isTwoCol ? 2 : 1} pt={type === 'hero' ? 9 : 8} pb={8} className={styles.grid}>
@@ -186,12 +190,16 @@ export const BlurryPoster = ({
                 <img
                   src={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '900x1200', imageFocus)}
                   alt={alt || ''}
+                  width={type === 'hero' && !isTwoCol ? 1800 : 900}
+                  height={type === 'hero' && !isTwoCol ? 900 : 1200}
                   aria-describedby={caption ? 'story-hero-caption' : undefined}
                   className={styles.image}
                 />
                 <img
                   src={getProcessedImage(imageSrc, '1000x1000', imageFocus)}
                   alt={alt || ''}
+                  width={1000}
+                  height={1000}
                   aria-describedby={caption ? 'story-hero-caption' : undefined}
                   className={styles.imageMobile}
                 />
