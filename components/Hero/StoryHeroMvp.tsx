@@ -5,7 +5,6 @@ import { Text } from '@/components/Typography';
 import { type SbImageType, type SbTypographyProps } from '@/components/Storyblok/Storyblok.types';
 import { type SbBlokData } from '@storyblok/react/rsc';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
-import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import * as styles from './StoryHeroMvp.styles';
 
@@ -23,9 +22,6 @@ export type StoryHeroMvpProps = {
   bgImageAlt?: string;
   addBgBlur?: boolean;
   addDarkOverlay?: boolean;
-  aspectRatio?: styles.ImageCropType;
-  mobileImage?: SbImageType;
-  mobileAspectRatio?: styles.ImageCropType;
   alt?: string;
   caption?: string;
   isVerticalHero?: boolean;
@@ -48,7 +44,6 @@ export const StoryHeroMvp = ({
   dek,
   publishedDate,
   heroImage: { filename, focus } = {},
-  mobileImage: { filename: mobileFilename, focus: mobileFocus } = {},
   bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
   bgImageAlt,
   addBgBlur,
@@ -58,8 +53,6 @@ export const StoryHeroMvp = ({
   isVerticalHero = false,
   isLeftImage = false,
   isLightHero = false,
-  aspectRatio = isVerticalHero ? '5x8' : '2x1',
-  mobileAspectRatio = '1x1',
   tabColor: { value: tabColorValue } = {},
   heroTexturedBar,
 }: StoryHeroMvpProps) => {
@@ -71,46 +64,6 @@ export const StoryHeroMvp = ({
     day: 'numeric',
     year: 'numeric',
   });
-
-  const cropSize = styles.imageCrops[aspectRatio];
-  const cropWidth = parseInt(cropSize?.split('x')[0], 10);
-  const cropHeight = parseInt(cropSize?.split('x')[1], 10);
-  const mobileCropSize = styles.mobileImageCrops[mobileAspectRatio];
-  const mobileCropWidth = parseInt(mobileCropSize?.split('x')[0], 10);
-  const mobileCropHeight = parseInt(mobileCropSize?.split('x')[1], 10);
-
-  const renderOneImage = !!filename && !mobileFilename && mobileAspectRatio === aspectRatio;
-  // Render 2 different images if there is both a hero image or a mobile image
-  // Or when there is no mobile image, but the mobile aspect ratio is different from the desktop aspect ratio
-  const renderTwoImages = (!!filename && !!mobileFilename) ||
-    (!!filename && !mobileFilename && mobileAspectRatio !== aspectRatio);
-
-  // TODO: add srcset later in GIVCAMP-71
-  // This one will always be rendered when there's a hero image
-  const RenderedDesktopImage = (
-    <img
-      alt={alt || ''}
-      loading="eager"
-      width={cropWidth}
-      height={cropHeight}
-      src={getProcessedImage(filename, cropSize, focus)}
-      sizes={isVerticalHero ? `${renderOneImage ? '(max-width: 991px) 100vw, 50vw}' : '50vw'}` : '100vw'}
-      className={styles.image(renderTwoImages)}
-    />
-  );
-
-  // This one will only be rendered when the conditions in renderTwoImages are met
-  const RenderedMobileImage = renderTwoImages && (
-    <img
-      alt={alt || ''}
-      loading="eager"
-      width={mobileCropWidth}
-      height={mobileCropHeight}
-      src={getProcessedImage(mobileFilename || filename, mobileCropSize, mobileFocus || focus)}
-      sizes="100vw"
-      className={styles.mobileImage}
-    />
-  );
 
   return (
     <Container

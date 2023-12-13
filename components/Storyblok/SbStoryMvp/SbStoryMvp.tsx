@@ -31,13 +31,10 @@ export const SbStoryMvp = ({
     dek,
     publishedDate,
     heroImage,
-    mobileImage,
     bgImage,
     bgImageAlt,
     addBgBlur,
     addDarkOverlay,
-    aspectRatio,
-    mobileAspectRatio,
     alt,
     caption,
     isVerticalHero,
@@ -74,9 +71,6 @@ export const SbStoryMvp = ({
             byline={byline}
             publishedDate={publishedDate}
             heroImage={heroImage}
-            aspectRatio={aspectRatio}
-            mobileImage={mobileImage}
-            mobileAspectRatio={mobileAspectRatio}
             bgImage={bgImage}
             bgImageAlt={bgImageAlt}
             addBgBlur={addBgBlur}
