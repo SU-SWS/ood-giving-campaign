@@ -11,12 +11,13 @@ export type SbStoryCardProps = {
     storyPicker?: {
       content?: {
         title?: string;
-        cardTitle?: string;
         dek?: string;
         topics?: string[];
         heroImage?: SbImageType;
         bgImage?: SbImageType;
-        mobileImage?: SbImageType;
+        cardTitle?: string;
+        cardTeaser?: string;
+        cardImage?: SbImageType;
       },
       full_slug?: string;
     };
@@ -38,18 +39,20 @@ export const SbStoryCard = ({
     storyPicker: {
       content: {
         title = '',
-        cardTitle = '',
         dek = '',
         topics = [],
         heroImage: { filename: heroFilename = '', focus: heroFocus = '' } = {},
         bgImage: { filename: bgFilename = '', focus: bgFocus = '' } = {},
-        mobileImage: { filename: mobileFilename = '', focus: mobileFocus = '' } = {},
+        cardTitle = '',
+        cardTeaser = '',
+        cardImage: { filename: storyCardFilename = '', focus: storyCardFocus = '' } = {},
       } = {},
       full_slug,
     } = {},
     heading,
     headingLevel,
     isSmallHeading,
+    // This is the manual image field in Story Card that overrides any storypicker images
     image: { filename: cardImage, focus: cardFocus } = {},
     tabColor: { value } = {},
     link,
@@ -63,9 +66,9 @@ export const SbStoryCard = ({
     heading={heading || cardTitle || title}
     headingLevel={headingLevel}
     isSmallHeading={isSmallHeading}
-    body={dek}
-    imageSrc={cardImage || mobileFilename || heroFilename || bgFilename }
-    imageFocus={cardFocus || mobileFocus || heroFocus || bgFocus}
+    body={cardTeaser || dek}
+    imageSrc={cardImage || storyCardFilename || heroFilename || bgFilename }
+    imageFocus={cardFocus || storyCardFocus || heroFocus || bgFocus}
     tabColor={paletteAccentColors[value]}
     link={link}
     href={`/${full_slug}`}
