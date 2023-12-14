@@ -6,6 +6,7 @@ import { type SbImageType, type SbTypographyProps } from '@/components/Storyblok
 import { type SbBlokData } from '@storyblok/react/rsc';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
 import { getNumBloks } from '@/utilities/getNumBloks';
+import{ type HeroOverlayType } from '@/utilities/datasource';
 import * as styles from './StoryHeroMvp.styles';
 
 export type StoryHeroMvpProps = {
@@ -21,7 +22,8 @@ export type StoryHeroMvpProps = {
   bgImage?: SbImageType;
   bgImageAlt?: string;
   addBgBlur?: boolean;
-  addDarkOverlay?: boolean;
+  //addDarkOverlay?: boolean;
+  darkOverlay?: HeroOverlayType;
   alt?: string;
   caption?: string;
   isVerticalHero?: boolean;
@@ -47,7 +49,8 @@ export const StoryHeroMvp = ({
   bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
   bgImageAlt,
   addBgBlur,
-  addDarkOverlay,
+  // addDarkOverlay,
+  darkOverlay,
   alt,
   caption,
   isVerticalHero = false,
@@ -91,7 +94,8 @@ export const StoryHeroMvp = ({
         bgImageAlt={bgImageAlt}
         bgColor={isLightHero ? 'white' : 'black'}
         addBgBlur={addBgBlur}
-        addDarkOverlay={addDarkOverlay}
+        // addDarkOverlay={addDarkOverlay}
+        darkOverlay={darkOverlay}
         imageOnLeft={isLeftImage}
         tabColor={paletteAccentColors[tabColorValue]}
         caption={caption}

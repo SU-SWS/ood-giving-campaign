@@ -125,6 +125,25 @@ export const bgTextColorPairs = {
 };
 export type BgTextColorPairType = keyof typeof bgTextColorPairs;
 
+export const heroOverlays = {
+  none: 'lg:bg-transparent',
+  'black-10': 'lg:bg-black-true/10',
+  'black-20': 'lg:bg-black-true/20',
+  'black-30': 'lg:bg-black-true/30',
+  'black-40': 'lg:bg-black-true/40',
+  'black-50': 'lg:bg-black-true/50',
+  'black-60': 'lg:bg-black-true/60',
+  'black-70': 'lg:bg-black-true/70',
+  'black-80': 'lg:bg-black-true/80',
+  'black-90': 'lg:bg-black-true/90',
+  'black-gradient-to-r': 'lg:bg-transparent lg:bg-gradient-to-r lg:from-black-true/70 lg:to-transparent',
+  'black-gradient-to-l': 'lg:bg-transparent lg:bg-gradient-to-l lg:from-black-true/70 lg:to-transparent',
+  'black-gradient-to-b': 'lg:bg-transparent lg:bg-gradient-to-b lg:from-black-true/70 lg:to-transparent',
+  'black-gradient-to-t': 'lg:bg-transparent lg:bg-gradient-to-t lg:from-black-true/70 lg:to-transparent',
+  'black-gradient-masthead': 'lg:bg-transparent lg:bg-gradient-to-b lg:from-black-true/50 via-20% lg:via-transparent lg:to-transparent',
+};
+export type HeroOverlayType = keyof typeof heroOverlays;
+
 export const paddingTops = {
   none: '',
   base: 'rs-pt-0',

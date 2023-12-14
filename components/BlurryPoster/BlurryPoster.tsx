@@ -8,7 +8,12 @@ import {
   Heading, Paragraph, Text, type HeadingType,
 } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { accentBorderColors, type AccentColorType } from '@/utilities/datasource';
+import {
+  accentBorderColors,
+  type AccentColorType,
+  heroOverlays,
+  type HeroOverlayType,
+} from '@/utilities/datasource';
 import { type SbTypographyProps } from '../Storyblok/Storyblok.types';
 import * as styles from './BlurryPoster.styles';
 
@@ -34,7 +39,8 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   customHeading?: SbTypographyProps[];
   isSmallHeading?: boolean;
   addBgBlur?: boolean;
-  addDarkOverlay?: boolean;
+  //addDarkOverlay?: boolean;
+  darkOverlay?: HeroOverlayType;
   body?: string;
   byline?: string;
   publishedDate?: string;
@@ -64,7 +70,8 @@ export const BlurryPoster = ({
   headingLevel = 'h2',
   isSmallHeading,
   addBgBlur,
-  addDarkOverlay,
+  // addDarkOverlay,
+  darkOverlay,
   body,
   byline,
   publishedDate,
@@ -104,7 +111,12 @@ export const BlurryPoster = ({
         width={2000}
         height={1200}
       />
-      <div className={styles.blurWrapper(addBgBlur, addDarkOverlay, type, bgColor)}>
+      <div className={cnb(styles.blurWrapper(
+        addBgBlur,
+        !!darkOverlay && darkOverlay !== 'none', type, bgColor,
+        ),
+        heroOverlays[darkOverlay])}
+      >
         <Grid lg={isTwoCol ? 2 : 1} pt={type === 'hero' ? 9 : 8} pb={8} className={styles.grid}>
           <div className={styles.contentWrapper(type, !!imageSrc, imageOnLeft, isTwoCol)}>
             {superhead && (

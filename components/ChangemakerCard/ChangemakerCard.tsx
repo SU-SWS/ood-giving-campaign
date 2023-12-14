@@ -41,7 +41,7 @@ export const ChangemakerCard = ({
   const buttonRef = useRef<HTMLButtonElement>(null);
   const contentId = useId();
   const headingId = useId();
-  const [isShown, toggle, setIsShown] = useToggle()
+  const [isShown, toggle, setIsShown] = useToggle();
 
   // If card content is shown, clicking outside it will dismiss its
   useOnClickOutside(cardRef, () => {

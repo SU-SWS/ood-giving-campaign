@@ -34,7 +34,8 @@ export const SbStoryMvp = ({
     bgImage,
     bgImageAlt,
     addBgBlur,
-    addDarkOverlay,
+    // addDarkOverlay,
+    darkOverlay,
     alt,
     caption,
     isVerticalHero,
@@ -74,7 +75,8 @@ export const SbStoryMvp = ({
             bgImage={bgImage}
             bgImageAlt={bgImageAlt}
             addBgBlur={addBgBlur}
-            addDarkOverlay={addDarkOverlay}
+            // addDarkOverlay={addDarkOverlay}
+            darkOverlay={darkOverlay}
             isLeftImage={isLeftImage}
             alt={alt}
             caption={caption}
