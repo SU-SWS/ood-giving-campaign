@@ -92,7 +92,7 @@ export const Scrollytelling = ({
 
                 )}
                 {subheading && (
-                  <Text variant="subheading" align="center">
+                  <Text variant="subheading" align="center" className={styles.subhead}>
                     {subheading}
                   </Text>
                 )}
