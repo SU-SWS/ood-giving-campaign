@@ -94,7 +94,7 @@ export const customHeadingText = (font?: 'druk' | 'serif', isSmallHeading?: bool
 export const bodyWrapper = (imageOnLeft?: boolean, isTwoCol?: boolean) => cnb('cc w-full', {
   '3xl:pr-[calc(100%-750px)] lg:pl-40 2xl:pl-60': imageOnLeft && isTwoCol,
   '3xl:pl-[calc(100%-750px)] lg:pr-40 2xl:pr-60': !imageOnLeft && isTwoCol,
-  'children:max-w-prose': !isTwoCol,
+  'children:max-w-[50ch]': !isTwoCol,
 });
 
 export const cta = 'rs-mt-4';
