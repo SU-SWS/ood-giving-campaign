@@ -136,11 +136,11 @@ export const heroOverlays = {
   'black-70': 'lg:bg-black-true/70',
   'black-80': 'lg:bg-black-true/80',
   'black-90': 'lg:bg-black-true/90',
-  'black-gradient-to-r': 'lg:bg-transparent lg:bg-gradient-to-r lg:from-black-true/70 lg:to-transparent',
-  'black-gradient-to-l': 'lg:bg-transparent lg:bg-gradient-to-l lg:from-black-true/70 lg:to-transparent',
-  'black-gradient-to-b': 'lg:bg-transparent lg:bg-gradient-to-b lg:from-black-true/70 lg:to-transparent',
-  'black-gradient-to-t': 'lg:bg-transparent lg:bg-gradient-to-t lg:from-black-true/70 lg:to-transparent',
-  'black-gradient-masthead': 'lg:bg-transparent lg:bg-gradient-to-b lg:from-black-true/50 via-20% lg:via-transparent lg:to-transparent',
+  'black-gradient-to-r': 'lg:bg-transparent lg:bg-gradient-to-r lg:from-black-true/70',
+  'black-gradient-to-l': 'lg:bg-transparent lg:bg-gradient-to-l lg:from-black-true/70',
+  'black-gradient-to-b': 'lg:bg-transparent lg:bg-gradient-to-b lg:from-black-true/70',
+  'black-gradient-to-t': 'lg:bg-transparent lg:bg-gradient-to-t lg:from-black-true/70',
+  'black-gradient-masthead': 'lg:bg-transparent lg:bg-gradient-to-b lg:from-black-true/50 via-20% lg:via-transparent',
 };
 export type HeroOverlayType = keyof typeof heroOverlays;
 
