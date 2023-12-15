@@ -1,4 +1,5 @@
 import { cnb } from 'cnbuilder';
+import { type HeroOverlayType } from '@/utilities/datasource';
 
 export const root = 'relative bg-no-repeat bg-cover overflow-hidden break-words';
 
@@ -13,8 +14,6 @@ export const blurWrapper = (
 ) => cnb(
   'relative w-full h-full z-10', {
     'backdrop-blur-md' : addBgBlur,
-    'bg-black-true/50 md:bg-black-true/40': type === 'hero' && addDarkOverlay && bgColor === 'black',
-    'bg-gradient-to-b from-black-true/50': type === 'poster' && bgColor === 'black',
     'lg:from-black-true/20 lg:to-black-true/70': type === 'poster' && addDarkOverlay && bgColor === 'black',
     'lg:bg-none': type === 'poster' && bgColor === 'black' && !addDarkOverlay,
     'bg-white/80' : type === 'hero' && bgColor === 'white',
@@ -71,8 +70,8 @@ export const heading = (
   '3xl:pl-[calc(100%-750px-40px)] lg:w-[140%] xl:w-[130%]': !imageOnLeft && headingFont === 'druk' && isTwoCol,
   'fluid-type-7 md:fluid-type-8 lg:fluid-type-7 3xl:fluid-type-8 4xl:text-[17.1rem]': isSmallHeading && headingFont === 'druk',
   'fluid-type-7 md:fluid-type-9': !isSmallHeading && headingFont === 'druk',
-  'fluid-type-5 lg:fluid-type-6 xl:max-w-1200' : headingFont === 'serif' && !isSmallHeading,
-  'fluid-type-5 xl:max-w-1200' : headingFont === 'serif' && isSmallHeading,
+  'fluid-type-5 lg:fluid-type-4 xl:fluid-type-5 2xl:fluid-type-6 xl:max-w-1200 lg:hyphens-auto 3xl:hyphens-none' : headingFont === 'serif' && !isSmallHeading,
+  'fluid-type-5 lg:fluid-type-4 xl:fluid-type-5 xl:max-w-1200 lg:hyphens-auto 3xl:hyphens-none' : headingFont === 'serif' && isSmallHeading,
 });
 
 export const customHeading = (
@@ -93,7 +92,7 @@ export const customHeadingText = (font?: 'druk' | 'serif', isSmallHeading?: bool
 export const bodyWrapper = (imageOnLeft?: boolean, isTwoCol?: boolean) => cnb('cc w-full', {
   '3xl:pr-[calc(100%-750px)] lg:pl-40 2xl:pl-60': imageOnLeft && isTwoCol,
   '3xl:pl-[calc(100%-750px)] lg:pr-40 2xl:pr-60': !imageOnLeft && isTwoCol,
-  'children:max-w-prose': !isTwoCol,
+  'children:max-w-[50ch]': !isTwoCol,
 });
 
 export const cta = 'rs-mt-4';
