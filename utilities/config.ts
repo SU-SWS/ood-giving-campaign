@@ -4,7 +4,7 @@
 export const config = {
   siteUrlProd: 'https://momentum.stanford.edu',
   siteTitle: 'Stanford Momentum',
-  siteDescription: 'TBD', // TODO: Add generic site description as fallback for search engine if Storyblok SEO description is not provided
+  siteDescription: 'Stories of Stanford’s impact, fueled by philanthropy.',
   assetCdn: 'https://assets.stanford.edu/',
   imageService: 'https://a-us.storyblok.com/',
   breakpoints: {
