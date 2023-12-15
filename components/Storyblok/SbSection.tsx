@@ -186,7 +186,7 @@ export const SbSection = ({
           <RichText
             wysiwyg={caption}
             textColor="black-70"
-            className="children:leading-display mt-08em max-w-prose-wide"
+            className="caption children:leading-display mt-08em max-w-prose-wide"
           />
         </WidthBox>
       )}
