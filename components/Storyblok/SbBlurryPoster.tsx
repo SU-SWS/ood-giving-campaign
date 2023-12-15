@@ -4,6 +4,7 @@ import { CreateBloks } from '../CreateBloks';
 import { type HeadingType } from '../Typography';
 import { type SbImageType, type SbTypographyProps } from './Storyblok.types';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
+import { type HeroOverlayType } from '@/utilities/datasource';
 
 type SbBlurryPosterProps = {
   blok: {
@@ -14,7 +15,7 @@ type SbBlurryPosterProps = {
     headingLevel?: HeadingType;
     isSmallHeading?: boolean;
     imageOnLeft?: boolean;
-    addDarkOverlay?: boolean;
+    darkOverlay?: HeroOverlayType;
     body: string;
     byline?: string;
     publishedDate?: string;
@@ -36,7 +37,7 @@ export const SbBlurryPoster = ({
     headingLevel,
     isSmallHeading,
     imageOnLeft,
-    addDarkOverlay,
+    darkOverlay,
     body,
     byline,
     publishedDate,
@@ -62,7 +63,7 @@ export const SbBlurryPoster = ({
       addBgBlur
       isSmallHeading={isSmallHeading}
       imageOnLeft={imageOnLeft}
-      addDarkOverlay={addDarkOverlay}
+      darkOverlay={darkOverlay}
       body={body}
       byline={byline}
       publishedDate={publishedDate}
