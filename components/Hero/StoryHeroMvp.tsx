@@ -1,11 +1,14 @@
+import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { Container } from '@/components/Container';
 import { BlurryPoster } from '@/components/BlurryPoster';
 import { CreateBloks } from '@/components/CreateBloks';
+import { RichText } from '@/components/RichText';
 import { Text } from '@/components/Typography';
 import { type SbImageType, type SbTypographyProps } from '@/components/Storyblok/Storyblok.types';
 import { type SbBlokData } from '@storyblok/react/rsc';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
 import { getNumBloks } from '@/utilities/getNumBloks';
+import { hasRichText } from '@/utilities/hasRichText';
 import{ type HeroOverlayType } from '@/utilities/datasource';
 import * as styles from './StoryHeroMvp.styles';
 
@@ -25,7 +28,7 @@ export type StoryHeroMvpProps = {
   //addDarkOverlay?: boolean;
   darkOverlay?: HeroOverlayType;
   alt?: string;
-  caption?: string;
+  caption?: StoryblokRichtext;
   isVerticalHero?: boolean;
   isLeftImage?: boolean;
   isLightHero?: boolean;
@@ -68,6 +71,10 @@ export const StoryHeroMvp = ({
     year: 'numeric',
   });
 
+  const Caption = hasRichText(caption)
+  ? <RichText textColor="black-70" wysiwyg={caption} className={styles.caption} />
+  : undefined;
+
   return (
     <Container
       as="header"
@@ -98,22 +105,19 @@ export const StoryHeroMvp = ({
         darkOverlay={darkOverlay}
         imageOnLeft={isLeftImage}
         tabColor={paletteAccentColors[tabColorValue]}
-        caption={caption}
+        hasCaption={hasRichText(caption)}
       />
       {!!getNumBloks(heroTexturedBar) && (
         <CreateBloks blokSection={heroTexturedBar} />
       )}
-      {caption && (
-        <Container bgColor="white" className={styles.captionWrapper}>
-          <Text
-            // id is for aria-describedby in the images since we can't use figcaption here
-            id="story-hero-caption"
-            variant="caption"
-            leading="display"
-            className={styles.caption}
-          >
-            {caption}
-          </Text>
+      {hasRichText(caption) && (
+        <Container
+          bgColor="white"
+          // id is for aria-describedby in the images since we can't use figcaption here
+          id="story-hero-caption"
+          className={styles.captionWrapper}
+        >
+          {Caption}
         </Container>
       )}
     </Container>
