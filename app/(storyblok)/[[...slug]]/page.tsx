@@ -21,7 +21,6 @@ type ParamsType = {
 // Control what happens when a dynamic segment is visited that was not generated with generateStaticParams.
 export const dynamicParams = false;
 export const dynamic = 'force-static';
-export const revalidate = 0;
 
 // Storyblok bridge options.
 const bridgeOptions = {
