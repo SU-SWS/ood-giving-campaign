@@ -7,6 +7,8 @@ import { type PaddingType, type MarginType } from '@/utilities/datasource';
 type SbGridProps = {
   blok: {
     _uid: string;
+    // Turn grid into <ul> and items into <li>
+    isList?: boolean;
     gap?: GridGapType;
     boundingWidth?: 'site' | 'full';
     width?: WidthType;
@@ -32,6 +34,7 @@ type SbGridProps = {
 
 export const SbGrid = ({
   blok: {
+    isList,
     gap,
     boundingWidth = 'full',
     width,
@@ -62,6 +65,7 @@ export const SbGrid = ({
     pb={paddingBottom}
   >
     <Grid
+      isList={isList}
       xs={xs}
       sm={sm}
       md={md}
@@ -71,7 +75,7 @@ export const SbGrid = ({
       gap={gap}
       rtl={rtl}
     >
-      <CreateBloks blokSection={items} />
+      <CreateBloks blokSection={items} isListItems={isList} />
     </Grid>
   </WidthBox>
 );

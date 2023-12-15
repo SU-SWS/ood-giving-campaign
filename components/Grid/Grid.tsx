@@ -15,6 +15,7 @@ import * as types from './Grid.types';
 
 export type GridProps = HTMLAttributes<HTMLElement> & {
   as?: types.GridElementType;
+  isList?: boolean;
   gap?: types.GridGapType;
   rtl?: boolean;
   xs?: types.GridNumColsType;
@@ -36,7 +37,8 @@ export type GridProps = HTMLAttributes<HTMLElement> & {
 };
 
 export const Grid = ({
-  as: AsComponent = 'div',
+  isList,
+  as: AsComponent = isList ? 'ul' : 'div',
   gap,
   rtl,
   xs,
@@ -81,6 +83,7 @@ export const Grid = ({
       mt ? marginTops[mt] : '',
       mb ? marginBottoms[mb] : '',
       my ? marginVerticals[my] : '',
+      isList ? 'list-unstyled children:mb-0' : '',
       className,
     )}
   >
