@@ -57,9 +57,18 @@ export const Scrollytelling = ({
           style={{ scale: animateScale, willChange }}
         >
           <img
-            src={getProcessedImage(bgImageSrc, '2000x1500', bgImageFocus)}
+            src={getProcessedImage(bgImageSrc, '2000x1200', bgImageFocus)}
             alt={bgImageAlt || ''}
+            width={2000}
+            height={1200}
             className={styles.image}
+          />
+          <img
+            src={getProcessedImage(bgImageSrc, '900x1600', bgImageFocus)}
+            alt={bgImageAlt || ''}
+            width={900}
+            height={1600}
+            className={styles.imageMobile}
           />
           <m.div
             className={styles.imageOverlay(overlay)}
@@ -83,7 +92,7 @@ export const Scrollytelling = ({
 
                 )}
                 {subheading && (
-                  <Text variant="subheading" align="center">
+                  <Text variant="subheading" align="center" className={styles.subhead}>
                     {subheading}
                   </Text>
                 )}

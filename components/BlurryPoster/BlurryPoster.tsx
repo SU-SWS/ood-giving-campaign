@@ -8,7 +8,12 @@ import {
   Heading, Paragraph, Text, type HeadingType,
 } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { accentBorderColors, type AccentColorType } from '@/utilities/datasource';
+import {
+  accentBorderColors,
+  type AccentColorType,
+  heroOverlays,
+  type HeroOverlayType,
+} from '@/utilities/datasource';
 import { type SbTypographyProps } from '../Storyblok/Storyblok.types';
 import * as styles from './BlurryPoster.styles';
 
@@ -34,7 +39,7 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   customHeading?: SbTypographyProps[];
   isSmallHeading?: boolean;
   addBgBlur?: boolean;
-  addDarkOverlay?: boolean;
+  darkOverlay?: HeroOverlayType;
   body?: string;
   byline?: string;
   publishedDate?: string;
@@ -44,9 +49,9 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   tabColor?: AccentColorType;
   cta?: React.ReactNode;
   /**
-   * This isn't displayed in the component, aria-describedby will be added to the images if a caption exists
+   * aria-describedby will be added to the images if a caption exists
    */
-  caption?: string;
+  hasCaption?: boolean;
 };
 
 export const BlurryPoster = ({
@@ -64,7 +69,7 @@ export const BlurryPoster = ({
   headingLevel = 'h2',
   isSmallHeading,
   addBgBlur,
-  addDarkOverlay,
+  darkOverlay,
   body,
   byline,
   publishedDate,
@@ -73,7 +78,7 @@ export const BlurryPoster = ({
   alt,
   tabColor,
   cta,
-  caption,
+  hasCaption,
   className,
   ...props
 }: BlurryPosterProps) => {
@@ -91,7 +96,7 @@ export const BlurryPoster = ({
       <img
         src={getProcessedImage(bgImageSrc, '1000x1500', bgImageFocus)}
         alt={bgImageAlt || ''}
-        aria-describedby={caption ? 'story-hero-caption' : undefined}
+        aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
         className={styles.bgImageMobile}
         width={1000}
         height={1500}
@@ -99,12 +104,17 @@ export const BlurryPoster = ({
       <img
         src={getProcessedImage(bgImageSrc, '2000x1200', bgImageFocus)}
         alt={bgImageAlt || ''}
-        aria-describedby={caption ? 'story-hero-caption' : undefined}
+        aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
         className={styles.bgImage}
         width={2000}
         height={1200}
       />
-      <div className={styles.blurWrapper(addBgBlur, addDarkOverlay, type, bgColor)}>
+      <div className={cnb(styles.blurWrapper(
+        addBgBlur,
+        !!darkOverlay && darkOverlay !== 'none', type, bgColor,
+        ),
+        heroOverlays[darkOverlay])}
+      >
         <Grid lg={isTwoCol ? 2 : 1} pt={type === 'hero' ? 9 : 8} pb={8} className={styles.grid}>
           <div className={styles.contentWrapper(type, !!imageSrc, imageOnLeft, isTwoCol)}>
             {superhead && (
@@ -192,7 +202,7 @@ export const BlurryPoster = ({
                   alt={alt || ''}
                   width={type === 'hero' && !isTwoCol ? 1800 : 900}
                   height={type === 'hero' && !isTwoCol ? 900 : 1200}
-                  aria-describedby={caption ? 'story-hero-caption' : undefined}
+                  aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
                   className={styles.image}
                 />
                 <img
@@ -200,7 +210,7 @@ export const BlurryPoster = ({
                   alt={alt || ''}
                   width={1000}
                   height={1000}
-                  aria-describedby={caption ? 'story-hero-caption' : undefined}
+                  aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
                   className={styles.imageMobile}
                 />
               </AnimateInView>

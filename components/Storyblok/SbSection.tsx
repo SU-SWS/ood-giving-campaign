@@ -120,7 +120,7 @@ export const SbSection = ({
           className="relative overflow-hidden"
         >
           {filename && (
-            <ImageOverlay imageSrc={getProcessedImage(filename, '2000x1600', focus)} overlay={bgColor === 'black' ? 'black-60' : 'white-90'} />
+            <ImageOverlay imageSrc={getProcessedImage(filename, '2100x1400', focus)} overlay={bgColor === 'black' ? 'black-50' : 'white-90'} />
           )}
           {(heading || superhead) && (
             <FlexBox className={cnb('relative z-10', rightAlignHeader ? 'mr-0 ml-auto' : 'ml-0')}>
@@ -186,7 +186,7 @@ export const SbSection = ({
           <RichText
             wysiwyg={caption}
             textColor="black-70"
-            className="children:leading-display caption mt-1em max-w-prose-wide"
+            className="caption children:leading-display mt-08em max-w-prose-wide"
           />
         </WidthBox>
       )}

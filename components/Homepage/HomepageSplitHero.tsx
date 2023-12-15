@@ -121,10 +121,7 @@ export const HomepageSplitHero = () => {
             For combating the climate crisis. For reducing inequality. For embedding ethics in all we do.
           </Paragraph>
           <Paragraph size={1} weight="normal" leading="snug" className={styles.introParagraph}>
-            Welcome to <em>Momentum</em>, telling the stories of Stanford’s impact.
-          </Paragraph>
-          <Paragraph size={1} weight="normal" leading="snug" className={styles.introParagraph}>
-            Come discover the work underway in four key thematic areas.
+            Join us as we tell the stories of Stanford’s impact.
           </Paragraph>
         </AnimateInView>
       </Container>
