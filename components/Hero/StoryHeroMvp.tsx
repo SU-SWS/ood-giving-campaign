@@ -3,7 +3,6 @@ import { Container } from '@/components/Container';
 import { BlurryPoster } from '@/components/BlurryPoster';
 import { CreateBloks } from '@/components/CreateBloks';
 import { RichText } from '@/components/RichText';
-import { Text } from '@/components/Typography';
 import { type SbImageType, type SbTypographyProps } from '@/components/Storyblok/Storyblok.types';
 import { type SbBlokData } from '@storyblok/react/rsc';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
@@ -25,7 +24,6 @@ export type StoryHeroMvpProps = {
   bgImage?: SbImageType;
   bgImageAlt?: string;
   addBgBlur?: boolean;
-  //addDarkOverlay?: boolean;
   darkOverlay?: HeroOverlayType;
   alt?: string;
   caption?: StoryblokRichtext;
@@ -52,7 +50,6 @@ export const StoryHeroMvp = ({
   bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
   bgImageAlt,
   addBgBlur,
-  // addDarkOverlay,
   darkOverlay,
   alt,
   caption,
@@ -101,7 +98,6 @@ export const StoryHeroMvp = ({
         bgImageAlt={bgImageAlt}
         bgColor={isLightHero ? 'white' : 'black'}
         addBgBlur={addBgBlur}
-        // addDarkOverlay={addDarkOverlay}
         darkOverlay={darkOverlay}
         imageOnLeft={isLeftImage}
         tabColor={paletteAccentColors[tabColorValue]}

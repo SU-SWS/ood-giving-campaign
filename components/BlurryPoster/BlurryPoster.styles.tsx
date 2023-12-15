@@ -14,15 +14,13 @@ export const blurWrapper = (
 ) => cnb(
   'relative w-full h-full z-10', {
     'backdrop-blur-md' : addBgBlur,
-    'bg-black-true/50 md:bg-black-true/40': type === 'hero' && addDarkOverlay && bgColor === 'black',
-    '': type === 'poster' && bgColor === 'black',
     'lg:from-black-true/20 lg:to-black-true/70': type === 'poster' && addDarkOverlay && bgColor === 'black',
     'lg:bg-none': type === 'poster' && bgColor === 'black' && !addDarkOverlay,
     'bg-white/80' : type === 'hero' && bgColor === 'white',
   },
 );
 
-export const grid = 'w-full';
+export const grid = 'w-full min-h-[500px]';
 
 export const contentWrapper = (
   type?: 'hero' | 'poster',
@@ -68,12 +66,12 @@ export const heading = (
   isSmallHeading?: boolean,
   headingFont?: 'druk' | 'serif',
   isTwoCol?: boolean,
-) => cnb('mb-0 -mt-01em lg:hyphens-auto 3xl:hyphens-none', {
+) => cnb('mb-0 -mt-01em', {
   '3xl:pl-[calc(100%-750px-40px)] lg:w-[140%] xl:w-[130%]': !imageOnLeft && headingFont === 'druk' && isTwoCol,
   'fluid-type-7 md:fluid-type-8 lg:fluid-type-7 3xl:fluid-type-8 4xl:text-[17.1rem]': isSmallHeading && headingFont === 'druk',
   'fluid-type-7 md:fluid-type-9': !isSmallHeading && headingFont === 'druk',
-  'fluid-type-5 lg:fluid-type-4 xl:fluid-type-5 2xl:fluid-type-6 xl:max-w-1200' : headingFont === 'serif' && !isSmallHeading,
-  'fluid-type-5 lg:fluid-type-4 xl:fluid-type-5 xl:max-w-1200' : headingFont === 'serif' && isSmallHeading,
+  'fluid-type-5 lg:fluid-type-4 xl:fluid-type-5 2xl:fluid-type-6 xl:max-w-1200 lg:hyphens-auto 3xl:hyphens-none' : headingFont === 'serif' && !isSmallHeading,
+  'fluid-type-5 lg:fluid-type-4 xl:fluid-type-5 xl:max-w-1200 lg:hyphens-auto 3xl:hyphens-none' : headingFont === 'serif' && isSmallHeading,
 });
 
 export const customHeading = (

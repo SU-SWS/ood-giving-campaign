@@ -39,7 +39,6 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   customHeading?: SbTypographyProps[];
   isSmallHeading?: boolean;
   addBgBlur?: boolean;
-  //addDarkOverlay?: boolean;
   darkOverlay?: HeroOverlayType;
   body?: string;
   byline?: string;
@@ -70,7 +69,6 @@ export const BlurryPoster = ({
   headingLevel = 'h2',
   isSmallHeading,
   addBgBlur,
-  // addDarkOverlay,
   darkOverlay,
   body,
   byline,
