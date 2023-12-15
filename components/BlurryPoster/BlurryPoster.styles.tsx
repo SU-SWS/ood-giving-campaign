@@ -20,7 +20,7 @@ export const blurWrapper = (
   },
 );
 
-export const grid = 'w-full min-h-[500px]';
+export const grid = 'w-full';
 
 export const contentWrapper = (
   type?: 'hero' | 'poster',
