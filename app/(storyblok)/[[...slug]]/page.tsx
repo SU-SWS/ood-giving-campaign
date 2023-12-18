@@ -77,8 +77,6 @@ export async function generateStaticParams() {
  * https://github.com/vercel/next.js/discussions/48724
  */
 async function getStoryData(params: { slug: string[] }) {
-  // wait 10 seconds
-  await new Promise(resolve => setTimeout(resolve, 10000));
   const storyblokApi: StoryblokClient = getStoryblokApi();
   const slug = params.slug ? params.slug.join('/') : 'home';
   const sbParams: ISbStoriesParams = {
