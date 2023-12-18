@@ -6,6 +6,7 @@ import { CtaLink } from '../Cta';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { FlexBox } from '../FlexBox';
 import * as links from '@/utilities/externalLinks';
+import * as routes from '@/utilities/routes';
 import * as styles from './LocalFooterMvp.styles';
 
 export const LocalFooterMvp = () => (
@@ -23,7 +24,7 @@ export const LocalFooterMvp = () => (
       <FlexBox as="ul" wrap="wrap" className={styles.ul}>
         <li><CtaLink color="white" href={links.ood.giving} size="large">Giving to Stanford</CtaLink></li>
         <li><CtaLink color="white" href={links.ood.contact} size="large">Contact us</CtaLink></li>
-        <li><CtaLink color="white" href={links.ood.waysToGive} size="large">How to make a gift</CtaLink></li>
+        <li><CtaLink color="white" href={links.ood.howToGive} size="large">How to make a gift</CtaLink></li>
       </FlexBox>
       <Grid lg={2} pt={8} gap="default" className={styles.grid}>
         <div>
@@ -34,7 +35,7 @@ export const LocalFooterMvp = () => (
             Sign up to receive <em>The Moment</em> newsletter, telling the stories of Stanford’s impact.
           </Paragraph>
           <CtaLink
-            href={links.ood.newsletterSignUp}
+            href={routes.newsletterSignup}
             variant="solid"
             icon="arrow-right"
           >
@@ -49,7 +50,7 @@ export const LocalFooterMvp = () => (
             With your support, this vision will become reality.
           </Paragraph>
           <CtaLink
-            href={links.ood.waysToGive}
+            href={links.ood.areasToSupport}
             variant="ghost-swipe"
             color="white"
             icon="arrow-right"
