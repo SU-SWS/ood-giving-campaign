@@ -98,6 +98,7 @@ export const BlurryPoster = ({
         alt={bgImageAlt || ''}
         aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
         className={styles.bgImageMobile}
+        fetchPriority={type === 'hero' ? 'high' : 'auto'}
         width={1000}
         height={1500}
       />
@@ -105,6 +106,7 @@ export const BlurryPoster = ({
         src={getProcessedImage(bgImageSrc, '2000x1200', bgImageFocus)}
         alt={bgImageAlt || ''}
         aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
+        fetchPriority={type === 'hero' ? 'high' : 'auto'}
         className={styles.bgImage}
         width={2000}
         height={1200}
@@ -203,6 +205,7 @@ export const BlurryPoster = ({
                   width={type === 'hero' && !isTwoCol ? 1800 : 900}
                   height={type === 'hero' && !isTwoCol ? 900 : 1200}
                   aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
+                  fetchPriority={type === 'hero' ? 'high' : 'auto'}
                   className={styles.image}
                 />
                 <img
@@ -211,6 +214,7 @@ export const BlurryPoster = ({
                   width={1000}
                   height={1000}
                   aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
+                  fetchPriority={type === 'hero' ? 'high' : 'auto'}
                   className={styles.imageMobile}
                 />
               </AnimateInView>
