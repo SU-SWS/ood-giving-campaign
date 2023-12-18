@@ -8,6 +8,9 @@ import { LocalFooterMvp } from '@/components/LocalFooter';
 import { GlobalFooter } from '@/components/GlobalFooter';
 import GAProvider from '@/components/GAProvider';
 
+export const dynamic = 'force-static';
+export const revalidate = 0;
+
 type LayoutProps = {
   children: React.ReactNode,
 };
