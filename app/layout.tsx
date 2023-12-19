@@ -1,4 +1,5 @@
 import './globals.css';
+import 'react-loading-skeleton/dist/skeleton.css';
 import { cnb } from 'cnbuilder';
 import { Source_Sans_3, Source_Serif_4 } from 'next/font/google';
 import localFont from 'next/font/local';
@@ -9,7 +10,6 @@ import { GlobalFooter } from '@/components/GlobalFooter';
 import GAProvider from '@/components/GAProvider';
 
 export const dynamic = 'force-static';
-export const revalidate = 0;
 
 type LayoutProps = {
   children: React.ReactNode,
