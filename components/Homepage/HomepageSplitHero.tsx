@@ -44,13 +44,13 @@ export const HomepageSplitHero = () => {
                 <img
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/cb35b9488b/frame-96.jpg', '700x700')}
                   alt=""
-                  loading="eager"
+                  fetchPriority="high"
                   className={cnb(styles.imageBottomLayerCommon, 'object-right')}
                 />
                 <m.img
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/45d9a3d22a/frame-97.jpg', '700x700')}
                   alt=""
-                  loading="eager"
+                  fetchPriority="high"
                   initial={{ opacity: 1 }}
                   animate={{ opacity: 0 }}
                   transition={{ duration: 1, delay: 0.6 }}
@@ -61,7 +61,7 @@ export const HomepageSplitHero = () => {
                 <img
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/45d9a3d22a/frame-97.jpg', '700x700')}
                   alt=""
-                  loading="eager"
+                  fetchPriority="high"
                   className={cnb(styles.imageBottomLayerCommon, 'object-left')}
                   width={700}
                   height={700}
@@ -69,7 +69,7 @@ export const HomepageSplitHero = () => {
                 <m.img
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/cb35b9488b/frame-96.jpg', '700x700')}
                   alt=""
-                  loading="eager"
+                  fetchPriority="high"
                   initial={{ opacity: 1 }}
                   animate={{ opacity: 0 }}
                   transition={{ duration: 1, delay: 0.6 }}
