@@ -1,6 +1,6 @@
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import { CreateBloks } from '@/components/CreateBloks';
-import { BasicHeroMvp } from '@/components/Hero/BasicHeroMvp';
+import { BasicHeroMvp } from '@/components/Hero';
 import { Masthead } from '@/components/Masthead';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { type SbImageType } from '@/components/Storyblok/Storyblok.types';
@@ -37,10 +37,9 @@ export const SbBasicPage = ({
       <Masthead />
       <main id="main-content">
         <div>
-          {!!getNumBloks(hero) && (
+          {!!getNumBloks(hero) ? (
             <CreateBloks blokSection={hero} />
-          )}
-          {!!filename && (
+          ) : (
             <BasicHeroMvp
               title={title}
               subheading={subheading}
