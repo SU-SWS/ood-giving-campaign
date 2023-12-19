@@ -21,12 +21,16 @@ export const TogetherSection = () => {
     target: sectionRef,
     offset: ['-80vh', '5vh'],
   });
+  const { scrollYProgress: imageOpacityScrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['-80vh', '-5vh'],
+  });
   const trackingAnimation = useTransform(scrollYProgress, [0, 1], [prefersReducedMotion ? '0.05em' : '0.3em', '0.025em']);
   const scaleAnimation = useTransform(scrollYProgress, [0, 1], [prefersReducedMotion ? 1.2: 3, 1]);
   const opacityAnimation = useTransform(scrollYProgress, [0, 1], [0, 1]);
   const marginTopAnimation = useTransform(imageScrollYProgress, [0, 1], [prefersReducedMotion ? '-13vw' : '15vw', '-13vw']);
-  const imageScaleAnimation = useTransform(imageScrollYProgress, [0, 1], [prefersReducedMotion ? 1 : 2, 1]);
-  const imageOpacityAnimation = useTransform(imageScrollYProgress, [0, 0.5, 0.8, 1],
+  const imageScaleAnimation = useTransform(imageScrollYProgress, [0, 1], [prefersReducedMotion ? 1 : 2.4, 1]);
+  const imageOpacityAnimation = useTransform(imageOpacityScrollYProgress, [0, 0.5, 0.8, 1],
     [prefersReducedMotion ? 0.7 : 0, prefersReducedMotion ? 0.8: 0, prefersReducedMotion ? 0.9 : 0.5, 1]);
 
   return (
