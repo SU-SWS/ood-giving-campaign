@@ -5,7 +5,7 @@ import { Container } from '../Container';
 import { Grid } from '../Grid';
 import { FlexBox } from '../FlexBox';
 import {
-  Heading, Paragraph, Text, type HeadingType,
+  Heading, Paragraph, Text, type HeadingType, SrOnlyText,
 } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import {
@@ -122,6 +122,7 @@ export const BlurryPoster = ({
             {superhead && (
               <Text
                 size={1}
+                // If there is a heading, superhead will be rendered as screen reader text as part of the heading
                 aria-hidden={!!heading}
                 className={styles.superhead(imageOnLeft, isTwoCol)}
               >
@@ -144,7 +145,7 @@ export const BlurryPoster = ({
                     leading={headingFont === 'druk' ? 'none' : 'tight'}
                     className={styles.heading(imageOnLeft, isSmallHeading, headingFont, isTwoCol)}
                   >
-                    {heading}
+                    {superhead && <SrOnlyText>{`${superhead}:`}</SrOnlyText>}{heading}
                   </Heading>
                 )}
                 {/* Render custom mixed typography heading if entered */}
