@@ -91,4 +91,4 @@ export const themes = {
 export const storiesRoot = '/stories';
 
 // Newsletter signup
-export const newsletterSignup = '/newsletter/signup';
+export const newsletterSignup = '/newsletter/sign-up';
