@@ -8,8 +8,6 @@ import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
 
 
 const activeEnv = process.env.NODE_ENV || 'development';
-export const dynamic = 'force-static';
-export const revalidate = 'force-cache';
 
 // Storyblok bridge options.
 const bridgeOptions = {
