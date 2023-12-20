@@ -7,6 +7,7 @@ import { resolveRelations } from '@/utilities/resolveRelations';
 import { getPageMetadata } from '@/utilities/getPageMetadata';
 import { notFound } from 'next/navigation';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
+import { unstable_cache as NextCache } from 'next/cache';
 
 const activeEnv = process.env.NODE_ENV || 'development';
 
@@ -21,7 +22,6 @@ type ParamsType = {
 // Control what happens when a dynamic segment is visited that was not generated with generateStaticParams.
 export const dynamicParams = false;
 export const dynamic = 'force-static';
-export const revalidate = 'force-cache';
 
 // Storyblok bridge options.
 const bridgeOptions = {
@@ -46,9 +46,9 @@ storyblokInit({
 });
 
 /**
- * Generate the list of stories to statically render.
+ * Get the stories from Storyblok and filter out folders.
  */
-export async function generateStaticParams() {
+const getStories = async () => {
   const storyblokApi: StoryblokClient = getStoryblokApi();
   let sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',
@@ -58,6 +58,27 @@ export async function generateStaticParams() {
   // Use the `cdn/links` endpoint to get a list of all stories without all the extra data.
   const response = await storyblokApi.getAll('cdn/links', sbParams);
   const stories = response.filter((link) => link.is_folder === false);
+  return stories;
+};
+
+/**
+ * Cache the stories request for 60 seconds.
+ *
+ * This should be enough time between builds to catch changes.
+ */
+const getCachedStories = NextCache(
+  () => getStories(),
+  ['get-all-stories'],
+  {
+    tags: ['stories'],
+    revalidate: 60 ,
+  });
+
+/**
+ * Generate the list of stories to statically render.
+ */
+export async function generateStaticParams() {
+  const stories = await getCachedStories();
   let paths: PathsType[] = [];
 
   stories.forEach((story) => {
@@ -102,14 +123,26 @@ async function getStoryData(params: { slug: string[] }) {
     }
     throw error;
   }
-
 };
+
+/**
+ * Cache the story request for 10 seconds to handle the
+ * mutliple requests that come from the component and metadata.
+ */
+const getCachedStoryData = NextCache(
+  (params: { slug: string[] }) => getStoryData(params),
+  ['get-story-data'],
+  {
+    tags: ['story'],
+    revalidate: 10,
+  },
+);
 
 /**
  * Generate the SEO metadata for the page.
  */
 export async function generateMetadata({ params }: { params: ParamsType }): Promise<Metadata> {
-  const { data } = await getStoryData(params);
+  const { data } = await getCachedStoryData(params);
   if (data === 404) {
     return {};
   }
@@ -123,7 +156,8 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
  * Fetch the path data for the page and render it.
  */
 export default async function Page({ params }: { params: ParamsType }) {
-  const { data } = await getStoryData(params);
+  // Don't cache stuff from the API..
+  const { data } = await getCachedStoryData(params);
   const slug = params.slug ? params.slug.join('/') : '';
 
   // Failed to fetch from API because story slug was not found.
