@@ -7,7 +7,7 @@ import { resolveRelations } from '@/utilities/resolveRelations';
 import { getPageMetadata } from '@/utilities/getPageMetadata';
 import { notFound } from 'next/navigation';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
-import { unstable_cache as NextCache } from 'next/cache';
+import { unstable_cache } from 'next/cache';
 
 const activeEnv = process.env.NODE_ENV || 'development';
 
@@ -46,9 +46,9 @@ storyblokInit({
 });
 
 /**
- * Get the stories from Storyblok and filter out folders.
+ * Generate the list of stories to statically render.
  */
-const getStories = async () => {
+export async function generateStaticParams() {
   const storyblokApi: StoryblokClient = getStoryblokApi();
   let sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',
@@ -56,29 +56,8 @@ const getStories = async () => {
   };
 
   // Use the `cdn/links` endpoint to get a list of all stories without all the extra data.
-  const response = await storyblokApi.getAll('cdn/links', sbParams);
+  const response = await unstable_cache(async (sbParams) => await storyblokApi.getAll('cdn/links', sbParams), ['get-stories'], { tags: ['stories'], revalidate: 60 })(sbParams);
   const stories = response.filter((link) => link.is_folder === false);
-  return stories;
-};
-
-/**
- * Cache the stories request for 60 seconds.
- *
- * This should be enough time between builds to catch changes.
- */
-const getCachedStories = NextCache(
-  () => getStories(),
-  ['get-all-stories'],
-  {
-    tags: ['stories'],
-    revalidate: 60 ,
-  });
-
-/**
- * Generate the list of stories to statically render.
- */
-export async function generateStaticParams() {
-  const stories = await getCachedStories();
   let paths: PathsType[] = [];
 
   stories.forEach((story) => {
@@ -107,7 +86,14 @@ async function getStoryData(params: { slug: string[] }) {
   };
 
   try {
-    const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
+    const story = await unstable_cache(
+      async (slug, sbParams) => await storyblokApi.get(`cdn/stories/${slug}`, sbParams),
+      ['get-story', slug],
+      {
+        tags: ['story', slug],
+        revalidate: 60,
+      },
+    )(slug, sbParams);
     return story;
   } catch (error) {
     if (typeof error === 'string') {
@@ -123,26 +109,14 @@ async function getStoryData(params: { slug: string[] }) {
     }
     throw error;
   }
-};
 
-/**
- * Cache the story request for 10 seconds to handle the
- * mutliple requests that come from the component and metadata.
- */
-const getCachedStoryData = NextCache(
-  (params: { slug: string[] }) => getStoryData(params),
-  ['get-story-data'],
-  {
-    tags: ['story'],
-    revalidate: 10,
-  },
-);
+};
 
 /**
  * Generate the SEO metadata for the page.
  */
 export async function generateMetadata({ params }: { params: ParamsType }): Promise<Metadata> {
-  const { data } = await getCachedStoryData(params);
+  const { data } = await getStoryData(params);
   if (data === 404) {
     return {};
   }
@@ -156,8 +130,7 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
  * Fetch the path data for the page and render it.
  */
 export default async function Page({ params }: { params: ParamsType }) {
-  // Don't cache stuff from the API..
-  const { data } = await getCachedStoryData(params);
+  const { data } = await getStoryData(params);
   const slug = params.slug ? params.slug.join('/') : '';
 
   // Failed to fetch from API because story slug was not found.
