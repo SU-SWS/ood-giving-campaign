@@ -7,7 +7,6 @@ import { resolveRelations } from '@/utilities/resolveRelations';
 import { getPageMetadata } from '@/utilities/getPageMetadata';
 import { notFound } from 'next/navigation';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
-import { unstable_cache } from 'next/cache';
 
 const activeEnv = process.env.NODE_ENV || 'development';
 
@@ -56,7 +55,7 @@ export async function generateStaticParams() {
   };
 
   // Use the `cdn/links` endpoint to get a list of all stories without all the extra data.
-  const response = await unstable_cache(async (sbParams) => await storyblokApi.getAll('cdn/links', sbParams), ['get-stories'], { tags: ['stories'], revalidate: 60 })(sbParams);
+  const response = await storyblokApi.getAll('cdn/links', sbParams);
   const stories = response.filter((link) => link.is_folder === false);
   let paths: PathsType[] = [];
 
@@ -86,14 +85,7 @@ async function getStoryData(params: { slug: string[] }) {
   };
 
   try {
-    const story = await unstable_cache(
-      async (slug, sbParams) => await storyblokApi.get(`cdn/stories/${slug}`, sbParams),
-      ['get-story', slug],
-      {
-        tags: ['story', slug],
-        revalidate: 60,
-      },
-    )(slug, sbParams);
+    const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
     return story;
   } catch (error) {
     if (typeof error === 'string') {
