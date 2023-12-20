@@ -1,16 +1,18 @@
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
-import Image from 'next/image';
-import { CreateBloks } from '../CreateBloks';
-import { Hero } from '../Hero/Hero';
-import { Masthead } from '../Masthead';
+import { CreateBloks } from '@/components/CreateBloks';
+import { BasicHeroMvp } from '@/components/Hero';
+import { Masthead } from '@/components/Masthead';
 import { getNumBloks } from '@/utilities/getNumBloks';
-import { getProcessedImage } from '@/utilities/getProcessedImage';
+import { type SbImageType } from '@/components/Storyblok/Storyblok.types';
 
 type SbBasicPageProps = {
   blok: {
     _uid: string;
     title?: string;
     hero?: SbBlokData[];
+    heroImage?: SbImageType;
+    subheading?: string;
+    heroContent?: SbBlokData[];
     content?: SbBlokData[];
     ankle?: SbBlokData[];
   };
@@ -20,31 +22,37 @@ export const SbBasicPage = ({
   blok: {
     title,
     hero,
+    heroImage: { filename, focus } = {},
+    subheading,
+    heroContent,
     content,
     ankle,
   },
   blok,
-}: SbBasicPageProps) => (
-  <div {...storyblokEditable(blok)}>
-    <Masthead />
-    <main id="main-content">
-      <div>
-        <CreateBloks blokSection={hero} />
-        <Hero heading={title} />
-        <CreateBloks blokSection={content} />
-        {getNumBloks(ankle) > 0 && (
-          <Image
-            width={2000}
-            height={40}
-            alt=""
-            loading="lazy"
-            src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2000x40/c4777a4925/steve-johnson-cropped-2000x40-01.jpg')}
-            className="w-full"
-          />
-        )}
-        <CreateBloks blokSection={ankle} />
-      </div>
-    </main>
-  </div>
-);
+}: SbBasicPageProps) => {
+  const HeroContent = !!getNumBloks(heroContent) ? <CreateBloks blokSection={heroContent} /> : undefined;
+
+  return (
+    <div {...storyblokEditable(blok)}>
+      <Masthead />
+      <main id="main-content">
+        <div>
+          {!!getNumBloks(hero) ? (
+            <CreateBloks blokSection={hero} />
+          ) : (
+            <BasicHeroMvp
+              title={title}
+              subheading={subheading}
+              imageSrc={filename}
+              imageFocus={focus}
+              heroContent={HeroContent}
+            />
+          )}
+          <CreateBloks blokSection={content} />
+          <CreateBloks blokSection={ankle} />
+        </div>
+      </main>
+    </div>
+  );
+};
 
