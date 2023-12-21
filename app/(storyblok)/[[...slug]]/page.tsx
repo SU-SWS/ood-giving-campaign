@@ -20,7 +20,7 @@ type ParamsType = {
 
 // Control what happens when a dynamic segment is visited that was not generated with generateStaticParams.
 export const dynamicParams = false;
-export const fetchCache = 'no-cache';
+export const fetchCache = 'only-no-store';
 
 // Storyblok bridge options.
 const bridgeOptions = {
