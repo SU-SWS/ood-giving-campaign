@@ -84,8 +84,24 @@ async function getStoryData(params: { slug: string[] }) {
     resolve_relations: resolveRelations,
   };
 
-  const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
-  return story;
+  try {
+    const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
+    return story;
+  }
+  catch (error) {
+    if (typeof error === 'string') {
+      try {
+        const parsedError = JSON.parse(error);
+        if (parsedError.status === 404) {
+          return { data: 404 };
+        }
+      }
+      catch (e) {
+        throw error;
+      }
+    }
+    throw error;
+  }
 };
 
 /**
