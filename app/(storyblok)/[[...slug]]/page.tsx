@@ -94,6 +94,7 @@ async function getStoryData(params: { slug: string[] }) {
     return story;
   }
   catch (error) {
+    console.log('Error fetching story data', error);
     if (typeof error === 'string') {
       try {
         const parsedError = JSON.parse(error);
