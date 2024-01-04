@@ -6,6 +6,7 @@ import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { getPageMetadata } from '@/utilities/getPageMetadata';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
+import { notFound } from 'next/navigation';
 
 const activeEnv = process.env.NODE_ENV || 'development';
 
@@ -104,6 +105,8 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
   catch (error) {
     console.error('Metadata error:', error);
   }
+
+  return {};
 }
 
 /**
@@ -112,6 +115,11 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
 export default async function Page({ params }: { params: ParamsType }) {
   const { data } = await getStoryData(params);
   const slug = params.slug ? params.slug.join('/') : '';
+
+  if (!data.story || !data.story.content) {
+    notFound();
+  }
+
   return (
     <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} slug={slug} />
   );
