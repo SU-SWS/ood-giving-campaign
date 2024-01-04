@@ -18,9 +18,9 @@ type ParamsType = {
   slug: string[];
 };
 
-// Control what happens when a dynamic segment is visited that was not generated with generateStaticParams.
-export const dynamicParams = false;
-export const fetchCache = 'only-force-cache';
+export const dynamicParams = false; // Don't generate pages at runtime.
+export const fetchCache = 'only-no-store'; // Don't cache the fetch requests.
+export const revalidate = false; // Infinity static.
 
 // Storyblok bridge options.
 const bridgeOptions = {
