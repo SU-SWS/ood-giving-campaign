@@ -9,8 +9,6 @@ import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
 import { notFound } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 
-const activeEnv = process.env.NODE_ENV || 'development';
-
 type PathsType = {
   slug: string[];
 };
@@ -48,6 +46,8 @@ storyblokInit({
  * Generate the list of stories to statically render.
  */
 export async function generateStaticParams() {
+  const activeEnv = process.env.NODE_ENV || 'development';
+
   // Clear out the cached data of this route segment before rebuilding.
   revalidatePath('/(storyblok)/[[...slug]]/page');
 
@@ -56,6 +56,9 @@ export async function generateStaticParams() {
   let sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',
     cv: activeEnv === 'development' ? Date.now() : undefined,
+    resolve_links: '0',
+    resolve_assets: 0,
+    per_page: 100,
   };
 
   // Use the `cdn/links` endpoint to get a list of all stories without all the extra data.
@@ -81,6 +84,7 @@ export async function generateStaticParams() {
  * https://github.com/vercel/next.js/discussions/48724
  */
 async function getStoryData(params: { slug: string[] }) {
+  const activeEnv = process.env.NODE_ENV || 'development';
   const storyblokApi: StoryblokClient = getStoryblokApi();
   const slug = params.slug ? params.slug.join('/') : 'home';
   const sbParams: ISbStoriesParams = {
@@ -94,7 +98,7 @@ async function getStoryData(params: { slug: string[] }) {
     return story;
   }
   catch (error) {
-    console.log('Error fetching story data', error);
+    console.error('Error fetching story data', error);
     if (typeof error === 'string') {
       try {
         const parsedError = JSON.parse(error);
@@ -117,7 +121,6 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
   try {
     const { data } = await getStoryData(params);
     if (!data.story || !data.story.content) {
-      console.log('getStoryData', data);
       throw new Error(`No story data found for ${params.slug.join('/')}`);
     }
     const blok = data.story.content;
