@@ -7,6 +7,7 @@ import { resolveRelations } from '@/utilities/resolveRelations';
 import { getPageMetadata } from '@/utilities/getPageMetadata';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
 import { notFound } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 
 const activeEnv = process.env.NODE_ENV || 'development';
 
@@ -19,7 +20,7 @@ type ParamsType = {
 };
 
 export const dynamicParams = false; // Don't generate pages at runtime.
-export const revalidate = 60 * 60 * 24 * 365; // Cache fetch data for the year. (TBD determine if this cache persists on Netlify)
+export const revalidate = 60 * 60 * 24 * 365; // Cache fetch data for the year.
 
 // Storyblok bridge options.
 const bridgeOptions = {
@@ -47,6 +48,10 @@ storyblokInit({
  * Generate the list of stories to statically render.
  */
 export async function generateStaticParams() {
+  // Clear out the cached data of this route segment before rebuilding.
+  revalidatePath('(storyblok)/[[...slug]]/page');
+
+  // Fetch new content from storyblok.
   const storyblokApi: StoryblokClient = getStoryblokApi();
   let sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',
@@ -111,7 +116,7 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
   try {
     const { data } = await getStoryData(params);
     if (!data.story || !data.story.content) {
-      throw new Error(`No story data found for ${params.slug}`);
+      throw new Error(`No story data found for ${params.slug.join('/')}`);
     }
     const blok = data.story.content;
     const slug = params.slug ? params.slug.join('/') : '';
