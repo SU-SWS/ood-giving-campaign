@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect, createRef } from 'react';
 import { Sidetab } from '@typeform/embed-react';
-import { type SidetabOptions } from '@typeform/embed/types';
+import { type SidetabOptions } from '@typeform/embed';
 
 export type SideTabProps = SidetabOptions & {
   id: string;

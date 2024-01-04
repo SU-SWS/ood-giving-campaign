@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { Popover } from '@typeform/embed-react';
-import { type PopoverOptions } from '@typeform/embed/types';
+import { type PopoverOptions } from '@typeform/embed';
 
 export type PopOverProps = PopoverOptions & {
   id: string;

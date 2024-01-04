@@ -1,6 +1,6 @@
 'use client';
 import { SliderButton } from '@typeform/embed-react';
-import { type SliderOptions } from '@typeform/embed/types';
+import { type SliderOptions } from '@typeform/embed';
 import { cnb, type ClassValue } from 'cnbuilder';
 
 export type SliderProps = SliderOptions & {
