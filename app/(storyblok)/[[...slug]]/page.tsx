@@ -115,7 +115,8 @@ async function getStoryData(params: { slug: string[] }) {
 export async function generateMetadata({ params }: { params: ParamsType }): Promise<Metadata> {
   try {
     const { data } = await getStoryData(params);
-    if (!data.story) {
+    if (!data.story || !data.story.content) {
+      console.log('getStoryData', data);
       throw new Error(`No story data found for ${params.slug.join('/')}`);
     }
     const blok = data.story.content;
