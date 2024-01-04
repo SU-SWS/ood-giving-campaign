@@ -19,7 +19,8 @@ type ParamsType = {
 };
 
 export const dynamicParams = false; // Don't generate pages at runtime.
-export const revalidate = false; // Infinity static.
+export const revalidate = 0; // Don't cache the data, rebuild new on each build.
+export const dynamic = 'force-static'; // Force static rendering.
 
 // Storyblok bridge options.
 const bridgeOptions = {
