@@ -109,7 +109,6 @@ export const ChatbotStory = () => {
     const interval = setInterval(() => {
       if (!isScrolling && intervalCount < 20 && wrapper.scrollHeight > 651) {
         wrapper.scrollTo(0, wrapper.scrollHeight);
-        console.log(wrapper.scrollHeight);
         setIntervalCount(prevCount => prevCount + 1);
       } else if (intervalCount >= 20) {
         clearInterval(interval);

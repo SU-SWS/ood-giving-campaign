@@ -5,7 +5,6 @@ import {
 import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { getPageMetadata } from '@/utilities/getPageMetadata';
-import { notFound } from 'next/navigation';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
 
 const activeEnv = process.env.NODE_ENV || 'development';
@@ -65,9 +64,6 @@ export async function generateStaticParams() {
     paths.push({ slug: splitSlug });
   });
 
-  // Add 404 page.
-  paths.push({ slug: ['404'] });
-
   return paths;
 };
 
@@ -87,38 +83,27 @@ async function getStoryData(params: { slug: string[] }) {
     resolve_relations: resolveRelations,
   };
 
-  try {
-    const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
-    return story;
-  } catch (error) {
-    if (typeof error === 'string') {
-      try {
-        const parsedError = JSON.parse(error);
-        if (parsedError.status === 404) {
-          return { data: 404 };
-        }
-      }
-      catch (e) {
-        throw error;
-      }
-    }
-    throw error;
-  }
-
+  const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
+  return story;
 };
 
 /**
  * Generate the SEO metadata for the page.
  */
 export async function generateMetadata({ params }: { params: ParamsType }): Promise<Metadata> {
-  const { data } = await getStoryData(params);
-  if (data === 404) {
-    return {};
+  try {
+    const { data } = await getStoryData(params);
+    if (!data.story || !data.story.content) {
+      throw new Error('No story data found');
+    }
+    const blok = data.story.content;
+    const slug = params.slug ? params.slug.join('/') : '';
+    const meta = getPageMetadata({ blok, slug });
+    return meta;
   }
-  const blok = data.story.content;
-  const slug = params.slug ? params.slug.join('/') : '';
-  const meta = getPageMetadata({ blok, slug });
-  return meta;
+  catch (error) {
+    console.error('Metadata error:', error);
+  }
 }
 
 /**
@@ -127,12 +112,6 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
 export default async function Page({ params }: { params: ParamsType }) {
   const { data } = await getStoryData(params);
   const slug = params.slug ? params.slug.join('/') : '';
-
-  // Failed to fetch from API because story slug was not found.
-  if (data === 404) {
-    notFound();
-  }
-
   return (
     <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} slug={slug} />
   );

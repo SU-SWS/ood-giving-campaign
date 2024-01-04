@@ -1,4 +1,3 @@
-import { bgImage } from './../components/BlurryPoster/BlurryPoster.styles';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { type SbImageType, type SbLinkType } from '@/components/Storyblok/Storyblok.types';
 import { config } from './config';
@@ -81,6 +80,7 @@ export const getPageMetadata = ({
   return {
     title: `${title} | ${siteTitle}`,
     description: description,
+    metadataBase: new URL(config.siteUrlProd),
     openGraph: {
       title: ogTitle,
       description: ogDescription,
