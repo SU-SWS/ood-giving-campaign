@@ -65,6 +65,9 @@ export async function generateStaticParams() {
     paths.push({ slug: splitSlug });
   });
 
+  // Add 404 page.
+  paths.push({ slug: ['404'] });
+
   return paths;
 };
 
