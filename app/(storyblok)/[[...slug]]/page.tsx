@@ -111,7 +111,7 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
   try {
     const { data } = await getStoryData(params);
     if (!data.story || !data.story.content) {
-      throw new Error('No story data found');
+      throw new Error(`No story data found for ${params.slug}`);
     }
     const blok = data.story.content;
     const slug = params.slug ? params.slug.join('/') : '';
