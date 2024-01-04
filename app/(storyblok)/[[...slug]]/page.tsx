@@ -19,7 +19,6 @@ type ParamsType = {
 };
 
 export const dynamicParams = false; // Don't generate pages at runtime.
-export const fetchCache = 'only-no-store'; // Don't cache the fetch requests.
 export const revalidate = false; // Infinity static.
 
 // Storyblok bridge options.
@@ -68,6 +67,7 @@ export async function generateStaticParams() {
 
   return paths;
 };
+
 
 /**
  * Get the data out of the Storyblok API for the page.
