@@ -19,8 +19,7 @@ type ParamsType = {
 };
 
 export const dynamicParams = false; // Don't generate pages at runtime.
-export const revalidate = 0; // Don't cache the data, rebuild new on each build.
-export const dynamic = 'force-static'; // Force static rendering.
+export const revalidate = 60 * 60 * 24 * 365; // Cache fetch data for the year. (TBD determine if this cache persists on Netlify)
 
 // Storyblok bridge options.
 const bridgeOptions = {
