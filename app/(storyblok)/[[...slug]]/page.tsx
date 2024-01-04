@@ -49,7 +49,7 @@ storyblokInit({
  */
 export async function generateStaticParams() {
   // Clear out the cached data of this route segment before rebuilding.
-  revalidatePath('(storyblok)/[[...slug]]/page');
+  revalidatePath('/(storyblok)/[[...slug]]/page');
 
   // Fetch new content from storyblok.
   const storyblokApi: StoryblokClient = getStoryblokApi();
