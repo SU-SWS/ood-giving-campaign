@@ -1,6 +1,6 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import {
- PopOver, PopUp, SideTab, Slider, Widget,
+  PopOver, PopUp, SideTab, Slider, Widget,
 } from '@/components/TypeForm';
 import { Container } from '@/components/Container';
 import { type PaddingType } from '@/utilities/datasource';
@@ -16,7 +16,6 @@ export type SbTypeformProps = {
     embedType: 'slider' | 'popup' | 'popover' | 'sidetab' | 'widget';
     autoResize: boolean;
     fullScreen: boolean;
-    heading: string;
     hideFooter: boolean;
     hideHeader: boolean;
     buttonLabel: string;
@@ -32,7 +31,7 @@ export type SbTypeformProps = {
 };
 
 export const styles = {
-  container: 'cc flex flex-col place-items-center',
+  container: 'flex flex-col place-items-center',
   fauxCTA: cnb(CTAStyles.cta, CTAStyles.ctaVariants.solid, CTAStyles.ctaSizes.large),
 };
 
@@ -68,7 +67,6 @@ export const SbTypeform = ({
     case 'slider': {
       return (
         <Container
-          width="full"
           pt={paddingTop}
           pb={paddingBottom}
           {...storyblokEditable(blok)}
@@ -128,7 +126,6 @@ export const SbTypeform = ({
     case 'popup': {
       return (
         <Container
-          width="full"
           pt={paddingTop}
           pb={paddingBottom}
           {...storyblokEditable(blok)}
@@ -156,7 +153,6 @@ export const SbTypeform = ({
     default: {
       return (
         <Container
-          width="full"
           pt={paddingTop}
           pb={paddingBottom}
           {...storyblokEditable(blok)}

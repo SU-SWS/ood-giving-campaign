@@ -19,7 +19,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     cv: Date.now(),
   });
 
-  const ret = response.map((story) => {
+  // Exclude any stories with noindex set to true on Storyblok
+  const indexStories = response.filter((story) => !story.content?.noindex);
+
+  const ret = indexStories.map((story) => {
     return {
       url: story.path ?? `/${story.full_slug}`,
       lastModified: new Date(story.published_at),
