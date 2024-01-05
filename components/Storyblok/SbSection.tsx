@@ -142,7 +142,14 @@ export const SbSection = ({
               )}
               >
                 {superhead && (
-                  <Text size={2} leading="tight" font="serif" weight="semibold" align={rightAlignHeader ? 'right' : 'left'} aria-hidden>
+                  <Text
+                    size={2}
+                    leading="tight"
+                    font="serif"
+                    weight="semibold"
+                    align={rightAlignHeader ? 'right' : 'left'}
+                    aria-hidden={!!heading}
+                  >
                     {superhead}
                   </Text>
                 )}
