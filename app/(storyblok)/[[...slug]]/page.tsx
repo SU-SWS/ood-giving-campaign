@@ -18,7 +18,7 @@ type ParamsType = {
 };
 
 export const dynamicParams = false; // Don't generate pages at runtime.
-export const revalidate = 60 * 60 * 24 * 365; // Cache fetch data for the year.
+export const revalidate = false; // Cache fetch data for the year.
 
 // Storyblok bridge options.
 const bridgeOptions = {
@@ -49,7 +49,7 @@ export async function generateStaticParams() {
   const activeEnv = process.env.NODE_ENV || 'development';
 
   // Clear out the cached data of this route segment before rebuilding.
-  revalidatePath('/(storyblok)/[[...slug]]/page');
+  revalidatePath('/(storyblok)');
 
   // Fetch new content from storyblok.
   const storyblokApi: StoryblokClient = getStoryblokApi();
