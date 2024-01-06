@@ -52,7 +52,7 @@ export async function generateStaticParams() {
   const activeEnv = process.env.NODE_ENV || 'development';
 
   // Clear out the cached data of this route segment before rebuilding.
-  revalidatePath('/(storyblok)');
+  revalidatePath('/');
 
   // Fetch new content from storyblok.
   const storyblokApi: StoryblokClient = getStoryblokApi();
