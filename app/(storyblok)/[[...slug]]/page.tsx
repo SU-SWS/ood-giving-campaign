@@ -51,6 +51,8 @@ storyblokInit({
 export async function generateStaticParams() {
   const activeEnv = process.env.NODE_ENV || 'development';
 
+  revalidatePath('/');
+
   // Fetch new content from storyblok.
   const storyblokApi: StoryblokClient = getStoryblokApi();
   let sbParams: ISbStoriesParams = {
