@@ -47,6 +47,10 @@ storyblokInit({
 export async function generateStaticParams() {
   const activeEnv = process.env.NODE_ENV || 'development';
 
+  // Clear out the cached data of this route segment before rebuilding.
+  revalidatePath('/(storyblok)/[[...slug]]/page');
+  revalidatePath('/(storyblok)/[[...slug]]/layout');
+
   // Fetch new content from storyblok.
   const storyblokApi: StoryblokClient = getStoryblokApi();
   let sbParams: ISbStoriesParams = {
