@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
 import { Heading, Text } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
@@ -29,7 +28,7 @@ export const IdealFellow = () => {
       </Heading>
       <div className="group hover:backdrop-blur-sm transition-all absolute bottom-200 right-0 bg-black-50/50 backdrop-blur-xl w-5/12 rs-px-4 rs-pt-4 rs-pb-1">
         <Text variant="caption" color="white" weight="semibold" className="mb-04em">Preparing citizens</Text>
-        <Link href="/stories/poc-solve-for-now" className="no-underline stretched-link">
+        <Link href="/stories/poc-solve-for-now" className="no-underline stretched-link" prefetch={false}>
           <Heading color="white" weight="normal" className="decoration-4 decoration-transparent underline-offset-8 group-hocus-within:underline  group-hocus-within:decoration-digital-red-light transition-colors">
             Untangling the web of racial inequality
             <HeroIcon icon="arrow-right" noBaseStyle className="inline-block group-hocus-within:translate-x-[0.2em] bg-digital-red rounded-full p-12 ml-05em children:stroke-[2px] w-08em" />

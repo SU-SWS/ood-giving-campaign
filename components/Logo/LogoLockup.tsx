@@ -45,6 +45,7 @@ export const LogoLockup = ({
     return (
       <Link
         className={cnb(styles.root, className)}
+        prefetch={false}
         href="/"
         {...rest}
       >

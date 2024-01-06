@@ -35,6 +35,7 @@ export const CtaNextLink = React.forwardRef<HTMLAnchorElement, CtaNextLinkProps>
       ref={ref}
       href={href}
       target={target}
+      prefetch={false}
       className={cnb(
         styles.cta,
         styles.ctaVariants[variant],
