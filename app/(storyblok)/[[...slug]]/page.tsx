@@ -21,7 +21,7 @@ export const dynamicParams = false; // Don't generate pages at runtime.
 // Bug in Safari + Netlify + Next where back button doesn't function correctly and returns the user
 // back to the page they hit the back button on after scrolling or interacting with the page they went back to.
 // Setting a long revalidate time patches this until Next/Netlify fix the bug in future releases of their stuff.
-export const revalidate = 60 * 60 * 24 * 365;
+export const revalidate = false;
 
 // Storyblok bridge options.
 const bridgeOptions = {
@@ -50,10 +50,6 @@ storyblokInit({
  */
 export async function generateStaticParams() {
   const activeEnv = process.env.NODE_ENV || 'development';
-
-  // Clear out the cached data of this route segment before rebuilding.
-  revalidatePath('/(storyblok)/[[...slug]]/page');
-  revalidatePath('/(storyblok)/[[...slug]]/layout');
 
   // Fetch new content from storyblok.
   const storyblokApi: StoryblokClient = getStoryblokApi();
