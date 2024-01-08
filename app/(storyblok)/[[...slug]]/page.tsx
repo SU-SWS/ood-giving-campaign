@@ -21,7 +21,7 @@ export const dynamicParams = false; // Don't generate pages at runtime.
 // Bug in Safari + Netlify + Next where back button doesn't function correctly and returns the user
 // back to the page they hit the back button on after scrolling or interacting with the page they went back to.
 // Setting a long revalidate time patches this until Next/Netlify fix the bug in future releases of their stuff.
-export const revalidate = 60;
+export const revalidate = 10;
 
 // Storyblok bridge options.
 const bridgeOptions = {
@@ -51,8 +51,6 @@ storyblokInit({
 export async function generateStaticParams() {
   const activeEnv = process.env.NODE_ENV || 'development';
 
-  revalidatePath('/');
-
   // Fetch new content from storyblok.
   const storyblokApi: StoryblokClient = getStoryblokApi();
   let sbParams: ISbStoriesParams = {
@@ -69,11 +67,13 @@ export async function generateStaticParams() {
   let paths: PathsType[] = [];
 
   stories.forEach((story) => {
-    // If the path is explicitly set, use that, otherwise use the slug.
-    const slug = story.path ?? story.slug;
-    let splitSlug = slug.split('/');
+    const slug = story.slug;
+    const splitSlug = slug.split('/');
     paths.push({ slug: splitSlug });
   });
+
+  // Add the homepage.
+  paths.push({ slug: [] });
 
   return paths;
 };
@@ -88,7 +88,8 @@ export async function generateStaticParams() {
 async function getStoryData(params: { slug: string[] }) {
   const activeEnv = process.env.NODE_ENV || 'development';
   const storyblokApi: StoryblokClient = getStoryblokApi();
-  const slug = params.slug ? params.slug.join('/') : 'home';
+  const slug = Array.isArray(params.slug) ? params.slug.join('/') : 'home';
+
   const sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',
     cv: activeEnv === 'development' ? Date.now() : undefined,
@@ -126,7 +127,7 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
       throw new Error(`No story data found for ${params.slug.join('/')}`);
     }
     const blok = data.story.content;
-    const slug = params.slug ? params.slug.join('/') : '';
+    const slug = params.slug ? params.slug.join('/') : 'home';
     const meta = getPageMetadata({ blok, slug });
     return meta;
   }
