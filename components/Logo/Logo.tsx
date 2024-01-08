@@ -21,7 +21,8 @@ export const Logo = ({
     <LogoHorizontal color={color} />
   );
 
-  const homeLink = '/';
+  // Must be /home or else the RSC prefetch won't work as there are issues with "/"
+  const homeLink = '/home';
 
   // Render logo as link if isLink is true
   if (isLink) {
