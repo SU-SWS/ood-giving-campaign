@@ -15,6 +15,15 @@ const nextConfig = {
   env: {
     DEPLOY_PRIME_URL: process.env.DEPLOY_PRIME_URL,
   },
+  async redirects() {
+    return [
+      {
+        source: '/home',
+        destination: '/',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
