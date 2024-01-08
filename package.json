@@ -20,6 +20,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:netlify": "rm -rf .next && next build",
     "start": "next start",
     "lint": "next lint",
     "hps": "local-ssl-proxy --cert ./dev/localhost.pem --key ./dev/localhost-key.pem",
