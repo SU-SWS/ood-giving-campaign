@@ -82,7 +82,7 @@ export default function StoryblokProvider({ children, isEditor = false }: Provid
   if (isEditor) {
     if (typeof window !== 'undefined') {
       const urlParams = new URLSearchParams(window.location.search);
-      accessToken = urlParams.get('token') || accessToken;
+      accessToken = urlParams.get('_storyblok_tk[token]') || accessToken;
     }
   }
   // Temporarily override console.error to squeltch errors from Storyblok.
