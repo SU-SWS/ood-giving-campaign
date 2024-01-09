@@ -20,6 +20,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:netlify": "rm -rf .next/cache && next build",
     "start": "next start",
     "lint": "next lint",
     "hps": "local-ssl-proxy --cert ./dev/localhost.pem --key ./dev/localhost-key.pem",
@@ -38,6 +39,7 @@
     "cookies-next": "^4.0.0",
     "framer-motion": "^10.16.4",
     "next": "13.4.9",
+    "react-loading-skeleton": "^3.3.1",
     "react-player": "^2.13.0",
     "storyblok-rich-text-react-renderer-ts": "^3.2.0",
     "usehooks-ts": "^2.9.1"

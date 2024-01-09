@@ -6,10 +6,7 @@ import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
 
-
 const activeEnv = process.env.NODE_ENV || 'development';
-export const dynamic = 'force-static';
-export const revalidate = 0;
 
 // Storyblok bridge options.
 const bridgeOptions = {

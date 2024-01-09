@@ -5,10 +5,8 @@ import {
 import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { getPageMetadata } from '@/utilities/getPageMetadata';
-import { notFound } from 'next/navigation';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
-
-const activeEnv = process.env.NODE_ENV || 'development';
+import { notFound } from 'next/navigation';
 
 type PathsType = {
   slug: string[];
@@ -18,10 +16,11 @@ type ParamsType = {
   slug: string[];
 };
 
-// Control what happens when a dynamic segment is visited that was not generated with generateStaticParams.
-export const dynamicParams = false;
-export const dynamic = 'force-static';
-export const revalidate = 0;
+export const dynamicParams = false; // Don't generate pages at runtime.
+// Bug in Safari + Netlify + Next where back button doesn't function correctly and returns the user
+// back to the page they hit the back button on after scrolling or interacting with the page they went back to.
+// Setting a long revalidate time patches this until Next/Netlify fix the bug in future releases of their stuff.
+export const revalidate = 60 * 60 * 24 * 365;
 
 // Storyblok bridge options.
 const bridgeOptions = {
@@ -49,10 +48,16 @@ storyblokInit({
  * Generate the list of stories to statically render.
  */
 export async function generateStaticParams() {
+  const activeEnv = process.env.NODE_ENV || 'development';
+
+  // Fetch new content from storyblok.
   const storyblokApi: StoryblokClient = getStoryblokApi();
   let sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',
     cv: activeEnv === 'development' ? Date.now() : undefined,
+    resolve_links: '0',
+    resolve_assets: 0,
+    per_page: 100,
   };
 
   // Use the `cdn/links` endpoint to get a list of all stories without all the extra data.
@@ -61,14 +66,17 @@ export async function generateStaticParams() {
   let paths: PathsType[] = [];
 
   stories.forEach((story) => {
-    // If the path is explicitly set, use that, otherwise use the slug.
-    const slug = story.path ?? story.slug;
-    let splitSlug = slug.split('/');
+    const slug = story.slug;
+    const splitSlug = slug.split('/');
     paths.push({ slug: splitSlug });
   });
 
+  // Add the homepage.
+  paths.push({ slug: [] });
+
   return paths;
 };
+
 
 /**
  * Get the data out of the Storyblok API for the page.
@@ -77,8 +85,10 @@ export async function generateStaticParams() {
  * https://github.com/vercel/next.js/discussions/48724
  */
 async function getStoryData(params: { slug: string[] }) {
+  const activeEnv = process.env.NODE_ENV || 'development';
   const storyblokApi: StoryblokClient = getStoryblokApi();
-  const slug = params.slug ? params.slug.join('/') : 'home';
+  const slug = Array.isArray(params.slug) ? params.slug.join('/') : 'home';
+
   const sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',
     cv: activeEnv === 'development' ? Date.now() : undefined,
@@ -88,7 +98,9 @@ async function getStoryData(params: { slug: string[] }) {
   try {
     const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
     return story;
-  } catch (error) {
+  }
+  catch (error) {
+    console.error('Error fetching story data', error);
     if (typeof error === 'string') {
       try {
         const parsedError = JSON.parse(error);
@@ -102,21 +114,27 @@ async function getStoryData(params: { slug: string[] }) {
     }
     throw error;
   }
-
 };
 
 /**
  * Generate the SEO metadata for the page.
  */
 export async function generateMetadata({ params }: { params: ParamsType }): Promise<Metadata> {
-  const { data } = await getStoryData(params);
-  if (data === 404) {
-    return {};
+  try {
+    const { data } = await getStoryData(params);
+    if (!data.story || !data.story.content) {
+      throw new Error(`No story data found for ${params.slug.join('/')}`);
+    }
+    const blok = data.story.content;
+    const slug = params.slug ? params.slug.join('/') : 'home';
+    const meta = getPageMetadata({ blok, slug });
+    return meta;
   }
-  const blok = data.story.content;
-  const slug = params.slug ? params.slug.join('/') : '';
-  const meta = getPageMetadata({ blok, slug });
-  return meta;
+  catch (error) {
+    console.error('Metadata error:', error);
+  }
+
+  return {};
 }
 
 /**
@@ -126,8 +144,7 @@ export default async function Page({ params }: { params: ParamsType }) {
   const { data } = await getStoryData(params);
   const slug = params.slug ? params.slug.join('/') : '';
 
-  // Failed to fetch from API because story slug was not found.
-  if (data === 404) {
+  if (!data.story) {
     notFound();
   }
 

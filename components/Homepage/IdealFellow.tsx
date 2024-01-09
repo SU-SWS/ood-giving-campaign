@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
 import { Heading, Text } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';

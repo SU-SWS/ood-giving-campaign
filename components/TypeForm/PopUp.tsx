@@ -1,6 +1,6 @@
 'use client';
 import { PopupButton } from '@typeform/embed-react';
-import { type PopupOptions } from '@typeform/embed/types';
+import { type PopupOptions } from '@typeform/embed';
 
 export type PopUpProps = PopupOptions & {
   id: string;
