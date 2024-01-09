@@ -28,7 +28,7 @@
   [plugins.inputs]
     username = 'Stanford'
     password = 'OnPurpose'
-    context = ['branch-deploy', 'production']
+    context = ['branch-deploy', 'deploy-preview', 'production']
     file = '.next/_headers'
 
 # HEADERS
