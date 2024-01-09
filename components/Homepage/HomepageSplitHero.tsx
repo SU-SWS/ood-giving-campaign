@@ -118,10 +118,11 @@ export const HomepageSplitHero = () => {
         </AnimateInView>
         <AnimateInView delay={0.2} animation="slideUp">
           <Paragraph size={1} weight="normal" leading="snug" className={styles.introParagraph}>
-            For combating the climate crisis. For reducing inequality. For embedding ethics in all we do.
+            For creating a sustainable planet. For reducing inequality. For embedding ethics in all we do.
           </Paragraph>
           <Paragraph size={1} weight="normal" leading="snug" className={styles.introParagraph}>
-            Join us as we tell the stories of Stanford’s impact.
+            Learn how Stanford’s community of makers, doers, boundary pushers,
+            and risk-takers are meeting the moment. Join us to do even more.
           </Paragraph>
         </AnimateInView>
       </Container>
