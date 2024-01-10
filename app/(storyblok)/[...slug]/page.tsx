@@ -128,7 +128,7 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
     return meta;
   }
   catch (error) {
-    console.error('Metadata error:', error);
+    console.log('Metadata error:', error, params.slug);
   }
 
   return {};

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { cnb } from 'cnbuilder';
 import ReactPlayer from 'react-player/lazy';
 import { Container } from '../Container';
@@ -29,7 +30,16 @@ export const EmbedMedia = ({
   className,
   ...props
 }: EmbedMediaProps) => {
-
+  /**
+   * This is needed to prevent hydration error for the React Player.
+   * https://github.com/cookpete/react-player/issues/1428
+   */
+  const [hasWindow, setHasWindow] = useState(false);
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setHasWindow(true);
+    }
+  }, []);
 
   return (
     <WidthBox
@@ -43,12 +53,14 @@ export const EmbedMedia = ({
       <figure>
         {/* Extra classnames passed into wrapper for Vimeo responsive bug */}
         <div className={cnb(mediaAspectRatios[aspectRatio], styles.mediaWrapper)}>
-          <ReactPlayer
-            width="100%"
-            height="100%"
-            url={mediaUrl}
-            controls
-          />
+          {hasWindow && (
+            <ReactPlayer
+              width="100%"
+              height="100%"
+              url={mediaUrl}
+              controls
+            />
+          )}
         </div>
         {caption && (
           <Container as="figcaption" width={isCaptionInset ? 'site' : 'full'}>
