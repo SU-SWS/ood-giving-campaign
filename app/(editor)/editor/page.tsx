@@ -6,8 +6,7 @@ import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { notFound } from 'next/navigation';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
-
-const activeEnv = process.env.NODE_ENV || 'development';
+import { ISbResult } from '@storyblok/react';
 
 type PageProps = {
   searchParams: {
@@ -27,7 +26,6 @@ type PageProps = {
 
 // Control what happens when a dynamic segment is visited that was not generated with generateStaticParams.
 export const dynamic = 'force-dynamic';
-export const revalidate = 0;
 
 // Storyblok bridge options.
 const bridgeOptions = {
@@ -58,18 +56,18 @@ storyblokInit({
  * Make sure to not export the below functions otherwise there will be a typescript error
  * https://github.com/vercel/next.js/discussions/48724
  */
-async function getStoryData({ path }: PageProps['searchParams']) {
+async function getStoryData({ path }: PageProps['searchParams']): Promise<ISbResult | { data: 404 }> {
   const storyblokApi: StoryblokClient = getStoryblokApi();
   let sbParams: ISbStoriesParams = {
     version: 'draft',
-    cv: activeEnv === 'development' ? Date.now() : undefined,
+    cv: Date.now(),
     resolve_relations: resolveRelations,
   };
 
   const slug = path.replace(/\/$/, '') || 'home'; // Remove trailing slash or if no slash, use home.
 
   try {
-    const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
+    const story: ISbResult = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
     return story;
   } catch (error) {
     if (typeof error === 'string') {
@@ -118,6 +116,7 @@ export default async function Page({ searchParams }: PageProps) {
     notFound();
   }
 
+  // Get data out of the API.
   const { data } = await getStoryData(searchParams);
 
   // Failed to fetch from API because story slug was not found.
@@ -125,6 +124,7 @@ export default async function Page({ searchParams }: PageProps) {
     notFound();
   }
 
+  // Return the story.
   return (
     <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} />
   );

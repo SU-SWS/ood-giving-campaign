@@ -1,10 +1,12 @@
-import StoryblokProvider from '@/components/StoryblokProvider';
+import { Metadata } from 'next';
 import {
   ISbStoriesParams, getStoryblokApi, storyblokInit, apiPlugin, StoryblokStory, StoryblokClient,
 } from '@storyblok/react/rsc';
-import { components as Components } from '@/components/StoryblokProvider';
+import StoryblokProvider, { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
+import { getPageMetadata } from '@/utilities/getPageMetadata';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
+import { notFound } from 'next/navigation';
 
 // Storyblok bridge options.
 const bridgeOptions = {
@@ -34,9 +36,11 @@ storyblokInit({
  * Make sure to not export the below functions otherwise there will be a typescript error
  * https://github.com/vercel/next.js/discussions/48724
  */
-async function getStoryData(slug = 'page-not-found') {
+async function getStoryData() {
   const activeEnv = process.env.NODE_ENV || 'development';
   const storyblokApi: StoryblokClient = getStoryblokApi();
+  const slug = 'home';
+
   const sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',
     cv: activeEnv === 'development' ? Date.now() : undefined,
@@ -46,7 +50,8 @@ async function getStoryData(slug = 'page-not-found') {
   try {
     const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
     return story;
-  } catch (error) {
+  }
+  catch (error) {
     if (typeof error === 'string') {
       try {
         const parsedError = JSON.parse(error);
@@ -62,21 +67,41 @@ async function getStoryData(slug = 'page-not-found') {
   }
 };
 
-export default async function PageNotFound() {
-  const { data } = await getStoryData();
+/**
+ * Generate the SEO metadata for the page.
+ */
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const { data } = await getStoryData();
+    if (!data.story || !data.story.content) {
+      throw new Error(`No story data found for home`);
+    }
+    const blok = data.story.content;
+    const slug = 'home';
+    const meta = getPageMetadata({ blok, slug });
+    return meta;
+  }
+  catch (error) {
+    console.error('Metadata error:', error);
+  }
 
-  if (data === 404) {
-    return (
-      <>
-        <h1>Error: Could not find page</h1>
-        <p>Slug <code><b>page-not-found</b></code> could not be found in the CMS.</p>
-      </>
-    );
+  return {};
+}
+
+/**
+ * Fetch the path data for the page and render it.
+ */
+export default async function Page() {
+  const { data } = await getStoryData();
+  const slug = '/';
+
+  if (!data.story) {
+    notFound();
   }
 
   return (
     <StoryblokProvider>
-      <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} />
+      <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} slug={slug} />
     </StoryblokProvider>
   );
-}
+};

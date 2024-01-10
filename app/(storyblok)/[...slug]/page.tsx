@@ -49,7 +49,6 @@ storyblokInit({
  */
 export async function generateStaticParams() {
   const activeEnv = process.env.NODE_ENV || 'development';
-
   // Fetch new content from storyblok.
   const storyblokApi: StoryblokClient = getStoryblokApi();
   let sbParams: ISbStoriesParams = {
@@ -67,12 +66,12 @@ export async function generateStaticParams() {
 
   stories.forEach((story) => {
     const slug = story.slug;
-    const splitSlug = slug.split('/');
-    paths.push({ slug: splitSlug });
+    // Filter out the home page.
+    if (slug !== 'home') {
+      const splitSlug = slug.split('/');
+      paths.push({ slug: splitSlug });
+    }
   });
-
-  // Add the homepage.
-  paths.push({ slug: [] });
 
   return paths;
 };
@@ -100,7 +99,6 @@ async function getStoryData(params: { slug: string[] }) {
     return story;
   }
   catch (error) {
-    console.error('Error fetching story data', error);
     if (typeof error === 'string') {
       try {
         const parsedError = JSON.parse(error);

@@ -33,14 +33,14 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
-    "@storyblok/react": "^2.4.7",
+    "@storyblok/react": "^3.0.2",
     "@typeform/embed-react": "^3.8.0",
     "cnbuilder": "^3.1.0",
     "cookies-next": "^4.0.0",
     "framer-motion": "^10.16.4",
     "next": "13.4.9",
     "react-loading-skeleton": "^3.3.1",
-    "react-player": "^2.13.0",
+    "react-player": "^2.14.1",
     "storyblok-rich-text-react-renderer-ts": "^3.2.0",
     "usehooks-ts": "^2.9.1"
   },

@@ -18,10 +18,10 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/',
-        destination: '/home',
+        source: '/home',
+        destination: '/',
         permanent: true,
-        has: [
+        missing: [
           {
             type: 'query',
             key: '_rsc',
