@@ -7,6 +7,7 @@ import { CtaExternalLink } from './CtaExternalLink';
 import { CtaNextLink } from './CtaNextLink';
 import { type SbLinkType } from '../Storyblok/Storyblok.types';
 import { UrlObject } from 'url';
+import { getMaskedAsset } from '@/utilities/getMaskedAsset';
 
 /**
  * Use this component for CTA links.
@@ -55,6 +56,8 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
       }
     } else if (linktype === 'email') {
       myLink = `mailto:${email}`;
+    } else if (linktype === 'asset') {
+      myLink = getMaskedAsset(url || href);
     } else {
       myLink = url || cachedUrl || href;
     }
