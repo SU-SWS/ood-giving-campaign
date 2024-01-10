@@ -2,6 +2,7 @@
 const nextConfig = {
   experimental: {
     logging: 'verbose',
+    isrMemoryCacheSize: 0, // disable ISR cache in memory and rely on file system cache.
   },
   images: {
     remotePatterns: [
@@ -17,10 +18,10 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/',
-        destination: '/home',
+        source: '/home',
+        destination: '/',
         permanent: true,
-        has: [
+        missing: [
           {
             type: 'query',
             key: '_rsc',

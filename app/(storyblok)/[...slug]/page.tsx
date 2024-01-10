@@ -48,11 +48,12 @@ storyblokInit({
  * Generate the list of stories to statically render.
  */
 export async function generateStaticParams() {
-
+  const activeEnv = process.env.NODE_ENV || 'development';
   // Fetch new content from storyblok.
   const storyblokApi: StoryblokClient = getStoryblokApi();
   let sbParams: ISbStoriesParams = {
-    version: 'published',
+    version: activeEnv === 'development' ? 'draft' : 'published',
+    cv: activeEnv === 'development' ? Date.now() : undefined,
     resolve_links: '0',
     resolve_assets: 0,
     per_page: 100,
@@ -65,12 +66,12 @@ export async function generateStaticParams() {
 
   stories.forEach((story) => {
     const slug = story.slug;
-    const splitSlug = slug.split('/');
-    paths.push({ slug: splitSlug });
+    // Filter out the home page.
+    if (slug !== 'home') {
+      const splitSlug = slug.split('/');
+      paths.push({ slug: splitSlug });
+    }
   });
-
-  // Add the homepage.
-  paths.push({ slug: [] });
 
   return paths;
 };
@@ -83,11 +84,13 @@ export async function generateStaticParams() {
  * https://github.com/vercel/next.js/discussions/48724
  */
 async function getStoryData(params: { slug: string[] }) {
+  const activeEnv = process.env.NODE_ENV || 'development';
   const storyblokApi: StoryblokClient = getStoryblokApi();
   const slug = Array.isArray(params.slug) ? params.slug.join('/') : 'home';
 
   const sbParams: ISbStoriesParams = {
-    version: 'published',
+    version: activeEnv === 'development' ? 'draft' : 'published',
+    cv: activeEnv === 'development' ? Date.now() : undefined,
     resolve_relations: resolveRelations,
   };
 
