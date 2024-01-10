@@ -1,5 +1,5 @@
 import { cnb } from 'cnbuilder';
-import ReactPlayer from 'react-player/lazy';
+// import ReactPlayer from 'react-player/lazy';
 import { Container } from '../Container';
 import { WidthBox, type WidthType } from '../WidthBox';
 import { type PaddingType } from '@/utilities/datasource';
@@ -43,12 +43,13 @@ export const EmbedMedia = ({
       <figure>
         {/* Extra classnames passed into wrapper for Vimeo responsive bug */}
         <div className={cnb(mediaAspectRatios[aspectRatio], styles.mediaWrapper)}>
-          <ReactPlayer
+          {/* <ReactPlayer
             width="100%"
             height="100%"
             url={mediaUrl}
             controls
-          />
+          /> */}
+          <h2>Player goes here</h2>
         </div>
         {caption && (
           <Container as="figcaption" width={isCaptionInset ? 'site' : 'full'}>
