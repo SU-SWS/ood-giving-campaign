@@ -22,7 +22,7 @@ export const BasicHeroMvp = ({
   imageFocus,
   heroContent,
 }: BasicHeroMvpProps) => (
-  <Container width="full" bgColor={imageSrc ? undefined : 'black'} className="relative bg-black-70 py-[40vw] md:py-[30vw] xl:py-[20vw] 3xl:py-[34rem]">
+  <Container width="full" bgColor={imageSrc ? undefined : 'black'} className="relative bg-black-70 py-[34vw] md:py-[24vw] xl:py-[16vw] 3xl:py-[26rem]">
     {imageSrc && (
       <>
         <ImageOverlay
