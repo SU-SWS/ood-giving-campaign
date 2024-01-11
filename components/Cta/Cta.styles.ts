@@ -15,7 +15,7 @@ const mainNavBase = 'group bg-clip-padding inline-block border-2 font-normal dec
 const mainNavWhite = 'text-white border-white bg-gc-black hocus:text-white hocus:decoration-white hocus:ring-white';
 const mainNavDark = 'text-gc-black border-gc-black bg-white hocus:text-gc-black hocus:decoration-gc-black hocus:ring-gc-black';
 
-const mastheadGivingBase = 'inline-block w-fit font-normal decoration-transparent leading-display hocus:decoration-2 focus-visible:ring-2 focus-visible:ring-digital-red-xlight ring-offset-4 focus-visible:outline-none focus-visible:rounded underline-offset-4';
+const mastheadGivingBase = 'inline-block w-fit font-normal no-underline leading-display hocus:decoration-2 focus-visible:ring-2 focus-visible:ring-digital-red-xlight ring-offset-4 focus-visible:outline-none focus-visible:rounded underline-offset-4';
 const mastheadGivingWhite = 'text-white hocus:text-white hocus:decoration-white focus-visible:ring-offset-black';
 const mastheadGivingDark = 'text-gc-black hocus:text-gc-black hocus:decoration-gc-black focus-visible:ring-offset-white';
 
