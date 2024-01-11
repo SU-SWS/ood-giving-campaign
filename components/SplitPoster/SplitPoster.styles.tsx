@@ -27,4 +27,4 @@ export const heading = (hasImage: boolean) => cnb('rs-mb-3 2xl:whitespace-pre-li
 
 export const body = 'rs-mb-2 last:mb-0';
 
-export const ctaWrapper = 'children:rs-mb-1 last:children:mb-0 mr-0';
+export const ctaWrapper = '*:rs-mb-1 last:*:mb-0 mr-0';

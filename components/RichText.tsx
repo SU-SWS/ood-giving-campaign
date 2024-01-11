@@ -80,7 +80,7 @@ export const RichText = ({
           <CtaLink
             sbLink={sbLink}
             variant={textColor === 'white' ? 'inlineDark' : 'inline'}
-            className="children:inline"
+            className="*:inline"
             // Custom link attributes are not supported by the rich text renderer currently
             // Adding rel="noopener" for all eternal links for security reasons
             rel={linktype === 'url' ? 'noopener' : undefined}

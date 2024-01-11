@@ -31,7 +31,7 @@ export const IdealFellow = () => {
         <Link href="/stories/poc-solve-for-now" className="no-underline stretched-link">
           <Heading color="white" weight="normal" className="decoration-4 decoration-transparent underline-offset-8 group-hocus-within:underline  group-hocus-within:decoration-digital-red-light transition-colors">
             Untangling the web of racial inequality
-            <HeroIcon icon="arrow-right" noBaseStyle className="inline-block group-hocus-within:translate-x-[0.2em] bg-digital-red rounded-full p-12 ml-05em children:stroke-[2px] w-08em" />
+            <HeroIcon icon="arrow-right" noBaseStyle className="inline-block group-hocus-within:translate-x-[0.2em] bg-digital-red rounded-full p-12 ml-05em *:stroke-[2px] w-08em" />
           </Heading>
         </Link>
         <Text variant="card" color="white">

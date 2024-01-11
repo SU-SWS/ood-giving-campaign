@@ -39,7 +39,7 @@ export const BasicHeroMvp = ({
         />
       </>
     )}
-    <Container className="children:mx-auto">
+    <Container className="*:mx-auto">
       <Heading
         as="h1"
         font="serif"

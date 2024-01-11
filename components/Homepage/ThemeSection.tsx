@@ -130,7 +130,7 @@ export const ThemeSection = ({
             </Paragraph>
           </div>
         </AnimateInView>
-        <div className={cnb('sr-only focus-within:not-sr-only w-fit children:mx-auto', !shouldAnimate ? 'hidden' : '')}>
+        <div className={cnb('sr-only focus-within:not-sr-only w-fit *:mx-auto', !shouldAnimate ? 'hidden' : '')}>
           <CtaButton onClick={() => setShouldAnimate(false)}>Reveal themes visually</CtaButton>
         </div>
         {/* This grid contains the 4 animated lines behind the theme cards */}

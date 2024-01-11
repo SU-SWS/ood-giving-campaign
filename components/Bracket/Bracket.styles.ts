@@ -1,7 +1,7 @@
 import { cnb } from 'cnbuilder';
 
 // Bracket Curve styles
-export const root = 'children:border-current backface-hidden';
+export const root = '*:border-current backface-hidden';
 
 export type CornerType = 'tl' | 'bl' | 'tr' | 'br';
 

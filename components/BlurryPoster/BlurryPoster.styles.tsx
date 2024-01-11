@@ -78,7 +78,7 @@ export const customHeading = (
   imageOnLeft?: boolean,
   headingFont?: 'druk' | 'serif',
   isTwoCol?: boolean,
-) => cnb('flex flex-wrap gap-x-[0.6em] md:gap-x-[1em] items-center mb-0 -mt-02em md:-mt-05em lg:-mt-08em children:inline-block', {
+) => cnb('flex flex-wrap gap-x-[0.6em] md:gap-x-[1em] items-center mb-0 -mt-02em md:-mt-05em lg:-mt-08em *:inline-block', {
   '3xl:pl-[calc(100%-750px-40px)] lg:w-[140%] xl:w-[130%]': !imageOnLeft && headingFont === 'druk' && isTwoCol,
 });
 export const customHeadingText = (font?: 'druk' | 'serif', isSmallHeading?: boolean) => cnb('hyphens-auto first:ml-0 last:mr-0', {
@@ -92,7 +92,7 @@ export const customHeadingText = (font?: 'druk' | 'serif', isSmallHeading?: bool
 export const bodyWrapper = (imageOnLeft?: boolean, isTwoCol?: boolean) => cnb('cc w-full', {
   '3xl:pr-[calc(100%-750px)] lg:pl-40 2xl:pl-60': imageOnLeft && isTwoCol,
   '3xl:pl-[calc(100%-750px)] lg:pr-40 2xl:pr-60': !imageOnLeft && isTwoCol,
-  'children:max-w-[50ch]': !isTwoCol,
+  '*:max-w-[50ch]': !isTwoCol,
 });
 
 export const cta = 'rs-mt-4';

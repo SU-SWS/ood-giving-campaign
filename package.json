@@ -1,7 +1,7 @@
 {
   "name": "ood-giving-campaign",
   "version": "0.0.2",
-  "description": "Giving Campaign",
+  "description": "Momentum",
   "author": "Stanford University",
   "keywords": [
     "nextjs",
@@ -54,7 +54,7 @@
     "@types/react": "^18.2",
     "@types/react-dom": "^18.2",
     "autoprefixer": "^10.4.16",
-    "decanter": "^7.1.2",
+    "decanter": "github:SU-SWS/decanter#tw-3.4.1",
     "eslint": "^8.50.0",
     "eslint-config-next": "^13.4.13",
     "netlify-plugin-vault-variables": "^1.0.7",
