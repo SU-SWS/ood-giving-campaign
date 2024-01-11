@@ -54,13 +54,12 @@ export const EmbedMedia = ({
         {/* Extra classnames passed into wrapper for Vimeo responsive bug */}
         <div className={cnb(mediaAspectRatios[aspectRatio], styles.mediaWrapper)}>
           {hasWindow && (
-            // <ReactPlayer
-            //   width="100%"
-            //   height="100%"
-            //   url={mediaUrl}
-            //   controls
-            // />
-            <p>Player</p>
+            <ReactPlayer
+              width="100%"
+              height="100%"
+              url={mediaUrl}
+              controls
+            />
           )}
         </div>
         {caption && (
