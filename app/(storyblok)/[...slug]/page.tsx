@@ -6,7 +6,6 @@ import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { getPageMetadata } from '@/utilities/getPageMetadata';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
-import PageNotFound from '@/app/not-found';
 import { notFound } from 'next/navigation';
 
 type PathsType = {
