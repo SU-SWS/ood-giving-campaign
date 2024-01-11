@@ -16,7 +16,6 @@ type ParamsType = {
   slug: string[];
 };
 
-export const dynamicParams = false; // Don't generate pages at runtime.
 // Bug in Safari + Netlify + Next where back button doesn't function correctly and returns the user
 // back to the page they hit the back button on after scrolling or interacting with the page they went back to.
 // Setting a long revalidate time patches this until Next/Netlify fix the bug in future releases of their stuff.
@@ -107,11 +106,12 @@ async function getStoryData(params: { slug: string[] }) {
         }
       }
       catch (e) {
-        throw error;
+        console.error('Error', error);
       }
     }
-    throw error;
   }
+
+  return { data: 404 };
 };
 
 /**
@@ -121,7 +121,7 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
   try {
     const { data } = await getStoryData(params);
     if (!data.story || !data.story.content) {
-      throw new Error(`No story data found for ${params.slug.join('/')}`);
+      notFound();
     }
     const blok = data.story.content;
     const slug = params.slug ? params.slug.join('/') : 'home';
@@ -129,10 +129,10 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
     return meta;
   }
   catch (error) {
-    console.error('Metadata error:', error);
+    console.log('Metadata error:', error, params.slug);
   }
 
-  return {};
+  notFound();
 }
 
 /**
@@ -142,11 +142,12 @@ export default async function Page({ params }: { params: ParamsType }) {
   const { data } = await getStoryData(params);
   const slug = params.slug ? params.slug.join('/') : '';
 
-  if (!data.story) {
+  if (data === 404) {
     notFound();
   }
 
   return (
     <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} slug={slug} />
   );
+
 };
