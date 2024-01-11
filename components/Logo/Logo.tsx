@@ -21,8 +21,7 @@ export const Logo = ({
     <LogoHorizontal color={color} />
   );
 
-  // Must be /home or else the RSC prefetch won't work as there are issues with "/"
-  const homeLink = '/home';
+  const homeLink = '/';
 
   // Render logo as link if isLink is true
   if (isLink) {
@@ -31,6 +30,7 @@ export const Logo = ({
         {...rest}
         href={homeLink}
         className={cnb(styles.link(color), className)}
+        prefetch={false}
       >
         {LogoText}
       </Link>
