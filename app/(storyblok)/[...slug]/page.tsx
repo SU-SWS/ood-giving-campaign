@@ -122,7 +122,7 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
   try {
     const { data } = await getStoryData(params);
     if (!data.story || !data.story.content) {
-      return {};
+      notFound();
     }
     const blok = data.story.content;
     const slug = params.slug ? params.slug.join('/') : 'home';
@@ -133,7 +133,7 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
     console.log('Metadata error:', error, params.slug);
   }
 
-  return {};
+  notFound();
 }
 
 /**
