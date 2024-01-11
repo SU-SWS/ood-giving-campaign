@@ -6,6 +6,7 @@ import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { getPageMetadata } from '@/utilities/getPageMetadata';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
+import PageNotFound from '@/app/not-found';
 import { notFound } from 'next/navigation';
 
 type PathsType = {
@@ -106,11 +107,12 @@ async function getStoryData(params: { slug: string[] }) {
         }
       }
       catch (e) {
-        throw error;
+        console.error('Error', error);
       }
     }
-    throw error;
   }
+
+  return { data: 404 };
 };
 
 /**
@@ -120,7 +122,7 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
   try {
     const { data } = await getStoryData(params);
     if (!data.story || !data.story.content) {
-      throw new Error(`No story data found for ${params.slug.join('/')}`);
+      return {};
     }
     const blok = data.story.content;
     const slug = params.slug ? params.slug.join('/') : 'home';
@@ -141,11 +143,12 @@ export default async function Page({ params }: { params: ParamsType }) {
   const { data } = await getStoryData(params);
   const slug = params.slug ? params.slug.join('/') : '';
 
-  if (!data.story) {
+  if (data === 404) {
     notFound();
   }
 
   return (
     <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} slug={slug} />
   );
+
 };

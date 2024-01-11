@@ -2,10 +2,7 @@
 
 import { useEffect } from 'react';
 import { Masthead } from '@/components/Masthead';
-import { FlexBox } from '@/components/FlexBox';
 import { Container } from '@/components/Container';
-import DynamicLoad from 'next/dynamic';
-const Skeleton = DynamicLoad(() => import('react-loading-skeleton'), { ssr: false });
 
 export default function Error({error, reset}: {
   error: Error & { digest?: string }
@@ -21,7 +18,7 @@ export default function Error({error, reset}: {
       <Masthead />
       <main>
         <Container width='site' className='rs-my-8 text-white'>
-          <h1>Something went wrong.</h1>
+          <h1>Something went very wrong.</h1>
           <p>Try refreshing your browser.</p>
         </Container>
       </main>
