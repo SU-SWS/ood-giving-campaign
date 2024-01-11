@@ -2,10 +2,7 @@
 
 import { useEffect } from 'react';
 import { Masthead } from '@/components/Masthead';
-import { FlexBox } from '@/components/FlexBox';
 import { Container } from '@/components/Container';
-import DynamicLoad from 'next/dynamic';
-const Skeleton = DynamicLoad(() => import('react-loading-skeleton'), { ssr: false });
 
 export default function Error({error, reset}: {
   error: Error & { digest?: string }
