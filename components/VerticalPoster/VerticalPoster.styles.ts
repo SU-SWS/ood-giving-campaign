@@ -18,7 +18,7 @@ export const heading = (isSmallHeading: boolean, hasBgImage: boolean) => cnb(
   'bg-clip-text text-black/40': hasBgImage,
 });
 export const customHeading = (hasBgImage: boolean) => cnb(
-  'flex flex-col mb-0 children:block bg-fixed bg-cover bg-center bg-no-repeat', {
+  'flex flex-col mb-0 *:block bg-fixed bg-cover bg-center bg-no-repeat', {
   'bg-clip-text text-black/40': hasBgImage,
 });
 export const customHeadingText = (font: 'druk' | 'serif', isSmallHeading: boolean) => cnb('hyphens-auto first:ml-0 last:mr-0', {
@@ -30,7 +30,7 @@ export const customHeadingText = (font: 'druk' | 'serif', isSmallHeading: boolea
 });
 
 export const body = 'rs-mt-3';
-export const metadata = 'rs-mt-4 children:mx-auto';
+export const metadata = 'rs-mt-4 *:mx-auto';
 export const date = 'block text-center';
 export const cta = 'rs-mt-3';
 

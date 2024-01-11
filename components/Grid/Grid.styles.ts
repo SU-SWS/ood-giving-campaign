@@ -50,7 +50,7 @@ export const gridNumCols = {
   },
 };
 
-export const rtl = '[direction:rtl] children:[direction:ltr]';
+export const rtl = '[direction:rtl] *:[direction:ltr]';
 
 export const gridGaps = {
   default: 'grid-gap',

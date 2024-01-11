@@ -191,7 +191,7 @@ export const ChatbotStory = () => {
           </Bubble>
           <BubbleButton
             className="mt-30"
-            bubbleClassName={q1Choice !== 'learning' ? 'children:transition-colors children:hocus:border-solid children:border children:border-dashed children:!border-white children:!bg-transparent' : ''}
+            bubbleClassName={q1Choice !== 'learning' ? '*:transition-colors *:hocus:border-solid *:border *:border-dashed *:!border-white *:!bg-transparent' : ''}
             delay={10.5}
             onClick={() => setQ1Choice('learning')}
           >
@@ -199,7 +199,7 @@ export const ChatbotStory = () => {
           </BubbleButton>
           <BubbleButton
             className="mt-10"
-            bubbleClassName={q1Choice !== 'poverty' ? 'children:transition-colors children:hocus:border-solid children:border children:border-dashed children:!border-white children:!bg-transparent' : ''}
+            bubbleClassName={q1Choice !== 'poverty' ? '*:transition-colors *:hocus:border-solid *:border *:border-dashed *:!border-white *:!bg-transparent' : ''}
             delay={10.5}
             onClick={() => setQ1Choice('poverty')}
           >

@@ -22,7 +22,7 @@ export const LocalFooter = () => (
             (650) 724-0627<br />
           </Text>
           <Text className="rs-mt-0 rs-mb-3">Tax ID: 94-1156365</Text>
-          <ul className="list-unstyled children:mb-04em">
+          <ul className="list-unstyled *:mb-04em">
             <li><CtaLink color="black" icon="arrow-right" href="contact-us" className="inline-block">Contact us</CtaLink></li>
             <li><CtaLink color="black" icon="arrow-right" href="faq" className="inline-block">FAQs</CtaLink></li>
           </ul>
@@ -60,7 +60,7 @@ export const LocalFooter = () => (
           <Heading as="h3" size={1} font="druk-wide" uppercase className="rs-mb-0">
             Initiatives
           </Heading>
-          <ul className="list-unstyled children:mb-06em">
+          <ul className="list-unstyled *:mb-06em">
             {Object.values(initiatives).map((initiative) => (
               <li key={initiative.name}>
                 <CtaLink color="black" href={initiative.path} className="inline-block">{initiative.name}</CtaLink>
@@ -74,7 +74,7 @@ export const LocalFooter = () => (
           <Heading as="h3" size={1} font="druk-wide" uppercase className="rs-mb-0">
             Themes
           </Heading>
-          <ul className="list-unstyled children:mb-06em">
+          <ul className="list-unstyled *:mb-06em">
             {Object.values(themes).map((theme) => (
               <li key={theme.name}>
                 <CtaLink color="black" href={theme.path} className="inline-block">{theme.name}</CtaLink>
@@ -86,7 +86,7 @@ export const LocalFooter = () => (
           <Heading as="h3" size={1} font="druk-wide" uppercase className="rs-mb-0">
             Schools
           </Heading>
-          <ul className="list-unstyled children:mb-06em">
+          <ul className="list-unstyled *:mb-06em">
             {Object.values(schools).map((school) => (
               <li key={school.name}>
                 <CtaLink color="black" href={school.href} className="inline-block">{school.name}</CtaLink>

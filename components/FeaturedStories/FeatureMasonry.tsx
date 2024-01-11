@@ -56,7 +56,7 @@ export const FeatureMasonry = ({
           <div className="absolute top-0 left-0 w-full h-full backdrop-blur-sm" />
           <EmbedMedia
             mediaUrl={audioUrl}
-            className="relative z-10 rs-py-6 children:w-4/5 children:mx-auto lg:children:children:aspect-w-2 lg:children:children:aspect-h-1 xl:children:children:aspect-w-4 xl:children:children:aspect-h-1"
+            className="relative z-10 rs-py-6 *:w-4/5 *:mx-auto lg:*:*:aspect-w-2 lg:*:*:aspect-h-1 xl:*:*:aspect-w-4 xl:*:*:aspect-h-1"
           />
         </FlexBox>
         <FlexBox

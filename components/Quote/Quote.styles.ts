@@ -6,8 +6,8 @@ export const root = (
   quoteOnRight?: boolean,
   hasBar?: boolean,
 ) => cnb('relative break-words flex flex-col lg:max-w-prose lg:ml-0', {
-  'max-w-[90%] sm:max-w-[80%] mx-auto md:max-w-full': isMinimal && !addDarkOverlay,
-  'bg-gc-black/50 backdrop-blur-sm h-full children:mt-auto children:mb-0 text-white': addDarkOverlay && !isMinimal,
+  'max-w-[90%] sm:max-w-4/5 mx-auto md:max-w-full': isMinimal && !addDarkOverlay,
+  'bg-gc-black/50 backdrop-blur-sm h-full *:mt-auto *:mb-0 text-white': addDarkOverlay && !isMinimal,
   'rs-pl-4': !quoteOnRight && (!isMinimal || addDarkOverlay),
   'rs-pr-4': quoteOnRight && (!isMinimal || addDarkOverlay),
   'rs-px-4': addDarkOverlay && !hasBar,

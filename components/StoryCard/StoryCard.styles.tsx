@@ -14,7 +14,7 @@ export const heading = (hasTabColor: boolean) => cnb('mt-06em rs-mb-neg1 text-cu
 
 export const headingLink = 'stretched-link no-underline !font-bold !leading-tight';
 
-export const taxonomy = (hasTabColor: boolean) => cnb('list-unstyled leading-display children:mr-12 last:children:ml-0 mr-18 ml-36', {
+export const taxonomy = (hasTabColor: boolean) => cnb('list-unstyled leading-display *:mr-12 last:*:ml-0 mr-18 ml-36', {
   '@200:ml-24 @xs:ml-36': hasTabColor,
 });
 

@@ -29,7 +29,7 @@ export const BrochureStory = () => {
       <Container pb={10}>
         <Heading as="h1" srOnly>Solve for now. To shape what’s next.</Heading>
         <Text font="serif" weight="bold" leading="tight" align="center" aria-hidden className="max-w-[110rem] mx-auto">
-          <Text as="span" size="f7" font="serif" className="block rs-mb-4 children:mx-auto">
+          <Text as="span" size="f7" font="serif" className="block rs-mb-4 *:mx-auto">
             <AnimatedText text="Solved for now." />
           </Text>
           <AnimateInView animation="sharpen" delay={1} duration={0.6} >

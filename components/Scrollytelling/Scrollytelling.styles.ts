@@ -37,4 +37,4 @@ export const heading = 'relative z-10 mb-02em whitespace-pre-line';
 export const subhead = 'sm:max-w-[40ch] mx-auto';
 export const children = 'grid gap-y-30 md:gap-y-40 xl:gap-y-60';
 
-export const caption = 'relative children:children:leading-display caption mt-07em children:max-w-prose-wide ml-0';
+export const caption = 'relative *:*:leading-display caption mt-07em *:max-w-prose-wide ml-0';
