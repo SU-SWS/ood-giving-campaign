@@ -39,11 +39,20 @@ export const ChangemakerCard = ({
 }: ChangemakerCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const contentId = useId();
   const headingId = useId();
   const [isShown, toggle, setIsShown] = useToggle();
 
-  // If card content is shown, clicking outside it will dismiss its
+  const handleClick = () => {
+    // toggle the card content and if it is shown, focus on contentRef
+    toggle();
+    if (!isShown) {
+      contentRef.current?.focus();
+    }
+  };
+
+  // If card content is shown, clicking outside it will dismiss it
   useOnClickOutside(cardRef, () => {
     if (isShown) {
       setIsShown(false);
@@ -51,9 +60,11 @@ export const ChangemakerCard = ({
   });
 
   // If card content is shown, pressing escape will dismiss it
+  // and focus on the button
   useEscape(() => {
     if (isShown) {
       setIsShown(false);
+      buttonRef.current?.focus();
     }
   });
 
@@ -104,12 +115,14 @@ export const ChangemakerCard = ({
             className={styles.cardContent}
             aria-hidden={!isShown}
           >
-            {children}
+            <div ref={contentRef} tabIndex={isShown ? 0 : -1}>
+              {children}
+            </div>
           </FlexBox>
           <button
             ref={buttonRef}
             type="button"
-            onClick={toggle}
+            onClick={handleClick}
             aria-label={isShown ? 'Dismiss' : `Read more about ${heading}`}
             aria-controls={contentId}
             aria-expanded={isShown}
