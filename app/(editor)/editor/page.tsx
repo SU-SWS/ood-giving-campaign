@@ -67,7 +67,7 @@ async function getStoryData({ path }: PageProps['searchParams']): Promise<ISbRes
   const slug = path.replace(/\/$/, '') || 'home'; // Remove trailing slash or if no slash, use home.
 
   try {
-    const story: ISbResult = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
+    const story: ISbResult = await storyblokApi.get(`cdn/stories/${slug}`, sbParams, { cache: 'no-store' });
     return story;
   } catch (error) {
     if (typeof error === 'string') {
