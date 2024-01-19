@@ -26,7 +26,7 @@ export default function GAProvider({ children }: { children: React.ReactNode }) 
  * @returns GTAG script
  */
 export const GTAG = () => {
-  if (process.env.CONTEXT && process.env.CONTEXT in ['production', 'branch-deploy']) {
+  if (process.env.CONTEXT && ['production', 'branch-deploy'].includes(process.env.CONTEXT)) {
     return (
       <Script id="google-tag-manager" strategy="afterInteractive">
       {`
