@@ -116,6 +116,8 @@ export default async function Page({ searchParams }: PageProps) {
     notFound();
   }
 
+  const slug = searchParams.path.replace(/\/$/, '') || 'home'; // Remove trailing slash or if no slash, use home.
+
   // Get data out of the API.
   const { data } = await getStoryData(searchParams);
 
@@ -126,6 +128,6 @@ export default async function Page({ searchParams }: PageProps) {
 
   // Return the story.
   return (
-    <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} />
+    <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} slug />
   );
 };
