@@ -48,7 +48,7 @@ async function getStoryData() {
   };
 
   try {
-    const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams, { cache: 'no-store' });
+    const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
     return story;
   }
   catch (error) {
