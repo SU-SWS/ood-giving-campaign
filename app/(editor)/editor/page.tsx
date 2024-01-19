@@ -117,7 +117,6 @@ export default async function Page({ searchParams }: PageProps) {
   }
 
   const slug = searchParams.path.replace(/\/$/, '');
-  console.log(slug); // Remove trailing slash or if no slash, use home.
 
   // Get data out of the API.
   const { data } = await getStoryData(searchParams);
