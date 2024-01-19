@@ -37,7 +37,7 @@ export const TogetherSection = () => {
     <div ref={sectionRef} className="relative overflow-hidden rs-pb-8 w-full bg-gc-black text-white">
       <Container>
         <AnimateInView animation="slideUp">
-          <Heading size="f5" align="center" leading="tight" className="mx-auto max-w-1000">
+          <Heading size="f5" align="center" leading="tight" className="mx-auto max-w-900">
             True change will require all of us.
           </Heading>
         </AnimateInView>
