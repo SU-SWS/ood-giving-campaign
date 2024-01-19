@@ -59,7 +59,7 @@ export async function generateStaticParams() {
   };
 
   // Use the `cdn/links` endpoint to get a list of all stories without all the extra data.
-  const response = await storyblokApi.getAll('cdn/links', sbParams, null, { cache: 'no-store' });
+  const response = await storyblokApi.getAll('cdn/links', sbParams);
   const stories = response.filter((link) => link.is_folder === false);
   let paths: PathsType[] = [];
 
@@ -94,7 +94,7 @@ async function getStoryData(params: { slug: string[] }) {
   };
 
   try {
-    const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams, { cache: 'no-store' });
+    const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
     return story;
   }
   catch (error) {

@@ -44,7 +44,7 @@ async function getStoryData(slug = 'page-not-found') {
   };
 
   try {
-    const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams, { cache: 'no-store' });
+    const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
     return story;
   } catch (error) {
     if (typeof error === 'string') {
