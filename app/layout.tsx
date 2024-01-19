@@ -7,7 +7,7 @@ import LazyMotionProvider from '@/components/LazyMotionProvider';
 import { FlexBox } from '@/components/FlexBox';
 import { LocalFooterMvp } from '@/components/LocalFooter';
 import { GlobalFooter } from '@/components/GlobalFooter';
-import GAProvider from '@/components/GAProvider';
+import GAProvider, { GTAG } from '@/components/GAProvider';
 
 type LayoutProps = {
   children: React.ReactNode,
@@ -59,6 +59,7 @@ export default function RootLayout({ children }: LayoutProps) {
             stanford.variable,
           )}
         >
+          <GTAG />
           {/* Absolutely necessary to have a body tag here, otherwise your components won't get any interactivity */}
           <body>
             <FlexBox justifyContent="between" direction="col" className="min-h-screen relative">
