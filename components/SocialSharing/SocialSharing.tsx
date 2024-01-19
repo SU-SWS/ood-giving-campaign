@@ -40,6 +40,7 @@ export const SocialSharing = ({
   };
 
   const safeUrl = encodeURIComponent(`${config.siteUrlProd}/${slug}`);
+  const safeTitle = encodeURIComponent(title);
   const facebookBaseURL = 'https://www.facebook.com/sharer/sharer.php?u=';
   const twitterBaseURL = 'https://twitter.com/intent/tweet?url=';
   const linkedinBaseURL = 'https://www.linkedin.com/shareArticle?mini=true&url=';
@@ -60,7 +61,7 @@ export const SocialSharing = ({
             </SocialButton>
             <SocialButton
               aria-label="Share via email"
-              href={`mailto:?subject=${title ? title : 'Check out this story'}&body=${safeUrl}`}
+              href={`mailto:?subject=${title ? safeTitle : 'Check out this story'}&body=${safeUrl}`}
             >
               <EmailIcon aria-hidden width="18" />
             </SocialButton>
@@ -72,7 +73,7 @@ export const SocialSharing = ({
             </SocialButton>
             <SocialButton
               aria-label="Share on X (formerly Twitter)"
-              href={`${twitterBaseURL}${safeUrl}${title ? `&text=${title}` : ''}`}
+              href={`${twitterBaseURL}${safeUrl}${title ? `&text=${safeTitle}` : ''}`}
             >
               <TwitterX aria-hidden width="18" />
             </SocialButton>
