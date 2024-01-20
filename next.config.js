@@ -14,6 +14,7 @@ const nextConfig = {
   },
   env: {
     DEPLOY_PRIME_URL: process.env.DEPLOY_PRIME_URL,
+    CONTEXT: process.env.CONTEXT,
   },
   async redirects() {
     return [
