@@ -67,7 +67,7 @@ async function getStoryData({ path }: PageProps['searchParams']): Promise<ISbRes
   const slug = path.replace(/\/$/, '') || 'home'; // Remove trailing slash or if no slash, use home.
 
   try {
-    const story: ISbResult = await storyblokApi.get(`cdn/stories/${slug}`, sbParams, { cache: 'no-store' });
+    const story: ISbResult = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
     return story;
   } catch (error) {
     if (typeof error === 'string') {
@@ -116,6 +116,8 @@ export default async function Page({ searchParams }: PageProps) {
     notFound();
   }
 
+  const slug = searchParams.path.replace(/\/$/, '');
+
   // Get data out of the API.
   const { data } = await getStoryData(searchParams);
 
@@ -126,6 +128,6 @@ export default async function Page({ searchParams }: PageProps) {
 
   // Return the story.
   return (
-    <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} />
+    <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} slug={slug} />
   );
 };
