@@ -11,6 +11,7 @@ import { LinkIcon } from './LinkIcon';
 import { WidthBox } from '../WidthBox';
 import { SocialButton } from './SocialButton';
 import { HeroIcon } from '../HeroIcon';
+import { Text } from '@/components/Typography/Text';
 import { config } from '@/utilities/config';
 import * as styles from './SocialSharing.styles';
 
@@ -55,10 +56,20 @@ export const SocialSharing = ({
           <FlexBox className={styles.buttonWrapper}>
             <SocialButton
               onClick={handleCopyClick}
-              aria-label={buttonState === 'copied' ? 'URL has been copied' : 'Copy story URL'}
+              aria-label={buttonState === 'copied' ? 'Story link has been copied' : 'Copy story link'}
             >
               {buttonState === 'copied' ? <HeroIcon icon="copy" /> : <LinkIcon aria-hidden width="20" />}
             </SocialButton>
+            <Text
+              color="white"
+              className={styles.copiedTextBubble}
+              weight="semibold"
+              leading="none"
+              icon="check-circle"
+              aria-hidden={buttonState !== 'copied'}
+            >
+              Link copied
+            </Text>
             <SocialButton
               aria-label="Share via email"
               href={`mailto:?subject=${title ? safeTitle : 'Check out this story'}&body=${safeUrl}`}
