@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
+    output: 'export',
     logging: 'verbose',
     isrMemoryCacheSize: 0, // disable ISR cache in memory and rely on file system cache.
   },

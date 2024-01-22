@@ -1,14 +1,12 @@
 # BUILD Settings:
 # ##############################################################################
 [build]
-  command = "npm run build:netlify"
-  publish = ".next"
+  command = "npm run export"
+  publish = "out"
+  environment = { NETLIFY_NEXT_PLUGIN_SKIP = "true" }
 
 # PLUGINS
 # ##############################################################################
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
 
 # Fetch vault plugin needs to come before any of the contextual environment
 # variable plugins so they can act on the new vars.
