@@ -16,11 +16,6 @@ type ParamsType = {
   slug: string[];
 };
 
-// Bug in Safari + Netlify + Next where back button doesn't function correctly and returns the user
-// back to the page they hit the back button on after scrolling or interacting with the page they went back to.
-// Setting a long revalidate time patches this until Next/Netlify fix the bug in future releases of their stuff.
-export const revalidate = 60 * 60 * 24 * 365;
-
 // Storyblok bridge options.
 const bridgeOptions = {
   resolveRelations,
