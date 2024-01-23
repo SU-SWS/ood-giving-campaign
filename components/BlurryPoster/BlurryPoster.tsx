@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, useEffect, useState } from 'react';
 import { useMediaQuery } from 'usehooks-ts';
 import { cnb } from 'cnbuilder';
 import { AnimateInView } from '@/components/Animate';
@@ -85,6 +85,12 @@ export const BlurryPoster = ({
   ...props
 }: BlurryPosterProps) => {
   const isDesktop = useMediaQuery(`(min-width: ${config.breakpoints.lg}px)`);
+  const [showDesktop, setShowDesktop] = useState(false);
+  // Use useEffect to update your local state from client side only after first render
+  useEffect(() => {
+    setShowDesktop(isDesktop);
+  }, [isDesktop]);
+
   const date = publishedDate && new Date(publishedDate);
   const formattedDate = date && date.toLocaleDateString('en-US', {
     month: 'long',
@@ -96,7 +102,7 @@ export const BlurryPoster = ({
 
   return (
     <Container {...props} bgColor={bgColor} width="full" className={styles.root}>
-      {isDesktop ? (
+      {showDesktop ? (
         <img
           src={getProcessedImage(bgImageSrc, '2000x1200', bgImageFocus)}
           alt={bgImageAlt || ''}
@@ -206,7 +212,7 @@ export const BlurryPoster = ({
           <Container width={isTwoCol ? 'full' : 'site'} className={styles.imageWrapper(imageOnLeft, isTwoCol, !!imageSrc)}>
             {imageSrc && (
               <AnimateInView animation="zoomSharpen" duration={1} className={styles.imageInnerWrapper}>
-                {isDesktop ? (
+                {showDesktop ? (
                   <img
                     src={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '900x1200', imageFocus)}
                     alt={alt || ''}
