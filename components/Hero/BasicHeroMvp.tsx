@@ -2,7 +2,6 @@ import { Container } from '@/components/Container';
 import { Heading, Text } from '@/components/Typography';
 import { ImageOverlay } from '@/components/ImageOverlay';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { subhead } from '../Scrollytelling';
 
 /**
  * Temporary hero for MVP basic page

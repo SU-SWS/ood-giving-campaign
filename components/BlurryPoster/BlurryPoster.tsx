@@ -1,4 +1,5 @@
 import React, { HTMLAttributes, useEffect, useState } from 'react';
+import Image from 'next/image';
 import { useMediaQuery } from 'usehooks-ts';
 import { cnb } from 'cnbuilder';
 import { AnimateInView } from '@/components/Animate';
@@ -103,24 +104,26 @@ export const BlurryPoster = ({
   return (
     <Container {...props} bgColor={bgColor} width="full" className={styles.root}>
       {showDesktop ? (
-        <img
+        <Image
           src={getProcessedImage(bgImageSrc, '2000x1200', bgImageFocus)}
           alt={bgImageAlt || ''}
           aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
-          fetchPriority={type === 'hero' ? 'high' : 'auto'}
+          priority={type === 'hero'}
           className={styles.bgImage}
           width={2000}
           height={1200}
+          unoptimized
         />
       ) : (
-        <img
+        <Image
           src={getProcessedImage(bgImageSrc, '1000x1500', bgImageFocus)}
           alt={bgImageAlt || ''}
           aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
           className={styles.bgImageMobile}
-          fetchPriority={type === 'hero' ? 'high' : 'auto'}
+          priority={type === 'hero'}
           width={1000}
           height={1500}
+          unoptimized
         />
       )}
       <div className={cnb(styles.blurWrapper(
@@ -213,24 +216,26 @@ export const BlurryPoster = ({
             {imageSrc && (
               <AnimateInView animation="zoomSharpen" duration={1} className={styles.imageInnerWrapper}>
                 {showDesktop ? (
-                  <img
+                  <Image
                     src={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '900x1200', imageFocus)}
                     alt={alt || ''}
                     width={type === 'hero' && !isTwoCol ? 1800 : 900}
                     height={type === 'hero' && !isTwoCol ? 900 : 1200}
                     aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
-                    fetchPriority={type === 'hero' ? 'high' : 'auto'}
+                    priority={type === 'hero'}
                     className={styles.image}
+                    unoptimized
                   />
                 ) : (
-                  <img
+                  <Image
                     src={getProcessedImage(imageSrc, '1000x1000', imageFocus)}
                     alt={alt || ''}
                     width={1000}
                     height={1000}
                     aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
-                    fetchPriority={type === 'hero' ? 'high' : 'auto'}
+                    priority={type === 'hero'}
                     className={styles.imageMobile}
+                    unoptimized
                   />
                 )}
               </AnimateInView>
