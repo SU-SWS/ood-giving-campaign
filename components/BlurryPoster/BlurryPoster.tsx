@@ -1,13 +1,15 @@
 import React, { HTMLAttributes } from 'react';
+import { useMediaQuery } from 'usehooks-ts';
 import { cnb } from 'cnbuilder';
-import { AnimateInView } from '../Animate';
-import { Container } from '../Container';
-import { Grid } from '../Grid';
-import { FlexBox } from '../FlexBox';
+import { AnimateInView } from '@/components/Animate';
+import { Container } from '@/components/Container';
+import { Grid } from '@/components/Grid';
+import { FlexBox } from '@/components/FlexBox';
 import {
   Heading, Paragraph, Text, type HeadingType, SrOnlyText,
-} from '../Typography';
+} from '@/components/Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
+import { config } from '@/utilities/config';
 import {
   accentBorderColors,
   type AccentColorType,
@@ -82,6 +84,7 @@ export const BlurryPoster = ({
   className,
   ...props
 }: BlurryPosterProps) => {
+  const isDesktop = useMediaQuery(`(min-width: ${config.breakpoints.lg}px)`);
   const date = publishedDate && new Date(publishedDate);
   const formattedDate = date && date.toLocaleDateString('en-US', {
     month: 'long',
@@ -93,24 +96,27 @@ export const BlurryPoster = ({
 
   return (
     <Container {...props} bgColor={bgColor} width="full" className={styles.root}>
-      <img
-        src={getProcessedImage(bgImageSrc, '1000x1500', bgImageFocus)}
-        alt={bgImageAlt || ''}
-        aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
-        className={styles.bgImageMobile}
-        fetchPriority={type === 'hero' ? 'high' : 'auto'}
-        width={1000}
-        height={1500}
-      />
-      <img
-        src={getProcessedImage(bgImageSrc, '2000x1200', bgImageFocus)}
-        alt={bgImageAlt || ''}
-        aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
-        fetchPriority={type === 'hero' ? 'high' : 'auto'}
-        className={styles.bgImage}
-        width={2000}
-        height={1200}
-      />
+      {isDesktop ? (
+        <img
+          src={getProcessedImage(bgImageSrc, '2000x1200', bgImageFocus)}
+          alt={bgImageAlt || ''}
+          aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
+          fetchPriority={type === 'hero' ? 'high' : 'auto'}
+          className={styles.bgImage}
+          width={2000}
+          height={1200}
+        />
+      ) : (
+        <img
+          src={getProcessedImage(bgImageSrc, '1000x1500', bgImageFocus)}
+          alt={bgImageAlt || ''}
+          aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
+          className={styles.bgImageMobile}
+          fetchPriority={type === 'hero' ? 'high' : 'auto'}
+          width={1000}
+          height={1500}
+        />
+      )}
       <div className={cnb(styles.blurWrapper(
         addBgBlur,
         !!darkOverlay && darkOverlay !== 'none', type, bgColor,
@@ -200,24 +206,27 @@ export const BlurryPoster = ({
           <Container width={isTwoCol ? 'full' : 'site'} className={styles.imageWrapper(imageOnLeft, isTwoCol, !!imageSrc)}>
             {imageSrc && (
               <AnimateInView animation="zoomSharpen" duration={1} className={styles.imageInnerWrapper}>
-                <img
-                  src={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '900x1200', imageFocus)}
-                  alt={alt || ''}
-                  width={type === 'hero' && !isTwoCol ? 1800 : 900}
-                  height={type === 'hero' && !isTwoCol ? 900 : 1200}
-                  aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
-                  fetchPriority={type === 'hero' ? 'high' : 'auto'}
-                  className={styles.image}
-                />
-                <img
-                  src={getProcessedImage(imageSrc, '1000x1000', imageFocus)}
-                  alt={alt || ''}
-                  width={1000}
-                  height={1000}
-                  aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
-                  fetchPriority={type === 'hero' ? 'high' : 'auto'}
-                  className={styles.imageMobile}
-                />
+                {isDesktop ? (
+                  <img
+                    src={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '900x1200', imageFocus)}
+                    alt={alt || ''}
+                    width={type === 'hero' && !isTwoCol ? 1800 : 900}
+                    height={type === 'hero' && !isTwoCol ? 900 : 1200}
+                    aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
+                    fetchPriority={type === 'hero' ? 'high' : 'auto'}
+                    className={styles.image}
+                  />
+                ) : (
+                  <img
+                    src={getProcessedImage(imageSrc, '1000x1000', imageFocus)}
+                    alt={alt || ''}
+                    width={1000}
+                    height={1000}
+                    aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
+                    fetchPriority={type === 'hero' ? 'high' : 'auto'}
+                    className={styles.imageMobile}
+                  />
+                )}
               </AnimateInView>
             )}
           </Container>
