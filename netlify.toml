@@ -5,6 +5,9 @@
   publish = "out"
   environment = { NETLIFY_NEXT_PLUGIN_SKIP = "true" }
 
+[functions]
+  directory = "netlify/functions"
+
 # PLUGINS
 # ##############################################################################
 
@@ -46,4 +49,10 @@
   from = "/home"
   to = "/"
   status = 301
+  force = true
+
+[[redirects]]
+  from = "/render"
+  to = "/.netlify/builders/render"
+  status = 200
   force = true
