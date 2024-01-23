@@ -19,7 +19,7 @@ import {
   PlusIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
-
+import { CheckIcon } from '@heroicons/react/16/solid';
 import { PlayIcon } from '@heroicons/react/24/solid';
 
 export const iconMap = {
@@ -30,6 +30,7 @@ export const iconMap = {
   'arrow-down': ArrowDownIcon,
   back: ArrowLeftIcon,
   copy: DocumentDuplicateIcon,
+  'check-circle': CheckIcon,
   'chevron-down': ChevronDownIcon,
   'chevron-right': ChevronRightIcon,
   'chevron-up': ChevronUpIcon,

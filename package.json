@@ -32,8 +32,8 @@
     "tsc": "tsc"
   },
   "dependencies": {
-    "@heroicons/react": "^2.0.18",
-    "@storyblok/react": "^3.0.2",
+    "@heroicons/react": "^2.1.1",
+    "@storyblok/react": "^3.0.8",
     "@typeform/embed-react": "^3.8.0",
     "cnbuilder": "^3.1.0",
     "cookies-next": "^4.0.0",
