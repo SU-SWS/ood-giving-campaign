@@ -101,25 +101,25 @@ export const BlurryPoster = ({
           height={1200}
         />
         <source
-          srcSet={getProcessedImage(bgImageSrc, '1200x1200', bgImageFocus)}
+          srcSet={getProcessedImage(bgImageSrc, addBgBlur ? '600x600' : '1200x1200', bgImageFocus)}
           media="(min-width: 768px)"
           width={1200}
           height={1200}
         />
         <source
-          srcSet={getProcessedImage(bgImageSrc, '900x600', bgImageFocus)}
+          srcSet={getProcessedImage(bgImageSrc, addBgBlur ? '450x300' : '900x600', bgImageFocus)}
           media="(min-width: 461px)"
           width={900}
           height={600}
         />
         <source
-          srcSet={getProcessedImage(bgImageSrc, '600x900', bgImageFocus)}
+          srcSet={getProcessedImage(bgImageSrc, addBgBlur ? '200x300' : '600x900', bgImageFocus)}
           media="(max-width: 460px)"
           width={600}
           height={900}
         />
         <img
-          src={getProcessedImage(bgImageSrc, '2000x1200', bgImageFocus)}
+          src={getProcessedImage(bgImageSrc, addBgBlur ? '1000x600' : '2000x1200', bgImageFocus)}
           alt={bgImageAlt || ''}
           width={2000}
           height={1200}
