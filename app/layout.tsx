@@ -1,5 +1,4 @@
 import './globals.css';
-import 'react-loading-skeleton/dist/skeleton.css';
 import { cnb } from 'cnbuilder';
 import { Source_Sans_3, Source_Serif_4 } from 'next/font/google';
 import localFont from 'next/font/local';
