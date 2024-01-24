@@ -1,5 +1,4 @@
-import React, { HTMLAttributes, useEffect, useState } from 'react';
-import { useMediaQuery } from 'usehooks-ts';
+import React, { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
 import { AnimateInView } from '@/components/Animate';
 import { Container } from '@/components/Container';
@@ -9,7 +8,6 @@ import {
   Heading, Paragraph, Text, type HeadingType, SrOnlyText,
 } from '@/components/Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { config } from '@/utilities/config';
 import {
   accentBorderColors,
   type AccentColorType,
@@ -84,13 +82,6 @@ export const BlurryPoster = ({
   className,
   ...props
 }: BlurryPosterProps) => {
-  const isDesktop = useMediaQuery(`(min-width: ${config.breakpoints.lg}px)`);
-  const [showDesktop, setShowDesktop] = useState(false);
-  // Use useEffect to update your local state from client side only after first render
-  useEffect(() => {
-    setShowDesktop(isDesktop);
-  }, [isDesktop]);
-
   const date = publishedDate && new Date(publishedDate);
   const formattedDate = date && date.toLocaleDateString('en-US', {
     month: 'long',
