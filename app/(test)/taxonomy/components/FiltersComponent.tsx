@@ -1,6 +1,6 @@
 'use client';
 import { SelectInput } from '@/components/Forms/Select';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 export type FiltersComponentProps = {
   themes: {
