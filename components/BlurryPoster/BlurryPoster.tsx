@@ -105,15 +105,15 @@ export const BlurryPoster = ({
       <picture>
         <source
           srcSet={getProcessedImage(bgImageSrc, '2000x1200', bgImageFocus)}
-          media="(min-width: 992px)"
+          media="(min-width: 1200px)"
         />
         <source
           srcSet={getProcessedImage(bgImageSrc, '1200x1200', bgImageFocus)}
-          media="(min-width: 768px)"
+          media="(min-width: 768px) and (max-width: 1199px)"
         />
         <source
           srcSet={getProcessedImage(bgImageSrc, '900x600', bgImageFocus)}
-          media="(min-width: 461px)"
+          media="(min-width: 461px) and (max-width: 767px)"
         />
         <source
           srcSet={getProcessedImage(bgImageSrc, '600x900', bgImageFocus)}
@@ -126,6 +126,7 @@ export const BlurryPoster = ({
           height={1200}
           aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
           className={styles.bgImage}
+          fetchPriority="high"
         />
       </picture>
       <div className={cnb(styles.blurWrapper(

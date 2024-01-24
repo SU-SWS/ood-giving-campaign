@@ -2,7 +2,6 @@ import { cnb } from 'cnbuilder';
 
 export const root = 'relative bg-no-repeat bg-cover overflow-hidden break-words';
 
-export const bgImageMobile = 'absolute top-0 left-0 w-full h-full object-cover';
 export const bgImage = 'absolute top-0 left-0 w-full h-full object-cover';
 
 export const blurWrapper = (
