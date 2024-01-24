@@ -3,7 +3,7 @@ export type PageProps = {
 };
 
 const Page = ({children}:PageProps) => {
-  return children;
+  return <p>No results found</p>;
 };
 
 export default Page;

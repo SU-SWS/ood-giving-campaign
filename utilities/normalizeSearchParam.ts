@@ -6,5 +6,9 @@ export default function normalizeSearchParam(searchParam: string | string[]) {
     return searchParam;
   }
 
-  return searchParam.join(',');
+  if (Array.isArray(searchParam)) {
+    return searchParam.join(',');
+  }
+
+  return searchParam;
 }

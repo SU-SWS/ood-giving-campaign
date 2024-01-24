@@ -1,18 +1,29 @@
 import { Masthead } from '@/components/Masthead';
 
 export type TaxonomyLayoutProps = {
-  children: React.ReactNode,
+  filters: React.ReactNode,
+  results: React.ReactNode,
 };
 
 /**
  * The page component.
  */
-export default async function TaxonomyLayout({children}: TaxonomyLayoutProps) {
+export default async function TaxonomyLayout({filters, results}: TaxonomyLayoutProps) {
   return (
     <>
       <Masthead className='bg-black h-[8.6rem]'/>
       <main className='rs-my-8 cc w-full'>
-        {children}
+        <h1>Page Title</h1>
+        <section>
+          <header>
+            <h2>Filters</h2>
+            {filters}
+          </header>
+          <div>
+            <h2>Results</h2>
+            {results}
+          </div>
+        </section>
       </main>
     </>
   );

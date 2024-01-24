@@ -2,6 +2,7 @@ import type { SelectHTMLAttributes } from 'react';
 
 export type SelectInputProps = SelectHTMLAttributes<HTMLSelectElement> & {
   label: string;
+  selected?: string;
   opts: {
     key: string,
     value: number | string,
@@ -9,14 +10,17 @@ export type SelectInputProps = SelectHTMLAttributes<HTMLSelectElement> & {
   }[];
 };
 
-const SelectInput = ({opts, label, ...props}: SelectInputProps) => {
+const SelectInput = ({
+opts, label, selected, ...props
+}: SelectInputProps) => {
   return (
     <label>
       <strong>{label}</strong>
-      <select {...props}>
-        {opts.map(({key, value, name}) => {
+      <select {...props} defaultValue={selected}>
+        <option value=''>- Choose an option -</option>
+        {opts.map(({value, name}) => {
           return (
-            <option key={key} value={value}>{name ?? key}</option>
+            <option key={value} value={value}>{name ?? value}</option>
           );
         })}
       </select>
