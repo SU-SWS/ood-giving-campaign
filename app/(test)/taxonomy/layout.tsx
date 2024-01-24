@@ -1,14 +1,19 @@
+'use client';
 import { Masthead } from '@/components/Masthead';
+import { Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 export type TaxonomyLayoutProps = {
   filters: React.ReactNode,
   results: React.ReactNode,
+  children: React.ReactNode
 };
 
 /**
  * The page component.
  */
-export default async function TaxonomyLayout({filters, results}: TaxonomyLayoutProps) {
+export default function TaxonomyLayout({filters, results, children}: TaxonomyLayoutProps) {
+  const searchParams = useSearchParams();
   return (
     <>
       <Masthead className='bg-black h-[8.6rem]'/>
@@ -21,7 +26,9 @@ export default async function TaxonomyLayout({filters, results}: TaxonomyLayoutP
           </header>
           <div>
             <h2>Results</h2>
-            {results}
+            <Suspense key={searchParams.toString()}>
+              {results}
+            </Suspense>
           </div>
         </section>
       </main>

@@ -1,3 +1,4 @@
+'use client';
 import { ISbStoryData } from 'storyblok-js-client';
 import { FlexBox } from '@/components/FlexBox';
 

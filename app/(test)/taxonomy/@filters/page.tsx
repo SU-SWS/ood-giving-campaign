@@ -85,14 +85,7 @@ export default async function Page({searchParams}: PageProps) {
   if (initiatives) filters.initiatives = { any_in_array: normalizeSearchParam(initiatives) };
   if (schools) filters.schools = { any_in_array: normalizeSearchParam(schools) };
 
-  const selectedItems = {
-    topics: normalizeSearchParam(topics),
-    themes: normalizeSearchParam(themes),
-    initiatives: normalizeSearchParam(initiatives),
-    schools: normalizeSearchParam(schools),
-  };
-
   return (
-    <FiltersComponent themes={themesOptions} topics={topicOptions} initiatives={initiativesOptions} schools={schoolsOptions} selected={selectedItems} />
+    <FiltersComponent themes={themesOptions} topics={topicOptions} initiatives={initiativesOptions} schools={schoolsOptions} />
   );
 };

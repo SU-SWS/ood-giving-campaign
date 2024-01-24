@@ -1,6 +1,7 @@
 import StoryblokClient from 'storyblok-js-client';
 import normalizeSearchParam from '@/utilities/normalizeSearchParam';
 import ResultsComponent from '@/app/(test)/taxonomy/components/ResultsComponent';
+import { Suspense } from 'react';
 
 type filterParams = {
   topics?: string[] | string;
@@ -34,6 +35,9 @@ export default async function Page({searchParams}: PageProps) {
   const {
     topics, themes, initiatives, schools,
   } = searchParams;
+
+  // wait 3 seconds
+  await new Promise((resolve) => setTimeout(resolve, 3000));
 
   const storyblokApi = new StoryblokClient({
     accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
