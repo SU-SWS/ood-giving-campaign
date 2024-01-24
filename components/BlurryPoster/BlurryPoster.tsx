@@ -102,27 +102,32 @@ export const BlurryPoster = ({
 
   return (
     <Container {...props} bgColor={bgColor} width="full" className={styles.root}>
-      {showDesktop ? (
+      <picture>
+        <source
+          srcSet={getProcessedImage(bgImageSrc, '2000x1200', bgImageFocus)}
+          media="(min-width: 992px)"
+        />
+        <source
+          srcSet={getProcessedImage(bgImageSrc, '1200x1200', bgImageFocus)}
+          media="(min-width: 768px)"
+        />
+        <source
+          srcSet={getProcessedImage(bgImageSrc, '900x600', bgImageFocus)}
+          media="(min-width: 461px)"
+        />
+        <source
+          srcSet={getProcessedImage(bgImageSrc, '600x900', bgImageFocus)}
+          media="(max-width: 460px)"
+        />
         <img
           src={getProcessedImage(bgImageSrc, '2000x1200', bgImageFocus)}
           alt={bgImageAlt || ''}
-          aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
-          fetchPriority={type === 'hero' ? 'high' : 'auto'}
-          className={styles.bgImage}
           width={2000}
           height={1200}
-        />
-      ) : (
-        <img
-          src={getProcessedImage(bgImageSrc, '1000x1500', bgImageFocus)}
-          alt={bgImageAlt || ''}
           aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
-          className={styles.bgImageMobile}
-          fetchPriority={type === 'hero' ? 'high' : 'auto'}
-          width={1000}
-          height={1500}
+          className={styles.bgImage}
         />
-      )}
+      </picture>
       <div className={cnb(styles.blurWrapper(
         addBgBlur,
         !!darkOverlay && darkOverlay !== 'none', type, bgColor,
