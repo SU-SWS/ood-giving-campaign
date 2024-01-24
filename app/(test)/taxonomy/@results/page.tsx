@@ -37,9 +37,6 @@ export default async function Page({searchParams}: PageProps) {
     topics, themes, initiatives, schools,
   } = searchParams;
 
-  // wait 3 seconds
-  await new Promise((resolve) => setTimeout(resolve, 3000));
-
   const storyblokApi = new StoryblokClient({
     accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
     region: 'us',
