@@ -219,16 +219,16 @@ export const BlurryPoster = ({
               <AnimateInView animation="zoomSharpen" duration={1} className={styles.imageInnerWrapper}>
                 <picture>
                   <source
-                    srcSet={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '900x1200', imageFocus)}
+                    srcSet={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '750x1000', imageFocus)}
                     media="(min-width: 992px)"
-                    width={type === 'hero' && !isTwoCol ? 1800 : 900}
-                    height={type === 'hero' && !isTwoCol ? 900 : 1200}
+                    width={type === 'hero' && !isTwoCol ? 1800 : 750}
+                    height={type === 'hero' && !isTwoCol ? 900 : 1000}
                   />
                   <source
-                    srcSet={getProcessedImage(imageSrc, '1000x1000', imageFocus)}
+                    srcSet={getProcessedImage(imageSrc, '900x900', imageFocus)}
                     media="(min-width: 576px)"
-                    width={1000}
-                    height={1000}
+                    width={900}
+                    height={900}
                   />
                   <source
                     srcSet={getProcessedImage(imageSrc, '600x600', imageFocus)}
@@ -237,10 +237,10 @@ export const BlurryPoster = ({
                     height={600}
                   />
                   <img
-                    src={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '900x1200', imageFocus)}
+                    src={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '750x1000', imageFocus)}
                     alt={alt || ''}
-                    width={type === 'hero' && !isTwoCol ? 1800 : 900}
-                    height={type === 'hero' && !isTwoCol ? 900 : 1200}
+                    width={type === 'hero' && !isTwoCol ? 1800 : 750}
+                    height={type === 'hero' && !isTwoCol ? 900 : 1000}
                     aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
                     fetchPriority={type === 'hero' ? 'high' : 'auto'}
                     className={styles.image}

@@ -9,7 +9,7 @@ export const TexturedBar = ({
   imageSrc,
   ...props
 }: TexturedBarProps) => (
-  <div {...props} className="relative w-full h-20 md:h-30 lg:h-40">
+  <div {...props} className="relative w-full h-20 md:h-30 lg:h-40 bg-black-40">
     <img
       src={getProcessedImage(imageSrc, '3000x60')}
       srcSet={`
