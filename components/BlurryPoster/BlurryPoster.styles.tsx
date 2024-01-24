@@ -102,5 +102,4 @@ export const imageWrapper = (imageOnLeft?: boolean, isTwoCol?: boolean, hasImage
   'rs-mt-6' : hasImage,
 });
 export const imageInnerWrapper = 'h-full w-full';
-export const image = 'h-full w-full object-cover object-center hidden lg:block';
-export const imageMobile = 'h-full w-full object-cover object-center lg:hidden';
+export const image = 'h-full w-full object-cover object-center';
