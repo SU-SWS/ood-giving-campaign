@@ -34,6 +34,8 @@ export default async function Page({searchParams}: PageProps) {
     topics, themes, initiatives, schools,
   } = searchParams;
 
+  console.log('Filter searchParams', searchParams);
+
   const storyblokApi = new StoryblokClient({
     accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
     region: 'us',
@@ -76,14 +78,7 @@ export default async function Page({searchParams}: PageProps) {
     { next: { revalidate: 3600 } },
   );
 
-  // Construct a filter for getting content.
-  const filters:filterQuery = {
-    component: { in: 'sbStory,sbStoryMVP' },
-  };
-  if (topics) filters.topics = { any_in_array: normalizeSearchParam(topics) };
-  if (themes) filters.themes = { any_in_array: normalizeSearchParam(themes) };
-  if (initiatives) filters.initiatives = { any_in_array: normalizeSearchParam(initiatives) };
-  if (schools) filters.schools = { any_in_array: normalizeSearchParam(schools) };
+  console.log('Passed through the options now ');
 
   return (
     <FiltersComponent themes={themesOptions} topics={topicOptions} initiatives={initiativesOptions} schools={schoolsOptions} />
