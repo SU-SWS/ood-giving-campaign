@@ -46,6 +46,8 @@ export const HomepageSplitHero = () => {
                   alt=""
                   fetchPriority="high"
                   className={cnb(styles.imageBottomLayerCommon, 'object-right')}
+                  width={700}
+                  height={700}
                 />
                 <m.img
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/45d9a3d22a/frame-97.jpg', '700x700')}
@@ -55,6 +57,8 @@ export const HomepageSplitHero = () => {
                   animate={{ opacity: 0 }}
                   transition={{ duration: 1, delay: 0.6 }}
                   className={cnb(styles.imageTopLayerCommon, 'object-left')}
+                  width={700}
+                  height={700}
                 />
               </AnimateInView>
               <AnimateInView duration={0.3} animation="slideUp" className={styles.imageWrapper}>

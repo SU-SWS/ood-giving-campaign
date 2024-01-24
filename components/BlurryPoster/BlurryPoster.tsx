@@ -1,5 +1,4 @@
-import React, { HTMLAttributes, useEffect, useState } from 'react';
-import { useMediaQuery } from 'usehooks-ts';
+import React, { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
 import { AnimateInView } from '@/components/Animate';
 import { Container } from '@/components/Container';
@@ -9,7 +8,6 @@ import {
   Heading, Paragraph, Text, type HeadingType, SrOnlyText,
 } from '@/components/Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { config } from '@/utilities/config';
 import {
   accentBorderColors,
   type AccentColorType,
@@ -84,13 +82,6 @@ export const BlurryPoster = ({
   className,
   ...props
 }: BlurryPosterProps) => {
-  const isDesktop = useMediaQuery(`(min-width: ${config.breakpoints.lg}px)`);
-  const [showDesktop, setShowDesktop] = useState(false);
-  // Use useEffect to update your local state from client side only after first render
-  useEffect(() => {
-    setShowDesktop(isDesktop);
-  }, [isDesktop]);
-
   const date = publishedDate && new Date(publishedDate);
   const formattedDate = date && date.toLocaleDateString('en-US', {
     month: 'long',
@@ -102,27 +93,41 @@ export const BlurryPoster = ({
 
   return (
     <Container {...props} bgColor={bgColor} width="full" className={styles.root}>
-      {showDesktop ? (
-        <img
-          src={getProcessedImage(bgImageSrc, '2000x1200', bgImageFocus)}
-          alt={bgImageAlt || ''}
-          aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
-          fetchPriority={type === 'hero' ? 'high' : 'auto'}
-          className={styles.bgImage}
+      <picture>
+        <source
+          srcSet={getProcessedImage(bgImageSrc, addBgBlur ? '1000x600' : '2000x1200', bgImageFocus)}
+          media="(min-width: 1200px)"
           width={2000}
           height={1200}
         />
-      ) : (
-        <img
-          src={getProcessedImage(bgImageSrc, '1000x1500', bgImageFocus)}
-          alt={bgImageAlt || ''}
-          aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
-          className={styles.bgImageMobile}
-          fetchPriority={type === 'hero' ? 'high' : 'auto'}
-          width={1000}
-          height={1500}
+        <source
+          srcSet={getProcessedImage(bgImageSrc, addBgBlur ? '600x600' : '1200x1200', bgImageFocus)}
+          media="(min-width: 768px)"
+          width={1200}
+          height={1200}
         />
-      )}
+        <source
+          srcSet={getProcessedImage(bgImageSrc, addBgBlur ? '450x300' : '900x600', bgImageFocus)}
+          media="(min-width: 461px)"
+          width={900}
+          height={600}
+        />
+        <source
+          srcSet={getProcessedImage(bgImageSrc, addBgBlur ? '200x300' : '600x900', bgImageFocus)}
+          media="(max-width: 460px)"
+          width={600}
+          height={900}
+        />
+        <img
+          src={getProcessedImage(bgImageSrc, addBgBlur ? '1000x600' : '2000x1200', bgImageFocus)}
+          alt={bgImageAlt || ''}
+          width={2000}
+          height={1200}
+          aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
+          className={styles.bgImage}
+          fetchPriority="high"
+        />
+      </picture>
       <div className={cnb(styles.blurWrapper(
         addBgBlur,
         !!darkOverlay && darkOverlay !== 'none', type, bgColor,
@@ -212,27 +217,35 @@ export const BlurryPoster = ({
           <Container width={isTwoCol ? 'full' : 'site'} className={styles.imageWrapper(imageOnLeft, isTwoCol, !!imageSrc)}>
             {imageSrc && (
               <AnimateInView animation="zoomSharpen" duration={1} className={styles.imageInnerWrapper}>
-                {showDesktop ? (
+                <picture>
+                  <source
+                    srcSet={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '750x1000', imageFocus)}
+                    media="(min-width: 992px)"
+                    width={type === 'hero' && !isTwoCol ? 1800 : 750}
+                    height={type === 'hero' && !isTwoCol ? 900 : 1000}
+                  />
+                  <source
+                    srcSet={getProcessedImage(imageSrc, '900x900', imageFocus)}
+                    media="(min-width: 576px)"
+                    width={900}
+                    height={900}
+                  />
+                  <source
+                    srcSet={getProcessedImage(imageSrc, '600x600', imageFocus)}
+                    media="(max-width: 575px)"
+                    width={600}
+                    height={600}
+                  />
                   <img
-                    src={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '900x1200', imageFocus)}
+                    src={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '750x1000', imageFocus)}
                     alt={alt || ''}
-                    width={type === 'hero' && !isTwoCol ? 1800 : 900}
-                    height={type === 'hero' && !isTwoCol ? 900 : 1200}
+                    width={type === 'hero' && !isTwoCol ? 1800 : 750}
+                    height={type === 'hero' && !isTwoCol ? 900 : 1000}
                     aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
                     fetchPriority={type === 'hero' ? 'high' : 'auto'}
                     className={styles.image}
                   />
-                ) : (
-                  <img
-                    src={getProcessedImage(imageSrc, '1000x1000', imageFocus)}
-                    alt={alt || ''}
-                    width={1000}
-                    height={1000}
-                    aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
-                    fetchPriority={type === 'hero' ? 'high' : 'auto'}
-                    className={styles.imageMobile}
-                  />
-                )}
+                </picture>
               </AnimateInView>
             )}
           </Container>
