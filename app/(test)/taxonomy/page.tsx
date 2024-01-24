@@ -16,6 +16,7 @@ type filterQuery = {
   themes?: { any_in_array: string };
   initiatives?: { any_in_array: string };
   schools?: { any_in_array: string };
+  component?: { in: string };
 };
 
 type PageProps = {
@@ -77,7 +78,7 @@ const ResultsComponent = ({ stories }: ResultsComponentProps) => {
       <FlexBox gap direction='row' wrap='wrap'>
         {stories.map((story) => {
           return (
-            <div key={story.id} className='w-1/3 border-3 border-black rs-p-2'>
+            <div key={story.id} className='w-1/4 flex-grow border-3 border-black rs-p-2'>
               <h3>{story.name}</h3>
               {story.content.themes && <p><strong>themes: </strong>{story.content.themes.join(', ')}</p>}
               {story.content.topics && <p><strong>topics: </strong>{story.content.topics.join(', ')}</p>}
@@ -145,7 +146,9 @@ export default async function Page({searchParams}: PageProps) {
   );
 
   // Construct a filter for getting content.
-  const filters:filterQuery = {};
+  const filters:filterQuery = {
+    component: { in: 'sbStory,sbStoryMVP' },
+  };
   if (topics) filters.topics = { any_in_array: normalizeSearchParam(topics) };
   if (themes) filters.themes = { any_in_array: normalizeSearchParam(themes) };
   if (initiatives) filters.initiatives = { any_in_array: normalizeSearchParam(initiatives) };
@@ -163,7 +166,9 @@ export default async function Page({searchParams}: PageProps) {
     },
   );
 
-  console.log('Data', data);
+    data.stories.map((story) => {
+      console.log(story.content);
+    });
 
   return (
     <>
