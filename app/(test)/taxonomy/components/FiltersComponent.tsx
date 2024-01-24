@@ -1,5 +1,6 @@
 'use client';
 import { SelectInput } from '@/components/Forms/Select';
+import { useRouter } from 'next/router';
 
 export type FiltersComponentProps = {
   themes: {
@@ -33,13 +34,14 @@ export type FiltersComponentProps = {
 const FiltersComponent = ({
   themes, topics, schools, initiatives, selected,
 }: FiltersComponentProps) => {
+  const router = useRouter();
 
   const changeCallback = (e: { target: { id: any; value: any; }; }) => {
     const { id, value } = e.target;
     const url = new URL(window.location.href);
     const searchParams = new URLSearchParams(url.search);
     searchParams.set(id, value);
-    window.location.href = `${url.origin}${url.pathname}?${searchParams.toString()}`;
+    router.push(`${url.origin}${url.pathname}?${searchParams.toString()}`);
   };
 
   return (
