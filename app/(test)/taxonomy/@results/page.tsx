@@ -62,6 +62,8 @@ export default async function Page({searchParams}: PageProps) {
     },
   );
 
+  console.log('Stories', data.stories);
+
   // No results found.
   if (!data.stories.length) return <p>No Results Found</p>;
 
