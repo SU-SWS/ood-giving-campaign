@@ -32,6 +32,7 @@ export const revalidate = 0;
  * The page component.
  */
 export default async function Page({searchParams}: PageProps) {
+  console.log('searchParams', searchParams);
   const {
     topics, themes, initiatives, schools,
   } = searchParams;
