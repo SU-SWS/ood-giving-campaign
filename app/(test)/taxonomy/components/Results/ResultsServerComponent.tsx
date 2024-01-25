@@ -1,7 +1,6 @@
 import StoryblokClient from 'storyblok-js-client';
 import normalizeSearchParam from '@/utilities/normalizeSearchParam';
-import ResultsComponent from '@/app/(test)/taxonomy/components/ResultsComponent';
-import { Suspense } from 'react';
+import ResultsComponent from '@/app/(test)/taxonomy/components/Results/ResultsComponent';
 
 type filterParams = {
   topics?: string[] | string;
@@ -22,16 +21,10 @@ type PageProps = {
   searchParams: URLSearchParams & filterParams;
 };
 
-
-// Nextjs Route Options.
-// ---------------------------------------------------------------------------------------------
-export const revalidate = 0;
-// ---------------------------------------------------------------------------------------------
-
 /**
  * The page component.
  */
-export default async function Page({searchParams}: PageProps) {
+export default async function ResultsServerComponent({searchParams}: PageProps) {
   console.log('searchParams', searchParams);
   const {
     topics, themes, initiatives, schools,
@@ -41,6 +34,9 @@ export default async function Page({searchParams}: PageProps) {
     accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
     region: 'us',
   });
+
+  // wait 3 seconds
+  await new Promise(resolve => setTimeout(resolve, 3000));
 
   // Construct a filter for getting content.
   const filters:filterQuery = {
@@ -68,8 +64,6 @@ export default async function Page({searchParams}: PageProps) {
   if (!data.stories.length) return <p>No Results Found</p>;
 
   return (
-    <Suspense key={searchParams.toString()}>
-      <ResultsComponent stories={data.stories} />
-    </Suspense>
+    <ResultsComponent stories={data.stories} />
   );
 };

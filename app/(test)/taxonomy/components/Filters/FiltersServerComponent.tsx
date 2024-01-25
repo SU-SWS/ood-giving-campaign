@@ -1,7 +1,5 @@
 import StoryblokClient from 'storyblok-js-client';
-import normalizeSearchParam from '@/utilities/normalizeSearchParam';
-import FiltersComponent from '@/app/(test)/taxonomy/components/FiltersComponent';
-import { Suspense } from 'react';
+import FiltersComponent from '@/app/(test)/taxonomy/components/Filters/FiltersComponent';
 
 type filterParams = {
   topics?: string[] | string;
@@ -10,27 +8,14 @@ type filterParams = {
   schools?: string[] | string;
 };
 
-type filterQuery = {
-  topics?: { any_in_array: string };
-  themes?: { any_in_array: string };
-  initiatives?: { any_in_array: string };
-  schools?: { any_in_array: string };
-  component?: { in: string };
-};
-
 type PageProps = {
   searchParams: URLSearchParams & filterParams;
 };
 
-// Nextjs Route Options.
-// ---------------------------------------------------------------------------------------------
-export const revalidate = 3600;
-// ---------------------------------------------------------------------------------------------
-
 /**
  * The page component.
  */
-export default async function Page({searchParams}: PageProps) {
+export default async function FiltersServerComponent({searchParams}: PageProps) {
   const {
     topics, themes, initiatives, schools,
   } = searchParams;
@@ -82,8 +67,6 @@ export default async function Page({searchParams}: PageProps) {
   console.log('Passed through the options now ');
 
   return (
-    <Suspense key={searchParams.toString()}>
-      <FiltersComponent themes={themesOptions} topics={topicOptions} initiatives={initiativesOptions} schools={schoolsOptions} />
-    </Suspense>
+    <FiltersComponent themes={themesOptions} topics={topicOptions} initiatives={initiativesOptions} schools={schoolsOptions} />
   );
 };

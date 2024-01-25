@@ -1,6 +1,7 @@
 'use client';
 import { SelectInput } from '@/components/Forms/Select';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
+import { Suspense } from 'react';
 
 export type FiltersComponentProps = {
   themes: {
@@ -40,12 +41,14 @@ const FiltersComponent = ({
   };
 
   return (
-    <div>
-      <SelectInput id='themes' opts={themes} label='Themes' onChange={changeCallback} selected={params.get('themes')} />
-      <SelectInput id='topics' opts={topics} label='Topics' onChange={changeCallback} selected={params.get('topics')} />
-      <SelectInput id='schools' opts={schools} label='Schools' onChange={changeCallback} selected={params.get('schools')} />
-      <SelectInput id='initiatives' opts={initiatives} label='Initiatives' onChange={changeCallback} selected={params.get('initiatives')} />
-    </div>
+    <Suspense key={params.toString()}>
+      <div>
+        <SelectInput id='themes' opts={themes} label='Themes' onChange={changeCallback} selected={params.get('themes')} />
+        <SelectInput id='topics' opts={topics} label='Topics' onChange={changeCallback} selected={params.get('topics')} />
+        <SelectInput id='schools' opts={schools} label='Schools' onChange={changeCallback} selected={params.get('schools')} />
+        <SelectInput id='initiatives' opts={initiatives} label='Initiatives' onChange={changeCallback} selected={params.get('initiatives')} />
+      </div>
+    </Suspense>
   );
 };
 
