@@ -1,6 +1,7 @@
 import StoryblokClient from 'storyblok-js-client';
 import normalizeSearchParam from '@/utilities/normalizeSearchParam';
 import FiltersComponent from '@/app/(test)/taxonomy/components/FiltersComponent';
+import { Suspense } from 'react';
 
 type filterParams = {
   topics?: string[] | string;
@@ -81,6 +82,8 @@ export default async function Page({searchParams}: PageProps) {
   console.log('Passed through the options now ');
 
   return (
-    <FiltersComponent themes={themesOptions} topics={topicOptions} initiatives={initiativesOptions} schools={schoolsOptions} />
+    <Suspense key={searchParams.toString()}>
+      <FiltersComponent themes={themesOptions} topics={topicOptions} initiatives={initiativesOptions} schools={schoolsOptions} />
+    </Suspense>
   );
 };

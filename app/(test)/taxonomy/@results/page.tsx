@@ -68,6 +68,8 @@ export default async function Page({searchParams}: PageProps) {
   if (!data.stories.length) return <p>No Results Found</p>;
 
   return (
-    <ResultsComponent stories={data.stories} />
+    <Suspense key={searchParams.toString()}>
+      <ResultsComponent stories={data.stories} />
+    </Suspense>
   );
 };
