@@ -9,7 +9,6 @@ import { Grid } from '../Grid';
 import { Heading, Paragraph, Text } from '../Typography';
 import { Paragraphs } from '../Temporary/Paragraphs';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { getMaskedAsset } from '@/utilities/getMaskedAsset';
 
 export const ScrollytellingDemo = () => {
   // Chapter 1
@@ -149,8 +148,8 @@ export const ScrollytellingDemo = () => {
                     aria-label="video of milky way rotating"
                     className="block w-full h-full object-cover"
                   >
-                    <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/80ddd8341f/starloop.webm')} type="video/webm" />
-                    <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/1a881ffc0a/starloop.mp4')} type="video/mp4" />
+                    <source src={'https://a-us.storyblok.com/f/1005200/x/80ddd8341f/starloop.webm'} type="video/webm" />
+                    <source src={'https://a-us.storyblok.com/f/1005200/x/1a881ffc0a/starloop.mp4'} type="video/mp4" />
                     <p>Your browser does not support HTML video.</p>
                   </video>
                   <figcaption

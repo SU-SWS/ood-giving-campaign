@@ -10,6 +10,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'assets.stanford.edu',
       },
+      {
+        protocol: 'https',
+        hostname: 'a-us.storyblok.com',
+      },
     ],
   },
   env: {

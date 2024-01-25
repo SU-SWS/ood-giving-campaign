@@ -10,7 +10,6 @@ import { Heading, Text } from '../Typography';
 import { HeroIcon } from '../HeroIcon';
 import { OnPurpo, Ose } from '../Logo';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { getMaskedAsset } from '@/utilities/getMaskedAsset';
 
 /**
  * This is the previous version of the homepage hero with the video background loop.
@@ -81,8 +80,8 @@ export const HomepageHero = () => {
               poster={getProcessedImage('https://a-us.storyblok.com/f/1005200/1280x674/bf8d340dbf/screenshot-2023-05-09-at-3-03-08-pm.png', '1280x676')}
               className="block w-full h-full object-cover"
             >
-              <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/bf77fd691a/stanford125-loop.webm')} type="video/webm" />
-              <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/17d1fcaa03/stanford125-loop.mp4')} type="video/mp4" />
+              <source src={'https://a-us.storyblok.com/f/1005200/x/bf77fd691a/stanford125-loop.webm'} type="video/webm" />
+              <source src={'https://a-us.storyblok.com/f/1005200/x/17d1fcaa03/stanford125-loop.mp4'} type="video/mp4" />
               <p>Your browser does not support HTML video.</p>
             </video>
           </div>

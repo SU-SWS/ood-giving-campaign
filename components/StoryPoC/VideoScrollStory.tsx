@@ -3,7 +3,6 @@ import { useScroll, m, useTransform } from 'framer-motion';
 import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
 import { Heading, Paragraph, Text } from '../Typography';
-import { getMaskedAsset } from '@/utilities/getMaskedAsset';
 import { colorNameToHex } from '@/utilities/colorPalettePlugin';
 
 export const VideoScrollStory = () => {
@@ -30,8 +29,8 @@ export const VideoScrollStory = () => {
           aria-label="Background Video"
           className="block w-full h-full object-cover"
         >
-          <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/80ddd8341f/starloop.webm')} type="video/webm" />
-          <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/1a881ffc0a/starloop.mp4')} type="video/mp4" />
+          <source src={'https://a-us.storyblok.com/f/1005200/x/80ddd8341f/starloop.webm'} type="video/webm" />
+          <source src={'https://a-us.storyblok.com/f/1005200/x/1a881ffc0a/starloop.mp4'} type="video/mp4" />
           <p>Your browser does not support HTML video.</p>
         </video>
         <m.div

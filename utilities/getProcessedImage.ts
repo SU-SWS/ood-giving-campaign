@@ -1,5 +1,3 @@
-import { getMaskedAsset } from './getMaskedAsset';
-
 /**
  *
  * @param imageSrc - The Storyblok URL of the image
@@ -58,7 +56,7 @@ export const getProcessedImage = (
 
   // The URL of the processed Storyblok image
   const processedSbUrl = `${imageSrc}${myParams}${myFilters}`;
-  const maskedUrl = getMaskedAsset(processedSbUrl);
+  const maskedUrl = processedSbUrl;
 
   return maskedUrl;
 };
