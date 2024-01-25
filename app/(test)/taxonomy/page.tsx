@@ -3,7 +3,6 @@ import FiltersServerComponent from './components/Filters/FiltersServerComponent'
 import ResultsServerComponent from './components/Results/ResultsServerComponent';
 
 export type PageProps = {
-  children: React.ReactNode;
   searchParams: URLSearchParams;
 };
 
