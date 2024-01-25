@@ -7,6 +7,8 @@ export type TaxonomyLayoutProps = {
   searchParams: URLSearchParams
 };
 
+export const revalidate = 0;
+
 /**
  * The page component.
  */

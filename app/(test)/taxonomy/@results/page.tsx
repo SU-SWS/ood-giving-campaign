@@ -42,6 +42,9 @@ export default async function Page({searchParams}: PageProps) {
     region: 'us',
   });
 
+  // wait 1 second.
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
   // Construct a filter for getting content.
   const filters:filterQuery = {
     component: { in: 'sbStory,sbStoryMVP' },
