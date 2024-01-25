@@ -1,6 +1,6 @@
 import StoryblokClient from 'storyblok-js-client';
 import normalizeSearchParam from '@/utilities/normalizeSearchParam';
-import FiltersComponent from '@/app/(test)/taxonomy/components/FiltersComponent';
+import FiltersComponent from '@/app/(test)/taxonomy/search/components/FiltersComponent';
 import { Suspense } from 'react';
 
 type filterParams = {
