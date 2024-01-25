@@ -19,6 +19,7 @@ export const IdealFellow = () => {
         <img
           src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1615x1306/ef8fffb741/hector-hand-full-transparent-cropped.png', '1500x0')}
           alt=""
+          loading="lazy"
         />
       </div>
       <Heading size="base" color="white" className="absolute bottom-300 ml-[20vw]">

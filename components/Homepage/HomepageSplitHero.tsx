@@ -48,6 +48,7 @@ export const HomepageSplitHero = () => {
                   className={cnb(styles.imageBottomLayerCommon, 'object-right')}
                   width={700}
                   height={700}
+                  loading="lazy"
                 />
                 <m.img
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/45d9a3d22a/frame-97.jpg', '700x700')}
@@ -59,6 +60,7 @@ export const HomepageSplitHero = () => {
                   className={cnb(styles.imageTopLayerCommon, 'object-left')}
                   width={700}
                   height={700}
+                  loading="lazy"
                 />
               </AnimateInView>
               <AnimateInView duration={0.3} animation="slideUp" className={styles.imageWrapper}>
@@ -69,6 +71,7 @@ export const HomepageSplitHero = () => {
                   className={cnb(styles.imageBottomLayerCommon, 'object-left')}
                   width={700}
                   height={700}
+                  loading="lazy"
                 />
                 <m.img
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1390x1390/cb35b9488b/frame-96.jpg', '700x700')}
@@ -80,6 +83,7 @@ export const HomepageSplitHero = () => {
                   className={cnb(styles.imageTopLayerCommon, 'object-right')}
                   width={700}
                   height={700}
+                  loading="lazy"
                 />
               </AnimateInView>
             </Grid>

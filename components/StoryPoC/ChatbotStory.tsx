@@ -151,6 +151,7 @@ export const ChatbotStory = () => {
             src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2560x1708/08583a88a2/neukom_profjulianabidadanure_1464.jpg', '100x100')}
             alt=""
             className="rounded-full w-50 h-50 ml-30"
+            loading="lazy"
           />
           <div className="ml-10">
             <div className="text-19 leading-none font-semibold">Beep Boop Beep</div>

@@ -54,6 +54,7 @@ export const Book = ({
           src={getProcessedImage(imgSrc, '100x100')}
           alt=""
           className="rounded-full w-80 h-80 absolute left-20 bottom-15 group-hocus-visible:border-2 group-hocus-visible:border-white"
+          loading="lazy"
         />
       </m.button>
       <AnimatePresence initial={false}>
@@ -80,6 +81,7 @@ export const Book = ({
                 src={getProcessedImage(imgSrc, '300x300')}
                 alt=""
                 className="w-240 h-240 rounded-full"
+                loading="lazy"
               />
               <div>
                 <Heading size={3} font="serif" weight="bold" className="mb-0">{name}</Heading>

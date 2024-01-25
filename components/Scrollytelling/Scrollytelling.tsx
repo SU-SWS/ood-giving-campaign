@@ -62,6 +62,7 @@ export const Scrollytelling = ({
             width={2000}
             height={1200}
             className={styles.image}
+            loading="lazy"
           />
           <img
             src={getProcessedImage(bgImageSrc, '900x1600', bgImageFocus)}
@@ -69,6 +70,7 @@ export const Scrollytelling = ({
             width={900}
             height={1600}
             className={styles.imageMobile}
+            loading="lazy"
           />
           <m.div
             className={styles.imageOverlay(overlay)}

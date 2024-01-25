@@ -61,6 +61,7 @@ export const BrochureStory = () => {
                     src={getProcessedImage('https://a-us.storyblok.com/f/1005200/883x1040/d7d568e264/21664-15-0029_cmyk-1.jpg', '1000x1000')}
                     className="object-cover w-full h-full"
                     alt=""
+                    loading="lazy"
                   />
                 </div>
                 <Text variant="caption" color="black-80" className="mt-03em shrink-0">
@@ -118,6 +119,7 @@ export const BrochureStory = () => {
                       src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2560x1708/e68ba35533/farm_1193_cmyk.jpg', '1000x1000')}
                       className="object-cover w-full h-full"
                       alt=""
+                      loading="lazy"
                     />
                   </div>
                   <Text variant="caption" color="black" className="mt-03em shrink-0 max-w-prose-wide">

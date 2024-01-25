@@ -88,6 +88,7 @@ export const FeatureMasonry = ({
             src={getProcessedImage(imageSrc1, '800x450', imageFocus1)}
             alt={imageAlt1 || ''}
             className="w-full h-full object-cover"
+            loading="lazy"
           />
         </div>
         <EmbedMedia

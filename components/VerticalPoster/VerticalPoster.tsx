@@ -139,11 +139,13 @@ export const VerticalPoster = ({
                   src={getProcessedImage(imageSrc, '900x1200', imageFocus)}
                   alt=""
                   className={styles.image}
+                  loading="lazy"
                 />
                 <img
                   src={getProcessedImage(imageSrc, '800x400', imageFocus)}
                   alt=""
                   className={styles.imageMobile}
+                  loading="lazy"
                 />
               </AnimateInView>
             )}
