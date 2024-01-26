@@ -53,47 +53,57 @@ export const SocialSharing = ({
           <Heading as="h2" font="sans" size="base" weight="semibold" leading="none" className={styles.heading}>
             Share this story
           </Heading>
-          <FlexBox className={styles.buttonWrapper}>
-            <SocialButton
-              onClick={handleCopyClick}
-              aria-label={buttonState === 'copied' ? 'Story link has been copied' : 'Copy story link'}
-            >
-              {buttonState === 'copied' ? <HeroIcon icon="copy" /> : <LinkIcon aria-hidden width="20" />}
-            </SocialButton>
-            <Text
-              color="white"
-              className={styles.copiedTextBubble}
-              weight="semibold"
-              leading="none"
-              icon="check-circle"
-              aria-hidden={buttonState !== 'copied'}
-            >
-              Link copied
-            </Text>
-            <SocialButton
-              aria-label="Share via email"
-              href={`mailto:?subject=${title ? safeTitle : 'Check out this story'}&body=${safeUrl}`}
-            >
-              <EmailIcon aria-hidden width="18" />
-            </SocialButton>
-            <SocialButton
-              aria-label="Share on Facebook"
-              href={`${facebookBaseURL}${safeUrl}`}
-            >
-              <FacebookF aria-hidden width="12" />
-            </SocialButton>
-            <SocialButton
-              aria-label="Share on X (formerly Twitter)"
-              href={`${twitterBaseURL}${safeUrl}${title ? `&text=${safeTitle}` : ''}`}
-            >
-              <TwitterX aria-hidden width="18" />
-            </SocialButton>
-            <SocialButton
-              aria-label="Share on LinkedIn"
-              href={`${linkedinBaseURL}${safeUrl}`}
-            >
-              <LinkedinIn aria-hidden width="17" />
-            </SocialButton>
+          <FlexBox as="ul" className={styles.buttonWrapper}>
+            <li>
+              <SocialButton
+                onClick={handleCopyClick}
+                aria-label={buttonState === 'copied' ? 'Story link has been copied' : 'Copy story link'}
+              >
+                {buttonState === 'copied' ? <HeroIcon icon="copy" /> : <LinkIcon aria-hidden width="20" />}
+              </SocialButton>
+              <Text
+                color="white"
+                className={styles.copiedTextBubble}
+                weight="semibold"
+                leading="none"
+                icon="check-circle"
+                aria-hidden={buttonState !== 'copied'}
+              >
+                Link copied
+              </Text>
+            </li>
+            <li>
+              <SocialButton
+                aria-label="Share via email"
+                href={`mailto:?subject=${title ? safeTitle : 'Check out this story'}&body=${safeUrl}`}
+              >
+                <EmailIcon aria-hidden width="18" />
+              </SocialButton>
+            </li>
+            <li>
+              <SocialButton
+                aria-label="Share on Facebook"
+                href={`${facebookBaseURL}${safeUrl}`}
+              >
+                <FacebookF aria-hidden width="12" />
+              </SocialButton>
+            </li>
+            <li>
+              <SocialButton
+                aria-label="Share on X (formerly Twitter)"
+                href={`${twitterBaseURL}${safeUrl}${title ? `&text=${safeTitle}` : ''}`}
+              >
+                <TwitterX aria-hidden width="18" />
+              </SocialButton>
+            </li>
+            <li>
+              <SocialButton
+                aria-label="Share on LinkedIn"
+                href={`${linkedinBaseURL}${safeUrl}`}
+              >
+                <LinkedinIn aria-hidden width="17" />
+              </SocialButton>
+            </li>
           </FlexBox>
         </FlexBox>
       </WidthBox>

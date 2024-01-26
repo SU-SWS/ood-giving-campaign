@@ -69,7 +69,8 @@ export const RichText = ({
         // Structure the link data so it takes the same shape as sbLink
         const sbLink = {
           linktype,
-          cached_url: linktype !== 'email' ? href : '',
+          cached_url: linktype === 'story' ? href : '',
+          url: linktype === 'asset' || 'url' ? href : '',
           email: linktype === 'email' ? href : '',
           anchor,
           // The WYSIWYG link adds a target="_self" by default which is unnecessary

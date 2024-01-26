@@ -15,6 +15,7 @@ export const overlays = {
   'black-50': 'lg:bg-black-true/50',
   'black-60': 'lg:bg-black-true/60',
   'black-70': 'lg:bg-black-true/70',
+  'black-80': 'lg:bg-black-true/80',
   'black-gradient-to-r': 'lg:bg-transparent lg:bg-gradient-to-r lg:from-black-true/70',
   'black-gradient-to-l': 'lg:bg-transparent lg:bg-gradient-to-l lg:from-black-true/70',
 };

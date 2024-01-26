@@ -62,9 +62,11 @@ export const TogetherSection = () => {
         Together
       </m.div>
       <m.img
-        src={getProcessedImage('https://a-us.storyblok.com/f/1005200/3014x1979/5d314e43ba/together_h412-18.jpg', '1200x0')}
+        src={getProcessedImage('https://a-us.storyblok.com/f/1005200/3014x1979/5d314e43ba/together_h412-18.jpg', '800x0')}
         alt="A black and white archival photo of a conductor leading an orchestra"
         className="relative w-[90vw] sm:w-[60vw] xl:w-[42vw] mx-auto z-10"
+        width={800}
+        height={521}
         style={{
           marginTop: marginTopAnimation,
           scale: imageScaleAnimation,

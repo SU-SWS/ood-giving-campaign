@@ -97,6 +97,7 @@ export const BlurryPoster = ({
         <source
           srcSet={getProcessedImage(bgImageSrc, addBgBlur ? '1000x600' : '2000x1200', bgImageFocus)}
           media="(min-width: 1200px)"
+          // Exact height and width don't matter as long as aspect ratio is the same as the image
           width={2000}
           height={1200}
         />
@@ -123,9 +124,9 @@ export const BlurryPoster = ({
           alt={bgImageAlt || ''}
           width={2000}
           height={1200}
-          aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
+          aria-describedby={hasCaption && !!bgImageAlt ? 'story-hero-caption' : undefined}
           className={styles.bgImage}
-          fetchPriority="high"
+          fetchPriority={type === 'hero' ? 'high' : 'auto'}
         />
       </picture>
       <div className={cnb(styles.blurWrapper(
@@ -241,7 +242,7 @@ export const BlurryPoster = ({
                     alt={alt || ''}
                     width={type === 'hero' && !isTwoCol ? 1800 : 750}
                     height={type === 'hero' && !isTwoCol ? 900 : 1000}
-                    aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
+                    aria-describedby={hasCaption && !!alt ? 'story-hero-caption' : undefined}
                     fetchPriority={type === 'hero' ? 'high' : 'auto'}
                     className={styles.image}
                   />
