@@ -49,10 +49,10 @@ export const StoryCard = ({
           <div className={styles.imageWrapper}>
             <img
               alt=""
-              width={600}
-              height={600}
+              width={500}
+              height={500}
               loading="lazy"
-              src={getProcessedImage(imageSrc, '600x600', imageFocus)}
+              src={getProcessedImage(imageSrc, '500x500', imageFocus)}
               className={styles.image}
             />
           </div>

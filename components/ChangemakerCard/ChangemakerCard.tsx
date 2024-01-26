@@ -81,7 +81,7 @@ export const ChangemakerCard = ({
             {imageSrc && (
               <div className={cnb(styles.imageWrapper)}>
                 <ImageOverlay
-                  imageSrc={getProcessedImage(imageSrc, '500x1000', imageFocus)}
+                  imageSrc={getProcessedImage(imageSrc, '400x800', imageFocus)}
                   overlay="gradient-changemaker"
                   loading="eager"
                   width={339}
