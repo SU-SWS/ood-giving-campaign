@@ -126,7 +126,7 @@ export const BlurryPoster = ({
           height={1200}
           aria-describedby={hasCaption && !!bgImageAlt ? 'story-hero-caption' : undefined}
           className={styles.bgImage}
-          fetchPriority="high"
+          fetchPriority={type === 'hero' ? 'high' : 'auto'}
         />
       </picture>
       <div className={cnb(styles.blurWrapper(
