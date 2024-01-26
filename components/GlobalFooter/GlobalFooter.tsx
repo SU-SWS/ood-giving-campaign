@@ -30,7 +30,6 @@ export const GlobalFooter = ({ className }: GlobalFooterProps) => (
                 className={styles.link}
               >
                 Stanford Home
-                <SrOnlyText />
               </a>
             </li>
             <li className={styles.listItem}>
@@ -40,7 +39,6 @@ export const GlobalFooter = ({ className }: GlobalFooterProps) => (
                 className={styles.link}
               >
                 Maps &amp; Directions
-                <SrOnlyText />
               </a>
             </li>
             <li className={styles.listItem}>
@@ -50,7 +48,6 @@ export const GlobalFooter = ({ className }: GlobalFooterProps) => (
                 className={styles.link}
               >
                 Search Stanford
-                <SrOnlyText />
               </a>
             </li>
             <li>
@@ -60,7 +57,6 @@ export const GlobalFooter = ({ className }: GlobalFooterProps) => (
                 className={styles.link}
               >
                 Emergency Info
-                <SrOnlyText />
               </a>
             </li>
           </ul>
@@ -73,7 +69,6 @@ export const GlobalFooter = ({ className }: GlobalFooterProps) => (
                 className={styles.link}
               >
                 Terms of Use
-                <SrOnlyText />
               </a>
             </li>
             <li className={styles.listItem}>
@@ -84,7 +79,6 @@ export const GlobalFooter = ({ className }: GlobalFooterProps) => (
                 className={styles.link}
               >
                 Privacy
-                <SrOnlyText />
               </a>
             </li>
             <li className={styles.listItem}>
@@ -95,7 +89,6 @@ export const GlobalFooter = ({ className }: GlobalFooterProps) => (
                 className={styles.link}
               >
                 Copyright
-                <SrOnlyText />
               </a>
             </li>
             <li className={styles.listItem}>
@@ -106,7 +99,6 @@ export const GlobalFooter = ({ className }: GlobalFooterProps) => (
                 className={styles.link}
               >
                 Trademarks
-                <SrOnlyText />
               </a>
             </li>
             <li className={styles.listItem}>
@@ -117,7 +109,6 @@ export const GlobalFooter = ({ className }: GlobalFooterProps) => (
                 className={styles.link}
               >
                 Non-Discrimination
-                <SrOnlyText />
               </a>
             </li>
             <li>
@@ -128,7 +119,6 @@ export const GlobalFooter = ({ className }: GlobalFooterProps) => (
                 className={styles.link}
               >
                 Accessibility
-                <SrOnlyText />
               </a>
             </li>
           </ul>

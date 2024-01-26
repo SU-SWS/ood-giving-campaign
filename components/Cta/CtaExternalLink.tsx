@@ -23,7 +23,7 @@ export const CtaExternalLink = React.forwardRef<HTMLAnchorElement, CtaExternalLi
       iconPosition = 'right',
       animate,
       iconProps,
-      srText = '(external link)',
+      srText,
       children,
       className,
       href,
