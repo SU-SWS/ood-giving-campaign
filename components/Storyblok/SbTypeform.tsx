@@ -143,8 +143,9 @@ export const SbTypeform = ({
             displayAsFullScreenModal={displayAsFullScreenModal}
             autoResize={resize}
             height={!resize ? embedHeight : undefined}
+            className={styles.fauxCTA}
           >
-            <span className={styles.fauxCTA}>{buttonLabel}</span>
+            {buttonLabel}
           </PopUp>
         </Container>
       );
