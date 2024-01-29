@@ -56,20 +56,39 @@ export const Scrollytelling = ({
           className={styles.imageWrapper}
           style={{ scale: animateScale, willChange }}
         >
-          <img
-            src={getProcessedImage(bgImageSrc, '2000x1200', bgImageFocus)}
-            alt={bgImageAlt || ''}
-            width={2000}
-            height={1200}
-            className={styles.image}
-          />
-          <img
-            src={getProcessedImage(bgImageSrc, '900x1600', bgImageFocus)}
-            alt={bgImageAlt || ''}
-            width={900}
-            height={1600}
-            className={styles.imageMobile}
-          />
+          <picture>
+            <source
+              srcSet={getProcessedImage(bgImageSrc, '2000x1200', bgImageFocus)}
+              media="(min-width: 1200px)"
+              width={2000}
+              height={1200}
+            />
+            <source
+              srcSet={getProcessedImage(bgImageSrc, '1200x1200', bgImageFocus)}
+              media="(max-width: 1199px)"
+              width={1200}
+              height={1200}
+            />
+            <source
+              srcSet={getProcessedImage(bgImageSrc, '900x1600', bgImageFocus)}
+              media="(max-width: 767px)"
+              width={900}
+              height={1600}
+            />
+            <source
+              srcSet={getProcessedImage(bgImageSrc, '600x900', bgImageFocus)}
+              media="(max-width: 575px)"
+              width={600}
+              height={900}
+            />
+            <img
+              src={getProcessedImage(bgImageSrc, '2000x1200', bgImageFocus)}
+              alt={bgImageAlt || ''}
+              width={2000}
+              height={1200}
+              className={styles.image}
+            />
+          </picture>
           <m.div
             className={styles.imageOverlay(overlay)}
             style={{ opacity: animateOpacity, willChange }}
