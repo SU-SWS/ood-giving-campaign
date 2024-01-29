@@ -1,12 +1,12 @@
 'use client';
-import { LazyMotion, domMax } from 'framer-motion';
+import { LazyMotion, domAnimation } from 'framer-motion';
 
 interface LazyMotionProviderProps {
   children: React.ReactNode;
 }
 const LazyMotionProvider = ({ children }: LazyMotionProviderProps) => {
   return (
-    <LazyMotion features={domMax} strict>
+    <LazyMotion features={domAnimation} strict>
       {children}
     </LazyMotion>
   );

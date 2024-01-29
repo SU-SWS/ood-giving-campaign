@@ -59,7 +59,6 @@ export const Book = ({
       <AnimatePresence initial={false}>
         {isOpen && (
           <m.section
-            layout
             key="content"
             initial="collapsed"
             animate="open"
