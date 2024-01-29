@@ -47,7 +47,7 @@ export const SbStory = ({
     <Masthead isLight={isLightHero} />
     <main id="main-content">
       <article>
-        {!(title?.includes('Whereas') || title?.includes('Progress') || title?.includes('Video') || title?.includes('Solve')) && (
+        {/* {!(title?.includes('Whereas') || title?.includes('Progress') || title?.includes('Video') || title?.includes('Solve')) && (
           <StoryHero
             title={title}
             dek={dek}
@@ -65,7 +65,7 @@ export const SbStory = ({
             tabColor={tabColor}
             topics={topics}
           />
-        )}
+        )} */}
         {/* {title?.includes('Solve') && (
           <BrochureStory />
         )}
