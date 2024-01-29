@@ -1,5 +1,4 @@
 import { HTMLAttributes } from 'react';
-import Image from 'next/image';
 import { cnb } from 'cnbuilder';
 import { AnimateInView } from '../Animate';
 import { Bracket } from '../Bracket';
@@ -77,7 +76,7 @@ export const BracketCard = ({
         <Grid sm={12} className={styles.imageGrid(textOnLeft)}>
           <div className={styles.imageWrapper(textOnLeft)}>
             <div className={styles.imageAspectRatio}>
-              <Image
+              <img
                 width={900}
                 height={750}
                 src={getProcessedImage(imageSrc, '900x750', imageFocus)}
