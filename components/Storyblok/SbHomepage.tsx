@@ -2,13 +2,9 @@ import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import Image from 'next/image';
 import { CreateBloks } from '../CreateBloks';
 import { Heading } from '../Typography';
-import { HomepageHero } from '../Homepage/HomepageHero';
 import { HomepageSplitHero } from '../Homepage/HomepageSplitHero';
-import { Intro } from '../Homepage/Intro';
 import { Masthead } from '../Masthead';
-import { ThemeSection } from '../Homepage/ThemeSection';
 import { FindPurposeSection } from '../Homepage/FindPurposeSection';
-import { ProgressStorySection } from '../Homepage/ProgressStorySection';
 import { Changemaker } from '../Homepage/Changemaker';
 import { IdealFellow } from '../Homepage/IdealFellow';
 import { BlockBanner } from '../Homepage/BlockBanner';
@@ -65,17 +61,6 @@ export const SbHomepage = ({
     <main id="main-content">
       <div>
         <Heading as="h1" srOnly>{title || 'Homepage'}</Heading>
-        <HomepageHero />
-          <Intro text={intro} />
-          <ThemeSection
-            themeCardDiscovery={themeCardDiscovery}
-            themeCardCitizen={themeCardCitizen}
-            themeCardAcceleration={themeCardAcceleration}
-            themeCardPlanet={themeCardPlanet}
-          />
-          <ProgressStorySection bgImage={progressImage}>
-            <CreateBloks blokSection={progressStories} />
-          </ProgressStorySection>
           <BlockBanner
             imageSrc={getProcessedImage(blockBannerImage, '2000x0')}
             phrase1={phrase1}
