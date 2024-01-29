@@ -2,10 +2,10 @@ import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import { CreateBloks } from '../CreateBloks';
 import { Heading } from '../Typography';
 import { Masthead } from '../Masthead';
-import { FindPurposeSection } from '../Homepage/FindPurposeSection';
-import { BlockBanner } from '../Homepage/BlockBanner';
-import { BelowBlockBanner } from '../Homepage/BelowBlockBanner';
-import { getProcessedImage } from '@/utilities/getProcessedImage';
+// import { FindPurposeSection } from '../Homepage/FindPurposeSection';
+// import { BlockBanner } from '../Homepage/BlockBanner';
+// import { BelowBlockBanner } from '../Homepage/BelowBlockBanner';
+// import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { type SbImageType } from './Storyblok.types';
 
 type SbHomepageProps = {
@@ -56,7 +56,7 @@ export const SbHomepage = ({
     <main id="main-content">
       <div>
         <Heading as="h1" srOnly>{title || 'Homepage'}</Heading>
-          <BlockBanner
+          {/* <BlockBanner
             imageSrc={getProcessedImage(blockBannerImage, '2000x0')}
             phrase1={phrase1}
             phrase2={phrase2}
@@ -67,7 +67,7 @@ export const SbHomepage = ({
           </BelowBlockBanner>
           <FindPurposeSection>
             <CreateBloks blokSection={findPurpose} />
-          </FindPurposeSection>
+          </FindPurposeSection> */}
         <CreateBloks blokSection={content} />
         <CreateBloks blokSection={ankle} />
       </div>
