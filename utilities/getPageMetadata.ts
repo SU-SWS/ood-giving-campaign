@@ -70,7 +70,7 @@ export const getPageMetadata = ({
   }
 
   // Self reference URL is the page's URL without any query params
-  const selfReferencingUrl = `${siteUrl}/${slug}`;
+  const selfReferencingUrl = slug !== 'home' ? `${siteUrl}/${slug}` : siteUrl;
   // If the canonical URL is entered in Storyblok, find the full URL for it
   const canonicalNotSelf = canonicalUrl?.linktype === 'story' && canonicalUrl.cached_url
     ? `${siteUrl}/${canonicalUrl.cached_url}`
