@@ -8,7 +8,6 @@ import { ScrollyFullwidth } from '@/components/Scrollytelling/ScrollyFullwidth';
 import { ScrollyDataViz } from '@/components/Scrollytelling/ScrollyDataViz';
 import { ProgressStory } from '../StoryPoC/ProgressStory';
 import { MulticolumnStory } from '../StoryPoC/MulticolumnStory';
-import { ChatbotStory } from '../StoryPoC/ChatbotStory';
 import { VideoScrollStory } from '../StoryPoC/VideoScrollStory';
 import { Bookshelf } from '../Bookshelf/Bookshelf';
 import { BrochureStory } from '../StoryPoC/BrochureStory';
@@ -88,9 +87,6 @@ export const SbStory = ({
         )}
         {title?.includes('Video scrolling') && (
           <VideoScrollStory />
-        )}
-        {title?.includes('Chatbot') && (
-          <ChatbotStory />
         )}
         {title?.includes('Whereas') && (
           <MulticolumnStory />

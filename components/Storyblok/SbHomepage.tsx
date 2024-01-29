@@ -1,15 +1,10 @@
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
-import Image from 'next/image';
 import { CreateBloks } from '../CreateBloks';
 import { Heading } from '../Typography';
-import { HomepageSplitHero } from '../Homepage/HomepageSplitHero';
 import { Masthead } from '../Masthead';
 import { FindPurposeSection } from '../Homepage/FindPurposeSection';
-import { Changemaker } from '../Homepage/Changemaker';
-import { IdealFellow } from '../Homepage/IdealFellow';
 import { BlockBanner } from '../Homepage/BlockBanner';
 import { BelowBlockBanner } from '../Homepage/BelowBlockBanner';
-import { getNumBloks } from '@/utilities/getNumBloks';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { type SbImageType } from './Storyblok.types';
 
