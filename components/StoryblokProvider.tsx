@@ -14,7 +14,6 @@ import { SbFeatureMasonry } from './Storyblok/SbFeatureMasonry';
 import { SbHomepage } from './Storyblok/SbHomepage';
 import { SbHomepageMvp } from './Storyblok/SbHomepageMvp';
 import { SbInitiativeCard } from './Storyblok/SbInitiativeCard';
-import { SbLogo } from './Storyblok/SbLogo';
 import { SbPortraitCard } from './Storyblok/SbPortraitCard';
 import { SbQuote } from './Storyblok/SbQuote';
 import { SbScrollytelling } from './Storyblok/SbScrollytelling';
@@ -50,7 +49,6 @@ export const components = {
   sbHomepage: SbHomepage,
   sbHomepageMvp: SbHomepageMvp,
   sbInitiativeCard: SbInitiativeCard,
-  sbLogo: SbLogo,
   sbPortraitCard: SbPortraitCard,
   sbQuote: SbQuote,
   sbScrollytelling: SbScrollytelling,
