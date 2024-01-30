@@ -3,7 +3,6 @@ import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
 import { SbBanner } from './Storyblok/SbBanner';
 import { SbBasicPage } from './Storyblok/SbBasicPage';
 import { SbBlurryPoster } from './Storyblok/SbBlurryPoster';
-// import { SbBracketCard } from './Storyblok/SbBracketCard';
 import { SbCardWysiwyg } from './Storyblok/SbCardWysiwyg';
 import { SbChangemakerCard } from './Storyblok/SbChangemakerCard';
 import { SbCta } from './Storyblok/SbCta';
