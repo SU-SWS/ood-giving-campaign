@@ -1,0 +1,22 @@
+# Triggers a backup process by url
+name: Momentum - Build Dev
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on a schedule
+  schedule:
+    - cron:  '*/15 * * * *'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  # Ping the netlify build webhook to build dev
+  curl:
+    runs-on: ubuntu-latest
+    steps:
+    - name: curl
+      run: |
+        curl --request POST \
+        --data '{}' \
+        --url "https://api.netlify.com/build_hooks/63f67331dcadec0074ba5c5e"
