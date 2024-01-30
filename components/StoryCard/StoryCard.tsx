@@ -47,14 +47,28 @@ export const StoryCard = ({
       <div className={styles.cardWrapper}>
         {imageSrc && (
           <div className={styles.imageWrapper}>
-            <img
-              alt=""
-              width={500}
-              height={500}
-              loading="lazy"
-              src={getProcessedImage(imageSrc, '500x500', imageFocus)}
-              className={styles.image}
-            />
+            <picture>
+              <source
+                srcSet={getProcessedImage(imageSrc, '500x500', imageFocus)}
+                media="(min-width: 768px)"
+              />
+              <source
+                srcSet={getProcessedImage(imageSrc, '400x400', imageFocus)}
+                media="(min-width: 576px)"
+              />
+              <source
+                srcSet={getProcessedImage(imageSrc, '320x320', imageFocus)}
+                media="(max-width: 575px)"
+              />
+              <img
+                alt=""
+                width={500}
+                height={500}
+                loading="lazy"
+                src={getProcessedImage(imageSrc, '500x500', imageFocus)}
+                className={styles.image}
+              />
+            </picture>
           </div>
         )}
         {heading && (
