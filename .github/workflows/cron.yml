@@ -19,4 +19,4 @@ jobs:
       run: |
         curl --request POST \
         --data '{}' \
-        --url "https://api.netlify.com/build_hooks/63f67331dcadec0074ba5c5e"
+        --url ${{ secrets.NETLIFY_DEV_WEBHOOK }}
