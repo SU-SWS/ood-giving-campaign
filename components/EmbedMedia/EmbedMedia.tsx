@@ -59,6 +59,8 @@ export const EmbedMedia = ({
               height="100%"
               url={mediaUrl}
               controls
+              light={mediaUrl?.includes('soundcloud') ? false : true}
+              playing
             />
           )}
         </div>
