@@ -1,9 +1,7 @@
 import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
-import { Grid } from '../Grid';
 import { Heading, Paragraph, Text } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { ChangemakerCard } from '@/components/ChangemakerCard';
 
 type ChangemakerProps = React.HTMLAttributes<HTMLDivElement> & {
   changemakerCards?: React.ReactNode;
@@ -27,17 +25,17 @@ export const Changemaker = ({
         <Heading size="f7" font="serif" leading="tight" align="center" className="max-w-[110rem] mx-auto rs-mb-4">
           <AnimateInView animation="slideInFromRight">
             <Text as="span" font="serif" className="block">
-              Makers. Doers.
+              Thinkers.
             </Text>
           </AnimateInView>
           <AnimateInView animation="slideInFromLeft" delay={0.1}>
             <Text as="span" font="serif" className="block">
-              Boundary Pushers.
+              Makers. Doers.
             </Text>
           </AnimateInView>
           <AnimateInView animation="slideInFromRight" delay={0.2}>
             <Text as="span" font="serif" className="block">
-              Risk-takers.
+              Boundary Pushers.
             </Text>
           </AnimateInView>
         </Heading>
