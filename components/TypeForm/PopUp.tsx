@@ -24,7 +24,8 @@ const PopUp = ({
     <PopupButton
       onClose={handleClose}
       buttonProps={{ type: 'button', ref: ref, className: className }}
-      noHeading keepSession
+      noHeading
+      keepSession
       id={id}
       {...rest}
     >

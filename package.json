@@ -57,7 +57,7 @@
     "decanter": "^7.2.0",
     "eslint": "^8.50.0",
     "eslint-config-next": "^13.4.13",
-    "netlify-plugin-vault-variables": "^1.0.7",
+    "netlify-plugin-vault-variables": "^2.0.0",
     "postcss": "^8.4.33",
     "typescript": "^5.1"
   },
