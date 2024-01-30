@@ -34,7 +34,7 @@
   "dependencies": {
     "@heroicons/react": "^2.1.1",
     "@storyblok/react": "^3.0.8",
-    "@typeform/embed-react": "^3.8.0",
+    "@typeform/embed-react": "^3.11.0",
     "cnbuilder": "^3.1.0",
     "cookies-next": "^4.0.0",
     "framer-motion": "^10.16.4",
