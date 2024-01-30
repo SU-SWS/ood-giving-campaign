@@ -28,10 +28,9 @@ export const image = 'absolute w-full h-full object-cover top-0 left-0 z-0';
 export const imageOverlay = (overlay?: OverlayType) => cnb('absolute w-full h-full top-0 left-0 z-0 bg-black-true/50', overlays[overlay]);
 
 export const content = 'relative z-10 cc text-white rs-py-10';
-export const contentWrapper = (contentAlign: ContentAlignType) => cnb('w-full md:w-2/3 xl:w-1/2', {
-  'mx-auto': contentAlign === 'center',
-  'ml-0 mr-auto': contentAlign === 'left',
-  'mr-0 ml-auto': contentAlign === 'right',
+export const contentWrapper = (contentAlign: ContentAlignType) => cnb('w-full mx-auto md:w-2/3 xl:w-1/2', {
+  'lg:ml-0 lg:mr-auto': contentAlign === 'left',
+  'lg:mr-0 lg:ml-auto': contentAlign === 'right',
 });
 export const header = 'rs-mb-6';
 export const heading = 'relative z-10 mb-02em whitespace-pre-line';

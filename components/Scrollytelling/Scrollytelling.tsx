@@ -59,19 +59,19 @@ export const Scrollytelling = ({
           <picture>
             <source
               srcSet={getProcessedImage(bgImageSrc, '2000x1200', bgImageFocus)}
-              media="(min-width: 1200px)"
+              media="(min-width: 992px) and (orientation: landscape)"
               width={2000}
               height={1200}
             />
             <source
-              srcSet={getProcessedImage(bgImageSrc, '1200x1200', bgImageFocus)}
-              media="(max-width: 1199px)"
+              srcSet={getProcessedImage(bgImageSrc, '1200x1800', bgImageFocus)}
+              media="(max-width: 1199px) and (orientation: portrait)"
               width={1200}
-              height={1200}
+              height={1800}
             />
             <source
               srcSet={getProcessedImage(bgImageSrc, '900x1600', bgImageFocus)}
-              media="(max-width: 767px)"
+              media="(min-width: 576px)"
               width={900}
               height={1600}
             />
