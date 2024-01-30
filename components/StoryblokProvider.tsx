@@ -11,26 +11,20 @@ import { SbEmbedMedia } from './Storyblok/SbEmbedMedia';
 import { SbGrid } from './Storyblok/SbGrid';
 import { SbGridAlternating } from './Storyblok/SbGridAlternating';
 import { SbFeatureMasonry } from './Storyblok/SbFeatureMasonry';
-// import { SbHomepage } from './Storyblok/SbHomepage';
 import { SbHomepageMvp } from './Storyblok/SbHomepageMvp';
 import { SbInitiativeCard } from './Storyblok/SbInitiativeCard';
-// import { SbPortraitCard } from './Storyblok/SbPortraitCard';
 import { SbQuote } from './Storyblok/SbQuote';
 import { SbScrollytelling } from './Storyblok/SbScrollytelling';
 import { SbSection } from './Storyblok/SbSection';
 import { SbSidebarCard } from './Storyblok/SbSidebarCard';
-// import { SbSplitPoster } from './Storyblok/SbSplitPoster';
-// import { SbStory } from './Storyblok/SbStory';
 import { SbStoryMvp } from './Storyblok/SbStoryMvp/SbStoryMvp';
 import { SbStoryCard } from './Storyblok/SbStoryCard';
 import { SbStoryImage } from './Storyblok/SbStoryImage';
 import { SbText } from './Storyblok/SbText';
 import { SbTextCard } from './Storyblok/SbTextCard';
 import { SbTexturedBar } from './Storyblok/SbTexturedBar';
-// import { SbThemeCard } from './Storyblok/SbThemeCard';
 import { SbTriangle } from './Storyblok/SbTriangle';
 import { SbTypeform } from './Storyblok/SbTypeform';
-// import { SbVerticalPoster } from './Storyblok/SbVerticalPoster';
 import { SbWysiwyg } from './Storyblok/SbWysiwyg';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
 
@@ -38,7 +32,6 @@ export const components = {
   sbBanner: SbBanner,
   sbBasicPage: SbBasicPage,
   sbBlurryPoster: SbBlurryPoster,
-  // sbBracketCard: SbBracketCard,
   sbCardWysiwyg: SbCardWysiwyg,
   sbChangemakerCard: SbChangemakerCard,
   sbCta: SbCta,
@@ -46,25 +39,19 @@ export const components = {
   sbGrid: SbGrid,
   sbGridAlternating: SbGridAlternating,
   sbFeatureMasonry: SbFeatureMasonry,
-  // sbHomepage: SbHomepage,
   sbHomepageMvp: SbHomepageMvp,
   sbInitiativeCard: SbInitiativeCard,
-  // sbPortraitCard: SbPortraitCard,
   sbQuote: SbQuote,
   sbScrollytelling: SbScrollytelling,
   sbSection: SbSection,
   sbSidebarCard: SbSidebarCard,
-  // sbSplitPoster: SbSplitPoster,
-  // ssbStory: SbStory,
   sbStoryMvp: SbStoryMvp,
   sbStoryCard: SbStoryCard,
   sbStoryImage: SbStoryImage,
   sbText: SbText,
   sbTextCard: SbTextCard,
   sbTexturedBar: SbTexturedBar,
-  // sbThemeCard: SbThemeCard,
   sbTriangle: SbTriangle,
-  // sbVerticalPoster: SbVerticalPoster,
   sbWysiwyg: SbWysiwyg,
   sbTypeform: SbTypeform,
 };
