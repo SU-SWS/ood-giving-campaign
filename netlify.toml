@@ -48,3 +48,8 @@
   to = "/"
   status = 301
   force = true
+
+# CONTEXTUAL PLUGINS
+# ##############################################################################
+[[context.production.plugins]]
+  package = "netlify-plugin-submit-sitemap"
