@@ -25,6 +25,8 @@ import { SbStory } from './Storyblok/SbStory';
 import { SbStoryMvp } from './Storyblok/SbStoryMvp/SbStoryMvp';
 import { SbStoryCard } from './Storyblok/SbStoryCard';
 import { SbStoryImage } from './Storyblok/SbStoryImage';
+import { SbTaxonomyFilters } from './Storyblok/SbTaxonomyFilters';
+import { SbTaxonomyResults } from './Storyblok/SbTaxonomyResults';
 import { SbText } from './Storyblok/SbText';
 import { SbTextCard } from './Storyblok/SbTextCard';
 import { SbTexturedBar } from './Storyblok/SbTexturedBar';
@@ -61,6 +63,8 @@ export const components = {
   sbStoryMvp: SbStoryMvp,
   sbStoryCard: SbStoryCard,
   sbStoryImage: SbStoryImage,
+  sbTaxonomyFilters: SbTaxonomyFilters,
+  sbTaxonomyResults: SbTaxonomyResults,
   sbText: SbText,
   sbTextCard: SbTextCard,
   sbTexturedBar: SbTexturedBar,
