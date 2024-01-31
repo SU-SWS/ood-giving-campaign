@@ -92,6 +92,7 @@ export const FeatureMasonry = ({
         </div>
         <EmbedMedia
           mediaUrl={videoUrl}
+          isPreview
           className="lg:col-span-6 bg-black-70"
           aspectRatio="16x9"
         />
