@@ -60,7 +60,7 @@ export const EmbedMedia = ({
               url={mediaUrl}
               controls
               light={mediaUrl?.includes('soundcloud') ? false : true}
-              playing
+              playing={mediaUrl?.includes('soundcloud') ? false : true}
             />
           )}
         </div>
