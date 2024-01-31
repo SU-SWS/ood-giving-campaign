@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { cnb } from 'cnbuilder';
 import ReactPlayer from 'react-player/lazy';
 import { Container } from '../Container';
+import { FlexBox } from '../FlexBox';
 import { WidthBox, type WidthType } from '../WidthBox';
+import { HeroIcon } from '../HeroIcon';
 import { type PaddingType } from '@/utilities/datasource';
 import { type MediaAspectRatioType, mediaAspectRatios } from '@/utilities/datasource';
 import * as styles from './EmbedMedia.styles';
@@ -17,6 +19,12 @@ type EmbedMediaProps = React.HTMLAttributes<HTMLDivElement> & {
   spacingBottom?: PaddingType;
   isCaptionInset?: boolean;
 };
+
+const PlayPreviewIcon = (
+  <FlexBox alignItems="center" justifyContent="center" className={styles.iconWrapper}>
+    <HeroIcon icon="play" noBaseStyle className={styles.previewIcon} />
+  </FlexBox>
+);
 
 export const EmbedMedia = ({
   mediaUrl,
@@ -61,6 +69,7 @@ export const EmbedMedia = ({
               controls
               light={mediaUrl?.includes('soundcloud') ? false : true}
               playing={mediaUrl?.includes('soundcloud') ? false : true}
+              playIcon={mediaUrl?.includes('soundcloud') ?  undefined : PlayPreviewIcon}
             />
           )}
         </div>
