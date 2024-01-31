@@ -28,7 +28,7 @@
   [plugins.inputs]
     username = 'Stanford'
     password = 'OnPurpose'
-    context = ['branch-deploy', 'deploy-preview', 'production']
+    context = ['branch-deploy', 'deploy-preview']
     file = '.next/_headers'
 
 # HEADERS
@@ -42,10 +42,14 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Strict-Transport-Security = "max-age=2592000"
     Permissions-Policy = "vibrate=(), geolocation=(), midi=(), notifications=(), push=(), microphone=(), camera=(), magnetometer=(), gyroscope=(), speaker=()"
-    X-Robots-Tag = "noindex, nofollow"
 
 [[redirects]]
   from = "/home"
   to = "/"
   status = 301
   force = true
+
+# CONTEXTUAL PLUGINS
+# ##############################################################################
+[[context.production.plugins]]
+  package = "netlify-plugin-submit-sitemap"
