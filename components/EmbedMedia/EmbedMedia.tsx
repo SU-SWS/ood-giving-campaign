@@ -18,6 +18,7 @@ type EmbedMediaProps = React.HTMLAttributes<HTMLDivElement> & {
   spacingTop?: PaddingType;
   spacingBottom?: PaddingType;
   isCaptionInset?: boolean;
+  isPreview?: boolean;
 };
 
 const PlayPreviewIcon = (
@@ -35,6 +36,7 @@ export const EmbedMedia = ({
   spacingTop,
   spacingBottom,
   isCaptionInset,
+  isPreview,
   className,
   ...props
 }: EmbedMediaProps) => {
@@ -67,9 +69,9 @@ export const EmbedMedia = ({
               height="100%"
               url={mediaUrl}
               controls
-              light={mediaUrl?.includes('soundcloud') ? false : true}
-              playing={mediaUrl?.includes('soundcloud') ? false : true}
-              playIcon={mediaUrl?.includes('soundcloud') ?  undefined : PlayPreviewIcon}
+              light={isPreview ? true : false}
+              playing={isPreview ? true : false}
+              playIcon={isPreview ? PlayPreviewIcon : undefined}
             />
           )}
         </div>

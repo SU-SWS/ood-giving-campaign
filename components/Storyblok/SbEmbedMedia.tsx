@@ -19,6 +19,7 @@ type SbEmbedMediaProps = {
     spacingBottom?: PaddingType;
     isCaptionInset?: boolean;
     isCaptionLight?: boolean;
+    isPreview?: boolean;
   };
 };
 
@@ -33,6 +34,7 @@ export const SbEmbedMedia = ({
     spacingBottom,
     isCaptionInset,
     isCaptionLight,
+    isPreview,
   },
   blok,
 }: SbEmbedMediaProps) => {
@@ -49,6 +51,7 @@ export const SbEmbedMedia = ({
       spacingTop={spacingTop}
       spacingBottom={spacingBottom}
       isCaptionInset={isCaptionInset}
+      isPreview={isPreview}
     />
   );
 };
