@@ -71,6 +71,10 @@ TailwindCSS
 
 We installed the [official TailwindCSS container query plugin](https://github.com/tailwindlabs/tailwindcss-container-queries), but due to no support for Safari version 15 and earlier, please only use it for progressive enhancement.
 
+Rendering and Caching Strategy
+---
+You can find details on the [rendering and caching strategy](https://docs.google.com/document/d/195IcFOiD38lB3ZavIwRXW74FseMplvdyH_C83efGxSc/edit) for this site on Netlify using Storyblok in Google Drive.
+
 Release Workflow
 ---
 
