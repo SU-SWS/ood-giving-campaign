@@ -36,18 +36,11 @@ export async function GET(
     component: { in: 'sbStory,sbStoryMVP' },
   };
 
-  if (!!topic && topic.length > 0) {
-    filters.topics = { value:  { any_in_array: normalizeSearchParam(topic) } };
-  }
-  if (!!theme && theme.length > 0) {
-    filters.themes = { value: { any_in_array: normalizeSearchParam(theme) } };
-  }
-  if (!!initiative && initiative.length > 0) {
-    filters.initiatives = { value: { any_in_array: normalizeSearchParam(initiative) } };
-  }
-  if (!!school && school.length > 0) {
-    filters.schools = { value: { any_in_array: normalizeSearchParam(school) } };
-  }
+  // Refactor this if statement set.
+  if (topic?.length) filters.topics = { value: { any_in_array: normalizeSearchParam(topic) } };
+  if (theme?.length) filters.themes = { value: { any_in_array: normalizeSearchParam(theme) } };
+  if (initiative?.length) filters.initiatives = { value: { any_in_array: normalizeSearchParam(initiative) } };
+  if (school?.length) filters.schools = { value: { any_in_array: normalizeSearchParam(school) } };
 
   try {
     // Get Story Data. Don't cache this because it's a search.
