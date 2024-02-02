@@ -38,7 +38,7 @@ const bridgeOptions = {
  * Init on the server.
  */
 storyblokInit({
-  accessToken: process.env.STORYBLOK_ACCESS_TOKEN, // Preview token because this is in server side.
+  accessToken: process.env.STORYBLOK_PREVIEW_EDITOR_TOKEN, // Preview token because this is in server side.
   use: [apiPlugin],
   apiOptions: {
     region: 'us',
