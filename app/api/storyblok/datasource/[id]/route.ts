@@ -2,6 +2,14 @@ import StoryblokClient from 'storyblok-js-client';
 import validator from 'validator';
 import { type NextRequest } from 'next/server';
 
+export type ResponseItem = {
+  name: string;
+  value: string;
+  dimension_value: string;
+};
+
+export type ResponseData = ResponseItem[];
+
 /**
  * Fetch All the values in a datasource.
  * @param request Next Request
