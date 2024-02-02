@@ -51,6 +51,7 @@ export const getPageMetadata = ({
   const { siteTitle, siteDescription, siteUrlProd: siteUrl } = config;
 
   const title = seoTitle || pageTitle;
+  const searchTitle = slug === 'home' ? 'Home' : title;
   const description = seoDescription || dek || siteDescription;
   const ogTitle = og_title || title;
   const ogDescription = og_description || description;
@@ -78,7 +79,7 @@ export const getPageMetadata = ({
   const canonical = canonicalNotSelf || selfReferencingUrl;
 
   return {
-    title: `${title} | ${siteTitle}`,
+    title: `${searchTitle} | ${siteTitle}`,
     description: description,
     metadataBase: new URL(config.siteUrlProd),
     openGraph: {
