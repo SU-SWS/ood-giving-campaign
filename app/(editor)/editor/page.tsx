@@ -95,7 +95,7 @@ async function getStoryData({ path }: PageProps['searchParams']): Promise<ISbRes
  * You can extend that by adjusting 3600 with the value you need.
  */
 const validateEditor = (searchParams: PageProps['searchParams']) => {
-  const validationString = searchParams['_storyblok_tk[space_id]'] + ':' + process.env.STORYBLOK_ACCESS_TOKEN + ':' + searchParams['_storyblok_tk[timestamp]'];
+  const validationString = searchParams['_storyblok_tk[space_id]'] + ':' + process.env.STORYBLOK_PREVIEW_EDITOR_TOKEN + ':' + searchParams['_storyblok_tk[timestamp]'];
   const validationToken = crypto.createHash('sha1').update(validationString).digest('hex');
   if (searchParams['_storyblok_tk[token]'] == validationToken &&
       Number(searchParams['_storyblok_tk[timestamp]']) > Math.floor(Date.now()/1000)-3600) {
