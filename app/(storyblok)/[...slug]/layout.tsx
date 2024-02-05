@@ -1,4 +1,6 @@
+'use client';
 import StoryblokProvider from '@/components/StoryblokProvider';
+import { TaxonomyProvider } from '@/components/Taxonomy/Context/TaxonomyProvider';
 
 type StoryblokLayoutProps = {
   children: React.ReactNode,
@@ -7,7 +9,9 @@ type StoryblokLayoutProps = {
 export default function StoryblokLayout({ children }: StoryblokLayoutProps) {
   return (
     <StoryblokProvider>
-      {children}
+      <TaxonomyProvider>
+        {children}
+      </TaxonomyProvider>
     </StoryblokProvider>
   );
 }
