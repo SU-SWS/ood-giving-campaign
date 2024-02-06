@@ -127,7 +127,7 @@ export type BgTextColorPairType = keyof typeof bgTextColorPairs;
 
 export const heroOverlays = {
   none: 'bg-black-true/20 lg:bg-transparent',
-  'black-10': 'bg-black-true/20',
+  'black-10': 'bg-black-true/10',
   'black-20': 'bg-black-true/20',
   'black-30': 'bg-black-true/30',
   'black-40': 'bg-black-true/40',
