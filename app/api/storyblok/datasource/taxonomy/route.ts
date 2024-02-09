@@ -9,7 +9,7 @@ export type ResponseData = {
   [key: string]: EndPointResponse | undefined;
 };
 
-function api<T>(url: string): Promise<T> {
+async function api<T>(url: string): Promise<T> {
   return fetch(url)
     .then(response => {
       if (!response.ok) {
