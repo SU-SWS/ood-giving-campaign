@@ -36,9 +36,11 @@ export async function GET(
     themes: api<EndPointResponse>(`${BASE_URL}/api/storyblok/datasource/taxonomy-themes`),
   };
 
+  console.log('REQUESTS', requests);
+
   const responses = await Promise.allSettled(Object.values(requests));
 
-  console.log('responses', responses);
+  console.log('RESPONSES', responses);
 
   const data: ResponseData = {};
   // Loop through the responses and check if any of them failed
