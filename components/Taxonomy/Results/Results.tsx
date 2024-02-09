@@ -26,8 +26,6 @@ const ResultsComponent = () => {
     500: 1,
   };
 
-  console.log('STORE RS', store);
-
   /**
    * Filter stories based on selected taxonomy.
    */
