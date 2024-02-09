@@ -39,6 +39,7 @@ export async function GET(
         datasource: id,
         version: 'draft',
         sort_by: 'name:asc',
+        cv: Date.now(),
       },
       null,
       {
