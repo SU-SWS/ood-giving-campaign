@@ -41,6 +41,9 @@ export async function GET(
   };
 
   const responses = await Promise.allSettled(Object.values(requests));
+
+  console.log('responses', responses);
+
   const data: ResponseData = {};
   // Loop through the responses and check if any of them failed
   // add the successful responses to the response object by key
