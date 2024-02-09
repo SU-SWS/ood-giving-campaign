@@ -12,7 +12,17 @@ export type ResponseData = {
 export const dynamic = 'force-dynamic';
 
 function api<T>(url: string): Promise<T> {
-  return fetch(url)
+
+  /**
+   * REMOVE THIS AFTER TESTING.
+   */
+  const username = 'Stanford';
+  const password = 'OnPurpose';
+  let headers = new Headers();
+  headers.set('Authorization', 'Basic ' + Buffer.from(username + ':' + password).toString('base64'));
+  /** 8***8*88**88*******88***8**8**88  */
+
+  return fetch(url, {headers})
     .then(response => {
       if (!response.ok) {
         throw new Error(response.statusText);
