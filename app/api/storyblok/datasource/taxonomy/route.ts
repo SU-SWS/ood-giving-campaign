@@ -9,7 +9,7 @@ export type ResponseData = {
   [key: string]: EndPointResponse | undefined;
 };
 
-async function api<T>(url: string): Promise<T> {
+function api<T>(url: string): Promise<T> {
   return fetch(url)
     .then(response => {
       if (!response.ok) {
@@ -36,11 +36,7 @@ export async function GET(
     themes: api<EndPointResponse>(`${BASE_URL}/api/storyblok/datasource/taxonomy-themes`),
   };
 
-  console.log('REQUESTS', requests);
-
   const responses = await Promise.allSettled(Object.values(requests));
-
-  console.log('RESPONSES', responses);
 
   const data: ResponseData = {};
   // Loop through the responses and check if any of them failed
@@ -51,6 +47,8 @@ export async function GET(
       data[key] = response.value;
     }
     else {
+      console.error('Error fetching datasource entries', response.reason);
+      console.error('Error fetching datasource entries', response.reason.response);
       data[key] = [];
     }
   }

@@ -30,7 +30,7 @@ export async function GET(
     return new Response(JSON.stringify({ message: 'Invalid id' }), { status: 400 });
   }
 
-  console.log('id', id);
+  console.log('SLUG', id);
 
   try {
     const response =  await storyblokApi.getAll(
