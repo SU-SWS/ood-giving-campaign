@@ -51,8 +51,8 @@ export async function generateStaticParams() {
   // Fetch new content from storyblok.
   const storyblokApi: StoryblokClient = getStoryblokApi();
   let sbParams: ISbStoriesParams = {
-    version: activeEnv === 'development' ? 'draft' : 'published',
-    cv: activeEnv === 'development' ? Date.now() : undefined,
+    version: 'draft',
+    cv: Date.now(),
     resolve_links: '0',
     resolve_assets: 0,
     per_page: 100,
@@ -88,8 +88,8 @@ async function getStoryData(params: { slug: string[] }) {
   const slug = Array.isArray(params.slug) ? params.slug.join('/') : 'home';
 
   const sbParams: ISbStoriesParams = {
-    version: activeEnv === 'development' ? 'draft' : 'published',
-    cv: activeEnv === 'development' ? Date.now() : undefined,
+    version: 'draft',
+    cv: Date.now(),
     resolve_relations: resolveRelations,
   };
 
