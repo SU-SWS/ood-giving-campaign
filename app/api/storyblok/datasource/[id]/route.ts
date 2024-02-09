@@ -30,6 +30,8 @@ export async function GET(
     return new Response(JSON.stringify({ message: 'Invalid id' }), { status: 400 });
   }
 
+  console.log('id', id);
+
   try {
     const response =  await storyblokApi.getAll(
       'cdn/datasource_entries',
@@ -43,9 +45,11 @@ export async function GET(
         next: { revalidate: false }, // Cache responses as long as possible. Builds will clear the cache.
       },
     );
+    console.log('response', response);
     return new Response(JSON.stringify(response), {status: 200} );
   }
   catch (error: Error | any) {
+    console.error('Error fetching datasource entries', error);
     return new Response(
       JSON.stringify({ message: error.response }), { status: error.status, statusText: error.message },
     );
