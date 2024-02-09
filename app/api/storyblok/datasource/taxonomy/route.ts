@@ -9,6 +9,8 @@ export type ResponseData = {
   [key: string]: EndPointResponse | undefined;
 };
 
+export const dynamic = 'force-dynamic';
+
 function api<T>(url: string): Promise<T> {
   return fetch(url)
     .then(response => {
