@@ -27,7 +27,7 @@ function api<T>(url: string): Promise<T> {
 export async function GET(
   request: NextRequest,
 ) {
-  const BASE_URL = process.env.DEPLOY_PRIME_URL || 'http://localhost:3000';
+  const BASE_URL = process.env.DEPLOY_PRIME_URL || process.env.URL || 'http://localhost:3000';
   const requests = {
     schools: api<EndPointResponse>(`${BASE_URL}/api/storyblok/datasource/taxonomy-schools`),
     topics: api<EndPointResponse>(`${BASE_URL}/api/storyblok/datasource/taxonomy-topics`),
