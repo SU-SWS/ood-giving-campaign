@@ -11,6 +11,7 @@ import { SbGrid } from './Storyblok/SbGrid';
 import { SbGridAlternating } from './Storyblok/SbGridAlternating';
 import { SbFeatureMasonry } from './Storyblok/SbFeatureMasonry';
 import { SbHomepageMvp } from './Storyblok/SbHomepageMvp';
+import { SbHomepageThemeSection } from './Storyblok/SbHomepageThemeSection';
 import { SbInitiativeCard } from './Storyblok/SbInitiativeCard';
 import { SbQuote } from './Storyblok/SbQuote';
 import { SbScrollytelling } from './Storyblok/SbScrollytelling';
@@ -39,6 +40,7 @@ export const components = {
   sbGridAlternating: SbGridAlternating,
   sbFeatureMasonry: SbFeatureMasonry,
   sbHomepageMvp: SbHomepageMvp,
+  sbHomepageThemeSection: SbHomepageThemeSection,
   sbInitiativeCard: SbInitiativeCard,
   sbQuote: SbQuote,
   sbScrollytelling: SbScrollytelling,
