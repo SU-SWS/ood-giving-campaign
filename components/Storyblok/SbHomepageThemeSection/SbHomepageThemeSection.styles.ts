@@ -6,3 +6,6 @@ export const overlay = (hasBgGradient?: boolean) => cnb('absolute top-0 left-0 w
 export const header = 'relative overflow-hidden cc 3xl:px-100 4xl:px-[calc((100%-1800px)/2)] z-20';
 export const superhead = 'text-shadow-sm';
 export const heading = 'mb-0 whitespace-pre-line';
+export const introWrapper = 'cc relative z-20';
+export const intro = 'intro-text *:leading-display *:md:leading-cozy *:text-shadow-sm rs-mt-7 max-w-1000';
+export const contentWrapper = 'relative z-20';

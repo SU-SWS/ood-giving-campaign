@@ -41,7 +41,6 @@ export const SbHomepageThemeSection = ({
   },
   blok,
 }: SbHomepageThemeSectionProps) => {
-  const hasHeader = heading || superhead || intro;
   const hasBgGradient = !!gradientTop && !!gradientBottom;
 
   return (
@@ -53,48 +52,54 @@ export const SbHomepageThemeSection = ({
       className={styles.root}
       {...storyblokEditable(blok)}
     >
-      <picture>
-        <source
-          srcSet={getProcessedImage(filename, bgBlur !== 'none' ? '1000x1500' : '2000x3000', focus)}
-          media="(min-width: 1200px)"
-          // Exact height and width don't matter as long as aspect ratio is the same as the image
-          width={2000}
-          height={3000}
-        />
-        <source
-          srcSet={getProcessedImage(filename, bgBlur !== 'none' ? '600x900' : '1200x1800', focus)}
-          media="(min-width: 768px)"
-          width={1200}
-          height={1800}
-        />
-        <source
-          srcSet={getProcessedImage(filename, bgBlur !== 'none' ? '400x600' : '800x1200', focus)}
-          media="(min-width: 461px)"
-          width={800}
-          height={1200}
-        />
-        <source
-          srcSet={getProcessedImage(filename, bgBlur !== 'none' ? '200x300' : '600x900', focus)}
-          media="(max-width: 460px)"
-          width={600}
-          height={900}
-        />
-        <img
-          src={getProcessedImage(filename, bgBlur !== 'none' ? '1000x600' : '2000x3000', focus)}
-          alt=""
-          width={2000}
-          height={3000}
-          className={styles.bgImage}
-        />
-      </picture>
-      <div
-        className={cnb(
-          styles.overlay(hasBgGradient),
-          bgBlurs[bgBlur],
-          gradientFroms[gradientBottom],
-          gradientTos[gradientTop],
-        )}
-      />
+      {filename && (
+        <>
+          <picture>
+            <source
+              srcSet={getProcessedImage(filename, bgBlur !== 'none' ? '1000x1500' : '2000x3000', focus)}
+              media="(min-width: 1200px)"
+              // Exact height and width don't matter as long as aspect ratio is the same as the image
+              width={2000}
+              height={3000}
+            />
+            <source
+              srcSet={getProcessedImage(filename, bgBlur !== 'none' ? '600x900' : '1200x1800', focus)}
+              media="(min-width: 768px)"
+              width={1200}
+              height={1800}
+            />
+            <source
+              srcSet={getProcessedImage(filename, bgBlur !== 'none' ? '400x600' : '800x1200', focus)}
+              media="(min-width: 461px)"
+              width={800}
+              height={1200}
+            />
+            <source
+              srcSet={getProcessedImage(filename, bgBlur !== 'none' ? '200x300' : '600x900', focus)}
+              media="(max-width: 460px)"
+              width={600}
+              height={900}
+            />
+            <img
+              src={getProcessedImage(filename, bgBlur !== 'none' ? '1000x600' : '2000x3000', focus)}
+              alt=""
+              width={2000}
+              height={3000}
+              className={styles.bgImage}
+            />
+          </picture>
+          {(bgBlur !== 'none' || hasBgGradient) && (
+            <div
+              className={cnb(
+                styles.overlay(hasBgGradient),
+                bgBlurs[bgBlur],
+                gradientFroms[gradientBottom],
+                gradientTos[gradientTop],
+              )}
+            />
+          )}
+        </>
+      )}
       <AnimateInView animation="slideInFromLeft" className={styles.header}>
         {superhead && (
           <Text
@@ -122,15 +127,15 @@ export const SbHomepageThemeSection = ({
         )}
       </AnimateInView>
       {hasRichText(intro) && (
-        <AnimateInView animation="slideUp" delay={0.2} className="cc relative z-20">
+        <AnimateInView animation="slideUp" delay={0.2} className={styles.introWrapper}>
           <RichText
             wysiwyg={intro}
             textColor="white"
-            className="intro-text *:leading-display *:md:leading-cozy *:text-shadow-sm rs-mt-7 max-w-1000"
+            className={styles.intro}
           />
         </AnimateInView>
       )}
-      <Container pt={8} width="full" className="relative z-20">
+      <Container pt={8} width="full" className={styles.contentWrapper}>
         <CreateBloks blokSection={content} isDarkTheme />
       </Container>
     </Container>
