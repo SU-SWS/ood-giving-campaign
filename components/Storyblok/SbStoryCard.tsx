@@ -31,6 +31,7 @@ export type SbStoryCardProps = {
     link?: SbLinkType;
     animation?: AnimationType;
     delay?: number;
+    isHorizontal?: boolean;
   };
 };
 
@@ -58,6 +59,7 @@ export const SbStoryCard = ({
     link,
     animation,
     delay,
+    isHorizontal,
   },
   blok,
 }: SbStoryCardProps) => (
@@ -75,5 +77,6 @@ export const SbStoryCard = ({
     animation={animation}
     delay={delay}
     taxonomy={topics}
+    isHorizontal={isHorizontal}
   />
 );

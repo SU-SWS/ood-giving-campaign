@@ -1,15 +1,26 @@
 import { cnb } from 'cnbuilder';
 
-export const root = '@container relative z-10 max-w-[32rem] sm:max-w-400 md:max-w-full mx-auto';
+export const root = (isHorizontal: boolean) => cnb(
+  'relative z-10 mx-auto', {
+  '@container max-w-[32rem] sm:max-w-400 md:max-w-full': !isHorizontal,
+  },
+);
 
-export const cardWrapper = 'relative group @200:text-15 @250:text-17 @280:!type-0 @md:!text-26';
+export const cardWrapper = (isHorizontal: boolean) => cnb(
+  'relative group @200:text-15 @250:text-17 @280:!type-0 @md:!text-26', {
+  'grid lg:grid-cols-2 bg-black-true/50': isHorizontal,
+  },
+);
 
 export const imageWrapper = 'transition-all aspect-w-1 aspect-h-1 overflow-hidden';
 
 export const image = 'object-cover w-full h-full group-hocus-within:scale-105 transition-transform';
 
-export const heading = (hasTabColor: boolean) => cnb('mt-06em rs-mb-neg1 text-current pr-08em xl:pr-1em pl-12 xl:pl-21 border-l-[1.2rem] xl:border-l-[1.8rem]', {
+export const contentWrapper = '';
+export const heading = (hasTabColor: boolean, isHorizontal: boolean) => cnb(' text-current pr-08em xl:pr-1em pl-12 xl:pl-21 border-l-[1.2rem] xl:border-l-[1.8rem]', {
   '@200:border-l-[1.2rem] @xs:border-l-[1.8rem] @200:pl-12 @xs:pl-21 @200:pr-08em @320:pr-1em': hasTabColor,
+  'mt-06em rs-mb-neg1': !isHorizontal,
+  'rs-mb-2': isHorizontal,
 });
 
 export const headingLink = 'stretched-link no-underline !font-bold !leading-tight';
