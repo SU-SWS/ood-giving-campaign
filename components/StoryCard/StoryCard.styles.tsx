@@ -1,9 +1,9 @@
 import { cnb } from 'cnbuilder';
 
 export const root = (isHorizontal: boolean) => cnb(
-  'relative z-10 mx-auto', {
-  '@container max-w-300 sm:max-w-400 md:max-w-full': !isHorizontal,
-  '@container max-w-700 lg:max-w-none': isHorizontal,
+  '@container relative z-10 mx-auto', {
+  'max-w-300 sm:max-w-400 md:max-w-full': !isHorizontal,
+  'max-w-700 lg:max-w-none': isHorizontal,
   },
 );
 
