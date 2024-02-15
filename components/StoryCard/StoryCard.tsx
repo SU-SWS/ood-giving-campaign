@@ -86,14 +86,13 @@ export const StoryCard = ({
           <FlexBox
             direction="col"
             justifyContent={isHorizontal ? 'center' : undefined}
-            className={styles.contentWrapper}
+            className={styles.contentWrapper(isHorizontal)}
           >
             {heading && (
               <Heading
                 as={headingLevel}
-                size={headingSize}
-                leading="tight"
-                className={cnb(styles.heading(!!tabColor, isHorizontal), accentBorderColors[tabColor])}
+                leading="none"
+                className={cnb(styles.heading(!!tabColor, isHorizontal, isSmallHeading), accentBorderColors[tabColor])}
               >
                 <CtaLink sbLink={link} href={href} className={styles.headingLink}>
                   {heading}
@@ -102,9 +101,10 @@ export const StoryCard = ({
             )}
             {body && (
               <Paragraph
-                variant={isHorizontal ? 'none' : 'card'}
+                variant={isHorizontal ? 'big' : 'card'}
+                leading={isHorizontal ? 'snug' : 'display'}
                 noMargin
-                className={styles.body}
+                className={cnb(styles.body(isHorizontal), accentBorderColors[tabColor])}
               >
                 {body}
               </Paragraph>
