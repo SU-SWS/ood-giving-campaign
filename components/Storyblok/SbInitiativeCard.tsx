@@ -11,7 +11,6 @@ type SbInitiativeCardProps = {
     heading?: string;
     headingLevel?: HeadingType;
     body?: string;
-    isSmallHeading?: boolean;
     image?: SbImageType;
     tabColor?: {
       value?: PaletteAccentHexColorType;

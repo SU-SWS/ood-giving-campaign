@@ -13,7 +13,6 @@ import * as styles from './InitiativeCard.styles';
 export type InitiativeCardProps = HTMLAttributes<HTMLDivElement> & {
   heading?: string;
   headingLevel?: HeadingType;
-  isSmallHeading?: boolean;
   body?: string;
   imageSrc?: string;
   imageFocus?: string;
@@ -26,7 +25,6 @@ export type InitiativeCardProps = HTMLAttributes<HTMLDivElement> & {
 export const InitiativeCard = ({
   heading,
   headingLevel = 'h2',
-  isSmallHeading,
   body,
   imageSrc = '',
   imageFocus,

@@ -56,7 +56,7 @@ export const TextCard = ({
         <FlexBox direction="col">
           <Text
             font={font === 'serif' ? 'serif' : 'druk'}
-            size={font === 'serif' ? 4 : drukFontSize}
+            size={font === 'serif' ? 'f4' : drukFontSize}
             weight={font === 'serif' ? 'bold' : 'black'}
             leading={font === 'serif' ? 'tight' : 'none'}
           >
