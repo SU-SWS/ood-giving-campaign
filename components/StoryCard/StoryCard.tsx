@@ -60,24 +60,26 @@ export const StoryCard = ({
           {imageSrc && (
             <div className={styles.imageWrapper}>
               <picture>
+                {!isHorizontal && (
+                  <source
+                    srcSet={getProcessedImage(imageSrc, '500x500', imageFocus)}
+                    media="(min-width: 768px)"
+                  />
+                )}
                 <source
-                  srcSet={getProcessedImage(imageSrc, '500x500', imageFocus)}
-                  media="(min-width: 768px)"
-                />
-                <source
-                  srcSet={getProcessedImage(imageSrc, '400x400', imageFocus)}
+                  srcSet={getProcessedImage(imageSrc, isHorizontal ? '750x750' : '400x400', imageFocus)}
                   media="(min-width: 576px)"
                 />
                 <source
-                  srcSet={getProcessedImage(imageSrc, '320x320', imageFocus)}
+                  srcSet={getProcessedImage(imageSrc, isHorizontal ? '530x530' : '300x300', imageFocus)}
                   media="(max-width: 575px)"
                 />
                 <img
                   alt=""
-                  width={500}
-                  height={500}
+                  width={isHorizontal ? 750 : 500}
+                  height={isHorizontal ? 750 : 500}
                   loading="lazy"
-                  src={getProcessedImage(imageSrc, '500x500', imageFocus)}
+                  src={getProcessedImage(imageSrc, isHorizontal ? '750x750' : '500x500', imageFocus)}
                   className={styles.image}
                 />
               </picture>
