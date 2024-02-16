@@ -30,5 +30,6 @@ export default {
     require('@tailwindcss/container-queries'),
     require(`${dir}/base/gc-base.js`)(),
     require(`${dir}/components/gc-typography.js`)(),
+    require(`${dir}/components/gc-text-shadow.js`)(),
   ],
 } satisfies Config;
