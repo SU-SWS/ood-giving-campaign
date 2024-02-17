@@ -1,14 +1,16 @@
 import { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
 import { AnimateInView, type AnimationType } from '../Animate';
-import { CtaLink } from '../Cta/CtaLink';
-import { Heading, type HeadingType, Paragraph } from '../Typography';
-import { HeroIcon } from '../HeroIcon';
+import { CtaLink, type IconAnimationType } from '../Cta';
+import {
+  Heading, type HeadingType, Paragraph, Text,
+} from '../Typography';
 import { FlexBox } from '../FlexBox';
 import { type SbLinkType } from '../Storyblok/Storyblok.types';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { accentBorderColors, type AccentBorderColorType } from '@/utilities/datasource';
 import * as styles from './InitiativeCard.styles';
+import { IconType } from '../HeroIcon';
 
 export type InitiativeCardProps = HTMLAttributes<HTMLDivElement> & {
   heading?: string;
@@ -17,6 +19,7 @@ export type InitiativeCardProps = HTMLAttributes<HTMLDivElement> & {
   imageSrc?: string;
   imageFocus?: string;
   tabColor?: AccentBorderColorType;
+  linkText?: string;
   link?: SbLinkType;
   animation?: AnimationType;
   delay?: number;
@@ -29,59 +32,88 @@ export const InitiativeCard = ({
   imageSrc = '',
   imageFocus,
   tabColor,
+  linkText,
   link,
   animation = 'none',
   delay,
   className,
   ...props
-}: InitiativeCardProps) => (
-  <AnimateInView animation={animation} delay={delay}>
-    <FlexBox
-      as="article"
-      direction="col"
-      className={cnb(styles.root, className)}
-      {...props}
-    >
-      <div className={styles.topWrapper}>
-        <div className={styles.imageWrapper}>
-          <img
-            width={600}
-            height={800}
-            alt=""
-            loading="lazy"
-            src={getProcessedImage(imageSrc, '600x800', imageFocus) || ''}
-            className={styles.image}
-          />
+}: InitiativeCardProps) => {
+  // Split the linkText into an array of words
+  const words = linkText?.trim().split(/\s+/);
+
+  // Extract the last word
+  const lastWord = words?.pop();
+
+  // Join the remaining words to form the first part of the link text
+  const firstPart = words?.join(' ');
+
+  let cardIcon: IconType = 'arrow-right';
+  let iconAnimation: IconAnimationType = 'right';
+
+  if (link?.linktype === 'url') {
+    cardIcon = 'external';
+    iconAnimation = 'top-right';
+  } else if (link?.linktype === 'asset') {
+    cardIcon = 'download';
+    iconAnimation = 'down';
+  }
+
+  return (
+    <AnimateInView animation={animation} delay={delay}>
+      <FlexBox
+        as="article"
+        direction="col"
+        className={cnb(styles.root, className)}
+        {...props}
+      >
+        <div className={styles.topWrapper}>
+          <div className={styles.imageWrapper}>
+            <img
+              width={600}
+              height={800}
+              alt=""
+              loading="lazy"
+              src={getProcessedImage(imageSrc, '600x800', imageFocus) || ''}
+              className={styles.image}
+            />
+          </div>
+          <Heading
+            as={headingLevel}
+            font="druk-wide"
+            size={1}
+            leading="tight"
+            uppercase
+            className={styles.heading}
+          >
+            {heading}
+          </Heading>
         </div>
-        <Heading
-          as={headingLevel}
-          font="druk-wide"
-          size={1}
-          leading="tight"
-          uppercase
-          className={styles.heading}
+        <div className={styles.bodyWrapper}>
+          <Paragraph
+            variant="subheading"
+            leading="display"
+            noMargin
+            className={cnb(styles.body(!!tabColor), accentBorderColors[tabColor])}
+          >
+            {body}
+          </Paragraph>
+        </div>
+        <CtaLink
+          variant="unset"
+          sbLink={link}
+          className={styles.cta}
+          icon={cardIcon}
+          iconProps={{ className: styles.icon }}
+          animate={iconAnimation}
         >
-          {heading}
-        </Heading>
-      </div>
-      <div className={styles.bodyWrapper}>
-        <Paragraph
-          variant="subheading"
-          leading="display"
-          noMargin
-          className={cnb(styles.body(!!tabColor), accentBorderColors[tabColor])}
-        >
-          {body}
-        </Paragraph>
-      </div>
-      <CtaLink variant="unset" sbLink={link} className={styles.cta}>
-        <HeroIcon
-          title={heading}
-          icon="arrow-right"
-          noBaseStyle
-          className={styles.arrowIcon}
-        />
-      </CtaLink>
-    </FlexBox>
-  </AnimateInView>
-);
+          {linkText && (
+            <Text weight="semibold" align="right" leading="none" className={styles.linkText}>
+              {firstPart} <span className={styles.lastword}>{lastWord}</span>
+            </Text>
+          )}
+        </CtaLink>
+      </FlexBox>
+    </AnimateInView>
+  );
+};

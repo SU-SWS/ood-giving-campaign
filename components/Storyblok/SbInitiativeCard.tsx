@@ -15,6 +15,7 @@ type SbInitiativeCardProps = {
     tabColor?: {
       value?: PaletteAccentHexColorType;
     }
+    linkText?: string;
     link?: SbLinkType;
     animation?: AnimationType;
     delay?: number;
@@ -28,6 +29,7 @@ export const SbInitiativeCard = ({
     body,
     image: { filename, focus } = {},
     tabColor: { value } = {},
+    linkText,
     link,
     animation,
     delay,
@@ -42,6 +44,7 @@ export const SbInitiativeCard = ({
     imageSrc={filename}
     imageFocus={focus}
     tabColor={paletteAccentColors[value]}
+    linkText={linkText}
     link={link}
     animation={animation}
     delay={delay}
