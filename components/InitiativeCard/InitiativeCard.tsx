@@ -80,7 +80,7 @@ export const InitiativeCard = ({
               height={800}
               alt=""
               loading="lazy"
-              src={getProcessedImage(imageSrc, '600x800', imageFocus) || ''}
+              src={getProcessedImage(imageSrc, '510x680', imageFocus) || ''}
               className={styles.image}
             />
           </div>
