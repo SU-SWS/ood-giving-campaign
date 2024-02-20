@@ -48,15 +48,21 @@ export const InitiativeCard = ({
   // Join the remaining words to form the first part of the link text
   const firstPart = words?.join(' ');
 
-  let cardIcon: IconType = 'arrow-right';
-  let iconAnimation: IconAnimationType = 'right';
+  let cardIcon: IconType;
+  let iconAnimation: IconAnimationType;
 
-  if (link?.linktype === 'url') {
-    cardIcon = 'external';
-    iconAnimation = 'top-right';
-  } else if (link?.linktype === 'asset') {
-    cardIcon = 'download';
-    iconAnimation = 'down';
+  switch (link?.linktype) {
+    case 'asset':
+      cardIcon = 'download';
+      iconAnimation = 'down';
+      break;
+    case 'story':
+      cardIcon = 'arrow-right';
+      iconAnimation = 'right';
+      break;
+    default:
+      cardIcon = 'external';
+      iconAnimation = 'top-right';
   }
 
   return (
