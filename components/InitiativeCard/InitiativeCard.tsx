@@ -3,7 +3,7 @@ import { cnb } from 'cnbuilder';
 import { AnimateInView, type AnimationType } from '../Animate';
 import { CtaLink, type IconAnimationType } from '../Cta';
 import {
-  Heading, type HeadingType, Paragraph, Text,
+  Heading, type HeadingType, Paragraph, Text, SrOnlyText,
 } from '../Typography';
 import { FlexBox } from '../FlexBox';
 import { type SbLinkType } from '../Storyblok/Storyblok.types';
@@ -110,13 +110,15 @@ export const InitiativeCard = ({
           sbLink={link}
           className={styles.cta}
           icon={cardIcon}
-          iconProps={{ className: styles.icon }}
+          iconProps={{ className: styles.icon(!!linkText) }}
           animate={iconAnimation}
         >
-          {linkText && (
-            <Text weight="semibold" align="right" leading="none" className={styles.linkText}>
+          {linkText ? (
+            <Text as="span" weight="semibold" align="right" leading="none" className={styles.linkText}>
               {firstPart} <span className={styles.lastword}>{lastWord}</span>
             </Text>
+          ) : (
+            <SrOnlyText>{`Go to the ${heading} page`}</SrOnlyText>
           )}
         </CtaLink>
       </FlexBox>
