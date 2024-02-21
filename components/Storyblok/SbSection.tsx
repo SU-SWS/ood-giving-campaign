@@ -30,8 +30,10 @@ type SbSectionProps = {
     content?: SbBlokData[];
     superhead?: string;
     heading?: string;
+    headerAlign?: 'left' | 'center' | 'right';
     isSmallHeading?: boolean;
     headingLevel?: HeadingType;
+    isSerifHeader?: boolean;
     subheading?: string;
     caption?: StoryblokRichtext;
     captionColumnWidth?: '12' | '10' | '8' | '6' | '4';
@@ -54,7 +56,9 @@ export const SbSection = ({
     content,
     superhead,
     heading,
+    headerAlign,
     isSmallHeading,
+    isSerifHeader,
     headingLevel,
     subheading,
     caption,
@@ -157,9 +161,9 @@ export const SbSection = ({
                   <Heading
                     as={headingLevel}
                     size={isSmallHeading ? 'f8' : 'splash'}
-                    leading="none"
-                    uppercase
-                    font="druk"
+                    leading={isSerifHeader ? 'tight' : 'none'}
+                    uppercase={!isSerifHeader}
+                    font={isSerifHeader ? 'serif' : 'druk'}
                     align={rightAlignHeader ? 'right' : 'left'}
                     className="mb-0"
                   >
@@ -173,7 +177,8 @@ export const SbSection = ({
             <Container>
               <Paragraph
                 variant="overview"
-                weight="normal"
+                font={isSerifHeader ? 'serif' : 'sans'}
+                weight={isSerifHeader ? 'semibold' : 'normal'}
                 align={rightAlignHeader ? 'right' : 'left'}
                 color={bgColor === 'black' ? 'black-20' : 'black-80'}
                 noMargin
