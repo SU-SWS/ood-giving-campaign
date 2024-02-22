@@ -97,13 +97,14 @@ export const ChangemakerCard = ({
                   size={2}
                   leading="tight"
                   align="center"
+                  color="white"
                   className={styles.heading}
                 >
                   {heading}
                 </Heading>
               )}
               {subheading && (
-                <Text variant="card" align="center" leading="display">{subheading}</Text>
+                <Text variant="card" align="center" leading="display" color="white">{subheading}</Text>
               )}
             </FlexBox>
           </div>

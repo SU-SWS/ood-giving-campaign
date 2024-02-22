@@ -116,7 +116,6 @@ export const SbHomepageThemeSection = ({
         {heading && (
           <Heading
             as="h2"
-            size="f9"
             leading="none"
             uppercase
             font="druk"

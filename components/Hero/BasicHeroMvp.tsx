@@ -46,7 +46,7 @@ export const BasicHeroMvp = ({
         align="center"
         leading="tight"
         color="white"
-        className="relative z-10 max-w-1200 mx-auto fluid-type-5 md:fluid-type-7 mb-0"
+        className="relative z-10 max-w-1200 mx-auto fluid-type-6 md:fluid-type-7 mb-0 text-balance"
       >
         {title}
       </Heading>

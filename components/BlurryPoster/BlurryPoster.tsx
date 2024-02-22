@@ -197,6 +197,7 @@ export const BlurryPoster = ({
                   variant="overview"
                   weight="normal"
                   leading="display"
+                  className={styles.dek}
                 >
                   {body}
                 </Paragraph>

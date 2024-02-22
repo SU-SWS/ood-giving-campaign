@@ -16,6 +16,9 @@ export const body = (hasTabColor: boolean) => cnb('rs-pl-1 text-current', {
   'border-l-[1.4rem] md:border-l-[2rem]': hasTabColor,
 });
 
-export const cta = 'inline-block bg-gc-black text-white hocus:text-white stretched-link no-underline rs-py-1 rs-pr-1';
-
-export const arrowIcon = 'inline-block mb-0 mt-auto w-34 ml-auto mr-0  group-hover:translate-x-03em';
+export const cta = 'group/cta inline-block bg-gc-black text-white hocus:text-white stretched-link no-underline hocus:no-underline rs-py-1 rs-pr-1';
+export const linkText = 'text-19 md:text-25 mr-0 ml-auto last:children:underline';
+export const lastword = 'underline decoration-digital-red-light underline-offset-4 group-hocus/cta:decoration-white';
+export const icon = (hasLinkText?: boolean) => cnb('inline-block mb-0 mt-auto w-20 md:w-24 mr-0',
+  hasLinkText? 'ml-10' : 'ml-auto',
+);
