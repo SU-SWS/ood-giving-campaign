@@ -24,7 +24,6 @@ export const heading = (isSerifHeader: boolean, isSmallHeading: boolean, headerA
 });
 export const subhead = (headerAlign?: AlignType) => cnb('relative z-10 rs-mt-3 ', {
   'mr-0 ml-auto': headerAlign === 'right',
-  //'ml-0 mr-auto': headerAlign === 'left',
   'mx-auto max-w-800': headerAlign === 'center',
   'max-w-prose': headerAlign !== 'center',
 });

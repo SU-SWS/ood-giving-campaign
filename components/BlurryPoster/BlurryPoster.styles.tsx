@@ -34,7 +34,7 @@ export const contentWrapper = (
   'lg:order-first': !imageOnLeft && isTwoCol,
 });
 
-export const superhead = (imageOnLeft?: boolean, isTwoCol?: boolean) => cnb('cc rs-mb-1 w-full', {
+export const superhead = (imageOnLeft?: boolean, isTwoCol?: boolean) => cnb('cc rs-mb-1 w-full text-shadow-sm', {
   'lg:pl-40 2xl:pl-60 3xl:pr-[calc(100%-750px)]': imageOnLeft && isTwoCol,
   'lg:pr-40 2xl:pr-60 3xl:pl-[calc(100%-750px)]': !imageOnLeft && isTwoCol,
 });
@@ -92,7 +92,7 @@ export const bodyWrapper = (imageOnLeft?: boolean, isTwoCol?: boolean) => cnb('c
   '3xl:pl-[calc(100%-750px)] lg:pr-40 2xl:pr-60': !imageOnLeft && isTwoCol,
   '*:max-w-[50ch]': !isTwoCol,
 });
-
+export const dek = 'text-shadow-sm';
 export const cta = 'rs-mt-4';
 
 export const imageWrapper = (imageOnLeft?: boolean, isTwoCol?: boolean, hasImage?: boolean) => cnb('w-full cc', {
