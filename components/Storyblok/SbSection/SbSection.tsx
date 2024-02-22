@@ -5,24 +5,25 @@ import { cnb } from 'cnbuilder';
 import { useScroll, m, useTransform } from 'framer-motion';
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
-import { CreateBloks } from '../CreateBloks';
-import { FlexBox } from '../FlexBox';
+import { CreateBloks } from '@/components/CreateBloks';
+import { FlexBox } from '@/components/FlexBox';
 import {
   Heading,
   type HeadingType,
   SrOnlyText,
   Text,
   Paragraph,
-} from '../Typography';
-import { Container, type BgColorType } from '../Container';
-import { ImageOverlay } from '../ImageOverlay';
-import { RichText } from '../RichText';
-import { WidthBox } from '../WidthBox';
+} from '@/components/Typography';
+import { Container, type BgColorType } from '@/components/Container';
+import { ImageOverlay } from '@/components/ImageOverlay';
+import { RichText } from '@/components/RichText';
+import { WidthBox } from '@/components/WidthBox';
 import { accentBgColors, type PaddingType, type MarginType } from '@/utilities/datasource';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
-import { type SbImageType, type SbColorStopProps } from './Storyblok.types';
+import { type SbImageType, type SbColorStopProps } from '../Storyblok.types';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { hasRichText } from '@/utilities/hasRichText';
+import * as styles from './SbSection.styles';
 
 type SbSectionProps = {
   blok: {
@@ -30,14 +31,14 @@ type SbSectionProps = {
     content?: SbBlokData[];
     superhead?: string;
     heading?: string;
-    headerAlign?: 'left' | 'center' | 'right';
+    headerAlign?: styles.AlignType;
     isSmallHeading?: boolean;
     headingLevel?: HeadingType;
     isSerifHeader?: boolean;
     subheading?: string;
     caption?: StoryblokRichtext;
     captionColumnWidth?: '12' | '10' | '8' | '6' | '4';
-    rightAlignHeader?: boolean;
+    //rightAlignHeader?: boolean;
     barColor?: {
       value?: PaletteAccentHexColorType;
     }
@@ -63,7 +64,7 @@ export const SbSection = ({
     subheading,
     caption,
     captionColumnWidth,
-    rightAlignHeader,
+    //rightAlignHeader,
     barColor: { value: barColorValue } = {},
     bgColor,
     bgImage: { filename, focus } = {},
@@ -108,10 +109,11 @@ export const SbSection = ({
 
   return (
     <Container
+      as={!!heading ? 'section' : 'div'}
       width="full"
       mt={marginTop}
       mb={marginBottom}
-      className="relative overflow-hidden"
+      className={styles.root}
       {...storyblokEditable(blok)}
     >
       {/* Add background color animation if there are at least 2 color stops */}
@@ -121,27 +123,32 @@ export const SbSection = ({
           bgColor={bgColor}
           pt={paddingTop}
           pb={paddingBottom}
-          className="relative overflow-hidden"
+          className={styles.wrapper}
         >
           {filename && (
-            <ImageOverlay imageSrc={getProcessedImage(filename, '2100x1400', focus)} overlay={bgColor === 'black' ? 'black-50' : 'white-90'} />
+            <ImageOverlay
+              imageSrc={getProcessedImage(filename, '2100x1400', focus)}
+              overlay={bgColor === 'black' ? 'black-50' : 'white-90'}
+            />
           )}
           {(heading || superhead) && (
-            <FlexBox className={cnb('relative z-10', rightAlignHeader ? 'mr-0 ml-auto' : 'ml-0')}>
-              {barColorValue && (
+            <FlexBox
+              className={styles.headerWrapper(headerAlign)}
+            >
+              {barColorValue && headerAlign !== 'center' && (
                 <div className={cnb(
                   'block w-10 sm:w-14 md:w-20 lg:w-30 xl:w-40',
-                  rightAlignHeader ? 'order-last' : 'order-first',
+                  headerAlign === 'right' ? 'order-last' : 'order-first',
                   accentBgColors[paletteAccentColors[barColorValue]],
                 )}
                 />
               )}
               <div className={cnb(
                 'cc whitespace-pre-line w-full 3xl:max-w-[90%]',
-                barColorValue && !rightAlignHeader ? '-ml-10 sm:-ml-14 md:-ml-20 lg:-ml-30 xl:-ml-40' : '',
-                barColorValue && rightAlignHeader ? '-mr-10 sm:-mr-14 md:-mr-20 lg:-mr-30 xl:-mr-40' : '',
-                !barColorValue && !rightAlignHeader ? 'ml-0' : '',
-                !barColorValue && rightAlignHeader ? 'mr-0' : '',
+                barColorValue && headerAlign === 'left' ? '-ml-10 sm:-ml-14 md:-ml-20 lg:-ml-30 xl:-ml-40' : '',
+                barColorValue && headerAlign === 'right' ? '-mr-10 sm:-mr-14 md:-mr-20 lg:-mr-30 xl:-mr-40' : '',
+                !barColorValue && headerAlign === 'left' ? 'ml-0' : '',
+                !barColorValue && headerAlign === 'right' ? 'mr-0' : '',
                 superhead ? '' : '-mt-05em',
               )}
               >
@@ -151,7 +158,7 @@ export const SbSection = ({
                     leading="tight"
                     font="serif"
                     weight="semibold"
-                    align={rightAlignHeader ? 'right' : 'left'}
+                    align={headerAlign}
                     aria-hidden={!!heading}
                   >
                     {superhead}
@@ -160,12 +167,11 @@ export const SbSection = ({
                 {heading && (
                   <Heading
                     as={headingLevel}
-                    size={isSmallHeading ? 'f8' : 'splash'}
                     leading={isSerifHeader ? 'tight' : 'none'}
                     uppercase={!isSerifHeader}
                     font={isSerifHeader ? 'serif' : 'druk'}
-                    align={rightAlignHeader ? 'right' : 'left'}
-                    className="mb-0"
+                    align={headerAlign}
+                    className={styles.heading(isSerifHeader, isSmallHeading, headerAlign)}
                   >
                     {superhead && <SrOnlyText>{`${superhead}:`}</SrOnlyText>}{heading}
                   </Heading>
@@ -179,10 +185,10 @@ export const SbSection = ({
                 variant="overview"
                 font={isSerifHeader ? 'serif' : 'sans'}
                 weight={isSerifHeader ? 'semibold' : 'normal'}
-                align={rightAlignHeader ? 'right' : 'left'}
+                align={headerAlign}
                 color={bgColor === 'black' ? 'black-20' : 'black-80'}
                 noMargin
-                className={cnb('relative z-10 max-w-prose ml-0 rs-mt-3', rightAlignHeader ? 'mr-0 ml-auto' : 'ml-0')}
+                className={styles.subhead(headerAlign)}
               >
                 {subheading}
               </Paragraph>
