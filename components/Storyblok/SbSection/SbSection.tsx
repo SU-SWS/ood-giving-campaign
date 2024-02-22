@@ -38,7 +38,6 @@ type SbSectionProps = {
     subheading?: string;
     caption?: StoryblokRichtext;
     captionColumnWidth?: '12' | '10' | '8' | '6' | '4';
-    //rightAlignHeader?: boolean;
     barColor?: {
       value?: PaletteAccentHexColorType;
     }
@@ -64,7 +63,6 @@ export const SbSection = ({
     subheading,
     caption,
     captionColumnWidth,
-    //rightAlignHeader,
     barColor: { value: barColorValue } = {},
     bgColor,
     bgImage: { filename, focus } = {},
@@ -136,15 +134,9 @@ export const SbSection = ({
               className={styles.headerWrapper(headerAlign)}
             >
               {barColorValue && headerAlign !== 'center' && (
-                <div className={cnb(
-                  'block w-10 sm:w-14 md:w-20 lg:w-30 xl:w-40',
-                  headerAlign === 'right' ? 'order-last' : 'order-first',
-                  accentBgColors[paletteAccentColors[barColorValue]],
-                )}
-                />
+                <div className={cnb(styles.bar(headerAlign), accentBgColors[paletteAccentColors[barColorValue]])} />
               )}
-              <div className={styles.headerContent(!!barColorValue, !!superhead, headerAlign)}
-              >
+              <div className={styles.headerContent(!!barColorValue, !!superhead, headerAlign)}>
                 {superhead && (
                   <Text
                     size={2}
@@ -187,7 +179,7 @@ export const SbSection = ({
               </Paragraph>
             </Container>
           )}
-          <Container pt={hasHeader ? 8 : undefined} width="full" className="relative z-10">
+          <Container pt={hasHeader ? 8 : undefined} width="full" className={styles.contentWrapper}>
             <CreateBloks blokSection={content} isDarkTheme={bgColor === 'black'} />
           </Container>
         </Container>
@@ -197,7 +189,7 @@ export const SbSection = ({
           <RichText
             wysiwyg={caption}
             textColor="black-70"
-            className="caption *:leading-display mt-08em max-w-prose-wide"
+            className={styles.caption}
           />
         </WidthBox>
       )}
