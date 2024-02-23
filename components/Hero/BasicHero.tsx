@@ -52,7 +52,7 @@ export const BasicHero = ({
         />
       </>
     )}
-    <Container className="*:mx-auto">
+    <Container className={styles.contentWrapper}>
       {superhead && (
         <Text
           size={3}
@@ -62,7 +62,7 @@ export const BasicHero = ({
           leading="tight"
           color="white"
           aria-hidden
-          className="relative z-10 xl:max-w-900 mx-auto rs-mb-0"
+          className={styles.superhead}
         >
           {superhead}
         </Text>
@@ -84,13 +84,13 @@ export const BasicHero = ({
           align="center"
           leading="display"
           color="white"
-          className="relative z-10 xl:max-w-900 mx-auto rs-mt-1 text-shadow-sm"
+          className={styles.subhead}
         >
           {subheading}
         </Text>
       )}
       {!!heroContent && (
-        <div className="rs-mt-4 w-fit">
+        <div className={styles.content}>
           {heroContent}
         </div>
       )}
