@@ -1,16 +1,21 @@
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import { CreateBloks } from '@/components/CreateBloks';
-import { BasicHeroMvp } from '@/components/Hero';
+import { BasicHero } from '@/components/Hero';
 import { Masthead } from '@/components/Masthead';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { type SbImageType } from '@/components/Storyblok/Storyblok.types';
+import { type HeroPaddingType } from '@/components/Hero/BasicHero.styles';
 
 type SbBasicPageProps = {
   blok: {
     _uid: string;
     title?: string;
+    isDrukHeading?: boolean;
+    isSmallHeading?: boolean;
     hero?: SbBlokData[];
     heroImage?: SbImageType;
+    paddingType?: HeroPaddingType;
+    superhead?: string;
     subheading?: string;
     heroContent?: SbBlokData[];
     content?: SbBlokData[];
@@ -21,8 +26,12 @@ type SbBasicPageProps = {
 export const SbBasicPage = ({
   blok: {
     title,
+    isDrukHeading,
+    isSmallHeading,
     hero,
     heroImage: { filename, focus } = {},
+    paddingType,
+    superhead,
     subheading,
     heroContent,
     content,
@@ -36,21 +45,23 @@ export const SbBasicPage = ({
     <div {...storyblokEditable(blok)}>
       <Masthead />
       <main id="main-content">
-        <div>
-          {!!getNumBloks(hero) ? (
-            <CreateBloks blokSection={hero} />
-          ) : (
-            <BasicHeroMvp
-              title={title}
-              subheading={subheading}
-              imageSrc={filename}
-              imageFocus={focus}
-              heroContent={HeroContent}
-            />
-          )}
-          <CreateBloks blokSection={content} />
-          <CreateBloks blokSection={ankle} />
-        </div>
+        {!!getNumBloks(hero) ? (
+          <CreateBloks blokSection={hero} />
+        ) : (
+          <BasicHero
+            title={title}
+            isDrukHeading={isDrukHeading}
+            isSmallHeading={isSmallHeading}
+            superhead={superhead}
+            subheading={subheading}
+            imageSrc={filename}
+            imageFocus={focus}
+            heroContent={HeroContent}
+            paddingType={paddingType}
+          />
+        )}
+        <CreateBloks blokSection={content} />
+        <CreateBloks blokSection={ankle} />
       </main>
     </div>
   );

@@ -89,16 +89,16 @@ async function getStoryData({ path }: PageProps['searchParams']): Promise<ISbRes
 /**
  * Validate the editor token.
  *
- * We expect 1 hour as the time of a token being valid.
- * So basically that an editor will work max 1 hour on one page
+ * We expect 3 hours as the time of a token being valid.
+ * So basically that an editor will work max 3 hours (10800 seconds) on one page
  * before switching to another entry inside the editor or refreshing the browser window.
- * You can extend that by adjusting 3600 with the value you need.
+ * You can extend that by adjusting 10800 with the value you need.
  */
 const validateEditor = (searchParams: PageProps['searchParams']) => {
   const validationString = searchParams['_storyblok_tk[space_id]'] + ':' + process.env.STORYBLOK_PREVIEW_EDITOR_TOKEN + ':' + searchParams['_storyblok_tk[timestamp]'];
   const validationToken = crypto.createHash('sha1').update(validationString).digest('hex');
   if (searchParams['_storyblok_tk[token]'] == validationToken &&
-      Number(searchParams['_storyblok_tk[timestamp]']) > Math.floor(Date.now()/1000)-3600) {
+      Number(searchParams['_storyblok_tk[timestamp]']) > Math.floor(Date.now()/1000)-10800) {
       // you're in the edit mode.
       return true;
   }
