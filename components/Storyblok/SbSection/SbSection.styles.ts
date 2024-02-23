@@ -24,10 +24,10 @@ export const headerContent = (hasBarColor: boolean, hasSuperhead: boolean, heade
 export const heading = (isSerifHeader: boolean, isSmallHeading: boolean, headerAlign?: AlignType ) => cnb(
   'mb-0', {
   'text-balance mx-auto max-w-1000': headerAlign === 'center',
-  'fluid-type-8 md:gc-splash': !isSerifHeader && !isSmallHeading,
-  'fluid-type-8': !isSerifHeader && isSmallHeading,
-  'fluid-type-6 md:fluid-type-7': isSerifHeader && !isSmallHeading,
-  'fluid-type-6': isSerifHeader && isSmallHeading,
+  'fluid-type-6': isSerifHeader,
+  'md:fluid-type-7': isSerifHeader && !isSmallHeading,
+  'fluid-type-8': !isSerifHeader,
+  'md:gc-splash': !isSerifHeader && !isSmallHeading,
 });
 export const subhead = (headerAlign?: AlignType) => cnb('relative z-10 rs-mt-3 ', {
   'mr-0 ml-auto': headerAlign === 'right',

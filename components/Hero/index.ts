@@ -1,4 +1,4 @@
 export * from './Hero';
-export * from './BasicHeroMvp';
+export * from './BasicHero';
 export * from './StoryHero';
 export * from './StoryHeroMvp';
