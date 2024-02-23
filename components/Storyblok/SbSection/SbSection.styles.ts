@@ -26,7 +26,7 @@ export const heading = (isSerifHeader: boolean, isSmallHeading: boolean, headerA
   'text-balance mx-auto max-w-1000': headerAlign === 'center',
   'fluid-type-6': isSerifHeader,
   'md:fluid-type-7': isSerifHeader && !isSmallHeading,
-  'fluid-type-8': !isSerifHeader,
+  'fluid-type-7': !isSerifHeader,
   'md:gc-splash': !isSerifHeader && !isSmallHeading,
 });
 export const subhead = (headerAlign?: AlignType) => cnb('relative z-10 rs-mt-3 ', {

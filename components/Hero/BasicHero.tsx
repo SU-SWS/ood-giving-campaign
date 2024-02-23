@@ -1,3 +1,4 @@
+import { cnb } from 'cnbuilder';
 import { Container } from '@/components/Container';
 import { Heading, SrOnlyText, Text } from '@/components/Typography';
 import { ImageOverlay } from '@/components/ImageOverlay';
@@ -5,7 +6,7 @@ import { getProcessedImage } from '@/utilities/getProcessedImage';
 import * as styles from './BasicHero.styles';
 
 /**
- * Temporary hero for MVP basic page
+ * Basic page hero that allows for different hero styles (e.g., initiative landing and detailed pages)
  */
 type BasicHeroProps = {
   title: string;
@@ -16,6 +17,7 @@ type BasicHeroProps = {
   imageSrc?: string;
   imageFocus?: string;
   heroContent?: React.ReactNode;
+  paddingType?: styles.HeroPaddingType;
 };
 
 export const BasicHero = ({
@@ -27,25 +29,26 @@ export const BasicHero = ({
   imageSrc,
   imageFocus,
   heroContent,
+  paddingType,
 }: BasicHeroProps) => (
   <Container
     width="full"
     bgColor={imageSrc ? undefined : 'black'}
-    className="relative break-words bg-black-70 py-[34vw] md:py-[24vw] xl:py-[16vw] 3xl:py-[26rem]"
+    className={cnb(styles.root, styles.heroPaddings[paddingType])}
   >
     {imageSrc && (
       <>
         <ImageOverlay
           imageSrc={getProcessedImage(imageSrc, '2000x1000', imageFocus)}
           overlay="black-40"
-          className="z-0 hidden lg:block"
-          overlayClasses="hidden lg:block"
+          className="z-0 hidden xl:block"
+          overlayClasses="hidden xl:block"
         />
         <ImageOverlay
-          imageSrc={getProcessedImage(imageSrc, '1000x1000', imageFocus)}
+          imageSrc={getProcessedImage(imageSrc, '1200x900', imageFocus)}
         overlay="black-40"
-          className="z-0 lg:hidden"
-          overlayClasses="lg:hidden"
+          className="z-0 xl:hidden"
+          overlayClasses="xl:hidden"
         />
       </>
     )}

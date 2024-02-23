@@ -4,6 +4,7 @@ import { BasicHero } from '@/components/Hero';
 import { Masthead } from '@/components/Masthead';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { type SbImageType } from '@/components/Storyblok/Storyblok.types';
+import { type HeroPaddingType } from '@/components/Hero/BasicHero.styles';
 
 type SbBasicPageProps = {
   blok: {
@@ -13,6 +14,7 @@ type SbBasicPageProps = {
     isSmallHeading?: boolean;
     hero?: SbBlokData[];
     heroImage?: SbImageType;
+    paddingType?: HeroPaddingType;
     superhead?: string;
     subheading?: string;
     heroContent?: SbBlokData[];
@@ -28,6 +30,7 @@ export const SbBasicPage = ({
     isSmallHeading,
     hero,
     heroImage: { filename, focus } = {},
+    paddingType,
     superhead,
     subheading,
     heroContent,
@@ -54,6 +57,7 @@ export const SbBasicPage = ({
             imageSrc={filename}
             imageFocus={focus}
             heroContent={HeroContent}
+            paddingType={paddingType}
           />
         )}
         <CreateBloks blokSection={content} />
