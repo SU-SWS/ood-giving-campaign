@@ -1,5 +1,3 @@
-import { cnb } from 'cnbuilder';
-
 export const root = 'relative overflow-hidden';
 export const imageGridWrapper = 'relative max-h-[180rem] bg-black-true pt-170 sm:pt-[24vw] 2xl:pt-[16vw] 4xl:pt-[32rem] pb-[50vw] sm:pb-[40vw] 2xl:pb-[36vw] 4xl:pb-[64rem]';
 export const mobileBg = 'sm:hidden';
