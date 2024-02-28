@@ -93,6 +93,21 @@ export const gradientFroms = {
 };
 export type GradientFromType = keyof typeof gradientFroms;
 
+export const gradientVias = {
+  'transparent': 'via-transparent',
+  'black-10': 'via-black-true/10',
+  'black-20': 'via-black-true/20',
+  'black-30': 'via-black-true/30',
+  'black-40': 'via-black-true/40',
+  'black-50': 'via-black-true/50',
+  'black-60': 'via-black-true/60',
+  'black-70': 'via-black-true/70',
+  'black-80': 'via-black-true/80',
+  'black-90': 'via-black-true/90',
+  'gc-black': 'via-gc-black',
+};
+export type GradientViaType = keyof typeof gradientVias;
+
 export const imageAspectRatios = {
   '1x1': 'aspect-w-1 aspect-h-1',
   '1x2': 'aspect-w-1 aspect-h-2',
