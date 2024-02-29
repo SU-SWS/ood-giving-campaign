@@ -53,11 +53,12 @@ export const MomentPoster = ({
   isStackedCtas,
   ...props
 }: MomentPosterProps) => {
+  // To render a dark overlay, both a top and bottom gradient color must be selected
   const hasBgGradient = !!gradientTop && !!gradientBottom;
 
   return (
     <Container {...props} as="section" bgColor="black" width="full" py={8} className={styles.root}>
-      {bgImageSrc && (
+      {!!bgImageSrc && (
         <picture>
           <source
             srcSet={getProcessedImage(bgImageSrc, bgBlur !== 'none' ? '1200x800' : '1800x1200', bgImageFocus)}
@@ -79,10 +80,10 @@ export const MomentPoster = ({
             height={1200}
           />
           <source
-            srcSet={getProcessedImage(bgImageSrc, bgBlur !== 'none' ? '200x400' : '600x1200', bgImageFocus)}
+            srcSet={getProcessedImage(bgImageSrc, bgBlur !== 'none' ? '230x460' : '460x920', bgImageFocus)}
             media="(max-width: 460px)"
-            width={600}
-            height={1200}
+            width={460}
+            height={920}
           />
           <img
             src={getProcessedImage(bgImageSrc, bgBlur !== 'none' ? '1200x800' : '1800x1200', bgImageFocus)}
@@ -93,7 +94,8 @@ export const MomentPoster = ({
           />
         </picture>
       )}
-      {(bgBlur !== 'none' || hasBgGradient) && (
+      {/* Render the overlay if there's a background image, and if background blur or/and gradient is selected */}
+      {!!bgImageSrc && (bgBlur !== 'none' || hasBgGradient) && (
         <div
           className={cnb(
             styles.overlay(hasBgGradient),
@@ -105,19 +107,19 @@ export const MomentPoster = ({
         />
       )}
       <Container className={styles.wrapper}>
-        <Heading as="h2" size="splash" font="druk" align="center" className="leading-[0.9] max-w-1000 mx-auto rs-mb-1">
-          <span className="flex items-baseline mx-auto w-fit gap-02em">
+        <Heading as="h2" size="splash" font="druk" align="center" className={styles.heading}>
+          <FlexBox as="span" alignItems="baseline" className={styles.headingWrapper}>
             {textBefore && (
               <AnimateInView animation="slideInFromLeft">
                 <span>{textBefore}</span>
               </AnimateInView>
             )}
             {thumbnailSrc &&
-              <AnimateInView animation="zoomSharpen" delay={0.1} className="inline-block">
+              <AnimateInView animation="zoomSharpen" delay={0.1} className={styles.thumbnailWrapper}>
                 <img
                   src={getProcessedImage(thumbnailSrc, '160x160', thumbnailFocus)}
                   alt=""
-                  className="size-[0.75em]"
+                  className={styles.thumbnail}
                 />
               </AnimateInView>
             }
@@ -126,7 +128,7 @@ export const MomentPoster = ({
                 <span>{textAfter}</span>
               </AnimateInView>
             )}
-          </span>
+          </FlexBox>
           {textNewRow && (
             <AnimateInView animation="slideUp" delay={0.2}>
               <span>{textNewRow}</span>
@@ -155,7 +157,7 @@ export const MomentPoster = ({
         )}
         {cta && (
           <AnimateInView animation="slideUp" delay={0.4}>
-            <FlexBox direction="col" className={cnb('gap-27 mx-auto w-fit *:mx-auto rs-mt-4', !isStackedCtas && 'md:flex-row' )}>
+            <FlexBox direction="col" className={styles.cta(isStackedCtas)}>
               {cta}
             </FlexBox>
           </AnimateInView>
