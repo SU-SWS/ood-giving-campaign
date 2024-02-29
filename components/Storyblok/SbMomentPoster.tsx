@@ -6,6 +6,12 @@ import { RichText } from '../RichText';
 import { type SbImageType } from './Storyblok.types';
 import { hasRichText } from '@/utilities/hasRichText';
 import { getNumBloks } from '@/utilities/getNumBloks';
+import {
+  type GradientFromType,
+  type GradientToType,
+  type GradientViaType,
+  BgBlurType,
+} from '@/utilities/datasource';
 
 type SbMomentPosterProps = {
   blok: {
@@ -18,6 +24,11 @@ type SbMomentPosterProps = {
     cta?: SbBlokData[];
     bgImage?: SbImageType;
     thumbnail?: SbImageType;
+    gradientTop?: GradientToType;
+    gradientBottom?: GradientFromType;
+    gradientVia?: GradientViaType;
+    bgBlur?: BgBlurType;
+    isStackedCtas?: boolean;
   };
 };
 
@@ -31,6 +42,11 @@ export const SbMomentPoster = ({
     cta,
     bgImage: { filename, focus } = {},
     thumbnail: { filename: thumbnailFilename, focus: thumbnailFocus } = {},
+    gradientTop,
+    gradientBottom,
+    gradientVia,
+    bgBlur,
+    isStackedCtas,
   },
   blok,
 }: SbMomentPosterProps) => {
@@ -50,6 +66,11 @@ export const SbMomentPoster = ({
       bgImageFocus={focus}
       thumbnailSrc={thumbnailFilename}
       thumbnailFocus={thumbnailFocus}
+      gradientTop={gradientTop}
+      gradientBottom={gradientBottom}
+      gradientVia={gradientVia}
+      bgBlur={bgBlur}
+      isStackedCtas={isStackedCtas}
     />
   );
 };
