@@ -67,14 +67,16 @@ export const StoryImage = ({
       <AnimateInView animation={animation} delay={delay} className={styles.animateWrapper(isFullHeight)}>
         <figure className={styles.figure(isFullHeight)}>
           <div className={cnb(imageAspectRatios[aspectRatio], styles.imageWrapper(isFullHeight))}>
-            <img
-              src={getProcessedImage(imageSrc, cropSize, imageFocus)}
-              loading={isLoadingEager ? 'eager' : 'lazy'}
-              width={cropWidth}
-              height={cropHeight}
-              alt={alt || ''}
-              className={styles.image}
-            />
+            {!!imageSrc && (
+              <img
+                src={getProcessedImage(imageSrc, cropSize, imageFocus)}
+                loading={isLoadingEager ? 'eager' : 'lazy'}
+                width={cropWidth}
+                height={cropHeight}
+                alt={alt || ''}
+                className={styles.image}
+              />
+            )}
           </div>
           {caption && (
             <Container as="figcaption" width={isCaptionInset ? 'site' : 'full'}>
