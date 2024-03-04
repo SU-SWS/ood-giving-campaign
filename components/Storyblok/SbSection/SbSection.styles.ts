@@ -1,4 +1,3 @@
-import { header } from '@/components/Scrollytelling';
 import { cnb } from 'cnbuilder';
 
 export type AlignType = 'left' | 'center' | 'right';
