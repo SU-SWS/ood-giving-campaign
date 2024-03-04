@@ -43,7 +43,7 @@ export const DataCard = ({
     >
       <div className={cnb(styles.content(!!barColor), accentBorderColors[barColor])}>
         {heading && (
-          <Heading font="druk" as={headingLevel} size="f5" >
+          <Heading font="druk" leading="druk" as={headingLevel} size="f5" >
             {heading}
           </Heading>
         )}
