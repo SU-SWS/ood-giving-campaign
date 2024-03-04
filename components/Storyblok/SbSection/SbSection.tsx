@@ -23,6 +23,7 @@ import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities
 import { type SbImageType, type SbColorStopProps } from '../Storyblok.types';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { hasRichText } from '@/utilities/hasRichText';
+import { getNumBloks } from '@/utilities/getNumBloks';
 import * as styles from './SbSection.styles';
 
 type SbSectionProps = {
@@ -36,6 +37,7 @@ type SbSectionProps = {
     headingLevel?: HeadingType;
     isSerifHeader?: boolean;
     subheading?: string;
+    cta?: SbBlokData[];
     caption?: StoryblokRichtext;
     captionColumnWidth?: '12' | '10' | '8' | '6' | '4';
     barColor?: {
@@ -61,6 +63,7 @@ export const SbSection = ({
     isSerifHeader,
     headingLevel,
     subheading,
+    cta,
     caption,
     captionColumnWidth,
     barColor: { value: barColorValue } = {},
@@ -182,6 +185,11 @@ export const SbSection = ({
           <Container pt={hasHeader ? 8 : undefined} width="full" className={styles.contentWrapper}>
             <CreateBloks blokSection={content} isDarkTheme={bgColor === 'black'} />
           </Container>
+          {!!getNumBloks(cta) && (
+            <FlexBox direction="col" className={styles.cta}>
+              <CreateBloks blokSection={cta} />
+            </FlexBox>
+          )}
         </Container>
       </m.div>
       {hasRichText(caption) && (

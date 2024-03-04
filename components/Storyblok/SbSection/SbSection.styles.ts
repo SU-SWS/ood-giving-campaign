@@ -35,4 +35,5 @@ export const subhead = (headerAlign?: AlignType) => cnb('relative z-10 rs-mt-3 '
   'max-w-prose': headerAlign !== 'center',
 });
 export const contentWrapper = 'relative z-10';
+export const cta = 'cc md:flex-row *:mx-auto rs-mt-3 gap-20 lg:gap-27 w-fit';
 export const caption = 'caption *:leading-display mt-08em max-w-prose-wide';
