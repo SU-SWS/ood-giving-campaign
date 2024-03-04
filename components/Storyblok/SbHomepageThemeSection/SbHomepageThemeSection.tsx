@@ -3,6 +3,7 @@ import { AnimateInView } from '@/components/Animate';
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { CreateBloks } from '@/components/CreateBloks';
+import { FlexBox } from '@/components/FlexBox';
 import { Heading, SrOnlyText, Text } from '@/components/Typography';
 import { Container } from '@/components/Container';
 import { RichText } from '@/components/RichText';
@@ -13,6 +14,7 @@ import * as styles from './SbHomepageThemeSection.styles';
 import {
   bgBlurs, type BgBlurType, gradientFroms, type GradientFromType, gradientTos, type GradientToType,
 } from '@/utilities/datasource';
+import { getNumBloks } from '@/utilities/getNumBloks';
 
 type SbHomepageThemeSectionProps = {
   blok: {
@@ -21,6 +23,7 @@ type SbHomepageThemeSectionProps = {
     heading?: string;
     intro?: StoryblokRichtext;
     content?: SbBlokData[];
+    cta?: SbBlokData[];
     bgImage?: SbImageType;
     bgBlur?: BgBlurType;
     gradientTop?: GradientToType;
@@ -34,6 +37,7 @@ export const SbHomepageThemeSection = ({
     heading,
     intro,
     content,
+    cta,
     bgImage: { filename, focus } = {},
     bgBlur,
     gradientTop,
@@ -137,6 +141,11 @@ export const SbHomepageThemeSection = ({
       <Container pt={8} width="full" className={styles.contentWrapper}>
         <CreateBloks blokSection={content} isDarkTheme />
       </Container>
+      {!!getNumBloks(cta) && (
+        <FlexBox direction="col" className={styles.cta}>
+          <CreateBloks blokSection={cta} />
+        </FlexBox>
+      )}
     </Container>
   );
 };

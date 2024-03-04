@@ -9,3 +9,4 @@ export const heading = 'fluid-type-7 md:gc-splash mb-0 whitespace-pre-line';
 export const introWrapper = 'cc relative z-20';
 export const intro = 'intro-text *:leading-display *:md:leading-cozy *:text-shadow-sm rs-mt-7 max-w-1000';
 export const contentWrapper = 'relative z-20';
+export const cta = 'relative cc md:flex-row *:mx-auto rs-mt-6 gap-20 lg:gap-27 w-fit';
