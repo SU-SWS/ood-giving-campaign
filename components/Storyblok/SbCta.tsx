@@ -1,8 +1,13 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
-import { CtaLink, type CtaColorType, type CtaVariantType } from '../Cta';
+import {
+  CtaLink,
+  type CtaColorType,
+  type CtaVariantType,
+  type CtaCurveType,
+  type IconAnimationType,
+} from '../Cta';
 import { type IconType } from '../HeroIcon';
 import { type SbLinkType } from './Storyblok.types';
-import { type CtaCurveType } from '../Cta';
 
 type SbCtaType = {
   blok: {
@@ -14,6 +19,7 @@ type SbCtaType = {
     curve?: CtaCurveType;
     isLarge?: boolean;
     icon?: IconType;
+    animation?: IconAnimationType;
   };
 };
 
@@ -26,6 +32,7 @@ export const SbCta = ({
     curve,
     isLarge,
     icon,
+    animation,
   },
   blok,
 }: SbCtaType) => {
@@ -43,6 +50,7 @@ export const SbCta = ({
       color={color}
       srText={srText}
       icon={icon}
+      animate={animation}
     >
       {label}
     </CtaLink>
