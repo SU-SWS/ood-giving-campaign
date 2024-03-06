@@ -100,9 +100,9 @@ export const MomentPoster = ({
           className={cnb(
             styles.overlay(hasBgGradient),
             bgBlurs[bgBlur],
-            gradientFroms[gradientBottom],
+            gradientFroms[gradientTop],
             gradientVias[gradientVia],
-            gradientTos[gradientTop],
+            gradientTos[gradientBottom],
           )}
         />
       )}
