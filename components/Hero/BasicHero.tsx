@@ -51,6 +51,7 @@ export const BasicHero = ({
 }: BasicHeroProps) => {
   // To render a dark overlay, both a top and bottom gradient color must be selected
   const hasBgGradient = !!gradientTop && !!gradientBottom;
+  const hasBgBlur = !!bgBlur && bgBlur !== 'none';
 
   return (
     <Container
@@ -61,32 +62,32 @@ export const BasicHero = ({
       {!!imageSrc && (
         <picture>
           <source
-            srcSet={getProcessedImage(imageSrc, bgBlur !== 'none' ? '1000x500' : '2000x1000', imageFocus)}
+            srcSet={getProcessedImage(imageSrc, hasBgBlur ? '1000x500' : '2000x1000', imageFocus)}
             media="(min-width: 1200px)"
             // Exact height and width don't matter as long as aspect ratio is the same as the image
             width={2000}
             height={1000}
           />
           <source
-            srcSet={getProcessedImage(imageSrc, bgBlur !== 'none' ? '600x400' : '1200x800', imageFocus)}
+            srcSet={getProcessedImage(imageSrc, hasBgBlur ? '600x400' : '1200x800', imageFocus)}
             media="(min-width: 768px)"
             width={1200}
             height={800}
           />
           <source
-            srcSet={getProcessedImage(imageSrc, bgBlur !== 'none' ? '400x300' : '800x600', imageFocus)}
+            srcSet={getProcessedImage(imageSrc, hasBgBlur ? '400x300' : '800x600', imageFocus)}
             media="(min-width: 461px)"
             width={800}
             height={600}
           />
           <source
-            srcSet={getProcessedImage(imageSrc, bgBlur !== 'none' ? '240x240' : '480x480', imageFocus)}
+            srcSet={getProcessedImage(imageSrc, hasBgBlur ? '240x240' : '480x480', imageFocus)}
             media="(max-width: 460px)"
             width={480}
             height={480}
           />
           <img
-            src={getProcessedImage(imageSrc, bgBlur !== 'none' ? '1000x500' : '2000x1000', imageFocus)}
+            src={getProcessedImage(imageSrc, hasBgBlur ? '1000x500' : '2000x1000', imageFocus)}
             alt=""
             width={2000}
             height={1000}
@@ -94,7 +95,7 @@ export const BasicHero = ({
           />
         </picture>
       )}
-      {!!imageSrc && (bgBlur !== 'none' || hasBgGradient) && (
+      {!!imageSrc && (hasBgBlur || hasBgGradient) && (
         <div
           className={cnb(
             styles.overlay(hasBgGradient),
