@@ -1,22 +1,18 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import { m, useInView } from 'framer-motion';
-import { Text } from './Typography';
 
-/**
- * TODO: This is a POC. Will add types and props if client decides we need this.
- */
 type NumberCounterProps = {
   number: number;
   duration?: number;
-  afterText?: string;
 };
 
-export const NumberCounter = ({ number, duration = 2500, afterText = '' }: NumberCounterProps) => {
+export const NumberCounter = ({ number, duration = 2.5}: NumberCounterProps) => {
   const [count, setCount] = useState(1);
   const ref = useRef(null);
   const isInView = useInView(ref);
-  const interval = duration / number;
+  // Multiply duration by 1000 to convert to milliseconds
+  const interval = Math.floor(duration * 1000 / number);
 
   useEffect(() => {
     if (isInView && count < number) {
@@ -28,7 +24,7 @@ export const NumberCounter = ({ number, duration = 2500, afterText = '' }: Numbe
 
   return (
     <m.span animate={{ opacity: count > 0 ? 1 : 0 }} ref={ref}>
-      <Text size={8} weight="bold" align="center" className="text-robins-egg">{count}{afterText}</Text>
+      {count}
     </m.span>
   );
 };

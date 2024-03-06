@@ -21,6 +21,8 @@ export type SbDataCardProps = {
     cta?: SbBlokData[];
     paddingTop?: PaddingType;
     isDarkTheme?: boolean;
+    isCounter?: boolean;
+    counterDuration?: number;
     barColor?: {
       value?: PaletteAccentHexColorType;
     }
@@ -38,6 +40,8 @@ export const SbDataCard = ({
     cta,
     paddingTop,
     isDarkTheme,
+    isCounter,
+    counterDuration,
     barColor: { value } = {},
     animation,
     delay,
@@ -54,6 +58,8 @@ export const SbDataCard = ({
       headingLevel={headingLevel}
       isSmallHeading={isSmallHeading}
       isDarkTheme={isDarkTheme}
+      isCounter={isCounter}
+      counterDuration={counterDuration}
       barColor={paletteAccentColors[value]}
       cta={Cta}
       body={Body}

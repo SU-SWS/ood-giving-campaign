@@ -1,16 +1,10 @@
 import { cnb } from 'cnbuilder';
-import { AnimateInView, type AnimationType } from '../Animate';
-import { Container } from '../Container';
-import {
-  Heading, type HeadingType, SrOnlyText, Text,
-} from '../Typography';
-import {
-  accentBorderColors,
-  accentBgColors,
-  type AccentBorderColorType,
-  type AccentColorType,
-  type PaddingType,
-} from '@/utilities/datasource';
+import { AnimateInView, type AnimationType } from '@/components/Animate';
+import { NumberCounter } from '@/components/NumberCounter';
+import { Container } from '@/components/Container';
+import { FlexBox } from '@/components/FlexBox';
+import { Heading, type HeadingType } from '../Typography';
+import { accentBorderColors, type AccentBorderColorType, type PaddingType } from '@/utilities/datasource';
 import * as styles from './DataCard.styles';
 
 export type DataCardProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -22,6 +16,9 @@ export type DataCardProps = React.HTMLAttributes<HTMLDivElement> & {
   body?: React.ReactNode;
   paddingTop?: PaddingType;
   cta?: React.ReactNode;
+  isCounter?: boolean;
+  // In number of seconds
+  counterDuration?: number;
   animation?: AnimationType;
   delay?: number;
 };
@@ -35,44 +32,50 @@ export const DataCard = ({
   cta,
   paddingTop,
   isDarkTheme,
+  isCounter,
+  counterDuration,
   animation = 'slideUp',
   delay,
   children,
   className,
   ...props
-}: DataCardProps) => (
-  <AnimateInView animation={animation} delay={delay}>
-    <Container
-      as="article"
-      width="full"
-      pt={paddingTop}
-      className={styles.root}
-      {...props}
-    >
-      <div>
-        {heading && (
-          <Heading
-            as={headingLevel}
-            font="druk"
-            leading="druk"
-            color={isDarkTheme ? 'white' : 'black'}
-            size="f5"
-            className={styles.heading}
-          >
-            {heading}
-          </Heading>
-        )}
-        <div className={cnb(styles.content(!!barColor), accentBorderColors[barColor])}>
-          <div className={styles.body}>
-            {body}
-          </div>
-          {!!cta && (
-            <div className={styles.cta}>
-              {cta}
-            </div>
+}: DataCardProps) => {
+  const numberToAnimate = parseFloat(heading?.match(/\d+/)[0]);
+
+  return (
+    <AnimateInView animation={animation} delay={delay} className="h-full">
+      <Container
+        as="article"
+        width="full"
+        pt={paddingTop}
+        className={styles.root}
+        {...props}
+      >
+        <FlexBox direction="col" className="h-full">
+          {heading && (
+            <Heading
+              as={headingLevel}
+              font="druk"
+              leading="druk"
+              color={isDarkTheme ? 'white' : 'black'}
+              size="f5"
+              className={styles.heading}
+            >
+              <NumberCounter number={numberToAnimate} duration={counterDuration} />
+            </Heading>
           )}
-        </div>
-      </div>
-    </Container>
-  </AnimateInView>
-);
+          <div className={cnb(styles.content(!!barColor), accentBorderColors[barColor])}>
+            <div className={styles.body}>
+              {body}
+            </div>
+            {!!cta && (
+              <div className={styles.cta}>
+                {cta}
+              </div>
+            )}
+          </div>
+        </FlexBox>
+      </Container>
+    </AnimateInView>
+  );
+};
