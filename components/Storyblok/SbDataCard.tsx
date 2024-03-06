@@ -1,10 +1,14 @@
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
-import { CreateBloks } from '../CreateBloks';
-import { DataCard } from '../DataCard';
-import { type AnimationType } from '../Animate';
-import { type HeadingType } from '../Typography';
+import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
+import { CreateBloks } from '@/components/CreateBloks';
+import { DataCard } from '@/components/DataCard';
+import { RichText } from '@/components/RichText';
+import { type AnimationType } from '@/components/Animate';
+import { type HeadingType } from '@/components/Typography';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
+import { type PaddingType } from '@/utilities/datasource';
 import { getNumBloks } from '@/utilities/getNumBloks';
+import { hasRichText } from '@/utilities/hasRichText';
 
 export type SbDataCardProps = {
   blok: {
@@ -13,8 +17,10 @@ export type SbDataCardProps = {
     headingLevel?: HeadingType;
     isSmallHeading?: boolean;
     superhead?: string;
-    content?: SbBlokData[];
+    body: StoryblokRichtext;
     cta?: SbBlokData[];
+    paddingTop?: PaddingType;
+    isDarkTheme?: boolean;
     barColor?: {
       value?: PaletteAccentHexColorType;
     }
@@ -28,15 +34,17 @@ export const SbDataCard = ({
     heading,
     headingLevel,
     isSmallHeading,
-    content,
+    body,
     cta,
+    paddingTop,
+    isDarkTheme,
     barColor: { value } = {},
     animation,
     delay,
   },
   blok,
 }: SbDataCardProps) => {
-  const Content = !!getNumBloks(content) ? <CreateBloks blokSection={content} /> : undefined;
+  const Body = hasRichText(body) ? <RichText wysiwyg={body} textColor={isDarkTheme ? 'white' : 'black'} /> : undefined;
   const Cta = !!getNumBloks(cta) ? <CreateBloks blokSection={cta} /> : undefined;
 
   return (
@@ -45,12 +53,13 @@ export const SbDataCard = ({
       heading={heading}
       headingLevel={headingLevel}
       isSmallHeading={isSmallHeading}
+      isDarkTheme={isDarkTheme}
       barColor={paletteAccentColors[value]}
       cta={Cta}
+      body={Body}
+      paddingTop={paddingTop}
       animation={animation}
       delay={delay}
-    >
-      {Content}
-    </DataCard>
+    />
   );
 };

@@ -9,6 +9,7 @@ import {
   accentBgColors,
   type AccentBorderColorType,
   type AccentColorType,
+  type PaddingType,
 } from '@/utilities/datasource';
 import * as styles from './DataCard.styles';
 
@@ -16,8 +17,10 @@ export type DataCardProps = React.HTMLAttributes<HTMLDivElement> & {
   heading?: string;
   headingLevel?: HeadingType;
   isSmallHeading?: boolean;
-  isLightText?: boolean;
+  isDarkTheme?: boolean;
   barColor?: AccentBorderColorType;
+  body?: React.ReactNode;
+  paddingTop?: PaddingType;
   cta?: React.ReactNode;
   animation?: AnimationType;
   delay?: number;
@@ -28,7 +31,10 @@ export const DataCard = ({
   headingLevel = 'h3',
   isSmallHeading,
   barColor,
+  body,
   cta,
+  paddingTop,
+  isDarkTheme,
   animation = 'slideUp',
   delay,
   children,
@@ -39,20 +45,33 @@ export const DataCard = ({
     <Container
       as="article"
       width="full"
+      pt={paddingTop}
+      className={styles.root}
       {...props}
     >
-      <div className={cnb(styles.content(!!barColor), accentBorderColors[barColor])}>
+      <div>
         {heading && (
-          <Heading font="druk" leading="druk" as={headingLevel} size="f5" >
+          <Heading
+            as={headingLevel}
+            font="druk"
+            leading="druk"
+            color={isDarkTheme ? 'white' : 'black'}
+            size="f5"
+            className={styles.heading}
+          >
             {heading}
           </Heading>
         )}
-        {children}
-        {cta && (
-          <div className={styles.cta}>
-            {cta}
+        <div className={cnb(styles.content(!!barColor), accentBorderColors[barColor])}>
+          <div className={styles.body}>
+            {body}
           </div>
-        )}
+          {!!cta && (
+            <div className={styles.cta}>
+              {cta}
+            </div>
+          )}
+        </div>
       </div>
     </Container>
   </AnimateInView>
