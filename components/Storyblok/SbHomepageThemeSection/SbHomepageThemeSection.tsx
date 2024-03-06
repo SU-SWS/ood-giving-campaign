@@ -97,8 +97,8 @@ export const SbHomepageThemeSection = ({
               className={cnb(
                 styles.overlay(hasBgGradient),
                 bgBlurs[bgBlur],
-                gradientFroms[gradientBottom],
-                gradientTos[gradientTop],
+                gradientFroms[gradientTop],
+                gradientTos[gradientBottom],
               )}
             />
           )}
