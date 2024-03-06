@@ -3,6 +3,16 @@ import { Container } from '@/components/Container';
 import { Heading, SrOnlyText, Text } from '@/components/Typography';
 import { ImageOverlay } from '@/components/ImageOverlay';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
+import {
+  gradientFroms,
+  type GradientFromType,
+  gradientTos,
+  type GradientToType,
+  gradientVias,
+  type GradientViaType,
+  bgBlurs,
+  type BgBlurType,
+} from '@/utilities/datasource';
 import * as styles from './BasicHero.styles';
 
 /**
@@ -16,6 +26,10 @@ type BasicHeroProps = {
   subheading?: string;
   imageSrc?: string;
   imageFocus?: string;
+  gradientTop?: GradientToType;
+  gradientBottom?: GradientFromType;
+  gradientVia?: GradientViaType;
+  bgBlur?: BgBlurType;
   heroContent?: React.ReactNode;
   paddingType?: styles.HeroPaddingType;
 };
@@ -28,72 +42,112 @@ export const BasicHero = ({
   subheading,
   imageSrc,
   imageFocus,
+  gradientTop,
+  gradientBottom,
+  gradientVia,
+  bgBlur,
   heroContent,
   paddingType,
-}: BasicHeroProps) => (
-  <Container
-    width="full"
-    bgColor={imageSrc ? undefined : 'black'}
-    className={cnb(styles.root, styles.heroPaddings[paddingType])}
-  >
-    {imageSrc && (
-      <>
-        <ImageOverlay
-          imageSrc={getProcessedImage(imageSrc, '2000x1000', imageFocus)}
-          overlay="black-40"
-          className="z-0 hidden xl:block"
-          overlayClasses="hidden xl:block"
+}: BasicHeroProps) => {
+  // To render a dark overlay, both a top and bottom gradient color must be selected
+  const hasBgGradient = !!gradientTop && !!gradientBottom;
+
+  return (
+    <Container
+      width="full"
+      bgColor={imageSrc ? undefined : 'black'}
+      className={cnb(styles.root, styles.heroPaddings[paddingType])}
+    >
+      {!!imageSrc && (
+        <picture>
+          <source
+            srcSet={getProcessedImage(imageSrc, bgBlur !== 'none' ? '1000x500' : '2000x1000', imageFocus)}
+            media="(min-width: 1200px)"
+            // Exact height and width don't matter as long as aspect ratio is the same as the image
+            width={2000}
+            height={1000}
+          />
+          <source
+            srcSet={getProcessedImage(imageSrc, bgBlur !== 'none' ? '600x400' : '1200x800', imageFocus)}
+            media="(min-width: 768px)"
+            width={1200}
+            height={800}
+          />
+          <source
+            srcSet={getProcessedImage(imageSrc, bgBlur !== 'none' ? '400x300' : '800x600', imageFocus)}
+            media="(min-width: 461px)"
+            width={800}
+            height={600}
+          />
+          <source
+            srcSet={getProcessedImage(imageSrc, bgBlur !== 'none' ? '240x240' : '480x480', imageFocus)}
+            media="(max-width: 460px)"
+            width={480}
+            height={480}
+          />
+          <img
+            src={getProcessedImage(imageSrc, bgBlur !== 'none' ? '1000x500' : '2000x1000', imageFocus)}
+            alt=""
+            width={2000}
+            height={1000}
+            className={styles.bgImage}
+          />
+        </picture>
+      )}
+      {!!imageSrc && (bgBlur !== 'none' || hasBgGradient) && (
+        <div
+          className={cnb(
+            styles.overlay(hasBgGradient),
+            bgBlurs[bgBlur],
+            gradientFroms[gradientTop],
+            gradientVias[gradientVia],
+            gradientTos[gradientBottom],
+          )}
         />
-        <ImageOverlay
-          imageSrc={getProcessedImage(imageSrc, '1200x900', imageFocus)}
-        overlay="black-40"
-          className="z-0 xl:hidden"
-          overlayClasses="xl:hidden"
-        />
-      </>
-    )}
-    <Container className={styles.contentWrapper}>
-      {superhead && (
-        <Text
-          size={3}
-          font="serif"
-          weight="bold"
+      )}
+      <Container className={styles.contentWrapper}>
+        {superhead && (
+          <Text
+            size={3}
+            font="serif"
+            weight="bold"
+            align="center"
+            leading="tight"
+            color="white"
+            aria-hidden
+            className={styles.superhead}
+          >
+            {superhead}
+          </Text>
+        )}
+        <Heading
+          as="h1"
+          font={isDrukHeading ? 'druk' : 'serif'}
+          weight={isDrukHeading ? 'black' : 'bold'}
           align="center"
-          leading="tight"
+          leading={isDrukHeading ? 'none' : 'tight'}
           color="white"
-          aria-hidden
-          className={styles.superhead}
+          className={styles.heading(isDrukHeading, isSmallHeading)}
         >
-          {superhead}
-        </Text>
-      )}
-      <Heading
-        as="h1"
-        font={isDrukHeading ? 'druk' : 'serif'}
-        weight={isDrukHeading ? 'black' : 'bold'}
-        align="center"
-        leading={isDrukHeading ? 'none' : 'tight'}
-        color="white"
-        className={styles.heading(isDrukHeading, isSmallHeading)}
-      >
-        {superhead && <SrOnlyText>{`${superhead}: `}</SrOnlyText>}{title}
-      </Heading>
-      {subheading && (
-        <Text
-          size={2}
-          align="center"
-          leading="display"
-          color="white"
-          className={styles.subhead}
-        >
-          {subheading}
-        </Text>
-      )}
-      {!!heroContent && (
-        <div className={styles.content}>
-          {heroContent}
-        </div>
-      )}
+          {superhead && <SrOnlyText>{`${superhead}: `}</SrOnlyText>}{title}
+        </Heading>
+        {subheading && (
+          <Text
+            size={2}
+            align="center"
+            leading="display"
+            color="white"
+            className={styles.subhead}
+          >
+            {subheading}
+          </Text>
+        )}
+        {!!heroContent && (
+          <div className={styles.content}>
+            {heroContent}
+          </div>
+        )}
+      </Container>
     </Container>
-  </Container>
-);
+  );
+};
