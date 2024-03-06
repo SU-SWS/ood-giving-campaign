@@ -5,6 +5,12 @@ import { Masthead } from '@/components/Masthead';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { type SbImageType } from '@/components/Storyblok/Storyblok.types';
 import { type HeroPaddingType } from '@/components/Hero/BasicHero.styles';
+import {
+  type GradientFromType,
+  type GradientToType,
+  type GradientViaType,
+  BgBlurType,
+} from '@/utilities/datasource';
 
 type SbBasicPageProps = {
   blok: {
@@ -14,6 +20,10 @@ type SbBasicPageProps = {
     isSmallHeading?: boolean;
     hero?: SbBlokData[];
     heroImage?: SbImageType;
+    gradientTop?: GradientToType;
+    gradientBottom?: GradientFromType;
+    gradientVia?: GradientViaType;
+    bgBlur?: BgBlurType;
     paddingType?: HeroPaddingType;
     superhead?: string;
     subheading?: string;
@@ -30,6 +40,10 @@ export const SbBasicPage = ({
     isSmallHeading,
     hero,
     heroImage: { filename, focus } = {},
+    gradientTop,
+    gradientBottom,
+    gradientVia,
+    bgBlur,
     paddingType,
     superhead,
     subheading,
@@ -56,6 +70,10 @@ export const SbBasicPage = ({
             subheading={subheading}
             imageSrc={filename}
             imageFocus={focus}
+            gradientTop={gradientTop}
+            gradientBottom={gradientBottom}
+            gradientVia={gradientVia}
+            bgBlur={bgBlur}
             heroContent={HeroContent}
             paddingType={paddingType}
           />

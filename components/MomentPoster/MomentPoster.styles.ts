@@ -4,7 +4,7 @@ export const root = 'relative overflow-hidden';
 export const wrapper = 'relative w-full z-10';
 
 export const bgImage = 'absolute top-0 left-0 w-full h-full object-cover';
-export const overlay = (hasBgGradient?: boolean) => cnb('absolute top-0 left-0 w-full h-full z-10', hasBgGradient ? 'bg-gradient-to-t via-50%' : '');
+export const overlay = (hasBgGradient?: boolean) => cnb('absolute top-0 left-0 w-full h-full z-10', hasBgGradient ? 'bg-gradient-to-b via-50%' : '');
 
 export const contentWrapper = 'lg:rs-pr-9 ml-0';
 

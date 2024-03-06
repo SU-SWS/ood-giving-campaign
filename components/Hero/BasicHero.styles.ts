@@ -9,8 +9,12 @@ export const heroPaddings = {
 export type HeroPaddingType = keyof typeof heroPaddings;
 
 export const root = 'relative break-words bg-black-70';
+
+export const bgImage = 'absolute top-0 left-0 w-full h-full object-cover';
+export const overlay = (hasBgGradient?: boolean) => cnb('absolute top-0 left-0 w-full h-full z-10', hasBgGradient ? 'bg-gradient-to-b via-50%' : '');
+
 export const contentWrapper = '*:mx-auto';
-export const superhead = 'relative z-10 xl:max-w-900 mx-auto rs-mb-0';
+export const superhead = 'relative z-10 xl:max-w-900 mx-auto rs-mb-0 text-shadow-sm';
 export const heading = (isDrukHeading: boolean, isSmallHeading: boolean) => cnb('relative z-10 max-w-1200 mx-auto mb-0 text-balance', {
   'fluid-type-7 md:fluid-type-8': isDrukHeading && isSmallHeading,
   'fluid-type-7 md:gc-splash': isDrukHeading && !isSmallHeading,
