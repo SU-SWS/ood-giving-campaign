@@ -7,7 +7,7 @@ type NumberCounterProps = {
   duration?: number;
 };
 
-export const NumberCounter = ({ number, duration = 2.5}: NumberCounterProps) => {
+export const NumberCounter = ({ number, duration = 2.5 }: NumberCounterProps) => {
   const [count, setCount] = useState(1);
   const ref = useRef(null);
   const isInView = useInView(ref);

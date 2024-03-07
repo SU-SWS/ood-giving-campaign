@@ -5,6 +5,7 @@ import { Container } from '@/components/Container';
 import { FlexBox } from '@/components/FlexBox';
 import { Heading, type HeadingType } from '../Typography';
 import { accentBorderColors, type AccentBorderColorType, type PaddingType } from '@/utilities/datasource';
+import { splitNumberString } from '@/utilities/splitNumberString';
 import * as styles from './DataCard.styles';
 
 export type DataCardProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -40,7 +41,8 @@ export const DataCard = ({
   className,
   ...props
 }: DataCardProps) => {
-  const numberToAnimate = parseFloat(heading?.match(/\d+/)[0]);
+  // const numberToAnimate = parseFloat(heading?.match(/\d+/)[0]);
+  const headingProcessed = isCounter ? splitNumberString(heading) : undefined;
 
   return (
     <AnimateInView animation={animation} delay={delay} className="h-full">
@@ -61,7 +63,15 @@ export const DataCard = ({
               size="f5"
               className={styles.heading}
             >
-              <NumberCounter number={numberToAnimate} duration={counterDuration} />
+              {isCounter ? (
+                <>
+                  {headingProcessed?.beforeNumber}
+                  <NumberCounter number={headingProcessed?.number} duration={counterDuration} />
+                  {headingProcessed?.afterNumber}
+                </>
+              ) : (
+                heading
+              )}
             </Heading>
           )}
           <div className={cnb(styles.content(!!barColor), accentBorderColors[barColor])}>
