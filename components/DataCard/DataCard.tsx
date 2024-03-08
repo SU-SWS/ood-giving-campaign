@@ -41,11 +41,10 @@ export const DataCard = ({
   className,
   ...props
 }: DataCardProps) => {
-  // const numberToAnimate = parseFloat(heading?.match(/\d+/)[0]);
   const headingProcessed = isCounter ? splitNumberString(heading) : undefined;
 
   return (
-    <AnimateInView animation={animation} delay={delay} className="h-full">
+    <AnimateInView animation={animation} delay={delay} className={styles.animateWrapper}>
       <Container
         as="article"
         width="full"
@@ -53,7 +52,7 @@ export const DataCard = ({
         className={styles.root}
         {...props}
       >
-        <FlexBox direction="col" className="h-full">
+        <FlexBox direction="col" className={styles.flex}>
           {heading && (
             <Heading
               as={headingLevel}
