@@ -6,6 +6,10 @@ type SbEmbedProps = {
     _uid: string;
     src?: string;
     content?: string;
+    boundingWidth?: 'site' | 'full';
+    width?: WidthType;
+    spacingTop?: PaddingType;
+    spacingBottom?: PaddingType;
   };
 };
 
