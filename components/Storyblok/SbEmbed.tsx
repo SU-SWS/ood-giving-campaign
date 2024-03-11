@@ -1,5 +1,7 @@
 import { storyblokEditable} from '@storyblok/react/rsc';
 import { Embed } from '@/components/Embed';
+import { type WidthType } from '../WidthBox';
+import { type PaddingType } from '@/utilities/datasource';
 
 type SbEmbedProps = {
   blok: {
