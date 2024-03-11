@@ -32,16 +32,16 @@ id, src, content, boundingWidth, spacingTop, spacingBottom, className, width, ..
   useEffect(() => {
     // If there is no content or src, return.
     if (!content && !src) return;
-
+    const domElement = myEmbed.current;
     // Clear the container.
-    myEmbed.current.innerHTML = '';
+    domElement.innerHTML = '';
 
     if (src.length > 1) {
       // Create a script tag.
       const script = document.createElement('script');
       // Set the src to the src provided.
       script.src = src;
-      myEmbed.current.appendChild(script);
+      domElement.appendChild(script);
     }
 
     if (content.length > 1) {
@@ -59,10 +59,13 @@ id, src, content, boundingWidth, spacingTop, spacingBottom, className, width, ..
         }
       }
     // Append the new content.
-    myEmbed.current.appendChild(miniDom);
+    domElement.appendChild(miniDom);
     }
 
-
+    return () => {
+      // Clean up the script tag.
+      domElement.innerHTML = '';
+    };
   }, [content, src]);
 
   if (content) {
