@@ -19,7 +19,7 @@ export const SbEmbed = ({ blok, blok: { _uid } }:SbEmbedProps) => {
 
   return (
     <Embed
-      {...storyblokEditable}
+      {...storyblokEditable(blok)}
       {...blok}
       id={_uid}
     />
