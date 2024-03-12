@@ -35,7 +35,6 @@ export const SbDataCard = ({
   blok: {
     heading,
     headingLevel,
-    isSmallHeading,
     body,
     cta,
     paddingTop,
@@ -56,7 +55,6 @@ export const SbDataCard = ({
       {...storyblokEditable(blok)}
       heading={heading}
       headingLevel={headingLevel}
-      isSmallHeading={isSmallHeading}
       isDarkTheme={isDarkTheme}
       isCounter={isCounter}
       counterDuration={counterDuration}

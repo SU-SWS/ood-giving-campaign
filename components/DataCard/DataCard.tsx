@@ -11,7 +11,6 @@ import * as styles from './DataCard.styles';
 export type DataCardProps = React.HTMLAttributes<HTMLDivElement> & {
   heading?: string;
   headingLevel?: HeadingType;
-  isSmallHeading?: boolean;
   isDarkTheme?: boolean;
   barColor?: AccentBorderColorType;
   body?: React.ReactNode;
@@ -27,7 +26,6 @@ export type DataCardProps = React.HTMLAttributes<HTMLDivElement> & {
 export const DataCard = ({
   heading,
   headingLevel = 'h3',
-  isSmallHeading,
   barColor,
   body,
   cta,
@@ -53,6 +51,10 @@ export const DataCard = ({
         {...props}
       >
         <FlexBox direction="col" className={styles.flex}>
+          {/* If number counter is enabled, aria-hidden the animated heading and add a SR only heading */}
+          {isCounter && heading && (
+            <Heading as={headingLevel} srOnly>{heading}</Heading>
+          )}
           {heading && (
             <Heading
               as={headingLevel}
@@ -60,6 +62,7 @@ export const DataCard = ({
               leading="druk"
               color={isDarkTheme ? 'white' : 'black'}
               size="f5"
+              aria-hidden={isCounter}
               className={styles.heading}
             >
               {isCounter ? (
