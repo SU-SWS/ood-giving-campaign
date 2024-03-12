@@ -83,7 +83,7 @@ id, src, content, boundingWidth, spacingTop, spacingBottom, className, width, ..
     );
   }
 
-  return (<p className='bg-red text-white text-3xl'>You must provide either an src or content to the embed</p>);
+  return (<p className='bg-digital-red text-white text-30'>You must provide either an src or content to the embed</p>);
 };
 
 export default Embed;
