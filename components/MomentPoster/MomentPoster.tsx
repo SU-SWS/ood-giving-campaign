@@ -107,7 +107,7 @@ export const MomentPoster = ({
         />
       )}
       <Container className={styles.wrapper}>
-        <Heading as="h2" size="splash" font="druk" align="center" className={styles.heading}>
+        <Heading as="h2" size="splash" font="druk" leading="druk" align="center" className={styles.heading}>
           <FlexBox as="span" alignItems="baseline" className={styles.headingWrapper}>
             {textBefore && (
               <AnimateInView animation="slideInFromLeft">

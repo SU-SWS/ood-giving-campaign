@@ -23,8 +23,8 @@ export const IdealFellow = () => {
       </div>
       <Heading size="base" color="white" className="absolute bottom-300 ml-[20vw]">
         <Text as="span" font="druk" size="f8" leading="display" className="block">Shape</Text>
-        <Text as="span" font="serif" weight="semibold" italic size="f9" className="leading-[0.9] block">what’s</Text>
-        <Text as="span" font="serif" weight="semibold" italic size="f9" className="leading-[0.9] block">next</Text>
+        <Text as="span" font="serif" weight="semibold" italic size="f9" leading="druk" className="block">what’s</Text>
+        <Text as="span" font="serif" weight="semibold" italic size="f9" leading="druk" className="block">next</Text>
       </Heading>
       <div className="group hover:backdrop-blur-sm transition-all absolute bottom-200 right-0 bg-black-50/50 backdrop-blur-xl w-5/12 rs-px-4 rs-pt-4 rs-pb-1">
         <Text variant="caption" color="white" weight="semibold" className="mb-04em">Preparing citizens</Text>

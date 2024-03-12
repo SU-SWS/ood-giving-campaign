@@ -19,10 +19,11 @@ export default {
   ],
   theme: {
     containers: require(`${dir}/theme/gc-containers.js`)(),
-    // Campaign themes extending our Decanter ones
+    // Momentum themes extending our Decanter ones
     extend: {
       colors: require(`${dir}/theme/gc-colors.js`)(),
       fontFamily: require(`${dir}/theme/gc-fontFamily.js`)(),
+      lineHeight: require(`${dir}/theme/gc-lineHeight.js`)(),
       screens: require(`${dir}/theme/gc-screens.js`)(),
     },
   },
