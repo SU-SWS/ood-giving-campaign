@@ -8,7 +8,7 @@ export const overlay = (hasBgGradient?: boolean) => cnb('absolute top-0 left-0 w
 
 export const contentWrapper = 'lg:rs-pr-9 ml-0';
 
-export const heading = 'leading-[0.9] max-w-1000 mx-auto rs-mb-1';
+export const heading = 'max-w-1000 mx-auto rs-mb-1';
 export const headingWrapper = 'mx-auto w-fit gap-02em';
 
 export const thumbnailWrapper = 'inline-block';

@@ -1,5 +1,5 @@
 /**
- * Giving Campaign fonts
+ * Momentum fonts
  */
 module.exports = function () {
   return {

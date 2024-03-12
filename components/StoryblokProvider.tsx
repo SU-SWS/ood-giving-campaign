@@ -6,6 +6,7 @@ import { SbBlurryPoster } from '@/components/Storyblok/SbBlurryPoster';
 import { SbCardWysiwyg } from '@/components/Storyblok/SbCardWysiwyg';
 import { SbChangemakerCard } from '@/components/Storyblok/SbChangemakerCard';
 import { SbCta } from '@/components/Storyblok/SbCta';
+import { SbDataCard } from '@/components/Storyblok/SbDataCard';
 import { SbEmbed } from '@/components/Storyblok/SbEmbed';
 import { SbEmbedMedia } from '@/components/Storyblok/SbEmbedMedia';
 import { SbGrid } from '@/components/Storyblok/SbGrid';
@@ -37,6 +38,7 @@ export const components = {
   sbCardWysiwyg: SbCardWysiwyg,
   sbChangemakerCard: SbChangemakerCard,
   sbCta: SbCta,
+  sbDataCard: SbDataCard,
   sbEmbedScript: SbEmbed,
   sbEmbedMedia: SbEmbedMedia,
   sbGrid: SbGrid,

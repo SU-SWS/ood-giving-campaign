@@ -110,7 +110,7 @@ export const DemoContent = () => (
       <Heading size={7} font="sans">Animated counters</Heading>
       <Grid md={3} gap="card" alignItems="center" justifyItems="center">
         <NumberCounter number={42} />
-        <NumberCounter number={9} afterText="K+" />
+        <NumberCounter number={9} />
         <NumberCounter number={120} />
       </Grid>
     </Container>
