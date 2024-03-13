@@ -44,6 +44,7 @@ export const fontLeadings = {
   cozy: 'leading-cozy', // 1.4
   normal: 'leading', // 1.5
   trim: 'leading-trim', // 0.75
+  druk: 'leading-druk', // 0.9
 };
 
 export const textAligns = {
@@ -71,15 +72,15 @@ export const textVariants = {
   big: 'big-paragraph',
   subheading: 'subheading',
   /**
-   * Campaign typography styles
-   * (-gc ones are Decanter styles with Campaign modifications)
+   * Momentum typography styles
+   * (-gc ones are Decanter styles with Momentum modifications)
    */
   caption: 'caption',
   card: 'gc-card',
   changemaker: 'gc-changemaker',
   intro: 'gc-intro-text',
   /**
-   * Campaign only styles
+   * Momentum only styles
    * No gc- prefix because no Decanter equivalent
    */
   overview: 'overview',

@@ -1,5 +1,5 @@
 /**
- * Campaign specific typography styles
+ * Momentum specific typography styles
  */
 module.exports = function () {
   return function ({ addComponents, theme }) {

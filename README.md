@@ -1,11 +1,11 @@
-# [Giving Campaign (Stanford On Purpose)](https://github.com/SU-SWS/ood-giving-campaign)
+# [Stanford Momentum](https://github.com/SU-SWS/ood-giving-campaign)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/738e5599-7329-41a1-8429-82f8540636d9/deploy-status?branch=dev)](https://app.netlify.com/sites/giving-campaign/deploys)
 
 Description
 ---
 
-Netlify hosted, Next.js built, Storyblok headless CMS site for the Stanford On Purpose website.
+Netlify hosted, Next.js built, Storyblok headless CMS site for the Stanford Momentum website.
 
 Environment variable set up and installation
 ---

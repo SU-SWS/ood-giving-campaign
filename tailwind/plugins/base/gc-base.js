@@ -1,5 +1,5 @@
 /**
- * Campaign custom base styles extending Decanter 7 base
+ * Momentum custom base styles extending Decanter 7 base
  */
 
 module.exports = function () {
@@ -7,7 +7,7 @@ module.exports = function () {
     addBase({
       html: {
         overflowY: 'visible !important', // Need this for sticky nav to work
-        color: '#17171A', // Campaign black
+        color: '#17171A', // Momentum black
       },
       body: {
         fontSize: '1.8rem',

@@ -1,5 +1,5 @@
 /**
- * Giving Campaign colors
+ * Momentum colors
  */
 module.exports = function () {
   return {
