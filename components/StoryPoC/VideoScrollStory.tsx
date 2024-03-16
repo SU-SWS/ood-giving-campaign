@@ -28,7 +28,7 @@ export const VideoScrollStory = () => {
           muted
           loop
           aria-label="Background Video"
-          className="block w-full h-full object-cover"
+          className="block size-full object-cover"
         >
           <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/80ddd8341f/starloop.webm')} type="video/webm" />
           <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/1a881ffc0a/starloop.mp4')} type="video/mp4" />
@@ -36,9 +36,9 @@ export const VideoScrollStory = () => {
         </video>
         <m.div
           style={{ backgroundColor: colorChange }}
-          className="absolute top-0 r-0 w-full h-full mix-blend-overlay"
+          className="absolute top-0 r-0 size-full mix-blend-overlay"
         />
-        <div className="absolute top-0 r-0 w-full h-full bg-gc-black mix-blend-soft-light" />
+        <div className="absolute top-0 r-0 size-full bg-gc-black mix-blend-soft-light" />
       </div>
       <div ref={contentRef} className="relative w-2/3 lg:w-1/3 mx-auto text-white z-10 rs-py-10 -mt-[80vh]">
         <section>

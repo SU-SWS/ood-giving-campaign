@@ -43,13 +43,13 @@ export const ImageOverlay = ({
       loading={loading}
       width={width}
       height={height}
-      className={cnb('absolute w-full h-full object-cover top-0 left-0', className)}
+      className={cnb('absolute size-full object-cover top-0 left-0', className)}
       {...props}
     />
     {overlay && (
       <div
         className={cnb(
-          'absolute w-full h-full top-0 left-0',
+          'absolute size-full top-0 left-0',
           overlays[overlay],
           overlayClasses,
         )}

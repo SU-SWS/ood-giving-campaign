@@ -10,8 +10,8 @@ export type HeroPaddingType = keyof typeof heroPaddings;
 
 export const root = 'relative break-words bg-black-70';
 
-export const bgImage = 'absolute top-0 left-0 w-full h-full object-cover';
-export const overlay = (hasBgGradient?: boolean) => cnb('absolute top-0 left-0 w-full h-full z-10', hasBgGradient ? 'bg-gradient-to-b via-50%' : '');
+export const bgImage = 'absolute top-0 left-0 size-full object-cover';
+export const overlay = (hasBgGradient?: boolean) => cnb('absolute top-0 left-0 size-full z-10', hasBgGradient ? 'bg-gradient-to-b via-50%' : '');
 
 export const contentWrapper = '*:mx-auto';
 export const superhead = 'relative z-10 xl:max-w-900 mx-auto rs-mb-0 text-shadow-sm';

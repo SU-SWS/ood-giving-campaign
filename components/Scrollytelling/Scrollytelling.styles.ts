@@ -23,8 +23,8 @@ export type OverlayType = keyof typeof overlays;
 
 export const wrapper = 'relative';
 export const imageWrapper = 'sticky top-0 h-screen w-full z-0';
-export const image = 'absolute w-full h-full object-cover top-0 left-0 z-0';
-export const imageOverlay = (overlay?: OverlayType) => cnb('absolute w-full h-full top-0 left-0 z-0 bg-black-true/50', overlays[overlay]);
+export const image = 'absolute size-full object-cover top-0 left-0 z-0';
+export const imageOverlay = (overlay?: OverlayType) => cnb('absolute size-full top-0 left-0 z-0 bg-black-true/50', overlays[overlay]);
 
 export const content = 'relative z-10 cc text-white rs-py-10';
 export const contentWrapper = (contentAlign: ContentAlignType) => cnb('w-full mx-auto md:w-2/3 xl:w-1/2', {

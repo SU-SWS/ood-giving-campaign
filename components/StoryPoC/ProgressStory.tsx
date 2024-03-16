@@ -14,7 +14,7 @@ export const ProgressStory = () => {
           src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1901x1643/e36a942af8/progress-dish-cropped.jpg', '2000x0')}
           alt=""
           loading="eager"
-          className="absolute w-full h-full object-cover object-top top-0 left-0"
+          className="absolute size-full object-cover object-top top-0 left-0"
         />
         <Grid lg={12} className="relative" gap="default">
           <AnimateInView animation="slideUp" className="relative z-10 max-w-1200 col-span-12 2xl:col-start-2 2xl:col-span-8">
@@ -37,10 +37,10 @@ export const ProgressStory = () => {
           src={getProcessedImage('https://a-us.storyblok.com/f/1005200/4000x2250/0c54166208/vlad-hilitanu-pt7qzb4zlww-unsplash.jpg', '2000x2000')}
           alt=""
           loading="eager"
-          className="relative w-full h-full object-cover object-top"
+          className="relative size-full object-cover object-top"
         />
         <div
-          className="absolute w-full h-full top-0 left-0 bg-gradient-to-b from-[#020002] via-transparent via-40% to-gc-black z-10"
+          className="absolute size-full top-0 left-0 bg-gradient-to-b from-[#020002] via-transparent via-40% to-gc-black z-10"
         />
         <div className="absolute top-0 r-0 w-full 3xl:px-100 z-20">
           <Grid lg={12} className="w-full" gap="default">
@@ -87,10 +87,10 @@ export const ProgressStory = () => {
           src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2100x1350/02b8df40d3/21664-12-0011_cmyk-1.jpg', '2000x1200')}
           alt=""
           loading="eager"
-          className="relative w-full h-full object-cover object-top"
+          className="relative size-full object-cover object-top"
         />
         <div
-          className="absolute w-full h-full top-0 left-0 bg-gradient-to-b from-gc-black via-gc-black/20 via-40% to-gc-black z-10"
+          className="absolute size-full top-0 left-0 bg-gradient-to-b from-gc-black via-gc-black/20 via-40% to-gc-black z-10"
         />
         <div className="absolute top-0 r-0 w-full 3xl:px-100 z-20">
           <Grid lg={12} className="w-full" gap="default">
