@@ -12,7 +12,14 @@ import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { hasRichText } from '@/utilities/hasRichText';
 import * as styles from './SbHomepageThemeSection.styles';
 import {
-  bgBlurs, type BgBlurType, gradientFroms, type GradientFromType, gradientTos, type GradientToType,
+  gradientFroms,
+  type GradientFromType,
+  gradientTos,
+  type GradientToType,
+  gradientVias,
+  type GradientViaType,
+  bgBlurs,
+  type BgBlurType,
 } from '@/utilities/datasource';
 import { getNumBloks } from '@/utilities/getNumBloks';
 
@@ -28,6 +35,7 @@ type SbHomepageThemeSectionProps = {
     bgBlur?: BgBlurType;
     gradientTop?: GradientToType;
     gradientBottom?: GradientFromType;
+    gradientVia?: GradientViaType;
   };
 };
 
@@ -42,6 +50,7 @@ export const SbHomepageThemeSection = ({
     bgBlur,
     gradientTop,
     gradientBottom,
+    gradientVia,
   },
   blok,
 }: SbHomepageThemeSectionProps) => {
@@ -99,6 +108,7 @@ export const SbHomepageThemeSection = ({
                 bgBlurs[bgBlur],
                 gradientFroms[gradientTop],
                 gradientTos[gradientBottom],
+                gradientVias[gradientVia],
               )}
             />
           )}
