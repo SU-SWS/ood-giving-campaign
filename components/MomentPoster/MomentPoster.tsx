@@ -88,6 +88,7 @@ export const MomentPoster = ({
           <img
             src={getProcessedImage(bgImageSrc, bgBlur !== 'none' ? '1200x800' : '1800x1200', bgImageFocus)}
             alt=""
+            loading="lazy"
             width={1800}
             height={1200}
             className={styles.bgImage}
