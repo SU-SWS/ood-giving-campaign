@@ -2,7 +2,7 @@ import { cnb } from 'cnbuilder';
 
 export const root = 'relative bg-no-repeat bg-cover overflow-hidden break-words';
 
-export const bgImage = 'absolute top-0 left-0 w-full h-full object-cover';
+export const bgImage = 'absolute top-0 left-0 size-full object-cover';
 
 export const blurWrapper = (
   addBgBlur?: boolean,
@@ -10,7 +10,7 @@ export const blurWrapper = (
   type?: 'hero' | 'poster',
   bgColor?: 'black' | 'white',
 ) => cnb(
-  'relative w-full h-full z-10', {
+  'relative size-full z-10', {
     'backdrop-blur-md' : addBgBlur,
     'lg:from-black-true/20 lg:to-black-true/70': type === 'poster' && addDarkOverlay && bgColor === 'black',
     'lg:bg-none': type === 'poster' && bgColor === 'black' && !addDarkOverlay,

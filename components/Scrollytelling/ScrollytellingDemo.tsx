@@ -95,14 +95,14 @@ export const ScrollytellingDemo = () => {
               Chapter 2
             </Text>
           </div>
-          <div className="w-full h-full">
+          <div className="size-full">
             <figure className="relative h-full w-full overflow-hidden">
               {section4InView && (
                 <>
                   <img
                     loading="eager"
                     src={getProcessedImage('https://a-us.storyblok.com/f/1005200/4240x4211/1319d3cf69/antennae_galaxies_reloaded.jpg', '2000x0')}
-                    className="relative object-cover w-full h-full"
+                    className="relative object-cover size-full"
                     alt=""
                   />
                   <figcaption
@@ -119,7 +119,7 @@ export const ScrollytellingDemo = () => {
                   <m.img
                     loading="eager"
                     src={getProcessedImage('https://a-us.storyblok.com/f/1005200/3600x2085/f78572796c/main_image_star-forming_region_carina_nircam_final-5mb.jpg', '3000x0')}
-                    className="relative object-cover w-full h-full object-left"
+                    className="relative object-cover size-full object-left"
                     alt=""
                     style={{ scale: animateImage5Scale, x: animateImage5XPan, y: animateImage5YPan }}
                   />
@@ -147,7 +147,7 @@ export const ScrollytellingDemo = () => {
                     muted
                     loop
                     aria-label="video of milky way rotating"
-                    className="block w-full h-full object-cover"
+                    className="block size-full object-cover"
                   >
                     <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/80ddd8341f/starloop.webm')} type="video/webm" />
                     <source src={getMaskedAsset('https://a-us.storyblok.com/f/1005200/x/1a881ffc0a/starloop.mp4')} type="video/mp4" />

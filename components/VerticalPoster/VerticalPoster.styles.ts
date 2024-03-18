@@ -1,7 +1,7 @@
 import { cnb } from 'cnbuilder';
 
 export const root = 'relative overflow-hidden break-words';
-export const blurWrapper = 'w-full h-full backdrop-blur-md';
+export const blurWrapper = 'size-full backdrop-blur-md';
 
 export const grid = 'w-full';
 
