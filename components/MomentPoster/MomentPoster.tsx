@@ -28,6 +28,7 @@ type MomentPosterProps = HTMLAttributes<HTMLDivElement> & {
   bgImageFocus?: string;
   thumbnailSrc?: string;
   thumbnailFocus?: string;
+  isDarkTheme?: boolean;
   gradientTop?: GradientToType;
   gradientBottom?: GradientFromType;
   gradientVia?: GradientViaType;
@@ -46,6 +47,7 @@ export const MomentPoster = ({
   bgImageFocus,
   thumbnailSrc,
   thumbnailFocus,
+  isDarkTheme,
   gradientTop,
   gradientBottom,
   gradientVia,
@@ -57,7 +59,7 @@ export const MomentPoster = ({
   const hasBgGradient = !!gradientTop && !!gradientBottom;
 
   return (
-    <Container {...props} as="section" bgColor="black" width="full" py={8} className={styles.root}>
+    <Container {...props} as="section" bgColor={isDarkTheme ? 'black' : 'white'} width="full" py={8} className={styles.root}>
       {!!bgImageSrc && (
         <picture>
           <source
@@ -143,7 +145,6 @@ export const MomentPoster = ({
               font="serif"
               align="center"
               leading="display"
-              color="white"
             >
               {subhead}
             </Text>
@@ -151,7 +152,7 @@ export const MomentPoster = ({
         )}
         {body && (
           <AnimateInView animation="slideUp" delay={0.3}>
-            <Text font="serif" variant="big" weight="normal" className={styles.body}>
+            <Text font="serif" variant="big" weight="normal" className={styles.body(isDarkTheme)}>
               {body}
             </Text>
           </AnimateInView>

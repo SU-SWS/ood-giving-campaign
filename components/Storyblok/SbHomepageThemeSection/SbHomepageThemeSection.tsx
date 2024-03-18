@@ -31,6 +31,7 @@ type SbHomepageThemeSectionProps = {
     intro?: StoryblokRichtext;
     content?: SbBlokData[];
     cta?: SbBlokData[];
+    isDarkTheme?: boolean;
     bgImage?: SbImageType;
     bgBlur?: BgBlurType;
     gradientTop?: GradientToType;
@@ -46,6 +47,7 @@ export const SbHomepageThemeSection = ({
     intro,
     content,
     cta,
+    isDarkTheme,
     bgImage: { filename, focus } = {},
     bgBlur,
     gradientTop,
@@ -59,7 +61,7 @@ export const SbHomepageThemeSection = ({
   return (
     <Container
       as="section"
-      bgColor="black"
+      bgColor={isDarkTheme ? 'black' : 'white'}
       py={10}
       width="full"
       className={styles.root}
@@ -121,7 +123,8 @@ export const SbHomepageThemeSection = ({
             leading="tight"
             font="serif"
             weight="semibold"
-            className={styles.superhead}
+            color={isDarkTheme ? 'white' : 'black'}
+            className={styles.superhead(isDarkTheme)}
             aria-hidden={!!heading}
           >
             {superhead}
@@ -133,6 +136,7 @@ export const SbHomepageThemeSection = ({
             leading="none"
             uppercase
             font="druk"
+            color={isDarkTheme ? 'white' : 'black'}
             className={styles.heading}
           >
             {superhead && <SrOnlyText>{`${superhead}:`}</SrOnlyText>}{heading}
@@ -143,13 +147,13 @@ export const SbHomepageThemeSection = ({
         <AnimateInView animation="slideUp" delay={0.2} className={styles.introWrapper}>
           <RichText
             wysiwyg={intro}
-            textColor="white"
-            className={styles.intro}
+            textColor={isDarkTheme ? 'white' : 'black'}
+            className={styles.intro(isDarkTheme)}
           />
         </AnimateInView>
       )}
       <Container pt={8} width="full" className={styles.contentWrapper}>
-        <CreateBloks blokSection={content} isDarkTheme />
+        <CreateBloks blokSection={content} isDarkTheme={isDarkTheme} />
       </Container>
       {!!getNumBloks(cta) && (
         <FlexBox direction="col" className={styles.cta}>

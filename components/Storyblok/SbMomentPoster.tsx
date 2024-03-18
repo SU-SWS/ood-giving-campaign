@@ -24,6 +24,7 @@ type SbMomentPosterProps = {
     cta?: SbBlokData[];
     bgImage?: SbImageType;
     thumbnail?: SbImageType;
+    isDarkTheme?: boolean;
     gradientTop?: GradientToType;
     gradientBottom?: GradientFromType;
     gradientVia?: GradientViaType;
@@ -42,6 +43,7 @@ export const SbMomentPoster = ({
     cta,
     bgImage: { filename, focus } = {},
     thumbnail: { filename: thumbnailFilename, focus: thumbnailFocus } = {},
+    isDarkTheme,
     gradientTop,
     gradientBottom,
     gradientVia,
@@ -51,7 +53,7 @@ export const SbMomentPoster = ({
   blok,
 }: SbMomentPosterProps) => {
   const Cta = !!getNumBloks(cta) ? <CreateBloks blokSection={cta} /> : undefined;
-  const Body = hasRichText(body) ? <RichText wysiwyg={body} textColor="white" /> : undefined;
+  const Body = hasRichText(body) ? <RichText wysiwyg={body} textColor={isDarkTheme ? 'white' : 'black'} /> : undefined;
 
   return (
     <MomentPoster
@@ -66,6 +68,7 @@ export const SbMomentPoster = ({
       bgImageFocus={focus}
       thumbnailSrc={thumbnailFilename}
       thumbnailFocus={thumbnailFocus}
+      isDarkTheme={isDarkTheme}
       gradientTop={gradientTop}
       gradientBottom={gradientBottom}
       gradientVia={gradientVia}
