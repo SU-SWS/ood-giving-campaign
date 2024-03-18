@@ -79,6 +79,16 @@ export const gradientTos = {
   'black-80': 'to-black-true/80',
   'black-90': 'to-black-true/90',
   'gc-black': 'to-gc-black',
+  'white-10': 'to-white/10',
+  'white-20': 'to-white/20',
+  'white-30': 'to-white/30',
+  'white-40': 'to-white/40',
+  'white-50': 'to-white/50',
+  'white-60': 'to-white/60',
+  'white-70': 'to-white/70',
+  'white-80': 'to-white/80',
+  'white-90': 'to-white/90',
+  white: 'to-white',
 };
 export type GradientToType = keyof typeof gradientTos;
 
@@ -94,6 +104,16 @@ export const gradientFroms = {
   'black-80': 'from-black-true/80',
   'black-90': 'from-black-true/90',
   'gc-black': 'from-gc-black',
+  'white-10': 'from-white/10',
+  'white-20': 'from-white/20',
+  'white-30': 'from-white/30',
+  'white-40': 'from-white/40',
+  'white-50': 'from-white/50',
+  'white-60': 'from-white/60',
+  'white-70': 'from-white/70',
+  'white-80': 'from-white/80',
+  'white-90': 'from-white/90',
+  white: 'from-white',
 };
 export type GradientFromType = keyof typeof gradientFroms;
 
@@ -109,6 +129,16 @@ export const gradientVias = {
   'black-80': 'via-black-true/80',
   'black-90': 'via-black-true/90',
   'gc-black': 'via-gc-black',
+  'white-10': 'via-white/10',
+  'white-20': 'via-white/20',
+  'white-30': 'via-white/30',
+  'white-40': 'via-white/40',
+  'white-50': 'via-white/50',
+  'white-60': 'via-white/60',
+  'white-70': 'via-white/70',
+  'white-80': 'via-white/80',
+  'white-90': 'via-white/90',
+  white: 'via-white',
 };
 export type GradientViaType = keyof typeof gradientVias;
 

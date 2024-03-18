@@ -45,7 +45,7 @@ export const BookAlt = ({
         <img
           src={getProcessedImage(imgSrc, '1600x1300')}
           alt=""
-          className="w-full h-full object-cover object-left-top"
+          className="size-full object-cover object-left-top"
         />
         <span className="absolute block bottom-0 right-0 bg-gradient-to-t from-gc-black via-50% via-gc-black/50 w-full h-2/5 group-hocus-visible:h-1/2 transition-all" />
         <Text

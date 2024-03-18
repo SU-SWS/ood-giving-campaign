@@ -16,7 +16,7 @@ export const cardWrapper = (isHorizontal: boolean) => cnb(
 
 export const imageWrapper = 'transition-all aspect-w-1 aspect-h-1 overflow-hidden';
 
-export const image = 'object-cover w-full h-full group-hocus-within:scale-105 transition-transform';
+export const image = 'object-cover size-full group-hocus-within:scale-105 transition-transform';
 
 export const contentWrapper = (isHorizontal: boolean) => cnb({
   'rs-pr-4 rs-py-4': isHorizontal,
