@@ -7,10 +7,11 @@ export const heading = (
   isSmallHeading?: boolean,
   headingFont?: 'druk' | 'serif',
 ) => cnb('mb-0 -mt-01em', {
-  'fluid-type-7 md:fluid-type-8 lg:fluid-type-7 3xl:fluid-type-8 4xl:text-[17.1rem]': isSmallHeading && headingFont === 'druk',
-  'fluid-type-7 md:fluid-type-9': !isSmallHeading && headingFont === 'druk',
-  'fluid-type-5 lg:fluid-type-4 xl:fluid-type-5 2xl:fluid-type-6 xl:max-w-1200 lg:hyphens-auto 3xl:hyphens-none' : headingFont === 'serif' && !isSmallHeading,
-  'fluid-type-5 lg:fluid-type-4 xl:fluid-type-5 xl:max-w-1200 lg:hyphens-auto 3xl:hyphens-none' : headingFont === 'serif' && isSmallHeading,
+  'fluid-type-7': headingFont === 'druk',
+  'md:fluid-type-8': isSmallHeading && headingFont === 'druk',
+  'md:fluid-type-9': !isSmallHeading && headingFont === 'druk',
+  'fluid-type-5 md:fluid-type-7 xl:max-w-1200 xl:mx-auto': headingFont === 'serif',
+  'xl:fluid-type-8 ': headingFont === 'serif' && !isSmallHeading,
 });
 
 
