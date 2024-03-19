@@ -110,7 +110,7 @@ export const StoryHeroStacked = ({
               alt={alt || ''}
               aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
               fetchPriority="high"
-              className="rs-mt-4"
+              className="rs-mt-4 w-full"
             />
           </picture>
         </AnimateInView>
