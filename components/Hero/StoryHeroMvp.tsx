@@ -3,6 +3,7 @@ import { Container } from '@/components/Container';
 import { BlurryPoster } from '@/components/BlurryPoster';
 import { CreateBloks } from '@/components/CreateBloks';
 import { RichText } from '@/components/RichText';
+import { StoryHeroStacked } from '@/components/Hero/StoryHeroStacked';
 import { type SbImageType, type SbTypographyProps } from '@/components/Storyblok/Storyblok.types';
 import { type SbBlokData } from '@storyblok/react/rsc';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
@@ -10,6 +11,11 @@ import { getNumBloks } from '@/utilities/getNumBloks';
 import { hasRichText } from '@/utilities/hasRichText';
 import{ type HeroOverlayType } from '@/utilities/datasource';
 import * as styles from './StoryHeroMvp.styles';
+
+export type ColorPickerType = {
+  _uid: string;
+  color: string;
+};
 
 export type StoryHeroMvpProps = {
   title: string;
@@ -20,6 +26,8 @@ export type StoryHeroMvpProps = {
   byline?: string;
   publishedDate?: string;
   dek?: string;
+  heroVariant?: 'default' | 'stacked';
+  heroBgColor?: ColorPickerType; // Hex color value from Storyblok native color picker
   heroImage?: SbImageType;
   bgImage?: SbImageType;
   bgImageAlt?: string;
@@ -46,6 +54,8 @@ export const StoryHeroMvp = ({
   byline,
   dek,
   publishedDate,
+  heroVariant,
+  heroBgColor,
   heroImage: { filename, focus } = {},
   bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
   bgImageAlt,
@@ -78,31 +88,47 @@ export const StoryHeroMvp = ({
       width="full"
       className={styles.root}
     >
-      <BlurryPoster
-        type="hero"
-        isTwoCol={useTwoColLayout}
-        heading={title}
-        superhead={superhead}
-        customHeading={customHeading}
-        headingLevel="h1"
-        headingFont={headingFont === 'druk' ? 'druk' : 'serif'}
-        isSmallHeading={isSmallHeading}
-        byline={byline}
-        publishedDate={formattedDate}
-        body={dek}
-        imageSrc={filename}
-        imageFocus={focus}
-        alt={alt}
-        bgImageSrc={bgImageSrc}
-        bgImageFocus={bgImageFocus}
-        bgImageAlt={bgImageAlt}
-        bgColor={isLightHero ? 'white' : 'black'}
-        addBgBlur={addBgBlur}
-        darkOverlay={darkOverlay}
-        imageOnLeft={isLeftImage}
-        tabColor={paletteAccentColors[tabColorValue]}
-        hasCaption={hasRichText(caption)}
-      />
+      {heroVariant === 'stacked' ? (
+        <StoryHeroStacked
+          title={title}
+          superhead={superhead}
+          headingFont={headingFont}
+          isSmallHeading={isSmallHeading}
+          dek={dek}
+          heroBgColor={heroBgColor?.color}
+          imageSrc={filename}
+          imageFocus={focus}
+          alt={alt}
+          isLightHero={isLightHero}
+          tabColor={{ value: tabColorValue }}
+        />
+      ) : (
+        <BlurryPoster
+          type="hero"
+          isTwoCol={useTwoColLayout}
+          heading={title}
+          superhead={superhead}
+          customHeading={customHeading}
+          headingLevel="h1"
+          headingFont={headingFont === 'druk' ? 'druk' : 'serif'}
+          isSmallHeading={isSmallHeading}
+          byline={byline}
+          publishedDate={formattedDate}
+          body={dek}
+          imageSrc={filename}
+          imageFocus={focus}
+          alt={alt}
+          bgImageSrc={bgImageSrc}
+          bgImageFocus={bgImageFocus}
+          bgImageAlt={bgImageAlt}
+          bgColor={isLightHero ? 'white' : 'black'}
+          addBgBlur={addBgBlur}
+          darkOverlay={darkOverlay}
+          imageOnLeft={isLeftImage}
+          tabColor={paletteAccentColors[tabColorValue]}
+          hasCaption={hasRichText(caption)}
+        />
+      )}
       {!!getNumBloks(heroTexturedBar) && (
         <CreateBloks blokSection={heroTexturedBar} />
       )}
