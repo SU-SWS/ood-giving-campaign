@@ -2,23 +2,20 @@ import { cnb } from 'cnbuilder';
 
 export const root = 'relative';
 
-export const superhead = 'cc mb-04em w-full text-shadow-sm';
+export const contentWrapper = 'mt-40 md:-mt-60 xl:mt-0';
+export const superhead = (isLightHero: boolean) => cnb('cc mb-04em w-full', !isLightHero && 'text-shadow-sm');
 export const heading = (
   isSmallHeading?: boolean,
   headingFont?: 'druk' | 'serif',
 ) => cnb('mb-0 text-balance mx-auto whitespace-pre-line', {
-  'fluid-type-7': headingFont === 'druk',
+  'fluid-type-7 max-w-1400': headingFont === 'druk',
   'md:fluid-type-8': isSmallHeading && headingFont === 'druk',
   'md:fluid-type-9': !isSmallHeading && headingFont === 'druk',
-  'fluid-type-5 md:fluid-type-7 xl:max-w-1200 xl:mx-auto': headingFont === 'serif',
+  'fluid-type-5 md:fluid-type-7 max-w-1200': headingFont === 'serif',
   'xl:fluid-type-8 ': headingFont === 'serif' && !isSmallHeading,
 });
-
-
-export const image = (renderTwoImages: boolean) => cnb(
-  'size-full',
-  renderTwoImages ? 'hidden lg:block' : '',
-);
+export const dek = 'max-w-900 text-balance mx-auto rs-mt-3';
+export const image = 'rs-mt-4 w-full';
 export const mobileImage = 'size-full lg:hidden';
 export const captionWrapper = 'mt-06em';
 export const caption = 'caption *:leading-display mt-08em max-w-prose-wide';

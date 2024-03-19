@@ -4,18 +4,13 @@ import { BlurryPoster } from '@/components/BlurryPoster';
 import { CreateBloks } from '@/components/CreateBloks';
 import { RichText } from '@/components/RichText';
 import { StoryHeroStacked } from '@/components/Hero/StoryHeroStacked';
-import { type SbImageType, type SbTypographyProps } from '@/components/Storyblok/Storyblok.types';
+import { type SbImageType, type SbTypographyProps, type SbColorPickerType } from '@/components/Storyblok/Storyblok.types';
 import { type SbBlokData } from '@storyblok/react/rsc';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { hasRichText } from '@/utilities/hasRichText';
-import{ type HeroOverlayType } from '@/utilities/datasource';
+import { type HeroOverlayType } from '@/utilities/datasource';
 import * as styles from './StoryHeroMvp.styles';
-
-export type ColorPickerType = {
-  _uid: string;
-  color: string;
-};
 
 export type StoryHeroMvpProps = {
   title: string;
@@ -27,7 +22,7 @@ export type StoryHeroMvpProps = {
   publishedDate?: string;
   dek?: string;
   heroVariant?: 'default' | 'stacked';
-  heroBgColor?: ColorPickerType; // Hex color value from Storyblok native color picker
+  heroBgColor?: SbColorPickerType;
   heroImage?: SbImageType;
   bgImage?: SbImageType;
   bgImageAlt?: string;
@@ -55,7 +50,7 @@ export const StoryHeroMvp = ({
   dek,
   publishedDate,
   heroVariant,
-  heroBgColor,
+  heroBgColor: { color: bgHexColor } = {},
   heroImage: { filename, focus } = {},
   bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
   bgImageAlt,
@@ -93,7 +88,7 @@ export const StoryHeroMvp = ({
           headingFont={headingFont}
           isSmallHeading={isSmallHeading}
           dek={dek}
-          heroBgColor={heroBgColor?.color}
+          heroBgColor={bgHexColor}
           imageSrc={filename}
           imageFocus={focus}
           alt={alt}
