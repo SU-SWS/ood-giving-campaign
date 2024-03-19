@@ -43,7 +43,7 @@ export const StoryHeroStacked = ({
       width="full"
       className={styles.root}
       pt={10}
-      style={{ backgroundColor: heroBgColor }}
+      style={{ backgroundColor: heroBgColor || '#888' }}
     >
       <Container className={styles.contentWrapper}>
         {superhead && (
