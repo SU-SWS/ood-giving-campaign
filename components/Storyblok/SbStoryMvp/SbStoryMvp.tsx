@@ -30,6 +30,8 @@ export const SbStoryMvp = ({
     byline,
     dek,
     publishedDate,
+    heroVariant,
+    heroBgColor,
     heroImage,
     bgImage,
     bgImageAlt,
@@ -70,6 +72,8 @@ export const SbStoryMvp = ({
             dek={dek}
             byline={byline}
             publishedDate={publishedDate}
+            heroVariant={heroVariant}
+            heroBgColor={heroBgColor}
             heroImage={heroImage}
             bgImage={bgImage}
             bgImageAlt={bgImageAlt}
