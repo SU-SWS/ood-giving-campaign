@@ -2,11 +2,11 @@ import { cnb } from 'cnbuilder';
 
 export const root = 'relative';
 
-export const superhead = 'cc rs-mb-1 w-full text-shadow-sm';
+export const superhead = 'cc mb-04em w-full text-shadow-sm';
 export const heading = (
   isSmallHeading?: boolean,
   headingFont?: 'druk' | 'serif',
-) => cnb('mb-0 -mt-01em', {
+) => cnb('mb-0 text-balance mx-auto whitespace-pre-line', {
   'fluid-type-7': headingFont === 'druk',
   'md:fluid-type-8': isSmallHeading && headingFont === 'druk',
   'md:fluid-type-9': !isSmallHeading && headingFont === 'druk',

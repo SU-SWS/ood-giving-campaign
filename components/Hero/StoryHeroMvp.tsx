@@ -77,10 +77,8 @@ export const StoryHeroMvp = ({
     day: 'numeric',
     year: 'numeric',
   });
-
-  const Caption = hasRichText(caption)
-  ? <RichText textColor="black-70" wysiwyg={caption} className={styles.caption} />
-  : undefined;
+  const hasCaption = hasRichText(caption);
+  const Caption = hasCaption ? <RichText textColor="black-70" wysiwyg={caption} className={styles.caption} /> : undefined;
 
   return (
     <Container
@@ -100,7 +98,7 @@ export const StoryHeroMvp = ({
           imageFocus={focus}
           alt={alt}
           isLightHero={isLightHero}
-          tabColor={{ value: tabColorValue }}
+          hasCaption={hasCaption}
         />
       ) : (
         <BlurryPoster
@@ -126,7 +124,7 @@ export const StoryHeroMvp = ({
           darkOverlay={darkOverlay}
           imageOnLeft={isLeftImage}
           tabColor={paletteAccentColors[tabColorValue]}
-          hasCaption={hasRichText(caption)}
+          hasCaption={hasCaption}
         />
       )}
       {!!getNumBloks(heroTexturedBar) && (

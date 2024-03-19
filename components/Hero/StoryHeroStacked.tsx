@@ -1,10 +1,8 @@
-import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { AnimateInView } from '@/components/Animate';
 import { Container } from '@/components/Container';
-import { Heading, Text, SrOnlyText } from '@/components/Typography';
-import { type SbImageType, type SbTypographyProps } from '@/components/Storyblok/Storyblok.types';
-import { type SbBlokData } from '@storyblok/react/rsc';
-import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
+import {
+  Heading, Paragraph, Text, SrOnlyText,
+} from '@/components/Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import * as styles from './StoryHeroStacked.styles';
 
@@ -18,11 +16,8 @@ export type StoryHeroStackedProps = {
   imageSrc?: string;
   imageFocus?: string;
   alt?: string;
-  caption?: StoryblokRichtext;
+  hasCaption?: boolean;
   isLightHero?: boolean;
-  tabColor?: {
-    value?: PaletteAccentHexColorType;
-  }
 };
 
 export const StoryHeroStacked = ({
@@ -35,9 +30,8 @@ export const StoryHeroStacked = ({
   imageSrc,
   imageFocus,
   alt,
-  caption,
+  hasCaption,
   isLightHero = false,
-  tabColor: { value: tabColorValue } = {},
 }: StoryHeroStackedProps) => {
   return (
     <Container
@@ -46,30 +40,45 @@ export const StoryHeroStacked = ({
       pt={10}
       style={{ backgroundColor: heroBgColor }}
     >
-      {superhead && (
-        <Text
-          size={1}
-          align="center"
-          color={isLightHero ? 'black' : 'white'}
-          // If there is a heading, superhead will be rendered as screen reader text as part of the heading
-          aria-hidden
-          className={styles.superhead}
-        >
-          {superhead}
-        </Text>
-      )}
-      {title && (
-        <Heading
-          as="h1"
-          align="center"
-          color={isLightHero ? 'black' : 'white'}
-          font={headingFont}
-          leading={headingFont === 'druk' ? 'none' : 'tight'}
-          className={styles.heading(isSmallHeading, headingFont)}
-        >
-          {superhead && <SrOnlyText>{`${superhead}:`}</SrOnlyText>}{title}
-        </Heading>
-      )}
+      <Container className="mt-40 md:-mt-60 xl:mt-0">
+        {superhead && (
+          <Text
+            size={1}
+            align="center"
+            color={isLightHero ? 'black' : 'white'}
+            // If there is a heading, superhead will be rendered as screen reader text as part of the heading
+            aria-hidden
+            className={styles.superhead}
+          >
+            {superhead}
+          </Text>
+        )}
+        {title && (
+          <Heading
+            as="h1"
+            align="center"
+            color={isLightHero ? 'black' : 'white'}
+            font={headingFont}
+            leading={headingFont === 'druk' ? 'druk' : 'tight'}
+            className={styles.heading(isSmallHeading, headingFont)}
+          >
+            {superhead && <SrOnlyText>{`${superhead}:`}</SrOnlyText>}{title}
+          </Heading>
+        )}
+        {dek && (
+          <Paragraph
+            variant="overview"
+            weight="normal"
+            leading="display"
+            align="center"
+            className="max-w-900 text-balance mx-auto rs-mt-3"
+            color={isLightHero ? 'black' : 'white'}
+            noMargin
+          >
+            {dek}
+          </Paragraph>
+        )}
+      </Container>
       {imageSrc && (
         <AnimateInView animation="zoomSharpen" duration={1}>
           <picture>
@@ -85,21 +94,27 @@ export const StoryHeroStacked = ({
               height={900}
             />
             <source
-              srcSet={getProcessedImage(imageSrc, '600x0', imageFocus)}
+              srcSet={getProcessedImage(imageSrc, '575x0', imageFocus)}
               media="(max-width: 575px)"
-              width={600}
+              width={575}
+              height={600}
+            />
+            <source
+              srcSet={getProcessedImage(imageSrc, '430x0', imageFocus)}
+              media="(max-width: 430px)"
+              width={430}
               height={600}
             />
             <img
               src={getProcessedImage(imageSrc, '2000x0', imageFocus)}
               alt={alt || ''}
-              // aria-describedby={hasCaption && !!alt ? 'story-hero-caption' : undefined}
+              aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
               fetchPriority="high"
-              // className={styles.image}
+              className="rs-mt-4"
             />
           </picture>
         </AnimateInView>
-)}
+      )}
     </Container>
   );
 };
