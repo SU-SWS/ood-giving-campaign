@@ -29,7 +29,7 @@ export const customHeadingText = (font: 'druk' | 'serif', isSmallHeading: boolea
   'md:type-4 3xl:fluid-type-5' : font === 'serif' && isSmallHeading,
 });
 
-export const body = 'rs-mt-3';
+export const body = '*:*:leading-snug rs-mt-3 type-1';
 export const metadata = 'rs-mt-4 *:mx-auto';
 export const date = 'block text-center';
 export const cta = 'rs-mt-3';
@@ -38,5 +38,5 @@ export const imageWrapper = (imageOnLeft: boolean) => cnb('w-full bg-gc-black bg
   'lg:order-first': imageOnLeft,
 });
 export const imageInnerWrapper = 'h-full w-full';
-export const image = 'h-full w-full max-h-[100rem] object-cover object-center hidden lg:block';
+export const image = 'h-full w-full max-h-1000 object-cover object-center hidden lg:block';
 export const imageMobile = 'h-full w-full object-cover object-center lg:hidden';

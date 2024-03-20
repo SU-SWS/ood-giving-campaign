@@ -1,7 +1,10 @@
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
-import { VerticalPoster } from '../VerticalPoster';
-import { CreateBloks } from '../CreateBloks';
+import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
+import { VerticalPoster } from '@/components/VerticalPoster';
+import { CreateBloks } from '@/components/CreateBloks';
+import { RichText } from '@/components/RichText';
 import { type HeadingType } from '../Typography';
+import { hasRichText } from '@/utilities/hasRichText';
 import { type SbImageType, type SbTypographyProps } from './Storyblok.types';
 
 type SbVerticalPosterProps = {
@@ -13,7 +16,7 @@ type SbVerticalPosterProps = {
     isSmallHeading?: boolean;
     subheading?: string;
     imageOnLeft?: boolean;
-    body: string;
+    body: StoryblokRichtext;
     byline?: string;
     publishedDate?: string;
     cta?: SbBlokData[];
@@ -40,6 +43,7 @@ export const SbVerticalPoster = ({
   blok,
 }: SbVerticalPosterProps) => {
   const Cta = <CreateBloks blokSection={cta} />;
+  const Body = hasRichText(body) ? <RichText textAlign="center" wysiwyg={body} /> : undefined;
 
   return (
     <VerticalPoster
@@ -50,7 +54,7 @@ export const SbVerticalPoster = ({
       isSmallHeading={isSmallHeading}
       subheading={subheading}
       imageOnLeft={imageOnLeft}
-      body={body}
+      body={Body}
       byline={byline}
       publishedDate={publishedDate}
       cta={Cta}

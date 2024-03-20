@@ -4,7 +4,7 @@ import { Container } from '../Container';
 import { Grid } from '../Grid';
 import { FlexBox } from '../FlexBox';
 import {
-  Heading, Paragraph, Text, type HeadingType,
+  Heading, Text, type HeadingType,
 } from '../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { type SbTypographyProps } from '../Storyblok/Storyblok.types';
@@ -19,11 +19,12 @@ type VerticalPosterProps = HTMLAttributes<HTMLDivElement> & {
   subheading?: string;
   customHeading?: SbTypographyProps[];
   isSmallHeading?: boolean;
-  body?: string;
+  body?: React.ReactNode;
   byline?: string;
   publishedDate?: string;
   imageSrc?: string;
   imageFocus?: string;
+  alt?: string;
   cta?: React.ReactNode;
 };
 
@@ -41,6 +42,7 @@ export const VerticalPoster = ({
   publishedDate,
   imageSrc,
   imageFocus,
+  alt,
   cta,
   className,
   ...props
@@ -100,21 +102,14 @@ export const VerticalPoster = ({
               </AnimateInView>
             </FlexBox>
             {subheading && (
-              <Text font="serif" italic size={2} align="center">
+              <Text size={2} align="center">
                 {subheading}
               </Text>
             )}
             {body && (
-              <Paragraph
-                variant="overview"
-                align="center"
-                weight="normal"
-                leading="display"
-                className={styles.body}
-                noMargin
-              >
+              <div className="*:*:leading-snug rs-mt-3 type-1">
                 {body}
-              </Paragraph>
+              </div>
             )}
             {(byline || publishedDate) && (
               <div className={styles.metadata}>
@@ -137,12 +132,12 @@ export const VerticalPoster = ({
               <AnimateInView animation="zoomSharpen" duration={1} className={styles.imageInnerWrapper}>
                 <img
                   src={getProcessedImage(imageSrc, '900x1200', imageFocus)}
-                  alt=""
+                  alt={alt || ''}
                   className={styles.image}
                 />
                 <img
                   src={getProcessedImage(imageSrc, '800x400', imageFocus)}
-                  alt=""
+                  alt={alt || ''}
                   className={styles.imageMobile}
                 />
               </AnimateInView>
