@@ -138,7 +138,7 @@ export const VerticalPoster = ({
             )}
           </FlexBox>
           <div className="relative aspect-w-3 aspect-h-4">
-            <Parallax offset={isDesktop ? 40 : 0}>
+            <Parallax offset={isDesktop ? 60 : 0}>
               <img
                 src={getProcessedImage(bgImageSrc, '1000x1500', bgImageFocus)}
                 alt={alt || ''}
@@ -146,7 +146,7 @@ export const VerticalPoster = ({
               />
             </Parallax>
             <div className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-10">
-              <Parallax offset={isDesktop ? 100 : 60}>
+              <Parallax offset={isDesktop ? 120 : 60}>
                 {imageSrc && (
                   <img
                     src={getProcessedImage(imageSrc, '1200x0', imageFocus)}
