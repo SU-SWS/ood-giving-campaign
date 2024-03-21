@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react';
 import { useMediaQuery } from 'usehooks-ts';
 import { AnimateInView } from '@/components/Animate';
-import { Container } from '@/components/Container';
+import { Container, type BgColorType } from '@/components/Container';
 import { Grid } from '@/components/Grid';
 import { FlexBox } from '@/components/FlexBox';
 import { Parallax } from '@/components/Parallax';
@@ -14,8 +14,6 @@ import { type SbTypographyProps } from '@/components/Storyblok/Storyblok.types';
 import * as styles from './VerticalPoster.styles';
 
 type VerticalPosterProps = HTMLAttributes<HTMLDivElement> & {
-  bgImageSrc?: string;
-  bgImageFocus?: string;
   imageOnLeft?: boolean;
   headingLevel?: HeadingType;
   heading?: string;
@@ -25,15 +23,18 @@ type VerticalPosterProps = HTMLAttributes<HTMLDivElement> & {
   body?: React.ReactNode;
   byline?: string;
   publishedDate?: string;
+  isParallax?: boolean;
+  bgColor?: BgColorType;
   imageSrc?: string;
   imageFocus?: string;
   alt?: string;
+  bgImageSrc?: string;
+  bgImageFocus?: string;
+  bgAlt?: string;
   cta?: React.ReactNode;
 };
 
 export const VerticalPoster = ({
-  bgImageSrc,
-  bgImageFocus,
   imageOnLeft,
   heading,
   customHeading,
@@ -43,9 +44,14 @@ export const VerticalPoster = ({
   body,
   byline,
   publishedDate,
+  isParallax,
+  bgColor = 'white',
   imageSrc,
   imageFocus,
   alt,
+  bgImageSrc,
+  bgImageFocus,
+  bgAlt,
   cta,
   className,
   ...props
@@ -62,7 +68,7 @@ export const VerticalPoster = ({
   const isDesktop = useMediaQuery(`(min-width: ${config.breakpoints.lg}px)`);
 
   return (
-    <Container {...props} bgColor="white" width="full" className={styles.root}>
+    <Container {...props} bgColor={bgColor} width="full" className={styles.root}>
       <div>
         <Grid lg={2} className={styles.grid}>
           <FlexBox
@@ -112,7 +118,7 @@ export const VerticalPoster = ({
               </AnimateInView>
             </FlexBox>
             {subheading && (
-              <Text size={2} align="center">
+              <Text size={2} align="center" weight="semibold">
                 {subheading}
               </Text>
             )}
@@ -137,11 +143,12 @@ export const VerticalPoster = ({
               </div>
             )}
           </FlexBox>
+
           <div className="relative aspect-w-3 aspect-h-4">
             <Parallax offset={isDesktop ? 60 : 0}>
               <img
                 src={getProcessedImage(bgImageSrc, '1000x1500', bgImageFocus)}
-                alt={alt || ''}
+                alt={bgAlt || ''}
                 className="-mt-50 w-full"
               />
             </Parallax>

@@ -2,8 +2,9 @@ import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { VerticalPoster } from '@/components/VerticalPoster';
 import { CreateBloks } from '@/components/CreateBloks';
+import { type BgColorType } from '@/components/Container';
 import { RichText } from '@/components/RichText';
-import { type HeadingType } from '../Typography';
+import { type HeadingType } from '@/components/Typography';
 import { hasRichText } from '@/utilities/hasRichText';
 import { type SbImageType, type SbTypographyProps } from './Storyblok.types';
 
@@ -21,7 +22,11 @@ type SbVerticalPosterProps = {
     publishedDate?: string;
     cta?: SbBlokData[];
     image?: SbImageType;
+    alt?: string;
     bgImage?: SbImageType;
+    bgAlt?: string;
+    isParallax?: boolean;
+    bgColor?: BgColorType;
   }
 };
 
@@ -38,12 +43,16 @@ export const SbVerticalPoster = ({
     publishedDate,
     cta,
     image: { filename, focus } = {},
+    alt,
     bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
+    bgAlt,
+    isParallax,
+    bgColor,
   },
   blok,
 }: SbVerticalPosterProps) => {
   const Cta = <CreateBloks blokSection={cta} />;
-  const Body = hasRichText(body) ? <RichText textAlign="center" wysiwyg={body} /> : undefined;
+  const Body = hasRichText(body) ? <RichText textAlign="center" textColor={bgColor === 'black' ? 'white' : 'black'} wysiwyg={body} /> : undefined;
 
   return (
     <VerticalPoster
@@ -60,8 +69,12 @@ export const SbVerticalPoster = ({
       cta={Cta}
       imageSrc={filename}
       imageFocus={focus}
+      alt={alt}
       bgImageSrc={bgImageSrc}
       bgImageFocus={bgImageFocus}
+      bgAlt={bgAlt}
+      isParallax={isParallax}
+      bgColor={bgColor}
     />
   );
 };
