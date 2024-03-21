@@ -15,15 +15,15 @@ export const headingWrapper = '-mt-1em 2xl:mt-[-1.5em] rs-mb-5';
  * The pb-03em class in heading and customHeading is to compensate for the line-height:1 in the heading which
  * causes the bottom of the heading not showing the background mask
  */
-export const heading = (isSmallHeading: boolean, hasBgImage: boolean) => cnb(
-  'mb-0 pb-03em fluid-type-8 xl:bg-fixed bg-cover bg-center bg-no-repeat hyphens-auto', {
+export const heading = (isSmallHeading: boolean, hasBgImage: boolean, isMaskedHeading: boolean) => cnb(
+  'mb-0 pb-03em fluid-type-8 hyphens-auto', {
   'lg:fluid-type-6 2xl:fluid-type-7 4xl:fluid-type-8': isSmallHeading,
   'md:fluid-type-9': !isSmallHeading,
-  'bg-clip-text text-black/40': hasBgImage,
+  'bg-clip-text text-black/40 xl:bg-fixed bg-cover bg-center bg-no-repeat': hasBgImage && isMaskedHeading,
 });
-export const customHeading = (hasBgImage: boolean) => cnb(
-  'flex flex-col mb-0 pb-03em *:block xl:bg-fixed bg-cover bg-center bg-no-repeat', {
-  'bg-clip-text text-black/40': hasBgImage,
+export const customHeading = (hasBgImage: boolean, isMaskedHeading: boolean) => cnb(
+  'flex flex-col mb-0 pb-03em *:block', {
+  'bg-clip-text text-black/40 xl:bg-fixed bg-cover bg-center bg-no-repeat': hasBgImage && isMaskedHeading,
 });
 export const customHeadingText = (font: 'druk' | 'serif', isSmallHeading: boolean) => cnb('hyphens-auto first:ml-0 last:mr-0', {
   'fluid-type-8': font === 'druk',
@@ -42,5 +42,5 @@ export const imageWrapper = (imageOnLeft: boolean) => cnb('w-full bg-gc-black bg
   'lg:order-first': imageOnLeft,
 });
 export const imageInnerWrapper = 'h-full w-full';
-export const image = '';
+export const image = 'hidden lg:block';
 export const imageMobile = 'h-full w-full object-cover object-center lg:hidden';

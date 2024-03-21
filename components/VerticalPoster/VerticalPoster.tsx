@@ -20,6 +20,7 @@ type VerticalPosterProps = HTMLAttributes<HTMLDivElement> & {
   subheading?: string;
   customHeading?: SbTypographyProps[];
   isSmallHeading?: boolean;
+  isMaskedHeading?: boolean;
   body?: React.ReactNode;
   byline?: string;
   publishedDate?: string;
@@ -40,6 +41,7 @@ export const VerticalPoster = ({
   customHeading,
   headingLevel = 'h2',
   isSmallHeading,
+  isMaskedHeading,
   subheading,
   body,
   byline,
@@ -85,8 +87,8 @@ export const VerticalPoster = ({
                     font="druk"
                     align="center"
                     leading="none"
-                    className={styles.heading(isSmallHeading, !!bgImageSrc)}
-                    style={bgImageStyle}
+                    className={styles.heading(isSmallHeading, !!bgImageSrc, isMaskedHeading)}
+                    style={isMaskedHeading && !!bgImageSrc ? bgImageStyle : undefined}
                   >
                     {heading}
                   </Heading>
@@ -97,8 +99,8 @@ export const VerticalPoster = ({
                     size="base"
                     align="center"
                     leading="none"
-                    className={styles.customHeading(!!bgImageSrc)}
-                    style={bgImageStyle}
+                    className={styles.customHeading(!!bgImageSrc, isMaskedHeading)}
+                    style={isMaskedHeading && !!bgImageSrc ? bgImageStyle : undefined}
                   >
                     {customHeading.map(({text, font, italic}) => (
                       <Text
@@ -118,7 +120,7 @@ export const VerticalPoster = ({
               </AnimateInView>
             </FlexBox>
             {subheading && (
-              <Text size={2} align="center" weight="semibold">
+              <Text align="center" weight="semibold" variant="intro">
                 {subheading}
               </Text>
             )}
@@ -143,43 +145,47 @@ export const VerticalPoster = ({
               </div>
             )}
           </FlexBox>
-
-          <div className="relative aspect-w-3 aspect-h-4">
-            <Parallax offset={isDesktop ? 60 : 0}>
-              <img
-                src={getProcessedImage(bgImageSrc, '1000x1500', bgImageFocus)}
-                alt={bgAlt || ''}
-                className="-mt-50 w-full"
-              />
-            </Parallax>
-            <div className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-10">
-              <Parallax offset={isDesktop ? 120 : 60}>
-                {imageSrc && (
+          {isParallax ? (
+            <div className="relative aspect-w-3 aspect-h-4">
+              {bgImageSrc && (
+                <Parallax offset={isDesktop ? 60 : 0}>
                   <img
-                    src={getProcessedImage(imageSrc, '1200x0', imageFocus)}
-                    alt={alt || ''}
-                    className="lg:mt-100 w-full"
+                    src={getProcessedImage(bgImageSrc, '1000x1500', bgImageFocus)}
+                    alt={bgAlt || ''}
+                    className="-mt-50 w-full"
                   />
-                )}
-              </Parallax>
+                </Parallax>
+              )}
+              {imageSrc && (
+                <div className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-10">
+                  <Parallax offset={isDesktop ? 120 : 60}>
+                    <img
+                      src={getProcessedImage(imageSrc, '1200x0', imageFocus)}
+                      alt={alt || ''}
+                      className="lg:mt-100 w-full"
+                    />
+                  </Parallax>
+                </div>
+              )}
             </div>
-          </div>
-          {/* <div className={styles.imageWrapper(imageOnLeft)} style={bgImageStyle}>
-            {imageSrc && (
-              <AnimateInView animation="zoomSharpen" duration={1} className={styles.imageInnerWrapper}>
-                <img
-                  src={getProcessedImage(imageSrc, '900x1200', imageFocus)}
-                  alt={alt || ''}
-                  className={styles.image}
-                />
-                <img
-                  src={getProcessedImage(imageSrc, '800x400', imageFocus)}
-                  alt={alt || ''}
-                  className={styles.imageMobile}
-                />
-              </AnimateInView>
-            )}
-          </div> */}
+          ) : (
+            <div className={styles.imageWrapper(imageOnLeft)} style={bgImageStyle}>
+              {imageSrc && (
+                <AnimateInView animation="zoomSharpen" duration={1} className={styles.imageInnerWrapper}>
+                  <img
+                    src={getProcessedImage(imageSrc, '900x1200', imageFocus)}
+                    alt={alt || ''}
+                    className={styles.image}
+                  />
+                  <img
+                    src={getProcessedImage(imageSrc, '800x400', imageFocus)}
+                    alt={alt || ''}
+                    className={styles.imageMobile}
+                  />
+                </AnimateInView>
+              )}
+            </div>
+          )}
         </Grid>
       </div>
     </Container>

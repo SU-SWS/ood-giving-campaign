@@ -15,6 +15,7 @@ type SbVerticalPosterProps = {
     customHeading?: SbTypographyProps[];
     headingLevel?: HeadingType;
     isSmallHeading?: boolean;
+    isMaskedHeading?: boolean;
     subheading?: string;
     imageOnLeft?: boolean;
     body: StoryblokRichtext;
@@ -36,6 +37,7 @@ export const SbVerticalPoster = ({
     customHeading,
     headingLevel,
     isSmallHeading,
+    isMaskedHeading,
     subheading,
     imageOnLeft,
     body,
@@ -61,6 +63,7 @@ export const SbVerticalPoster = ({
       customHeading={customHeading}
       headingLevel={headingLevel}
       isSmallHeading={isSmallHeading}
+      isMaskedHeading={isMaskedHeading}
       subheading={subheading}
       imageOnLeft={imageOnLeft}
       body={Body}
