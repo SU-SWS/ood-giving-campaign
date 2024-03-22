@@ -1,46 +1,59 @@
 import React, { HTMLAttributes } from 'react';
-import { AnimateInView } from '../Animate';
-import { Container } from '../Container';
-import { Grid } from '../Grid';
-import { FlexBox } from '../FlexBox';
+import { useMediaQuery } from 'usehooks-ts';
+import { AnimateInView } from '@/components/Animate';
+import { Container, type BgColorType } from '@/components/Container';
+import { Grid } from '@/components/Grid';
+import { FlexBox } from '@/components/FlexBox';
+import { Parallax } from '@/components/Parallax';
 import {
-  Heading, Paragraph, Text, type HeadingType,
-} from '../Typography';
+  Heading, Text, type HeadingType,
+} from '@/components/Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { type SbTypographyProps } from '../Storyblok/Storyblok.types';
+import { config } from '@/utilities/config';
+import { type SbTypographyProps } from '@/components/Storyblok/Storyblok.types';
 import * as styles from './VerticalPoster.styles';
 
 type VerticalPosterProps = HTMLAttributes<HTMLDivElement> & {
-  bgImageSrc?: string;
-  bgImageFocus?: string;
   imageOnLeft?: boolean;
   headingLevel?: HeadingType;
   heading?: string;
   subheading?: string;
   customHeading?: SbTypographyProps[];
   isSmallHeading?: boolean;
-  body?: string;
+  isMaskedHeading?: boolean;
+  body?: React.ReactNode;
   byline?: string;
   publishedDate?: string;
+  isParallax?: boolean;
+  bgColor?: BgColorType;
   imageSrc?: string;
   imageFocus?: string;
+  alt?: string;
+  bgImageSrc?: string;
+  bgImageFocus?: string;
+  bgAlt?: string;
   cta?: React.ReactNode;
 };
 
 export const VerticalPoster = ({
-  bgImageSrc,
-  bgImageFocus,
   imageOnLeft,
   heading,
   customHeading,
   headingLevel = 'h2',
   isSmallHeading,
+  isMaskedHeading,
   subheading,
   body,
   byline,
   publishedDate,
+  isParallax,
+  bgColor = 'white',
   imageSrc,
   imageFocus,
+  alt,
+  bgImageSrc,
+  bgImageFocus,
+  bgAlt,
   cta,
   className,
   ...props
@@ -54,10 +67,11 @@ export const VerticalPoster = ({
   });
 
   let i = 1;
+  const isDesktop = useMediaQuery(`(min-width: ${config.breakpoints.lg}px)`);
 
   return (
-    <Container {...props} bgColor="white" width="full" className={styles.root}>
-      <div className={styles.blurWrapper}>
+    <Container {...props} bgColor={bgColor} width="full" className={styles.root}>
+      <div>
         <Grid lg={2} className={styles.grid}>
           <FlexBox
             direction="col"
@@ -73,15 +87,21 @@ export const VerticalPoster = ({
                     font="druk"
                     align="center"
                     leading="none"
-                    className={styles.heading(isSmallHeading, !!bgImageSrc)}
-                    style={bgImageStyle}
+                    className={styles.heading(isSmallHeading, !!bgImageSrc, isMaskedHeading)}
+                    style={isMaskedHeading && !!bgImageSrc ? bgImageStyle : undefined}
                   >
                     {heading}
                   </Heading>
                 )}
                 {/* Render custom mixed typography heading if entered */}
                 {!!customHeading?.length && (
-                  <Heading size="base" align="center" leading="none" className={styles.customHeading(!!bgImageSrc)} style={bgImageStyle}>
+                  <Heading
+                    size="base"
+                    align="center"
+                    leading="none"
+                    className={styles.customHeading(!!bgImageSrc, isMaskedHeading)}
+                    style={isMaskedHeading && !!bgImageSrc ? bgImageStyle : undefined}
+                  >
                     {customHeading.map(({text, font, italic}) => (
                       <Text
                         as="span"
@@ -100,21 +120,14 @@ export const VerticalPoster = ({
               </AnimateInView>
             </FlexBox>
             {subheading && (
-              <Text font="serif" italic size={2} align="center">
+              <Text align="center" weight="semibold" variant="intro">
                 {subheading}
               </Text>
             )}
-            {body && (
-              <Paragraph
-                variant="overview"
-                align="center"
-                weight="normal"
-                leading="display"
-                className={styles.body}
-                noMargin
-              >
+            {!!body && (
+              <div className="*:*:leading-snug *:*:max-w-prose rs-mt-3 2xl:type-1">
                 {body}
-              </Paragraph>
+              </div>
             )}
             {(byline || publishedDate) && (
               <div className={styles.metadata}>
@@ -132,22 +145,47 @@ export const VerticalPoster = ({
               </div>
             )}
           </FlexBox>
-          <div className={styles.imageWrapper(imageOnLeft)} style={bgImageStyle}>
-            {imageSrc && (
-              <AnimateInView animation="zoomSharpen" duration={1} className={styles.imageInnerWrapper}>
-                <img
-                  src={getProcessedImage(imageSrc, '900x1200', imageFocus)}
-                  alt=""
-                  className={styles.image}
-                />
-                <img
-                  src={getProcessedImage(imageSrc, '800x400', imageFocus)}
-                  alt=""
-                  className={styles.imageMobile}
-                />
-              </AnimateInView>
-            )}
-          </div>
+          {isParallax ? (
+            <div className="relative aspect-w-3 aspect-h-4">
+              {bgImageSrc && (
+                <Parallax offset={isDesktop ? 60 : 0}>
+                  <img
+                    src={getProcessedImage(bgImageSrc, '1000x1500', bgImageFocus)}
+                    alt={bgAlt || ''}
+                    className="lg:-mt-60 w-full"
+                  />
+                </Parallax>
+              )}
+              {imageSrc && (
+                <div className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-10">
+                  <Parallax offset={isDesktop ? 120 : 60}>
+                    <img
+                      src={getProcessedImage(imageSrc, '1200x0', imageFocus)}
+                      alt={alt || ''}
+                      className="w-full lg:mt-80"
+                    />
+                  </Parallax>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className={styles.imageWrapper(imageOnLeft)} style={bgImageStyle}>
+              {imageSrc && (
+                <AnimateInView animation="zoomSharpen" duration={1} className={styles.imageInnerWrapper}>
+                  <img
+                    src={getProcessedImage(imageSrc, '900x1200', imageFocus)}
+                    alt={alt || ''}
+                    className={styles.image}
+                  />
+                  <img
+                    src={getProcessedImage(imageSrc, '800x400', imageFocus)}
+                    alt={alt || ''}
+                    className={styles.imageMobile}
+                  />
+                </AnimateInView>
+              )}
+            </div>
+          )}
         </Grid>
       </div>
     </Container>
