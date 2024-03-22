@@ -6,6 +6,7 @@ import { type BgColorType } from '@/components/Container';
 import { RichText } from '@/components/RichText';
 import { type HeadingType } from '@/components/Typography';
 import { hasRichText } from '@/utilities/hasRichText';
+import { getNumBloks } from '@/utilities/getNumBloks';
 import { type SbImageType, type SbTypographyProps } from './Storyblok.types';
 
 type SbVerticalPosterProps = {
@@ -53,7 +54,7 @@ export const SbVerticalPoster = ({
   },
   blok,
 }: SbVerticalPosterProps) => {
-  const Cta = <CreateBloks blokSection={cta} />;
+  const Cta = !!getNumBloks(cta) ? <CreateBloks blokSection={cta} /> : undefined;
   const Body = hasRichText(body) ? <RichText textAlign="center" textColor={bgColor === 'black' ? 'white' : 'black'} wysiwyg={body} /> : undefined;
 
   return (

@@ -152,7 +152,7 @@ export const VerticalPoster = ({
                   <img
                     src={getProcessedImage(bgImageSrc, '1000x1500', bgImageFocus)}
                     alt={bgAlt || ''}
-                    className="-mt-50 w-full"
+                    className="lg:-mt-60 w-full"
                   />
                 </Parallax>
               )}
@@ -162,7 +162,7 @@ export const VerticalPoster = ({
                     <img
                       src={getProcessedImage(imageSrc, '1200x0', imageFocus)}
                       alt={alt || ''}
-                      className="lg:mt-100 w-full"
+                      className="w-full lg:mt-80"
                     />
                   </Parallax>
                 </div>
