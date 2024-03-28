@@ -75,11 +75,11 @@ export const InitiativeCard = ({
     <AnimateInView animation={animation} delay={delay}>
       <FlexBox
         as="article"
-        direction="col"
-        className={cnb(styles.root, className)}
+        direction='col'
+        className={cnb(styles.root(isHorizontal), className)}
         {...props}
       >
-        <div className={styles.topWrapper}>
+        <div className={styles.topWrapper(isHorizontal)}>
           <div className={styles.imageWrapper(imageAspectRatio)}>
             <img
               width={600}
@@ -93,15 +93,15 @@ export const InitiativeCard = ({
           <Heading
             as={headingLevel}
             font="druk-wide"
-            size={1}
+            size={isHorizontal ? 2 : 1}
             leading="tight"
             uppercase
-            className={styles.heading}
+            className={styles.heading(isHorizontal)}
           >
             {heading}
           </Heading>
         </div>
-        <div className={styles.bodyWrapper}>
+        <div className={styles.bodyWrapper(isHorizontal)}>
           <Paragraph
             variant="subheading"
             leading="display"
@@ -111,22 +111,24 @@ export const InitiativeCard = ({
             {body}
           </Paragraph>
         </div>
-        <CtaLink
-          variant="unset"
-          sbLink={link}
-          className={styles.cta}
-          icon={cardIcon}
-          iconProps={{ className: styles.icon(!!linkText) }}
-          animate={iconAnimation}
-        >
-          {linkText ? (
-            <Text as="span" weight="semibold" align="right" leading="none" className={styles.linkText}>
-              {firstPart} <span className={styles.lastword}>{lastWord}</span>
-            </Text>
-          ) : (
-            <SrOnlyText>{`Go to the ${heading} page`}</SrOnlyText>
-          )}
-        </CtaLink>
+        {!isHorizontal && (
+          <CtaLink
+            variant="unset"
+            sbLink={link}
+            className={styles.cta}
+            icon={cardIcon}
+            iconProps={{ className: styles.icon(!!linkText) }}
+            animate={iconAnimation}
+          >
+            {linkText ? (
+              <Text as="span" weight="semibold" align="right" leading="none" className={styles.linkText}>
+                {firstPart} <span className={styles.lastword}>{lastWord}</span>
+              </Text>
+            ) : (
+              <SrOnlyText>{`Go to the ${heading} page`}</SrOnlyText>
+            )}
+          </CtaLink>
+        )}
       </FlexBox>
     </AnimateInView>
   );
