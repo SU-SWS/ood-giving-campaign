@@ -18,7 +18,9 @@ export type InitiativeCardProps = HTMLAttributes<HTMLDivElement> & {
   body?: string;
   imageSrc?: string;
   imageFocus?: string;
+  imageAspectRatio?: styles.InitiativeCardImageAspectRatio;
   tabColor?: AccentBorderColorType;
+  isHorizontal?: boolean;
   linkText?: string;
   link?: SbLinkType;
   animation?: AnimationType;
@@ -31,7 +33,9 @@ export const InitiativeCard = ({
   body,
   imageSrc = '',
   imageFocus,
+  imageAspectRatio = '3x4',
   tabColor,
+  isHorizontal,
   linkText,
   link,
   animation = 'none',
@@ -50,6 +54,8 @@ export const InitiativeCard = ({
 
   let cardIcon: IconType;
   let iconAnimation: IconAnimationType;
+
+  const imageSize = imageAspectRatio === '3x4' ? '510x680' : '700x700';
 
   switch (link?.linktype) {
     case 'asset':
@@ -74,13 +80,13 @@ export const InitiativeCard = ({
         {...props}
       >
         <div className={styles.topWrapper}>
-          <div className={styles.imageWrapper}>
+          <div className={styles.imageWrapper(imageAspectRatio)}>
             <img
               width={600}
               height={800}
               alt=""
               loading="lazy"
-              src={getProcessedImage(imageSrc, '510x680', imageFocus) || ''}
+              src={getProcessedImage(imageSrc, imageSize, imageFocus) || ''}
               className={styles.image}
             />
           </div>

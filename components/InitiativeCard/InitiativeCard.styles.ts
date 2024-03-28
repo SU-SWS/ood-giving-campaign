@@ -1,10 +1,14 @@
 import { cnb } from 'cnbuilder';
 
+export type InitiativeCardImageAspectRatio = '3x4' | '1x1';
+
 export const root = 'group relative size-full @container';
 
 export const topWrapper = 'relative @320:text-18 @sm:text-21 @md:text-23';
 
-export const imageWrapper = 'bg-gc-black transition-all aspect-w-1 aspect-h-1 sm:aspect-w-3 sm:aspect-h-4 overflow-hidden';
+export const imageWrapper = (imageAspectRatio: InitiativeCardImageAspectRatio) => cnb('bg-gc-black transition-all aspect-w-1 aspect-h-1 overflow-hidden', {
+  'sm:aspect-w-3 sm:aspect-h-4': imageAspectRatio === '3x4',
+});
 
 export const image = 'object-cover backface-hidden size-full group-hocus-within:scale-105 transition-transform will-change-transform';
 
