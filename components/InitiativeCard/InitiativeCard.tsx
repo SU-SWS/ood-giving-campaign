@@ -110,6 +110,20 @@ export const InitiativeCard = ({
           >
             {body}
           </Paragraph>
+          {isHorizontal && linkText && (
+            <CtaLink
+              variant="ghost"
+              color="white"
+              size="large"
+              sbLink={link}
+              className={styles.horizontalCta}
+              icon={cardIcon}
+              iconProps={{ className: styles.icon(!!linkText) }}
+              animate={iconAnimation}
+            >
+              {linkText}
+            </CtaLink>
+          )}
         </div>
         {!isHorizontal && (
           <CtaLink
