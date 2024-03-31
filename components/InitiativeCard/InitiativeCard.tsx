@@ -11,6 +11,7 @@ import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { accentBorderColors, type AccentBorderColorType } from '@/utilities/datasource';
 import * as styles from './InitiativeCard.styles';
 import { IconType } from '../HeroIcon';
+import { image } from '../Banner';
 
 export type InitiativeCardProps = HTMLAttributes<HTMLDivElement> & {
   heading?: string;
@@ -83,7 +84,7 @@ export const InitiativeCard = ({
           <div className={styles.imageWrapper(imageAspectRatio)}>
             <img
               width={600}
-              height={800}
+              height={imageAspectRatio === '3x4' ? 800 : 600}
               alt=""
               loading="lazy"
               src={getProcessedImage(imageSrc, imageSize, imageFocus) || ''}
@@ -124,24 +125,22 @@ export const InitiativeCard = ({
             </CtaLink>
           )}
         </div>
-        {!isHorizontal && (
-          <CtaLink
-            variant="unset"
-            sbLink={link}
-            className={styles.cta}
-            icon={cardIcon}
-            iconProps={{ className: styles.icon(!!linkText) }}
-            animate={iconAnimation}
-          >
-            {linkText ? (
-              <Text as="span" weight="semibold" align="right" leading="none" className={styles.linkText}>
-                {firstPart} <span className={styles.lastword}>{lastWord}</span>
-              </Text>
-            ) : (
-              <SrOnlyText>{`Go to the ${heading} page`}</SrOnlyText>
-            )}
-          </CtaLink>
-        )}
+        <CtaLink
+          variant="unset"
+          sbLink={link}
+          className={styles.cta(isHorizontal)}
+          icon={cardIcon}
+          iconProps={{ className: styles.icon(!!linkText) }}
+          animate={iconAnimation}
+        >
+          {linkText ? (
+            <Text as="span" weight="semibold" align="right" leading="none" className={styles.linkText}>
+              {firstPart} <span className={styles.lastword}>{lastWord}</span>
+            </Text>
+          ) : (
+            <SrOnlyText>{`Go to the ${heading} page`}</SrOnlyText>
+          )}
+        </CtaLink>
       </FlexBox>
     </AnimateInView>
   );
