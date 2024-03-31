@@ -14,7 +14,7 @@ export const headingWrapper = 'mx-auto w-fit gap-02em';
 export const thumbnailWrapper = 'inline-block';
 export const thumbnail = 'size-[0.75em]';
 
-export const body = (isDarktheme: boolean) => cnb('max-w-prose mx-auto rs-mt-3 *:*:text-center text-balance mb-0', isDarktheme && 'text-shadow-sm');
+export const body = (isDarktheme: boolean) => cnb('max-w-prose mx-auto rs-mt-3 *:*:text-center *:*:leading-snug text-balance mb-0', isDarktheme && 'text-shadow-sm');
 
 export const cta = (isStackedCtas: boolean) => cnb(
   'gap-27 mx-auto w-fit *:mx-auto rs-mt-4', !isStackedCtas && 'md:flex-row',

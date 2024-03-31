@@ -2,12 +2,13 @@ import { cnb } from 'cnbuilder';
 
 export type InitiativeCardImageAspectRatio = '3x4' | '1x1';
 
-export const root = (isHorizontal: boolean) => cnb('group relative size-full max-w-500 lg:max-w-full mx-auto', {
-  'lg:flex-row': isHorizontal,
+export const root = (isHorizontal: boolean) => cnb('group relative size-full max-w-500 mx-auto', {
+  'xl:flex-row xl:max-w-1200': isHorizontal,
+  'xl:max-w-full': !isHorizontal,
 });
 
 export const topWrapper = (isHorizontal: boolean) => cnb('relative @320:text-18 @sm:text-21 @md:text-23', {
-  'lg:basis-1/2': isHorizontal,
+  'xl:basis-1/2': isHorizontal,
 });
 
 export const imageWrapper = (imageAspectRatio: InitiativeCardImageAspectRatio) => cnb('bg-gc-black transition-all aspect-w-1 aspect-h-1 overflow-hidden', {
@@ -18,11 +19,11 @@ export const image = 'object-cover backface-hidden size-full group-hocus-within:
 
 export const heading = (isHorizontal: boolean) => cnb('absolute bottom-0 w-full bg-black-true/60 text-white mb-0 group-hocus-within:bg-black-true/60 border-transparent group-hocus-within:border-white transition-all text-shadow-sm rs-p-1 group-hocus-within:rs-py-2', {
   'group-hocus-within:border-y-4': !isHorizontal,
-  'lg:rs-px-3 lg:rs-py-2 lg:group-hocus-within:rs-py-3 group-hocus-within:border-y-4 lg:group-hocus-within:border-b-0': isHorizontal,
+  'xl:rs-px-3 xl:rs-py-2 xl:group-hocus-within:rs-py-3 group-hocus-within:border-y-4 xl:group-hocus-within:border-b-0': isHorizontal,
 });
 
 export const bodyWrapper = (isHorizontal: boolean) => cnb('@container grow bg-gc-black text-black-10 rs-pt-2 rs-pr-1 @320:text-18 @sm:text-21 @md:text-23', {
-  'lg:basis-1/2': isHorizontal,
+  'xl:basis-1/2 flex flex-col justify-center': isHorizontal,
 });
 
 export const body = (hasTabColor: boolean) => cnb('rs-pl-1 text-current', {
@@ -36,4 +37,4 @@ export const icon = (hasLinkText?: boolean) => cnb('inline-block mb-0 mt-auto w-
   hasLinkText? 'ml-10' : 'ml-auto',
 );
 
-export const horizontalCta = 'stretched-link mx-auto';
+export const horizontalCta = 'stretched-link mx-auto rs-mt-2';
