@@ -118,7 +118,6 @@ export const InitiativeCard = ({
               sbLink={link}
               className={styles.horizontalCta}
               icon={cardIcon}
-              iconProps={{ className: styles.icon(!!linkText) }}
               animate={iconAnimation}
             >
               {linkText}
