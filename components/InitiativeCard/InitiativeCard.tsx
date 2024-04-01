@@ -111,6 +111,7 @@ export const InitiativeCard = ({
           >
             {body}
           </Paragraph>
+          {/* Only show the button styled CTA for XL breakpoint and up */}
           {isHorizontal && linkText && (
             <CtaLink
               variant="ghost"
