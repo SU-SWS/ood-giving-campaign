@@ -3,7 +3,7 @@ import { cnb } from 'cnbuilder';
 export type InitiativeCardImageAspectRatio = '3x4' | '1x1';
 
 export const root = (isHorizontal: boolean) => cnb('group relative size-full max-w-500 mx-auto', {
-  'xl:flex-row xl:max-w-1200': isHorizontal,
+  'xl:flex-row xl:max-w-[124.2rem]': isHorizontal, // 1242px is the width of 10 of 12 columns at 2XL
   'md:max-w-600': !isHorizontal,
 });
 
