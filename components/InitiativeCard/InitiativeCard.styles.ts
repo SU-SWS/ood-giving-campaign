@@ -2,9 +2,9 @@ import { cnb } from 'cnbuilder';
 
 export type InitiativeCardImageAspectRatio = '3x4' | '1x1';
 
-export const root = (isHorizontal: boolean) => cnb('group relative size-full max-w-500 mx-auto', {
+export const root = (isHorizontal: boolean) => cnb('group relative size-full max-w-600 mx-auto', {
   'xl:flex-row xl:max-w-[124.2rem]': isHorizontal, // 1242px is the width of 10 of 12 columns at 2XL
-  'md:max-w-600': !isHorizontal,
+  '2xl:max-w-700': !isHorizontal,
 });
 
 export const topWrapper = (isHorizontal: boolean) => cnb('relative @320:text-18 @sm:text-21 @md:text-23', {
