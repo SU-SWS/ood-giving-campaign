@@ -40,3 +40,8 @@ export const imageWrapper = (imageOnLeft: boolean) => cnb('w-full bg-gc-black bg
 export const imageInnerWrapper = 'size-full';
 export const image = 'size-full object-cover object-center hidden lg:block';
 export const imageMobile = 'size-full object-cover object-center lg:hidden';
+
+// Parallax images
+export const parallaxBgImage = (prefersReducedMotion: boolean) => cnb('w-full object-cover', {
+  'lg:h-[120%] lg:-mt-[10%]': !prefersReducedMotion,
+});

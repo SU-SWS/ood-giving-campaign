@@ -1,4 +1,5 @@
 import React, { HTMLAttributes } from 'react';
+import { useReducedMotion } from 'framer-motion';
 import { useMediaQuery } from 'usehooks-ts';
 import { AnimateInView } from '@/components/Animate';
 import { Container, type BgColorType } from '@/components/Container';
@@ -58,6 +59,7 @@ export const VerticalPoster = ({
   className,
   ...props
 }: VerticalPosterProps) => {
+  const prefersReducedMotion = useReducedMotion();
   const bgImageStyle = bgImageSrc ? { backgroundImage: `url('${getProcessedImage(bgImageSrc, '1200x1600', bgImageFocus)}')` } : undefined;
   const date = publishedDate && new Date(publishedDate);
   const formattedDate = date && date.toLocaleDateString('en-US', {
@@ -187,7 +189,7 @@ export const VerticalPoster = ({
                       alt={bgAlt || ''}
                       width={1000}
                       height={1500}
-                      className="lg:h-[120%] lg:-mt-[10%] w-full object-cover"
+                      className={styles.parallaxBgImage(prefersReducedMotion)}
                     />
                   </picture>
                 </Parallax>
