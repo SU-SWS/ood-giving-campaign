@@ -15,6 +15,7 @@ type SbStoryImageProps = {
     image: SbImageType;
     alt?: string;
     isLoadingEager?: boolean;
+    isParallax?: boolean;
     caption?: StoryblokRichtext;
     aspectRatio?: ImageAspectRatioType;
     isFullHeight?: boolean;
@@ -34,6 +35,7 @@ export const SbStoryImage = ({
     image: { filename, focus } = {},
     alt,
     isLoadingEager,
+    isParallax,
     caption,
     aspectRatio,
     isFullHeight,
@@ -57,6 +59,7 @@ export const SbStoryImage = ({
       imageFocus={focus}
       alt={alt}
       isLoadingEager={isLoadingEager}
+      isParallax={isParallax}
       caption={Caption}
       aspectRatio={aspectRatio}
       isFullHeight={isFullHeight}

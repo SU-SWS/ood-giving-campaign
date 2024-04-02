@@ -13,6 +13,7 @@ type StoryImageProps = React.HTMLAttributes<HTMLDivElement> & {
   imageSrc: string;
   imageFocus?: string;
   isLoadingEager?: boolean;
+  isParallax?: boolean;
   alt?: string;
   caption?: React.ReactNode;
   aspectRatio?: ImageAspectRatioType;
@@ -30,6 +31,7 @@ export const StoryImage = ({
   imageSrc,
   imageFocus,
   isLoadingEager,
+  isParallax,
   alt,
   caption,
   aspectRatio,

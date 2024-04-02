@@ -31,7 +31,7 @@ export const Parallax = ({ children, offset = 60 }: ParallaxProps) => {
   useLayoutEffect(() => {
     const element = ref.current;
     const onResize = () => {
-      const topOfElement = (element?.getBoundingClientRect()?.top ?? 0) + window.scrollY || window.pageYOffset;
+      const topOfElement = (element?.getBoundingClientRect()?.top ?? 0) + window.scrollY;
       setElementTop(topOfElement);
       setClientHeight(window.innerHeight);
     };
