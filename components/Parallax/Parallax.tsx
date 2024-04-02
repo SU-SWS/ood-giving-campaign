@@ -44,7 +44,7 @@ export const Parallax = ({ children, offset = 60 }: ParallaxProps) => {
   const final = elementTop + offset;
 
   const yRange = useTransform(scrollY, [initial, final], [offset, -offset]);
-  const y = useSpring(yRange, { stiffness: 400, damping: 90 });
+  const y = useSpring(yRange, { stiffness: 200, damping: 30 });
 
   // Don't parallax if the user has "reduced motion" enabled
   if (prefersReducedMotion) {

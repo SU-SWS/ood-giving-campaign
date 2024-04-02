@@ -41,6 +41,6 @@ export const cta = 'rs-mt-3';
 export const imageWrapper = (imageOnLeft: boolean) => cnb('w-full bg-gc-black bg-no-repeat bg-cover bg-center px-[6vw] py-[8vw]', {
   'lg:order-first': imageOnLeft,
 });
-export const imageInnerWrapper = 'h-full w-full';
-export const image = 'hidden lg:block';
-export const imageMobile = 'h-full w-full object-cover object-center lg:hidden';
+export const imageInnerWrapper = 'size-full';
+export const image = 'size-full object-cover object-center hidden lg:block';
+export const imageMobile = 'size-full object-cover object-center lg:hidden';

@@ -149,21 +149,80 @@ export const VerticalPoster = ({
             <div className="relative aspect-w-3 aspect-h-4">
               {bgImageSrc && (
                 <Parallax offset={isDesktop ? 60 : 0}>
-                  <img
-                    src={getProcessedImage(bgImageSrc, '1000x1500', bgImageFocus)}
-                    alt={bgAlt || ''}
-                    className="lg:-mt-60 w-full"
-                  />
+                  <picture>
+                    <source
+                      srcSet={getProcessedImage(bgImageSrc, '1000x1500', bgImageFocus)}
+                      media="(min-width: 1500px)"
+                    />
+                    <source
+                      srcSet={getProcessedImage(bgImageSrc, '800x1200', bgImageFocus)}
+                      media="(min-width: 1200px)"
+                    />
+                    <source
+                      srcSet={getProcessedImage(bgImageSrc, '600x900', bgImageFocus)}
+                      media="(min-width: 992px)"
+                    />
+                    {/*
+                      > LG breakpoint, we want aspect ratio 2x3 so the image is taller than the container
+                      to give room for the parallax vertical movement.
+                      < LG breakpoint, we want aspect ratio 3x4 since the background layer is fixed.
+                    */}
+                    <source
+                      srcSet={getProcessedImage(bgImageSrc, '993x1324', bgImageFocus)}
+                      media="(min-width: 768px)"
+                    />
+                    <source
+                      srcSet={getProcessedImage(bgImageSrc, '780x1040', bgImageFocus)}
+                      media="(min-width: 576px)"
+                    />
+                    <source
+                      srcSet={getProcessedImage(bgImageSrc, '600x800', bgImageFocus)}
+                      media="(max-width: 576px)"
+                    />
+                    <img
+                      src={getProcessedImage(bgImageSrc, '1000x1500', bgImageFocus)}
+                      alt={bgAlt || ''}
+                      width={1000}
+                      height={1500}
+                      className="lg:h-[120%] lg:-mt-[10%] w-full object-cover"
+                    />
+                  </picture>
                 </Parallax>
               )}
               {imageSrc && (
-                <div className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-10">
+                <div className="absolute top-0 right-0 z-10">
                   <Parallax offset={isDesktop ? 120 : 60}>
-                    <img
-                      src={getProcessedImage(imageSrc, '1200x0', imageFocus)}
-                      alt={alt || ''}
-                      className="w-full lg:mt-80"
-                    />
+                    <picture>
+                      <source
+                        srcSet={getProcessedImage(imageSrc, '1000x0', imageFocus)}
+                        media="(min-width: 1500px)"
+                      />
+                      <source
+                        srcSet={getProcessedImage(imageSrc, '750x0', imageFocus)}
+                        media="(min-width: 1200px)"
+                      />
+                      <source
+                        srcSet={getProcessedImage(imageSrc, '600x0', imageFocus)}
+                        media="(min-width: 992px)"
+                      />
+                      <source
+                        srcSet={getProcessedImage(imageSrc, '1000x0', imageFocus)}
+                        media="(min-width: 768px)"
+                      />
+                      <source
+                        srcSet={getProcessedImage(imageSrc, '800x0', imageFocus)}
+                        media="(min-width: 576px)"
+                      />
+                      <source
+                        srcSet={getProcessedImage(imageSrc, '600x0', imageFocus)}
+                        media="(max-width: 575px)"
+                      />
+                      <img
+                        src={getProcessedImage(imageSrc, '1000x0', imageFocus)}
+                        alt={alt || ''}
+                        className="size-full mt-[7%] lg:mt-[3vw]"
+                      />
+                    </picture>
                   </Parallax>
                 </div>
               )}
