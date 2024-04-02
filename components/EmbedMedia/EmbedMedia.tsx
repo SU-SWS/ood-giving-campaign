@@ -19,6 +19,7 @@ type EmbedMediaProps = React.HTMLAttributes<HTMLDivElement> & {
   spacingBottom?: PaddingType;
   isCaptionInset?: boolean;
   isPreview?: boolean;
+  previewAriaLabel?: string;
 };
 
 const PlayPreviewIcon = (
@@ -37,6 +38,7 @@ export const EmbedMedia = ({
   spacingBottom,
   isCaptionInset,
   isPreview,
+  previewAriaLabel,
   className,
   ...props
 }: EmbedMediaProps) => {
@@ -72,6 +74,8 @@ export const EmbedMedia = ({
               light={isPreview ? true : false}
               playing={isPreview ? true : false}
               playIcon={isPreview ? PlayPreviewIcon : undefined}
+              // This previewAriaLabel prop is not documented but it is in the React Player source code
+              previewAriaLabel={isPreview ? previewAriaLabel : undefined}
             />
           )}
         </div>

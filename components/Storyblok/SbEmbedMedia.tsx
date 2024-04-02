@@ -20,6 +20,7 @@ type SbEmbedMediaProps = {
     isCaptionInset?: boolean;
     isCaptionLight?: boolean;
     isPreview?: boolean;
+    previewAriaLabel?: string;
   };
 };
 
@@ -35,6 +36,7 @@ export const SbEmbedMedia = ({
     isCaptionInset,
     isCaptionLight,
     isPreview,
+    previewAriaLabel = 'Play video',
   },
   blok,
 }: SbEmbedMediaProps) => {
@@ -52,6 +54,7 @@ export const SbEmbedMedia = ({
       spacingBottom={spacingBottom}
       isCaptionInset={isCaptionInset}
       isPreview={isPreview}
+      previewAriaLabel={previewAriaLabel}
     />
   );
 };
