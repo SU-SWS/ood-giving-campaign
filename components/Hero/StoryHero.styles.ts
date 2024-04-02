@@ -85,10 +85,10 @@ export const imageWrapper = (isVerticalHero: boolean, isLeftImage: boolean) => c
 });
 
 export const image = (renderTwoImages: boolean) => cnb(
-  'w-full h-full',
+  'size-full',
   renderTwoImages ? 'hidden lg:block' : '',
 );
-export const mobileImage = 'w-full h-full lg:hidden';
+export const mobileImage = 'size-full lg:hidden';
 
 export const caption = (isVerticalHero: boolean, isLeftImage: boolean) => cnb('text-current rs-mt-0 cc type-0', {
   'lg:pr-0': isVerticalHero && isLeftImage,

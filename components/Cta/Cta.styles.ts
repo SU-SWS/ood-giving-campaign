@@ -131,6 +131,7 @@ export const ctaIconMap: CtaIconMapType = {
 };
 
 export const iconAnimation = {
+  none: '',
   'top-right': 'group-hocus:translate-x-01em group-hocus:-translate-y-01em',
   down: 'group-hocus:translate-y-02em',
   up: 'group-hocus:-translate-y-02em',
@@ -152,6 +153,9 @@ export const iconLeftMarginDefault = 'ml-03em';
 export const iconLeftMargin: CtaIconLeftMarginType = {
   'arrow-right': 'ml-04em',
   back: 'ml-04em',
+  email: 'ml-05em',
+  external: 'ml-04em',
+  link: 'ml-05em',
   'triangle-right': 'ml-04em',
   'triangle-down': 'ml-04em',
   'triangle-up': 'ml-04em',

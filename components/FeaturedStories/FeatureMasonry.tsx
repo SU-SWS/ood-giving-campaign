@@ -53,7 +53,7 @@ export const FeatureMasonry = ({
             )}
             overlay="black-10"
           />
-          <div className="absolute top-0 left-0 w-full h-full backdrop-blur-sm" />
+          <div className="absolute top-0 left-0 size-full backdrop-blur-sm" />
           <EmbedMedia
             mediaUrl={audioUrl}
             className="relative z-10 rs-py-6 *:w-4/5 *:mx-auto lg:*:*:aspect-w-2 lg:*:*:aspect-h-1 xl:*:*:aspect-w-4 xl:*:*:aspect-h-1"
@@ -83,11 +83,11 @@ export const FeatureMasonry = ({
             />
           </div>
         </FlexBox>
-        <div className="lg:col-span-6 w-full h-full">
+        <div className="lg:col-span-6 size-full">
           <img
             src={getProcessedImage(imageSrc1, '800x450', imageFocus1)}
             alt={imageAlt1 || ''}
-            className="w-full h-full object-cover"
+            className="size-full object-cover"
           />
         </div>
         <EmbedMedia

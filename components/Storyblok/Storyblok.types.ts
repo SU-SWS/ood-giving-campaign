@@ -50,3 +50,8 @@ export type SbColorStopProps = {
   stop: string;
   hexColor: string;
 };
+
+// Storyblok Native Color Picker
+export type SbColorPickerType = {
+  color?: string;
+};

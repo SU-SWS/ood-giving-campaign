@@ -38,7 +38,7 @@ const bridgeOptions = {
  * Init on the server.
  */
 storyblokInit({
-  accessToken: process.env.STORYBLOK_ACCESS_TOKEN, // Preview token because this is in server side.
+  accessToken: process.env.STORYBLOK_PREVIEW_EDITOR_TOKEN, // Preview token because this is in server side.
   use: [apiPlugin],
   apiOptions: {
     region: 'us',
@@ -89,17 +89,14 @@ async function getStoryData({ path }: PageProps['searchParams']): Promise<ISbRes
 /**
  * Validate the editor token.
  *
- * We expect 1 hour as the time of a token being valid.
- * So basically that an editor will work max 1 hour on one page
- * before switching to another entry inside the editor or refreshing the browser window.
- * You can extend that by adjusting 3600 with the value you need.
+ * Removed time limit check to support client workflows of several days, or weeks 
+ * of using the preview link for review.
  */
 const validateEditor = (searchParams: PageProps['searchParams']) => {
-  const validationString = searchParams['_storyblok_tk[space_id]'] + ':' + process.env.STORYBLOK_ACCESS_TOKEN + ':' + searchParams['_storyblok_tk[timestamp]'];
+  const validationString = searchParams['_storyblok_tk[space_id]'] + ':' + process.env.STORYBLOK_PREVIEW_EDITOR_TOKEN + ':' + searchParams['_storyblok_tk[timestamp]'];
   const validationToken = crypto.createHash('sha1').update(validationString).digest('hex');
-  if (searchParams['_storyblok_tk[token]'] == validationToken &&
-      Number(searchParams['_storyblok_tk[timestamp]']) > Math.floor(Date.now()/1000)-3600) {
-      // you're in the edit mode.
+  if (searchParams['_storyblok_tk[token]'] == validationToken) {
+      //You're in the edit mode.
       return true;
   }
   // Something didn't work out.

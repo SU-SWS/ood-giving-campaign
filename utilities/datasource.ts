@@ -58,6 +58,90 @@ export const accentTextColors = {
 };
 export type AccentTextColorType = AccentColorType;
 
+export const bgBlurs = {
+  none: '',
+  4: 'backdrop-blur-sm',
+  8: 'backdrop-blur',
+  12: 'backdrop-blur-md',
+  16: 'backdrop-blur-lg',
+};
+export type BgBlurType = keyof typeof bgBlurs;
+
+export const gradientTos = {
+  transparent: '',
+  'black-10': 'to-black-true/10',
+  'black-20': 'to-black-true/20',
+  'black-30': 'to-black-true/30',
+  'black-40': 'to-black-true/40',
+  'black-50': 'to-black-true/50',
+  'black-60': 'to-black-true/60',
+  'black-70': 'to-black-true/70',
+  'black-80': 'to-black-true/80',
+  'black-90': 'to-black-true/90',
+  'gc-black': 'to-gc-black',
+  'white-10': 'to-white/10',
+  'white-20': 'to-white/20',
+  'white-30': 'to-white/30',
+  'white-40': 'to-white/40',
+  'white-50': 'to-white/50',
+  'white-60': 'to-white/60',
+  'white-70': 'to-white/70',
+  'white-80': 'to-white/80',
+  'white-90': 'to-white/90',
+  white: 'to-white',
+};
+export type GradientToType = keyof typeof gradientTos;
+
+export const gradientFroms = {
+  transparent: 'from-transparent',
+  'black-10': 'from-black-true/10',
+  'black-20': 'from-black-true/20',
+  'black-30': 'from-black-true/30',
+  'black-40': 'from-black-true/40',
+  'black-50': 'from-black-true/50',
+  'black-60': 'from-black-true/60',
+  'black-70': 'from-black-true/70',
+  'black-80': 'from-black-true/80',
+  'black-90': 'from-black-true/90',
+  'gc-black': 'from-gc-black',
+  'white-10': 'from-white/10',
+  'white-20': 'from-white/20',
+  'white-30': 'from-white/30',
+  'white-40': 'from-white/40',
+  'white-50': 'from-white/50',
+  'white-60': 'from-white/60',
+  'white-70': 'from-white/70',
+  'white-80': 'from-white/80',
+  'white-90': 'from-white/90',
+  white: 'from-white',
+};
+export type GradientFromType = keyof typeof gradientFroms;
+
+export const gradientVias = {
+  transparent: 'via-transparent',
+  'black-10': 'via-black-true/10',
+  'black-20': 'via-black-true/20',
+  'black-30': 'via-black-true/30',
+  'black-40': 'via-black-true/40',
+  'black-50': 'via-black-true/50',
+  'black-60': 'via-black-true/60',
+  'black-70': 'via-black-true/70',
+  'black-80': 'via-black-true/80',
+  'black-90': 'via-black-true/90',
+  'gc-black': 'via-gc-black',
+  'white-10': 'via-white/10',
+  'white-20': 'via-white/20',
+  'white-30': 'via-white/30',
+  'white-40': 'via-white/40',
+  'white-50': 'via-white/50',
+  'white-60': 'via-white/60',
+  'white-70': 'via-white/70',
+  'white-80': 'via-white/80',
+  'white-90': 'via-white/90',
+  white: 'via-white',
+};
+export type GradientViaType = keyof typeof gradientVias;
+
 export const imageAspectRatios = {
   '1x1': 'aspect-w-1 aspect-h-1',
   '1x2': 'aspect-w-1 aspect-h-2',
@@ -89,7 +173,7 @@ export const storyHeroAspectRatiosDesktop = {
   '2x1': 'lg:aspect-w-2 lg:aspect-h-1',
   '5x8': 'lg:aspect-w-5 lg:aspect-h-8',
   '16x9': 'lg:aspect-w-16 lg:aspect-h-9',
-  'free': '',
+  free: '',
 };
 
 export const mediaAspectRatios = {
@@ -127,7 +211,7 @@ export type BgTextColorPairType = keyof typeof bgTextColorPairs;
 
 export const heroOverlays = {
   none: 'bg-black-true/20 lg:bg-transparent',
-  'black-10': 'bg-black-true/20',
+  'black-10': 'bg-black-true/10',
   'black-20': 'bg-black-true/20',
   'black-30': 'bg-black-true/30',
   'black-40': 'bg-black-true/40',

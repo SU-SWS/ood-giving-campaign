@@ -40,6 +40,6 @@ export interface CtaCommonProps {
   icon?: IconType;
   iconPosition?: 'left' | 'right';
   animate?: IconAnimationType;
-  iconProps?: HeroIconProps & React.ComponentProps<'svg'>;
+  iconProps?: Omit<HeroIconProps, 'icon'> & React.ComponentProps<'svg'>;
   children?: React.ReactNode;
 }

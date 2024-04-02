@@ -10,7 +10,7 @@ export const DemoContent = () => (
     <div className="h-400 lg:h-600 overflow-hidden relative">
       <Parallax>
         <div style={{ backgroundImage: 'url(https://www.space.com/images/i/000/082/219/original/VLT-Pano-MCloudsMilkyWay_6068-net.jpg?interpolation=lanczos-none&fit=around|1024:1024' }} className="-mt-100 h-800 flex items-center justify-center bg-center bg-cover" />
-        <div className="absolute top-0 left-0 w-full h-full block bg-black-true/40" />
+        <div className="absolute top-0 left-0 size-full block bg-black-true/40" />
       </Parallax>
       <div className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] text-shadow-lg z-10 max-w-800">
         <Text leading="none" align="center" font="druk-wide" size={7} color="white" weight="bold" className="">To infinity and beyond</Text>
@@ -110,14 +110,14 @@ export const DemoContent = () => (
       <Heading size={7} font="sans">Animated counters</Heading>
       <Grid md={3} gap="card" alignItems="center" justifyItems="center">
         <NumberCounter number={42} />
-        <NumberCounter number={9} afterText="K+" />
+        <NumberCounter number={9} />
         <NumberCounter number={120} />
       </Grid>
     </Container>
     <div className="h-400 lg:h-600 overflow-hidden relative">
       <Parallax>
         <div style={{ backgroundImage: 'url(https://upload.wikimedia.org/wikipedia/commons/0/00/Crab_Nebula.jpg' }} className="-mt-100 h-800 flex items-center justify-center bg-center bg-cover" />
-        <div className="absolute top-0 left-0 w-full h-full block bg-black-true/40" />
+        <div className="absolute top-0 left-0 size-full block bg-black-true/40" />
       </Parallax>
       <div className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-10">
         <CtaLink

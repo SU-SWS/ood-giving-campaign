@@ -59,7 +59,7 @@ export const BrochureStory = () => {
                 <div className="overflow-hidden grow">
                   <img
                     src={getProcessedImage('https://a-us.storyblok.com/f/1005200/883x1040/d7d568e264/21664-15-0029_cmyk-1.jpg', '1000x1000')}
-                    className="object-cover w-full h-full"
+                    className="object-cover size-full"
                     alt=""
                   />
                 </div>
@@ -116,7 +116,7 @@ export const BrochureStory = () => {
                   <div className="overflow-hidden grow">
                     <img
                       src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2560x1708/e68ba35533/farm_1193_cmyk.jpg', '1000x1000')}
-                      className="object-cover w-full h-full"
+                      className="object-cover size-full"
                       alt=""
                     />
                   </div>

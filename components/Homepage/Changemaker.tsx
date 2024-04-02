@@ -20,7 +20,7 @@ export const Changemaker = ({
       style={{ backgroundImage: `url('${bgImage}')` }}
       py={10}
     >
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-gc-black via-sapphire/60" />
+      <div className="absolute top-0 left-0 size-full bg-gradient-to-t from-gc-black via-sapphire/60" />
       <Container className="relative z-10">
         <Heading size="f7" font="serif" leading="tight" align="center" className="max-w-[110rem] mx-auto rs-mb-4">
           <AnimateInView animation="slideInFromRight">

@@ -24,7 +24,7 @@ export const BrochureChapter2 = () => {
               <div className="overflow-hidden grow">
                 <img
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/2560x1708/640416d93f/charm_lab_1345_cmyk.jpg', '1000x1000')}
-                  className="object-cover w-full h-full"
+                  className="object-cover size-full"
                   alt=""
                 />
               </div>
@@ -80,7 +80,7 @@ export const BrochureChapter2 = () => {
               <div className="relative">
                 <img
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/4000x2667/70562b0528/180914-1368_cmyk.jpg', '1500x1000')}
-                  className="object-cover w-full h-full object-left"
+                  className="object-cover size-full object-left"
                   loading="eager"
                   alt=""
                 />
@@ -91,7 +91,7 @@ export const BrochureChapter2 = () => {
               <div className="relative">
                 <img
                   src={getProcessedImage('https://a-us.storyblok.com/f/1005200/1858x1202/7a7e53079e/070201-021_cmyk.jpg', '1000x1000')}
-                  className="object-cover w-full h-full"
+                  className="object-cover size-full"
                   loading="eager"
                   alt=""
                 />
@@ -124,7 +124,7 @@ export const BrochureChapter2 = () => {
                 <div className="overflow-hidden grow">
                   <img
                     src={getProcessedImage('https://a-us.storyblok.com/f/1005200/7211x4810/bca2dd7c52/20220217_the_faces_of_ruth_asawa_n6a0428_cmyk.jpg', '1000x1000')}
-                    className="object-cover w-full h-full"
+                    className="object-cover size-full"
                     alt=""
                   />
                 </div>

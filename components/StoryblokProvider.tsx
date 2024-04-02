@@ -1,30 +1,34 @@
 'use client';
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
-import { SbBanner } from './Storyblok/SbBanner';
-import { SbBasicPage } from './Storyblok/SbBasicPage';
-import { SbBlurryPoster } from './Storyblok/SbBlurryPoster';
-import { SbCardWysiwyg } from './Storyblok/SbCardWysiwyg';
-import { SbChangemakerCard } from './Storyblok/SbChangemakerCard';
-import { SbCta } from './Storyblok/SbCta';
-import { SbEmbedMedia } from './Storyblok/SbEmbedMedia';
-import { SbGrid } from './Storyblok/SbGrid';
-import { SbGridAlternating } from './Storyblok/SbGridAlternating';
-import { SbFeatureMasonry } from './Storyblok/SbFeatureMasonry';
-import { SbHomepageMvp } from './Storyblok/SbHomepageMvp';
-import { SbInitiativeCard } from './Storyblok/SbInitiativeCard';
-import { SbQuote } from './Storyblok/SbQuote';
-import { SbScrollytelling } from './Storyblok/SbScrollytelling';
-import { SbSection } from './Storyblok/SbSection';
-import { SbSidebarCard } from './Storyblok/SbSidebarCard';
-import { SbStoryMvp } from './Storyblok/SbStoryMvp/SbStoryMvp';
-import { SbStoryCard } from './Storyblok/SbStoryCard';
-import { SbStoryImage } from './Storyblok/SbStoryImage';
-import { SbText } from './Storyblok/SbText';
-import { SbTextCard } from './Storyblok/SbTextCard';
-import { SbTexturedBar } from './Storyblok/SbTexturedBar';
-import { SbTriangle } from './Storyblok/SbTriangle';
-import { SbTypeform } from './Storyblok/SbTypeform';
-import { SbWysiwyg } from './Storyblok/SbWysiwyg';
+import { SbBanner } from '@/components/Storyblok/SbBanner';
+import { SbBasicPage } from '@/components/Storyblok/SbBasicPage';
+import { SbBlurryPoster } from '@/components/Storyblok/SbBlurryPoster';
+import { SbCardWysiwyg } from '@/components/Storyblok/SbCardWysiwyg';
+import { SbChangemakerCard } from '@/components/Storyblok/SbChangemakerCard';
+import { SbCta } from '@/components/Storyblok/SbCta';
+import { SbDataCard } from '@/components/Storyblok/SbDataCard';
+import { SbEmbed } from '@/components/Storyblok/SbEmbed';
+import { SbEmbedMedia } from '@/components/Storyblok/SbEmbedMedia';
+import { SbGrid } from '@/components/Storyblok/SbGrid';
+import { SbGridAlternating } from '@/components/Storyblok/SbGridAlternating';
+import { SbFeatureMasonry } from '@/components/Storyblok/SbFeatureMasonry';
+import { SbHomepageMvp } from '@/components/Storyblok/SbHomepageMvp';
+import { SbHomepageThemeSection } from '@/components/Storyblok/SbHomepageThemeSection';
+import { SbInitiativeCard } from '@/components/Storyblok/SbInitiativeCard';
+import { SbMomentPoster } from './Storyblok/SbMomentPoster';
+import { SbQuote } from '@/components/Storyblok/SbQuote';
+import { SbScrollytelling } from '@/components/Storyblok/SbScrollytelling';
+import { SbSection } from '@/components/Storyblok/SbSection';
+import { SbSidebarCard } from '@/components/Storyblok/SbSidebarCard';
+import { SbStoryMvp } from '@/components/Storyblok/SbStoryMvp/SbStoryMvp';
+import { SbStoryCard } from '@/components/Storyblok/SbStoryCard';
+import { SbStoryImage } from '@/components/Storyblok/SbStoryImage';
+import { SbText } from '@/components/Storyblok/SbText';
+import { SbTextCard } from '@/components/Storyblok/SbTextCard';
+import { SbTexturedBar } from '@/components/Storyblok/SbTexturedBar';
+import { SbTriangle } from '@/components/Storyblok/SbTriangle';
+import { SbTypeform } from '@/components/Storyblok/SbTypeform';
+import { SbWysiwyg } from '@/components/Storyblok/SbWysiwyg';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
 
 export const components = {
@@ -34,12 +38,16 @@ export const components = {
   sbCardWysiwyg: SbCardWysiwyg,
   sbChangemakerCard: SbChangemakerCard,
   sbCta: SbCta,
+  sbDataCard: SbDataCard,
+  sbEmbedScript: SbEmbed,
   sbEmbedMedia: SbEmbedMedia,
   sbGrid: SbGrid,
   sbGridAlternating: SbGridAlternating,
   sbFeatureMasonry: SbFeatureMasonry,
   sbHomepageMvp: SbHomepageMvp,
+  sbHomepageThemeSection: SbHomepageThemeSection,
   sbInitiativeCard: SbInitiativeCard,
+  sbMomentPoster: SbMomentPoster,
   sbQuote: SbQuote,
   sbScrollytelling: SbScrollytelling,
   sbSection: SbSection,
