@@ -76,6 +76,7 @@ export const EmbedMedia = ({
               playIcon={isPreview ? PlayPreviewIcon : undefined}
               // This previewAriaLabel prop is not documented but it is in the React Player source code
               previewAriaLabel={isPreview ? previewAriaLabel : undefined}
+              className="group"
             />
           )}
         </div>
