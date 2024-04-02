@@ -25,12 +25,8 @@ export const customHeading = (hasBgImage: boolean, isMaskedHeading: boolean) => 
   'flex flex-col mb-0 pb-03em *:block', {
   'bg-clip-text text-black/40 xl:bg-fixed bg-cover bg-center bg-no-repeat': hasBgImage && isMaskedHeading,
 });
-export const customHeadingText = (font: 'druk' | 'serif', isSmallHeading: boolean) => cnb('hyphens-auto first:ml-0 last:mr-0', {
-  'fluid-type-8': font === 'druk',
-  'md:fluid-type-9 lg:fluid-type-8 2xl:fluid-type-9 4xl:fluid-type-10' : font === 'druk' && !isSmallHeading,
-  'lg:fluid-type-6 2xl:fluid-type-7 4xl:fluid-type-8' : font === 'druk' && isSmallHeading,
-  'mt-01em fluid-type-4 md:fluid-type-5 4xl:fluid-type-6 font-semibold md:font-normal': font === 'serif',
-  'md:fluid-type-4 3xl:fluid-type-5' : font === 'serif' && isSmallHeading,
+export const customHeadingText = (font: 'druk' | 'serif') => cnb('hyphens-auto first:ml-0 last:mr-0', {
+  'mt-01em font-semibold md:font-normal': font === 'serif',
 });
 
 export const body = '*:*:leading-snug rs-mt-3 type-1 text-balance';

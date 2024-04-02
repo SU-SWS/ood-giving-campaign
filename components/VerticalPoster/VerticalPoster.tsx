@@ -102,15 +102,18 @@ export const VerticalPoster = ({
                     className={styles.customHeading(!!bgImageSrc, isMaskedHeading)}
                     style={isMaskedHeading && !!bgImageSrc ? bgImageStyle : undefined}
                   >
-                    {customHeading.map(({text, font, italic}) => (
+                    {customHeading.map(({
+                      text, font, italic, size,
+                    }) => (
                       <Text
                         as="span"
                         key={`${text}-vert-poster-${++i}`}
                         font={font}
+                        size={size}
                         leading="none"
-                        weight={font === 'druk' ? 'black' : 'normal'}
+                        weight={font === 'druk' ? 'black' : undefined}
                         italic={italic}
-                        className={styles.customHeadingText(font, isSmallHeading)}
+                        className={styles.customHeadingText(font)}
                       >
                         {text}
                       </Text>

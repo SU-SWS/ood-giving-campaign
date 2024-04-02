@@ -1,3 +1,5 @@
+import { type FontSizeType } from '@/components/Typography';
+
 /**
  * Generic types for Storyblok fields
  */
@@ -42,6 +44,7 @@ export type SbLinkType =
 export type SbTypographyProps = {
   text?: string;
   font?: 'druk' | 'serif';
+  size?: FontSizeType;
   italic?: boolean;
 };
 
