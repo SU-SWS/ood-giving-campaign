@@ -1,3 +1,5 @@
+'use client';
+
 import {
   useState, useRef, useLayoutEffect, ReactNode,
 } from 'react';
@@ -23,6 +25,7 @@ type ParallaxProps = {
  */
 export const Parallax = ({ children, offset = 60 }: ParallaxProps) => {
   const prefersReducedMotion = useReducedMotion();
+
   const { scrollY } = useScroll();
   const [elementTop, setElementTop] = useState(0);
   const [clientHeight, setClientHeight] = useState(0);
@@ -48,7 +51,7 @@ export const Parallax = ({ children, offset = 60 }: ParallaxProps) => {
 
   // Don't parallax if the user has "reduced motion" enabled
   if (prefersReducedMotion) {
-    return <div>{children}</div>;
+    return <>{children}</>;
   }
 
   return (

@@ -55,10 +55,10 @@ export const imageMobile = 'size-full object-cover object-center lg:hidden';
 
 // Parallax enabled styles
 export const parallaxWrapper = 'relative aspect-w-3 aspect-h-4';
-export const parallaxBgImage = (prefersReducedMotion: boolean) => cnb('w-full object-cover', {
+export const parallaxBgImage = (prefersReducedMotion: boolean) => cnb('relative w-full object-cover', {
   'lg:h-[120%] lg:-mt-[10%]': !prefersReducedMotion, // No background image parallax for < LG
 });
 export const parallaxForegroundWrapper = 'absolute top-0 right-0 z-10';
-export const parallaxImage = (prefersReducedMotion: boolean) => cnb('size-full', {
+export const parallaxImage = (prefersReducedMotion: boolean) => cnb('relative size-full', {
   'mt-[7%] lg:mt-[3vw]': !prefersReducedMotion,
 });
