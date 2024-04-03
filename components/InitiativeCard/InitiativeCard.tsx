@@ -11,6 +11,7 @@ import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { accentBorderColors, type AccentBorderColorType } from '@/utilities/datasource';
 import * as styles from './InitiativeCard.styles';
 import { IconType } from '../HeroIcon';
+import { image } from '../Banner';
 
 export type InitiativeCardProps = HTMLAttributes<HTMLDivElement> & {
   heading?: string;
@@ -18,7 +19,9 @@ export type InitiativeCardProps = HTMLAttributes<HTMLDivElement> & {
   body?: string;
   imageSrc?: string;
   imageFocus?: string;
+  imageAspectRatio?: styles.InitiativeCardImageAspectRatio;
   tabColor?: AccentBorderColorType;
+  isHorizontal?: boolean;
   linkText?: string;
   link?: SbLinkType;
   animation?: AnimationType;
@@ -31,7 +34,9 @@ export const InitiativeCard = ({
   body,
   imageSrc = '',
   imageFocus,
+  imageAspectRatio = '3x4',
   tabColor,
+  isHorizontal,
   linkText,
   link,
   animation = 'none',
@@ -51,6 +56,8 @@ export const InitiativeCard = ({
   let cardIcon: IconType;
   let iconAnimation: IconAnimationType;
 
+  const imageSize = imageAspectRatio === '3x4' ? '510x680' : '700x700';
+
   switch (link?.linktype) {
     case 'asset':
       cardIcon = 'download';
@@ -69,33 +76,33 @@ export const InitiativeCard = ({
     <AnimateInView animation={animation} delay={delay}>
       <FlexBox
         as="article"
-        direction="col"
-        className={cnb(styles.root, className)}
+        direction='col'
+        className={cnb(styles.root(isHorizontal), className)}
         {...props}
       >
-        <div className={styles.topWrapper}>
-          <div className={styles.imageWrapper}>
+        <div className={styles.topWrapper(isHorizontal)}>
+          <div className={styles.imageWrapper(imageAspectRatio)}>
             <img
               width={600}
-              height={800}
+              height={imageAspectRatio === '3x4' ? 800 : 600}
               alt=""
               loading="lazy"
-              src={getProcessedImage(imageSrc, '510x680', imageFocus) || ''}
+              src={getProcessedImage(imageSrc, imageSize, imageFocus) || ''}
               className={styles.image}
             />
           </div>
           <Heading
             as={headingLevel}
             font="druk-wide"
-            size={1}
+            size={isHorizontal ? 2 : 1}
             leading="tight"
             uppercase
-            className={styles.heading}
+            className={styles.heading(isHorizontal)}
           >
             {heading}
           </Heading>
         </div>
-        <div className={styles.bodyWrapper}>
+        <div className={styles.bodyWrapper(isHorizontal)}>
           <Paragraph
             variant="subheading"
             leading="display"
@@ -104,11 +111,25 @@ export const InitiativeCard = ({
           >
             {body}
           </Paragraph>
+          {/* Only show the button styled CTA for XL breakpoint and up */}
+          {isHorizontal && linkText && (
+            <CtaLink
+              variant="ghost"
+              color="white"
+              size="large"
+              sbLink={link}
+              className={styles.horizontalCta}
+              icon={cardIcon}
+              animate={iconAnimation}
+            >
+              {linkText}
+            </CtaLink>
+          )}
         </div>
         <CtaLink
           variant="unset"
           sbLink={link}
-          className={styles.cta}
+          className={styles.cta(isHorizontal)}
           icon={cardIcon}
           iconProps={{ className: styles.icon(!!linkText) }}
           animate={iconAnimation}
