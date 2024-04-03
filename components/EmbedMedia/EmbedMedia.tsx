@@ -71,6 +71,7 @@ export const EmbedMedia = ({
               height="100%"
               url={mediaUrl}
               controls
+              playsinline
               light={isPreview ? true : false}
               playing={isPreview ? true : false}
               playIcon={isPreview ? PlayPreviewIcon : undefined}
