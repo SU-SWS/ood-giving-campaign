@@ -79,7 +79,7 @@ export const VerticalPoster = ({
             direction="col"
             alignItems="center"
             justifyContent="center"
-            className={styles.contentWrapper(imageOnLeft)}
+            className={styles.contentWrapper(imageOnLeft, isParallax)}
           >
             <FlexBox className={styles.headingWrapper}>
               <AnimateInView animation='slideUp'>
@@ -89,7 +89,7 @@ export const VerticalPoster = ({
                     font="druk"
                     align="center"
                     leading="none"
-                    className={styles.heading(isSmallHeading, !!bgImageSrc, isMaskedHeading)}
+                    className={styles.heading(isSmallHeading, !!bgImageSrc, isMaskedHeading, bgColor)}
                     style={isMaskedHeading && !!bgImageSrc ? bgImageStyle : undefined}
                   >
                     {heading}
@@ -101,7 +101,7 @@ export const VerticalPoster = ({
                     size="base"
                     align="center"
                     leading="none"
-                    className={styles.customHeading(!!bgImageSrc, isMaskedHeading)}
+                    className={styles.customHeading(!!bgImageSrc, isMaskedHeading, bgColor)}
                     style={isMaskedHeading && !!bgImageSrc ? bgImageStyle : undefined}
                   >
                     {customHeading.map(({
@@ -130,7 +130,7 @@ export const VerticalPoster = ({
               </Text>
             )}
             {!!body && (
-              <div className="*:*:leading-snug *:*:max-w-prose rs-mt-3 2xl:type-1">
+              <div className={styles.body}>
                 {body}
               </div>
             )}
@@ -151,7 +151,7 @@ export const VerticalPoster = ({
             )}
           </FlexBox>
           {isParallax ? (
-            <div className="relative aspect-w-3 aspect-h-4">
+            <div className={styles.parallaxWrapper}>
               {bgImageSrc && (
                 <Parallax offset={isDesktop ? 60 : 0}>
                   <picture>
@@ -195,7 +195,7 @@ export const VerticalPoster = ({
                 </Parallax>
               )}
               {imageSrc && (
-                <div className="absolute top-0 right-0 z-10">
+                <div className={styles.parallaxForegroundWrapper}>
                   <Parallax offset={isDesktop ? 120 : 60}>
                     <picture>
                       <source
@@ -225,7 +225,7 @@ export const VerticalPoster = ({
                       <img
                         src={getProcessedImage(imageSrc, '1000x0', imageFocus)}
                         alt={alt || ''}
-                        className="size-full mt-[7%] lg:mt-[3vw]"
+                        className={styles.parallaxImage(prefersReducedMotion)}
                       />
                     </picture>
                   </Parallax>
