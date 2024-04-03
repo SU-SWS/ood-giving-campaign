@@ -1,5 +1,3 @@
-'use client';
-
 import {
   useState, useRef, useLayoutEffect, ReactNode,
 } from 'react';
@@ -48,6 +46,7 @@ export const Parallax = ({ children, offset = 60 }: ParallaxProps) => {
 
   const yRange = useTransform(scrollY, [initial, final], [offset, -offset]);
   const y = useSpring(yRange, { stiffness: 200, damping: 30 });
+  const conditionalY = prefersReducedMotion ? undefined : y;
 
   // Don't parallax if the user has "reduced motion" enabled
   if (prefersReducedMotion) {
@@ -55,7 +54,7 @@ export const Parallax = ({ children, offset = 60 }: ParallaxProps) => {
   }
 
   return (
-    <m.div ref={ref} style={{ y }}>
+    <m.div ref={ref} style={{ y: conditionalY }}>
       {children}
     </m.div>
   );
