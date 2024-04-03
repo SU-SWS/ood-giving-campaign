@@ -1,3 +1,4 @@
+'use client';
 import React, { HTMLAttributes } from 'react';
 import { useReducedMotion } from 'framer-motion';
 import { useMediaQuery } from 'usehooks-ts';

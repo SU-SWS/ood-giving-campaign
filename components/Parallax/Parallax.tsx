@@ -1,3 +1,4 @@
+'use client';
 import {
   useState, useRef, useLayoutEffect, ReactNode,
 } from 'react';
@@ -46,16 +47,13 @@ export const Parallax = ({ children, offset = 60 }: ParallaxProps) => {
 
   const yRange = useTransform(scrollY, [initial, final], [offset, -offset]);
   const y = useSpring(yRange, { stiffness: 200, damping: 30 });
-  /**
-   * Previously I tried returning <>{children}</> if prefersReducedMotion is true
-   * but that caused a hydration error.
-   * If I use <div>{children></div>, it still adds the y transform to the div.
-   * This seem to be the only way that works reliably.
-   */
-  const conditionalY = prefersReducedMotion ? undefined : y;
+
+  if (prefersReducedMotion) {
+    return <>{children}</>;
+  }
 
   return (
-    <m.div ref={ref} style={{ y: conditionalY }}>
+    <m.div ref={ref} style={{ y }}>
       {children}
     </m.div>
   );
