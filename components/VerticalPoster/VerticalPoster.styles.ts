@@ -60,5 +60,5 @@ export const parallaxBgImage = (prefersReducedMotion: boolean) => cnb('relative 
 });
 export const parallaxForegroundWrapper = 'absolute top-0 right-0 z-10';
 export const parallaxImage = (prefersReducedMotion: boolean) => cnb('relative size-full object-cover', {
-  'mt-[7%] lg:mt-[3vw]': !prefersReducedMotion,
+  //'mt-[7%] lg:mt-[3vw]': !prefersReducedMotion,
 });
