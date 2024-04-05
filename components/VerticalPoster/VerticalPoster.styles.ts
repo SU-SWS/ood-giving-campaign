@@ -3,7 +3,7 @@ import { type BgColorType } from '@/components/Container';
 
 export const root = 'relative overflow-hidden break-words';
 
-export const grid = 'w-full';
+export const grid = 'relative w-full';
 
 export const contentWrapper = (imageOnLeft: boolean, isParallax: boolean) => cnb('relative px-20 sm:px-30 md:px-50 rs-py-6 lg:px-[6vw]', {
   'lg:order-last': imageOnLeft,

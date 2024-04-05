@@ -24,6 +24,7 @@ type SbVerticalPosterProps = {
     publishedDate?: string;
     cta?: SbBlokData[];
     image?: SbImageType;
+    caption?: StoryblokRichtext;
     alt?: string;
     bgImage?: SbImageType;
     bgAlt?: string;
@@ -46,6 +47,7 @@ export const SbVerticalPoster = ({
     publishedDate,
     cta,
     image: { filename, focus } = {},
+    caption,
     alt,
     bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
     bgAlt,
@@ -56,6 +58,7 @@ export const SbVerticalPoster = ({
 }: SbVerticalPosterProps) => {
   const Cta = !!getNumBloks(cta) ? <CreateBloks blokSection={cta} /> : undefined;
   const Body = hasRichText(body) ? <RichText textAlign="center" textColor={bgColor === 'black' ? 'white' : 'black'} wysiwyg={body} /> : undefined;
+  const Caption = hasRichText(caption) ? <RichText textColor='black-70' wysiwyg={caption} /> : undefined;
 
   return (
     <VerticalPoster
@@ -71,6 +74,7 @@ export const SbVerticalPoster = ({
       byline={byline}
       publishedDate={publishedDate}
       cta={Cta}
+      caption={Caption}
       imageSrc={filename}
       imageFocus={focus}
       alt={alt}
