@@ -12,6 +12,7 @@ export type SbFeatureMasonryProps = {
     image1?: SbImageType;
     imageAlt1?: string;
     videoUrl?: string;
+    previewAriaLabel?: string;
     caption?: string;
   };
 };
@@ -25,6 +26,7 @@ export const SbFeatureMasonry = ({
     image1: { filename: imageSrc1, focus: imageFocus1 } = {},
     imageAlt1,
     videoUrl,
+    previewAriaLabel = 'Play video',
     caption,
   },
   blok,
@@ -41,6 +43,7 @@ export const SbFeatureMasonry = ({
     imageFocus1={imageFocus1}
     imageAlt1={imageAlt1}
     videoUrl={videoUrl}
+    previewAriaLabel={previewAriaLabel}
     caption={caption}
   />
 );
