@@ -21,7 +21,7 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 import { CheckIcon } from '@heroicons/react/16/solid';
-import { PlayIcon } from '@heroicons/react/24/solid';
+import { PlayIcon } from '@heroicons/react/20/solid';
 
 export const iconMap = {
   action: ChevronRightIcon,
@@ -50,7 +50,7 @@ export const iconMap = {
   minus: MinusIcon,
   more: ArrowRightIcon,
   pause: PauseCircleIcon,
-  play: PlayCircleIcon,
+  play: PlayIcon,
   'play-outline': PlayCircleIcon,
   plus: PlusIcon,
   right: ArrowRightIcon,

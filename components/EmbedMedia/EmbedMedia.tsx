@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { cnb } from 'cnbuilder';
 import ReactPlayer from 'react-player/lazy';
 import { Container } from '../Container';
+import { FlexBox } from '../FlexBox';
 import { WidthBox, type WidthType } from '../WidthBox';
+import { HeroIcon } from '../HeroIcon';
 import { type PaddingType } from '@/utilities/datasource';
 import { type MediaAspectRatioType, mediaAspectRatios } from '@/utilities/datasource';
 import * as styles from './EmbedMedia.styles';
@@ -16,7 +18,15 @@ type EmbedMediaProps = React.HTMLAttributes<HTMLDivElement> & {
   spacingTop?: PaddingType;
   spacingBottom?: PaddingType;
   isCaptionInset?: boolean;
+  isPreview?: boolean;
+  previewAriaLabel?: string;
 };
+
+const PlayPreviewIcon = (
+  <FlexBox alignItems="center" justifyContent="center" className={styles.iconWrapper}>
+    <HeroIcon icon="play" noBaseStyle className={styles.previewIcon} />
+  </FlexBox>
+);
 
 export const EmbedMedia = ({
   mediaUrl,
@@ -27,6 +37,8 @@ export const EmbedMedia = ({
   spacingTop,
   spacingBottom,
   isCaptionInset,
+  isPreview,
+  previewAriaLabel,
   className,
   ...props
 }: EmbedMediaProps) => {
@@ -59,6 +71,13 @@ export const EmbedMedia = ({
               height="100%"
               url={mediaUrl}
               controls
+              playsinline
+              light={isPreview ? true : false}
+              playing={isPreview ? true : false}
+              playIcon={isPreview ? PlayPreviewIcon : undefined}
+              // This previewAriaLabel prop is not documented but it is in the React Player source code
+              previewAriaLabel={isPreview ? previewAriaLabel : undefined}
+              className="group"
             />
           )}
         </div>
