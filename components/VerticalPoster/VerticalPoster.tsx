@@ -232,7 +232,7 @@ export const VerticalPoster = ({
                         <img
                           src={getProcessedImage(imageSrc, '1000x0', imageFocus)}
                           alt={alt || ''}
-                          className={styles.parallaxImage(prefersReducedMotion)}
+                          className={styles.parallaxImage}
                         />
                       </picture>
                     </Parallax>
@@ -263,7 +263,7 @@ export const VerticalPoster = ({
       {!!caption && (
         <Container
           bgColor="white"
-          className="relative mt-06em caption *:*:leading-display max-w-prose-wide ml-0"
+          className={styles.caption(imageOnLeft)}
         >
           {caption}
         </Container>

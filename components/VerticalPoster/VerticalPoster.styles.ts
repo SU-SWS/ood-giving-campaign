@@ -53,12 +53,14 @@ export const imageInnerWrapper = 'size-full';
 export const image = 'size-full object-cover object-center hidden lg:block';
 export const imageMobile = 'size-full object-cover object-center lg:hidden';
 
+export const caption = (imageOnLeft: boolean) => cnb('relative mt-05em caption *:*:leading-display max-w-prose-wide first:*:*:mt-0',
+  imageOnLeft ? 'ml-0' : 'ml-0 lg:mr-0 lg:ml-auto lg:*:text-right',
+);
+
 // Parallax enabled styles
 export const parallaxWrapper = 'relative aspect-w-3 aspect-h-4';
 export const parallaxBgImage = (prefersReducedMotion: boolean) => cnb('relative w-full object-cover', {
   'lg:h-[120%] lg:-mt-[10%]': !prefersReducedMotion, // No background image parallax for < LG
 });
 export const parallaxForegroundWrapper = 'absolute top-0 right-0 z-10';
-export const parallaxImage = (prefersReducedMotion: boolean) => cnb('relative size-full object-cover', {
-  //'mt-[7%] lg:mt-[3vw]': !prefersReducedMotion,
-});
+export const parallaxImage = 'relative size-full object-cover';
