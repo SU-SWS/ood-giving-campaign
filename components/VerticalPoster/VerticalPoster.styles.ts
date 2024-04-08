@@ -1,35 +1,47 @@
 import { cnb } from 'cnbuilder';
+import { type BgColorType } from '@/components/Container';
 
 export const root = 'relative overflow-hidden break-words';
-export const blurWrapper = 'size-full backdrop-blur-md';
 
-export const grid = 'w-full';
+export const grid = 'relative w-full';
 
-export const contentWrapper = (imageOnLeft: boolean) => cnb('relative px-20 sm:px-30 md:px-50 rs-py-6 lg:px-[6vw] lg:py-[8vw]', {
+export const contentWrapper = (imageOnLeft: boolean, isParallax: boolean) => cnb('relative px-20 sm:px-30 md:px-50 rs-py-6 lg:px-[6vw]', {
   'lg:order-last': imageOnLeft,
   'lg:order-first': !imageOnLeft,
+  // If no parallax, we don't need to match the thick vertical padding on the image frame on the content side
+  'lg:py-[8vw]': !isParallax,
 });
 
-export const headingWrapper = '-mt-1em 2xl:mt-[-1.5em] rs-mb-5';
-export const heading = (isSmallHeading: boolean, hasBgImage: boolean) => cnb(
-  'mb-0 fluid-type-8 bg-fixed  bg-cover bg-center bg-no-repeat hyphens-auto', {
+export const headingWrapper = '-mt-04em md:-mt-1em 2xl:mt-[-1.5em] rs-mb-5';
+
+/**
+ * The pb-03em class in heading and customHeading is to compensate for the line-height:1 in the heading which
+ * causes the bottom of the heading not showing the background mask
+ */
+export const heading = (
+  isSmallHeading: boolean,
+  hasBgImage: boolean,
+  isMaskedHeading: boolean,
+  bgColor: BgColorType,
+) => cnb(
+  'mb-0 pb-03em fluid-type-8 hyphens-auto', {
   'lg:fluid-type-6 2xl:fluid-type-7 4xl:fluid-type-8': isSmallHeading,
   'md:fluid-type-9': !isSmallHeading,
-  'bg-clip-text text-black/40': hasBgImage,
+  'bg-clip-text xl:bg-fixed bg-cover bg-center bg-no-repeat': hasBgImage && isMaskedHeading,
+  'text-black/40': hasBgImage && isMaskedHeading && bgColor !== 'black',
+  'text-white/20': hasBgImage && isMaskedHeading && bgColor === 'black',
 });
-export const customHeading = (hasBgImage: boolean) => cnb(
-  'flex flex-col mb-0 *:block bg-fixed bg-cover bg-center bg-no-repeat', {
-  'bg-clip-text text-black/40': hasBgImage,
+export const customHeading = (hasBgImage: boolean, isMaskedHeading: boolean, bgColor: BgColorType) => cnb(
+  'flex flex-col mb-0 pb-03em *:block', {
+  'bg-clip-text xl:bg-fixed bg-cover bg-center bg-no-repeat': hasBgImage && isMaskedHeading,
+  'text-black/40': hasBgImage && isMaskedHeading && bgColor !== 'black',
+  'text-white/20': hasBgImage && isMaskedHeading && bgColor === 'black',
 });
-export const customHeadingText = (font: 'druk' | 'serif', isSmallHeading: boolean) => cnb('hyphens-auto first:ml-0 last:mr-0', {
-  'fluid-type-8': font === 'druk',
-  'md:fluid-type-9' : font === 'druk' && !isSmallHeading,
-  'lg:fluid-type-6 2xl:fluid-type-7 4xl:fluid-type-8' : font === 'druk' && isSmallHeading,
-  'mx-01em md:mx-03em mt-01em fluid-type-4 md:fluid-type-5 font-semibold md:font-normal': font === 'serif',
-  'md:type-4 3xl:fluid-type-5' : font === 'serif' && isSmallHeading,
+export const customHeadingText = (font: 'druk' | 'serif') => cnb('hyphens-auto first:ml-0 last:mr-0', {
+  'mt-01em font-semibold md:font-normal': font === 'serif',
 });
 
-export const body = 'rs-mt-3';
+export const body = '*:*:leading-snug *:*:max-w-prose rs-mt-3 2xl:type-1 text-balance';
 export const metadata = 'rs-mt-4 *:mx-auto';
 export const date = 'block text-center';
 export const cta = 'rs-mt-3';
@@ -37,6 +49,17 @@ export const cta = 'rs-mt-3';
 export const imageWrapper = (imageOnLeft: boolean) => cnb('w-full bg-gc-black bg-no-repeat bg-cover bg-center px-[6vw] py-[8vw]', {
   'lg:order-first': imageOnLeft,
 });
-export const imageInnerWrapper = 'h-full w-full';
-export const image = 'h-full w-full max-h-[100rem] object-cover object-center hidden lg:block';
-export const imageMobile = 'h-full w-full object-cover object-center lg:hidden';
+export const imageInnerWrapper = 'size-full';
+export const image = 'size-full object-cover object-center';
+
+export const caption = (imageOnLeft: boolean) => cnb('relative mt-05em caption *:*:leading-display *:max-w-prose-wide first:*:*:mt-0 *:ml-0',
+  imageOnLeft ? '' : '*:lg:mr-0 *:lg:ml-auto lg:*:text-right',
+);
+
+// Parallax enabled styles
+export const parallaxWrapper = 'relative aspect-w-3 aspect-h-4';
+export const parallaxBgImage = (prefersReducedMotion: boolean) => cnb('relative w-full object-cover', {
+  'lg:h-[120%] lg:-mt-[10%]': !prefersReducedMotion, // No background image parallax for < LG
+});
+export const parallaxForegroundWrapper = 'absolute top-0 right-0 z-10';
+export const parallaxImage = 'relative size-full object-cover';
