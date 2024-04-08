@@ -243,16 +243,31 @@ export const VerticalPoster = ({
               <div className={styles.imageWrapper(imageOnLeft)} style={bgImageStyle}>
                 {imageSrc && (
                   <AnimateInView animation="zoomSharpen" duration={1} className={styles.imageInnerWrapper}>
-                    <img
-                      src={getProcessedImage(imageSrc, '900x1200', imageFocus)}
-                      alt={alt || ''}
-                      className={styles.image}
-                    />
-                    <img
-                      src={getProcessedImage(imageSrc, '800x400', imageFocus)}
-                      alt={alt || ''}
-                      className={styles.imageMobile}
-                    />
+                    <picture>
+                      <source
+                        srcSet={getProcessedImage(imageSrc, '900x1200', imageFocus)}
+                        media="(min-width: 1500px)"
+                      />
+                      <source
+                        srcSet={getProcessedImage(imageSrc, '600x800', imageFocus)}
+                        media="(min-width: 992px)"
+                      />
+                      <source
+                        srcSet={getProcessedImage(imageSrc, '800x400', imageFocus)}
+                        media="(min-width: 576px)"
+                      />
+                      <source
+                        srcSet={getProcessedImage(imageSrc, '500x250', imageFocus)}
+                        media="(max-width: 575px)"
+                      />
+                      <img
+                        src={getProcessedImage(imageSrc, '900x1200', imageFocus)}
+                        width={900}
+                        height={1200}
+                        alt={alt || ''}
+                        className={styles.image}
+                      />
+                    </picture>
                   </AnimateInView>
                 )}
               </div>

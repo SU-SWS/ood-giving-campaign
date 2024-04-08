@@ -50,11 +50,10 @@ export const imageWrapper = (imageOnLeft: boolean) => cnb('w-full bg-gc-black bg
   'lg:order-first': imageOnLeft,
 });
 export const imageInnerWrapper = 'size-full';
-export const image = 'size-full object-cover object-center hidden lg:block';
-export const imageMobile = 'size-full object-cover object-center lg:hidden';
+export const image = 'size-full object-cover object-center';
 
-export const caption = (imageOnLeft: boolean) => cnb('relative mt-05em caption *:*:leading-display max-w-prose-wide first:*:*:mt-0',
-  imageOnLeft ? 'ml-0' : 'ml-0 lg:mr-0 lg:ml-auto lg:*:text-right',
+export const caption = (imageOnLeft: boolean) => cnb('relative mt-05em caption *:*:leading-display max-w-prose-wide first:*:*:mt-0 ml-0',
+  imageOnLeft ? '' : 'lg:mr-0 lg:ml-auto lg:*:text-right',
 );
 
 // Parallax enabled styles
