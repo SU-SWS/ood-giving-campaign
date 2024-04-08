@@ -130,7 +130,6 @@ export const StoryHeroMvp = ({
           bgColor="white"
           // id is for aria-describedby in the images since we can't use figcaption here
           id="story-hero-caption"
-          className={styles.captionWrapper}
         >
           {Caption}
         </Container>
