@@ -25,6 +25,7 @@ type StoryImageProps = React.HTMLAttributes<HTMLDivElement> & {
   isCaptionInset?: boolean;
   animation?: AnimationType;
   delay?: number;
+  isHidden?: boolean;
 };
 
 export const StoryImage = ({
@@ -43,6 +44,7 @@ export const StoryImage = ({
   isCaptionInset,
   animation = 'none',
   delay,
+  isHidden,
   className,
   ...props
 }: StoryImageProps) => {
@@ -57,6 +59,10 @@ export const StoryImage = ({
     ? Math.round(originalHeight * 2000 / originalWidth)
     : parseInt(cropSize?.split('x')[1], 10);
 
+  if (isHidden) {
+    return null;
+  }
+
   return (
     <WidthBox
       {...props}
@@ -70,7 +76,7 @@ export const StoryImage = ({
         <figure className={styles.figure(isFullHeight)}>
           <div className={cnb(imageAspectRatios[aspectRatio], styles.imageWrapper(isFullHeight, isParallax))}>
             {!!imageSrc && (
-              <Parallax offset={60}>
+              <Parallax offset={isParallax ? 60 : 0}>
                 <img
                   src={getProcessedImage(imageSrc, cropSize, imageFocus)}
                   loading={isLoadingEager ? 'eager' : 'lazy'}

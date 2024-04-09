@@ -27,6 +27,7 @@ type SbStoryImageProps = {
     isCaptionLight?: boolean;
     animation?: AnimationType;
     delay?: number;
+    isHidden?: boolean;
   };
 };
 
@@ -47,6 +48,7 @@ export const SbStoryImage = ({
     isCaptionLight,
     animation = 'none',
     delay,
+    isHidden,
   },
   blok,
 }: SbStoryImageProps) => {
@@ -70,6 +72,7 @@ export const SbStoryImage = ({
       isCaptionInset={isCaptionInset}
       animation={animation}
       delay={delay}
+      isHidden={isHidden}
     />
   );
 };
