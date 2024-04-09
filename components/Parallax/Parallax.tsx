@@ -1,3 +1,4 @@
+'use client';
 import {
   useState, useRef, useLayoutEffect, ReactNode,
 } from 'react';
@@ -18,41 +19,22 @@ type ParallaxProps = {
   children: ReactNode;
 };
 
-/**
- * Using guide from https://samuelkraft.com/blog/spring-parallax-framer-motion-guide
- */
-export const Parallax = ({ children, offset = 60 }: ParallaxProps) => {
+export const Parallax = ({ children, offset }: ParallaxProps) => {
   const prefersReducedMotion = useReducedMotion();
-  const { scrollY } = useScroll();
-  const [elementTop, setElementTop] = useState(0);
-  const [clientHeight, setClientHeight] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    // This mean aniimation starts when the top of the image touches the bottom of the viewport,
+    // and ends when the bottom of the image touches the top of the viewport.
+    offset: ['start end', 'end start'],
+  });
+  const yRange = useTransform(scrollYProgress, [0, 1], [offset, -offset]);
+  const y = useSpring(yRange, { stiffness: 200, damping: 30 });
 
-  useLayoutEffect(() => {
-    const element = ref.current;
-    const onResize = () => {
-      const topOfElement = (element?.getBoundingClientRect()?.top ?? 0) + window.scrollY;
-      setElementTop(topOfElement);
-      setClientHeight(window.innerHeight);
-    };
-    onResize();
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  }, [ref]);
-
-  const initial = elementTop - clientHeight;
-  const final = elementTop + offset;
-
-  const yRange = useTransform(scrollY, [initial, final], [offset, -offset]);
-  const y = useSpring(yRange, { stiffness: 400, damping: 90 });
-
-  // Don't parallax if the user has "reduced motion" enabled
-  if (prefersReducedMotion) {
-    return <div>{children}</div>;
-  }
+  const conditionalY = prefersReducedMotion ? 0 : y;
 
   return (
-    <m.div ref={ref} style={{ y }}>
+    <m.div ref={ref} style={{ y: conditionalY }}>
       {children}
     </m.div>
   );

@@ -20,6 +20,7 @@ type FeatureMasonryProps = React.HTMLAttributes<HTMLDivElement> & {
   imageFocus1?: string;
   imageAlt1?: string;
   videoUrl?: string;
+  previewAriaLabel?: string;
   caption?: string;
 }
 
@@ -34,6 +35,7 @@ export const FeatureMasonry = ({
   imageFocus1,
   imageAlt1,
   videoUrl,
+  previewAriaLabel,
   caption,
   className,
   ...props
@@ -92,8 +94,10 @@ export const FeatureMasonry = ({
         </div>
         <EmbedMedia
           mediaUrl={videoUrl}
+          isPreview
           className="lg:col-span-6 bg-black-70"
           aspectRatio="16x9"
+          previewAriaLabel={previewAriaLabel}
         />
       </Grid>
       <Text variant="caption" leading="display" className="text-black-70 max-w-prose-wide mt-1em whitespace-pre-line">
