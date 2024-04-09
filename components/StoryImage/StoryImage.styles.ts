@@ -18,7 +18,10 @@ export type ImageCropType = keyof typeof imageCrops;
 
 export const root = (isFullHeight?: boolean) => cnb(isFullHeight ? 'h-full' : '');
 export const animateWrapper = (isFullHeight?: boolean) => cnb(isFullHeight ? 'h-full' : '');
-export const figure = (isFullHeight?: boolean) => cnb(isFullHeight ? 'h-full' : '');
-export const imageWrapper = (isFullHeight?: boolean) => cnb(isFullHeight ? 'h-full' : '');
-export const image = 'size-full object-cover';
+export const figure = (isFullHeight: boolean) => cnb(isFullHeight ? 'h-full' : '');
+export const imageWrapper = (isFullHeight: boolean, isParallax: boolean) => cnb(
+  isFullHeight ? 'h-full' : '',
+  isParallax ? 'overflow-hidden' : '',
+);
+export const image = (isParallax: boolean) => cnb('w-full object-cover', isParallax ? 'h-[calc(100%_+_12rem)] -mt-60' : 'h-full');
 export const caption = '*:*:leading-display caption mt-1em max-w-prose-wide';

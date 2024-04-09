@@ -1,12 +1,12 @@
 import { cnb } from 'cnbuilder';
-import { AnimateInView } from '../Animate';
-import { Container } from '../Container';
-import { WidthBox, type WidthType } from '../WidthBox';
+import { AnimateInView, type AnimationType } from '@/components/Animate';
+import { Container } from '@/components/Container';
+import { Parallax } from '@/components/Parallax';
+import { WidthBox, type WidthType } from '@/components/WidthBox';
 import { type PaddingType } from '@/utilities/datasource';
 import { imageAspectRatios, type ImageAspectRatioType } from '@/utilities/datasource';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { getSbImageSize } from '@/utilities/getSbImageSize';
-import { type AnimationType } from '../Animate';
 import * as styles from './StoryImage.styles';
 
 type StoryImageProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -68,16 +68,18 @@ export const StoryImage = ({
     >
       <AnimateInView animation={animation} delay={delay} className={styles.animateWrapper(isFullHeight)}>
         <figure className={styles.figure(isFullHeight)}>
-          <div className={cnb(imageAspectRatios[aspectRatio], styles.imageWrapper(isFullHeight))}>
+          <div className={cnb(imageAspectRatios[aspectRatio], styles.imageWrapper(isFullHeight, isParallax))}>
             {!!imageSrc && (
-              <img
-                src={getProcessedImage(imageSrc, cropSize, imageFocus)}
-                loading={isLoadingEager ? 'eager' : 'lazy'}
-                width={cropWidth}
-                height={cropHeight}
-                alt={alt || ''}
-                className={styles.image}
-              />
+              <Parallax offset={60}>
+                <img
+                  src={getProcessedImage(imageSrc, cropSize, imageFocus)}
+                  loading={isLoadingEager ? 'eager' : 'lazy'}
+                  width={cropWidth}
+                  height={cropHeight}
+                  alt={alt || ''}
+                  className={styles.image(isParallax)}
+                />
+              </Parallax>
             )}
           </div>
           {caption && (
