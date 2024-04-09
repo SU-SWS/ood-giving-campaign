@@ -25,7 +25,6 @@ type StoryImageProps = React.HTMLAttributes<HTMLDivElement> & {
   isCaptionInset?: boolean;
   animation?: AnimationType;
   delay?: number;
-  isHidden?: boolean;
 };
 
 export const StoryImage = ({
@@ -44,10 +43,10 @@ export const StoryImage = ({
   isCaptionInset,
   animation = 'none',
   delay,
-  isHidden,
   className,
   ...props
 }: StoryImageProps) => {
+
   const { width: originalWidth, height: originalHeight } = getSbImageSize(imageSrc);
   const cropSize = styles.imageCrops[aspectRatio];
   /**
@@ -58,10 +57,6 @@ export const StoryImage = ({
   const cropHeight = aspectRatio === 'free'
     ? Math.round(originalHeight * 2000 / originalWidth)
     : parseInt(cropSize?.split('x')[1], 10);
-
-  if (isHidden) {
-    return null;
-  }
 
   return (
     <WidthBox

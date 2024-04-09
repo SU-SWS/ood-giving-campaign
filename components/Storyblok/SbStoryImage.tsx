@@ -54,6 +54,10 @@ export const SbStoryImage = ({
 }: SbStoryImageProps) => {
   const Caption = hasRichText(caption) ? <RichText textColor={isCaptionLight ? 'white' : 'black-70'} wysiwyg={caption} /> : undefined;
 
+  if (isHidden) {
+    return null;
+  }
+
   return (
     <StoryImage
       {...storyblokEditable(blok)}
@@ -72,7 +76,6 @@ export const SbStoryImage = ({
       isCaptionInset={isCaptionInset}
       animation={animation}
       delay={delay}
-      isHidden={isHidden}
     />
   );
 };
