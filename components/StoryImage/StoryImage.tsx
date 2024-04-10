@@ -48,7 +48,7 @@ export const StoryImage = ({
 }: StoryImageProps) => {
 
   const { width: originalWidth, height: originalHeight } = getSbImageSize(imageSrc);
-  const cropSize = styles.imageCrops[aspectRatio];
+  const cropSize = styles.imageCropsDesktop[aspectRatio];
   /**
    * Crop width and height are used for width and height attributes on the img element.
    * They don't need to be exact as long as the aspect ratio is correct.
@@ -72,14 +72,32 @@ export const StoryImage = ({
           <div className={cnb(imageAspectRatios[aspectRatio], styles.imageWrapper(isFullHeight, isParallax))}>
             {!!imageSrc && (
               <Parallax offset={isParallax ? 60 : 0}>
-                <img
-                  src={getProcessedImage(imageSrc, cropSize, imageFocus)}
-                  loading={isLoadingEager ? 'eager' : 'lazy'}
-                  width={cropWidth}
-                  height={cropHeight}
-                  alt={alt || ''}
-                  className={styles.image(isParallax)}
-                />
+                <picture>
+                  <source
+                    srcSet={getProcessedImage(imageSrc, cropSize, imageFocus)}
+                    media="(min-width: 1500px)"
+                  />
+                  <source
+                    srcSet={getProcessedImage(imageSrc, styles.imageCropsSmallDesktop[aspectRatio], imageFocus)}
+                    media="(min-width: 992px)"
+                  />
+                  <source
+                    srcSet={getProcessedImage(imageSrc, styles.imageCropsTablet[aspectRatio], imageFocus)}
+                    media="(min-width: 576px)"
+                  />
+                  <source
+                    srcSet={getProcessedImage(imageSrc, styles.imageCropsMobile[aspectRatio], imageFocus)}
+                    media="(max-width: 575px)"
+                  />
+                  <img
+                    src={getProcessedImage(imageSrc, cropSize, imageFocus)}
+                    loading={isLoadingEager ? 'eager' : 'lazy'}
+                    width={cropWidth}
+                    height={cropHeight}
+                    alt={alt || ''}
+                    className={styles.image(isParallax)}
+                  />
+                </picture>
               </Parallax>
             )}
           </div>
