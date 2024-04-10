@@ -11,7 +11,6 @@ import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { accentBorderColors, type AccentBorderColorType } from '@/utilities/datasource';
 import * as styles from './InitiativeCard.styles';
 import { IconType } from '../HeroIcon';
-import { image } from '../Banner';
 
 export type InitiativeCardProps = HTMLAttributes<HTMLDivElement> & {
   heading?: string;

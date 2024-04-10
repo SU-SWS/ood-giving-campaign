@@ -64,6 +64,7 @@ type SbSectionProps = {
     paddingBottom?: PaddingType;
     marginTop?: MarginType;
     marginBottom?: MarginType;
+    isHidden?: boolean;
   };
 };
 
@@ -92,6 +93,7 @@ export const SbSection = ({
     paddingBottom,
     marginTop,
     marginBottom,
+    isHidden,
   },
   blok,
 }: SbSectionProps) => {
@@ -127,6 +129,10 @@ export const SbSection = ({
     bgColors.push('transparent');
   }
   const animatedBgColor = useTransform(scrollYProgress, stops, bgColors);
+
+  if (isHidden) {
+    return null;
+  }
 
   return (
     <Container

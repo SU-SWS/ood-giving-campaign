@@ -15,6 +15,7 @@ type SbStoryImageProps = {
     image: SbImageType;
     alt?: string;
     isLoadingEager?: boolean;
+    isParallax?: boolean;
     caption?: StoryblokRichtext;
     aspectRatio?: ImageAspectRatioType;
     isFullHeight?: boolean;
@@ -26,6 +27,7 @@ type SbStoryImageProps = {
     isCaptionLight?: boolean;
     animation?: AnimationType;
     delay?: number;
+    isHidden?: boolean;
   };
 };
 
@@ -34,6 +36,7 @@ export const SbStoryImage = ({
     image: { filename, focus } = {},
     alt,
     isLoadingEager,
+    isParallax,
     caption,
     aspectRatio,
     isFullHeight,
@@ -45,9 +48,14 @@ export const SbStoryImage = ({
     isCaptionLight,
     animation = 'none',
     delay,
+    isHidden,
   },
   blok,
 }: SbStoryImageProps) => {
+  if (isHidden) {
+    return null;
+  }
+
   const Caption = hasRichText(caption) ? <RichText textColor={isCaptionLight ? 'white' : 'black-70'} wysiwyg={caption} /> : undefined;
 
   return (
@@ -57,6 +65,7 @@ export const SbStoryImage = ({
       imageFocus={focus}
       alt={alt}
       isLoadingEager={isLoadingEager}
+      isParallax={isParallax}
       caption={Caption}
       aspectRatio={aspectRatio}
       isFullHeight={isFullHeight}

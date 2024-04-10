@@ -1,17 +1,17 @@
 'use client';
-import {
-  useState, useRef, useLayoutEffect, ReactNode,
-} from 'react';
+import { useRef, ReactNode } from 'react';
 import {
   m,
   useScroll,
   useTransform,
   useSpring,
   useReducedMotion,
+  MotionValue,
 } from 'framer-motion';
 
 type ParallaxProps = {
   /**
+   * This is the vertical offset in px that the element will move in response to the scroll.
    * The larger the offset, the more apparent the parallax effect.
    * For a realistic effect, use a lower value for the background layer and a higher value for the foreground element.
    */
@@ -19,7 +19,7 @@ type ParallaxProps = {
   children: ReactNode;
 };
 
-export const Parallax = ({ children, offset }: ParallaxProps) => {
+export const Parallax = ({ children, offset = 60 }: ParallaxProps) => {
   const prefersReducedMotion = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({

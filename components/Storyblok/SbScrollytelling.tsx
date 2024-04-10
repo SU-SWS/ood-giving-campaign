@@ -22,6 +22,7 @@ type SbScrollytellingProps = {
     contentAlign?: ContentAlignType;
     spacingTop?: MarginType;
     spacingBottom?: MarginType;
+    isHidden?: boolean;
   };
 };
 
@@ -38,9 +39,14 @@ export const SbScrollytelling = ({
     contentAlign,
     spacingTop,
     spacingBottom,
+    isHidden,
   },
   blok,
 }: SbScrollytellingProps) => {
+  if (isHidden) {
+    return null;
+  }
+
   const Caption = hasRichText(caption) ? <RichText textColor="black-70" wysiwyg={caption} /> : undefined;
 
   return (

@@ -17,6 +17,7 @@ type SbBannerProps = {
     cta?: SbBlokData[];
     image?: SbImageType;
     bgColor?: BgTextColorPairBlackWhiteType;
+    isHidden?: boolean;
   };
 };
 
@@ -28,9 +29,14 @@ export const SbBanner = ({
     cta,
     image: { filename, focus } = {},
     bgColor,
+    isHidden,
   },
   blok,
 }: SbBannerProps) => {
+  if (isHidden) {
+    return null;
+  }
+
   const Cta = !!getNumBloks(cta) ? <CreateBloks blokSection={cta} /> : undefined;
   const Body = hasRichText(body) ? <RichText wysiwyg={body} textColor={bgColor === 'black' ? 'white' : 'black'} /> : undefined;
 

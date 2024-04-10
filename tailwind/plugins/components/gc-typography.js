@@ -15,6 +15,9 @@ module.exports = function () {
           fontSize: '3.4rem',
         },
       },
+      '.gc-caption': {
+        fontSize: 'max(1.5rem, 0.81em)',
+      },
       '.gc-card': {
         fontSize: '0.93em',
         lineHeight: theme('lineHeight.snug'),
