@@ -17,6 +17,7 @@ type SbWysiwygProps = {
     width?: WidthType;
     spacingTop?: PaddingType;
     spacingBottom?: PaddingType;
+    isHidden?: boolean;
   },
   isDarkTheme?: boolean;
 };
@@ -31,23 +32,30 @@ export const SbWysiwyg = ({
     width,
     spacingTop,
     spacingBottom,
+    isHidden,
   },
   blok,
   isDarkTheme,
-}: SbWysiwygProps) => (
-  <WidthBox
-    {...storyblokEditable(blok)}
-    boundingWidth={boundingWidth}
-    width={width}
-    pt={spacingTop}
-    pb={spacingBottom}
-  >
-    <RichText
-      type="default"
-      wysiwyg={content}
-      textColor={isDarkTheme || isLightText ? 'white' : 'black'}
-      textAlign={textAlign}
-      bgColor={bgColor}
-    />
-  </WidthBox>
-);
+}: SbWysiwygProps) => {
+  if (isHidden) {
+    return null;
+  }
+
+  return (
+    <WidthBox
+      {...storyblokEditable(blok)}
+      boundingWidth={boundingWidth}
+      width={width}
+      pt={spacingTop}
+      pb={spacingBottom}
+    >
+      <RichText
+        type="default"
+        wysiwyg={content}
+        textColor={isDarkTheme || isLightText ? 'white' : 'black'}
+        textAlign={textAlign}
+        bgColor={bgColor}
+      />
+    </WidthBox>
+  );
+};

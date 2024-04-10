@@ -26,6 +26,7 @@ type SbBlurryPosterProps = {
     tabColor?: {
       value?: PaletteAccentHexColorType;
     }
+    isHidden?: boolean;
   }
 };
 
@@ -46,9 +47,14 @@ export const SbBlurryPoster = ({
     alt,
     bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
     tabColor: { value: tabColorValue } = {},
+    isHidden,
   },
   blok,
 }: SbBlurryPosterProps) => {
+  if (isHidden) {
+    return null;
+  }
+
   const Cta = <CreateBloks blokSection={cta} />;
 
   return (

@@ -29,6 +29,7 @@ type SbGridProps = {
     paddingBottom?: PaddingType;
     marginTop?: MarginType;
     marginBottom?: MarginType;
+    isHidden?: boolean;
   };
 };
 
@@ -51,31 +52,38 @@ export const SbGrid = ({
     paddingBottom,
     marginTop,
     marginBottom,
+    isHidden,
   },
   blok,
-}: SbGridProps) => (
-  <WidthBox
-    {...storyblokEditable(blok)}
-    boundingWidth={boundingWidth}
-    width={width}
-    align={align}
-    mt={marginTop}
-    mb={marginBottom}
-    pt={paddingTop}
-    pb={paddingBottom}
-  >
-    <Grid
-      isList={isList}
-      xs={xs}
-      sm={sm}
-      md={md}
-      lg={lg}
-      xl={xl}
-      xxl={xxl}
-      gap={gap}
-      rtl={rtl}
+}: SbGridProps) => {
+  if (isHidden) {
+    return null;
+  }
+
+  return (
+    <WidthBox
+      {...storyblokEditable(blok)}
+      boundingWidth={boundingWidth}
+      width={width}
+      align={align}
+      mt={marginTop}
+      mb={marginBottom}
+      pt={paddingTop}
+      pb={paddingBottom}
     >
-      <CreateBloks blokSection={items} isListItems={isList} />
-    </Grid>
-  </WidthBox>
-);
+      <Grid
+        isList={isList}
+        xs={xs}
+        sm={sm}
+        md={md}
+        lg={lg}
+        xl={xl}
+        xxl={xxl}
+        gap={gap}
+        rtl={rtl}
+      >
+        <CreateBloks blokSection={items} isListItems={isList} />
+      </Grid>
+    </WidthBox>
+  );
+};

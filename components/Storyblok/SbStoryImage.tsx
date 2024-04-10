@@ -52,11 +52,11 @@ export const SbStoryImage = ({
   },
   blok,
 }: SbStoryImageProps) => {
-  const Caption = hasRichText(caption) ? <RichText textColor={isCaptionLight ? 'white' : 'black-70'} wysiwyg={caption} /> : undefined;
-
   if (isHidden) {
     return null;
   }
+
+  const Caption = hasRichText(caption) ? <RichText textColor={isCaptionLight ? 'white' : 'black-70'} wysiwyg={caption} /> : undefined;
 
   return (
     <StoryImage
