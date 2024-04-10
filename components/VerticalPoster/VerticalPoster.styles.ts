@@ -52,7 +52,7 @@ export const imageWrapper = (imageOnLeft: boolean) => cnb('w-full bg-gc-black bg
 export const imageInnerWrapper = 'size-full';
 export const image = 'size-full object-cover object-center';
 
-export const caption = (imageOnLeft: boolean) => cnb('relative mt-05em caption *:*:leading-display *:max-w-prose-wide first:*:*:mt-0 *:ml-0',
+export const caption = (imageOnLeft: boolean) => cnb('relative mt-06em gc-caption *:*:leading-display *:max-w-prose-wide first:*:*:mt-0 *:ml-0',
   imageOnLeft ? '' : '*:lg:mr-0 *:lg:ml-auto lg:*:text-right',
 );
 

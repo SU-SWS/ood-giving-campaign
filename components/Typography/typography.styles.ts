@@ -76,7 +76,7 @@ export const textVariants = {
    * Momentum typography styles
    * (-gc ones are Decanter styles with Momentum modifications)
    */
-  caption: 'caption',
+  caption: 'gc-caption',
   card: 'gc-card',
   changemaker: 'gc-changemaker',
   intro: 'gc-intro-text',

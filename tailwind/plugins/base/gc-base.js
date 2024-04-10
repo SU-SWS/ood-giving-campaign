@@ -30,6 +30,9 @@ module.exports = function () {
           color: config('theme.colors.digital-red.dark'),
         },
       },
+      figcaption: {
+        fontSize: 'max(1.5rem, 0.81em)',
+      },
     });
   };
 };

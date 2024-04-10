@@ -35,7 +35,7 @@ export const subhead = (headerAlign?: AlignType) => cnb('relative z-10 rs-mt-3 t
 });
 export const contentWrapper = 'relative z-10';
 export const cta = 'cc md:flex-row *:mx-auto rs-mt-3 gap-20 lg:gap-27 w-fit';
-export const caption = 'caption *:leading-display mt-08em max-w-prose-wide';
+export const caption = 'gc-caption first:*:mt-0 *:leading-display mt-06em max-w-prose-wide';
 
 export const bgImage = 'absolute top-0 left-0 size-full object-cover';
 export const overlay = (hasBgGradient?: boolean) => cnb('absolute top-0 left-0 size-full z-10', hasBgGradient ? 'bg-gradient-to-b via-50%' : '');

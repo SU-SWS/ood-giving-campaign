@@ -24,4 +24,4 @@ export const imageWrapper = (isFullHeight: boolean, isParallax: boolean) => cnb(
   isParallax ? 'overflow-hidden' : '',
 );
 export const image = (isParallax: boolean) => cnb('w-full object-cover', isParallax ? 'h-[calc(100%_+_12rem)] -mt-60' : 'h-full');
-export const caption = '*:*:leading-display caption mt-1em max-w-prose-wide';
+export const caption = '*:*:leading-display mt-06em max-w-prose-wide first:*:*:mt-0';
