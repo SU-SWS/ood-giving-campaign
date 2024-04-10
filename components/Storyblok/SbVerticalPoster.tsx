@@ -30,6 +30,7 @@ type SbVerticalPosterProps = {
     bgAlt?: string;
     isParallax?: boolean;
     bgColor?: BgColorType;
+    isHidden?: boolean;
   }
 };
 
@@ -53,9 +54,14 @@ export const SbVerticalPoster = ({
     bgAlt,
     isParallax,
     bgColor,
+    isHidden,
   },
   blok,
 }: SbVerticalPosterProps) => {
+  if (isHidden) {
+    return null;
+  }
+
   const Cta = !!getNumBloks(cta) ? <CreateBloks blokSection={cta} /> : undefined;
   const Body = hasRichText(body) ? <RichText textAlign="center" textColor={bgColor === 'black' ? 'white' : 'black'} wysiwyg={body} /> : undefined;
   const Caption = hasRichText(caption) ? <RichText textColor='black-70' wysiwyg={caption} /> : undefined;

@@ -1,8 +1,8 @@
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
-import { MomentPoster } from '../MomentPoster';
-import { CreateBloks } from '../CreateBloks';
-import { RichText } from '../RichText';
+import { MomentPoster } from '@/components/MomentPoster';
+import { CreateBloks } from '@/components/CreateBloks';
+import { RichText } from '@/components/RichText';
 import { type SbImageType } from './Storyblok.types';
 import { hasRichText } from '@/utilities/hasRichText';
 import { getNumBloks } from '@/utilities/getNumBloks';
@@ -30,6 +30,7 @@ type SbMomentPosterProps = {
     gradientVia?: GradientViaType;
     bgBlur?: BgBlurType;
     isStackedCtas?: boolean;
+    isHidden?: boolean;
   };
 };
 
@@ -49,9 +50,14 @@ export const SbMomentPoster = ({
     gradientVia,
     bgBlur,
     isStackedCtas,
+    isHidden,
   },
   blok,
 }: SbMomentPosterProps) => {
+  if (isHidden) {
+    return null;
+  }
+
   const Cta = !!getNumBloks(cta) ? <CreateBloks blokSection={cta} /> : undefined;
   const Body = hasRichText(body) ? <RichText wysiwyg={body} textColor={isDarkTheme ? 'white' : 'black'} /> : undefined;
 

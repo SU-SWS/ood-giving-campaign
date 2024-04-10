@@ -37,6 +37,7 @@ type SbHomepageThemeSectionProps = {
     gradientTop?: GradientToType;
     gradientBottom?: GradientFromType;
     gradientVia?: GradientViaType;
+    isHidden?: boolean;
   };
 };
 
@@ -53,9 +54,14 @@ export const SbHomepageThemeSection = ({
     gradientTop,
     gradientBottom,
     gradientVia,
+    isHidden,
   },
   blok,
 }: SbHomepageThemeSectionProps) => {
+  if (isHidden) {
+    return null;
+  }
+
   const hasBgGradient = !!gradientTop && !!gradientBottom;
 
   return (

@@ -21,6 +21,7 @@ type SbEmbedMediaProps = {
     isCaptionLight?: boolean;
     isPreview?: boolean;
     previewAriaLabel?: string;
+    isHidden?: boolean;
   };
 };
 
@@ -37,9 +38,14 @@ export const SbEmbedMedia = ({
     isCaptionLight,
     isPreview,
     previewAriaLabel = 'Play video',
+    isHidden,
   },
   blok,
 }: SbEmbedMediaProps) => {
+  if (isHidden) {
+    return null;
+  }
+
   const Caption = hasRichText(caption) ? <RichText textColor={isCaptionLight ? 'white' : 'black-70'} wysiwyg={caption} /> : undefined;
 
   return (
