@@ -106,7 +106,7 @@ export const Scrollytelling = ({
             className={styles.imageOverlay(overlay)}
             style={{ opacity: animateDarkOverlayOpacity, willChange }}
           />
-          {!!imageEntrance && imageEntrance !== 'zoom-in' && (
+          {!!imageEntrance && !imageEntrance?.includes('zoom') && (
             <m.div
               className={styles.filterOverlay(imageEntrance)}
               style={{ opacity: animateFilterOpacity, willChange }}
