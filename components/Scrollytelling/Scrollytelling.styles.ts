@@ -21,10 +21,22 @@ export const overlays = {
 };
 export type OverlayType = keyof typeof overlays;
 
+export const imageEntrances = {
+  none: '',
+  'zoom-in': '',
+  blur: 'backdrop-blur',
+  grayscale: 'backdrop-saturate-0',
+  sepia: 'backdrop-sepia',
+};
+export type ImageEntranceType = keyof typeof imageEntrances;
+
 export const wrapper = 'relative';
 export const imageWrapper = 'sticky top-0 h-screen w-full z-0';
 export const image = 'absolute size-full object-cover top-0 left-0 z-0';
-export const imageOverlay = (overlay?: OverlayType) => cnb('absolute size-full top-0 left-0 z-0 bg-black-true/50', overlays[overlay]);
+
+export const overlayBase = 'absolute size-full top-0 left-0 z-0';
+export const imageOverlay = (overlay?: OverlayType) => cnb(overlayBase, 'bg-black-true/50', overlays[overlay]);
+export const filterOverlay = (imageEntrance: ImageEntranceType) => cnb(overlayBase, imageEntrances[imageEntrance]);
 
 export const content = 'relative z-10 cc text-white rs-py-10';
 export const contentWrapper = (contentAlign: ContentAlignType) => cnb('w-full mx-auto md:w-2/3 xl:w-1/2', {

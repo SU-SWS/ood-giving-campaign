@@ -2,12 +2,13 @@ import { useRef } from 'react';
 import {
   m, useScroll, useTransform, useWillChange,
 } from 'framer-motion';
+import { AnimateInView } from '@/components/Animate';
 import { Container } from '@/components/Container';
 import { Heading, Text, type HeadingType } from '@/components/Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { type MarginType } from '@/utilities/datasource';
 import * as styles from './Scrollytelling.styles';
-import { AnimateInView } from '../Animate';
+
 
 
 type ScrollytellingProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -19,6 +20,7 @@ type ScrollytellingProps = React.HTMLAttributes<HTMLDivElement> & {
   bgImageSrc?: string;
   bgImageFocus?: string;
   bgImageAlt?: string;
+  imageEntrance?: styles.ImageEntranceType;
   overlay?: styles.OverlayType;
   contentAlign?: styles.ContentAlignType;
   spacingTop?: MarginType;
@@ -33,6 +35,7 @@ export const Scrollytelling = ({
   bgImageSrc,
   bgImageFocus,
   bgImageAlt,
+  imageEntrance,
   overlay,
   contentAlign = 'center',
   spacingTop,
@@ -46,15 +49,16 @@ export const Scrollytelling = ({
     target: contentRef,
     offset: ['start center', 'end start'],
   });
-  const animateOpacity = useTransform(scrollYProgress, [0, 0.1], ['0%', '100%']);
-  const animateScale = useTransform(scrollYProgress, [0, 0.2], [0.8, 1]);
+  const animateDarkOverlayOpacity = useTransform(scrollYProgress, [0, 0.2], ['0%', '100%']);
+  const animateImageScale = useTransform(scrollYProgress, [0, 0.2], [0.8, 1]);
+  const animateFilterOpacity = useTransform(scrollYProgress, [0, 0.2], ['0', '100%']);
 
   return (
     <Container width="full" mt={spacingTop} mb={spacingBottom} {...props}>
       <Container width="full" bgColor="black" className={styles.wrapper} >
         <m.div
           className={styles.imageWrapper}
-          style={{ scale: animateScale, willChange }}
+          style={{ scale: imageEntrance === 'zoom-in' ? animateImageScale : undefined, willChange }}
         >
           <picture>
             <source
@@ -91,8 +95,14 @@ export const Scrollytelling = ({
           </picture>
           <m.div
             className={styles.imageOverlay(overlay)}
-            style={{ opacity: animateOpacity, willChange }}
+            style={{ opacity: animateDarkOverlayOpacity, willChange }}
           />
+          {!!imageEntrance && imageEntrance !== 'zoom-in' && (
+            <m.div
+              className={styles.filterOverlay(imageEntrance)}
+              style={{ opacity: animateFilterOpacity, willChange }}
+            />
+          )}
         </m.div>
         <div ref={contentRef} className={styles.content}>
           <div className={styles.contentWrapper(contentAlign)}>
