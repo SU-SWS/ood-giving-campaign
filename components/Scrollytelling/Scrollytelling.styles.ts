@@ -24,13 +24,14 @@ export type OverlayType = keyof typeof overlays;
 export const imageEntrances = {
   none: '',
   'zoom-in': '',
+  'zoom-out': '',
   blur: 'backdrop-blur',
   grayscale: 'backdrop-saturate-0',
   sepia: 'backdrop-sepia',
 };
 export type ImageEntranceType = keyof typeof imageEntrances;
 
-export const wrapper = 'relative';
+export const wrapper = 'relative overflow-clip';
 export const imageWrapper = 'sticky top-0 h-screen w-full z-0';
 export const image = 'absolute size-full object-cover top-0 left-0 z-0';
 

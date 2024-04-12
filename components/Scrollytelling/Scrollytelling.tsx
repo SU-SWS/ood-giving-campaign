@@ -49,8 +49,14 @@ export const Scrollytelling = ({
     target: contentRef,
     offset: ['start center', 'end start'],
   });
+  let imageZoomStart = 1;
+  if (imageEntrance === 'zoom-in') {
+    imageZoomStart = 0.8;
+  } else if (imageEntrance === 'zoom-out') {
+    imageZoomStart = 1.1;
+  }
   const animateDarkOverlayOpacity = useTransform(scrollYProgress, [0, 0.2], ['0%', '100%']);
-  const animateImageScale = useTransform(scrollYProgress, [0, 0.2], [0.8, 1]);
+  const animateImageScale = useTransform(scrollYProgress, [0, 0.3], [imageZoomStart, 1]);
   const animateFilterOpacity = useTransform(scrollYProgress, [0, 0.2], ['0', '100%']);
 
   return (
@@ -58,7 +64,10 @@ export const Scrollytelling = ({
       <Container width="full" bgColor="black" className={styles.wrapper} >
         <m.div
           className={styles.imageWrapper}
-          style={{ scale: imageEntrance === 'zoom-in' ? animateImageScale : undefined, willChange }}
+          style={{
+            scale: imageZoomStart !== 1 ? animateImageScale : undefined,
+            willChange,
+          }}
         >
           <picture>
             <source
