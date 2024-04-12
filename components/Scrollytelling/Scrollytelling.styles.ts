@@ -8,16 +8,16 @@ export const contentAligns = {
 export type ContentAlignType = keyof typeof contentAligns;
 
 export const overlays = {
-  none: 'lg:bg-transparent',
-  'black-20': 'lg:bg-black-true/20',
-  'black-30': 'lg:bg-black-true/30',
-  'black-40': 'lg:bg-black-true/40',
-  'black-50': 'lg:bg-black-true/50',
-  'black-60': 'lg:bg-black-true/60',
-  'black-70': 'lg:bg-black-true/70',
-  'black-80': 'lg:bg-black-true/80',
-  'black-gradient-to-r': 'lg:bg-transparent lg:bg-gradient-to-r lg:from-black-true/70',
-  'black-gradient-to-l': 'lg:bg-transparent lg:bg-gradient-to-l lg:from-black-true/70',
+  none: 'bg-black-true/50 lg:bg-transparent',
+  'black-20': 'bg-black-true/50 lg:bg-black-true/20',
+  'black-30': 'bg-black-true/50 lg:bg-black-true/30',
+  'black-40': 'bg-black-true/50 lg:bg-black-true/40',
+  'black-50': 'bg-black-true/50',
+  'black-60': 'bg-black-true/60',
+  'black-70': 'bg-black-true/70',
+  'black-80': 'bg-black-true/80',
+  'black-gradient-to-r': 'bg-black-true/50 lg:bg-transparent lg:bg-gradient-to-r lg:from-black-true/70',
+  'black-gradient-to-l': 'bg-black-true/50 lg:bg-transparent lg:bg-gradient-to-l lg:from-black-true/70',
 };
 export type OverlayType = keyof typeof overlays;
 
@@ -36,7 +36,7 @@ export const imageWrapper = 'sticky top-0 h-screen w-full z-0';
 export const image = 'absolute size-full object-cover top-0 left-0 z-0';
 
 export const overlayBase = 'absolute size-full top-0 left-0 z-0';
-export const imageOverlay = (overlay?: OverlayType) => cnb(overlayBase, 'bg-black-true/50', overlays[overlay]);
+export const imageOverlay = (overlay?: OverlayType) => cnb(overlayBase, overlays[overlay]);
 export const filterOverlay = (imageEntrance: ImageEntranceType) => cnb(overlayBase, imageEntrances[imageEntrance]);
 
 export const content = 'relative z-10 cc text-white rs-py-10';
