@@ -100,7 +100,7 @@ export const FeatureMasonry = ({
           previewAriaLabel={previewAriaLabel}
         />
       </Grid>
-      <Text variant="caption" leading="display" className="text-black-70 max-w-prose-wide mt-1em whitespace-pre-line">
+      <Text variant="caption" leading="display" className="text-black-70 max-w-prose-wide mt-06em whitespace-pre-line">
         {caption}
       </Text>
     </Container>

@@ -14,6 +14,7 @@ export type SbFeatureMasonryProps = {
     videoUrl?: string;
     previewAriaLabel?: string;
     caption?: string;
+    isHidden?: boolean;
   };
 };
 
@@ -28,22 +29,29 @@ export const SbFeatureMasonry = ({
     videoUrl,
     previewAriaLabel = 'Play video',
     caption,
+    isHidden,
   },
   blok,
-}: SbFeatureMasonryProps) => (
-  <FeatureMasonry
-    {...storyblokEditable(blok)}
-    audioUrl={audioUrl}
-    audioBgImageSrc={audioBgImageSrc}
-    audioBgImageFocus={audioBgImagFocus}
-    quoteBody={quoteBody}
-    quoteBgImageSrc={quoteBgImageSrc}
-    quoteBgImageFocus={quoteBgImageFocus}
-    imageSrc1={imageSrc1}
-    imageFocus1={imageFocus1}
-    imageAlt1={imageAlt1}
-    videoUrl={videoUrl}
-    previewAriaLabel={previewAriaLabel}
-    caption={caption}
-  />
-);
+}: SbFeatureMasonryProps) => {
+  if (isHidden) {
+    return null;
+  }
+
+  return (
+    <FeatureMasonry
+      {...storyblokEditable(blok)}
+      audioUrl={audioUrl}
+      audioBgImageSrc={audioBgImageSrc}
+      audioBgImageFocus={audioBgImagFocus}
+      quoteBody={quoteBody}
+      quoteBgImageSrc={quoteBgImageSrc}
+      quoteBgImageFocus={quoteBgImageFocus}
+      imageSrc1={imageSrc1}
+      imageFocus1={imageFocus1}
+      imageAlt1={imageAlt1}
+      videoUrl={videoUrl}
+      previewAriaLabel={previewAriaLabel}
+      caption={caption}
+    />
+  );
+};
