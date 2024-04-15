@@ -11,10 +11,6 @@ export const cta = 'group hocus:underline transition-all';
 
 const ghostSwipeBase = 'relative z-[10] block w-fit decoration-2 decoration-transparent underline-offset-4 hocus:decoration-white/80 font-normal leading-display hocus:text-white border-2 border-current hocus:border-digital-red-light focus-visible:outline-none after:block after:content-[""] after:absolute after:top-0 after:left-0 after:w-[0] after:h-full after:bg-gradient-to-r after:from-digital-red after:to-cardinal-red after:transition-all after:z-[-1] hocus:after:w-full overflow-hidden';
 
-const mainNavBase = 'group bg-clip-padding inline-block border-2 font-normal decoration-transparent decoration-1 underline-offset-4 hocus:ring-1 hocus:ring-inset';
-const mainNavWhite = 'text-white border-white bg-gc-black hocus:text-white hocus:decoration-white hocus:ring-white';
-const mainNavDark = 'text-gc-black border-gc-black bg-white hocus:text-gc-black hocus:decoration-gc-black hocus:ring-gc-black';
-
 const mastheadGivingBase = 'inline-block w-fit font-normal no-underline leading-display hocus:decoration-2 focus-visible:ring-2 focus-visible:ring-digital-red-xlight ring-offset-4 focus-visible:outline-none focus-visible:rounded underline-offset-4';
 const mastheadGivingWhite = 'text-white hocus:text-white hocus:decoration-white focus-visible:ring-offset-black';
 const mastheadGivingDark = 'text-gc-black hocus:text-gc-black hocus:decoration-gc-black focus-visible:ring-offset-white';
@@ -32,9 +28,6 @@ export const ctaVariants = {
   'ghost-swipe-overlay': `${ghostSwipeBase} bg-black-true/40`, // Use for split poster over images
   link: '!p-0 inline-block w-fit font-normal leading-display text-current hocus:text-current no-underline decoration-2 underline-offset-4 focus-visible:ring-2 focus-visible:ring-digital-red-light focus-visible:outline-none focus-visible:rounded',
   back: 'inline-block font-normal no-underline leading-none group-hocus:underline text-black hocus:text-digital-red focus-visible:ring-2 focus-visible:ring-digital-red-light focus-visible:ring-offset-4 focus:outline-none rounded-[1px]',
-  mainNav: `${mainNavBase} ${mainNavWhite} hocus-visible:bg-digital-red`, // Main nav buttons at the top of the page
-  mainNavUp: `${mainNavBase} ${mainNavWhite} hocus-visible:bg-digital-red`, // Main nav buttons when scrolling up
-  mainNavBlack: `${mainNavBase} ${mainNavDark} hocus-visible:bg-lime`, // Main nav buttons light mode story pages
   mastheadGiving: `${mastheadGivingBase} ${mastheadGivingWhite}`, // Giving link regular dark pages
   mastheadGivingBlack: `${mastheadGivingBase} ${mastheadGivingDark}`, // Giving link light mode story pages
   close: 'inline-block font-semibold leading-none text-digital-red-light hocus:text-digital-red-xlight focus:outline-none',
@@ -81,8 +74,6 @@ export const ctaSizes: CtaSizeObjectType = {
   default: 'pt-9 pb-10 pl-18 pr-16 lg:pl-22 lg:pr-20 lg:pt-10 lg:pb-11 text-16 lg:text-20',
   large: 'pl-28 pr-26 pt-16 pb-17 lg:pr-40 lg:pl-44 lg:pt-20 lg:pb-22 text-18 lg:text-24',
   link: 'text-16 lg:text-20',
-  mainNav: 'text-14 sm:text-15 md:text-16 lg:text-19 px-11 py-6 sm:px-16 sm:py-10 md:px-20 md:py-10 lg:py-12',
-  mainNavUp: 'text-14 px-10 pt-7 pb-8 lg:px-16 lg:py-11 lg:text-15',
   mastheadGiving: 'text-14 sm:text-15 md:text-16 lg:text-19',
   back: 'text-16',
   close: 'text-18 md:text-21',
@@ -99,9 +90,6 @@ export const ctaSizeMap: CtaSizeMapType = {
   inlineDark: 'unset',
   'ghost-swipe': 'default',
   'ghost-swipe-overlay': 'default',
-  mainNav: 'mainNav',
-  mainNavUp: 'mainNavUp',
-  mainNavBlack: 'mainNav',
   mastheadGiving: 'mastheadGiving',
   mastheadGivingBlack: 'mastheadGiving',
   link: 'unset',
