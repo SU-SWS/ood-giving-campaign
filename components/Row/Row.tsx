@@ -36,7 +36,7 @@ export const Row = ({
   <FlexBox
     as={as}
     className={cnb(
-      'flex-col lg:flex-row *:shrink-0 *:grow-0 *:w-full',
+      'flex-col lg:flex-row *:grow-0 *:w-full',
       gap ? styles.rowGaps[gap] : '',
       mt ? marginTops[mt] : '',
       mb ? marginBottoms[mb] : '',
