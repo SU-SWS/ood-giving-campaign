@@ -1,5 +1,7 @@
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
-import { Row, type RowGapType, type RowColumnRatioType } from '@/components/Row';
+import {
+  Row, type RowGapType, type RowColumnRatioType, type DisplayRowAtType,
+} from '@/components/Row';
 import { WidthBox, type WidthType } from '@/components/WidthBox';
 import { CreateBloks } from '@/components/CreateBloks';
 import { type MarginType } from '@/utilities/datasource';
@@ -11,6 +13,7 @@ type SbRowProps = {
     isList?: boolean;
     gap?: RowGapType;
     columnRatio?: RowColumnRatioType;
+    displayRowAt?: DisplayRowAtType;
     boundingWidth?: 'site' | 'full';
     width?: WidthType;
     horizontalAlign?: 'left' | 'center' | 'right';
@@ -27,6 +30,7 @@ export const SbRow = ({
     isList,
     gap,
     columnRatio,
+    displayRowAt,
     boundingWidth = 'full',
     width,
     items,
@@ -52,6 +56,7 @@ export const SbRow = ({
         isList={isList}
         gap={gap}
         columnRatio={columnRatio}
+        displayRowAt={displayRowAt}
       >
         <CreateBloks blokSection={items} isListItems={isList} />
       </Row>

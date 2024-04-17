@@ -15,6 +15,8 @@ export type RowProps = Omit<HTMLAttributes<HTMLElement>, 'className'> & {
   isList?: boolean;
   gap?: types.RowGapType;
   columnRatio?: types.RowColumnRatioType;
+  // Breakpoint to start display items in a row. Before that they stack vertically.
+  displayRowAt?: types.DisplayRowAtType;
   mt?: MarginType;
   mb?: MarginType;
   my?: MarginType;
@@ -26,6 +28,7 @@ export const Row = ({
   as = isList ? 'ul' : 'div',
   gap,
   columnRatio,
+  displayRowAt = 'md',
   mt,
   mb,
   my,
@@ -36,7 +39,8 @@ export const Row = ({
   <FlexBox
     as={as}
     className={cnb(
-      'flex-col lg:flex-row *:grow-0 *:w-full',
+      styles.root,
+      styles.displayRowAts[displayRowAt],
       gap ? styles.rowGaps[gap] : '',
       mt ? marginTops[mt] : '',
       mb ? marginBottoms[mb] : '',

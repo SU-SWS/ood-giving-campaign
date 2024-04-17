@@ -12,6 +12,7 @@ export type SbSidebarCardProps = {
     heading?: string;
     headingLevel?: HeadingType;
     isSmallHeading?: boolean;
+    isLightText?: boolean;
     superhead?: string;
     content?: SbBlokData[];
     cta?: SbBlokData[];
@@ -32,6 +33,7 @@ export const SbSidebarCard = ({
     heading,
     headingLevel,
     isSmallHeading,
+    isLightText,
     superhead,
     content,
     cta,
@@ -52,6 +54,7 @@ export const SbSidebarCard = ({
       heading={heading}
       headingLevel={headingLevel}
       isSmallHeading={isSmallHeading}
+      isLightText={isLightText}
       superhead={superhead}
       barColor={paletteAccentColors[value]}
       barOnRight={barOnRight}

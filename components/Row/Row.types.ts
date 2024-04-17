@@ -5,3 +5,5 @@ export type RowElementType = 'div' | 'section' | 'article' | 'main' | 'footer' |
 export type RowGapType = keyof typeof styles.rowGaps;
 
 export type RowColumnRatioType = keyof typeof styles.rowColumnRatios;
+
+export type DisplayRowAtType = keyof typeof styles.displayRowAts;

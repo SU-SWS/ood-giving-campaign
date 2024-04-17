@@ -16,6 +16,12 @@ export const rowColumnRatios = {
   '5:7': 'first:*:basis-5/12 last:*:basis-7/12',
   '7:5': 'first:*:basis-7/12 last:*:basis-5/12',
   '1:1:1': '*:basis-1/3',
+  '1:1:2': 'first:*:basis-1/4 even:*:basis-1/4 last:*:basis-1/2',
+  '1:2:1' : 'first:*:basis-1/4 even:*:basis-1/2 last:*:basis-1/4',
+  '1:2:2': 'first:*:basis-1/5 even:*:basis-2/5 last:*:basis-2/5',
+  '2:1:1': 'first:*:basis-1/2 even:*:basis-1/4 last:*:basis-1/4',
+  '2:2:1': 'first:*:basis-2/5 even:*:basis-2/5 last:*:basis-1/5',
+  '2:1:2': 'first:*:basis-2/5 even:*:basis-1/5 last:*:basis-2/5',
 };
 
 export const rowJustifyContent = {
@@ -50,3 +56,11 @@ export const rowAlignItems = {
   baseline: 'items-baseline',
   stretch: 'items-stretch',
 };
+
+export const displayRowAts = {
+  md: 'md:flex-row',
+  lg: 'lg:flex-row',
+  xl: 'xl:flex-row',
+};
+
+export const root = 'flex-col *:grow-0 *:w-full';
