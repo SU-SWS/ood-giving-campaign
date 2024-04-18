@@ -1,6 +1,10 @@
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import {
-  Row, type RowGapType, type RowColumnRatioType, type DisplayRowAtType,
+  Row,
+  type RowGapType,
+  type RowColumnRatioType,
+  type RowDisplayRowAtType,
+  type RowVerticalAlignType,
 } from '@/components/Row';
 import { WidthBox, type WidthType } from '@/components/WidthBox';
 import { CreateBloks } from '@/components/CreateBloks';
@@ -13,11 +17,10 @@ type SbRowProps = {
     isList?: boolean;
     gap?: RowGapType;
     columnRatio?: RowColumnRatioType;
-    displayRowAt?: DisplayRowAtType;
+    displayRowAt?: RowDisplayRowAtType;
     boundingWidth?: 'site' | 'full';
     width?: WidthType;
-    horizontalAlign?: 'left' | 'center' | 'right';
-    verticalAlign?: 'top' | 'center' | 'bottom';
+    verticalAlign?: RowVerticalAlignType;
     items: SbBlokData[];
     marginTop?: MarginType;
     marginBottom?: MarginType;
@@ -33,6 +36,7 @@ export const SbRow = ({
     displayRowAt,
     boundingWidth = 'full',
     width,
+    verticalAlign,
     items,
     marginTop,
     marginBottom,
@@ -51,12 +55,14 @@ export const SbRow = ({
       width={width}
       mt={marginTop}
       mb={marginBottom}
+      className={verticalAlign === 'stretch' ? 'flex' : ''}
     >
       <Row
         isList={isList}
         gap={gap}
         columnRatio={columnRatio}
         displayRowAt={displayRowAt}
+        verticalAlign={verticalAlign}
       >
         <CreateBloks blokSection={items} isListItems={isList} />
       </Row>

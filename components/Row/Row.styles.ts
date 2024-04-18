@@ -1,6 +1,7 @@
 export const rowGaps = {
   default: 'grid-gap',
   card: 'grid-gap gap-y-50 xl:gap-y-70',
+  'lg-horizontal': 'grid-gap gap-x-40 lg:gap-x-70 xl:gap-x-80 2xl:gap-x-100',
   xs: 'gap-4',
   'xs-horizontal': 'gap-x-4 gap-y-50 xl:gap-y-70',
 };
@@ -24,43 +25,17 @@ export const rowColumnRatios = {
   '2:1:2': 'first:*:basis-2/5 even:*:basis-1/5 last:*:basis-2/5',
 };
 
-export const rowJustifyContent = {
-  start: 'justify-start',
-  end: 'justify-end',
-  center: 'justify-center',
-  between: 'justify-between',
-  around: 'justify-around',
-  evenly: 'justify-evenly',
-};
-
-export const rowJustifyItems = {
-  start: 'justify-items-start',
-  end: 'justify-items-end',
-  center: 'justify-items-center',
-  stretch: 'justify-items-stretch',
-};
-
-export const rowAlignContent = {
-  start: 'content-start',
-  end: 'content-end',
-  center: 'content-center',
-  between: 'content-between',
-  around: 'content-around',
-  evenly: 'content-evenly',
-};
-
-export const rowAlignItems = {
-  start: 'items-start',
-  end: 'items-end',
-  center: 'items-center',
-  baseline: 'items-baseline',
-  stretch: 'items-stretch',
-};
-
 export const displayRowAts = {
   md: 'md:flex-row',
   lg: 'lg:flex-row',
   xl: 'xl:flex-row',
+};
+
+export const verticalAligns = {
+  top: 'items-start',
+  center: 'items-center',
+  bottom: 'items-end',
+  stretch: 'items-stretch *:h-full',
 };
 
 export const root = 'flex-col *:grow-0 *:w-full';

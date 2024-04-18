@@ -16,7 +16,8 @@ export type RowProps = Omit<HTMLAttributes<HTMLElement>, 'className'> & {
   gap?: types.RowGapType;
   columnRatio?: types.RowColumnRatioType;
   // Breakpoint to start display items in a row. Before that they stack vertically.
-  displayRowAt?: types.DisplayRowAtType;
+  displayRowAt?: types.RowDisplayRowAtType;
+  verticalAlign?: types.RowVerticalAlignType;
   mt?: MarginType;
   mb?: MarginType;
   my?: MarginType;
@@ -29,6 +30,7 @@ export const Row = ({
   gap,
   columnRatio,
   displayRowAt = 'md',
+  verticalAlign = 'top',
   mt,
   mb,
   my,
@@ -41,6 +43,7 @@ export const Row = ({
     className={cnb(
       styles.root,
       styles.displayRowAts[displayRowAt],
+      styles.verticalAligns[verticalAlign],
       gap ? styles.rowGaps[gap] : '',
       mt ? marginTops[mt] : '',
       mb ? marginBottoms[mb] : '',

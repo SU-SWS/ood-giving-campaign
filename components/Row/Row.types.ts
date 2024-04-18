@@ -6,4 +6,6 @@ export type RowGapType = keyof typeof styles.rowGaps;
 
 export type RowColumnRatioType = keyof typeof styles.rowColumnRatios;
 
-export type DisplayRowAtType = keyof typeof styles.displayRowAts;
+export type RowDisplayRowAtType = keyof typeof styles.displayRowAts;
+
+export type RowVerticalAlignType = keyof typeof styles.verticalAligns;
