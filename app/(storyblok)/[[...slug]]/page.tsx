@@ -16,13 +16,20 @@ type ParamsType = {
   slug: string[];
 };
 
-export const revalidate = false;
-
 // Storyblok bridge options.
 const bridgeOptions = {
   resolveRelations,
   resolveLinks: 'story',
 };
+
+// Force the 404 page for anything that isn't statically generated.
+export const dynamicParams = false;
+
+// Don't cache the fetch requests to Storyblok.
+export const fetchCache = 'default-no-store';
+
+// Cache static page render forever.
+export const revalidate = false;
 
 /**
  * Init on the server.
