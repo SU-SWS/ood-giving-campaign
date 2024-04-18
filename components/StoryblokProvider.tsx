@@ -17,9 +17,11 @@ import { SbHomepageThemeSection } from '@/components/Storyblok/SbHomepageThemeSe
 import { SbInitiativeCard } from '@/components/Storyblok/SbInitiativeCard';
 import { SbMomentPoster } from './Storyblok/SbMomentPoster';
 import { SbQuote } from '@/components/Storyblok/SbQuote';
+import { SbRow } from '@/components/Storyblok/SbRow';
 import { SbScrollytelling } from '@/components/Storyblok/SbScrollytelling';
 import { SbSection } from '@/components/Storyblok/SbSection';
 import { SbSidebarCard } from '@/components/Storyblok/SbSidebarCard';
+import { SbSpacer } from '@/components/Storyblok/SbSpacer';
 import { SbStoryMvp } from '@/components/Storyblok/SbStoryMvp/SbStoryMvp';
 import { SbStoryCard } from '@/components/Storyblok/SbStoryCard';
 import { SbStoryImage } from '@/components/Storyblok/SbStoryImage';
@@ -50,9 +52,11 @@ export const components = {
   sbInitiativeCard: SbInitiativeCard,
   sbMomentPoster: SbMomentPoster,
   sbQuote: SbQuote,
+  sbRow: SbRow,
   sbScrollytelling: SbScrollytelling,
   sbSection: SbSection,
   sbSidebarCard: SbSidebarCard,
+  sbSpacer: SbSpacer,
   sbStoryMvp: SbStoryMvp,
   sbStoryCard: SbStoryCard,
   sbStoryImage: SbStoryImage,

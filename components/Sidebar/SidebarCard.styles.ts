@@ -1,12 +1,13 @@
 import { cnb } from 'cnbuilder';
 
-export const root = (hasBgColor?: boolean) => cnb('relative overflow-hidden @container', hasBgColor ? 'text-gc-black backdrop-blur-sm' : '');
+export const root = (hasBgColor: boolean) => cnb('relative overflow-hidden @container', hasBgColor ? 'text-gc-black backdrop-blur-sm' : '');
 
 export const content = (
-  hasBgColor?: boolean,
-  hasBarColor?: boolean,
-  barOnRight?: boolean,
-) => cnb('', {
+  isLightText: boolean,
+  hasBgColor: boolean,
+  hasBarColor: boolean,
+  barOnRight: boolean,
+) => cnb(isLightText ? 'text-white' : '', {
   'rs-py-1': hasBgColor,
   'rs-py-2': !hasBgColor,
   'pr-0': !hasBgColor && hasBarColor && !barOnRight,

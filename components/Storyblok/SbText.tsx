@@ -27,6 +27,7 @@ export type SbTextProps = {
     align?: TextAlignType;
     weight?: FontWeightType;
     italic?: boolean;
+    uppercase?: boolean;
     srOnly?: boolean;
     boundingWidth?: 'site' | 'full';
     width?: '12' | '10' | '8' | '6' | '4';
@@ -51,6 +52,7 @@ export const SbText = ({
     align,
     weight,
     italic,
+    uppercase,
     srOnly,
     boundingWidth,
     marginTop,
@@ -82,6 +84,7 @@ export const SbText = ({
         align={align}
         weight={weight}
         italic={italic}
+        uppercase={uppercase}
         srOnly={srOnly}
         className="whitespace-pre-line mb-0"
       >

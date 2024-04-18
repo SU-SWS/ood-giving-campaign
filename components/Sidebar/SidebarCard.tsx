@@ -31,6 +31,7 @@ export const SidebarCard = ({
   heading,
   headingLevel = 'h3',
   isSmallHeading,
+  isLightText,
   superhead,
   barColor,
   barOnRight,
@@ -50,7 +51,9 @@ export const SidebarCard = ({
       className={cnb(styles.root(!!bgColor), accentBgColors[bgColor], className)}
       {...props}
     >
-      <div className={cnb(styles.content(!!bgColor, !!barColor, barOnRight), accentBorderColors[barColor])}>
+      <div
+        className={cnb(styles.content(isLightText, !!bgColor, !!barColor, barOnRight), accentBorderColors[barColor])}
+      >
         {superhead && (
           <Text weight="semibold" aria-hidden={!!heading}>{superhead}</Text>
         )}
