@@ -39,6 +39,7 @@
     Access-Control-Allow-Origin = "*"
     Content-Security-Policy = "default-src https: 'unsafe-inline' 'unsafe-eval'; form-action https:; img-src https: data:; frame-ancestors https://app.storyblok.com"
     X-Content-Type-Options = "nosniff"
+    X-Robots-Tag = "noindex, nofollow"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Strict-Transport-Security = "max-age=31536000"
     Permissions-Policy = "vibrate=(), geolocation=(), midi=(), notifications=(), push=(), microphone=(), camera=(), magnetometer=(), gyroscope=(), speaker=()"
@@ -51,5 +52,5 @@
 
 # CONTEXTUAL PLUGINS
 # ##############################################################################
-[[context.production.plugins]]
-  package = "netlify-plugin-submit-sitemap"
+# [[context.production.plugins]]
+#   package = "netlify-plugin-submit-sitemap"
