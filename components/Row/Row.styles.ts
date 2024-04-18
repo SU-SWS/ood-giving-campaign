@@ -1,7 +1,7 @@
 export const rowGaps = {
   default: 'grid-gap',
   card: 'grid-gap gap-y-50 xl:gap-y-70',
-  'lg-horizontal': 'grid-gap gap-x-40 lg:gap-x-70 xl:gap-x-80 2xl:gap-x-100',
+  'lg-horizontal': 'gap-y-40 md:gap-y-50 gap-x-40 lg:gap-x-50 xl:gap-x-80 2xl:gap-x-100 3xl:gap-x-120',
   xs: 'gap-4',
   'xs-horizontal': 'gap-x-4 gap-y-50 xl:gap-y-70',
 };
