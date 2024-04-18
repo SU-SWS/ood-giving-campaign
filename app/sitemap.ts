@@ -22,13 +22,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Exclude any stories with noindex set to true on Storyblok
   const indexStories = response.filter((story) => !story.content?.noindex);
   const currentURL = process.env.URL || process.env.DEPLOY_PRIME_URL || 'https://momentum.stanford.edu';
-  
+
   const ret = indexStories.map((story) => {
     const url = story.path ? `${currentURL}/${story.path}` : `${currentURL}/${story.full_slug}`;
     return {
       url: url.replace(/\/+$/, ''),
       lastModified: new Date(story.published_at),
-      changeFrequency: 'daily', // Added in 13.4.5
+      changeFrequency: 'daily' as const, // Added in 13.4.5
       priority: 0.5, // Added in 13.4.5
     };
   });
