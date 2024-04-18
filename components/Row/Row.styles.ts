@@ -26,6 +26,7 @@ export const rowColumnRatios = {
 };
 
 export const displayRowAts = {
+  sm: 'sm:flex-row',
   md: 'md:flex-row',
   lg: 'lg:flex-row',
   xl: 'xl:flex-row',
@@ -35,7 +36,7 @@ export const verticalAligns = {
   top: 'items-start',
   center: 'items-center',
   bottom: 'items-end',
-  stretch: 'items-stretch *:h-full',
+  stretch: 'items-stretch',
 };
 
 export const root = 'flex-col *:grow-0 *:w-full';
