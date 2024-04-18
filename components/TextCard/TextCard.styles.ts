@@ -1,4 +1,4 @@
-export const root = 'relative rs-py-5 rs-px-3';
+export const root = 'relative rs-py-5 rs-px-3 break-words';
 
 export const xsColSpans = {
   1: 'col-span-1',
