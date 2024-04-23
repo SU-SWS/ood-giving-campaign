@@ -24,6 +24,7 @@ export type StoryCardProps = React.HTMLAttributes<HTMLDivElement> & {
   animation?: AnimationType;
   delay?: number;
   isHorizontal?: boolean;
+  isListView?: boolean;
 };
 
 export const StoryCard = ({
@@ -39,7 +40,8 @@ export const StoryCard = ({
   taxonomy,
   animation = 'none',
   delay,
-  isHorizontal,
+  isListView = true,
+  isHorizontal = isListView,
   className,
   ...props
 }: StoryCardProps) => {
@@ -53,10 +55,10 @@ export const StoryCard = ({
   return (
     <AnimateInView animation={animation} delay={delay}>
       <article
-        className={cnb(styles.root(isHorizontal), className)}
+        className={cnb(styles.root(isHorizontal, isListView), className)}
         {...props}
       >
-        <div className={styles.cardWrapper(isHorizontal)}>
+        <div className={styles.cardWrapper(isHorizontal, isListView)}>
           {imageSrc && (
             <div className={styles.imageWrapper}>
               <picture>
@@ -88,13 +90,16 @@ export const StoryCard = ({
           <FlexBox
             direction="col"
             justifyContent={isHorizontal ? 'center' : undefined}
-            className={styles.contentWrapper(isHorizontal)}
+            className={styles.contentWrapper(isHorizontal, isListView)}
           >
             {heading && (
               <Heading
                 as={headingLevel}
                 leading="none"
-                className={cnb(styles.heading(!!tabColor, isHorizontal, isSmallHeading), accentBorderColors[tabColor])}
+                className={cnb(
+                  styles.heading(!!tabColor, isHorizontal, isSmallHeading, isListView),
+                  accentBorderColors[tabColor])
+                }
               >
                 <CtaLink sbLink={link} href={href} className={styles.headingLink}>
                   {heading}
