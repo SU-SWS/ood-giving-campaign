@@ -1,7 +1,7 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
-import { type AnimationType } from '../Animate';
-import { type HeadingType } from '../Typography';
-import { StoryCard } from '../StoryCard';
+import { type AnimationType } from '@/components/Animate';
+import { type HeadingType } from '@/components/Typography';
+import { StoryCard } from '@/components/StoryCard';
 import { type SbImageType, type SbLinkType } from './Storyblok.types';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
 
