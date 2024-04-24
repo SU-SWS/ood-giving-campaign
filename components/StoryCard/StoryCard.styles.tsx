@@ -2,7 +2,7 @@ import { cnb } from 'cnbuilder';
 
 export const root = (isHorizontal: boolean, isListView: boolean) => cnb(
   '@container relative z-10 mx-auto', {
-  'max-w-300 sm:max-w-400 md:max-w-full': !isHorizontal,
+  'max-w-300 sm:max-w-400 md:max-w-full': !isHorizontal && !isListView,
   'max-w-600 lg:max-w-none': isHorizontal && !isListView,
   'max-w-300 sm:max-w-none': isListView,
   },
@@ -11,8 +11,8 @@ export const root = (isHorizontal: boolean, isListView: boolean) => cnb(
 export const cardWrapper = (isHorizontal: boolean, isListView: boolean) => cnb(
   'relative group', {
   'grid lg:grid-cols-2 bg-black-true/50': isHorizontal && !isListView,
-  'grid sm:grid-cols-[3fr_5fr] lg:grid-cols-[3fr_7fr] 2xl:grid-cols-[1fr_3fr] items-start': isHorizontal && isListView,
-  '@200:text-15 @250:text-17 @280:!type-0 @md:!text-26': !isHorizontal,
+  'grid sm:grid-cols-[3fr_5fr] lg:grid-cols-[3fr_7fr] 2xl:grid-cols-[1fr_3fr] items-start': isListView,
+  '@200:text-15 @250:text-17 @280:!type-0 @md:!text-26': !isHorizontal && !isListView,
   },
 );
 
@@ -22,15 +22,15 @@ export const image = 'object-cover size-full group-hocus-within:scale-105 transi
 
 export const contentWrapper = (isHorizontal: boolean, isListView: boolean) => cnb({
   'rs-pr-4 rs-py-4': isHorizontal && !isListView,
-  'pt-20 md:pt-30 xl:pt-45 2xl:pt-48': isHorizontal && isListView,
+  'pt-20 md:pt-30 xl:pt-45 2xl:pt-48': isListView,
 });
 export const heading = (hasTabColor: boolean, isHorizontal: boolean, isSmallHeading: boolean, isListView: boolean) => cnb('text-current', {
   'border-l-[1.2rem] xl:border-l-[1.8rem] @200:border-l-[1.2rem] @xs:border-l-[1.8rem]': hasTabColor && !isListView,
   'border-l-[1.2rem] xl:border-l-[1.8rem]': hasTabColor && isListView,
-  '@200:pl-12 @xs:pl-21 @200:pr-08em @320:pr-1em': hasTabColor && !isHorizontal,
-  'mt-06em rs-mb-neg1 pr-08em xl:pr-1em pl-12 xl:pl-21': !isHorizontal,
+  '@200:pl-12 @xs:pl-21 @200:pr-08em @320:pr-1em': hasTabColor && !isHorizontal && !isListView,
+  'mt-06em rs-mb-neg1 pr-08em xl:pr-1em pl-12 xl:pl-21': !isHorizontal && !isListView,
   'rs-pb-2 mb-0 rs-pl-2': isHorizontal && !isListView,
-  'rs-pb-0 mb-0 pl-20 xl:pl-38': isHorizontal && isListView,
+  'rs-pb-0 mb-0 pl-20 xl:pl-38': isListView,
   'type-3': !isHorizontal && !isSmallHeading,
   'type-2': !isHorizontal && isSmallHeading,
   'fluid-type-4 2xl:fluid-type-5': isHorizontal && !isSmallHeading && !isListView,
