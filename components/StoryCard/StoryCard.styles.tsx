@@ -1,7 +1,7 @@
 import { cnb } from 'cnbuilder';
 
 export const root = (isHorizontal: boolean, isListView: boolean) => cnb(
-  '@container relative z-10 mx-auto', {
+  '@container relative z-10 mx-auto focus-within:outline', {
   'max-w-300 sm:max-w-400 md:max-w-full': !isHorizontal,
   'max-w-600 lg:max-w-none': isHorizontal && !isListView,
   'max-w-300 sm:max-w-none': isListView,
