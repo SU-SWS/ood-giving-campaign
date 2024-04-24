@@ -1,7 +1,7 @@
 import { cnb } from 'cnbuilder';
 
 export const root = (isHorizontal: boolean, isListView: boolean) => cnb(
-  '@container relative z-10 mx-auto focus-within:outline', {
+  '@container relative z-10 mx-auto', {
   'max-w-300 sm:max-w-400 md:max-w-full': !isHorizontal,
   'max-w-600 lg:max-w-none': isHorizontal && !isListView,
   'max-w-300 sm:max-w-none': isListView,
@@ -37,7 +37,7 @@ export const heading = (hasTabColor: boolean, isHorizontal: boolean, isSmallHead
   'fluid-type-3 2xl:fluid-type-4': (isHorizontal && isSmallHeading && !isListView) || isListView,
 });
 
-export const headingLink = 'stretched-link no-underline !font-bold !leading-tight';
+export const headingLink = 'stretched-link no-underline !font-bold !leading-tight focus-visible:after:outline focus-visible:after:outline-offset-2';
 
 export const taxonomy = (hasTabColor: boolean) => cnb('list-unstyled leading-display *:mr-12 last:*:ml-0 mr-18 ml-36', {
   '@200:ml-24 @xs:ml-36': hasTabColor,
