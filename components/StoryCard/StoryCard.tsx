@@ -1,14 +1,14 @@
 import { cnb } from 'cnbuilder';
-import { AnimateInView, type AnimationType } from '../Animate';
-import { CtaLink } from '../Cta/CtaLink';
+import { AnimateInView, type AnimationType } from '@/components/Animate';
+import { CtaLink } from '@/components/Cta/CtaLink';
+import { FlexBox } from '@/components/FlexBox';
 import {
   Heading, type HeadingType, Paragraph, type FontSizeType,
 } from '../Typography';
-import { SbLinkType } from '../Storyblok/Storyblok.types';
+import { SbLinkType } from '@/components/Storyblok/Storyblok.types';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { accentBorderColors, type AccentBorderColorType } from '@/utilities/datasource';
 import * as styles from './StoryCard.styles';
-import { FlexBox } from '../FlexBox';
 
 export type StoryCardProps = React.HTMLAttributes<HTMLDivElement> & {
   heading?: string;
@@ -108,8 +108,6 @@ export const StoryCard = ({
             )}
             {body && (
               <Paragraph
-                //variant={isHorizontal ? 'big' : 'card'}
-                //leading={isHorizontal ? 'snug' : 'display'}
                 noMargin
                 className={cnb(styles.body(isHorizontal, isListView), accentBorderColors[tabColor])}
               >
