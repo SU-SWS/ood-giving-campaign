@@ -40,8 +40,8 @@ export const StoryCard = ({
   taxonomy,
   animation = 'none',
   delay,
-  isListView = true,
-  isHorizontal = isListView,
+  isListView,
+  isHorizontal,
   className,
   ...props
 }: StoryCardProps) => {
@@ -108,10 +108,10 @@ export const StoryCard = ({
             )}
             {body && (
               <Paragraph
-                variant={isHorizontal ? 'big' : 'card'}
-                leading={isHorizontal ? 'snug' : 'display'}
+                //variant={isHorizontal ? 'big' : 'card'}
+                //leading={isHorizontal ? 'snug' : 'display'}
                 noMargin
-                className={cnb(styles.body(isHorizontal), accentBorderColors[tabColor])}
+                className={cnb(styles.body(isHorizontal, isListView), accentBorderColors[tabColor])}
               >
                 {body}
               </Paragraph>
