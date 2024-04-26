@@ -12,7 +12,7 @@ export type SbStoryCardProps = {
       content?: {
         title?: string;
         dek?: string;
-        topics?: string[];
+        initiatives?: string[];
         heroImage?: SbImageType;
         bgImage?: SbImageType;
         cardTitle?: string;
@@ -42,7 +42,7 @@ export const SbStoryCard = ({
       content: {
         title = '',
         dek = '',
-        topics = [],
+        initiatives = [],
         heroImage: { filename: heroFilename = '', focus: heroFocus = '' } = {},
         bgImage: { filename: bgFilename = '', focus: bgFocus = '' } = {},
         cardTitle = '',
@@ -78,7 +78,7 @@ export const SbStoryCard = ({
     href={`/${full_slug}`}
     animation={animation}
     delay={delay}
-    taxonomy={topics}
+    taxonomy={initiatives}
     isHorizontal={isHorizontal}
     isListView={isListView}
   />

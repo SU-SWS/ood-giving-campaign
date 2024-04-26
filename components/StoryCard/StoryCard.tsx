@@ -8,6 +8,7 @@ import {
 import { SbLinkType } from '@/components/Storyblok/Storyblok.types';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { accentBorderColors, type AccentBorderColorType } from '@/utilities/datasource';
+import { initiativesMap } from '@/utilities/taxonomyMaps';
 import * as styles from './StoryCard.styles';
 
 export type StoryCardProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -113,6 +114,15 @@ export const StoryCard = ({
               >
                 {body}
               </Paragraph>
+            )}
+            {!!taxonomy?.length && (
+              <ul className={styles.taxonomy(!!tabColor)}>
+                {taxonomy.slice(0, 3).map((item) => (
+                  <li key={item} className={styles.taxonomyItem}>
+                    <CtaLink href={`/stories/list/item`} variant="storyCardTag">{initiativesMap[item]}</CtaLink>
+                  </li>
+                ))}
+              </ul>
             )}
           </FlexBox>
         </div>
