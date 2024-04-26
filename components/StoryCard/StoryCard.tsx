@@ -116,10 +116,12 @@ export const StoryCard = ({
               </Paragraph>
             )}
             {!!taxonomy?.length && (
-              <ul className={styles.taxonomy(!!tabColor)}>
+              <ul className={styles.taxonomy(!!tabColor, isHorizontal, isListView)}>
                 {taxonomy.slice(0, 3).map((item) => (
                   <li key={item} className={styles.taxonomyItem}>
-                    <CtaLink href={`/stories/list/item`} variant="storyCardTag">{initiativesMap[item]}</CtaLink>
+                    <CtaLink href={`/stories/list/item`} variant="storyCardChipDark" className="z-20">
+                      {initiativesMap[item]}
+                    </CtaLink>
                   </li>
                 ))}
               </ul>

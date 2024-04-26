@@ -39,14 +39,17 @@ export const heading = (hasTabColor: boolean, isHorizontal: boolean, isSmallHead
 
 export const headingLink = 'stretched-link no-underline !font-bold !leading-tight focus-visible:after:outline focus-visible:after:outline-offset-2';
 
-export const taxonomy = (hasTabColor: boolean) => cnb('list-unstyled leading-display *:mr-12 last:*:ml-0 mr-18 ml-36', {
-  '@200:ml-24 @xs:ml-36': hasTabColor,
-});
-
-export const taxonomyItem = 'inline-block mb-0';
-
 export const body = (isHorizontal: boolean, isListView: boolean) => cnb('max-w-prose', {
   'big-paragraph leading-snug border-l-[1.2rem] xl:border-l-[1.8rem] @200:border-l-[1.2rem] @xs:border-l-[1.8rem] rs-pl-2' : isHorizontal && !isListView,
   'text-09em md:type-0 2xl:text-26 leading-display 2xl:leading-snug border-l-[1.2rem] xl:border-l-[1.8rem] pl-20 xl:pl-38': isListView,
   'gc-card leading-display pl-12 xl:pl-21 @200:pl-12 @xs:pl-21 pr-08em xl:pr-1em @200:pr-08em @320:pr-1em ml-12 xl:ml-18 @200:ml-12 @xs:ml-18': !isHorizontal && !isListView,
 });
+
+export const taxonomy = (hasTabColor: boolean, isHorizontal: boolean, isListView: boolean) => cnb('flex flex-wrap gap-10 list-unstyled leading-display mr-18 ml-36', {
+  '@200:ml-24 @xs:ml-36': hasTabColor,
+  'rs-mt-4': isHorizontal && !isListView,
+  'mt-18 md:mt-36 2xl:mt-38': isListView,
+  'rs-mt-0': !isHorizontal && !isListView,
+});
+
+export const taxonomyItem = 'inline-block mb-0';
