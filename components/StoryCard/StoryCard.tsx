@@ -8,7 +8,7 @@ import {
 import { SbLinkType } from '@/components/Storyblok/Storyblok.types';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { accentBorderColors, type AccentBorderColorType } from '@/utilities/datasource';
-import { initiativesMap } from '@/utilities/taxonomyMaps';
+import { initiativesMap, type InitiativesType } from '@/utilities/taxonomyMaps';
 import * as styles from './StoryCard.styles';
 
 export type StoryCardProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -21,7 +21,7 @@ export type StoryCardProps = React.HTMLAttributes<HTMLDivElement> & {
   tabColor?: AccentBorderColorType;
   href?: string;
   link?: SbLinkType;
-  taxonomy?: string[];
+  taxonomy?: InitiativesType[];
   animation?: AnimationType;
   delay?: number;
   isHorizontal?: boolean;

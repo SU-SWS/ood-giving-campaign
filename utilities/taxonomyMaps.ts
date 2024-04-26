@@ -14,3 +14,4 @@ export const initiativesMap = {
   'undergraduate-education-and-student-life': 'Undergraduate Education & Student Life',
   'undergraduate-financial-aid': 'Undergraduate Financial Aid',
 };
+export type InitiativesType = keyof typeof initiativesMap;

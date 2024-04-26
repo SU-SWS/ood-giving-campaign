@@ -3,6 +3,7 @@ import { type AnimationType } from '@/components/Animate';
 import { type HeadingType } from '@/components/Typography';
 import { StoryCard } from '@/components/StoryCard';
 import { type SbImageType, type SbLinkType } from './Storyblok.types';
+import { type InitiativesType } from '@/utilities/taxonomyMaps';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
 
 export type SbStoryCardProps = {
@@ -12,7 +13,7 @@ export type SbStoryCardProps = {
       content?: {
         title?: string;
         dek?: string;
-        initiatives?: string[];
+        initiatives?: InitiativesType[];
         heroImage?: SbImageType;
         bgImage?: SbImageType;
         cardTitle?: string;
