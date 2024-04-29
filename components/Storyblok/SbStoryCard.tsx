@@ -19,6 +19,9 @@ export type SbStoryCardProps = {
         cardTitle?: string;
         cardTeaser?: string;
         cardImage?: SbImageType;
+        tabColor?: {
+          value?: PaletteAccentHexColorType;
+        }
       },
       full_slug?: string;
     };
@@ -49,6 +52,7 @@ export const SbStoryCard = ({
         cardTitle = '',
         cardTeaser = '',
         cardImage: { filename: storyCardFilename = '', focus: storyCardFocus = '' } = {},
+        tabColor: { value: storyTabColorValue } = {},
       } = {},
       full_slug,
     } = {},
@@ -74,7 +78,7 @@ export const SbStoryCard = ({
     body={cardTeaser || dek}
     imageSrc={cardImage || storyCardFilename || heroFilename || bgFilename }
     imageFocus={cardFocus || storyCardFocus || heroFocus || bgFocus}
-    tabColor={paletteAccentColors[value]}
+    tabColor={paletteAccentColors[value || storyTabColorValue]}
     link={link}
     href={`/${full_slug}`}
     animation={animation}
