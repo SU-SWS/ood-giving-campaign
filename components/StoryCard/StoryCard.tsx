@@ -98,7 +98,7 @@ export const StoryCard = ({
                 as={headingLevel}
                 leading="none"
                 className={cnb(
-                  styles.heading(!!tabColor, isHorizontal, isSmallHeading, isListView),
+                  styles.heading(isHorizontal, isSmallHeading, isListView),
                   accentBorderColors[tabColor])
                 }
               >
@@ -116,10 +116,10 @@ export const StoryCard = ({
               </Paragraph>
             )}
             {!!taxonomy?.length && (
-              <ul className={styles.taxonomy(!!tabColor, isHorizontal, isListView)}>
+              <ul className={styles.taxonomy(isHorizontal, isListView)}>
                 {taxonomy.slice(0, 3).map((item) => (
                   <li key={item} className={styles.taxonomyItem}>
-                    <CtaLink href={`/stories/list/item`} variant="storyCardChipDark" className="z-20">
+                    <CtaLink href={`/stories/list/item`} variant="storyCardChipDark" className={styles.taxonomyLink}>
                       {initiativesMap[item]}
                     </CtaLink>
                   </li>
