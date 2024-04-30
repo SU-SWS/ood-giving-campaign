@@ -6,6 +6,12 @@ import { CtaLink } from '../Cta';
 import { schools } from '@/utilities/externalLinks';
 import { initiatives, themes } from '@/utilities/routes';
 
+/**
+ * This is the earlier version of the local footer.
+ * Currently not in used but we might come back to this later.
+ * See LocalFooterMvp for current implementation.
+ */
+
 export const LocalFooter = () => (
   <Container bgColor="white" py={8}>
     <Logo isLink color="black" className="w-300 md:w-400 2xl:w-[56rem] fill-gc-black" />
