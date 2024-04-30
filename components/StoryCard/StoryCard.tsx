@@ -1,14 +1,14 @@
 import { cnb } from 'cnbuilder';
-import { AnimateInView, type AnimationType } from '../Animate';
-import { CtaLink } from '../Cta/CtaLink';
+import { AnimateInView, type AnimationType } from '@/components/Animate';
+import { CtaLink } from '@/components/Cta/CtaLink';
+import { FlexBox } from '@/components/FlexBox';
 import {
   Heading, type HeadingType, Paragraph, type FontSizeType,
 } from '../Typography';
-import { SbLinkType } from '../Storyblok/Storyblok.types';
+import { SbLinkType } from '@/components/Storyblok/Storyblok.types';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { accentBorderColors, type AccentBorderColorType } from '@/utilities/datasource';
 import * as styles from './StoryCard.styles';
-import { FlexBox } from '../FlexBox';
 
 export type StoryCardProps = React.HTMLAttributes<HTMLDivElement> & {
   heading?: string;
@@ -24,6 +24,7 @@ export type StoryCardProps = React.HTMLAttributes<HTMLDivElement> & {
   animation?: AnimationType;
   delay?: number;
   isHorizontal?: boolean;
+  isListView?: boolean;
 };
 
 export const StoryCard = ({
@@ -39,6 +40,7 @@ export const StoryCard = ({
   taxonomy,
   animation = 'none',
   delay,
+  isListView,
   isHorizontal,
   className,
   ...props
@@ -53,10 +55,10 @@ export const StoryCard = ({
   return (
     <AnimateInView animation={animation} delay={delay}>
       <article
-        className={cnb(styles.root(isHorizontal), className)}
+        className={cnb(styles.root(isHorizontal, isListView), className)}
         {...props}
       >
-        <div className={styles.cardWrapper(isHorizontal)}>
+        <div className={styles.cardWrapper(isHorizontal, isListView)}>
           {imageSrc && (
             <div className={styles.imageWrapper}>
               <picture>
@@ -88,13 +90,16 @@ export const StoryCard = ({
           <FlexBox
             direction="col"
             justifyContent={isHorizontal ? 'center' : undefined}
-            className={styles.contentWrapper(isHorizontal)}
+            className={styles.contentWrapper(isHorizontal, isListView)}
           >
             {heading && (
               <Heading
                 as={headingLevel}
                 leading="none"
-                className={cnb(styles.heading(!!tabColor, isHorizontal, isSmallHeading), accentBorderColors[tabColor])}
+                className={cnb(
+                  styles.heading(!!tabColor, isHorizontal, isSmallHeading, isListView),
+                  accentBorderColors[tabColor])
+                }
               >
                 <CtaLink sbLink={link} href={href} className={styles.headingLink}>
                   {heading}
@@ -103,10 +108,8 @@ export const StoryCard = ({
             )}
             {body && (
               <Paragraph
-                variant={isHorizontal ? 'big' : 'card'}
-                leading={isHorizontal ? 'snug' : 'display'}
                 noMargin
-                className={cnb(styles.body(isHorizontal), accentBorderColors[tabColor])}
+                className={cnb(styles.body(isHorizontal, isListView), accentBorderColors[tabColor])}
               >
                 {body}
               </Paragraph>
