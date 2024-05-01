@@ -28,12 +28,6 @@ export const dynamicParams = false;
 // Don't cache the fetch requests to Storyblok.
 export const fetchCache = 'force-no-store';
 
-// Cache static page render forever.
-export const revalidate = false;
-
-// Force static
-export const dynamic = 'force-static';
-
 /**
  * Init on the server.
  */
