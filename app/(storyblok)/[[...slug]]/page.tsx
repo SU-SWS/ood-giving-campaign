@@ -26,10 +26,13 @@ const bridgeOptions = {
 export const dynamicParams = false;
 
 // Don't cache the fetch requests to Storyblok.
-export const fetchCache = 'default-no-store';
+export const fetchCache = 'force-no-store';
 
 // Cache static page render forever.
 export const revalidate = false;
+
+// Force static
+export const dynamic = false;
 
 /**
  * Init on the server.
