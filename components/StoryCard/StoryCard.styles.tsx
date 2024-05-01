@@ -8,9 +8,11 @@ export const root = (isHorizontal: boolean, isListView: boolean) => cnb(
   },
 );
 
-export const cardWrapper = (isHorizontal: boolean, isListView: boolean) => cnb(
+export const cardWrapper = (isHorizontal: boolean, isListView: boolean, isDark: boolean) => cnb(
   'relative group', {
-  'grid lg:grid-cols-2 bg-black-true/50': isHorizontal && !isListView,
+  'grid lg:grid-cols-2': isHorizontal && !isListView,
+  'bg-black-true/50': isHorizontal && isDark && !isListView,
+  'bg-white/50': isHorizontal && !isDark && !isListView,
   'grid sm:grid-cols-[3fr_5fr] lg:grid-cols-[3fr_7fr] 2xl:grid-cols-[1fr_3fr] items-start': isListView,
   '@200:text-15 @250:text-17 @280:!type-0 @md:!text-26': !isHorizontal && !isListView,
   },

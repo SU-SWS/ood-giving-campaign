@@ -37,6 +37,7 @@ export type SbStoryCardProps = {
     delay?: number;
     isHorizontal?: boolean;
     isListView?: boolean;
+    isDark?: boolean;
   };
 };
 
@@ -67,6 +68,7 @@ export const SbStoryCard = ({
     delay,
     isHorizontal,
     isListView,
+    isDark,
   },
   blok,
 }: SbStoryCardProps) => (
@@ -86,5 +88,6 @@ export const SbStoryCard = ({
     taxonomy={initiatives}
     isHorizontal={isHorizontal}
     isListView={isListView}
+    isDark={isDark}
   />
 );

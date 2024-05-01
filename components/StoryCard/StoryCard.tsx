@@ -61,7 +61,7 @@ export const StoryCard = ({
         className={cnb(styles.root(isHorizontal, isListView), className)}
         {...props}
       >
-        <div className={styles.cardWrapper(isHorizontal, isListView)}>
+        <div className={styles.cardWrapper(isHorizontal, isListView, isDark)}>
           {imageSrc && (
             <div className={styles.imageWrapper}>
               <picture>
@@ -98,6 +98,7 @@ export const StoryCard = ({
             {heading && (
               <Heading
                 as={headingLevel}
+                color={isDark ? 'white' : 'black'}
                 leading="none"
                 className={cnb(
                   styles.heading(isHorizontal, isSmallHeading, isListView),
@@ -111,6 +112,7 @@ export const StoryCard = ({
             )}
             {body && (
               <Paragraph
+                color={isDark ? 'white' : 'black'}
                 noMargin
                 className={cnb(styles.body(isHorizontal, isListView), accentBorderColors[tabColor])}
               >
@@ -121,7 +123,7 @@ export const StoryCard = ({
               <ul className={styles.taxonomy(isHorizontal, isListView)}>
                 {taxonomy.slice(0, 3).map((item) => (
                   <li key={item} className={styles.taxonomyItem}>
-                    <CtaLink href={`/stories/list/${item}`} variant="storyCardChipDark" className={styles.taxonomyLink}>
+                    <CtaLink href={`/stories/list/${item}`} variant={isDark ? 'storyCardChipDark' : 'storyCardChip'} className={styles.taxonomyLink}>
                       {initiativesMap[item]}
                     </CtaLink>
                   </li>
