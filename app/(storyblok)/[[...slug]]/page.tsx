@@ -32,7 +32,7 @@ export const fetchCache = 'force-no-store';
 export const revalidate = false;
 
 // Force static
-export const dynamic = false;
+export const dynamic = 'force-static';
 
 /**
  * Init on the server.
