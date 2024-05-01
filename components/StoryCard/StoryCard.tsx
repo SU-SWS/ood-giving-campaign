@@ -26,6 +26,7 @@ export type StoryCardProps = React.HTMLAttributes<HTMLDivElement> & {
   delay?: number;
   isHorizontal?: boolean;
   isListView?: boolean;
+  isDark?: boolean;
 };
 
 export const StoryCard = ({
@@ -43,6 +44,7 @@ export const StoryCard = ({
   delay,
   isListView,
   isHorizontal,
+  isDark,
   className,
   ...props
 }: StoryCardProps) => {
@@ -119,7 +121,7 @@ export const StoryCard = ({
               <ul className={styles.taxonomy(isHorizontal, isListView)}>
                 {taxonomy.slice(0, 3).map((item) => (
                   <li key={item} className={styles.taxonomyItem}>
-                    <CtaLink href={`/stories/list/item`} variant="storyCardChipDark" className={styles.taxonomyLink}>
+                    <CtaLink href={`/stories/list/${item}`} variant="storyCardChipDark" className={styles.taxonomyLink}>
                       {initiativesMap[item]}
                     </CtaLink>
                   </li>
