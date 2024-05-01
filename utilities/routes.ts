@@ -93,5 +93,5 @@ export const storiesRoot = '/stories';
 // Newsletter signup
 export const newsletterSignup = '/newsletter/sign-up';
 
-// Game Changer
-export const gameChangers = '/gamechangers';
+// Changemakers
+export const changemakers = '/changemakers';
