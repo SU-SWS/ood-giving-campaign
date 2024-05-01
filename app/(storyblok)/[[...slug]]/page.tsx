@@ -28,6 +28,9 @@ export const dynamicParams = false;
 // Don't cache the fetch requests to Storyblok.
 export const fetchCache = 'force-no-store';
 
+// Cache for ever.
+export const revalidate = false;
+
 /**
  * Init on the server.
  */
