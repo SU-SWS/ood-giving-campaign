@@ -1,4 +1,4 @@
-import { Paragraph, Heading, Text } from '../Typography';
+import { Paragraph, Heading } from '../Typography';
 import { Container } from '../Container';
 import { Grid } from '../Grid';
 import { LogoLockup } from '../Logo';
@@ -23,7 +23,7 @@ export const LocalFooterMvp = () => (
       <LogoLockup text="Momentum" color="white" isLink className={styles.logo} />
       <FlexBox as="ul" wrap="wrap" className={styles.ul}>
         <li><CtaLink color="white" href={routes.initiativesRoot} size="large">Initiatives</CtaLink></li>
-        <li><CtaLink color="white" href={routes.gameChangers} size="large">Game Changers</CtaLink></li>
+        <li><CtaLink color="white" href={routes.changemakers} size="large">Changemakers</CtaLink></li>
         <li><CtaLink color="white" href={links.ood.contact} size="large">Contact us</CtaLink></li>
       </FlexBox>
       <Grid lg={2} pt={8} gap="default" className={styles.grid}>
