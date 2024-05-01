@@ -7,6 +7,6 @@ export const header = 'relative overflow-hidden cc 3xl:px-100 4xl:px-[calc((100%
 export const superhead = (isDarkTheme: boolean) => isDarkTheme && 'text-shadow-sm';
 export const heading = 'fluid-type-7 md:gc-splash mb-0 whitespace-pre-line';
 export const introWrapper = 'cc relative z-20';
-export const intro = (isDarkTheme: boolean) => cnb('intro-text *:leading-display *:md:leading-cozy rs-mt-7 max-w-1000', isDarkTheme && 'text-shadow-sm');
+export const intro = (isDarkTheme: boolean) => cnb('intro-text *:leading-display *:md:leading-snug rs-mt-7 max-w-1000', isDarkTheme && 'text-shadow-sm');
 export const contentWrapper = 'relative z-20';
 export const cta = 'relative cc md:flex-row *:mx-auto rs-mt-6 gap-20 lg:gap-27 w-fit';
