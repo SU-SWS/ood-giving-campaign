@@ -9,7 +9,7 @@ import {
 
 export const cta = 'group hocus:underline transition-all';
 
-const ghostSwipeBase = 'relative z-[10] block w-fit decoration-2 decoration-transparent underline-offset-4 hocus:decoration-white/80 font-normal leading-display hocus:text-white border-2 border-current hocus:border-digital-red-light focus-visible:outline-none after:block after:content-[""] after:absolute after:top-0 after:left-0 after:w-0 after:h-full after:bg-gradient-to-r after:from-digital-red after:to-cardinal-red after:transition-all after:z-[-1] hocus:after:w-full overflow-hidden';
+const ghostSwipeBase = 'relative z-10 block w-fit decoration-2 decoration-transparent underline-offset-4 hocus:decoration-white/80 font-normal leading-display hocus:text-white border-2 border-current hocus:border-digital-red-light focus-visible:outline-none after:block after:content-[""] after:absolute after:top-0 after:left-0 after:w-0 after:h-full after:bg-gradient-to-r after:from-digital-red after:to-cardinal-red after:transition-all after:z-[-1] hocus:after:w-full overflow-hidden';
 
 const mastheadGivingBase = 'inline-block w-fit font-normal no-underline leading-display hocus:decoration-2 focus-visible:ring-2 focus-visible:ring-digital-red-xlight ring-offset-4 focus-visible:outline-none focus-visible:rounded underline-offset-4';
 const mastheadGivingWhite = 'text-white hocus:text-white hocus:decoration-white focus-visible:ring-offset-black';
@@ -24,7 +24,7 @@ const chipLight = 'border border-gc-black-20 bg-gc-black-10 text-gc-black-80 hoc
 const chipDark = 'border-gc-black-80 bg-gc-black-90 text-gc-black-40 hocus:border-digital-red-xlight';
 
 export const ctaVariants = {
-  solid: 'block w-fit relative z-[10] font-normal decoration-2 decoration-transparent underline-offset-4 hocus:decoration-white/80 leading-display bg-digital-red text-white hocus:text-white border-2 border-digital-red-light focus-visible:outline-none after:block after:content-[""] after:absolute after:top-0 after:left-0 after:w-0 after:h-full after:bg-gradient-to-r after:from-cardinal-red after:to-cardinal-red-dark after:transition-all after:z-[-1] hocus:after:w-full overflow-hidden',
+  solid: 'block w-fit relative z-10 font-normal decoration-2 decoration-transparent underline-offset-4 hocus:decoration-white/80 leading-display bg-digital-red text-white hocus:text-white border-2 border-digital-red-light focus-visible:outline-none after:block after:content-[""] after:absolute after:top-0 after:left-0 after:w-0 after:h-full after:bg-gradient-to-r after:from-cardinal-red after:to-cardinal-red-dark after:transition-all after:z-[-1] hocus:after:w-full overflow-hidden',
   inline: 'inline underline decoration-1 hocus:decoration-2 underline-offset-2',
   inlineDark: 'inline text-digital-red-xlight hocus:text-white underline decoration-1 hocus:decoration-2 underline-offset-2',
   ghost: ' block w-fit font-normal leading-display bg-transparent hocus:text-current border-2 border-current focus-visible:outline-none underline-offset-4 decoration-transparent hocus:decoration-current',
