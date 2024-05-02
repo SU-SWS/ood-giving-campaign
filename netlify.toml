@@ -7,6 +7,9 @@
 # PLUGINS
 # ##############################################################################
 
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
 # Fetch vault plugin needs to come before any of the contextual environment
 # variable plugins so they can act on the new vars.
 [[plugins]]
@@ -27,10 +30,6 @@
     password = 'OnPurpose'
     context = ['branch-deploy', 'deploy-preview']
     file = '.next/_headers'
-
-# Netlify Plugin Run last????
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
 
 # HEADERS
 # ##############################################################################
