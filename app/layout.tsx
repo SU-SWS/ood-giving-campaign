@@ -1,3 +1,4 @@
+'use client';
 import './globals.css';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { cnb } from 'cnbuilder';

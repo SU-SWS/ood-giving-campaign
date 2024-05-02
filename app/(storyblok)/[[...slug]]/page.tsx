@@ -73,6 +73,9 @@ export async function generateStaticParams() {
     paths.push({ slug: splitSlug });
   });
 
+  // Add home page as index.
+  paths.push({ slug: [] });
+
   return paths;
 };
 
