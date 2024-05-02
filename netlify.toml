@@ -10,19 +10,6 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Fetch vault plugin needs to come before any of the contextual environment
-# variable plugins so they can act on the new vars.
-[[plugins]]
-  package = "netlify-plugin-vault-variables"
-  [plugins.inputs]
-    # The vault service endpoint
-    endpoint = 'https://vault.stanford.edu'
-    # Order doesn't matter here as these will be fetched asyncronously. Try not to have dupes.
-    secrets = ['secret/data/projects/adapt/ood-giving-campaign']
-    # Set which environment variables to use for the approle login
-    secretId = 'VAULT_SECRET_ID'
-    roleId = 'VAULT_ROLE_ID'
-
 [[plugins]]
   package = '/plugins/netlify-plugin-contextual-auth'
   [plugins.inputs]

@@ -32,7 +32,6 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.1.1",
-    "@netlify/plugin-nextjs": "^5.2.0",
     "@storyblok/react": "^3.0.8",
     "@typeform/embed-react": "^3.11.0",
     "cnbuilder": "^3.1.0",
@@ -58,7 +57,6 @@
     "eslint": "^8.50.0",
     "eslint-config-next": "^13.4.13",
     "netlify-cli": "^17.22.1",
-    "netlify-plugin-vault-variables": "github:SU-SWS/netlify-plugin-vault-variables#nojira/nextruntime-5",
     "postcss": "^8.4.33",
     "typescript": "^5.1"
   },
