@@ -35,6 +35,7 @@ export const revalidate = false;
  * Init on the server.
  */
 console.log('Storyblok access token:', process.env.STORYBLOK_ACCESS_TOKEN);
+console.log('Active env:', process.env.NODE_ENV || 'development');
 storyblokInit({
   accessToken: process.env.STORYBLOK_ACCESS_TOKEN, // Preview token because this is in server side.
   use: [apiPlugin],
@@ -55,6 +56,7 @@ export async function generateStaticParams() {
   console.log('Storyblok access token: Gen Params.', process.env.STORYBLOK_ACCESS_TOKEN);
 
   const activeEnv = process.env.NODE_ENV || 'development';
+  console.log('Active env:', activeEnv);
   // Fetch new content from storyblok.
   const storyblokApi: StoryblokClient = getStoryblokApi();
   let sbParams: ISbStoriesParams = {
@@ -92,6 +94,7 @@ export async function generateStaticParams() {
 async function getStoryData(params: { slug: string[] }) {
   console.log('Storyblok access token: get Data', process.env.STORYBLOK_ACCESS_TOKEN);
   const activeEnv = process.env.NODE_ENV || 'development';
+  console.log('Active env:', activeEnv);
   const storyblokApi: StoryblokClient = getStoryblokApi();
   const slug = Array.isArray(params.slug) ? params.slug.join('/') : 'home';
 
@@ -150,6 +153,7 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
  */
 export default async function Page({ params }: { params: ParamsType }) {
   console.log('Storyblok access token: page', process.env.STORYBLOK_ACCESS_TOKEN);
+  console.log('Active env:', process.env.NODE_ENV);
   const { data } = await getStoryData(params);
   const slug = params.slug ? params.slug.join('/') : '';
 
