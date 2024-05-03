@@ -48,9 +48,7 @@ storyblokInit({
  * Generate the list of stories to statically render.
  */
 export async function generateStaticParams() {
-  // const activeEnv = process.env.NODE_ENV || 'development';
-  const activeEnv = 'development';
-
+  const activeEnv = process.env.NODE_ENV || 'development';
   // Fetch new content from storyblok.
   const storyblokApi: StoryblokClient = getStoryblokApi();
   let sbParams: ISbStoriesParams = {
@@ -94,8 +92,7 @@ async function getStoryData(params: { slug: string[] }) {
     console.log('Rendering Slug:', params.slug);
   }
 
-  // const activeEnv = process.env.NODE_ENV || 'development';
-  const activeEnv = 'development';
+  const activeEnv = process.env.NODE_ENV || 'development';
   const storyblokApi: StoryblokClient = getStoryblokApi();
   const slug = Array.isArray(params.slug) ? params.slug.join('/') : 'home';
 
