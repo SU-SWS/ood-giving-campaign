@@ -8,6 +8,7 @@ import {
 import { SbLinkType } from '@/components/Storyblok/Storyblok.types';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { accentBorderColors, type AccentBorderColorType } from '@/utilities/datasource';
+import { initiativesMap, type InitiativesType } from '@/utilities/taxonomyMaps';
 import * as styles from './StoryCard.styles';
 
 export type StoryCardProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -20,11 +21,12 @@ export type StoryCardProps = React.HTMLAttributes<HTMLDivElement> & {
   tabColor?: AccentBorderColorType;
   href?: string;
   link?: SbLinkType;
-  taxonomy?: string[];
+  taxonomy?: InitiativesType[];
   animation?: AnimationType;
   delay?: number;
   isHorizontal?: boolean;
   isListView?: boolean;
+  isDark?: boolean;
 };
 
 export const StoryCard = ({
@@ -42,6 +44,7 @@ export const StoryCard = ({
   delay,
   isListView,
   isHorizontal,
+  isDark,
   className,
   ...props
 }: StoryCardProps) => {
@@ -58,7 +61,7 @@ export const StoryCard = ({
         className={cnb(styles.root(isHorizontal, isListView), className)}
         {...props}
       >
-        <div className={styles.cardWrapper(isHorizontal, isListView)}>
+        <div className={styles.cardWrapper(isHorizontal, isListView, isDark)}>
           {imageSrc && (
             <div className={styles.imageWrapper}>
               <picture>
@@ -95,9 +98,10 @@ export const StoryCard = ({
             {heading && (
               <Heading
                 as={headingLevel}
+                color={isDark ? 'white' : 'black'}
                 leading="none"
                 className={cnb(
-                  styles.heading(!!tabColor, isHorizontal, isSmallHeading, isListView),
+                  styles.heading(isHorizontal, isSmallHeading, isListView),
                   accentBorderColors[tabColor])
                 }
               >
@@ -108,11 +112,23 @@ export const StoryCard = ({
             )}
             {body && (
               <Paragraph
+                color={isDark ? 'white' : 'black'}
                 noMargin
                 className={cnb(styles.body(isHorizontal, isListView), accentBorderColors[tabColor])}
               >
                 {body}
               </Paragraph>
+            )}
+            {!!taxonomy?.length && (
+              <ul className={styles.taxonomy(isHorizontal, isListView)}>
+                {taxonomy.slice(0, 3).map((item) => (
+                  <li key={item} className={styles.taxonomyItem}>
+                    <CtaLink href={`/stories/list/${item}`} variant={isDark ? 'storyCardChipDark' : 'storyCardChip'} className={styles.taxonomyLink}>
+                      {initiativesMap[item]}
+                    </CtaLink>
+                  </li>
+                ))}
+              </ul>
             )}
           </FlexBox>
         </div>
