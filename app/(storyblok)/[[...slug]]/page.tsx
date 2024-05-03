@@ -22,9 +22,6 @@ const bridgeOptions = {
   resolveLinks: 'story',
 };
 
-// Force the 404 page for anything that isn't statically generated.
-export const dynamicParams = false;
-
 // Cache forever.
 export const revalidate = false;
 
@@ -84,14 +81,6 @@ export async function generateStaticParams() {
  * https://github.com/vercel/next.js/discussions/48724
  */
 async function getStoryData(params: { slug: string[] }) {
-
-  try {
-    console.log('Rendering Slug:', params.slug.join('/'));
-  }
-  catch (error) {
-    console.log('Rendering Slug:', params.slug);
-  }
-
   const activeEnv = process.env.NODE_ENV || 'development';
   const storyblokApi: StoryblokClient = getStoryblokApi();
   const slug = Array.isArray(params.slug) ? params.slug.join('/') : 'home';
