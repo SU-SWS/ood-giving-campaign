@@ -22,6 +22,9 @@ const bridgeOptions = {
   resolveLinks: 'story',
 };
 
+// Force the 404 page for anything that isn't statically generated.
+export const dynamicParams = false;
+
 // Cache forever.
 export const revalidate = false;
 
