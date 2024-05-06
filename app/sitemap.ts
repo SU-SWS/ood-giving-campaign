@@ -19,10 +19,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     cv: Date.now(),
   });
 
-  // Exclude any stories with noindex set to true on Storyblok
-  const indexStories = response.filter((story) => !story.content?.noindex);
+  // Exclude any stories with noindex set to true and any stories inside the Global Components folder in Storyblok
+  const indexStories = response.filter((story) => (!story.content?.noindex) && !story.full_slug?.startsWith('global-components'));
   const currentURL = process.env.URL || process.env.DEPLOY_PRIME_URL || 'https://momentum.stanford.edu';
-  
+
   const ret = indexStories.map((story) => {
     const url = story.path ? `${currentURL}/${story.path}` : `${currentURL}/${story.full_slug}`;
     return {
