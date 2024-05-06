@@ -1,8 +1,9 @@
-import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
-import { type SbNavItemProps } from './Storyblok.types';
+import { storyblokEditable } from '@storyblok/react/rsc';
+import { type SbNavItemProps } from '../Storyblok.types';
 import { Container } from '@/components/Container';
 import { CtaLink } from '@/components/Cta';
 import { Heading } from '@/components/Typography';
+import * as styles from './SbStoryListNav.styles';
 
 type SbStoryListNavType = {
   blok: {
@@ -15,16 +16,16 @@ type SbStoryListNavType = {
 export const SbStoryListNav = ({ blok: { heading, links }, blok }: SbStoryListNavType) => {
   return (
     <Container width="full" bgColor="black" {...storyblokEditable(blok)}>
-      <nav aria-label="Story list page menu" className="cc">
-        <Heading size="base" align="center">{heading}</Heading>
-        <ul className="list-unstyled flex flex-wrap gap-14 justify-center max-w-1200 mx-auto">
+      <Container as="nav" aria-label="Story list page menu">
+        <Heading size="base" align="center" className={styles.heading}>{heading}</Heading>
+        <ul className={styles.list}>
           {links.map((link) => (
-            <li key={link._uid} className="inline-block">
-              <CtaLink href={link.link.cached_url} variant="storyCardChipDark">{link.label}</CtaLink>
+            <li key={link._uid} className={styles.listItem}>
+              <CtaLink href={link.link.cached_url} variant="storyListNav">{link.label}</CtaLink>
             </li>
           ))}
         </ul>
-      </nav>
+      </Container>
     </Container>
   );
 };
