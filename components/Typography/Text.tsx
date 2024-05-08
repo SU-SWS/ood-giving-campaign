@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, TimeHTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
 import { HeroIcon, type HeroIconProps, type IconType } from '../HeroIcon';
 import * as styles from './typography.styles';
@@ -26,7 +26,8 @@ export type TypographyProps = {
   children?: ReactNode;
 };
 
-export type TextProps = TypographyProps & React.HTMLAttributes<HTMLElement>;
+// The TimeHTMLAttributes<HTMLElement> is for the dateTime attribute when using as="time"
+export type TextProps = TypographyProps & React.HTMLAttributes<HTMLElement> & TimeHTMLAttributes<HTMLElement>;
 
 export const Text = ({
   as: AsComponent = 'div',

@@ -65,13 +65,6 @@ export const StoryHeroMvp = ({
   heroTexturedBar,
 }: StoryHeroMvpProps) => {
   const useTwoColLayout = isVerticalHero;
-  const date = publishedDate && new Date(publishedDate);
-  const formattedDate = date && date.toLocaleDateString('en-US', {
-    weekday: 'long',
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  });
   const hasCaption = hasRichText(caption);
   const Caption = hasCaption ? <RichText textColor="black-70" wysiwyg={caption} className={styles.caption} /> : undefined;
 
@@ -88,6 +81,8 @@ export const StoryHeroMvp = ({
           headingFont={headingFont}
           isSmallHeading={isSmallHeading}
           dek={dek}
+          byline={byline}
+          publishedDate={publishedDate}
           heroBgColor={bgHexColor}
           imageSrc={filename}
           imageFocus={focus}
@@ -106,7 +101,7 @@ export const StoryHeroMvp = ({
           headingFont={headingFont === 'druk' ? 'druk' : 'serif'}
           isSmallHeading={isSmallHeading}
           byline={byline}
-          publishedDate={formattedDate}
+          publishedDate={publishedDate}
           body={dek}
           imageSrc={filename}
           imageFocus={focus}
