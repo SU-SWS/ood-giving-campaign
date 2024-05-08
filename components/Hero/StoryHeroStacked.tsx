@@ -13,6 +13,8 @@ export type StoryHeroStackedProps = {
   headingFont?: 'serif' | 'druk';
   isSmallHeading?: boolean;
   dek?: string;
+  byline?: string;
+  publishedDate?: string;
   heroBgColor?: string; // Hex color value from Storyblok native color picker
   imageSrc?: string;
   imageFocus?: string;
@@ -27,6 +29,8 @@ export const StoryHeroStacked = ({
   headingFont,
   isSmallHeading,
   dek,
+  byline,
+  publishedDate,
   heroBgColor,
   imageSrc,
   imageFocus,
@@ -37,6 +41,15 @@ export const StoryHeroStacked = ({
   // We keep the original image aspect ratio
   const imageSize = getSbImageSize(imageSrc) || { width: 0, height: 0 };
   const { width: imageWidth, height: imageHeight } = imageSize;
+
+  const dateTime = publishedDate && new Date(publishedDate);
+  const formattedDate = dateTime && dateTime.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+  // We're using the date only (no time) version of the date picker so trimming the time off
+  const date = publishedDate?.slice(0, 10);
 
   return (
     <Container
@@ -87,6 +100,23 @@ export const StoryHeroStacked = ({
             >
               {dek}
             </Paragraph>
+          </AnimateInView>
+        )}
+        {(byline || publishedDate) && (
+          <AnimateInView animation="slideUp" delay={0.3} className={styles.metadata}>
+            {byline && (
+              <Text align="center" color={isLightHero ? 'black' : 'white'}>{byline}</Text>
+            )}
+            {date && (
+              <Text as="time"
+                dateTime={date}
+                align="center"
+                color={isLightHero ? 'black' : 'white'}
+                className="mx-auto block"
+              >
+                {formattedDate}
+              </Text>
+            )}
           </AnimateInView>
         )}
       </Container>

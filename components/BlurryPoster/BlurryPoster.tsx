@@ -82,12 +82,14 @@ export const BlurryPoster = ({
   className,
   ...props
 }: BlurryPosterProps) => {
-  const date = publishedDate && new Date(publishedDate);
-  const formattedDate = date && date.toLocaleDateString('en-US', {
+  const dateTime = publishedDate && new Date(publishedDate);
+  const formattedDate = dateTime && dateTime.toLocaleDateString('en-US', {
     month: 'long',
     day: 'numeric',
     year: 'numeric',
   });
+  // We're using the date only (no time) version of the date picker so trimming the time off
+  const date = publishedDate?.slice(0, 10);
 
   let i = 1;
 
@@ -203,6 +205,16 @@ export const BlurryPoster = ({
                 >
                   {body}
                 </Paragraph>
+              )}
+              {(byline || publishedDate) && (
+                <div className={styles.metadata}>
+                  {byline && (
+                    <Text>{byline}</Text>
+                  )}
+                  {date && (
+                    <time dateTime={date}>{formattedDate}</time>
+                  )}
+                </div>
               )}
               {cta && (
                 <div className={styles.cta}>
