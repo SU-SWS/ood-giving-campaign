@@ -1,8 +1,8 @@
 import { cnb } from 'cnbuilder';
 
-export const root = (isHorizontal: boolean) => cnb('relative w-full mx-auto break-words', {
-  'max-w-[29rem] sm:max-w-300 lg:max-w-[35rem]': !isHorizontal,
-  'max-w-[29rem] sm:max-w-700 xl:max-w-1000 2xl:max-w-1200': isHorizontal,
+export const root = (isHorizontal: boolean) => cnb('relative w-full mx-auto break-words max-w-[29rem]', {
+  'sm:max-w-300 lg:max-w-[35rem]': !isHorizontal,
+  'sm:max-w-700 xl:max-w-1000 2xl:max-w-1200': isHorizontal,
 });
 export const cardInner = (isHorizontal: boolean) => cnb('relative size-full aspect-w-1 aspect-h-2', {
   'sm:aspect-w-2 sm:aspect-h-3 xl:aspect-w-3 xl:aspect-h-2': isHorizontal,
