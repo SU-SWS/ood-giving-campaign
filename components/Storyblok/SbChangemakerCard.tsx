@@ -15,6 +15,7 @@ export type SbChangemakerCardProps = {
     subheading?: string;
     image?: SbImageType;
     body?: SbBlokData[];
+    isHorizontal?: boolean;
     animation?: AnimationType;
     delay?: number;
   };
@@ -27,6 +28,7 @@ export const SbChangemakerCard = ({
     subheading,
     image: { filename, focus } = {},
     body,
+    isHorizontal,
     animation,
     delay,
   },
@@ -42,6 +44,7 @@ export const SbChangemakerCard = ({
       subheading={subheading}
       imageSrc={filename}
       imageFocus={focus}
+      isHorizontal={isHorizontal}
       animation={animation}
       delay={delay}
     >

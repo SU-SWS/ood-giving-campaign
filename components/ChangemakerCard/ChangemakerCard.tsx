@@ -1,13 +1,13 @@
 import { cnb } from 'cnbuilder';
 import { useId, useRef } from 'react';
 import { useOnClickOutside, useToggle } from 'usehooks-ts';
-import { AnimateInView, type AnimationType } from '../Animate';
+import { AnimateInView, type AnimationType } from '@/components/Animate';
 import {
   Heading, type HeadingType, Text,
-} from '../Typography';
-import { FlexBox } from '../FlexBox';
-import { HeroIcon } from '../HeroIcon';
-import { ImageOverlay } from '../ImageOverlay';
+} from '@/components/Typography';
+import { FlexBox } from '@/components/FlexBox';
+import { HeroIcon } from '@/components/HeroIcon';
+import { ImageOverlay } from '@/components/ImageOverlay';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import useEscape from '@/hooks/useEscape';
 import * as styles from './ChangemakerCard.styles';
@@ -19,6 +19,7 @@ export type ChangemakerCardProps = React.HTMLAttributes<HTMLDivElement> & {
   subheading?: string;
   imageSrc?: string;
   imageFocus?: string;
+  isHorizontal?: boolean;
   animation?: AnimationType;
   delay?: number;
   // children gets rendered as the content layer
@@ -31,6 +32,7 @@ export const ChangemakerCard = ({
   subheading,
   imageSrc,
   imageFocus,
+  isHorizontal,
   animation = 'none',
   delay,
   children,
@@ -72,16 +74,16 @@ export const ChangemakerCard = ({
     <AnimateInView animation={animation} delay={delay}>
       <article
         ref={cardRef}
-        className={cnb(styles.root, className)}
+        className={cnb(styles.root(isHorizontal), className)}
         {...props}
       >
-        <div className={styles.cardInner}>
+        <div className={styles.cardInner(isHorizontal)}>
           {/* Front of the card */}
           <div aria-hidden={isShown} className={styles.cardFront}>
             {imageSrc && (
-              <div className={cnb(styles.imageWrapper)}>
+              <div className={styles.imageWrapper(isHorizontal)}>
                 <ImageOverlay
-                  imageSrc={getProcessedImage(imageSrc, '400x800', imageFocus)}
+                  imageSrc={getProcessedImage(imageSrc, isHorizontal ? '1500x1000' : '400x800', imageFocus)}
                   overlay="gradient-changemaker"
                   loading="eager"
                   width={339}
