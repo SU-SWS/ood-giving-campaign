@@ -31,7 +31,6 @@ export const revalidate = false;
 // Force static rendering.
 export const dynamic = 'force-static';
 
-
 /**
  * Init on the server.
  */
