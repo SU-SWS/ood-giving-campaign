@@ -80,33 +80,74 @@ export const ChangemakerCard = ({
         <div className={styles.cardInner(isHorizontal)}>
           {/* Front of the card */}
           <div aria-hidden={isShown} className={styles.cardFront}>
-            {imageSrc && (
-              <div className={styles.imageWrapper(isHorizontal)}>
-                <ImageOverlay
-                  imageSrc={getProcessedImage(imageSrc, isHorizontal ? '1500x1000' : '400x800', imageFocus)}
-                  overlay="gradient-changemaker"
-                  loading="eager"
-                  width={339}
-                  height={678}
-                />
-              </div>
+            {!!imageSrc && (
+              <>
+                {/* No need to use different sources for vertical cards because
+                  it stays about the same size for all breakpoints */}
+                {isHorizontal ? (
+                  <picture>
+                    <source
+                      srcSet={getProcessedImage(imageSrc, '1200x800', imageFocus)}
+                      media="(min-width: 1500px)"
+                      // Exact height and width don't matter as long as aspect ratio is the same as the image
+                      width={1200}
+                      height={800}
+                    />
+                    <source
+                      srcSet={getProcessedImage(imageSrc, '1000x667', imageFocus)}
+                      media="(min-width: 1200px)"
+                      width={1000}
+                      height={667}
+                    />
+                    <source
+                      srcSet={getProcessedImage(imageSrc, '720x1080', imageFocus)}
+                      media="(min-width: 576px)"
+                      width={720}
+                      height={1080}
+                    />
+                    <source
+                      srcSet={getProcessedImage(imageSrc, '540x810', imageFocus)}
+                      media="(max-width: 575px)"
+                      width={540}
+                      height={810}
+                    />
+                    <img
+                      src={getProcessedImage(imageSrc, '1200x800', imageFocus)}
+                      alt=""
+                      loading="lazy"
+                      width={1200}
+                      height={800}
+                      className={styles.image}
+                    />
+                  </picture>
+                ) : (
+                  <img
+                    src={getProcessedImage(imageSrc, '350x700', imageFocus)}
+                    alt=""
+                    loading="lazy"
+                    width={350}
+                    height={700}
+                    className={styles.image}
+                  />
+                )}
+                <div className={styles.overlay} />
+              </>
             )}
-            <FlexBox direction="col" className={styles.info}>
+            <FlexBox direction="col" className={styles.info(isHorizontal)}>
               {heading && (
                 <Heading
                   as={headingLevel}
                   id={headingId}
-                  size={2}
                   leading="tight"
                   align="center"
                   color="white"
-                  className={styles.heading}
+                  className={styles.heading(isHorizontal)}
                 >
                   {heading}
                 </Heading>
               )}
               {subheading && (
-                <Text variant="card" align="center" leading="display" color="white">{subheading}</Text>
+                <Text align="center" leading="display" color="white" className={styles.subhead}>{subheading}</Text>
               )}
             </FlexBox>
           </div>
@@ -134,7 +175,7 @@ export const ChangemakerCard = ({
             <HeroIcon
               noBaseStyle
               icon='plus'
-              className={styles.icon}
+              className={styles.icon(isHorizontal)}
             />
           </button>
         </div>
