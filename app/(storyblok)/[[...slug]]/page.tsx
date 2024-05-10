@@ -26,7 +26,7 @@ const bridgeOptions = {
 export const dynamicParams = false;
 
 // Cache forever.
-export const revalidate = false;
+export const revalidate = 31536000;
 
 // Force static rendering.
 export const dynamic = 'force-static';
