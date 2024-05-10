@@ -156,10 +156,10 @@ export const ChangemakerCard = ({
             id={contentId}
             aria-labelledby={headingId}
             direction="col"
-            className={styles.cardContent}
+            className={styles.cardContent(isHorizontal)}
             aria-hidden={!isShown}
           >
-            <div ref={contentRef} tabIndex={isShown ? 0 : -1}>
+            <div ref={contentRef} tabIndex={isShown ? 0 : -1} className={styles.contentWrapper(isHorizontal)}>
               {children}
             </div>
           </FlexBox>
