@@ -1,6 +1,6 @@
 import { cnb } from 'cnbuilder';
 
-export const root = (isHorizontal: boolean) => cnb('relative w-full mx-auto break-words max-w-[29rem]', {
+export const root = (isHorizontal: boolean) => cnb('@container relative w-full mx-auto break-words max-w-[29rem]', {
   'sm:max-w-300 lg:max-w-[35rem]': !isHorizontal,
   'sm:max-w-600 xl:max-w-1000 2xl:max-w-1200': isHorizontal,
 });
@@ -24,11 +24,11 @@ export const heading = (isHorizontal: boolean) => cnb('mb-02em mt-auto text-30',
 });
 export const subhead = 'text-19 md:text-21';
 
-export const cardContent = (isHorizontal: boolean) => cnb('absolute size-full top-0 left-0  aria-hidden:opacity-0 opacity-100 backdrop-blur-sm transition-opacity duration-500 bg-gradient-to-b from-gc-black/60 to-gc-black/90 gc-changemaker *:*:*:!mb-1em', {
-  'px-20 py-30 3xl:py-48 3xl:px-36' : !isHorizontal,
+export const cardContent = (isHorizontal: boolean) => cnb('absolute size-full top-0 left-0 aria-hidden:opacity-0 opacity-100 backdrop-blur-sm transition-opacity duration-500 bg-gradient-to-b from-gc-black/60 to-gc-black/90 *:*:*:!mb-1em', {
+  'px-20 py-30 @320:py-48 @320:px-36' : !isHorizontal,
   'rs-pt-3 rs-px-3': isHorizontal,
 });
-export const contentWrapper = (isHorizontal: boolean) => cnb({
+export const contentWrapper = (isHorizontal: boolean) => cnb('', {
   'xl:columns-2 gap-x-38 xl:first:*:*:*:mt-0': isHorizontal,
 });
 

@@ -21,6 +21,7 @@ export type RichTextProps = {
   wysiwyg: StoryblokRichtext;
   // "default" is for main content, e.g., Story body content
   type?: 'default' | 'card';
+  baseFontSize?: 'default' | 'card' | 'changemaker' | 'changemakerHorizontal';
   textColor?: 'black' | 'white' | 'black-70';
   bgColor?: 'black' | 'black-50' | 'black-60' | 'black-70' | 'white' | 'none';
   textAlign?: TextAlignType;
@@ -45,6 +46,7 @@ const bgClasses = {
 export const RichText = ({
   wysiwyg,
   type,
+  baseFontSize = 'default',
   textColor = 'black',
   bgColor = 'none',
   textAlign = 'left',
@@ -95,7 +97,7 @@ export const RichText = ({
       heading: (children, props) => {
         const { level } = props;
         /**
-         * All heading sizes are type-1 if using the "card" type WYSIWYG
+         * All heading sizes are type-1 if using the "card" type WYSIWYG (SbCardWysiwyg)
          * For regular main content WYSIWYG, this gets you type-3 for h2, type-2 for h3, type-1 for h4
          * but h5 and h6 would be type-0 (the minimum font size)
          */
@@ -108,7 +110,7 @@ export const RichText = ({
         );
       },
       paragraph: (children) => (
-        <Paragraph variant={type === 'card' ? 'card' : 'none'}>
+        <Paragraph variant={baseFontSize === 'default' ? undefined : baseFontSize}>
           {children}
         </Paragraph>
       ),

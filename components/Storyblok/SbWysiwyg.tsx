@@ -20,6 +20,7 @@ type SbWysiwygProps = {
     isHidden?: boolean;
   },
   isDarkTheme?: boolean;
+  baseFontSize?: 'default' | 'changemaker' | 'changemakerHorizontal' | 'card';
 };
 
 export const SbWysiwyg = ({
@@ -36,6 +37,7 @@ export const SbWysiwyg = ({
   },
   blok,
   isDarkTheme,
+  baseFontSize,
 }: SbWysiwygProps) => {
   if (isHidden) {
     return null;
@@ -51,6 +53,7 @@ export const SbWysiwyg = ({
     >
       <RichText
         type="default"
+        baseFontSize={baseFontSize}
         wysiwyg={content}
         textColor={isDarkTheme || isLightText ? 'white' : 'black'}
         textAlign={textAlign}

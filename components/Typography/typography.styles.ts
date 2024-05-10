@@ -78,7 +78,8 @@ export const textVariants = {
    */
   caption: 'gc-caption',
   card: 'gc-card',
-  changemaker: 'gc-changemaker',
+  changemaker: 'text-15 @320:text-16 leading-snug @320:leading-cozy',
+  changemakerHorizontal: '',
   intro: 'gc-intro-text',
   /**
    * Momentum only styles

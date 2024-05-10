@@ -7,7 +7,6 @@ import {
 } from '@/components/Typography';
 import { FlexBox } from '@/components/FlexBox';
 import { HeroIcon } from '@/components/HeroIcon';
-import { ImageOverlay } from '@/components/ImageOverlay';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import useEscape from '@/hooks/useEscape';
 import * as styles from './ChangemakerCard.styles';
