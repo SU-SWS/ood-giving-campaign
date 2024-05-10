@@ -11,6 +11,7 @@ module.exports = function () {
       },
       body: {
         fontSize: '1.8rem',
+        color: '#17171A',
 
         '@screen md': {
           fontSize: '1.9rem',

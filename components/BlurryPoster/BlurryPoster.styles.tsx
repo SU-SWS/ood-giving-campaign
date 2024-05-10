@@ -93,6 +93,7 @@ export const bodyWrapper = (imageOnLeft?: boolean, isTwoCol?: boolean) => cnb('c
   '*:max-w-[50ch]': !isTwoCol,
 });
 export const dek = 'text-shadow-sm';
+export const metadata = 'rs-mt-4';
 export const cta = 'rs-mt-4';
 
 export const imageWrapper = (imageOnLeft?: boolean, isTwoCol?: boolean, hasImage?: boolean) => cnb('w-full cc', {
