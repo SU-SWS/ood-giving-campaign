@@ -34,7 +34,7 @@ export const SbChangemakerCard = ({
   },
   blok,
 }: SbChangemakerCardProps) => {
-  const Body = !!getNumBloks(body) ? <CreateBloks blokSection={body} baseFontSize={isHorizontal ? 'card' : 'changemaker'} /> : undefined;
+  const Body = !!getNumBloks(body) ? <CreateBloks blokSection={body} baseFontSize={isHorizontal ? 'changemakerHorizontal' : 'changemaker'} /> : undefined;
 
   return (
     <ChangemakerCard
