@@ -53,10 +53,15 @@ export const ChangemakerCard = ({
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
-    // toggle the card content and if it is shown, focus on contentRef
-    toggle();
-    if (!isShown) {
-      contentRef.current?.focus();
+    // If it's not XS breakpoint, toggle the card content and if it is shown, focus on contentRef
+    if (isNotPhone) {
+      toggle();
+      if (!isShown) {
+        contentRef.current?.focus();
+      }
+    } else {
+      // Open the modal if it's XS breakpoint
+      setIsOpen(true);
     }
   };
 
@@ -159,6 +164,7 @@ export const ChangemakerCard = ({
               </FlexBox>
             </div>
             {/* Content layer */}
+            {/* Content is displayed on an overlay over the card for all breakpoint except XS */}
             <FlexBox
               id={contentId}
               aria-labelledby={headingId}
@@ -173,10 +179,11 @@ export const ChangemakerCard = ({
             <button
               ref={buttonRef}
               type="button"
-              onClick={isNotPhone ? handleClick : () => setIsOpen(true)}
+              onClick={handleClick}
               aria-label={isShown ? 'Dismiss' : `Read more about ${heading}`}
-              aria-controls={contentId}
-              aria-expanded={isShown}
+              aria-controls={isNotPhone ? contentId : undefined}
+              aria-expanded={isShown || isOpen}
+              aria-haspopup={isNotPhone ? undefined : 'dialog'}
               className={styles.button}
             >
               <HeroIcon
@@ -188,6 +195,7 @@ export const ChangemakerCard = ({
           </div>
         </article>
       </AnimateInView>
+      {/* Content is displayed in a modal for XS breakpoint only */}
       <Dialog open={isOpen} onClose={() => setIsOpen(false)} className={styles.dialog}>
         <div className={styles.modalOverlay}>
           <DialogPanel className={styles.modal}>
