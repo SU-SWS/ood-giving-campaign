@@ -1,6 +1,8 @@
 import { cnb } from 'cnbuilder';
 import { useId, useRef, useState } from 'react';
-import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
+import {
+  Description, Dialog, DialogPanel, DialogTitle,
+} from '@headlessui/react';
 import { useMediaQuery, useOnClickOutside, useToggle } from 'usehooks-ts';
 import { AnimateInView, type AnimationType } from '@/components/Animate';
 import { Heading, type HeadingType, Text } from '@/components/Typography';
@@ -13,7 +15,7 @@ import * as styles from './ChangemakerCard.styles';
 
 
 export type ChangemakerCardProps = React.HTMLAttributes<HTMLDivElement> & {
-  heading?: string;
+  heading: string;
   headingLevel?: HeadingType;
   subheading?: string;
   imageSrc?: string;
@@ -48,7 +50,6 @@ export const ChangemakerCard = ({
   const [isShown, toggle, setIsShown] = useToggle();
 
   // For the mobile modal
-  const [isModalOpen, toggleModal, setIsModalOpen] = useToggle();
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
@@ -57,10 +58,6 @@ export const ChangemakerCard = ({
     if (!isShown) {
       contentRef.current?.focus();
     }
-  };
-
-  const handleModalButtonClick = () => {
-    setIsModalOpen(true);
   };
 
   // If card content is shown, clicking outside it will dismiss it
@@ -146,7 +143,7 @@ export const ChangemakerCard = ({
               <FlexBox direction="col" className={styles.info(isHorizontal)}>
                 {heading && (
                   <Heading
-                    as={headingLevel}
+                    as={headingLevel || 'h3'}
                     id={headingId}
                     leading="tight"
                     align="center"
@@ -191,15 +188,28 @@ export const ChangemakerCard = ({
           </div>
         </article>
       </AnimateInView>
-      <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="relative z-[60]">
-        <div className="fixed inset-0 bg-black-true/90 z-[70]" aria-hidden="true" />
-        <div className="fixed z-[80] inset-0 w-screen overflow-y-auto p-4">
-          <div className="cc flex min-h-full items-start justify-center">
-            <DialogPanel className="bg-transparent text-white">
-              <DialogTitle className="sr-only">{heading}</DialogTitle>
-              <div className="text-white">{children}</div>
+      <Dialog open={isOpen} onClose={() => setIsOpen(false)} className={styles.dialog}>
+        <div className={styles.modalOverlay}>
+          <DialogPanel className={styles.modal}>
+              <button
+                type="button"
+                aria-label="Close modal"
+                onClick={() => setIsOpen(false)}
+                className={styles.modalClose}
+              >
+                <HeroIcon
+                  noBaseStyle
+                  focusable="false"
+                  icon='close'
+                  className={styles.modalIcon}
+                />
+              </button>
+              <DialogTitle className={styles.srOnly}>{heading}</DialogTitle>
+              {subheading && (
+                <Description className={styles.srOnly}>{subheading}</Description>
+              )}
+              <div className="">{children}</div>
             </DialogPanel>
-          </div>
         </div>
       </Dialog>
 

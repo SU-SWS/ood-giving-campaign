@@ -33,6 +33,14 @@ export const contentWrapper = (isHorizontal: boolean) => cnb('', {
 });
 
 export const button = 'group absolute size-full top-0 left-0';
-export const icon = (isHorizontal: boolean) => cnb('absolute bottom-40 right-36 text-white w-65 h-65 border-2 border-white rounded-full p-16 group-hocus-visible:border-dashed group-aria-expanded:rotate-45 transition-transform', {
+export const icon = (isHorizontal: boolean) => cnb('absolute bottom-40 right-36 text-white size-65 border-2 border-white rounded-full p-16 group-hocus-visible:border-dashed group-aria-expanded:rotate-45 transition-transform', {
   'md:bottom-58 2xl:bottom-61 md:right-45': isHorizontal,
 });
+
+// Modal styles
+export const dialog = 'relative z-[100]';
+export const srOnly = 'sr-only';
+export const modalOverlay = 'fixed z-[110] bg-gc-black/80 backdrop-blur-md inset-0 w-screen overflow-y-auto';
+export const modal = 'cc rs-pt-1 rs-pb-3 text-white';
+export const modalClose = 'block mr-0 ml-auto rs-mb-2 p-9 border-2 border-white rounded-full hocus:border-dashed transition-transform';
+export const modalIcon = 'text-white size-28 stroke-2';
