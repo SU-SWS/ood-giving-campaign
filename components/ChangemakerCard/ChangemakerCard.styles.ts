@@ -24,7 +24,7 @@ export const heading = (isHorizontal: boolean) => cnb('mb-02em mt-auto text-30',
 });
 export const subhead = 'text-19 md:text-21';
 
-export const cardContent = (isHorizontal: boolean) => cnb('absolute size-full top-0 left-0 aria-hidden:opacity-0 opacity-100 backdrop-blur-sm transition-opacity duration-500 bg-gradient-to-b from-gc-black/60 to-gc-black/90 *:*:*:!mb-1em', {
+export const cardContent = (isHorizontal: boolean) => cnb('hidden sm:block absolute size-full top-0 left-0 aria-hidden:opacity-0 opacity-100 backdrop-blur-sm transition-opacity duration-500 bg-gradient-to-b from-gc-black/60 to-gc-black/90 *:*:*:!mb-1em', {
   'px-20 py-30 @330:py-48 @330:px-36' : !isHorizontal,
   'rs-pt-3 rs-px-3': isHorizontal,
 });
