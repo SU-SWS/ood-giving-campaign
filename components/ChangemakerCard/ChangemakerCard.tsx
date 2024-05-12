@@ -50,7 +50,7 @@ export const ChangemakerCard = ({
   const [isShown, toggle, setIsShown] = useToggle();
 
   // For the mobile modal
-  const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleClick = () => {
     // If it's not XS breakpoint, toggle the card content and if it is shown, focus on contentRef
@@ -61,7 +61,7 @@ export const ChangemakerCard = ({
       }
     } else {
       // Open the modal if it's XS breakpoint
-      setIsOpen(true);
+      setIsModalOpen(true);
     }
   };
 
@@ -182,7 +182,7 @@ export const ChangemakerCard = ({
               onClick={handleClick}
               aria-label={isShown ? 'Dismiss' : `Read more about ${heading}`}
               aria-controls={isNotPhone ? contentId : undefined}
-              aria-expanded={isShown || isOpen}
+              aria-expanded={isShown || isModalOpen}
               aria-haspopup={isNotPhone ? undefined : 'dialog'}
               className={styles.button}
             >
@@ -196,28 +196,28 @@ export const ChangemakerCard = ({
         </article>
       </AnimateInView>
       {/* Content is displayed in a modal for XS breakpoint only */}
-      <Dialog open={isOpen} onClose={() => setIsOpen(false)} className={styles.dialog}>
-        <div className={styles.modalOverlay}>
-          <DialogPanel className={styles.modal}>
-              <button
-                type="button"
-                aria-label="Close modal"
-                onClick={() => setIsOpen(false)}
-                className={styles.modalClose}
-              >
-                <HeroIcon
-                  noBaseStyle
-                  focusable="false"
-                  icon='close'
-                  className={styles.modalIcon}
-                />
-              </button>
-              <DialogTitle className={styles.srOnly}>{heading}</DialogTitle>
-              {subheading && (
-                <Description className={styles.srOnly}>{subheading}</Description>
-              )}
-              <div className="">{children}</div>
-            </DialogPanel>
+      <Dialog open={isModalOpen} onClose={() => setIsModalOpen(false)} className={styles.dialog}>
+        <div className={styles.dialogOverlay}>
+          <DialogPanel className={styles.dialogPanel}>
+            <button
+              type="button"
+              aria-label="Close modal"
+              onClick={() => setIsModalOpen(false)}
+              className={styles.modalClose}
+            >
+              <HeroIcon
+                noBaseStyle
+                focusable="false"
+                icon='close'
+                className={styles.modalIcon}
+              />
+            </button>
+            <DialogTitle className={styles.srOnly}>{heading}</DialogTitle>
+            {subheading && (
+              <Description className={styles.srOnly}>{subheading}</Description>
+            )}
+            <div className="">{children}</div>
+          </DialogPanel>
         </div>
       </Dialog>
 
