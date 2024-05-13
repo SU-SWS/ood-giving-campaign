@@ -16,17 +16,17 @@ export const image = 'w-full h-full object-cover';
 export const overlay = 'absolute top-0 left-0 size-full bg-gradient-to-t via-black-true/20 from-black-true/90';
 
 export const info = (isHorizontal: boolean) => cnb('rs-px-1 pb-150 absolute size-full bottom-0 left-0 mb-0', {
-  'sm:pb-200 xl:pb-120': isHorizontal,
+  'px-20 md:px-45 sm:pb-200 xl:pb-130': isHorizontal,
 });
-export const heading = (isHorizontal: boolean) => cnb('mb-02em mt-auto text-30', {
+export const heading = (isHorizontal: boolean) => cnb('mb-02em mt-auto text-30 white-space-pre-line', {
   '2xl:text-[3.6rem]': !isHorizontal,
-  'sm:fluid-type-4': isHorizontal,
+  'sm:fluid-type-4 xl:max-w-[30ch] mx-auto': isHorizontal,
 });
-export const subhead = 'text-19 md:text-21';
+export const subhead = 'text-19 md:text-21 xl:max-w-prose mx-auto white-space-pre-line';
 
 export const cardContent = (isHorizontal: boolean) => cnb('hidden sm:block absolute size-full top-0 left-0 aria-hidden:opacity-0 opacity-100 backdrop-blur-sm transition-opacity duration-500 bg-gradient-to-b from-gc-black/60 to-gc-black/90 *:*:*:!mb-1em', {
-  'px-20 py-30 @330:py-48 @330:px-36' : !isHorizontal,
-  'rs-pt-3 rs-px-3': isHorizontal,
+  'px-20 py-30 pb-120 @330:pt-48 @330:px-36' : !isHorizontal,
+  'rs-pt-3 rs-px-3 pb-150': isHorizontal,
 });
 export const contentWrapper = (isHorizontal: boolean) => cnb('', {
   'xl:columns-2 gap-x-38 xl:first:*:*:*:mt-0': isHorizontal,
@@ -41,6 +41,6 @@ export const icon = (isHorizontal: boolean) => cnb('absolute bottom-40 right-36 
 export const dialog = 'relative z-[100]';
 export const srOnly = 'sr-only';
 export const dialogOverlay = 'fixed z-[110] bg-gc-black/80 backdrop-blur-md inset-0 w-screen overflow-y-auto';
-export const dialogPanel = 'cc w-screen h-full rs-pt-1 rs-pb-3 text-white';
+export const dialogPanel = 'cc w-screen min-h-screen inset-0 rs-pt-1 rs-pb-3 text-white';
 export const modalClose = 'block mr-0 ml-auto rs-mb-2 p-9 border-2 border-white rounded-full hocus:border-dashed transition-transform';
-export const modalIcon = 'text-white size-28 stroke-2';
+export const modalIcon = 'text-white size-26';

@@ -189,6 +189,7 @@ export const ChangemakerCard = ({
               <HeroIcon
                 noBaseStyle
                 icon='plus'
+                strokeWidth={2}
                 className={styles.icon(isHorizontal)}
               />
             </button>
@@ -208,6 +209,7 @@ export const ChangemakerCard = ({
               <HeroIcon
                 noBaseStyle
                 focusable="false"
+                strokeWidth={2}
                 icon='close'
                 className={styles.modalIcon}
               />
