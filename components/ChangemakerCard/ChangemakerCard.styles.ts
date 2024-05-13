@@ -41,6 +41,6 @@ export const icon = (isHorizontal: boolean) => cnb('absolute bottom-40 right-36 
 export const dialog = 'relative z-[100]';
 export const srOnly = 'sr-only';
 export const dialogOverlay = 'fixed z-[110] bg-gc-black/80 backdrop-blur-md inset-0 w-screen overflow-y-auto';
-export const dialogPanel = 'cc w-screen min-h-screen inset-0 rs-pt-1 rs-pb-3 text-white';
+export const dialogPanel = 'cc w-screen min-h-screen inset-0 pt-20 pb-60 text-white';
 export const modalClose = 'block mr-0 ml-auto rs-mb-2 p-9 border-2 border-white rounded-full hocus:border-dashed transition-transform';
 export const modalIcon = 'text-white size-26';

@@ -1,3 +1,4 @@
+'use client';
 import { cnb } from 'cnbuilder';
 import { useId, useRef, useState } from 'react';
 import {
@@ -222,7 +223,6 @@ export const ChangemakerCard = ({
           </DialogPanel>
         </div>
       </Dialog>
-
     </>
   );
 };
