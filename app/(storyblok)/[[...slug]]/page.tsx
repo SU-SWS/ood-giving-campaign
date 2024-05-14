@@ -25,7 +25,8 @@ const bridgeOptions = {
 // Force the 404 page for anything that isn't statically generated.
 export const dynamicParams = false;
 
-// Cache forever.
+// Cache for one year.
+// I have no concrete evidence but this seems to work best with Netlify's edge caching over caching for infinity.
 export const revalidate = 31536000;
 
 // Force static rendering.

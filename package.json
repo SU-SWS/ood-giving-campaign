@@ -58,7 +58,7 @@
     "eslint": "^8.50.0",
     "eslint-config-next": "^14.2.3",
     "netlify-cli": "^17.22.1",
-    "netlify-plugin-vault-variables": "github:SU-SWS/netlify-plugin-vault-variables#nojira/nextjs-plugin-5",
+    "netlify-plugin-vault-variables": "^3.0.0",
     "postcss": "^8.4.33",
     "typescript": "^5.1"
   },
