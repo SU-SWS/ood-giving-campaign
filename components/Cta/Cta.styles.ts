@@ -31,7 +31,7 @@ export const ctaVariants = {
   'ghost-swipe': `${ghostSwipeBase} bg-transparent`,
   'ghost-swipe-overlay': `${ghostSwipeBase} bg-black-true/40`, // Use for split poster over images
   link: '!p-0 inline-block w-fit font-normal leading-display text-current hocus:text-current no-underline decoration-2 underline-offset-4 focus-visible:ring-2 focus-visible:ring-digital-red-light focus-visible:outline-none focus-visible:rounded',
-  back: 'inline-block font-normal no-underline leading-none group-hocus:underline text-black hocus:text-digital-red focus-visible:ring-2 focus-visible:ring-digital-red-light focus-visible:ring-offset-4 focus:outline-none rounded-[1px]',
+  back: 'inline-block font-normal no-underline leading-none group-hocus:underline text-gc-black hocus:text-digital-red focus-visible:ring-2 focus-visible:ring-digital-red-light focus-visible:ring-offset-4 focus:outline-none rounded-[1px]',
   mastheadGiving: `${mastheadGivingBase} ${mastheadGivingWhite}`, // Giving link regular dark pages
   mastheadGivingBlack: `${mastheadGivingBase} ${mastheadGivingDark}`, // Giving link light mode story pages
   close: 'inline-block font-semibold leading-none text-digital-red-light hocus:text-digital-red-xlight focus:outline-none',
