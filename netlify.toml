@@ -1,7 +1,7 @@
 # BUILD Settings:
 # ##############################################################################
 [build]
-  command = "npm run build:netlify"
+  command = "npm run build"
   publish = ".next"
 
 # PLUGINS
