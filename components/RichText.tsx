@@ -17,11 +17,13 @@ import {
  * -top-04em (used in BlurryPoster)
  */
 
+export type RichTextBaseFontSizeType = 'default' | 'card' | 'changemaker' | 'changemakerHorizontal';
+
 export type RichTextProps = {
   wysiwyg: StoryblokRichtext;
   // "default" is for main content, e.g., Story body content
   type?: 'default' | 'card';
-  baseFontSize?: 'default' | 'card' | 'changemaker' | 'changemakerHorizontal';
+  baseFontSize?: RichTextBaseFontSizeType;
   textColor?: 'black' | 'white' | 'black-70';
   bgColor?: 'black' | 'black-50' | 'black-60' | 'black-70' | 'white' | 'none';
   textAlign?: TextAlignType;
