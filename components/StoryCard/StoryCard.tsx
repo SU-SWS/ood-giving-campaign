@@ -8,7 +8,7 @@ import {
 import { SbLinkType } from '@/components/Storyblok/Storyblok.types';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { accentBorderColors, type AccentBorderColorType } from '@/utilities/datasource';
-import { initiativesMap, type InitiativesType } from '@/utilities/taxonomyMaps';
+import { taxonomyMap, type TaxonomyType } from '@/utilities/taxonomyMaps';
 import * as styles from './StoryCard.styles';
 
 export type StoryCardProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -21,7 +21,7 @@ export type StoryCardProps = React.HTMLAttributes<HTMLDivElement> & {
   tabColor?: AccentBorderColorType;
   href?: string;
   link?: SbLinkType;
-  taxonomy?: InitiativesType[];
+  taxonomy?: TaxonomyType[];
   animation?: AnimationType;
   delay?: number;
   isHorizontal?: boolean;
@@ -124,7 +124,7 @@ export const StoryCard = ({
                 {taxonomy.slice(0, 3).map((item) => (
                   <li key={item} className={styles.taxonomyItem}>
                     <CtaLink href={`/stories/list/${item}`} variant={isDark ? 'storyCardChipDark' : 'storyCardChip'} className={styles.taxonomyLink}>
-                      {initiativesMap[item]}
+                      {taxonomyMap[item]}
                     </CtaLink>
                   </li>
                 ))}

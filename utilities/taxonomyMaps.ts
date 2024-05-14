@@ -15,3 +15,16 @@ export const initiativesMap = {
   'undergraduate-financial-aid': 'Undergraduate Financial Aid',
 };
 export type InitiativesType = keyof typeof initiativesMap;
+
+export const themesMap = {
+  'accelerating-solutions': 'Accelerating Solutions',
+  'catalyzing-discovery': 'Catalyzing Discovery',
+  'preparing-citizens': 'Preparing Citizens',
+};
+export type ThemesType = keyof typeof themesMap;
+
+export const taxonomyMap = {
+  ...initiativesMap,
+  ...themesMap,
+};
+export type TaxonomyType = keyof typeof taxonomyMap;
