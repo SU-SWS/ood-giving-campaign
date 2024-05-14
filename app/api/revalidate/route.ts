@@ -17,6 +17,7 @@ export async function GET(request: NextRequest) {
     return new Response('Unauthorized', { status: 401 });
   }
 
+  // Revalidate everything.
   revalidatePath('/', 'layout');
   return Response.json({ revalidated: true, now: Date.now() });
 }
