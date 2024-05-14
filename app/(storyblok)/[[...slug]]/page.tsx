@@ -16,16 +16,21 @@ type ParamsType = {
   slug: string[];
 };
 
-// Bug in Safari + Netlify + Next where back button doesn't function correctly and returns the user
-// back to the page they hit the back button on after scrolling or interacting with the page they went back to.
-// Setting a long revalidate time patches this until Next/Netlify fix the bug in future releases of their stuff.
-export const revalidate = 60 * 60 * 24 * 365;
-
 // Storyblok bridge options.
 const bridgeOptions = {
   resolveRelations,
   resolveLinks: 'story',
 };
+
+// Force the 404 page for anything that isn't statically generated.
+export const dynamicParams = false;
+
+// Cache for one year.
+// I have no concrete evidence but this seems to work best with Netlify's edge caching over caching for infinity.
+export const revalidate = 31536000;
+
+// Force static rendering.
+export const dynamic = 'force-static';
 
 /**
  * Init on the server.
@@ -65,12 +70,12 @@ export async function generateStaticParams() {
 
   stories.forEach((story) => {
     const slug = story.slug;
-    // Filter out the home page.
-    if (slug !== 'home') {
-      const splitSlug = slug.split('/');
-      paths.push({ slug: splitSlug });
-    }
+    const splitSlug = slug.split('/');
+    paths.push({ slug: splitSlug });
   });
+
+  // Add home page as index.
+  paths.push({ slug: [] });
 
   return paths;
 };
