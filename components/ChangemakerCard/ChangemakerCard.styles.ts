@@ -1,6 +1,6 @@
 import { cnb } from 'cnbuilder';
 
-export const root = (isHorizontal: boolean) => cnb('@container relative w-full mx-auto break-words max-w-[29rem]', {
+export const root = (isHorizontal: boolean) => cnb('relative w-full mx-auto break-words max-w-[29rem]', {
   'sm:max-w-300 lg:max-w-[35rem]': !isHorizontal,
   'sm:max-w-550 md:max-w-600 xl:max-w-1000 2xl:max-w-1200': isHorizontal,
 });
@@ -25,15 +25,13 @@ export const heading = (isHorizontal: boolean) => cnb('mb-02em mt-auto text-30 w
 export const subhead = 'text-19 md:text-21 xl:max-w-prose mx-auto white-space-pre-line';
 
 export const cardContent = (isHorizontal: boolean) => cnb('hidden sm:block absolute size-full top-0 left-0 aria-hidden:opacity-0 opacity-100 backdrop-blur-sm transition-opacity duration-500 bg-gradient-to-b from-gc-black/60 to-gc-black/90 *:*:*:!mb-1em', {
-  'px-20 py-30 pb-120 @330:pt-48 @330:px-36' : !isHorizontal,
+  'px-20 py-30 pb-120 3xl:pt-48 3xl:px-36' : !isHorizontal,
   'rs-pt-3 rs-px-3 pb-150': isHorizontal,
 });
-export const contentWrapper = (isHorizontal: boolean) => cnb('', {
-  'xl:columns-2 gap-x-38 xl:first:*:*:*:mt-0': isHorizontal,
-});
+export const contentWrapper = (isHorizontal: boolean) => isHorizontal && 'xl:columns-2 gap-x-38 xl:first:*:*:*:mt-0';
 
 export const button = 'group absolute size-full top-0 left-0';
-export const icon = (isHorizontal: boolean) => cnb('absolute bottom-40 right-36 text-white size-65 border-2 border-white rounded-full p-16 group-hocus-visible:border-dashed group-aria-expanded:rotate-45 transition-transform', {
+export const icon = (isHorizontal: boolean) => cnb('absolute bottom-40 right-36 text-white size-65 border-2 border-white rounded-full p-16 group-hocus-visible:border-dashed group-aria-expanded:rotate-45 transition-transform group-hocus-visible:bg-gc-black/80 transition-color', {
   'md:bottom-58 2xl:bottom-61 md:right-45': isHorizontal,
 });
 
@@ -42,6 +40,6 @@ export const dialog = 'relative z-[100]';
 export const srOnly = 'sr-only';
 export const dialogOverlay = 'fixed inset-0 bg-gc-black/80 backdrop-blur-md w-screen';
 export const dialogWrapper = 'fixed inset-0 w-screen overflow-y-auto overscroll-contain';
-export const dialogPanel = 'relative cc w-screen z-[120] min-h-screen inset-0 pt-20 pb-60 text-white';
+export const dialogPanel = 'relative cc w-screen min-h-screen inset-0 pt-20 pb-60 text-white';
 export const modalClose = 'block mr-0 ml-auto rs-mb-2 p-9 border-2 border-white rounded-full hocus:border-dashed transition-transform';
 export const modalIcon = 'text-white size-26';

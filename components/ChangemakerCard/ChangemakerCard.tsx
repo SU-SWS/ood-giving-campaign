@@ -94,7 +94,7 @@ export const ChangemakerCard = ({
             {/* Front of the card */}
             <div aria-hidden={isShown} className={styles.cardFront}>
               {!!imageSrc && (
-                <>
+                <div className={styles.imageWrapper(isHorizontal)}>
                   {/* No need to use different sources for vertical cards because
                     it stays about the same size for all breakpoints */}
                   {isHorizontal ? (
@@ -144,7 +144,7 @@ export const ChangemakerCard = ({
                     />
                   )}
                   <div className={styles.overlay} />
-                </>
+                </div>
               )}
               <FlexBox direction="col" className={styles.info(isHorizontal)}>
                 {heading && (
@@ -199,7 +199,7 @@ export const ChangemakerCard = ({
       </AnimateInView>
       {/* Content is displayed in a modal for XS breakpoint only */}
       <Transition show={isModalOpen} appear>
-        <Dialog open={isModalOpen} onClose={() => setIsModalOpen(false)} className={styles.dialog}>
+        <Dialog onClose={() => setIsModalOpen(false)} className={styles.dialog}>
           <TransitionChild
               enter="ease-out duration-300"
               enterFrom="opacity-0"
@@ -238,7 +238,7 @@ export const ChangemakerCard = ({
                 {subheading && (
                   <Description className={styles.srOnly}>{subheading}</Description>
                 )}
-                <div className="">{children}</div>
+                {children}
               </DialogPanel>
             </div>
           </TransitionChild>

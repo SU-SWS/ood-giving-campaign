@@ -78,7 +78,7 @@ export const textVariants = {
    */
   caption: 'gc-caption',
   card: 'gc-card',
-  changemaker: 'text-18 sm:text-15 @320:text-16 leading-snug @320:leading',
+  changemaker: 'text-18 sm:text-15 3xl:text-16 leading-snug 3xl:leading-cozy',
   changemakerHorizontal: 'leading-cozy 2xl:leading text-18 sm:text-15 md:text-17 xl:text-19 2xl:text-22',
   intro: 'gc-intro-text',
   /**
