@@ -2,7 +2,7 @@
 import { cnb } from 'cnbuilder';
 import { useId, useRef, useState } from 'react';
 import {
-  Description, Dialog, DialogPanel, DialogTitle,
+  Description, Dialog, DialogPanel, DialogTitle, Transition, TransitionChild,
 } from '@headlessui/react';
 import { useMediaQuery, useOnClickOutside, useToggle } from 'usehooks-ts';
 import { AnimateInView, type AnimationType } from '@/components/Animate';
@@ -198,31 +198,52 @@ export const ChangemakerCard = ({
         </article>
       </AnimateInView>
       {/* Content is displayed in a modal for XS breakpoint only */}
-      <Dialog open={isModalOpen} onClose={() => setIsModalOpen(false)} className={styles.dialog}>
-        <div className={styles.dialogOverlay}>
-          <DialogPanel className={styles.dialogPanel}>
-            <button
-              type="button"
-              aria-label="Close modal"
-              onClick={() => setIsModalOpen(false)}
-              className={styles.modalClose}
+      <Transition show={isModalOpen} appear>
+        <Dialog open={isModalOpen} onClose={() => setIsModalOpen(false)} className={styles.dialog}>
+          <TransitionChild
+              enter="ease-out duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-300"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
             >
-              <HeroIcon
-                noBaseStyle
-                focusable="false"
-                strokeWidth={2}
-                icon='close'
-                className={styles.modalIcon}
-              />
-            </button>
-            <DialogTitle className={styles.srOnly}>{heading}</DialogTitle>
-            {subheading && (
-              <Description className={styles.srOnly}>{subheading}</Description>
-            )}
-            <div className="">{children}</div>
-          </DialogPanel>
-        </div>
-      </Dialog>
+            <div className={styles.dialogOverlay} />
+          </TransitionChild>
+          <TransitionChild
+            enter="ease-out duration-300"
+            enterFrom="opacity-0 scale-95"
+            enterTo="opacity-100 scale-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100 scale-100"
+            leaveTo="opacity-0 scale-95"
+          >
+            <div className={styles.dialogWrapper}>
+              <DialogPanel className={styles.dialogPanel}>
+                <button
+                  type="button"
+                  aria-label="Close modal"
+                  onClick={() => setIsModalOpen(false)}
+                  className={styles.modalClose}
+                >
+                  <HeroIcon
+                    noBaseStyle
+                    focusable="false"
+                    strokeWidth={2}
+                    icon='close'
+                    className={styles.modalIcon}
+                  />
+                </button>
+                <DialogTitle className={styles.srOnly}>{heading}</DialogTitle>
+                {subheading && (
+                  <Description className={styles.srOnly}>{subheading}</Description>
+                )}
+                <div className="">{children}</div>
+              </DialogPanel>
+            </div>
+          </TransitionChild>
+        </Dialog>
+      </Transition>
     </>
   );
 };
