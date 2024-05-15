@@ -121,12 +121,14 @@ export const StoryCard = ({
             <Heading as={tagsHeadingLevel} className="sr-only">Story tags:</Heading>
             {!!taxonomy?.length && (
               <ul className={styles.taxonomy(isHorizontal, isListView)}>
-                {taxonomy.slice(0, 3).map((item) => (
-                  <li key={item} className={styles.taxonomyItem}>
-                    <CtaLink href={`/stories/list/${item}`} variant={isDark ? 'storyCardChipDark' : 'storyCardChip'} className={styles.taxonomyLink}>
-                      {taxonomyMap[item]}
-                    </CtaLink>
-                  </li>
+                {taxonomy.map((item) => (
+                  taxonomyMap[item] ? (
+                    <li key={item} className={styles.taxonomyItem}>
+                      <CtaLink href={`/stories/list/${item}`} variant={isDark ? 'storyCardChipDark' : 'storyCardChip'} className={styles.taxonomyLink}>
+                        {taxonomyMap[item]}
+                      </CtaLink>
+                    </li>
+                  ) : null // Don't display the list item if the taxonomy item is not in the taxonomy map
                 ))}
               </ul>
             )}
