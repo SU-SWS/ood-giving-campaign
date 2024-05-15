@@ -20,6 +20,7 @@ export const themesMap = {
   'accelerating-solutions': 'Accelerating Solutions',
   'catalyzing-discovery': 'Catalyzing Discovery',
   'preparing-citizens': 'Preparing Citizens',
+  'sustaining-life': 'Sustaining Life',
 };
 export type ThemesType = keyof typeof themesMap;
 
