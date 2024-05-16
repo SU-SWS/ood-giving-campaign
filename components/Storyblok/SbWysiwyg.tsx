@@ -1,8 +1,8 @@
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { storyblokEditable } from '@storyblok/react/rsc';
-import { RichText } from '../RichText';
-import { type TextAlignType } from '../Typography';
-import { WidthBox, type WidthType } from '../WidthBox';
+import { RichText, type RichTextBaseFontSizeType } from '@/components/RichText';
+import { type TextAlignType } from '@/components/Typography';
+import { WidthBox, type WidthType } from '@/components/WidthBox';
 import { type PaddingType } from '@/utilities/datasource';
 
 type SbWysiwygProps = {
@@ -20,6 +20,7 @@ type SbWysiwygProps = {
     isHidden?: boolean;
   },
   isDarkTheme?: boolean;
+  baseFontSize?: RichTextBaseFontSizeType;
 };
 
 export const SbWysiwyg = ({
@@ -36,6 +37,7 @@ export const SbWysiwyg = ({
   },
   blok,
   isDarkTheme,
+  baseFontSize,
 }: SbWysiwygProps) => {
   if (isHidden) {
     return null;
@@ -51,6 +53,7 @@ export const SbWysiwyg = ({
     >
       <RichText
         type="default"
+        baseFontSize={baseFontSize}
         wysiwyg={content}
         textColor={isDarkTheme || isLightText ? 'white' : 'black'}
         textAlign={textAlign}
