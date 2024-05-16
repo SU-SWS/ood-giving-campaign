@@ -45,7 +45,7 @@ export const SbSidebarCard = ({
   },
   blok,
 }: SbSidebarCardProps) => {
-  const Content = !!getNumBloks(content) ? <CreateBloks blokSection={content} /> : undefined;
+  const Content = !!getNumBloks(content) ? <CreateBloks blokSection={content} baseFontSize="card" /> : undefined;
   const Cta = !!getNumBloks(cta) ? <CreateBloks blokSection={cta} /> : undefined;
 
   return (
