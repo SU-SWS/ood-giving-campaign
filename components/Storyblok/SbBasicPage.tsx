@@ -1,4 +1,4 @@
-import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
+import { storyblokEditable, type SbBlokData, StoryblokComponent } from '@storyblok/react/rsc';
 import { CreateBloks } from '@/components/CreateBloks';
 import { BasicHero } from '@/components/Hero';
 import { Masthead } from '@/components/Masthead';
@@ -30,6 +30,11 @@ type SbBasicPageProps = {
     heroContent?: SbBlokData[];
     content?: SbBlokData[];
     ankle?: SbBlokData[];
+    mastheadPicker?: {
+      content?: {
+        mainNav?: SbBlokData[];
+      }
+    }
   };
 };
 
@@ -50,14 +55,20 @@ export const SbBasicPage = ({
     heroContent,
     content,
     ankle,
+    mastheadPicker: {
+      content: {
+        mainNav = [],
+      } = {},
+    } = {},
   },
   blok,
 }: SbBasicPageProps) => {
   const HeroContent = !!getNumBloks(heroContent) ? <CreateBloks blokSection={heroContent} /> : undefined;
+  const MainNav = !!getNumBloks(mainNav) ? <CreateBloks blokSection={mainNav} /> : undefined;
 
   return (
     <div {...storyblokEditable(blok)}>
-      <Masthead />
+      <Masthead mainNav={MainNav} />
       <main id="main-content">
         {!!getNumBloks(hero) ? (
           <CreateBloks blokSection={hero} />

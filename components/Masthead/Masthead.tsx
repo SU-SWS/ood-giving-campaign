@@ -9,9 +9,10 @@ import * as styles from './Masthead.styles';
 
 type MastheadProps = HTMLAttributes<HTMLDivElement> & {
   isLight?: boolean;
+  mainNav?: React.ReactNode;
 };
 
-export const Masthead = ({ isLight, className }: MastheadProps) => (
+export const Masthead = ({ isLight, mainNav, className }: MastheadProps) => (
   <header className={cnb(styles.root, className)}>
     <Skiplink />
     <FlexBox
@@ -34,6 +35,7 @@ export const Masthead = ({ isLight, className }: MastheadProps) => (
       >
         Giving to Stanford
       </CtaLink>
+      {mainNav}
     </FlexBox>
   </header>
 );

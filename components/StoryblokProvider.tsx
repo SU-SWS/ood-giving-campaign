@@ -15,6 +15,8 @@ import { SbFeatureMasonry } from '@/components/Storyblok/SbFeatureMasonry';
 import { SbHomepageMvp } from '@/components/Storyblok/SbHomepageMvp';
 import { SbHomepageThemeSection } from '@/components/Storyblok/SbHomepageThemeSection';
 import { SbInitiativeCard } from '@/components/Storyblok/SbInitiativeCard';
+import { SbMainNav } from '@/components/Storyblok/SbMainNav';
+import { SbMasthead } from '@/components/Storyblok/SbMastHead';
 import { SbMomentPoster } from './Storyblok/SbMomentPoster';
 import { SbQuote } from '@/components/Storyblok/SbQuote';
 import { SbRow } from '@/components/Storyblok/SbRow';
@@ -50,6 +52,8 @@ export const components = {
   sbHomepageMvp: SbHomepageMvp,
   sbHomepageThemeSection: SbHomepageThemeSection,
   sbInitiativeCard: SbInitiativeCard,
+  sbMainNav: SbMainNav,
+  sbMasthead: SbMasthead,
   sbMomentPoster: SbMomentPoster,
   sbQuote: SbQuote,
   sbRow: SbRow,
