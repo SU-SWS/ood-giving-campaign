@@ -26,16 +26,18 @@ export const Masthead = ({ isLight, mainNav, className }: MastheadProps) => (
         text="Momentum"
         className={styles.lockup}
       />
-      <CtaLink
-        href={ood.giving}
-        variant={isLight ? 'mastheadGivingBlack' : 'mastheadGiving'}
-        icon="external"
-        color="current"
-        animate="top-right"
-      >
-        Giving to Stanford
-      </CtaLink>
-      {mainNav}
+      <FlexBox alignItems="center" className="gap-x-12 sm:gap-x-20 md:gap-x-30">
+        <CtaLink
+          href={ood.giving}
+          variant={isLight ? 'mastheadGivingBlack' : 'mastheadGiving'}
+          icon="external"
+          color="current"
+          animate="top-right"
+        >
+          Giving to Stanford
+        </CtaLink>
+        {mainNav}
+      </FlexBox>
     </FlexBox>
   </header>
 );
