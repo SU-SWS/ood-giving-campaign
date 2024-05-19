@@ -1,7 +1,7 @@
-import { storyblokEditable, type SbBlokData, StoryblokComponent } from '@storyblok/react/rsc';
+import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import { CreateBloks } from '@/components/CreateBloks';
 import { BasicHero } from '@/components/Hero';
-import { Masthead } from '@/components/Masthead';
+import { CreateStories } from '../CreateStories';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { type SbImageType } from '@/components/Storyblok/Storyblok.types';
 import { type HeroPaddingType } from '@/components/Hero/BasicHero.styles';
@@ -55,20 +55,15 @@ export const SbBasicPage = ({
     heroContent,
     content,
     ankle,
-    mastheadPicker: {
-      content: {
-        mainNav = [],
-      } = {},
-    } = {},
+    mastheadPicker,
   },
   blok,
 }: SbBasicPageProps) => {
   const HeroContent = !!getNumBloks(heroContent) ? <CreateBloks blokSection={heroContent} /> : undefined;
-  const MainNav = !!getNumBloks(mainNav) ? <CreateBloks blokSection={mainNav} /> : undefined;
 
   return (
     <div {...storyblokEditable(blok)}>
-      <Masthead mainNav={MainNav} />
+      <CreateStories stories={mastheadPicker} />
       <main id="main-content">
         {!!getNumBloks(hero) ? (
           <CreateBloks blokSection={hero} />

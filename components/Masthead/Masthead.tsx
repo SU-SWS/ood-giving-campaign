@@ -33,6 +33,7 @@ export const Masthead = ({ isLight, mainNav, className }: MastheadProps) => (
           icon="external"
           color="current"
           animate="top-right"
+          className="relative z-[300]"
         >
           Giving to Stanford
         </CtaLink>

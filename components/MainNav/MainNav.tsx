@@ -37,37 +37,63 @@ export const MainNav = ({
   regionCol2,
   regionCol3,
 }: MainNavProps) => (
-  <Popover>
-    <nav aria-label="main menu">
-      <PopoverButton className="relative flex items-center justify-center bg-gc-black text-white size-36 sm:size-42 md:size-48 border-2 border-digital-red-light rounded-full z-[150]">
-        <HeroIcon noBaseStyle icon="menu" className="text-white size-20 sm:size-22 md:size-26" />
-        <span className="sr-only">Open main menu</span>
-      </PopoverButton>
-      <PopoverPanel className="absolute w-screen inset-0 z-[140] mt-[8.8rem]">
-        <div className="bg-digital-blue">
-          <Grid sm={2} xxl={3} className="px-20 sm:px-30 md:px-50 lg:px-80 xl:px-100 3xl:px-100 4xl:px-[calc((100%-1800px)/2)] mx-auto relative rs-pt-6">
-            <div className="2xl:col-span-1">
-              <ul>
-                {featuredLinks.map((link) => (
-                  <li key={link._uid}>
-                    <CtaLink href={link.href} color="white" size="large">{link.label}</CtaLink>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="2xl:col-span-2">
-              <Grid xxl={2}>
-                <div>
-                  {regionCol2}
-                </div>
-                <div>
-                  {regionCol3}
-                </div>
-              </Grid>
-            </div>
-          </Grid>
-        </div>
-      </PopoverPanel>
-    </nav>
+  <Popover as="nav" aria-label="main menu" className="group">
+    {({ open }) => (
+      <>
+        <PopoverButton className="relative flex items-center justify-center bg-gc-black text-white size-36 sm:size-42 md:size-48 border-2 border-digital-red-light rounded-full z-[150] hocus-visible:bg-digital-red-dark transition-colors">
+          <HeroIcon noBaseStyle icon={open ? 'close' : 'menu'} className="text-white size-20 sm:size-22 md:size-26" />
+          <span className="sr-only">Open main menu</span>
+        </PopoverButton>
+        <PopoverPanel className="absolute w-screen inset-0 z-[140]">
+          <div className="bg-gc-black border-b border-b-black-80 pt-[8.8rem] rs-pb-7">
+            <Grid sm={2} xxl={3} className="rs-pt-6 px-20 sm:px-30 md:px-50 lg:px-80 xl:px-100 3xl:px-100 4xl:px-[calc((100%-1800px)/2)] mx-auto relative">
+              <div className="2xl:col-span-1">
+                <ul className="list-unstyled">
+                  {featuredLinks.map((link) => (
+                    <li key={link._uid}>
+                      <CtaLink href={link.href} color="white" size="large">{link.label}</CtaLink>
+                    </li>
+                  ))}
+                </ul>
+                {!!themeLinks?.length && (
+                  <>
+                    <Heading font="druk-wide" size={1} color="white" uppercase>Themes</Heading>
+                    <ul className="list-unstyled">
+                      {themeLinks.map((link) => (
+                        <li key={link._uid}>
+                          <CtaLink href={link.href} color="white" size="large">{link.label}</CtaLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+              </div>
+              <div className="2xl:col-span-2">
+                <Grid xxl={2}>
+                  <div>
+                    {!!initiativeLinks?.length && (
+                      <>
+                        <Heading font="druk-wide" size={1} color="white" uppercase>Initiatives</Heading>
+                        <ul className="list-unstyled">
+                          {initiativeLinks.map((link) => (
+                            <li key={link._uid}>
+                              <CtaLink href={link.href} color="white" size="large">{link.label}</CtaLink>
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    )}
+                    {regionCol2}
+                  </div>
+                  <div>
+                    {regionCol3}
+                  </div>
+                </Grid>
+              </div>
+            </Grid>
+          </div>
+        </PopoverPanel>
+      </>
+    )}
   </Popover>
 );
