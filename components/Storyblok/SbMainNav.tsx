@@ -4,13 +4,14 @@ import { CreateBloks } from '@/components/CreateBloks';
 import { MainNav } from '@/components/MainNav/MainNav';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { transformNavItems } from '@/utilities/transformNavItems';
-import { transform } from 'next/dist/build/swc';
 
 export type SbMainNavProps = {
   blok: {
     _uid: string;
     featuredLinks: SbNavItemProps[];
+    isThemeHidden?: boolean;
     themeLinks: SbNavItemProps[];
+    isInitiativeHidden?: boolean;
     initiativeLinks: SbNavItemProps[];
     regionCol2?: SbBlokData[];
     regionCol3?: SbBlokData[];
@@ -20,7 +21,9 @@ export type SbMainNavProps = {
 export const SbMainNav = ({
   blok: {
     featuredLinks,
+    isThemeHidden,
     themeLinks,
+    isInitiativeHidden,
     initiativeLinks,
     regionCol2,
     regionCol3,
@@ -31,8 +34,8 @@ export const SbMainNav = ({
   const RegionCol3 = !!getNumBloks(regionCol3) ? <CreateBloks blokSection={regionCol3} /> : undefined;
 
   const featuredLinksArray = transformNavItems(featuredLinks);
-  const themeLinksArray = transformNavItems(themeLinks);
-  const initiativeLinksArray = transformNavItems(initiativeLinks);
+  const themeLinksArray = !isThemeHidden ? transformNavItems(themeLinks) : undefined;
+  const initiativeLinksArray = !isInitiativeHidden ? transformNavItems(initiativeLinks): undefined;
 
   return (
     <MainNav

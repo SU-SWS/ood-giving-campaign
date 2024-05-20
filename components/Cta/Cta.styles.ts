@@ -31,7 +31,8 @@ export const ctaVariants = {
   'ghost-swipe': `${ghostSwipeBase} bg-transparent`,
   'ghost-swipe-overlay': `${ghostSwipeBase} bg-black-true/40`, // Use for split poster over images
   link: '!p-0 inline-block w-fit font-normal leading-display text-current hocus:text-current no-underline decoration-2 underline-offset-4 focus-visible:ring-2 focus-visible:ring-digital-red-light focus-visible:outline-none focus-visible:rounded',
-  mainNavFeatured: 'font-druk-wide uppercase leading-tight text-white hocus:text-white underline decoration-[3] decoration-black-50 underline-offset-[6px] hocus:decoration-digital-red-xlight',
+  mainNavFeatured: 'font-druk-wide uppercase leading-cozy text-white hocus:text-white underline md:decoration-2 decoration-black-50 underline-offset-4 xl:underline-offset-[6px] hocus:decoration-digital-red-xlight',
+  mainNavLink: 'font-normal leading-display text-white hocus:text-white underline decoration-2 decoration-black-50 underline-offset-4 hocus:decoration-digital-red-xlight',
   mastheadGiving: `${mastheadGivingBase} ${mastheadGivingWhite}`, // Giving link regular dark pages
   mastheadGivingBlack: `${mastheadGivingBase} ${mastheadGivingDark}`, // Giving link light mode story pages
   close: 'inline-block font-semibold leading-none text-digital-red-light hocus:text-digital-red-xlight focus:outline-none',
@@ -79,6 +80,7 @@ export const ctaSizes: CtaSizeObjectType = {
   default: 'pt-9 pb-10 pl-18 pr-16 lg:pl-22 lg:pr-20 lg:pt-10 lg:pb-11 text-16 lg:text-20',
   large: 'pl-28 pr-26 pt-16 pb-17 lg:pr-40 lg:pl-44 lg:pt-20 lg:pb-22 text-18 lg:text-24',
   link: 'text-16 lg:text-20',
+  mainNavLink: 'text-19 md:text-20 2xl:text-24',
   mastheadGiving: 'text-14 sm:text-15 md:text-16 lg:text-19',
   close: 'text-18 md:text-21',
   chip: 'py-7 px-22 text-18',
@@ -95,6 +97,7 @@ export const ctaSizeMap: CtaSizeMapType = {
   'ghost-swipe': 'default',
   'ghost-swipe-overlay': 'default',
   mainNavFeatured: 'unset',
+  mainNavLink: 'mainNavLink',
   mastheadGiving: 'mastheadGiving',
   mastheadGivingBlack: 'mastheadGiving',
   link: 'unset',
