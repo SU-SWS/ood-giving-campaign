@@ -31,7 +31,7 @@ export const LocalFooterMvp = () => (
           <Heading as="h3" size={3} leading="tight">
             Get the latest in your inbox
           </Heading>
-          <Paragraph variant="big" leading="display">
+          <Paragraph variant="big" leading="cozy">
             Sign up to receive <em>The Moment</em> newsletter, telling the stories of Stanford’s impact.
           </Paragraph>
           <CtaLink
@@ -46,7 +46,7 @@ export const LocalFooterMvp = () => (
           <Heading as="h3" size={3} leading="tight">
             We can do this, together
           </Heading>
-          <Paragraph variant="big" leading="display">
+          <Paragraph variant="big" leading="cozy">
             With your support, this vision will become reality.
           </Paragraph>
           <CtaLink

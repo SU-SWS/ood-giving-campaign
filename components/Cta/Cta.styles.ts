@@ -31,8 +31,8 @@ export const ctaVariants = {
   'ghost-swipe': `${ghostSwipeBase} bg-transparent`,
   'ghost-swipe-overlay': `${ghostSwipeBase} bg-black-true/40`, // Use for split poster over images
   link: '!p-0 inline-block w-fit font-normal leading-display text-current hocus:text-current no-underline decoration-2 underline-offset-4 focus-visible:ring-2 focus-visible:ring-digital-red-light focus-visible:outline-none focus-visible:rounded',
-  mainNavFeatured: 'font-druk-wide uppercase leading-cozy text-white hocus:text-white underline md:decoration-2 decoration-black-50 underline-offset-4 xl:underline-offset-[6px] hocus:decoration-digital-red-xlight',
-  mainNavLink: 'font-normal leading-display text-white hocus:text-white underline decoration-2 decoration-black-50 underline-offset-4 hocus:decoration-digital-red-xlight',
+  mainNavFeatured: 'inline-block font-druk-wide uppercase leading-cozy text-white hocus:text-white underline decoration-2 decoration-black-50 underline-offset-4 xl:underline-offset-[6px] hocus-visible:decoration-digital-red-xlight hocus-visible:decoration-4',
+  mainNavLink: 'inline-block font-normal leading-display text-white hocus:text-white underline decoration-2 decoration-black-50 underline-offset-4 hocus-visible:decoration-digital-red-xlight hocus-visible:decoration-4',
   mastheadGiving: `${mastheadGivingBase} ${mastheadGivingWhite}`, // Giving link regular dark pages
   mastheadGivingBlack: `${mastheadGivingBase} ${mastheadGivingDark}`, // Giving link light mode story pages
   close: 'inline-block font-semibold leading-none text-digital-red-light hocus:text-digital-red-xlight focus:outline-none',

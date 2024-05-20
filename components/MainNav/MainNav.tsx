@@ -41,7 +41,7 @@ export const MainNav = ({
         </PopoverButton>
         <PopoverPanel className="absolute inset-0 z-[140]">
           <div className="bg-black-true pt-[8.8rem] rs-pb-7">
-            <Grid sm={2} xxl={3} className="rs-pt-6 px-20 sm:px-30 md:px-50 lg:px-80 xl:px-100 3xl:px-100 4xl:px-[calc((100%-1800px)/2)] mx-auto relative">
+            <Grid sm={2} xxl={3} className="grid-gap last:rs-pt-6 px-20 sm:px-30 md:px-50 lg:px-80 xl:px-100 3xl:px-100 4xl:px-[calc((100%-1800px)/2)] mx-auto relative">
               <div className="2xl:col-span-1">
                 <ul className="list-unstyled">
                   {featuredLinks.map((link) => (
@@ -61,7 +61,7 @@ export const MainNav = ({
                 </ul>
                 {!!themeLinks?.length && (
                   <>
-                    <Heading font="druk-wide" size={1} color="white" uppercase className="rs-mt-5 rs-mb-0">Themes</Heading>
+                    <Heading font="druk-wide" size="base" color="white" uppercase className="rs-mt-5 rs-mb-0">Themes</Heading>
                     <ul className="list-unstyled">
                       {themeLinks.map((link) => (
                         <li key={link._uid} className="rs-mb-0">
@@ -73,7 +73,7 @@ export const MainNav = ({
                 )}
               </div>
               <div className="2xl:col-span-2">
-                <Grid xxl={2}>
+                <Grid xxl={2} className="gap-90">
                   <div>
                     {!!initiativeLinks?.length && (
                       <>
