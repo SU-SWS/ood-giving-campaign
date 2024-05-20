@@ -119,7 +119,7 @@ export const Scrollytelling = ({
               <AnimateInView animation="slideUp" delay={0.1} className={styles.header}>
                 {heading && (
                   <Heading
-                    as={headingLevel}
+                    as={headingLevel || 'h2'}
                     size={5}
                     color="white"
                     align="center"

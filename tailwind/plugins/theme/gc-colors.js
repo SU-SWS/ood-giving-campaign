@@ -12,6 +12,13 @@ module.exports = function () {
     sapphire: '#005776',
     slate: '#4E4B48',
     'gc-sky': '#4287BD', // For homepage hero sky gradient
-    'gc-black': '#17171A',
+    'gc-black': {
+      DEFAULT: '#17171A',
+      // For taxonomy chips
+      10: '#F3F3F9',
+      40: '#C4C4C7',
+      80: '#5A5A68',
+      90: '#393945',
+    }
   };
 };

@@ -1,4 +1,4 @@
-import { Paragraph, Heading, Text } from '../Typography';
+import { Paragraph, Heading } from '../Typography';
 import { Container } from '../Container';
 import { Grid } from '../Grid';
 import { LogoLockup } from '../Logo';

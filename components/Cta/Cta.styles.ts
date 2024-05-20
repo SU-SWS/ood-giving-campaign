@@ -9,7 +9,7 @@ import {
 
 export const cta = 'group hocus:underline transition-all';
 
-const ghostSwipeBase = 'relative z-[10] block w-fit decoration-2 decoration-transparent underline-offset-4 hocus:decoration-white/80 font-normal leading-display hocus:text-white border-2 border-current hocus:border-digital-red-light focus-visible:outline-none after:block after:content-[""] after:absolute after:top-0 after:left-0 after:w-[0] after:h-full after:bg-gradient-to-r after:from-digital-red after:to-cardinal-red after:transition-all after:z-[-1] hocus:after:w-full overflow-hidden';
+const ghostSwipeBase = 'relative z-10 block w-fit decoration-2 decoration-transparent underline-offset-4 hocus:decoration-white/80 font-normal leading-display hocus:text-white border-2 border-current hocus:border-digital-red-light focus-visible:outline-none after:block after:content-[""] after:absolute after:top-0 after:left-0 after:w-0 after:h-full after:bg-gradient-to-r after:from-digital-red after:to-cardinal-red after:transition-all after:z-[-1] hocus:after:w-full overflow-hidden';
 
 const mastheadGivingBase = 'inline-block w-fit font-normal no-underline leading-display hocus:decoration-2 focus-visible:ring-2 focus-visible:ring-digital-red-xlight ring-offset-4 focus-visible:outline-none focus-visible:rounded underline-offset-4';
 const mastheadGivingWhite = 'text-white hocus:text-white hocus:decoration-white focus-visible:ring-offset-black';
@@ -19,8 +19,12 @@ const brochureBase = 'inline-block font-bold font-serif no-underline hocus:no-un
 const brochureIlluminating = 'from-illuminating to-illuminating';
 const brochurePoppy = 'from-poppy to-poppy';
 
+const chipBase = 'relative inline-block border leading-display rounded-full font-normal no-underline underline-offset-4 hocus:underline hocus:bg-digital-red-light hocus:text-white';
+const chipLight = 'border-gc-black/10 bg-gc-black-10 text-gc-black-80 hocus:border-digital-red-xlight';
+const chipDark = 'border-gc-black-80 bg-gc-black-90 text-gc-black-40 hocus:border-digital-red-xlight';
+
 export const ctaVariants = {
-  solid: 'block w-fit relative z-[10] font-normal decoration-2 decoration-transparent underline-offset-4 hocus:decoration-white/80 leading-display bg-digital-red text-white hocus:text-white border-2 border-digital-red-light focus-visible:outline-none after:block after:content-[""] after:absolute after:top-0 after:left-0 after:w-[0] after:h-full after:bg-gradient-to-r after:from-cardinal-red after:to-cardinal-red-dark after:transition-all after:z-[-1] hocus:after:w-full overflow-hidden',
+  solid: 'block w-fit relative z-10 font-normal decoration-2 decoration-transparent underline-offset-4 hocus:decoration-white/80 leading-display bg-digital-red text-white hocus:text-white border-2 border-digital-red-light focus-visible:outline-none after:block after:content-[""] after:absolute after:top-0 after:left-0 after:w-0 after:h-full after:bg-gradient-to-r after:from-cardinal-red after:to-cardinal-red-dark after:transition-all after:z-[-1] hocus:after:w-full overflow-hidden',
   inline: 'inline underline decoration-1 hocus:decoration-2 underline-offset-2',
   inlineDark: 'inline text-digital-red-xlight hocus:text-white underline decoration-1 hocus:decoration-2 underline-offset-2',
   ghost: 'block w-fit font-normal leading-display bg-transparent hocus:text-current border-2 border-current focus-visible:outline-none underline-offset-4 decoration-transparent hocus:decoration-current',
@@ -34,7 +38,8 @@ export const ctaVariants = {
   close: 'inline-block font-semibold leading-none text-digital-red-light hocus:text-digital-red-xlight focus:outline-none',
   'close-x': 'leading-none',
   chip: 'inline-block leading-display no-underline text-current rounded-full border-2 border-current hocus:text-current font-normal underline-offset-4 decoration-transparent hocus-visible:decoration-current hocus-visible:decoration-2',
-  storyCardTag: 'inline-block text-current hocus:text-current font-normal decoration-2 underline-offset-4 decoration-black-50 hocus:decoration-current hocus:decoration-4',
+  storyCardChip: `${chipBase} ${chipLight}`,
+  storyCardChipDark: `${chipBase} ${chipDark}`,
   brochure: `${brochureBase} ${brochureIlluminating}`,
   brochurePoppy: `${brochureBase} ${brochurePoppy}`,
   unset: '',
@@ -79,7 +84,7 @@ export const ctaSizes: CtaSizeObjectType = {
   back: 'text-16',
   close: 'text-18 md:text-21',
   chip: 'py-7 px-22 text-18',
-  storyCardTag: 'text-16 lg:text-18',
+  storyCardChip: 'text-15 py-6 px-16 lg:text-17 lg:pt-8 lg:pb-7 lg:px-18',
   brochure: 'text-20 xl:text-30 py-12',
   unset: '',
 };
@@ -99,7 +104,8 @@ export const ctaSizeMap: CtaSizeMapType = {
   'close-x': 'unset',
   back: 'back',
   chip: 'chip',
-  storyCardTag: 'storyCardTag',
+  storyCardChip: 'storyCardChip',
+  storyCardChipDark: 'storyCardChip',
   brochure: 'brochure',
   brochurePoppy: 'brochure',
   unset: 'unset',
