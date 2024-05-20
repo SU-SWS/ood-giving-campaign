@@ -31,7 +31,6 @@ export const ctaVariants = {
   'ghost-swipe': `${ghostSwipeBase} bg-transparent`,
   'ghost-swipe-overlay': `${ghostSwipeBase} bg-black-true/40`, // Use for split poster over images
   link: '!p-0 inline-block w-fit font-normal leading-display text-current hocus:text-current no-underline decoration-2 underline-offset-4 focus-visible:ring-2 focus-visible:ring-digital-red-light focus-visible:outline-none focus-visible:rounded',
-  back: 'inline-block font-normal no-underline leading-none group-hocus:underline text-gc-black hocus:text-digital-red focus-visible:ring-2 focus-visible:ring-digital-red-light focus-visible:ring-offset-4 focus:outline-none rounded-[1px]',
   mainNavFeatured: 'font-druk-wide uppercase leading-tight text-white hocus:text-white underline decoration-[3] decoration-black-50 underline-offset-[6px] hocus:decoration-digital-red-xlight',
   mastheadGiving: `${mastheadGivingBase} ${mastheadGivingWhite}`, // Giving link regular dark pages
   mastheadGivingBlack: `${mastheadGivingBase} ${mastheadGivingDark}`, // Giving link light mode story pages
@@ -81,7 +80,6 @@ export const ctaSizes: CtaSizeObjectType = {
   large: 'pl-28 pr-26 pt-16 pb-17 lg:pr-40 lg:pl-44 lg:pt-20 lg:pb-22 text-18 lg:text-24',
   link: 'text-16 lg:text-20',
   mastheadGiving: 'text-14 sm:text-15 md:text-16 lg:text-19',
-  back: 'text-16',
   close: 'text-18 md:text-21',
   chip: 'py-7 px-22 text-18',
   storyCardChip: 'text-15 py-6 px-16 lg:text-17 lg:pt-8 lg:pb-7 lg:px-18',
@@ -102,7 +100,6 @@ export const ctaSizeMap: CtaSizeMapType = {
   link: 'unset',
   close: 'close',
   'close-x': 'unset',
-  back: 'back',
   chip: 'chip',
   storyCardChip: 'storyCardChip',
   storyCardChipDark: 'storyCardChip',
@@ -115,7 +112,6 @@ export const icon = 'inline-block shrink-0 will-change-transform transition-tran
 
 export const iconStyles: CtaIconStyleType = {
   'ghost-swipe': 'group-hocus:text-white',
-  back: 'text-lagunita-light !w-22',
   close: 'text-lagunita-light group-hocus:text-lagunita-dark !w-22 -mt-4',
   'close-x': 'text-current hocus:text-current w-22 group-hocus:underline',
 };
@@ -123,7 +119,6 @@ export const iconStyles: CtaIconStyleType = {
 export const ctaIconMap: CtaIconMapType = {
   close: 'close',
   'close-x': 'close',
-  back: 'back',
 };
 
 export const iconAnimation = {
@@ -140,7 +135,6 @@ export const iconAnimation = {
 export const iconRightMarginDefault = 'mr-03em';
 export const iconRightMargin: CtaIconRightMarginType = {
   'arrow-left': 'mr-04em',
-  back: 'mr-04em',
 };
 
 // Trailing icons have left margins
@@ -148,7 +142,6 @@ export const iconRightMargin: CtaIconRightMarginType = {
 export const iconLeftMarginDefault = 'ml-03em';
 export const iconLeftMargin: CtaIconLeftMarginType = {
   'arrow-right': 'ml-04em',
-  back: 'ml-04em',
   email: 'ml-05em',
   external: 'ml-04em',
   link: 'ml-05em',

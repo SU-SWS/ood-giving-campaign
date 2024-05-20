@@ -1,19 +1,26 @@
 import { StoryblokComponent, type ISbStoryData } from '@storyblok/react/rsc';
 
+/**
+ * Use this component with the references (or the multiple/single option) field type
+ * when they reference an instance of a story, e.g., the masthead picker in Basic Page.
+ * The try/catch was added since we added it on SAA Homesite here as well:
+ * https://github.com/SU-SWS/saa_alumni/pull/563
+ */
+
 type CreateStoriesProps = {
   stories: ISbStoryData[];
 };
 
 export const CreateStories = ({ stories, ...props }: CreateStoriesProps) => {
-  let currStory;
+  let currentStory;
   if (stories) {
     try {
       return stories.map((story) => {
-        currStory = story;
+        currentStory = story;
         return <StoryblokComponent key={story.content._uid} blok={story.content} {...props} />;
       });
     } catch (error) {
-      console.error('Could not create story', currStory);
+      console.error('Could not create story', currentStory);
     }
   }
 
