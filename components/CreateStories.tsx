@@ -1,10 +1,10 @@
-import { StoryblokComponent, type SbBlokData } from '@storyblok/react/rsc';
+import { StoryblokComponent, type ISbStoryData } from '@storyblok/react/rsc';
 
 type CreateStoriesProps = {
-  stories: any[];
+  stories: ISbStoryData[];
 };
 
-export const CreateStories = ({ stories, ...props }) => {
+export const CreateStories = ({ stories, ...props }: CreateStoriesProps) => {
   let currStory;
   if (stories) {
     try {

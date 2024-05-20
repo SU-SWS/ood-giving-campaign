@@ -1,4 +1,4 @@
-import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
+import { storyblokEditable, type SbBlokData, type ISbStoryData } from '@storyblok/react/rsc';
 import { CreateBloks } from '@/components/CreateBloks';
 import { BasicHero } from '@/components/Hero';
 import { CreateStories } from '../CreateStories';
@@ -30,11 +30,7 @@ type SbBasicPageProps = {
     heroContent?: SbBlokData[];
     content?: SbBlokData[];
     ankle?: SbBlokData[];
-    mastheadPicker?: {
-      content?: {
-        mainNav?: SbBlokData[];
-      }
-    }
+    mastheadPicker?: ISbStoryData[];
   };
 };
 
