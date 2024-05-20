@@ -23,11 +23,12 @@ export const ctaVariants = {
   solid: 'block w-fit relative z-[10] font-normal decoration-2 decoration-transparent underline-offset-4 hocus:decoration-white/80 leading-display bg-digital-red text-white hocus:text-white border-2 border-digital-red-light focus-visible:outline-none after:block after:content-[""] after:absolute after:top-0 after:left-0 after:w-[0] after:h-full after:bg-gradient-to-r after:from-cardinal-red after:to-cardinal-red-dark after:transition-all after:z-[-1] hocus:after:w-full overflow-hidden',
   inline: 'inline underline decoration-1 hocus:decoration-2 underline-offset-2',
   inlineDark: 'inline text-digital-red-xlight hocus:text-white underline decoration-1 hocus:decoration-2 underline-offset-2',
-  ghost: ' block w-fit font-normal leading-display bg-transparent hocus:text-current border-2 border-current focus-visible:outline-none underline-offset-4 decoration-transparent hocus:decoration-current',
+  ghost: 'block w-fit font-normal leading-display bg-transparent hocus:text-current border-2 border-current focus-visible:outline-none underline-offset-4 decoration-transparent hocus:decoration-current',
   'ghost-swipe': `${ghostSwipeBase} bg-transparent`,
   'ghost-swipe-overlay': `${ghostSwipeBase} bg-black-true/40`, // Use for split poster over images
   link: '!p-0 inline-block w-fit font-normal leading-display text-current hocus:text-current no-underline decoration-2 underline-offset-4 focus-visible:ring-2 focus-visible:ring-digital-red-light focus-visible:outline-none focus-visible:rounded',
   back: 'inline-block font-normal no-underline leading-none group-hocus:underline text-gc-black hocus:text-digital-red focus-visible:ring-2 focus-visible:ring-digital-red-light focus-visible:ring-offset-4 focus:outline-none rounded-[1px]',
+  mainNavFeatured: 'font-druk-wide uppercase leading-tight text-white hocus:text-white underline decoration-[3] decoration-black-50 underline-offset-[6px] hocus:decoration-digital-red-xlight',
   mastheadGiving: `${mastheadGivingBase} ${mastheadGivingWhite}`, // Giving link regular dark pages
   mastheadGivingBlack: `${mastheadGivingBase} ${mastheadGivingDark}`, // Giving link light mode story pages
   close: 'inline-block font-semibold leading-none text-digital-red-light hocus:text-digital-red-xlight focus:outline-none',
@@ -90,6 +91,7 @@ export const ctaSizeMap: CtaSizeMapType = {
   inlineDark: 'unset',
   'ghost-swipe': 'default',
   'ghost-swipe-overlay': 'default',
+  mainNavFeatured: 'unset',
   mastheadGiving: 'mastheadGiving',
   mastheadGivingBlack: 'mastheadGiving',
   link: 'unset',
