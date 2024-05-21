@@ -119,6 +119,11 @@ export const iconStyles: CtaIconStyleType = {
   'close-x': 'text-current hocus:text-current w-22 group-hocus:underline',
 };
 
+export const iconColors = {
+  default: '',
+  'red-xlight-hocus-white': 'text-digital-red-xlight group-hocus-visible:text-white',
+};
+
 export const ctaIconMap: CtaIconMapType = {
   close: 'close',
   'close-x': 'close',
