@@ -3,7 +3,6 @@ import { type AnimationType } from '@/components/Animate';
 import { type HeadingType } from '@/components/Typography';
 import { StoryCard } from '@/components/StoryCard';
 import { type SbImageType, type SbLinkType } from './Storyblok.types';
-import { type InitiativesType } from '@/utilities/taxonomyMaps';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
 
 export type SbStoryCardProps = {
@@ -13,15 +12,12 @@ export type SbStoryCardProps = {
       content?: {
         title?: string;
         dek?: string;
-        initiatives?: InitiativesType[];
+        topics?: string[];
         heroImage?: SbImageType;
         bgImage?: SbImageType;
         cardTitle?: string;
         cardTeaser?: string;
         cardImage?: SbImageType;
-        tabColor?: {
-          value?: PaletteAccentHexColorType;
-        }
       },
       full_slug?: string;
     };
@@ -37,7 +33,6 @@ export type SbStoryCardProps = {
     delay?: number;
     isHorizontal?: boolean;
     isListView?: boolean;
-    isDark?: boolean;
   };
 };
 
@@ -47,13 +42,12 @@ export const SbStoryCard = ({
       content: {
         title = '',
         dek = '',
-        initiatives = [],
+        topics = [],
         heroImage: { filename: heroFilename = '', focus: heroFocus = '' } = {},
         bgImage: { filename: bgFilename = '', focus: bgFocus = '' } = {},
         cardTitle = '',
         cardTeaser = '',
         cardImage: { filename: storyCardFilename = '', focus: storyCardFocus = '' } = {},
-        tabColor: { value: storyTabColorValue } = {},
       } = {},
       full_slug,
     } = {},
@@ -68,7 +62,6 @@ export const SbStoryCard = ({
     delay,
     isHorizontal,
     isListView,
-    isDark,
   },
   blok,
 }: SbStoryCardProps) => (
@@ -80,14 +73,13 @@ export const SbStoryCard = ({
     body={cardTeaser || dek}
     imageSrc={cardImage || storyCardFilename || heroFilename || bgFilename }
     imageFocus={cardFocus || storyCardFocus || heroFocus || bgFocus}
-    tabColor={paletteAccentColors[value || storyTabColorValue]}
+    tabColor={paletteAccentColors[value]}
     link={link}
     href={`/${full_slug}`}
     animation={animation}
     delay={delay}
-    taxonomy={initiatives}
+    taxonomy={topics}
     isHorizontal={isHorizontal}
     isListView={isListView}
-    isDark={isDark}
   />
 );
