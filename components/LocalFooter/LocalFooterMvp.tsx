@@ -53,7 +53,8 @@ export const LocalFooterMvp = () => (
             href={links.ood.areasToSupport}
             variant="ghost-swipe"
             color="white"
-            icon="arrow-right"
+            icon="external"
+            animate="top-right"
           >
             Find ways to give
           </CtaLink>
