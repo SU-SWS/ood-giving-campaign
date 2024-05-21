@@ -4,8 +4,6 @@ import { CreateBloks } from '@/components/CreateBloks';
 import { Heading, type HeadingType } from '@/components/Typography';
 import { RichText } from '@/components/RichText';
 import { hasRichText } from '@/utilities/hasRichText';
-import { getNumBloks } from '@/utilities/getNumBloks';
-
 
 type SbCtaBlockProps = {
   blok: {

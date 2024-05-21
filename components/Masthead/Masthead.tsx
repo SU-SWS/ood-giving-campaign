@@ -12,8 +12,13 @@ type MastheadProps = HTMLAttributes<HTMLDivElement> & {
   mainNav?: React.ReactNode;
 };
 
-export const Masthead = ({ isLight, mainNav, className }: MastheadProps) => (
-  <header className={cnb(styles.root, className)}>
+export const Masthead = ({
+  isLight,
+  mainNav,
+  className,
+  ...props
+}: MastheadProps) => (
+  <header className={cnb(styles.root, className)} {...props}>
     <Skiplink />
     <FlexBox
       justifyContent="between"
