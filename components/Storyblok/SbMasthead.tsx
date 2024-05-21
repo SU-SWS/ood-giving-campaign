@@ -8,6 +8,7 @@ export type SbMastheadProps = {
     _uid: string;
     mainNav?: SbBlokData[];
   };
+  isLight?: boolean;
 };
 
 export const SbMasthead = ({
@@ -15,13 +16,15 @@ export const SbMasthead = ({
     mainNav,
   },
   blok,
+  isLight,
 }: SbMastheadProps) => {
-  const MainNav = !!getNumBloks(mainNav) ? <CreateBloks blokSection={mainNav} /> : undefined;
+  const MainNav = !!getNumBloks(mainNav) ? <CreateBloks blokSection={mainNav} isLight={isLight} /> : undefined;
 
   return (
     <Masthead
       {...storyblokEditable(blok)}
       mainNav={MainNav}
+      isLight={isLight}
     />
   );
 };

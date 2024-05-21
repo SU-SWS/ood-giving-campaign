@@ -1,7 +1,7 @@
 import { storyblokEditable, type SbBlokData, type ISbStoryData } from '@storyblok/react/rsc';
 import { CreateBloks } from '@/components/CreateBloks';
 import { BasicHero } from '@/components/Hero';
-import { CreateStories } from '../CreateStories';
+import { CreateStories } from '@/components/CreateStories';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { type SbImageType } from '@/components/Storyblok/Storyblok.types';
 import { type HeroPaddingType } from '@/components/Hero/BasicHero.styles';

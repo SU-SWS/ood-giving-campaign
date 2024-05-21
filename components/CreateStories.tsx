@@ -9,6 +9,7 @@ import { StoryblokComponent, type ISbStoryData } from '@storyblok/react/rsc';
 
 type CreateStoriesProps = {
   stories: ISbStoryData[];
+  [key: string]: any;
 };
 
 export const CreateStories = ({ stories, ...props }: CreateStoriesProps) => {
