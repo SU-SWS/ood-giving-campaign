@@ -31,14 +31,14 @@ export const Masthead = ({
         text="Momentum"
         className={styles.lockup}
       />
-      <FlexBox alignItems="center" className="gap-x-12 sm:gap-x-20 md:gap-x-30">
+      <FlexBox alignItems="center" className={styles.flexbox}>
         <CtaLink
           href={ood.giving}
           variant={isLight ? 'mastheadGivingBlack' : 'mastheadGiving'}
           icon="external"
           color="current"
           animate="top-right"
-          className="relative z-[300]"
+          className={styles.cta}
         >
           Giving to Stanford
         </CtaLink>
