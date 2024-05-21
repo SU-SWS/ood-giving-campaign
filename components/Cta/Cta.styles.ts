@@ -7,7 +7,7 @@ import {
   type CtaIconLeftMarginType,
 } from './Cta.types';
 
-export const cta = 'group hocus:underline transition-all';
+export const cta = 'group/cta hocus:underline transition-all';
 
 const ghostSwipeBase = 'relative z-10 block w-fit decoration-2 decoration-transparent underline-offset-4 hocus:decoration-white/80 font-normal leading-display hocus:text-white border-2 border-current hocus:border-digital-red-light focus-visible:outline-none after:block after:content-[""] after:absolute after:top-0 after:left-0 after:w-0 after:h-full after:bg-gradient-to-r after:from-digital-red after:to-cardinal-red after:transition-all after:z-[-1] hocus:after:w-full overflow-hidden';
 
@@ -114,15 +114,15 @@ export const ctaSizeMap: CtaSizeMapType = {
 export const icon = 'inline-block shrink-0 will-change-transform transition-transform stroke-2';
 
 export const iconStyles: CtaIconStyleType = {
-  'ghost-swipe': 'group-hocus:text-white',
-  close: 'text-lagunita-light group-hocus:text-lagunita-dark !w-22 -mt-4',
-  'close-x': 'text-current hocus:text-current w-22 group-hocus:underline',
+  'ghost-swipe': 'group-hover/cta:text-white group-focus-visible/cta:text-white',
+  close: 'text-lagunita-light group-hover/cta:text-lagunita-dark group-focus-visible/cta:text-lagunita-dark !w-22 -mt-4',
+  'close-x': 'text-current hocus:text-current w-22 group-hover/cta:underline group-focus-visible/cta:underline',
   mainNavFeatured: '!w-1em text-digital-red-xlight',
 };
 
 export const iconColors = {
   default: '',
-  'red-xlight-hocus-white': 'text-digital-red-xlight group-hocus-visible:text-white',
+  'red-xlight-hocus-white': '!text-digital-red-xlight group-hover/cta:!text-white group-focus-visible/cta:!text-white',
 };
 
 export const ctaIconMap: CtaIconMapType = {
@@ -132,11 +132,11 @@ export const ctaIconMap: CtaIconMapType = {
 
 export const iconAnimation = {
   none: '',
-  'top-right': 'group-hocus:translate-x-01em group-hocus:-translate-y-01em',
-  down: 'group-hocus:translate-y-02em',
-  up: 'group-hocus:-translate-y-02em',
-  right: 'group-hocus:translate-x-02em',
-  left: 'group-hocus:-translate-x-02em',
+  'top-right': 'group-hover/cta:translate-x-01em group-focus-visible/cta:translate-x-01em group-hover/cta:-translate-y-01em group-focus-visible/cta:-translate-y-01em',
+  down: 'group-hover/cta:translate-y-02em group-focus-visible/cta:translate-y-02em',
+  up: 'group-hover/cta:-translate-y-02em group-focus-visible/cta:-translate-y-02em',
+  right: 'group-hover/cta:translate-x-02em group-focus-visible/cta:translate-x-02em',
+  left: 'group-hover/cta:-translate-x-02em group-focus-visible/cta:-translate-x-02em',
 };
 
 // Leading icons have right margins
