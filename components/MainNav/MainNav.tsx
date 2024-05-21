@@ -35,7 +35,7 @@ export const MainNav = ({
     <Popover as="nav" aria-label="main menu">
       {({ open }) => (
         <>
-          <PopoverButton aria-label={`${open ? 'Close' : 'Open'} main menu`} className="relative flex items-center justify-center bg-gc-black text-white size-36 sm:size-42 md:size-48 border-2 border-digital-red-light rounded-full z-[150] hocus-visible:bg-digital-red-dark transition-colors focus-visible:outline-none">
+          <PopoverButton aria-label={`${open ? 'Close' : 'Open'} main menu`} className={cnb('relative flex items-center justify-center text-white size-36 sm:size-42 md:size-48 border-2 border-digital-red-light rounded-full z-[150] hocus-visible:bg-digital-red-dark transition-colors focus:outline-none', open ? 'bg-black-true' : 'bg-gc-black')}>
             <HeroIcon noBaseStyle icon={open ? 'close' : 'menu'} className="text-white w-20 sm:w-22 md:w-26" />
           </PopoverButton>
           <Transition
@@ -48,7 +48,7 @@ export const MainNav = ({
             >
             <PopoverPanel className="absolute inset-0 z-[140]">
               <div className="bg-black-true pt-61 sm:pt-68 md:pt-[7.4rem] lg:pt-[8.8rem] rs-pb-7">
-                <Grid sm={2} xxl={3} className="gap-y-45 grid-gap rs-pt-6 px-20 sm:px-30 md:px-50 lg:px-80 xl:px-100 3xl:px-100 4xl:px-[calc((100%-1800px)/2)] mx-auto relative">
+                <Grid sm={2} xxl={3} className="gap-y-45 gap-x-30 sm:gap-x-50 rs-pt-6 px-20 sm:px-30 md:px-50 lg:px-80 xl:px-100 3xl:px-100 4xl:px-[calc((100%-1800px)/2)] mx-auto relative">
                   <div className="2xl:col-span-1">
                     <ul className="list-unstyled">
                       {featuredLinks.map((link) => (
@@ -59,7 +59,7 @@ export const MainNav = ({
                             variant="mainNavFeatured"
                             icon="arrow-right"
                             animate="right"
-                            iconProps={{ className: 'text-digital-red-xlight mt-01em'}}
+                            className="*:block"
                           >
                             {link.label}
                           </CtaLink>
@@ -80,7 +80,7 @@ export const MainNav = ({
                     )}
                   </div>
                   <div className="2xl:col-span-2">
-                    <Grid xxl={2} className="gap-45 md:gap-90 2xl:gap-95">
+                    <Grid xxl={2} className="gap-45 md:gap-90 2xl:gap-95 3xl:pl-200">
                       <div>
                         {!!initiativeLinks?.length && (
                           <>
