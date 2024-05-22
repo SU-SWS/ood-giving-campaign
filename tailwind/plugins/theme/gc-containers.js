@@ -6,7 +6,9 @@ module.exports = function () {
     200: '20rem',
     250: '25rem',
     280: '28rem',
+    300: '30rem',
     320: '32rem', // = 32 x 10px = 320px etc.
+    330: '33rem',
     xs: '36rem',
     sm: '38.4rem',
     md: '44.8rem',
