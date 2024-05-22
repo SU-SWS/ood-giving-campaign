@@ -13,6 +13,7 @@ type SbCardWysiwygProps = {
     content: StoryblokRichtext;
     isLightText?: boolean;
   },
+  baseFontSize?: 'default' | 'changemaker' | 'changemakerHorizontal' | 'card';
 };
 
 export const SbCardWysiwyg = ({
@@ -21,8 +22,9 @@ export const SbCardWysiwyg = ({
     isLightText,
   },
   blok,
+  baseFontSize,
 }: SbCardWysiwygProps) => (
   <div {...storyblokEditable(blok)}>
-    <RichText type="card" wysiwyg={content} textColor={isLightText ? 'white' : 'black'} />
+    <RichText baseFontSize={baseFontSize} type="card" wysiwyg={content} textColor={isLightText ? 'white' : 'black'} />
   </div>
 );

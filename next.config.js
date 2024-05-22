@@ -1,9 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    logging: 'verbose',
-    isrMemoryCacheSize: 0, // disable ISR cache in memory and rely on file system cache.
-  },
   images: {
     remotePatterns: [
       {

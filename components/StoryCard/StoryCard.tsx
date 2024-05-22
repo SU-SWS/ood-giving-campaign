@@ -3,12 +3,12 @@ import { AnimateInView, type AnimationType } from '@/components/Animate';
 import { CtaLink } from '@/components/Cta/CtaLink';
 import { FlexBox } from '@/components/FlexBox';
 import {
-  Heading, type HeadingType, Paragraph, type FontSizeType,
-} from '../Typography';
+  Heading, Paragraph, type HeadingType, type HeadingLevelNumberType,
+} from '@/components/Typography';
 import { SbLinkType } from '@/components/Storyblok/Storyblok.types';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { accentBorderColors, type AccentBorderColorType } from '@/utilities/datasource';
-import { initiativesMap, type InitiativesType } from '@/utilities/taxonomyMaps';
+import { taxonomyMap, type TaxonomyType } from '@/utilities/taxonomyMaps';
 import * as styles from './StoryCard.styles';
 
 export type StoryCardProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -21,7 +21,7 @@ export type StoryCardProps = React.HTMLAttributes<HTMLDivElement> & {
   tabColor?: AccentBorderColorType;
   href?: string;
   link?: SbLinkType;
-  taxonomy?: InitiativesType[];
+  taxonomy?: TaxonomyType[];
   animation?: AnimationType;
   delay?: number;
   isHorizontal?: boolean;
@@ -48,12 +48,11 @@ export const StoryCard = ({
   className,
   ...props
 }: StoryCardProps) => {
-  let headingSize: FontSizeType = 3;
-  if (isHorizontal) {
-    headingSize = 'f5';
-  } else if (isSmallHeading && !isHorizontal) {
-    headingSize = 2;
-  };
+  // The heading level of the tags should be one more than the heading level of the card, but maxes out at h6
+  const tagsHeadingLevelNumber: HeadingLevelNumberType =
+    Math.min(parseInt(headingLevel?.slice(1), 10) + 1, 6) as HeadingLevelNumberType;
+
+  const tagsHeadingLevel: HeadingType = `h${tagsHeadingLevelNumber}`;
 
   return (
     <AnimateInView animation={animation} delay={delay}>
@@ -119,14 +118,17 @@ export const StoryCard = ({
                 {body}
               </Paragraph>
             )}
+            <Heading as={tagsHeadingLevel} className="sr-only">Story tags:</Heading>
             {!!taxonomy?.length && (
               <ul className={styles.taxonomy(isHorizontal, isListView)}>
-                {taxonomy.slice(0, 3).map((item) => (
-                  <li key={item} className={styles.taxonomyItem}>
-                    <CtaLink href={`/stories/list/${item}`} variant={isDark ? 'storyCardChipDark' : 'storyCardChip'} className={styles.taxonomyLink}>
-                      {initiativesMap[item]}
-                    </CtaLink>
-                  </li>
+                {taxonomy.map((item) => (
+                  taxonomyMap[item] ? (
+                    <li key={item} className={styles.taxonomyItem}>
+                      <CtaLink href={`/stories/list/${item}`} variant={isDark ? 'storyCardChipDark' : 'storyCardChip'} className={styles.taxonomyLink}>
+                        {taxonomyMap[item]}
+                      </CtaLink>
+                    </li>
+                  ) : null // Don't display the list item if the taxonomy item is not in the taxonomy map
                 ))}
               </ul>
             )}

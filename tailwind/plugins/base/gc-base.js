@@ -6,11 +6,11 @@ module.exports = function () {
   return function ({ addBase, config }) {
     addBase({
       html: {
-        overflowY: 'visible !important', // Need this for sticky nav to work
         color: '#17171A', // Momentum black
       },
       body: {
         fontSize: '1.8rem',
+        color: '#17171A',
 
         '@screen md': {
           fontSize: '1.9rem',

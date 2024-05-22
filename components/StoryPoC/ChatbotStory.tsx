@@ -76,7 +76,7 @@ export const BubbleLink = ({
     />
     <div className="bg-black pt-8 pb-12 px-14">
       <Heading as="h3" color="white" font="sans" size="base" leading="tight" className="mb-03em">
-        <Link target="_blank" href={href} prefetch={false} className="stretched-link font-semibold text-white text-19 leading-none hocus:text-white">
+        <Link target="_blank" href={href} className="stretched-link font-semibold text-white text-19 leading-none hocus:text-white">
           {heading}
         </Link>
       </Heading>

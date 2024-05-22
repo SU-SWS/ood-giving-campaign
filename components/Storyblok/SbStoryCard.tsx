@@ -3,7 +3,7 @@ import { type AnimationType } from '@/components/Animate';
 import { type HeadingType } from '@/components/Typography';
 import { StoryCard } from '@/components/StoryCard';
 import { type SbImageType, type SbLinkType } from './Storyblok.types';
-import { type InitiativesType } from '@/utilities/taxonomyMaps';
+import { type InitiativesType, type ThemesType } from '@/utilities/taxonomyMaps';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
 
 export type SbStoryCardProps = {
@@ -14,6 +14,7 @@ export type SbStoryCardProps = {
         title?: string;
         dek?: string;
         initiatives?: InitiativesType[];
+        themes?: ThemesType[];
         heroImage?: SbImageType;
         bgImage?: SbImageType;
         cardTitle?: string;
@@ -48,6 +49,7 @@ export const SbStoryCard = ({
         title = '',
         dek = '',
         initiatives = [],
+        themes = [],
         heroImage: { filename: heroFilename = '', focus: heroFocus = '' } = {},
         bgImage: { filename: bgFilename = '', focus: bgFocus = '' } = {},
         cardTitle = '',
@@ -71,23 +73,27 @@ export const SbStoryCard = ({
     isDark,
   },
   blok,
-}: SbStoryCardProps) => (
-  <StoryCard
-    {...storyblokEditable(blok)}
-    heading={heading || cardTitle || title}
-    headingLevel={headingLevel}
-    isSmallHeading={isSmallHeading}
-    body={cardTeaser || dek}
-    imageSrc={cardImage || storyCardFilename || heroFilename || bgFilename }
-    imageFocus={cardFocus || storyCardFocus || heroFocus || bgFocus}
-    tabColor={paletteAccentColors[value || storyTabColorValue]}
-    link={link}
-    href={`/${full_slug}`}
-    animation={animation}
-    delay={delay}
-    taxonomy={initiatives}
-    isHorizontal={isHorizontal}
-    isListView={isListView}
-    isDark={isDark}
-  />
-);
+}: SbStoryCardProps) => {
+  const taxonomyArray = [...initiatives, ...themes];
+
+  return (
+    <StoryCard
+      {...storyblokEditable(blok)}
+      heading={heading || cardTitle || title}
+      headingLevel={headingLevel}
+      isSmallHeading={isSmallHeading}
+      body={cardTeaser || dek}
+      imageSrc={cardImage || storyCardFilename || heroFilename || bgFilename }
+      imageFocus={cardFocus || storyCardFocus || heroFocus || bgFocus}
+      tabColor={paletteAccentColors[value || storyTabColorValue]}
+      link={link}
+      href={`/${full_slug}`}
+      animation={animation}
+      delay={delay}
+      taxonomy={taxonomyArray}
+      isHorizontal={isHorizontal}
+      isListView={isListView}
+      isDark={isDark}
+    />
+  );
+};

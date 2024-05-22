@@ -28,7 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return {
       url: url.replace(/\/+$/, ''),
       lastModified: new Date(story.published_at),
-      changeFrequency: 'daily', // Added in 13.4.5
+      changeFrequency: 'daily' as const, // Added in 13.4.5
       priority: 0.5, // Added in 13.4.5
     };
   });

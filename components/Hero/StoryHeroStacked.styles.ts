@@ -15,6 +15,7 @@ export const heading = (
   'xl:fluid-type-8 ': headingFont === 'serif' && !isSmallHeading,
 });
 export const dek = 'max-w-900 text-balance mx-auto rs-mt-3';
+export const metadata = 'rs-mt-4';
 export const image = 'rs-mt-4 w-full';
 export const mobileImage = 'size-full lg:hidden';
 export const captionWrapper = 'mt-06em';

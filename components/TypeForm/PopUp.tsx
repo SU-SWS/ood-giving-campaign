@@ -12,18 +12,15 @@ export type PopUpProps = PopupOptions & {
 const PopUp = ({
   id, children, className, ...rest
 }:PopUpProps) => {
-  const ref = useRef<HTMLButtonElement>(null);
 
   const handleClose = () => {
-    if (ref.current) {
-      ref.current.focus();
-    }
+    document.getElementById(id)?.focus();
   };
 
   return (
     <PopupButton
       onClose={handleClose}
-      buttonProps={{ type: 'button', ref: ref, className: className }}
+      buttonProps={{ type: 'button', className: className }}
       noHeading
       keepSession
       id={id}
