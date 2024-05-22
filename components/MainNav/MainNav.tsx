@@ -7,6 +7,7 @@ import { CtaLink } from '@/components/Cta';
 import { Grid } from '@/components/Grid';
 import { Heading } from '@/components/Typography';
 import { HeroIcon } from '@/components/HeroIcon';
+import * as styles from './MainNav.styles';
 
 export type navItemProps = {
   _uid: string;
@@ -29,14 +30,15 @@ export const MainNav = ({
   regionCol2,
   regionCol3,
 }: MainNavProps) => {
+  // Reduce motion users will only see opacity change when opening/closing the menu
   const preferReducedMotion = useReducedMotion();
 
   return (
     <Popover as="nav" aria-label="main menu">
       {({ open }) => (
         <>
-          <PopoverButton aria-label={`${open ? 'Close' : 'Open'} main menu`} className={cnb('relative flex items-center justify-center text-white size-36 sm:size-42 md:size-48 border-2 border-digital-red-light rounded-full z-[150] hocus-visible:bg-digital-red-dark transition-colors focus:outline-none', open ? 'bg-black-true' : 'bg-gc-black')}>
-            <HeroIcon noBaseStyle icon={open ? 'close' : 'menu'} className="text-white w-20 sm:w-22 md:w-26" />
+          <PopoverButton aria-label={`${open ? 'Close' : 'Open'} main menu`} className={styles.button(open)}>
+            <HeroIcon noBaseStyle icon={open ? 'close' : 'menu'} strokeWidth={1.8} className={styles.menuIcon(open)} />
           </PopoverButton>
           <Transition
             enter="duration-300 ease-out"
@@ -46,20 +48,20 @@ export const MainNav = ({
             leaveFrom="opacity-100 translate-y-0"
             leaveTo={cnb('opacity-0', !preferReducedMotion && '-translate-y-30')}
             >
-            <PopoverPanel className="absolute inset-0 z-[140]">
-              <div className="bg-black-true pt-61 sm:pt-68 md:pt-[7.4rem] lg:pt-[8.8rem] rs-pb-7">
-                <Grid sm={2} xxl={3} className="gap-y-45 gap-x-30 sm:gap-x-50 rs-pt-6 px-20 sm:px-30 md:px-50 lg:px-80 xl:px-100 3xl:px-100 4xl:px-[calc((100%-1800px)/2)] mx-auto relative">
-                  <div className="2xl:col-span-1">
-                    <ul className="list-unstyled">
+            <PopoverPanel className={styles.panel}>
+              <div className={styles.panelWrapper}>
+                <Grid sm={2} xxl={3} className={styles.panelOuterGrid}>
+                  <div>
+                    <ul className={styles.linkList}>
                       {featuredLinks.map((link) => (
-                        <li key={link._uid} className="mb-26 md:mb-32">
+                        <li key={link._uid} className={styles.featuredItem}>
                           <CtaLink
                             href={link.href}
                             color="white"
                             variant="mainNavFeatured"
                             icon="arrow-right"
                             animate="right"
-                            className="*:block"
+                            className={styles.featuredCta}
                           >
                             {link.label}
                           </CtaLink>
@@ -68,10 +70,10 @@ export const MainNav = ({
                     </ul>
                     {!!themeLinks?.length && (
                       <>
-                        <Heading font="druk-wide" size="base" color="white" uppercase className="rs-mt-5 rs-mb-0">Themes</Heading>
-                        <ul className="list-unstyled">
+                        <Heading font="druk-wide" size="base" color="white" uppercase className={styles.themeHeading}>Themes</Heading>
+                        <ul className={styles.linkList}>
                           {themeLinks.map((link) => (
-                            <li key={link._uid} className="rs-mb-0">
+                            <li key={link._uid} className={styles.themeItems}>
                               <CtaLink href={link.href} color="white" variant="mainNavLink">{link.label}</CtaLink>
                             </li>
                           ))}
@@ -79,15 +81,25 @@ export const MainNav = ({
                       </>
                     )}
                   </div>
-                  <div className="2xl:col-span-2">
-                    <Grid xxl={2} className="gap-45 md:gap-90 2xl:gap-95 3xl:pl-200">
+                  <div className={styles.group2}>
+                    <Grid xxl={2} className={styles.col2}>
                       <div>
                         {!!initiativeLinks?.length && (
                           <>
-                            <Heading font="druk-wide" size={1} color="white" uppercase className="rs-mb-0">Initiatives</Heading>
-                            <ul className="list-unstyled">
+                            <Heading size="base" leading="cozy" font="druk-wide" className={styles.initiativeHeading}>
+                              <CtaLink
+                                href="/initiatives"
+                                variant="mainNavFeatured"
+                                color="white"
+                                icon="arrow-right"
+                                animate="right"
+                              >
+                                Initiatives
+                              </CtaLink>
+                            </Heading>
+                            <ul className={styles.linkList}>
                               {initiativeLinks.map((link) => (
-                                <li key={link._uid} className="rs-mb-0">
+                                <li key={link._uid} className={styles.initiativeItems}>
                                   <CtaLink href={link.href} color="white" variant="mainNavLink">{link.label}</CtaLink>
                                 </li>
                               ))}
@@ -96,7 +108,7 @@ export const MainNav = ({
                         )}
                         {regionCol2}
                       </div>
-                      <Grid className="gap-y-45 md:gap-y-90 2xl:gap-y-95">
+                      <Grid className={styles.col3}>
                         {regionCol3}
                       </Grid>
                     </Grid>

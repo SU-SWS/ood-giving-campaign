@@ -117,7 +117,7 @@ export const iconStyles: CtaIconStyleType = {
   'ghost-swipe': 'group-hover/cta:text-white group-focus-visible/cta:text-white',
   close: 'text-lagunita-light group-hover/cta:text-lagunita-dark group-focus-visible/cta:text-lagunita-dark !w-22 -mt-4',
   'close-x': 'text-current hocus:text-current w-22 group-hover/cta:underline group-focus-visible/cta:underline',
-  mainNavFeatured: '!w-1em text-digital-red-xlight',
+  mainNavFeatured: '!w-1em text-digital-red-xlight stroke-[3]',
 };
 
 export const iconColors = {
