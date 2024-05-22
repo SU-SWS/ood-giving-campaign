@@ -7,6 +7,7 @@ import { CtaLink } from '@/components/Cta';
 import { Grid } from '@/components/Grid';
 import { Heading } from '@/components/Typography';
 import { HeroIcon } from '@/components/HeroIcon';
+import * as routes from '@/utilities/routes';
 import * as styles from './MainNav.styles';
 
 export type navItemProps = {
@@ -88,7 +89,7 @@ export const MainNav = ({
                           <>
                             <Heading size="base" leading="cozy" font="druk-wide" className={styles.initiativeHeading}>
                               <CtaLink
-                                href="/initiatives"
+                                href={routes.initiativesRoot}
                                 variant="mainNavFeatured"
                                 color="white"
                                 icon="arrow-right"
@@ -106,6 +107,8 @@ export const MainNav = ({
                             </ul>
                           </>
                         )}
+                        {/*  We don't need spacing between the initiative links and regionCol2
+                        because once we start displaying the initiative links, the CTA block in regionCol2 will be moved to col3 */}
                         {regionCol2}
                       </div>
                       <Grid className={styles.col3}>
