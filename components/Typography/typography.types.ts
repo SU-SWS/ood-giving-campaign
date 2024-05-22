@@ -1,6 +1,7 @@
 import * as styles from './typography.styles';
 
-export type HeadingType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+export type HeadingLevelNumberType = 1 | 2 | 3 | 4 | 5 | 6;
+export type HeadingType = `h${HeadingLevelNumberType}`;
 
 export type NonHeadingTypographyType = 'p' | 'span' | 'div' | 'label' | 'legend' | 'figcaption' | 'blockquote' | 'cite' | 'q' | 'small' | 'strong' | 'em' | 'del' | 'ins' | 'sub' | 'sup' | 'address' | 'pre' | 'ul' | 'ol' | 'li' | 'time';
 
