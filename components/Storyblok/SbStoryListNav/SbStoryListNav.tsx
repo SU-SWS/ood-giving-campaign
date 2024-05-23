@@ -1,7 +1,7 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { useState } from 'react';
 import {
-  Description, Dialog, DialogPanel, DialogTitle, Transition, TransitionChild,
+  Dialog, DialogPanel, DialogTitle, Transition, TransitionChild,
 } from '@headlessui/react';
 import { type SbNavItemProps } from '../Storyblok.types';
 import { Container } from '@/components/Container';
@@ -21,6 +21,7 @@ type SbStoryListNavType = {
   name: string;
 };
 
+// The menu item chips that are either displayed on the page or inside the modal on mobile
 const StoryListContent = ({ blok: { heading, links }, full_slug }: SbStoryListNavType) => {
   return (
     <>
@@ -43,12 +44,11 @@ const StoryListContent = ({ blok: { heading, links }, full_slug }: SbStoryListNa
       </ul>
     </>
   );
-}
+};
 
 export const SbStoryListNav = ({
   blok: {
     heading,
-    links
   },
   blok,
   full_slug,
@@ -70,7 +70,7 @@ export const SbStoryListNav = ({
             className={styles.filterButton}
           >
             <FlexBox alignItems="center" className="gap-12 sm:gap-16">
-              <span className="grow leading-display">{name || "All"}</span>
+              <span className="grow leading-display">{name || 'All'}</span>
               <HeroIcon
                 //noBaseStyle
                 icon='chevron-down'
