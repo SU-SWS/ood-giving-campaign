@@ -31,12 +31,11 @@ export const CtaContent = ({
   return (
     <FlexBox as="span" alignItems="center">
       {iconPosition === 'right' && children}
+      {/* Use this whitespace-nowrap trick so icon won't get pushed to the next line on its own */}
       {heroicon && (
-        <HeroIcon
-          icon={heroicon}
-          className={cnb(styles.icon, iconStyle, iconAnimate, iconMarginLeft, iconMarginRight, iconClasses)}
-          {...iProps}
-        />
+        <span className="whitespace-nowrap">
+          &#65279;<HeroIcon icon={heroicon} className={cnb(styles.icon, iconStyle, iconAnimate, iconMarginLeft, iconMarginRight, iconClasses)} {...iProps} />
+        </span>
       )}
       {iconPosition !== 'right' && children}
       {srText && <SrOnlyText>{srText}</SrOnlyText>}

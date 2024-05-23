@@ -1,7 +1,12 @@
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import { CreateBloks } from '@/components/CreateBloks';
 import { Masthead } from '@/components/Masthead';
-import { StoryHero, type StoryHeroProps } from '@/components/Hero';
+import { type StoryHeroProps } from '@/components/Hero';
+
+/**
+ * This is the POC Story page type. Currently not in used.
+ * Please see SbStoryMvp for the ative Story page type.
+ */
 
 type SbStoryProps = {
   blok: {

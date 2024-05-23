@@ -7,4 +7,4 @@ import { render, type StoryblokRichtext } from 'storyblok-rich-text-react-render
  * @returns {boolean} - Whether or not the wysiwyg has content.
  */
 
-export const hasRichText = (wysiwyg: StoryblokRichtext) => !!render(wysiwyg);
+export const hasRichText = (wysiwyg: StoryblokRichtext): boolean => !!render(wysiwyg);

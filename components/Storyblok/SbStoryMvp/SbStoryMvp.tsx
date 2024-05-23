@@ -1,7 +1,7 @@
-import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
+import { storyblokEditable, type SbBlokData, type ISbStoryData } from '@storyblok/react/rsc';
 import { CreateBloks } from '@/components/CreateBloks';
+import { CreateStories } from '@/components/CreateStories';
 import { Container } from '@/components/Container';
-import { Masthead } from '@/components/Masthead';
 import { SocialSharing } from '@/components/SocialSharing';
 import { StoryHeroMvp, type StoryHeroMvpProps } from '@/components/Hero';
 import { SbAboveContent } from './SbAboveContent';
@@ -16,6 +16,7 @@ type SbStoryMvpProps = {
     sidebar?: SbBlokData[];
     content?: SbBlokData[];
     ankle?: SbBlokData[];
+    mastheadPicker?: ISbStoryData[];
   } & StoryHeroMvpProps;
   slug?: string;
 };
@@ -52,6 +53,7 @@ export const SbStoryMvp = ({
     sidebar,
     content,
     ankle,
+    mastheadPicker,
   },
   blok,
   slug,
@@ -60,7 +62,7 @@ export const SbStoryMvp = ({
 
   return (
     <div {...storyblokEditable(blok)}>
-      <Masthead isLight={isLightHero} />
+      <CreateStories stories={mastheadPicker} isLight={isLightHero} />
       <main id="main-content">
         <Container as="article" width="full" pb={9}>
           <StoryHeroMvp
