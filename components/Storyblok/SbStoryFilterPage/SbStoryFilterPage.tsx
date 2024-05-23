@@ -1,5 +1,6 @@
-import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
+import { storyblokEditable, type SbBlokData, type ISbStoryData } from '@storyblok/react/rsc';
 import { CreateBloks } from '@/components/CreateBloks';
+import { CreateStories } from '@/components/CreateStories';
 import { BasicHero } from '@/components/Hero';
 import { Masthead } from '@/components/Masthead';
 import { getNumBloks } from '@/utilities/getNumBloks';
@@ -10,6 +11,7 @@ type SbStoryFilterPageProps = {
     _uid: string;
     title?: string;
     ankle?: SbBlokData[];
+    mastheadPicker?: ISbStoryData[];
   };
   name: string;
 };
@@ -18,6 +20,7 @@ export const SbStoryFilterPage = ({
   blok: {
     title,
     ankle,
+    mastheadPicker,
   },
   blok,
   name,
@@ -25,10 +28,10 @@ export const SbStoryFilterPage = ({
 
   return (
     <div {...storyblokEditable(blok)}>
-      <Masthead />
+      <CreateStories stories={mastheadPicker} />
       <main id="main-content">
         <BasicHero
-          title={name}
+          title="Hello"
         />
         <CreateBloks blokSection={ankle} />
       </main>
