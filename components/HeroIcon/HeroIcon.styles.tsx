@@ -78,7 +78,7 @@ export const iconBaseStyle: IconBaseStyleType = {
   'triangle-up': 'w-09em scale-x-90 -rotate-90 mt-02em',
   download: 'w-09em',
   email: 'w-1em',
-  external: 'w-08em',
+  external: 'w-08em stroke-[2.5]',
   left: 'w-08em',
   link: 'w-09em -mt-01em',
   more: 'w-08em',
