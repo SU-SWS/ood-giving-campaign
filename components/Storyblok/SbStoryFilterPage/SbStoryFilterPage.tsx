@@ -9,18 +9,18 @@ type SbStoryFilterPageProps = {
   blok: {
     _uid: string;
     title?: string;
-    heroImage?: SbImageType;
     ankle?: SbBlokData[];
   };
+  name: string;
 };
 
 export const SbStoryFilterPage = ({
   blok: {
     title,
-    heroImage: { filename, focus } = {},
     ankle,
   },
   blok,
+  name,
 }: SbStoryFilterPageProps) => {
 
   return (
@@ -28,9 +28,7 @@ export const SbStoryFilterPage = ({
       <Masthead />
       <main id="main-content">
         <BasicHero
-          title={title}
-          imageSrc={filename}
-          imageFocus={focus}
+          title={name}
         />
         <CreateBloks blokSection={ankle} />
       </main>

@@ -26,7 +26,7 @@ import { SbSection } from '@/components/Storyblok/SbSection';
 import { SbSidebarCard } from '@/components/Storyblok/SbSidebarCard';
 import { SbSpacer } from '@/components/Storyblok/SbSpacer';
 import { SbStoryCard } from '@/components/Storyblok/SbStoryCard';
-import { SbStoryFilterPage } from '@/components/Storyblok/SbStoryFilterPage';
+import { SbStoryFilterPage } from '@/components/Storyblok/SbStoryFilterPage/SbStoryFilterPage';
 import { SbStoryListNav } from '@/components/Storyblok/SbStoryListNav';
 import { SbStoryMvp } from '@/components/Storyblok/SbStoryMvp/SbStoryMvp';
 import { SbStoryImage } from '@/components/Storyblok/SbStoryImage';
