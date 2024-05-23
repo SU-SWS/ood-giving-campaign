@@ -86,7 +86,7 @@ export const ctaSizes: CtaSizeObjectType = {
   close: 'text-18 md:text-21',
   chip: 'py-7 px-22 text-18',
   storyCardChip: 'text-15 py-6 px-16 lg:text-17 lg:pt-8 lg:pb-7 lg:px-18',
-  storyListNav: 'text-17 py-8 px-20 md:text-20 md:pt-15 md:pb-16 md:px-34',
+  storyListNav: 'text-16 py-12 px-24 lg:text-20 lg:pt-15 lg:pb-16 lg:px-34',
   brochure: 'text-20 xl:text-30 py-12',
   unset: '',
 };
