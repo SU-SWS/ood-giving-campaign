@@ -40,7 +40,7 @@ export const SbStoryFilterPage = ({
       <CreateStories stories={mastheadPicker} />
       <main id="main-content">
         <BasicHero
-          title={`Stories of Impact ${name}`}
+          title={`Stories of Impact ${slug === 'stories' ? '' : name}`}
         />
         <CreateStories stories={storyListNavPicker} fullSlug={slug} name={name} />
         <Container bgColor="black" className="bg-gc-black">

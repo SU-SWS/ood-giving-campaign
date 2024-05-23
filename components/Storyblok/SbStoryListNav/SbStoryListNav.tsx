@@ -27,20 +27,23 @@ const StoryListContent = ({ blok: { heading, links }, fullSlug }: SbStoryListNav
     <>
       <Heading size="base" align="center" className={styles.heading}>{heading}</Heading>
       <ul className={styles.list}>
-        {links.map((link) => (
-          <li key={link._uid} className={styles.listItem}>
-            <CtaLink
-              aria-current={fullSlug === link.link?.cached_url ? 'page' : undefined}
-              href={link.link?.cached_url}
-              variant="storyListNav"
-              color="current"
-              className={styles.cta(fullSlug === link.link?.cached_url)}
-              srText='stories'
-            >
-              {link.label}
-            </CtaLink>
-          </li>
-        ))}
+        {links.map((link) => {
+          const isCurrentPage = fullSlug === link.link?.cached_url || (fullSlug === 'stories' && link.link?.cached_url === 'stories/');
+          return (
+            <li key={link._uid} className={styles.listItem}>
+              <CtaLink
+                aria-current={isCurrentPage ? 'page' : undefined}
+                sbLink={link.link}
+                variant="storyListNav"
+                color="current"
+                className={styles.cta(isCurrentPage)}
+                srText='stories'
+              >
+                {link.label}
+              </CtaLink>
+            </li>
+          );
+        })}
       </ul>
     </>
   );
