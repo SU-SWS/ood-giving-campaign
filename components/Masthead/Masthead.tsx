@@ -9,10 +9,16 @@ import * as styles from './Masthead.styles';
 
 type MastheadProps = HTMLAttributes<HTMLDivElement> & {
   isLight?: boolean;
+  mainNav?: React.ReactNode;
 };
 
-export const Masthead = ({ isLight, className }: MastheadProps) => (
-  <header className={cnb(styles.root, className)}>
+export const Masthead = ({
+  isLight,
+  mainNav,
+  className,
+  ...props
+}: MastheadProps) => (
+  <header className={cnb(styles.root, className)} {...props}>
     <Skiplink />
     <FlexBox
       justifyContent="between"
@@ -25,15 +31,19 @@ export const Masthead = ({ isLight, className }: MastheadProps) => (
         text="Momentum"
         className={styles.lockup}
       />
-      <CtaLink
-        href={ood.giving}
-        variant={isLight ? 'mastheadGivingBlack' : 'mastheadGiving'}
-        icon="external"
-        color="current"
-        animate="top-right"
-      >
-        Giving to Stanford
-      </CtaLink>
+      <FlexBox alignItems="center" className={styles.flexbox}>
+        <CtaLink
+          href={ood.giving}
+          variant={isLight ? 'mastheadGivingBlack' : 'mastheadGiving'}
+          icon="external"
+          color="current"
+          animate="top-right"
+          className={styles.cta}
+        >
+          Giving to Stanford
+        </CtaLink>
+        {mainNav}
+      </FlexBox>
     </FlexBox>
   </header>
 );
