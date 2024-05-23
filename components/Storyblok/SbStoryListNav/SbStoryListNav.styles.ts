@@ -1,7 +1,12 @@
+import { cnb } from 'cnbuilder';
+
+export const root = 'rs-pt-5 rs-pb-8 bg-gc-black'
 export const heading = 'rs-mb-1';
-export const list = 'list-unstyled flex flex-col max-w-[36rem] lg:max-w-none lg:flex-row lg:flex-wrap gap-16 lg:gap-14 justify-center lg:max-w-1200 mx-auto';
+export const list = 'list-unstyled flex flex-col max-w-[36rem] lg:flex-row lg:flex-wrap gap-16 lg:gap-14 justify-center lg:max-w-1200 mx-auto';
 export const listItem = 'block lg:inline-block mb-0';
-export const cta = 'w-full lg:w-auto';
+export const cta = (isCurrentPage: boolean) => cnb('w-full lg:w-auto', {
+  '!bg-digital-red-light !text-white !underline': isCurrentPage,
+});
 
 // Mobile styles
 export const filterButton = 'block text-left text-18 sm:text-21 w-fit border-2 border-gc-black-80 text-gc-black-40 rounded-full px-24 py-12 md:px-34 md:py-14 mx-auto';

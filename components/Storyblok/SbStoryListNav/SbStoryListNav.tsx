@@ -17,12 +17,12 @@ type SbStoryListNavType = {
     heading: string;
     links: SbNavItemProps[];
   };
-  full_slug: string;
+  fullSlug: string;
   name: string;
 };
 
 // The menu item chips that are either displayed on the page or inside the modal on mobile
-const StoryListContent = ({ blok: { heading, links }, full_slug }: SbStoryListNavType) => {
+const StoryListContent = ({ blok: { heading, links }, fullSlug }: SbStoryListNavType) => {
   return (
     <>
       <Heading size="base" align="center" className={styles.heading}>{heading}</Heading>
@@ -30,11 +30,11 @@ const StoryListContent = ({ blok: { heading, links }, full_slug }: SbStoryListNa
         {links.map((link) => (
           <li key={link._uid} className={styles.listItem}>
             <CtaLink
-              aria-current={full_slug === link.link?.cached_url ? 'page' : undefined}
+              aria-current={fullSlug === link.link?.cached_url ? 'page' : undefined}
               href={link.link?.cached_url}
               variant="storyListNav"
               color="current"
-              className={styles.cta}
+              className={styles.cta(fullSlug === link.link?.cached_url)}
               srText='stories'
             >
               {link.label}
@@ -51,16 +51,16 @@ export const SbStoryListNav = ({
     heading,
   },
   blok,
-  full_slug,
+  fullSlug,
   name,
 }: SbStoryListNavType) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <Container width="full" bgColor="black" {...storyblokEditable(blok)}>
+    <Container width="full" bgColor="black" className={styles.root} {...storyblokEditable(blok)}>
       <Container as="nav" aria-label="Story list page menu">
         <div className="hidden lg:block">
-          <StoryListContent blok={blok} full_slug={full_slug} name={name} />
+          <StoryListContent blok={blok} fullSlug={fullSlug} name={name} />
         </div>
         <div className="block lg:hidden">
           <Heading size="base" align="center" className={styles.heading}>{heading}</Heading>
@@ -116,7 +116,7 @@ export const SbStoryListNav = ({
                       />
                     </button>
                     <DialogTitle className={styles.srOnly}>Go to story page filtered by</DialogTitle>
-                    <StoryListContent blok={blok} full_slug={full_slug} name={name} />
+                    <StoryListContent blok={blok} fullSlug={fullSlug} name={name} />
                   </DialogPanel>
                 </div>
               </TransitionChild>

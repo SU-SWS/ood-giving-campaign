@@ -19,7 +19,7 @@ const brochureBase = 'inline-block font-bold font-serif no-underline hocus:no-un
 const brochureIlluminating = 'from-illuminating to-illuminating';
 const brochurePoppy = 'from-poppy to-poppy';
 
-const chipBase = 'relative inline-block leading-display rounded-full font-normal no-underline underline-offset-4 hocus:underline hocus:bg-digital-red-light hocus:text-white';
+const chipBase = 'relative inline-block leading-display rounded-full font-normal no-underline underline-offset-4 hocus:underline decoration-1 hocus:bg-digital-red-light hocus:text-white';
 const chipLight = 'border border-gc-black/10 bg-gc-black-10 text-gc-black-80 hocus:border-digital-red-xlight';
 const chipDark = 'border border-gc-black-80 bg-gc-black-90 text-gc-black-40 hocus:border-digital-red-xlight';
 const chipNav = 'bg-gc-black-90 text-gc-black-40';

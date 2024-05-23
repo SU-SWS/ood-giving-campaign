@@ -89,7 +89,7 @@ async function getStoryData({ path }: PageProps['searchParams']): Promise<ISbRes
 /**
  * Validate the editor token.
  *
- * Removed time limit check to support client workflows of several days, or weeks 
+ * Removed time limit check to support client workflows of several days, or weeks
  * of using the preview link for review.
  */
 const validateEditor = (searchParams: PageProps['searchParams']) => {
@@ -125,6 +125,6 @@ export default async function Page({ searchParams }: PageProps) {
 
   // Return the story.
   return (
-    <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} slug={slug} />
+    <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} slug={slug} name={data.story.name} />
   );
 };
