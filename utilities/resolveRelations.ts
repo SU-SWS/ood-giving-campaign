@@ -5,4 +5,7 @@
 
 export const resolveRelations = [
   'sbStoryCard.storyPicker',
+  'sbBasicPage.mastheadPicker',
+  'sbHomepageMvp.mastheadPicker',
+  'sbStoryMvp.mastheadPicker',
 ];

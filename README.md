@@ -36,13 +36,15 @@ https://readwriteexercise.com/posts/trust-self-signed-certificates-macos/
 
 To start:
 
-1. Do `npm run dev` in one terminal. You'll be able to view the development build in your browser at http://localhost:8000/
+1. Enter `nvm use` in the terminal to ensure that you are using the node version specified in .nvmrc.
 
-2. In another terminal, do `npm run https-proxy-start`
+2. Do `npm run dev` in the same terminal. You'll be able to view the development build in your browser at http://localhost:3000/
 
-3. After that, you can go back to Storyblok and select the https://localhost:3010 URL in the visual editor. When you're doing this for the first time, you'll have to click the "Preview" button to pop the preview into its own tab out of the iframe and click past the browser warning to proceed to view the site.
+3. In another terminal, do `npm run https-proxy-start`
 
-4. You can now go back to the Storyblok visual editor and hit the reload icon button (curved arrow) and preview the site in the iframe.
+4. After that, you can go back to Storyblok and select the https://localhost:3010 URL in the visual editor. When you're doing this for the first time, you'll have to click the "Preview" button to pop the preview into its own tab out of the iframe and click past the browser warning to proceed to view the site.
+
+5. You can now go back to the Storyblok visual editor and hit the reload icon button (curved arrow) and preview the site in the visual editor iframe.
 
 
 Authentication
@@ -55,16 +57,16 @@ Linting and Type Check
 We use the default Next.js [eslint-config-next](https://nextjs.org/docs/app/building-your-application/configuring/eslint#eslint-config) with the core web vitals rule set as our linting configuration.
 
 To run ESLint:
-- `npm run lint` to check your .js, .jsx, .ts and .tsx files in the /src directory for warnings and errors.
+- `npm run lint` to check your .js, .jsx, .ts and .tsx files for warnings and errors.
 - `npm run lint:fix` to fix any fixable issues and displays the ones that need to be manually fixed.
 
 To run type heck:
-- `npm run typecheck` will check for any typescript errors.
+- `npm run typecheck` or `npm run tsc` will check for any typescript errors.
 
 Components
 ---
 
-All the React components in this projects can be found under the `src/components/` directory. Components that are connected to Storyblok are in the subdirectory `src/components/Storyblok'.
+All the React components in this projects can be found under the `/components` directory. Components that are connected to Storyblok are in the subdirectory `/components/Storyblok'.
 
 TailwindCSS
 ---
@@ -78,8 +80,8 @@ You can find details on the [rendering and caching strategy](https://docs.google
 Release Workflow
 ---
 
-- Create branch from `dev` (or commit ref from `dev`) with `release/` prefix (e.g. `release/my-cool-release`)
-- Create a pull request from your `release/my-cool-release` branch into `main`
+- Create branch from `dev` (or commit ref from `dev`) with `release/` prefix (e.g. `release/v2.0.1`)
+- Create a pull request from your `release/v2.0.1` branch into `main`
 - Add the appropriate semver label to your PR. Availabel labels: `patch`, `minor`, `major`, `rc`, `alpha`, `beta`
 - On PR approval, do a standard **merge commit** (not a squash commit) into `main`
 

@@ -4,6 +4,7 @@ import * as styles from './Cta.styles';
 export type CtaVariantType = keyof typeof styles.ctaVariants;
 export type CtaColorType = keyof typeof styles.ctaColors;
 export type CtaCurveType = keyof typeof styles.ctaCurves;
+export type IconColorType = keyof typeof styles.iconColors;
 export type IconAnimationType = keyof typeof styles.iconAnimation | '';
 
 export type CtaSizeObjectType = Partial<{

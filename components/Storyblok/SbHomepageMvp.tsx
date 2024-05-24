@@ -1,10 +1,10 @@
-import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
-import { CreateBloks } from '../CreateBloks';
-import { Heading } from '../Typography';
-import { HomepageSplitHero } from '../Homepage/HomepageSplitHero';
-import { TogetherSection } from '../Homepage/TogetherSection';
-import { Masthead } from '../Masthead';
-import { Changemaker } from '../Homepage/Changemaker';
+import { storyblokEditable, type SbBlokData, type ISbStoryData } from '@storyblok/react/rsc';
+import { CreateBloks } from '@/components/CreateBloks';
+import { CreateStories } from '@/components/CreateStories';
+import { Heading } from '@/components/Typography';
+import { HomepageSplitHero } from '@/components/Homepage/HomepageSplitHero';
+import { TogetherSection } from '@/components/Homepage/TogetherSection';
+import { Changemaker } from '@/components/Homepage/Changemaker';
 import { getNumBloks } from '@/utilities/getNumBloks';
 
 type SbHomepageMvpProps = {
@@ -14,6 +14,7 @@ type SbHomepageMvpProps = {
     content?: SbBlokData[];
     changemakerCards?: SbBlokData[];
     ankle?: SbBlokData[];
+    mastheadPicker?: ISbStoryData[];
   };
 };
 
@@ -23,6 +24,7 @@ export const SbHomepageMvp = ({
     content,
     changemakerCards,
     ankle,
+    mastheadPicker,
   },
   blok,
 }: SbHomepageMvpProps) => {
@@ -30,7 +32,7 @@ export const SbHomepageMvp = ({
 
   return (
     <div {...storyblokEditable(blok)}>
-      <Masthead />
+      <CreateStories stories={mastheadPicker} />
       <main id="main-content">
         <div>
           <Heading as="h1" srOnly>{title || 'Homepage'}</Heading>

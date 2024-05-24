@@ -6,6 +6,7 @@ import { SbBlurryPoster } from '@/components/Storyblok/SbBlurryPoster';
 import { SbCardWysiwyg } from '@/components/Storyblok/SbCardWysiwyg';
 import { SbChangemakerCard } from '@/components/Storyblok/SbChangemakerCard';
 import { SbCta } from '@/components/Storyblok/SbCta';
+import { SbCtaBlock } from '@/components/Storyblok/SbCtaBlock';
 import { SbDataCard } from '@/components/Storyblok/SbDataCard';
 import { SbEmbed } from '@/components/Storyblok/SbEmbed';
 import { SbEmbedMedia } from '@/components/Storyblok/SbEmbedMedia';
@@ -15,6 +16,8 @@ import { SbFeatureMasonry } from '@/components/Storyblok/SbFeatureMasonry';
 import { SbHomepageMvp } from '@/components/Storyblok/SbHomepageMvp';
 import { SbHomepageThemeSection } from '@/components/Storyblok/SbHomepageThemeSection';
 import { SbInitiativeCard } from '@/components/Storyblok/SbInitiativeCard';
+import { SbMainNav } from '@/components/Storyblok/SbMainNav';
+import { SbMasthead } from '@/components/Storyblok/SbMasthead';
 import { SbMomentPoster } from './Storyblok/SbMomentPoster';
 import { SbQuote } from '@/components/Storyblok/SbQuote';
 import { SbRow } from '@/components/Storyblok/SbRow';
@@ -41,6 +44,7 @@ export const components = {
   sbCardWysiwyg: SbCardWysiwyg,
   sbChangemakerCard: SbChangemakerCard,
   sbCta: SbCta,
+  sbCtaBlock: SbCtaBlock,
   sbDataCard: SbDataCard,
   sbEmbedScript: SbEmbed,
   sbEmbedMedia: SbEmbedMedia,
@@ -50,6 +54,8 @@ export const components = {
   sbHomepageMvp: SbHomepageMvp,
   sbHomepageThemeSection: SbHomepageThemeSection,
   sbInitiativeCard: SbInitiativeCard,
+  sbMainNav: SbMainNav,
+  sbMasthead: SbMasthead,
   sbMomentPoster: SbMomentPoster,
   sbQuote: SbQuote,
   sbRow: SbRow,

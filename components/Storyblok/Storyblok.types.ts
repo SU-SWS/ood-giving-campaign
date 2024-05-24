@@ -41,6 +41,12 @@ export type SbLinkType =
 /**
  * Reusable types for custom Storyblok components
  */
+export type SbNavItemProps = {
+  _uid: string;
+  label?: string;
+  link?: SbLinkType;
+};
+
 export type SbTypographyProps = {
   text?: string;
   font?: 'druk' | 'serif';
