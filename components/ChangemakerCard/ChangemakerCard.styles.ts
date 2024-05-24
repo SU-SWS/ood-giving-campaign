@@ -23,11 +23,11 @@ export const overlay = 'absolute top-0 left-0 size-full bg-gradient-to-t via-bla
 export const info = (isHorizontal: boolean) => cnb('rs-px-1 pb-150 absolute size-full bottom-0 left-0 mb-0', {
   'px-20 md:px-45 sm:pb-200 xl:pb-130': isHorizontal,
 });
-export const heading = (isHorizontal: boolean) => cnb('mb-02em mt-auto text-30 white-space-pre-line', {
+export const heading = (isHorizontal: boolean) => cnb('mb-02em mt-auto text-30 whitespace-pre-line', {
   '2xl:text-[3.6rem]': !isHorizontal,
   'sm:fluid-type-4 xl:max-w-[30ch] mx-auto': isHorizontal,
 });
-export const subhead = 'text-19 md:text-21 xl:max-w-prose mx-auto white-space-pre-line';
+export const subhead = 'text-19 md:text-21 xl:max-w-prose mx-auto whitespace-pre-line';
 
 export const cardContent = (isHorizontal: boolean) => cnb('hidden sm:block absolute size-full top-0 left-0 aria-hidden:opacity-0 opacity-100 backdrop-blur-sm transition-opacity duration-500 bg-gradient-to-b from-gc-black/60 to-gc-black/90 *:*:*:!mb-1em', {
   'px-20 py-30 pb-120 3xl:pt-48 3xl:px-36' : !isHorizontal,
