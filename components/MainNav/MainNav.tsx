@@ -7,19 +7,14 @@ import { CtaLink } from '@/components/Cta';
 import { Grid } from '@/components/Grid';
 import { Heading } from '@/components/Typography';
 import { HeroIcon } from '@/components/HeroIcon';
+import { type SbNavItemProps } from '@/components/Storyblok/Storyblok.types';
 import * as routes from '@/utilities/routes';
 import * as styles from './MainNav.styles';
 
-export type navItemProps = {
-  _uid: string;
-  label: string;
-  href: string;
-}
-
 type MainNavProps = {
-  featuredLinks?: navItemProps[];
-  themeLinks?: navItemProps[];
-  initiativeLinks?: navItemProps[];
+  featuredLinks?: SbNavItemProps[];
+  themeLinks?: SbNavItemProps[];
+  initiativeLinks?: SbNavItemProps[];
   regionCol2?: React.ReactNode;
   regionCol3?: React.ReactNode;
 }
@@ -53,29 +48,31 @@ export const MainNav = ({
               <div className={styles.panelWrapper}>
                 <Grid sm={2} xxl={3} className={styles.panelOuterGrid}>
                   <div>
-                    <ul className={styles.linkList}>
-                      {featuredLinks.map((link) => (
-                        <li key={link._uid} className={styles.featuredItem}>
-                          <CtaLink
-                            href={link.href}
-                            color="white"
-                            variant="mainNavFeatured"
-                            icon="arrow-right"
-                            animate="right"
-                            className={styles.featuredCta}
-                          >
-                            {link.label}
-                          </CtaLink>
-                        </li>
-                      ))}
-                    </ul>
+                    {!!featuredLinks?.length && (
+                      <ul className={styles.linkList}>
+                        {featuredLinks.map((link) => (
+                          <li key={link._uid} className={styles.featuredItem}>
+                            <CtaLink
+                              sbLink={link.link}
+                              color="white"
+                              variant="mainNavFeatured"
+                              icon="arrow-right"
+                              animate="right"
+                              className={styles.featuredCta}
+                            >
+                              {link.label}
+                            </CtaLink>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                     {!!themeLinks?.length && (
                       <>
                         <Heading font="druk-wide" size="base" color="white" uppercase className={styles.themeHeading}>Themes</Heading>
                         <ul className={styles.linkList}>
                           {themeLinks.map((link) => (
                             <li key={link._uid} className={styles.themeItems}>
-                              <CtaLink href={link.href} color="white" variant="mainNavLink">{link.label}</CtaLink>
+                              <CtaLink sbLink={link.link} color="white" variant="mainNavLink">{link.label}</CtaLink>
                             </li>
                           ))}
                         </ul>
@@ -101,14 +98,15 @@ export const MainNav = ({
                             <ul className={styles.linkList}>
                               {initiativeLinks.map((link) => (
                                 <li key={link._uid} className={styles.initiativeItems}>
-                                  <CtaLink href={link.href} color="white" variant="mainNavLink">{link.label}</CtaLink>
+                                  <CtaLink sbLink={link.link} color="white" variant="mainNavLink">{link.label}</CtaLink>
                                 </li>
                               ))}
                             </ul>
                           </>
                         )}
                         {/*  We don't need spacing between the initiative links and regionCol2
-                        because once we start displaying the initiative links, the CTA block in regionCol2 will be moved to col3 */}
+                          because once we start displaying the initiative links,
+                          the CTA block in regionCol2 will be moved to col3 */}
                         {regionCol2}
                       </div>
                       <Grid className={styles.col3}>
