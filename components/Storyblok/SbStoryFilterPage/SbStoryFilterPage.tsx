@@ -2,18 +2,18 @@ import { storyblokEditable, type SbBlokData, type ISbStoryData } from '@storyblo
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { CreateBloks } from '@/components/CreateBloks';
 import { CreateStories } from '@/components/CreateStories';
-import { BasicHero } from '@/components/Hero';
 import { Container } from '@/components/Container';
 import { Heading } from '@/components/Typography';
-import { Masthead } from '@/components/Masthead';
-import { getNumBloks } from '@/utilities/getNumBloks';
-import { type SbImageType } from '@/components/Storyblok/Storyblok.types';
+import { RichText } from '@/components/RichText';
+import { hasRichText } from '@/utilities/hasRichText';
+import * as styles from './SbStoryFilterPage.styles';
+
 
 type SbStoryFilterPageProps = {
   blok: {
     _uid: string;
-    title?: string;
     intro?: StoryblokRichtext;
+    belowIntro?: SbBlokData[];
     ankle?: SbBlokData[];
     mastheadPicker?: ISbStoryData[];
     heroPicker?: ISbStoryData[];
@@ -25,8 +25,8 @@ type SbStoryFilterPageProps = {
 
 export const SbStoryFilterPage = ({
   blok: {
-    title,
     intro,
+    belowIntro,
     ankle,
     mastheadPicker,
     heroPicker,
@@ -45,6 +45,8 @@ export const SbStoryFilterPage = ({
         <CreateStories stories={storyListNavPicker} fullSlug={slug} name={name} />
         <Container bgColor="black" className="bg-gc-black">
           <Heading font="druk" size="f5" color="white">Latest stories</Heading>
+          {hasRichText(intro) && <RichText wysiwyg={intro} textColor="white" className={styles.intro} />}
+          <CreateBloks blokSection={belowIntro} />
         </Container>
         <CreateBloks blokSection={ankle} />
       </main>
