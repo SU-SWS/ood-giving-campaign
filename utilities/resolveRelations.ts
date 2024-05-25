@@ -7,6 +7,7 @@ export const resolveRelations = [
   'sbStoryCard.storyPicker',
   'sbBasicPage.mastheadPicker',
   'sbHomepageMvp.mastheadPicker',
+  'sbStoryFilterPage.heroPicker',
   'sbStoryFilterPage.mastheadPicker',
   'sbStoryFilterPage.storyListNavPicker',
   'sbStoryMvp.mastheadPicker',
