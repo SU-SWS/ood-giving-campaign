@@ -16,6 +16,7 @@ type SbStoryFilterPageProps = {
     intro?: StoryblokRichtext;
     ankle?: SbBlokData[];
     mastheadPicker?: ISbStoryData[];
+    heroPicker?: ISbStoryData[];
     storyListNavPicker?: ISbStoryData[];
   };
   name?: string; // The name of the Storyblok story
@@ -28,6 +29,7 @@ export const SbStoryFilterPage = ({
     intro,
     ankle,
     mastheadPicker,
+    heroPicker,
     storyListNavPicker,
   },
   blok,
@@ -39,9 +41,7 @@ export const SbStoryFilterPage = ({
     <div {...storyblokEditable(blok)}>
       <CreateStories stories={mastheadPicker} />
       <main id="main-content">
-        <BasicHero
-          title={`Stories of Impact ${slug === 'stories' ? '' : name}`}
-        />
+        <CreateStories stories={heroPicker} subheading={name !== 'Stories' ? name : ''} />
         <CreateStories stories={storyListNavPicker} fullSlug={slug} name={name} />
         <Container bgColor="black" className="bg-gc-black">
           <Heading font="druk" size="f5" color="white">Latest stories</Heading>
