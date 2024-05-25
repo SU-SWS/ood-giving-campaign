@@ -152,7 +152,7 @@ export default async function Page({ params }: { params: ParamsType }) {
   }
 
   return (
-    <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} slug={slug} />
+    <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} slug={slug} name={data.story.name} />
   );
 
 };
