@@ -3,13 +3,14 @@ import { AnimateInView, type AnimationType } from '@/components/Animate';
 import { NumberCounter } from '@/components/NumberCounter';
 import { Container } from '@/components/Container';
 import { FlexBox } from '@/components/FlexBox';
-import { Heading, type HeadingType } from '../Typography';
+import { Heading, type HeadingType, Text } from '../Typography';
 import { accentBorderColors, type AccentBorderColorType, type PaddingType } from '@/utilities/datasource';
 import { splitNumberString } from '@/utilities/splitNumberString';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import * as styles from './BasicCard.styles';
 
 export type BasicCardProps = React.HTMLAttributes<HTMLDivElement> & {
+  subheading?: string;
   heading?: string;
   headingLevel?: HeadingType;
   isDarkTheme?: boolean;
@@ -28,13 +29,14 @@ export type BasicCardProps = React.HTMLAttributes<HTMLDivElement> & {
 };
 
 export const BasicCard = ({
+  subheading,
   heading,
   headingLevel = 'h3',
   barColor,
   body,
   imageSrc = '',
   imageFocus,
-  imageAspectRatio = '3x4',
+  imageAspectRatio = '4x3',
   cta,
   paddingTop,
   isDarkTheme,
@@ -47,7 +49,7 @@ export const BasicCard = ({
   ...props
 }: BasicCardProps) => {
   const headingProcessed = isCounter ? splitNumberString(heading) : undefined;
-  const imageSize = imageAspectRatio === '3x4' ? '510x680' : '700x700';
+  const imageSize = imageAspectRatio === '4x3' ? '336x222' : '700x700';
 
   return (
     <AnimateInView animation={animation} delay={delay} className={styles.animateWrapper}>
@@ -60,16 +62,32 @@ export const BasicCard = ({
       >
         <FlexBox direction="col" className={styles.flex}>
           {/* If number counter is enabled, aria-hidden the animated heading and add a SR only heading */}
+          <div>
+            <img
+              width={imageAspectRatio === '4x3' ? 800 : 600}
+              height={222}
+              alt=""
+              loading="lazy"
+              src={getProcessedImage(imageSrc, imageSize, imageFocus) || ''}
+            />
+          </div>
           {isCounter && heading && (
             <Heading as={headingLevel} srOnly>{heading}</Heading>
+          )}
+          {subheading && (
+            <Text 
+            font="serif"
+            leading="display" 
+            size="base"
+            className={styles.subhead}>{subheading}</Text>
           )}
           {heading && (
             <Heading
               as={headingLevel}
-              font="druk"
+              font="serif"
               leading="druk"
               color={isDarkTheme ? 'white' : 'black'}
-              size="f5"
+              size="f4"
               aria-hidden={isCounter}
               className={styles.heading}
             >
@@ -84,15 +102,6 @@ export const BasicCard = ({
               )}
             </Heading>
           )}
-          <div>
-            <img
-              width={600}
-              height={imageAspectRatio === '3x4' ? 800 : 600}
-              alt=""
-              loading="lazy"
-              src={getProcessedImage(imageSrc, imageSize, imageFocus) || ''}
-            />
-          </div>
           <div className={cnb(styles.content(!!barColor), accentBorderColors[barColor])}>
             <div className={styles.body}>
               {body}

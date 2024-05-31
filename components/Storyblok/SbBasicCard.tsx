@@ -2,6 +2,7 @@ import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { CreateBloks } from '@/components/CreateBloks';
 import { BasicCard } from '@/components/BasicCard';
+import { BasicCardImageAspectRatio } from '../BasicCard/BasicCard.styles';
 import { RichText } from '@/components/RichText';
 import { type AnimationType } from '@/components/Animate';
 import { type HeadingType } from '@/components/Typography';
@@ -9,11 +10,12 @@ import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities
 import { type PaddingType } from '@/utilities/datasource';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { hasRichText } from '@/utilities/hasRichText';
-import { type SbImageType, type SbLinkType } from './Storyblok.types';
+import { type SbImageType } from './Storyblok.types';
 
 export type SbBasicCardProps = {
   blok: {
     _uid: string;
+    subheading?: string;
     heading?: string;
     headingLevel?: HeadingType;
     isSmallHeading?: boolean;
@@ -36,6 +38,7 @@ export type SbBasicCardProps = {
 
 export const SbBasicCard = ({
   blok: {
+    subheading,
     heading,
     headingLevel,
     body,
@@ -58,6 +61,7 @@ export const SbBasicCard = ({
   return (
     <BasicCard
       {...storyblokEditable(blok)}
+      subheading={subheading}
       heading={heading}
       headingLevel={headingLevel}
       imageSrc={filename}
