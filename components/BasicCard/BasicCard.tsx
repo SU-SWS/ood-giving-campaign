@@ -4,7 +4,7 @@ import { NumberCounter } from '@/components/NumberCounter';
 import { Container } from '@/components/Container';
 import { FlexBox } from '@/components/FlexBox';
 import { Heading, type HeadingType, Text } from '../Typography';
-import { accentBorderColors, type AccentBorderColorType, type PaddingType } from '@/utilities/datasource';
+import { accentBorderColors, type AccentBorderColorType, type accentBgColors, type PaddingType } from '@/utilities/datasource';
 import { splitNumberString } from '@/utilities/splitNumberString';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import * as styles from './BasicCard.styles';
@@ -14,6 +14,7 @@ export type BasicCardProps = React.HTMLAttributes<HTMLDivElement> & {
   heading?: string;
   headingLevel?: HeadingType;
   isDarkTheme?: boolean;
+  bgColor?: string;
   barColor?: AccentBorderColorType;
   body?: React.ReactNode;
   paddingTop?: PaddingType;
@@ -33,6 +34,7 @@ export const BasicCard = ({
   heading,
   headingLevel = 'h3',
   barColor,
+  bgColor,
   body,
   imageSrc = '',
   imageFocus,
@@ -50,6 +52,7 @@ export const BasicCard = ({
 }: BasicCardProps) => {
   const headingProcessed = isCounter ? splitNumberString(heading) : undefined;
   const imageSize = imageAspectRatio === '4x3' ? '336x222' : '700x700';
+  const bgCardColor = "bg-" + bgColor;
 
   return (
     <AnimateInView animation={animation} delay={delay} className={styles.animateWrapper}>
@@ -57,7 +60,7 @@ export const BasicCard = ({
         as="article"
         width="full"
         pt={paddingTop}
-        className={styles.root}
+        className={cnb(styles.root, className, bgCardColor)}
         {...props}
       >
         <FlexBox direction="col" className={styles.flex}>

@@ -28,6 +28,9 @@ export type SbBasicCardProps = {
     isDarkTheme?: boolean;
     isCounter?: boolean;
     counterDuration?: number;
+    bgColor?: {
+      value?: PaletteAccentHexColorType;
+    }
     barColor?: {
       value?: PaletteAccentHexColorType;
     }
@@ -50,6 +53,7 @@ export const SbBasicCard = ({
     isCounter,
     counterDuration,
     barColor: { value } = {},
+    bgColor: { value: bgColor} = {},
     animation,
     delay,
   },
@@ -71,6 +75,7 @@ export const SbBasicCard = ({
       isCounter={isCounter}
       counterDuration={counterDuration}
       barColor={paletteAccentColors[value]}
+      bgColor={paletteAccentColors[bgColor]}
       cta={Cta}
       body={Body}
       paddingTop={paddingTop}
