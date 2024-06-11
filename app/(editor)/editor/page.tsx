@@ -86,7 +86,9 @@ async function getStoryData({ path }: PageProps['searchParams']): Promise<ISbRes
 
 };
 
-// Get a list of stories that are of component sbStoryMvp
+/**
+ * Get a list of stories that are of component sbStoryMvp in reverse chronological order.
+ */
 async function getStories() {
   const activeEnv = process.env.NODE_ENV || 'development';
   const storyblokApi: StoryblokClient = getStoryblokApi();
@@ -94,8 +96,9 @@ async function getStories() {
     version: 'published',
     cv: activeEnv === 'development' ? Date.now() : undefined,
     resolve_relations: resolveRelations,
-    'starts_with': 'stories/',
-    'sort_by': 'first_published_at:desc',
+    starts_with: 'stories/',
+    sort_by: 'first_published_at:desc',
+    per_page: 100,
     filter_query: {
       component: {
         in: 'sbStoryMvp',
