@@ -35,10 +35,10 @@ export const StoryListHero = ({
             align="center"
             leading="none"
             color="white"
-            className={styles.heading}
+            className={styles.heading(!!subheading)}
           >
             <Text as="span" font="druk" size={subheading ? 'f5' : 'splash'} leading="druk">Stories</Text>
-            <Text as="span" font="serif" size={subheading ? 'f4' : 'f7'} weight="normal" italic className="relative -top-[.23em] -ml-01em mr-02em"> of </Text>
+            <Text as="span" font="serif" size={subheading ? 'f4' : 'f7'} weight="normal" italic className="relative -top-[.23em] -ml-[.07em] mr-01em"> of </Text>
             <Text as="span" font="druk" size={subheading ? 'f5' : 'splash'} leading="druk">Impact</Text>
             {subheading && (
               <Text
