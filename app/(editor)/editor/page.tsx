@@ -86,6 +86,44 @@ async function getStoryData({ path }: PageProps['searchParams']): Promise<ISbRes
 
 };
 
+// Get a list of stories that are of component sbStoryMvp
+async function getStories() {
+  const activeEnv = process.env.NODE_ENV || 'development';
+  const storyblokApi: StoryblokClient = getStoryblokApi();
+  const sbParams: ISbStoriesParams = {
+    version: 'published',
+    cv: activeEnv === 'development' ? Date.now() : undefined,
+    resolve_relations: resolveRelations,
+    'starts_with': 'stories/',
+    'sort_by': 'first_published_at:desc',
+    filter_query: {
+      component: {
+        in: 'sbStoryMvp',
+      },
+    },
+  };
+
+  try {
+    const stories = await storyblokApi.getAll('cdn/stories', sbParams);
+    return stories;
+  }
+  catch (error) {
+    if (typeof error === 'string') {
+      try {
+        const parsedError = JSON.parse(error);
+        if (parsedError.status === 404) {
+          return { data: 404 };
+        }
+      }
+      catch (e) {
+        console.error('Error', error);
+      }
+    }
+  }
+
+  return [];
+}
+
 /**
  * Validate the editor token.
  *
@@ -117,6 +155,7 @@ export default async function Page({ searchParams }: PageProps) {
 
   // Get data out of the API.
   const { data } = await getStoryData(searchParams);
+  const stories = await getStories();
 
   // Failed to fetch from API because story slug was not found.
   if (data === 404) {
@@ -125,6 +164,12 @@ export default async function Page({ searchParams }: PageProps) {
 
   // Return the story.
   return (
-    <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} slug={slug} name={data.story.name} />
+    <StoryblokStory
+      story={data.story}
+      stories={stories}
+      bridgeOptions={bridgeOptions}
+      slug={slug}
+      name={data.story.name}
+    />
   );
 };

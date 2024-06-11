@@ -119,6 +119,44 @@ async function getStoryData(params: { slug: string[] }) {
   return { data: 404 };
 };
 
+// Get a list of stories that are of component sbStoryMvp in reverse chronological order.
+async function getStories() {
+  const activeEnv = process.env.NODE_ENV || 'development';
+  const storyblokApi: StoryblokClient = getStoryblokApi();
+  const sbParams: ISbStoriesParams = {
+    version: 'published',
+    cv: activeEnv === 'development' ? Date.now() : undefined,
+    resolve_relations: resolveRelations,
+    'starts_with': 'stories/',
+    'sort_by': 'first_published_at:desc',
+    filter_query: {
+      component: {
+        in: 'sbStoryMvp',
+      },
+    },
+  };
+
+  try {
+    const stories = await storyblokApi.getAll('cdn/stories', sbParams);
+    return stories;
+  }
+  catch (error) {
+    if (typeof error === 'string') {
+      try {
+        const parsedError = JSON.parse(error);
+        if (parsedError.status === 404) {
+          return { data: 404 };
+        }
+      }
+      catch (e) {
+        console.error('Error', error);
+      }
+    }
+  }
+
+  return [];
+}
+
 /**
  * Generate the SEO metadata for the page.
  */
@@ -145,6 +183,7 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
  */
 export default async function Page({ params }: { params: ParamsType }) {
   const { data } = await getStoryData(params);
+  const stories = await getStories();
   const slug = params.slug ? params.slug.join('/') : '';
 
   if (data === 404) {
@@ -152,7 +191,13 @@ export default async function Page({ params }: { params: ParamsType }) {
   }
 
   return (
-    <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} slug={slug} name={data.story.name} />
+    <StoryblokStory
+      story={data.story}
+      stories={stories}
+      bridgeOptions={bridgeOptions}
+      slug={slug}
+      name={data.story.name}
+    />
   );
 
 };
