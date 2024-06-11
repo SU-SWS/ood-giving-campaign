@@ -76,7 +76,7 @@ export const SbStoryFilterPage = ({
                     tabColor={paletteAccentColors[story.content.tabColor.value]}
                     href={`/${story.full_slug}`}
                     animation="slideUp"
-                    taxonomy={story.content.taxonomyArray}
+                    taxonomy={[...story.content.initiatives, ...story.content.themes]}
                   />
                 </li>
               ))
