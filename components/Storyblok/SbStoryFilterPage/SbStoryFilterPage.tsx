@@ -61,25 +61,41 @@ export const SbStoryFilterPage = ({
           <Grid py={6} isList className="gap-y-45 md:gap-y-90 2xl:gap-y-95">
             <CreateBloks blokSection={featuredStories} isListItems />
           </Grid>
-          <Grid gap="card" py={6} as="ul" className="list-unstyled">
+          <Grid as="ul" gap="card" py={6} className="list-unstyled">
             {!!stories?.length && (
-              stories.map((story) => (
-                <li key={story.content._uid}>
-                  <StoryCard
-                    isListView
-                    isDark
-                    heading={story.content.cardTitle || story.content.title}
-                    headingLevel="h3"
-                    body={story.content.cardTeaser || story.content.dek}
-                    imageSrc={story.content.cardImage.filename || story.content.heroImage.filename || story.content.bgImage.filename }
-                    imageFocus={story.content.cardImage.focus || story.content.heroImage.focus ||  story.content.bgImage.focus}
-                    tabColor={paletteAccentColors[story.content.tabColor.value]}
-                    href={`/${story.full_slug}`}
-                    animation="slideUp"
-                    taxonomy={[...story.content.initiatives, ...story.content.themes]}
-                  />
-                </li>
-              ))
+              stories.map((story) => {
+                const {
+                  _uid,
+                  cardTitle,
+                  title,
+                  cardTeaser,
+                  dek,
+                  cardImage,
+                  heroImage,
+                  bgImage,
+                  tabColor,
+                  initiatives,
+                  themes,
+                } = story.content;
+
+                return (
+                  <li key={_uid}>
+                    <StoryCard
+                      isListView
+                      isDark
+                      heading={cardTitle || title}
+                      headingLevel="h3"
+                      body={cardTeaser || dek}
+                      imageSrc={cardImage?.filename || heroImage?.filename || bgImage?.filename}
+                      imageFocus={cardImage?.focus || heroImage?.focus || bgImage?.focus}
+                      tabColor={paletteAccentColors[tabColor?.value]}
+                      href={`/${story.full_slug}`}
+                      animation="slideUp"
+                      taxonomy={[...initiatives, ...themes]}
+                    />
+                  </li>
+                );
+              })
             )}
           </Grid>
         </Container>
