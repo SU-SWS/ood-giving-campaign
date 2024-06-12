@@ -98,15 +98,22 @@ async function getStoryData({ path }: PageProps['searchParams']): Promise<ISbRes
 /**
  * Get a list of stories that are of component sbStoryMvp in reverse chronological order.
  */
-async function getStories({ path }: PageProps['searchParams']) {
+async function getStoryList({ path }: PageProps['searchParams']) {
   const activeEnv = process.env.NODE_ENV || 'development';
   const storyblokApi: StoryblokClient = getStoryblokApi();
   const fullslug = path.replace(/\/$/, '') || 'home';
 
   // Get the last part of the path.
   const slug = path.split('/').pop() || '';
-  // let slug = '';
+
   let orQuery: FilterQuery[] = [];
+
+  /**
+   * If the page is inside the folder stories/list/ (story list pages filtered by taxonomy),
+   * add a filter query to only return stories that has an initiative or theme that matches the slug of that story.
+   * E.g., if the full slug is stories/list/preparing-citizens,
+   * only return stories that have 'preparing-citizens' tagged as a theme or initiative.
+   */
   if (fullslug.includes('stories/list/')) {
     orQuery = [
       {
@@ -122,10 +129,10 @@ async function getStories({ path }: PageProps['searchParams']) {
     ];
   }
 
+  // For more related documentation see app/(storyblok)/[[...slug]]/page.tsx
   const sbParams: ISbStoriesParams = {
-    version: 'published',
+    version: activeEnv === 'development' ? 'draft' : 'published',
     cv: activeEnv === 'development' ? Date.now() : undefined,
-    resolve_relations: resolveRelations,
     starts_with: 'stories/',
     sort_by: 'first_published_at:desc',
     per_page: 100,
@@ -138,8 +145,8 @@ async function getStories({ path }: PageProps['searchParams']) {
   };
 
   try {
-    const stories = await storyblokApi.getAll('cdn/stories', sbParams);
-    return stories;
+    const storyList = await storyblokApi.getAll('cdn/stories', sbParams);
+    return storyList;
   }
   catch (error) {
     if (typeof error === 'string') {
@@ -189,7 +196,7 @@ export default async function Page({ searchParams }: PageProps) {
 
   // Get data out of the API.
   const { data } = await getStoryData(searchParams);
-  const storyList = await getStories(searchParams);
+  const storyList = await getStoryList(searchParams);
 
   // Failed to fetch from API because story slug was not found.
   if (data === 404) {

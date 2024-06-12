@@ -131,6 +131,7 @@ async function getStoryData(params: { slug: string[] }) {
 
 /**
  * Get a list of stories that are of component sbStoryMvp in reverse chronological order.
+ * This is used for the story filter pages.
  */
 async function getStoryList(params: { slug: string[] }) {
   const activeEnv = process.env.NODE_ENV || 'development';
@@ -138,6 +139,13 @@ async function getStoryList(params: { slug: string[] }) {
   const fullslug = params.slug ? params.slug.join('/') : 'home';
   let slug = '';
   let orQuery: FilterQuery[] = [];
+
+  /**
+   * If the page is inside the folder stories/list/ (story list pages filtered by taxonomy),
+   * add a filter query to only return stories that has an initiative or theme that matches the slug of that story.
+   * E.g., if the full slug is stories/list/preparing-citizens,
+   * only return stories that have 'preparing-citizens' tagged as a theme or initiative.
+   */
   if (fullslug.includes('stories/list/')) {
     slug = params.slug[params.slug.length - 1];
     orQuery = [
@@ -157,13 +165,13 @@ async function getStoryList(params: { slug: string[] }) {
   const sbParams: ISbStoriesParams = {
     version: activeEnv === 'development' ? 'draft' : 'published',
     cv: activeEnv === 'development' ? Date.now() : undefined,
-    resolve_relations: resolveRelations,
-    starts_with: 'stories/',
+    starts_with: 'stories/', // Only return stories that are inside the stories/ folder.
     sort_by: 'first_published_at:desc',
+    // When the number of stories gets larger, we should think about pagination. For now get the max number 100.
     per_page: 100,
     filter_query: {
       component: {
-        in: 'sbStoryMvp',
+        in: 'sbStoryMvp', // Only return stories that are of component sbStoryMvp.
       },
       __or: orQuery,
     },
