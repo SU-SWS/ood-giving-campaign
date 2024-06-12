@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import {
   ISbStoriesParams, getStoryblokApi, storyblokInit, apiPlugin, StoryblokStory, StoryblokClient,
+  ISbStoryData,
 } from '@storyblok/react/rsc';
 import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
@@ -14,6 +15,15 @@ type PathsType = {
 
 type ParamsType = {
   slug: string[];
+};
+
+type FilterQuery = {
+  initiatives?: {
+    in_array: string;
+  };
+  themes?: {
+    in_array: string;
+  };
 };
 
 // Storyblok bridge options.
@@ -122,11 +132,30 @@ async function getStoryData(params: { slug: string[] }) {
 /**
  * Get a list of stories that are of component sbStoryMvp in reverse chronological order.
  */
-async function getStories() {
+async function getStories(params: { slug: string[] }) {
   const activeEnv = process.env.NODE_ENV || 'development';
   const storyblokApi: StoryblokClient = getStoryblokApi();
+  const fullslug = params.slug ? params.slug.join('/') : 'home';
+  let slug = '';
+  let orQuery: FilterQuery[] = [];
+  if (fullslug.includes('stories/list/')) {
+    slug = params.slug[params.slug.length - 1];
+    orQuery = [
+      {
+        initiatives: {
+          in_array: slug,
+        },
+      },
+      {
+        themes: {
+          in_array: slug,
+        },
+      },
+    ];
+  }
+
   const sbParams: ISbStoriesParams = {
-    version: 'published',
+    version: activeEnv === 'development' ? 'draft' : 'published',
     cv: activeEnv === 'development' ? Date.now() : undefined,
     resolve_relations: resolveRelations,
     starts_with: 'stories/',
@@ -136,6 +165,7 @@ async function getStories() {
       component: {
         in: 'sbStoryMvp',
       },
+      __or: orQuery,
     },
   };
 
@@ -186,8 +216,12 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
  */
 export default async function Page({ params }: { params: ParamsType }) {
   const { data } = await getStoryData(params);
-  const stories = await getStories();
-  const slug = params.slug ? params.slug.join('/') : '';
+  const slug = params.slug ? params.slug.join('/') : 'home';
+
+  let stories;
+  if (slug === 'stories' || slug.includes('stories/list/')) {
+    stories = await getStories(params);
+  }
 
   if (data === 404) {
     notFound();
