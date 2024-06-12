@@ -132,7 +132,7 @@ async function getStoryData(params: { slug: string[] }) {
 /**
  * Get a list of stories that are of component sbStoryMvp in reverse chronological order.
  */
-async function getStories(params: { slug: string[] }) {
+async function getStoryList(params: { slug: string[] }) {
   const activeEnv = process.env.NODE_ENV || 'development';
   const storyblokApi: StoryblokClient = getStoryblokApi();
   const fullslug = params.slug ? params.slug.join('/') : 'home';
@@ -170,8 +170,8 @@ async function getStories(params: { slug: string[] }) {
   };
 
   try {
-    const stories = await storyblokApi.getAll('cdn/stories', sbParams);
-    return stories;
+    const storyList = await storyblokApi.getAll('cdn/stories', sbParams);
+    return storyList;
   }
   catch (error) {
     if (typeof error === 'string') {
@@ -218,9 +218,9 @@ export default async function Page({ params }: { params: ParamsType }) {
   const { data } = await getStoryData(params);
   const slug = params.slug ? params.slug.join('/') : 'home';
 
-  let stories;
+  let storyList;
   if (slug === 'stories' || slug.includes('stories/list/')) {
-    stories = await getStories(params);
+    storyList = await getStoryList(params);
   }
 
   if (data === 404) {
@@ -230,7 +230,7 @@ export default async function Page({ params }: { params: ParamsType }) {
   return (
     <StoryblokStory
       story={data.story}
-      stories={stories}
+      storyList={storyList}
       bridgeOptions={bridgeOptions}
       slug={slug}
       name={data.story.name}

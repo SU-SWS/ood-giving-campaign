@@ -24,6 +24,15 @@ type PageProps = {
   };
 };
 
+type FilterQuery = {
+  initiatives?: {
+    in_array: string;
+  };
+  themes?: {
+    in_array: string;
+  };
+};
+
 // Control what happens when a dynamic segment is visited that was not generated with generateStaticParams.
 export const dynamic = 'force-dynamic';
 
@@ -89,9 +98,30 @@ async function getStoryData({ path }: PageProps['searchParams']): Promise<ISbRes
 /**
  * Get a list of stories that are of component sbStoryMvp in reverse chronological order.
  */
-async function getStories() {
+async function getStories({ path }: PageProps['searchParams']) {
   const activeEnv = process.env.NODE_ENV || 'development';
   const storyblokApi: StoryblokClient = getStoryblokApi();
+  const fullslug = path.replace(/\/$/, '') || 'home';
+
+  // Get the last part of the path.
+  const slug = path.split('/').pop() || '';
+  // let slug = '';
+  let orQuery: FilterQuery[] = [];
+  if (fullslug.includes('stories/list/')) {
+    orQuery = [
+      {
+        initiatives: {
+          in_array: slug,
+        },
+      },
+      {
+        themes: {
+          in_array: slug,
+        },
+      },
+    ];
+  }
+
   const sbParams: ISbStoriesParams = {
     version: 'published',
     cv: activeEnv === 'development' ? Date.now() : undefined,
@@ -103,6 +133,7 @@ async function getStories() {
       component: {
         in: 'sbStoryMvp',
       },
+      __or: orQuery,
     },
   };
 
@@ -158,7 +189,7 @@ export default async function Page({ searchParams }: PageProps) {
 
   // Get data out of the API.
   const { data } = await getStoryData(searchParams);
-  const stories = await getStories();
+  const storyList = await getStories(searchParams);
 
   // Failed to fetch from API because story slug was not found.
   if (data === 404) {
@@ -169,7 +200,7 @@ export default async function Page({ searchParams }: PageProps) {
   return (
     <StoryblokStory
       story={data.story}
-      stories={stories}
+      storyList={storyList}
       bridgeOptions={bridgeOptions}
       slug={slug}
       name={data.story.name}

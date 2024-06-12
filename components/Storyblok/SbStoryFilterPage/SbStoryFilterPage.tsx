@@ -26,7 +26,7 @@ type SbStoryFilterPageProps = {
   };
   name?: string; // The name of the Storyblok story
   slug?: string;
-  stories?: ISbStoryData[];
+  storyList?: ISbStoryData[];
 };
 
 export const SbStoryFilterPage = ({
@@ -42,7 +42,7 @@ export const SbStoryFilterPage = ({
   blok,
   name,
   slug,
-  stories,
+  storyList,
 }: SbStoryFilterPageProps) => {
 
   return (
@@ -62,8 +62,8 @@ export const SbStoryFilterPage = ({
             <CreateBloks blokSection={featuredStories} isListItems />
           </Grid>
           <Grid as="ul" gap="card" py={6} className="list-unstyled">
-            {!!stories?.length && (
-              stories.map((story) => {
+            {!!storyList?.length && (
+              storyList.map((story) => {
                 const {
                   _uid,
                   cardTitle,
