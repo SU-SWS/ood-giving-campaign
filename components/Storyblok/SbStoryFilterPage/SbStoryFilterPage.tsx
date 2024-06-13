@@ -43,7 +43,7 @@ export const SbStoryFilterPage = ({
       <CreateStories stories={mastheadPicker} />
       <main id="main-content">
         <CreateStories stories={heroPicker} subheading={name !== 'Stories' ? name : ''} />
-        <section className={styles.latest}>
+        <Container as="section" pb={10} bgColor="black" className={styles.latest}>
           <Skiplink href="#latest-stories" className={styles.skiplink}>
             Skip past story list page menu to latest stories
           </Skiplink>
@@ -53,7 +53,7 @@ export const SbStoryFilterPage = ({
             {hasRichText(intro) && <RichText wysiwyg={intro} textColor="white" className={styles.intro} />}
             <CreateBloks blokSection={belowIntro} />
           </Container>
-        </section>
+        </Container>
         <CreateBloks blokSection={ankle} />
       </main>
     </div>

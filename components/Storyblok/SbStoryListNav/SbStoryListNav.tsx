@@ -39,7 +39,10 @@ const StoryListContent = ({ blok: { heading, links }, fullSlug }: SbStoryListNav
                 className={styles.cta(isCurrentPage)}
                 srText='stories'
               >
-                {link.label}
+                <FlexBox alignItems="center" className="gap-16 w-full">
+                  <span className="grow leading-display">{link.label}</span>
+                  {isCurrentPage && <HeroIcon icon="check" className="lg:hidden" />}
+                </FlexBox>
               </CtaLink>
             </li>
           );
