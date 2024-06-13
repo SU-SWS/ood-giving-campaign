@@ -37,7 +37,6 @@ export type SbStoryCardProps = {
     animation?: AnimationType;
     delay?: number;
     isHorizontal?: boolean;
-    isListView?: boolean;
     isDark?: boolean;
   };
 };
@@ -69,7 +68,6 @@ export const SbStoryCard = ({
     animation,
     delay,
     isHorizontal,
-    isListView,
     isDark,
   },
   blok,
@@ -92,7 +90,6 @@ export const SbStoryCard = ({
       delay={delay}
       taxonomy={taxonomyArray}
       isHorizontal={isHorizontal}
-      isListView={isListView}
       isDark={isDark}
     />
   );
