@@ -62,7 +62,7 @@ export const SbStoryFilterPage = ({
 
   /**
    * Filter storyList (list of all stories with taxonomy that matches the slug of the page)
-   * to exclude items with uuid that are in the featuredStoryUUIDArray,
+   * to exclude items with uuid that are in the featuredStoryUUIDSet,
    * ie, we remove stories that are already added as featured stories cards.
    */
   const filteredStoryList = storyList.filter(item => !featuredStoryUUIDSet.has(item.uuid));
