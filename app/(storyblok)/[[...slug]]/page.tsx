@@ -162,9 +162,9 @@ async function getStoryList(params: { slug: string[] }) {
   }
 
   const sbParams: ISbStoriesParams = {
-    version: activeEnv === 'development' ? 'draft' : 'published',
+    version: 'published', // Only show published stories for now
     cv: activeEnv === 'development' ? Date.now() : undefined,
-    starts_with: 'stories/', // Only return stories that are inside the stories/ folder.
+    starts_with: 'stories/', // Only return stories that are inside the stories/ folder
     sort_by: 'first_published_at:desc',
     // When the number of stories gets larger, we should think about pagination. For now get the max number 100.
     per_page: 100,

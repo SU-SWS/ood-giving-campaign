@@ -12,7 +12,6 @@ import { hasRichText } from '@/utilities/hasRichText';
 import { paletteAccentColors } from '@/utilities/colorPalettePlugin';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import * as styles from './SbStoryFilterPage.styles';
-import { get } from 'http';
 
 type StoryPickerType = {
   uuid: string;
@@ -68,60 +67,69 @@ export const SbStoryFilterPage = ({
    */
   const filteredStoryList = storyList.filter(item => !featuredStoryUUIDSet.has(item.uuid));
 
+  const hasIntro = hasRichText(intro);
+  const hasFeaturedStories = !!getNumBloks(featuredStories);
+
   return (
     <div {...storyblokEditable(blok)}>
       <CreateStories stories={mastheadPicker} />
       <main id="main-content">
         <CreateStories stories={heroPicker} subheading={name !== 'Stories' ? name : ''} />
-        <Container bgColor="black" className={styles.latest}>
+        <Container pb={10} bgColor="black" className={styles.latest}>
           <Skiplink href="#latest-stories" className={styles.skiplink}>
             Skip past story list page menu to latest stories
           </Skiplink>
           <CreateStories stories={storyListNavPicker} fullSlug={slug} name={name} />
-          <Heading font="druk" size="f5" color="white" id="latest-stories">Latest stories</Heading>
-            {hasRichText(intro) && <RichText wysiwyg={intro} textColor="white" className={styles.intro} />}
+          <Heading font="druk" size="f5" color="white" id="latest-stories" className={styles.heading(hasIntro)}>Latest stories</Heading>
+            {hasIntro && <RichText wysiwyg={intro} textColor="white" className={styles.intro} />}
           <CreateBloks blokSection={belowIntro} />
-          {!!getNumBloks(featuredStories) && (
-            <Grid py={6} isList className="gap-y-45 md:gap-y-90 2xl:gap-y-95">
-              <CreateBloks blokSection={featuredStories} isListItems />
-            </Grid>
+          {hasFeaturedStories && (
+            <>
+              <Heading as="h3" srOnly>{`Featured Stor${getNumBloks(featuredStories) > 1 ? 'ies' : 'y'}`}</Heading>
+              <Grid py={6} isList className="gap-y-45 md:gap-y-90 2xl:gap-y-95">
+                <CreateBloks blokSection={featuredStories} isListItems />
+              </Grid>
+            </>
           )}
-          <Grid as="ul" py={6} className="list-unstyled *:mb-0 gap-y-45 md:gap-y-90 2xl:gap-y-95">
-            {!!filteredStoryList?.length && (
-              filteredStoryList.map((story) => {
-                const {
-                  cardTitle,
-                  title,
-                  cardTeaser,
-                  dek,
-                  cardImage,
-                  heroImage,
-                  bgImage,
-                  tabColor,
-                  initiatives,
-                  themes,
-                } = story.content;
+          {!!filteredStoryList?.length && (
+            <>
+            {hasFeaturedStories && <Heading as="h3" srOnly>Other stories</Heading>}
+              <Grid as="ul" pt={6} className="list-unstyled *:mb-0 gap-y-45 md:gap-y-90 2xl:gap-y-95">
+                {filteredStoryList.map((story) => {
+                  const {
+                    cardTitle,
+                    title,
+                    cardTeaser,
+                    dek,
+                    cardImage,
+                    heroImage,
+                    bgImage,
+                    tabColor,
+                    initiatives,
+                    themes,
+                  } = story.content;
 
-                return (
-                  <li key={story.uuid}>
-                    <StoryCard
-                      isListView
-                      isDark
-                      heading={cardTitle || title}
-                      headingLevel="h3"
-                      body={cardTeaser || dek}
-                      imageSrc={cardImage?.filename || heroImage?.filename || bgImage?.filename}
-                      imageFocus={cardImage?.focus || heroImage?.focus || bgImage?.focus}
-                      tabColor={paletteAccentColors[tabColor?.value]}
-                      href={`/${story.full_slug}`}
-                      animation="slideUp"
-                      taxonomy={[...initiatives, ...themes]}
-                    />
-                  </li>
-                );
-              })
-            )}
-          </Grid>
+                  return (
+                    <li key={story.uuid}>
+                      <StoryCard
+                        isListView
+                        isDark
+                        heading={cardTitle || title}
+                        headingLevel="h3"
+                        body={cardTeaser || dek}
+                        imageSrc={cardImage?.filename || heroImage?.filename || bgImage?.filename}
+                        imageFocus={cardImage?.focus || heroImage?.focus || bgImage?.focus}
+                        tabColor={paletteAccentColors[tabColor?.value]}
+                        href={`/${story.full_slug}`}
+                        animation="slideUp"
+                        taxonomy={[...initiatives, ...themes]}
+                      />
+                    </li>
+                  );
+                })}
+              </Grid>
+            </>
+          )}
         </Container>
         <CreateBloks blokSection={ankle} />
       </main>
