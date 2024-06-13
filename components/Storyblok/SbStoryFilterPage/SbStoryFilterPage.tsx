@@ -115,7 +115,8 @@ export const SbStoryFilterPage = ({
                         isListView
                         isDark
                         heading={cardTitle || title}
-                        headingLevel="h3"
+                        // If there is no featured stories then there is only one ul with h2 latest stories
+                        headingLevel={hasFeaturedStories ? 'h4' : 'h3'}
                         body={cardTeaser || dek}
                         imageSrc={cardImage?.filename || heroImage?.filename || bgImage?.filename}
                         imageFocus={cardImage?.focus || heroImage?.focus || bgImage?.focus}
