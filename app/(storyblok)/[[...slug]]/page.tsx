@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import {
   ISbStoriesParams, getStoryblokApi, storyblokInit, apiPlugin, StoryblokStory, StoryblokClient,
-  ISbStoryData,
 } from '@storyblok/react/rsc';
 import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
@@ -182,20 +181,9 @@ async function getStoryList(params: { slug: string[] }) {
     return storyList;
   }
   catch (error) {
-    if (typeof error === 'string') {
-      try {
-        const parsedError = JSON.parse(error);
-        if (parsedError.status === 404) {
-          return { data: 404 };
-        }
-      }
-      catch (e) {
-        console.error('Error', error);
-      }
-    }
+    console.error('Error fetching stories:', error);
+    return [];
   }
-
-  return [];
 }
 
 /**

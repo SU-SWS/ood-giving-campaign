@@ -149,20 +149,9 @@ async function getStoryList({ path }: PageProps['searchParams']) {
     return storyList;
   }
   catch (error) {
-    if (typeof error === 'string') {
-      try {
-        const parsedError = JSON.parse(error);
-        if (parsedError.status === 404) {
-          return { data: 404 };
-        }
-      }
-      catch (e) {
-        console.error('Error', error);
-      }
-    }
+    console.error('Error fetching stories:', error);
+    return [];
   }
-
-  return [];
 }
 
 /**
@@ -196,7 +185,10 @@ export default async function Page({ searchParams }: PageProps) {
 
   // Get data out of the API.
   const { data } = await getStoryData(searchParams);
-  const storyList = await getStoryList(searchParams);
+  let storyList;
+  if (slug === 'stories' || slug.includes('stories/list/')) {
+    storyList = await getStoryList(searchParams);
+  }
 
   // Failed to fetch from API because story slug was not found.
   if (data === 404) {

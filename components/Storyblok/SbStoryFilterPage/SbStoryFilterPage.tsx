@@ -10,15 +10,25 @@ import { Skiplink } from '@/components/SkipLink';
 import { StoryCard } from '@/components/StoryCard';
 import { hasRichText } from '@/utilities/hasRichText';
 import { paletteAccentColors } from '@/utilities/colorPalettePlugin';
+import { getNumBloks } from '@/utilities/getNumBloks';
 import * as styles from './SbStoryFilterPage.styles';
+import { get } from 'http';
 
+type StoryPickerType = {
+  uuid: string;
+  [key: string]: any;
+}
+
+type FaturedStoryType = SbBlokData & {
+  storyPicker: StoryPickerType;
+}
 
 type SbStoryFilterPageProps = {
   blok: {
     _uid: string;
     intro?: StoryblokRichtext;
     belowIntro?: SbBlokData[];
-    featuredStories?: SbBlokData[];
+    featuredStories?: FaturedStoryType[];
     ankle?: SbBlokData[];
     mastheadPicker?: ISbStoryData[];
     heroPicker?: ISbStoryData[];
@@ -44,6 +54,19 @@ export const SbStoryFilterPage = ({
   slug,
   storyList,
 }: SbStoryFilterPageProps) => {
+  /**
+   * Extract uuid's from the featured stories into a Set.
+   * The reason for using a Set in this case is its O(1) average time complexity for lookups,
+   * which is more efficient than using an array for the same purpose.
+   */
+  const featuredStoryUUIDSet = new Set(featuredStories?.map(item => item.storyPicker.uuid));
+
+  /**
+   * Filter storyList (list of all stories with taxonomy that matches the slug of the page)
+   * to exclude items with uuid that are in the featuredStoryUUIDArray,
+   * ie, we remove stories that are already added as featured stories cards.
+   */
+  const filteredStoryList = storyList.filter(item => !featuredStoryUUIDSet.has(item.uuid));
 
   return (
     <div {...storyblokEditable(blok)}>
@@ -58,14 +81,15 @@ export const SbStoryFilterPage = ({
           <Heading font="druk" size="f5" color="white" id="latest-stories">Latest stories</Heading>
             {hasRichText(intro) && <RichText wysiwyg={intro} textColor="white" className={styles.intro} />}
           <CreateBloks blokSection={belowIntro} />
-          <Grid py={6} isList className="gap-y-45 md:gap-y-90 2xl:gap-y-95">
-            <CreateBloks blokSection={featuredStories} isListItems />
-          </Grid>
-          <Grid as="ul" gap="card" py={6} className="list-unstyled">
-            {!!storyList?.length && (
-              storyList.map((story) => {
+          {!!getNumBloks(featuredStories) && (
+            <Grid py={6} isList className="gap-y-45 md:gap-y-90 2xl:gap-y-95">
+              <CreateBloks blokSection={featuredStories} isListItems />
+            </Grid>
+          )}
+          <Grid as="ul" py={6} className="list-unstyled *:mb-0 gap-y-45 md:gap-y-90 2xl:gap-y-95">
+            {!!filteredStoryList?.length && (
+              filteredStoryList.map((story) => {
                 const {
-                  _uid,
                   cardTitle,
                   title,
                   cardTeaser,
@@ -79,7 +103,7 @@ export const SbStoryFilterPage = ({
                 } = story.content;
 
                 return (
-                  <li key={_uid}>
+                  <li key={story.uuid}>
                     <StoryCard
                       isListView
                       isDark
