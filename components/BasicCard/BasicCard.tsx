@@ -73,14 +73,11 @@ export const BasicCard = ({
               loading="lazy"
               src={getProcessedImage(imageSrc, imageSize, imageFocus) || ''}
             />
-          {isCounter && heading && (
-            <Heading as={headingLevel} srOnly>{heading}</Heading>
-          )}
+
           {subheading && (
             <Text 
             font="serif"
             leading="display" 
-            size="base"
             className={styles.subhead}>{subheading}</Text>
           )}
           {heading && (
@@ -89,7 +86,7 @@ export const BasicCard = ({
               font="serif"
               leading="druk"
               color={isLightText ? 'white' : 'black'}
-              size="f4"
+              size={isSmallHeading ? 3 : 4}
               aria-hidden={isCounter}
               className={styles.heading}
             >

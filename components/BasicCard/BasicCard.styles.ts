@@ -12,7 +12,7 @@ export const content = (
   'border-l-[1.4rem] md:border-l-[2rem]': hasBarColor,
 });
 
-export const subhead = 'rs-mx-2 rs-my-1';
+export const subhead = 'type-1 rs-mx-2 rs-my-1';
 export const heading = 'rs-m-2 whitespace-pre-line';
 export const body = '*:*:leading-snug rs-m-2';
 export const cta = 'rs-mx-2 rs-my-4';
