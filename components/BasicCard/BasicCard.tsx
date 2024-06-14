@@ -66,7 +66,6 @@ export const BasicCard = ({
       >
         <FlexBox direction="col" className={styles.flex}>
           {/* If number counter is enabled, aria-hidden the animated heading and add a SR only heading */}
-          <div>
             <img
               width={imageAspectRatio === '4x3' ? 800 : 600}
               height={222}
@@ -74,7 +73,6 @@ export const BasicCard = ({
               loading="lazy"
               src={getProcessedImage(imageSrc, imageSize, imageFocus) || ''}
             />
-          </div>
           {isCounter && heading && (
             <Heading as={headingLevel} srOnly>{heading}</Heading>
           )}

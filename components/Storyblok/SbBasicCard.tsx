@@ -65,7 +65,7 @@ export const SbBasicCard = ({
       {...storyblokEditable(blok)}
       subheading={subheading}
       heading={heading}
-      headingLevel={headingLevel}
+      headingLevel={headingLevel || 'h3'}
       isSmallHeading={isSmallHeading}
       imageSrc={filename}
       imageFocus={focus}
