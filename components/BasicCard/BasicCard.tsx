@@ -4,7 +4,7 @@ import { NumberCounter } from '@/components/NumberCounter';
 import { Container } from '@/components/Container';
 import { FlexBox } from '@/components/FlexBox';
 import { Heading, type HeadingType, Text } from '../Typography';
-import { accentBorderColors, type AccentBorderColorType, type accentBgColors, type PaddingType } from '@/utilities/datasource';
+import { accentBgColors, type AccentColorType, type PaddingType } from '@/utilities/datasource';
 import { splitNumberString } from '@/utilities/splitNumberString';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import * as styles from './BasicCard.styles';
@@ -13,15 +13,16 @@ export type BasicCardProps = React.HTMLAttributes<HTMLDivElement> & {
   subheading?: string;
   heading?: string;
   headingLevel?: HeadingType;
-  isDarkTheme?: boolean;
-  bgColor?: string;
-  barColor?: AccentBorderColorType;
+  isSmallHeading?: boolean;
+  isLightText?: boolean;
+  bgColor?: AccentColorType;
   body?: React.ReactNode;
   paddingTop?: PaddingType;
   imageSrc?: string;
   imageFocus?: string;
   imageAspectRatio?: styles.BasicCardImageAspectRatio;
   cta?: React.ReactNode;
+  textureBar?: React.ReactNode;
   isCounter?: boolean;
   // In number of seconds
   counterDuration?: number;
@@ -33,15 +34,16 @@ export const BasicCard = ({
   subheading,
   heading,
   headingLevel = 'h3',
-  barColor,
+  isSmallHeading,
   bgColor,
   body,
   imageSrc = '',
   imageFocus,
   imageAspectRatio = '4x3',
   cta,
+  textureBar,
   paddingTop,
-  isDarkTheme,
+  isLightText,
   isCounter,
   counterDuration,
   animation = 'slideUp',
@@ -52,7 +54,6 @@ export const BasicCard = ({
 }: BasicCardProps) => {
   const headingProcessed = isCounter ? splitNumberString(heading) : undefined;
   const imageSize = imageAspectRatio === '4x3' ? '336x222' : '700x700';
-  const bgCardColor = "bg-" + bgColor;
 
   return (
     <AnimateInView animation={animation} delay={delay} className={styles.animateWrapper}>
@@ -60,7 +61,7 @@ export const BasicCard = ({
         as="article"
         width="full"
         pt={paddingTop}
-        className={cnb(styles.root, className, bgCardColor)}
+        className={cnb(styles.root(!!bgColor), accentBgColors[bgColor], className)}
         {...props}
       >
         <FlexBox direction="col" className={styles.flex}>
@@ -89,7 +90,7 @@ export const BasicCard = ({
               as={headingLevel}
               font="serif"
               leading="druk"
-              color={isDarkTheme ? 'white' : 'black'}
+              color={isLightText ? 'white' : 'black'}
               size="f4"
               aria-hidden={isCounter}
               className={styles.heading}
@@ -105,7 +106,7 @@ export const BasicCard = ({
               )}
             </Heading>
           )}
-          <div className={cnb(styles.content(!!barColor), accentBorderColors[barColor])}>
+          <div className={cnb(styles.content)}>
             <div className={styles.body}>
               {body}
             </div>
@@ -115,6 +116,11 @@ export const BasicCard = ({
               </div>
             )}
           </div>
+          {!!textureBar && (
+            <div className={styles.texture}>
+                {textureBar}
+            </div>
+          )}
         </FlexBox>
       </Container>
     </AnimateInView>

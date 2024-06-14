@@ -1,8 +1,7 @@
 import { cnb } from 'cnbuilder';
+export const root = (hasBgColor: boolean) => cnb('relative overflow-hidden size-full break-words', hasBgColor);
 
 export const animateWrapper = 'h-full';
-// Use border-black-50/50 which works well on both light and dark backgrounds
-export const root = 'relative overflow-hidden size-full break-words';
 
 export type BasicCardImageAspectRatio = '4x3' | '1x1';
 
@@ -13,7 +12,8 @@ export const content = (
   'border-l-[1.4rem] md:border-l-[2rem]': hasBarColor,
 });
 
-export const subhead = 'rs-mx-3 rs-my-1';
-export const heading = 'rs-m-3 whitespace-pre-line mt-auto';
-export const body = '*:*:leading-snug';
-export const cta = 'rs-mt-2';
+export const subhead = 'rs-mx-2 rs-my-1';
+export const heading = 'rs-m-2 whitespace-pre-line';
+export const body = '*:*:leading-snug rs-m-2';
+export const cta = 'rs-mx-2 rs-my-4';
+export const texture = 'mt-auto'

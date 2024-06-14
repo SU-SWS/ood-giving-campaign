@@ -21,17 +21,15 @@ export type SbBasicCardProps = {
     isSmallHeading?: boolean;
     superhead?: string;
     body: StoryblokRichtext;
+    isLightText?: boolean;
     cta?: SbBlokData[];
+    textureBar?: SbBlokData[];
     image?: SbImageType;
     imageAspectRatio?: BasicCardImageAspectRatio;
     paddingTop?: PaddingType;
-    isDarkTheme?: boolean;
     isCounter?: boolean;
     counterDuration?: number;
     bgColor?: {
-      value?: PaletteAccentHexColorType;
-    }
-    barColor?: {
       value?: PaletteAccentHexColorType;
     }
     animation?: AnimationType;
@@ -44,23 +42,23 @@ export const SbBasicCard = ({
     subheading,
     heading,
     headingLevel,
+    isSmallHeading,
+    isLightText,
     body,
     image: { filename, focus } = {},
     imageAspectRatio,
     cta,
+    textureBar,
     paddingTop,
-    isDarkTheme,
-    isCounter,
-    counterDuration,
-    barColor: { value } = {},
-    bgColor: { value: bgColor} = {},
+    bgColor: { value: bgColorValue } = {},
     animation,
     delay,
   },
   blok,
 }: SbBasicCardProps) => {
-  const Body = hasRichText(body) ? <RichText wysiwyg={body} textColor={isDarkTheme ? 'white' : 'black'} /> : undefined;
+  const Body = hasRichText(body) ? <RichText wysiwyg={body} textColor={isLightText ? 'white' : 'black'} /> : undefined;
   const Cta = !!getNumBloks(cta) ? <CreateBloks blokSection={cta} /> : undefined;
+  const TextureBar = !!getNumBloks(textureBar) ? <CreateBloks blokSection={textureBar} /> : undefined;
 
   return (
     <BasicCard
@@ -68,15 +66,13 @@ export const SbBasicCard = ({
       subheading={subheading}
       heading={heading}
       headingLevel={headingLevel}
+      isSmallHeading={isSmallHeading}
       imageSrc={filename}
       imageFocus={focus}
       imageAspectRatio={imageAspectRatio}
-      isDarkTheme={isDarkTheme}
-      isCounter={isCounter}
-      counterDuration={counterDuration}
-      barColor={paletteAccentColors[value]}
-      bgColor={paletteAccentColors[bgColor]}
+      bgColor={paletteAccentColors[bgColorValue]}
       cta={Cta}
+      textureBar={TextureBar}
       body={Body}
       paddingTop={paddingTop}
       animation={animation}
