@@ -10,7 +10,6 @@ import { FlexBox } from '@/components/FlexBox';
 import { Heading, SrOnlyText } from '@/components/Typography';
 import { HeroIcon } from '@/components/HeroIcon';
 import * as styles from './SbStoryListNav.styles';
-import { vendored } from 'next/dist/server/future/route-modules/app-page/module.compiled';
 
 type SbStoryListNavType = {
   blok: {
@@ -74,10 +73,10 @@ export const SbStoryListNav = ({
             type="button"
             onClick={() => setIsModalOpen(true)}
             className={styles.filterButton}
-            aria-label={`Currently showing ${!isStoryLandingPage ? name : "all"} stories. Click to open filter menu.`}
+            aria-label={`Currently showing ${!isStoryLandingPage ? name : 'all'} stories. Click to open filter menu.`}
           >
             <FlexBox alignItems="center" className="gap-20">
-              <span className="grow leading-display">{!isStoryLandingPage ? name : "All"}</span>
+              <span className="grow leading-display">{!isStoryLandingPage ? name : 'All'}</span>
               <HeroIcon
                 icon='chevron-down'
                 strokeWidth={2}
