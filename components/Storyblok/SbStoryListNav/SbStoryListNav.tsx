@@ -7,9 +7,10 @@ import { type SbNavItemProps } from '../Storyblok.types';
 import { Container } from '@/components/Container';
 import { CtaLink } from '@/components/Cta';
 import { FlexBox } from '@/components/FlexBox';
-import { Heading } from '@/components/Typography';
+import { Heading, SrOnlyText } from '@/components/Typography';
 import { HeroIcon } from '@/components/HeroIcon';
 import * as styles from './SbStoryListNav.styles';
+import { vendored } from 'next/dist/server/future/route-modules/app-page/module.compiled';
 
 type SbStoryListNavType = {
   blok: {
@@ -22,33 +23,30 @@ type SbStoryListNavType = {
 };
 
 // The menu item chips that are either displayed on the page or inside the modal on mobile
-const StoryListContent = ({ blok: { heading, links }, fullSlug }: SbStoryListNavType) => {
+const StoryListContent = ({ blok: { links }, fullSlug }: SbStoryListNavType) => {
   return (
-    <>
-      <Heading size="base" align="center" className={styles.heading}>{heading}</Heading>
-      <ul className={styles.list}>
-        {links.map((link) => {
-          const isCurrentPage = fullSlug === link.link?.cached_url || (fullSlug === 'stories' && link.link?.cached_url === 'stories/');
-          return (
-            <li key={link._uid} className={styles.listItem}>
-              <CtaLink
-                aria-current={isCurrentPage ? 'page' : undefined}
-                sbLink={link.link}
-                variant="storyListNav"
-                color="current"
-                className={styles.cta(isCurrentPage)}
-                srText='stories'
-              >
-                <FlexBox alignItems="center" className="gap-16 w-full">
-                  <span className="grow leading-display">{link.label}</span>
-                  {isCurrentPage && <HeroIcon icon="check" className="lg:hidden" />}
-                </FlexBox>
-              </CtaLink>
-            </li>
-          );
-        })}
-      </ul>
-    </>
+    <ul className={styles.list}>
+      {links.map((link) => {
+        const isCurrentPage = fullSlug === link.link?.cached_url || (fullSlug === 'stories' && link.link?.cached_url === 'stories/');
+        return (
+          <li key={link._uid} className={styles.listItem}>
+            <CtaLink
+              aria-current={isCurrentPage ? 'page' : undefined}
+              sbLink={link.link}
+              variant="storyListNav"
+              color="current"
+              className={styles.cta(isCurrentPage)}
+              srText='stories'
+            >
+              <FlexBox alignItems="center" className="gap-16 w-full">
+                <span className="grow leading-display">{link.label}</span>
+                {isCurrentPage && <HeroIcon icon="check" className="lg:hidden w-[1.2em]" />}
+              </FlexBox>
+            </CtaLink>
+          </li>
+        );
+      })}
+    </ul>
   );
 };
 
@@ -61,11 +59,13 @@ export const SbStoryListNav = ({
   name,
 }: SbStoryListNavType) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const isStoryLandingPage = name === 'Stories';
 
   return (
     <Container width="full" bgColor="black" className={styles.root} {...storyblokEditable(blok)}>
       <Container as="nav" aria-label="Story list page menu">
         <div className="hidden lg:block">
+          <Heading size="base" align="center" className={styles.heading}>{heading}</Heading>
           <StoryListContent blok={blok} fullSlug={fullSlug} name={name} />
         </div>
         <div className="block lg:hidden">
@@ -74,11 +74,11 @@ export const SbStoryListNav = ({
             type="button"
             onClick={() => setIsModalOpen(true)}
             className={styles.filterButton}
+            aria-label={`Currently showing ${!isStoryLandingPage ? name : "all"} stories. Click to open filter menu.`}
           >
-            <FlexBox alignItems="center" className="gap-12 sm:gap-16">
-              <span className="grow leading-display">{name || 'All'}</span>
+            <FlexBox alignItems="center" className="gap-20">
+              <span className="grow leading-display">{!isStoryLandingPage ? name : "All"}</span>
               <HeroIcon
-                //noBaseStyle
                 icon='chevron-down'
                 strokeWidth={2}
                 className="shrink-0 text-white"
@@ -121,7 +121,7 @@ export const SbStoryListNav = ({
                         className={styles.closeIcon}
                       />
                     </button>
-                    <DialogTitle className={styles.srOnly}>Go to story page filtered by</DialogTitle>
+                    <DialogTitle className={styles.dialogHeading}>{heading}</DialogTitle>
                     <StoryListContent blok={blok} fullSlug={fullSlug} name={name} />
                   </DialogPanel>
                 </div>
