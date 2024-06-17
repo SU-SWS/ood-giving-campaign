@@ -20,7 +20,8 @@ export const srOnly = 'sr-only';
 export const dialogOverlay = 'fixed inset-0 w-screen bg-gc-black';
 export const dialogWrapper = 'fixed inset-0 w-screen overflow-y-auto overscroll-contain';
 export const dialogPanel = 'relative w-screen min-h-screen inset-0 pt-11 pb-60 text-white';
-export const dialogHeading = 'cc type-0 rs-pb-2 mb-0 -mt-11 font-serif text-center border-b border-black-80 lg:border-b-0';
+export const dialogHeader = 'flex flex-col-reverse w-full';
+export const dialogHeading = 'w-full type-0 rs-pb-2 mb-0 -mt-11 font-serif text-center border-b border-black-80 lg:border-b-0';
 export const modalClose = 'group/close block mr-0 ml-auto p-9 -mt-9 mr-11 sm:mr-21 md:mr-41';
 export const closeIcon = 'text-gc-black-40 size-26 group-hover/close:text-digital-red-xlight group-focus-visible/close:text-digital-red-xlight transition-all group-hover/close:rotate-90 group-focus-visible/close:rotate-90';
 

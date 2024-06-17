@@ -105,19 +105,21 @@ export const SbStoryListNav = ({
               >
                 <div className={styles.dialogWrapper}>
                   <DialogPanel className={styles.dialogPanel}>
-                    <DialogTitle className={styles.dialogHeading}>{heading}</DialogTitle>
-                    <CloseButton
-                      aria-label="Close story filter menu"
-                      className={styles.modalClose}
-                    >
-                      <HeroIcon
-                        noBaseStyle
-                        focusable="false"
-                        strokeWidth={2}
-                        icon='close'
-                        className={styles.closeIcon}
-                      />
-                    </CloseButton>
+                    <div className={styles.dialogHeader}>
+                      <DialogTitle className={styles.dialogHeading}>{heading}</DialogTitle>
+                      <CloseButton
+                        aria-label="Close story filter menu"
+                        className={styles.modalClose}
+                      >
+                        <HeroIcon
+                          noBaseStyle
+                          focusable="false"
+                          strokeWidth={2}
+                          icon='close'
+                          className={styles.closeIcon}
+                        />
+                      </CloseButton>
+                    </div>
                     <StoryListContent blok={blok} fullSlug={fullSlug} name={name} />
                   </DialogPanel>
                 </div>
