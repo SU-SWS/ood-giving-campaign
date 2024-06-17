@@ -1,7 +1,7 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { useState } from 'react';
 import {
-  Dialog, DialogPanel, DialogTitle, Transition, TransitionChild,
+  Dialog, DialogPanel, DialogTitle, Transition, TransitionChild, CloseButton,
 } from '@headlessui/react';
 import { type SbNavItemProps } from '../Storyblok.types';
 import { Container } from '@/components/Container';
@@ -84,7 +84,7 @@ export const SbStoryListNav = ({
             </FlexBox>
           </button>
           <Transition show={isModalOpen} appear>
-            <Dialog onClose={() => setIsModalOpen(false)} className={styles.dialog}>
+            <Dialog open={isModalOpen} onClose={() => setIsModalOpen(false)} className={styles.dialog}>
               <TransitionChild
                 enter="ease-out duration-300"
                 enterFrom="opacity-0"
@@ -105,10 +105,9 @@ export const SbStoryListNav = ({
               >
                 <div className={styles.dialogWrapper}>
                   <DialogPanel className={styles.dialogPanel}>
-                    <button
-                      type="button"
+                    <DialogTitle className={styles.dialogHeading}>{heading}</DialogTitle>
+                    <CloseButton
                       aria-label="Close story filter menu"
-                      onClick={() => setIsModalOpen(false)}
                       className={styles.modalClose}
                     >
                       <HeroIcon
@@ -118,8 +117,7 @@ export const SbStoryListNav = ({
                         icon='close'
                         className={styles.closeIcon}
                       />
-                    </button>
-                    <DialogTitle className={styles.dialogHeading}>{heading}</DialogTitle>
+                    </CloseButton>
                     <StoryListContent blok={blok} fullSlug={fullSlug} name={name} />
                   </DialogPanel>
                 </div>
