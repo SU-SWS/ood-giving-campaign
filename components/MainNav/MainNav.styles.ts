@@ -3,7 +3,7 @@ import { cnb } from 'cnbuilder';
 export const button = (open: boolean) => cnb('relative group/popoverbutton flex items-center justify-center text-white size-36 sm:size-42 md:size-48 border-2 border-digital-red-light rounded-full z-[150] hocus-visible:bg-digital-red-dark transition-colors focus:outline-none',
   open ? 'bg-black-true' : 'bg-gc-black',
 );
-export const menuIcon = (open: boolean) => cnb('text-white w-20 sm:w-22 md:w-26  transition-transform',
+export const menuIcon = (open: boolean) => cnb('text-white w-20 sm:w-22 md:w-26 transition-transform',
   open ? 'group-hover/popoverbutton:rotate-90' : 'group-hover/popoverbutton:scale-y-125',
 );
 
