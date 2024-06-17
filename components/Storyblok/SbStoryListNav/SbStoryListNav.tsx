@@ -84,7 +84,7 @@ export const SbStoryListNav = ({
             </FlexBox>
           </button>
           <Transition show={isModalOpen}>
-            <Dialog open={isModalOpen} onClose={() => setIsModalOpen(false)} className={styles.dialog}>
+            <Dialog onClose={() => setIsModalOpen(false)} className={styles.dialog}>
               <TransitionChild
                 enter="ease-out duration-300"
                 enterFrom="opacity-0"
