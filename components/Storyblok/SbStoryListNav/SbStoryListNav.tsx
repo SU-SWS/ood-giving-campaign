@@ -7,7 +7,7 @@ import { type SbNavItemProps } from '../Storyblok.types';
 import { Container } from '@/components/Container';
 import { CtaLink } from '@/components/Cta';
 import { FlexBox } from '@/components/FlexBox';
-import { Heading, SrOnlyText } from '@/components/Typography';
+import { Heading } from '@/components/Typography';
 import { HeroIcon } from '@/components/HeroIcon';
 import * as styles from './SbStoryListNav.styles';
 
@@ -37,9 +37,9 @@ const StoryListContent = ({ blok: { links }, fullSlug }: SbStoryListNavType) => 
               className={styles.cta(isCurrentPage)}
               srText='stories'
             >
-              <FlexBox alignItems="center" className="gap-16 w-full">
+              <FlexBox alignItems="center" className={styles.ctaInner}>
                 <span className="grow leading-display">{link.label}</span>
-                {isCurrentPage && <HeroIcon icon="check" className="lg:hidden w-[1.2em]" />}
+                {isCurrentPage && <HeroIcon icon="check" className={styles.checkIcon} />}
               </FlexBox>
             </CtaLink>
           </li>
@@ -63,24 +63,23 @@ export const SbStoryListNav = ({
   return (
     <Container width="full" bgColor="black" className={styles.root} {...storyblokEditable(blok)}>
       <Container as="nav" aria-label="Story list page menu">
-        <div className="hidden lg:block">
-          <Heading size="base" align="center" className={styles.heading}>{heading}</Heading>
+        <Heading size="base" align="center" className={styles.heading}>{heading}</Heading>
+        <div className={styles.desktop}>
           <StoryListContent blok={blok} fullSlug={fullSlug} name={name} />
         </div>
-        <div className="block lg:hidden">
-          <Heading size="base" align="center" className={styles.heading}>{heading}</Heading>
+        <div className={styles.mobile}>
           <button
             type="button"
             onClick={() => setIsModalOpen(true)}
             className={styles.filterButton}
             aria-label={`Currently showing ${!isStoryLandingPage ? name : 'all'} stories. Click to open filter menu.`}
           >
-            <FlexBox alignItems="center" className="gap-20">
-              <span className="grow leading-display">{!isStoryLandingPage ? name : 'All'}</span>
+            <FlexBox alignItems="center" className={styles.filterBtnInner}>
+              <span className={styles.filterBtnLabel}>{!isStoryLandingPage ? name : 'All'}</span>
               <HeroIcon
                 icon='chevron-down'
                 strokeWidth={2}
-                className="shrink-0 text-white"
+                className={styles.filterChevron}
               />
             </FlexBox>
           </button>
@@ -108,7 +107,7 @@ export const SbStoryListNav = ({
                   <DialogPanel className={styles.dialogPanel}>
                     <button
                       type="button"
-                      aria-label="Close modal"
+                      aria-label="Close story filter menu"
                       onClick={() => setIsModalOpen(false)}
                       className={styles.modalClose}
                     >
