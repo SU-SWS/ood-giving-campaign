@@ -1,5 +1,5 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import {
   Dialog, DialogPanel, DialogTitle, Transition, TransitionChild, CloseButton,
 } from '@headlessui/react';
@@ -58,13 +58,6 @@ export const SbStoryListNav = ({
   name,
 }: SbStoryListNavType) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const buttonRef = useRef<HTMLButtonElement>(null);
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    buttonRef.current?.focus();
-  };
-
   const isStoryLandingPage = name === 'Stories';
 
   return (
@@ -77,7 +70,6 @@ export const SbStoryListNav = ({
         <div className={styles.mobile}>
           <button
             type="button"
-            ref={buttonRef}
             onClick={() => setIsModalOpen(true)}
             className={styles.filterButton}
             aria-label={`Currently showing ${!isStoryLandingPage ? name : 'all'} stories. Click to open filter menu.`}
@@ -117,7 +109,6 @@ export const SbStoryListNav = ({
                       <DialogTitle className={styles.dialogHeading}>{heading}</DialogTitle>
                       <CloseButton
                         aria-label="Close story filter menu"
-                        onClick={handleCloseModal}
                         className={styles.modalClose}
                       >
                         <HeroIcon
