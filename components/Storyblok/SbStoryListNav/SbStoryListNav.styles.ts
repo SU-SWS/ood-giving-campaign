@@ -11,7 +11,7 @@ export const ctaInner = 'gap-20 w-full';
 export const checkIcon = 'shrink-0 lg:hidden w-[1.2em]';
 
 // Mobile styles
-export const filterButton = 'group/filterBtn block w-[28rem] sm:w-[48rem] text-left text-18 sm:text-21 border-2 border-gc-black-80 text-gc-black-40 rounded-full px-20 py-9 sm:px-30 sm:py-14 mx-auto hocus-visible:bg-gradient-to-r hocus-visible:from-digital-red hocus-visible:to-cardinal-red-dark hocus-visible:border-digital-red-xlight hocus-visible:text-white hocus-visible:underline underline-offset-4 decoration-1 transition-colors';
+export const filterButton = 'group/filterBtn block w-300 sm:w-[48rem] text-left text-18 sm:text-21 border-2 border-gc-black-80 text-gc-black-40 rounded-full px-20 py-9 sm:px-30 sm:py-14 mx-auto hocus-visible:bg-gradient-to-r hocus-visible:from-digital-red hocus-visible:to-cardinal-red-dark hocus-visible:border-digital-red-xlight hocus-visible:text-white hocus-visible:underline underline-offset-4 decoration-1 transition-colors';
 export const filterBtnInner = 'gap-20';
 export const filterBtnLabel = 'grow leading-display';
 export const filterChevron = 'shrink-0 text-white group-hover/filterBtn:-rotate-90 transition-transform';
