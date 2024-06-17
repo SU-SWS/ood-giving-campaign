@@ -38,7 +38,7 @@ export const StoryListHero = ({
             className={styles.heading}
           >
             <Text as="span" font="druk" size={subheading ? 'f5' : 'splash'} leading="druk">Stories</Text>
-            <Text as="span" font="serif" size={subheading ? 'f4' : 'f7'} weight="normal" italic className="relative -top-[.23em] -ml-01em mr-02em"> of </Text>
+            <Text as="span" font="serif" size={subheading ? 'f4' : 'f7'} weight="normal" italic className="relative -top-02em md:-top-[.23em] lg:-ml-01em mr-02em"> of </Text>
             <Text as="span" font="druk" size={subheading ? 'f5' : 'splash'} leading="druk">Impact</Text>
             {subheading && (
               <Text
