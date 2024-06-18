@@ -1,10 +1,13 @@
 import { AnimateInView } from '@/components/Animate';
 import { Container } from '@/components/Container';
+import { CtaLink } from '@/components/Cta';
+import { FlexBox } from '@/components/FlexBox';
 import {
   Heading, Paragraph, Text, SrOnlyText,
 } from '@/components/Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { getSbImageSize } from '@/utilities/getSbImageSize';
+import { taxonomyMap, type TaxonomyType } from '@/utilities/taxonomyMaps';
 import * as styles from './StoryHeroStacked.styles';
 
 export type StoryHeroStackedProps = {
@@ -21,6 +24,7 @@ export type StoryHeroStackedProps = {
   alt?: string;
   hasCaption?: boolean;
   isLightHero?: boolean;
+  taxonomy?: TaxonomyType[];
 };
 
 export const StoryHeroStacked = ({
@@ -37,6 +41,7 @@ export const StoryHeroStacked = ({
   alt,
   hasCaption,
   isLightHero = false,
+  taxonomy,
 }: StoryHeroStackedProps) => {
   // We keep the original image aspect ratio
   const imageSize = getSbImageSize(imageSrc) || { width: 0, height: 0 };
@@ -118,6 +123,22 @@ export const StoryHeroStacked = ({
               </Text>
             )}
           </AnimateInView>
+        )}
+        {!!taxonomy?.length && (
+          <>
+            <Heading as="h2" className="sr-only">Story tags:</Heading>
+            <FlexBox as="ul" direction="col" alignItems="center" className={styles.taxonomy}>
+              {taxonomy.map((item) => (
+                taxonomyMap[item] ? (
+                  <li key={item} className={styles.taxonomyItem}>
+                    <CtaLink href={`/stories/list/${item}`} variant={isLightHero ? 'storyCardChip' : 'storyCardChipBlack'}>
+                      {taxonomyMap[item]}
+                    </CtaLink>
+                  </li>
+                ) : null
+              ))}
+            </FlexBox>
+          </>
         )}
       </Container>
       {imageSrc && (

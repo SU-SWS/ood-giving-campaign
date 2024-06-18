@@ -91,6 +91,7 @@ export const StoryHeroMvp = ({
           alt={alt}
           isLightHero={isLightHero}
           hasCaption={hasCaption}
+          taxonomy={taxonomy}
         />
       ) : (
         <BlurryPoster

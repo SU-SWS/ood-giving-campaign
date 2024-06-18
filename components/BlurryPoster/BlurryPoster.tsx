@@ -3,8 +3,8 @@ import { cnb } from 'cnbuilder';
 import { AnimateInView } from '@/components/Animate';
 import { Container } from '@/components/Container';
 import { CtaLink } from '@/components/Cta';
-import { Grid } from '@/components/Grid';
 import { FlexBox } from '@/components/FlexBox';
+import { Grid } from '@/components/Grid';
 import {
   Heading, Paragraph, Text, type HeadingType, SrOnlyText,
 } from '@/components/Typography';
@@ -220,19 +220,21 @@ export const BlurryPoster = ({
                   )}
                 </div>
               )}
-              <Heading as="h2" className="sr-only">Story tags:</Heading>
               {!!taxonomy?.length && (
-                <ul className={styles.taxonomy}>
-                  {taxonomy.map((item) => (
-                    taxonomyMap[item] ? (
-                      <li key={item} className={styles.taxonomyItem}>
-                        <CtaLink href={`/stories/list/${item}`} variant={bgColor === 'black' ? 'storyCardChipBlack' : 'storyCardChip'} className="">
-                          {taxonomyMap[item]}
-                        </CtaLink>
-                      </li>
-                    ) : null
-                  ))}
-                </ul>
+                <>
+                  <Heading as="h2" className="sr-only">Story tags:</Heading>
+                  <FlexBox as="ul" direction="col" className={styles.taxonomy}>
+                    {taxonomy.map((item) => (
+                      taxonomyMap[item] ? (
+                        <li key={item} className={styles.taxonomyItem}>
+                          <CtaLink href={`/stories/list/${item}`} variant={bgColor === 'black' ? 'storyCardChipBlack' : 'storyCardChip'}>
+                            {taxonomyMap[item]}
+                          </CtaLink>
+                        </li>
+                      ) : null
+                    ))}
+                  </FlexBox>
+                </>
               )}
               {cta && (
                 <div className={styles.cta}>

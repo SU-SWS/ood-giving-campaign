@@ -2,7 +2,7 @@
 // Per PR discussion with Shea https://github.com/SU-SWS/ood-giving-campaign/pull/290#discussion_r1602386147
 
 export const initiativesMap = {
-  'ethics-society-and-technology': 'Ethics, Society & Technology',
+  'ethics-society-technology': 'Ethics, Society & Technology',
   'human-centered-artificial-intelligence': 'Human-Centered Artificial Intelligence',
   'innovative-medicines-accelerator': 'Innovative Medicines Accelerator',
   'racial-justice-initiative' : 'Racial Justice Initiative',
@@ -14,7 +14,7 @@ export const initiativesMap = {
   'stanford-impact-labs': 'Stanford Impact Labs',
   'stanford-public-humanities': 'Stanford Public Humanities',
   'stanford-science-fellows': 'Stanford Science Fellows',
-  'undergraduate-education-and-student-life': 'Undergraduate Education & Student Life',
+  'undergraduate-education-student-life': 'Undergraduate Education & Student Life',
   'undergraduate-financial-aid': 'Undergraduate Financial Aid',
 };
 export type InitiativesType = keyof typeof initiativesMap;
