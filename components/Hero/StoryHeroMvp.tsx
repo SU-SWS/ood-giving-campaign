@@ -10,6 +10,7 @@ import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { hasRichText } from '@/utilities/hasRichText';
 import { type HeroOverlayType } from '@/utilities/datasource';
+import { type TaxonomyType } from '@/utilities/taxonomyMaps';
 import * as styles from './StoryHeroMvp.styles';
 
 export type StoryHeroMvpProps = {
@@ -36,8 +37,8 @@ export type StoryHeroMvpProps = {
   tabColor?: {
     value?: PaletteAccentHexColorType;
   }
-  topics?: string[];
   heroTexturedBar?: SbBlokData[];
+  taxonomy?: TaxonomyType[];
 };
 
 export const StoryHeroMvp = ({
@@ -63,6 +64,7 @@ export const StoryHeroMvp = ({
   isLightHero = false,
   tabColor: { value: tabColorValue } = {},
   heroTexturedBar,
+  taxonomy = [],
 }: StoryHeroMvpProps) => {
   const useTwoColLayout = isVerticalHero;
   const hasCaption = hasRichText(caption);
@@ -115,6 +117,7 @@ export const StoryHeroMvp = ({
           imageOnLeft={isLeftImage}
           tabColor={paletteAccentColors[tabColorValue]}
           hasCaption={hasCaption}
+          taxonomy={taxonomy}
         />
       )}
       {!!getNumBloks(heroTexturedBar) && (

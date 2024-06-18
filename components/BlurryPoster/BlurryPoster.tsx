@@ -2,6 +2,7 @@ import React, { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
 import { AnimateInView } from '@/components/Animate';
 import { Container } from '@/components/Container';
+import { CtaLink } from '@/components/Cta';
 import { Grid } from '@/components/Grid';
 import { FlexBox } from '@/components/FlexBox';
 import {
@@ -14,7 +15,8 @@ import {
   heroOverlays,
   type HeroOverlayType,
 } from '@/utilities/datasource';
-import { type SbTypographyProps } from '../Storyblok/Storyblok.types';
+import { type SbTypographyProps } from '@/components/Storyblok/Storyblok.types';
+import { taxonomyMap, type TaxonomyType } from '@/utilities/taxonomyMaps';
 import * as styles from './BlurryPoster.styles';
 
 /**
@@ -43,6 +45,7 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   body?: string;
   byline?: string;
   publishedDate?: string;
+  taxonomy?: TaxonomyType[];
   imageSrc?: string;
   imageFocus?: string;
   alt?: string;
@@ -73,6 +76,7 @@ export const BlurryPoster = ({
   body,
   byline,
   publishedDate,
+  taxonomy,
   imageSrc,
   imageFocus,
   alt,
@@ -215,6 +219,20 @@ export const BlurryPoster = ({
                     <time dateTime={date}>{formattedDate}</time>
                   )}
                 </div>
+              )}
+              <Heading as="h2" className="sr-only">Story tags:</Heading>
+              {!!taxonomy?.length && (
+                <ul className={styles.taxonomy}>
+                  {taxonomy.map((item) => (
+                    taxonomyMap[item] ? (
+                      <li key={item} className={styles.taxonomyItem}>
+                        <CtaLink href={`/stories/list/${item}`} variant={bgColor === 'black' ? 'storyCardChipBlack' : 'storyCardChip'} className="">
+                          {taxonomyMap[item]}
+                        </CtaLink>
+                      </li>
+                    ) : null
+                  ))}
+                </ul>
               )}
               {cta && (
                 <div className={styles.cta}>

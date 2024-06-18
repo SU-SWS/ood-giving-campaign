@@ -22,6 +22,7 @@ const brochurePoppy = 'from-poppy to-poppy';
 const chipBase = 'relative inline-block leading-display rounded-full font-normal no-underline underline-offset-4 hocus:underline decoration-1 hocus:bg-digital-red-light hocus:text-white';
 const chipLight = 'border border-gc-black/10 bg-gc-black-10 text-gc-black-80 hocus:border-digital-red-xlight';
 const chipDark = 'border border-gc-black-80 bg-gc-black-90 text-gc-black-40 hocus:border-digital-red-xlight';
+const chipBlack = 'border border-gc-black-90 bg-gc-black text-gc-black-40 hocus:border-digital-red-xlight';
 const chipNav = 'bg-gc-black-90 text-gc-black-40 hocus-visible:bg-gradient-to-r hocus-visible:from-digital-red hocus-visible:to-cardinal-red-dark border-2 border-gc-black-90 hocus-visible:border-digital-red-xlight';
 
 export const ctaVariants = {
@@ -41,6 +42,7 @@ export const ctaVariants = {
   chip: 'inline-block leading-display no-underline text-current rounded-full border-2 border-current hocus:text-current font-normal underline-offset-4 decoration-transparent hocus-visible:decoration-current hocus-visible:decoration-2',
   storyCardChip: `${chipBase} ${chipLight}`,
   storyCardChipDark: `${chipBase} ${chipDark}`,
+  storyCardChipBlack: `${chipBase} ${chipBlack}`,
   storyListNav: `${chipBase} ${chipNav}`,
   brochure: `${brochureBase} ${brochureIlluminating}`,
   brochurePoppy: `${brochureBase} ${brochurePoppy}`,
@@ -109,6 +111,7 @@ export const ctaSizeMap: CtaSizeMapType = {
   chip: 'chip',
   storyCardChip: 'storyCardChip',
   storyCardChipDark: 'storyCardChip',
+  storyCardChipBlack: 'storyCardChip',
   storyListNav: 'storyListNav',
   brochure: 'brochure',
   brochurePoppy: 'brochure',
