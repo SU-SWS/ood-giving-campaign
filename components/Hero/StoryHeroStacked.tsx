@@ -125,7 +125,7 @@ export const StoryHeroStacked = ({
           </AnimateInView>
         )}
         {!!taxonomy?.length && (
-          <>
+          <AnimateInView animation="slideUp" delay={0.4}>
             <Heading as="h2" className="sr-only">Story tags:</Heading>
             <FlexBox as="ul" direction="col" alignItems="center" className={styles.taxonomy}>
               {taxonomy.map((item) => (
@@ -138,7 +138,7 @@ export const StoryHeroStacked = ({
                 ) : null
               ))}
             </FlexBox>
-          </>
+          </AnimateInView>
         )}
       </Container>
       {imageSrc && (

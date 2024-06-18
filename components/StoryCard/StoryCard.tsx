@@ -121,7 +121,7 @@ export const StoryCard = ({
             {!!taxonomy?.length && (
               <>
                 <Heading as={tagsHeadingLevel} className="sr-only">Story tags:</Heading>
-                <FlexBox wrap="wrap" className={styles.taxonomy(isHorizontal, isListView)}>
+                <FlexBox as="ul" wrap="wrap" className={styles.taxonomy(isHorizontal, isListView)}>
                   {taxonomy.map((item) => (
                     taxonomyMap[item] ? (
                       <li key={item} className={styles.taxonomyItem}>
