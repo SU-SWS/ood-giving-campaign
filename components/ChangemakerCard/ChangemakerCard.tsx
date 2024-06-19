@@ -198,7 +198,7 @@ export const ChangemakerCard = ({
         </article>
       </AnimateInView>
       {/* Content is displayed in a modal for XS breakpoint only */}
-      <Transition show={isModalOpen} appear>
+      <Transition show={isModalOpen}>
         <Dialog onClose={() => setIsModalOpen(false)} className={styles.dialog}>
           <TransitionChild
             enter="ease-out duration-300"

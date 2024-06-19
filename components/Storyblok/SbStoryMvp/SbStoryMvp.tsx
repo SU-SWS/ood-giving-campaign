@@ -4,6 +4,7 @@ import { CreateStories } from '@/components/CreateStories';
 import { Container } from '@/components/Container';
 import { SocialSharing } from '@/components/SocialSharing';
 import { StoryHeroMvp, type StoryHeroMvpProps } from '@/components/Hero';
+import { type InitiativesType, type ThemesType } from '@/utilities/taxonomyMaps';
 import { SbAboveContent } from './SbAboveContent';
 import { getNumBloks } from '@/utilities/getNumBloks';
 
@@ -17,6 +18,8 @@ type SbStoryMvpProps = {
     content?: SbBlokData[];
     ankle?: SbBlokData[];
     mastheadPicker?: ISbStoryData[];
+    initiatives?: InitiativesType[];
+    themes?: ThemesType[];
   } & StoryHeroMvpProps;
   slug?: string;
 };
@@ -31,6 +34,8 @@ export const SbStoryMvp = ({
     byline,
     dek,
     publishedDate,
+    initiatives,
+    themes,
     heroVariant,
     heroBgColor,
     heroImage,
@@ -44,7 +49,6 @@ export const SbStoryMvp = ({
     isLeftImage,
     isLightHero,
     tabColor,
-    topics,
     heroTexturedBar,
     // page regions
     hideTopSocial,
@@ -59,6 +63,7 @@ export const SbStoryMvp = ({
   slug,
 }: SbStoryMvpProps) => {
   const showAboveContent = !!getNumBloks(aboveSidebar) || !!getNumBloks(intro) || !!getNumBloks(sidebar);
+  const taxonomyArray = [...initiatives, ...themes];
 
   return (
     <div {...storyblokEditable(blok)}>
@@ -87,7 +92,7 @@ export const SbStoryMvp = ({
             isLightHero={isLightHero}
             isVerticalHero={isVerticalHero}
             tabColor={tabColor}
-            topics={topics}
+            taxonomy={taxonomyArray}
             heroTexturedBar={heroTexturedBar}
           />
           {!hideTopSocial && !!slug && <SocialSharing title={title} slug={slug} isTop />}

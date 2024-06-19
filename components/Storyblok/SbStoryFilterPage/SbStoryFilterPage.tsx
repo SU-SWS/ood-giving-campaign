@@ -75,7 +75,7 @@ export const SbStoryFilterPage = ({
       <CreateStories stories={mastheadPicker} />
       <main id="main-content">
         <CreateStories stories={heroPicker} subheading={name !== 'Stories' ? name : ''} />
-        <Container pb={10} bgColor="black" className={styles.latest}>
+        <Container as="section" pb={10} bgColor="black" className={styles.latest}>
           <Skiplink href="#latest-stories" className={styles.skiplink}>
             Skip past story list page menu to latest stories
           </Skiplink>

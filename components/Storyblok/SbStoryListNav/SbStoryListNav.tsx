@@ -1,7 +1,7 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { useState } from 'react';
 import {
-  Dialog, DialogPanel, DialogTitle, Transition, TransitionChild,
+  Dialog, DialogPanel, DialogTitle, Transition, TransitionChild, CloseButton,
 } from '@headlessui/react';
 import { type SbNavItemProps } from '../Storyblok.types';
 import { Container } from '@/components/Container';
@@ -22,30 +22,30 @@ type SbStoryListNavType = {
 };
 
 // The menu item chips that are either displayed on the page or inside the modal on mobile
-const StoryListContent = ({ blok: { heading, links }, fullSlug }: SbStoryListNavType) => {
+const StoryListContent = ({ blok: { links }, fullSlug }: SbStoryListNavType) => {
   return (
-    <>
-      <Heading size="base" align="center" className={styles.heading}>{heading}</Heading>
-      <ul className={styles.list}>
-        {links.map((link) => {
-          const isCurrentPage = fullSlug === link.link?.cached_url || (fullSlug === 'stories' && link.link?.cached_url === 'stories/');
-          return (
-            <li key={link._uid} className={styles.listItem}>
-              <CtaLink
-                aria-current={isCurrentPage ? 'page' : undefined}
-                sbLink={link.link}
-                variant="storyListNav"
-                color="current"
-                className={styles.cta(isCurrentPage)}
-                srText='stories'
-              >
-                {link.label}
-              </CtaLink>
-            </li>
-          );
-        })}
-      </ul>
-    </>
+    <ul className={styles.list}>
+      {links.map((link) => {
+        const isCurrentPage = fullSlug === link.link?.cached_url || (fullSlug === 'stories' && link.link?.cached_url === 'stories/');
+        return (
+          <li key={link._uid} className={styles.listItem}>
+            <CtaLink
+              aria-current={isCurrentPage ? 'page' : undefined}
+              sbLink={link.link}
+              variant="storyListNav"
+              color="current"
+              className={styles.cta(isCurrentPage)}
+              srText='stories'
+            >
+              <FlexBox alignItems="center" className={styles.ctaInner}>
+                <span className="grow leading-display">{link.label}</span>
+                {isCurrentPage && <HeroIcon icon="check" className={styles.checkIcon} />}
+              </FlexBox>
+            </CtaLink>
+          </li>
+        );
+      })}
+    </ul>
   );
 };
 
@@ -58,31 +58,32 @@ export const SbStoryListNav = ({
   name,
 }: SbStoryListNavType) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const isStoryLandingPage = name === 'Stories';
 
   return (
     <Container width="full" bgColor="black" className={styles.root} {...storyblokEditable(blok)}>
       <Container as="nav" aria-label="Story list page menu">
-        <div className="hidden lg:block">
+        <Heading size="base" align="center" className={styles.heading}>{heading}</Heading>
+        <div className={styles.desktop}>
           <StoryListContent blok={blok} fullSlug={fullSlug} name={name} />
         </div>
-        <div className="block lg:hidden">
-          <Heading size="base" align="center" className={styles.heading}>{heading}</Heading>
+        <div className={styles.mobile}>
           <button
             type="button"
             onClick={() => setIsModalOpen(true)}
             className={styles.filterButton}
+            aria-label={`Currently showing ${!isStoryLandingPage ? name : 'all'} stories. Click to open filter menu.`}
           >
-            <FlexBox alignItems="center" className="gap-12 sm:gap-16">
-              <span className="grow leading-display">{name || 'All'}</span>
+            <FlexBox alignItems="center" className={styles.filterBtnInner}>
+              <span className={styles.filterBtnLabel}>{!isStoryLandingPage ? name : 'All'}</span>
               <HeroIcon
-                //noBaseStyle
                 icon='chevron-down'
                 strokeWidth={2}
-                className="shrink-0 text-white"
+                className={styles.filterChevron}
               />
             </FlexBox>
           </button>
-          <Transition show={isModalOpen} appear>
+          <Transition show={isModalOpen}>
             <Dialog onClose={() => setIsModalOpen(false)} className={styles.dialog}>
               <TransitionChild
                 enter="ease-out duration-300"
@@ -104,21 +105,21 @@ export const SbStoryListNav = ({
               >
                 <div className={styles.dialogWrapper}>
                   <DialogPanel className={styles.dialogPanel}>
-                    <button
-                      type="button"
-                      aria-label="Close modal"
-                      onClick={() => setIsModalOpen(false)}
-                      className={styles.modalClose}
-                    >
-                      <HeroIcon
-                        noBaseStyle
-                        focusable="false"
-                        strokeWidth={2}
-                        icon='close'
-                        className={styles.closeIcon}
-                      />
-                    </button>
-                    <DialogTitle className={styles.srOnly}>Go to story page filtered by</DialogTitle>
+                    <div className={styles.dialogHeader}>
+                      <DialogTitle className={styles.dialogHeading}>{heading}</DialogTitle>
+                      <CloseButton
+                        aria-label="Close story filter menu"
+                        className={styles.modalClose}
+                      >
+                        <HeroIcon
+                          noBaseStyle
+                          focusable="false"
+                          strokeWidth={2}
+                          icon='close'
+                          className={styles.closeIcon}
+                        />
+                      </CloseButton>
+                    </div>
                     <StoryListContent blok={blok} fullSlug={fullSlug} name={name} />
                   </DialogPanel>
                 </div>
