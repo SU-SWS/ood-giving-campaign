@@ -223,11 +223,11 @@ export const BlurryPoster = ({
               {!!taxonomy?.length && (
                 <>
                   <Heading as="h2" className="sr-only">Story tags:</Heading>
-                  <FlexBox as="ul" direction="col" className={styles.taxonomy}>
+                  <FlexBox as="ul" wrap="wrap" className={styles.taxonomy}>
                     {taxonomy.map((item) => (
                       taxonomyMap[item] ? (
                         <li key={item} className={styles.taxonomyItem}>
-                          <CtaLink href={`/stories/list/${item}`} variant={bgColor === 'black' ? 'storyCardChipBlack' : 'storyCardChip'}>
+                          <CtaLink href={`/stories/list/${item}`} variant={bgColor === 'black' ? 'storyCardChipDark' : 'storyCardChip'}>
                             {taxonomyMap[item]}
                           </CtaLink>
                         </li>

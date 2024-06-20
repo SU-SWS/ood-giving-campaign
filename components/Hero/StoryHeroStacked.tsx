@@ -127,11 +127,11 @@ export const StoryHeroStacked = ({
         {!!taxonomy?.length && (
           <AnimateInView animation="slideUp" delay={0.4}>
             <Heading as="h2" className="sr-only">Story tags:</Heading>
-            <FlexBox as="ul" direction="col" alignItems="center" className={styles.taxonomy}>
+            <FlexBox as="ul" wrap="wrap" alignItems="center" justifyContent="center" className={styles.taxonomy}>
               {taxonomy.map((item) => (
                 taxonomyMap[item] ? (
                   <li key={item} className={styles.taxonomyItem}>
-                    <CtaLink href={`/stories/list/${item}`} variant={isLightHero ? 'storyCardChip' : 'storyCardChipBlack'}>
+                    <CtaLink href={`/stories/list/${item}`} variant={isLightHero ? 'storyCardChip' : 'storyCardChipDark'}>
                       {taxonomyMap[item]}
                     </CtaLink>
                   </li>
