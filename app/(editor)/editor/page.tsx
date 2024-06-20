@@ -24,6 +24,15 @@ type PageProps = {
   };
 };
 
+type FilterQuery = {
+  initiatives?: {
+    in_array: string;
+  };
+  themes?: {
+    in_array: string;
+  };
+};
+
 // Control what happens when a dynamic segment is visited that was not generated with generateStaticParams.
 export const dynamic = 'force-dynamic';
 
@@ -87,6 +96,65 @@ async function getStoryData({ path }: PageProps['searchParams']): Promise<ISbRes
 };
 
 /**
+ * Get a list of stories that are of component sbStoryMvp in reverse chronological order.
+ */
+async function getStoryList({ path }: PageProps['searchParams']) {
+  const activeEnv = process.env.NODE_ENV || 'development';
+  const storyblokApi: StoryblokClient = getStoryblokApi();
+  const fullslug = path.replace(/\/$/, '') || 'home';
+
+  // Get the last part of the path.
+  const slug = path.split('/').pop() || '';
+
+  let orQuery: FilterQuery[] = [];
+
+  /**
+   * If the page is inside the folder stories/list/ (story list pages filtered by taxonomy),
+   * add a filter query to only return stories that has an initiative or theme that matches the slug of that story.
+   * E.g., if the full slug is stories/list/preparing-citizens,
+   * only return stories that have 'preparing-citizens' tagged as a theme or initiative.
+   */
+  if (fullslug.includes('stories/list/')) {
+    orQuery = [
+      {
+        initiatives: {
+          in_array: slug,
+        },
+      },
+      {
+        themes: {
+          in_array: slug,
+        },
+      },
+    ];
+  }
+
+  // For more related documentation see app/(storyblok)/[[...slug]]/page.tsx
+  const sbParams: ISbStoriesParams = {
+    version: 'published',
+    cv: activeEnv === 'development' ? Date.now() : undefined,
+    starts_with: 'stories/',
+    sort_by: 'first_published_at:desc',
+    per_page: 100,
+    filter_query: {
+      component: {
+        in: 'sbStoryMvp',
+      },
+      __or: orQuery,
+    },
+  };
+
+  try {
+    const storyList = await storyblokApi.getAll('cdn/stories', sbParams);
+    return storyList;
+  }
+  catch (error) {
+    console.error('Error fetching stories:', error);
+    return [];
+  }
+}
+
+/**
  * Validate the editor token.
  *
  * Removed time limit check to support client workflows of several days, or weeks
@@ -117,6 +185,10 @@ export default async function Page({ searchParams }: PageProps) {
 
   // Get data out of the API.
   const { data } = await getStoryData(searchParams);
+  let storyList;
+  if (slug === 'stories' || slug.includes('stories/list/')) {
+    storyList = await getStoryList(searchParams);
+  }
 
   // Failed to fetch from API because story slug was not found.
   if (data === 404) {
@@ -125,6 +197,12 @@ export default async function Page({ searchParams }: PageProps) {
 
   // Return the story.
   return (
-    <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} slug={slug} name={data.story.name} />
+    <StoryblokStory
+      story={data.story}
+      storyList={storyList}
+      bridgeOptions={bridgeOptions}
+      slug={slug}
+      name={data.story.name}
+    />
   );
 };

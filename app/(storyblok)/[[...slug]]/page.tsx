@@ -16,6 +16,15 @@ type ParamsType = {
   slug: string[];
 };
 
+type FilterQuery = {
+  initiatives?: {
+    in_array: string;
+  };
+  themes?: {
+    in_array: string;
+  };
+};
+
 // Storyblok bridge options.
 const bridgeOptions = {
   resolveRelations,
@@ -120,6 +129,64 @@ async function getStoryData(params: { slug: string[] }) {
 };
 
 /**
+ * Get a list of stories that are of component sbStoryMvp in reverse chronological order.
+ * This is used for the story filter pages.
+ */
+async function getStoryList(params: { slug: string[] }) {
+  const activeEnv = process.env.NODE_ENV || 'development';
+  const storyblokApi: StoryblokClient = getStoryblokApi();
+  const fullslug = params.slug ? params.slug.join('/') : 'home';
+  let slug = '';
+  let orQuery: FilterQuery[] = [];
+
+  /**
+   * If the page is inside the folder stories/list/ (story list pages filtered by taxonomy),
+   * add a filter query to only return stories that has an initiative or theme that matches the slug of that story.
+   * E.g., if the full slug is stories/list/preparing-citizens,
+   * only return stories that have 'preparing-citizens' tagged as a theme or initiative.
+   */
+  if (fullslug.includes('stories/list/')) {
+    slug = params.slug[params.slug.length - 1];
+    orQuery = [
+      {
+        initiatives: {
+          in_array: slug,
+        },
+      },
+      {
+        themes: {
+          in_array: slug,
+        },
+      },
+    ];
+  }
+
+  const sbParams: ISbStoriesParams = {
+    version: 'published', // Only show published stories for now
+    cv: activeEnv === 'development' ? Date.now() : undefined,
+    starts_with: 'stories/', // Only return stories that are inside the stories/ folder
+    sort_by: 'first_published_at:desc',
+    // When the number of stories gets larger, we should think about pagination. For now get the max number 100.
+    per_page: 100,
+    filter_query: {
+      component: {
+        in: 'sbStoryMvp', // Only return stories that are of component sbStoryMvp.
+      },
+      __or: orQuery,
+    },
+  };
+
+  try {
+    const storyList = await storyblokApi.getAll('cdn/stories', sbParams);
+    return storyList;
+  }
+  catch (error) {
+    console.error('Error fetching stories:', error);
+    return [];
+  }
+}
+
+/**
  * Generate the SEO metadata for the page.
  */
 export async function generateMetadata({ params }: { params: ParamsType }): Promise<Metadata> {
@@ -145,14 +212,25 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
  */
 export default async function Page({ params }: { params: ParamsType }) {
   const { data } = await getStoryData(params);
-  const slug = params.slug ? params.slug.join('/') : '';
+  const slug = params.slug ? params.slug.join('/') : 'home';
+
+  let storyList;
+  if (slug === 'stories' || slug.includes('stories/list/')) {
+    storyList = await getStoryList(params);
+  }
 
   if (data === 404) {
     notFound();
   }
 
   return (
-    <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} slug={slug} name={data.story.name} />
+    <StoryblokStory
+      story={data.story}
+      storyList={storyList}
+      bridgeOptions={bridgeOptions}
+      slug={slug}
+      name={data.story.name}
+    />
   );
 
 };

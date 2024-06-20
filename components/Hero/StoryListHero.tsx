@@ -35,7 +35,7 @@ export const StoryListHero = ({
             align="center"
             leading="none"
             color="white"
-            className={styles.heading}
+            className={styles.heading(!!subheading)}
           >
             <Text as="span" font="druk" size={subheading ? 'f5' : 'splash'} leading="druk">Stories</Text>
             <Text as="span" font="serif" size={subheading ? 'f4' : 'f7'} weight="normal" italic className="relative -top-02em md:-top-[.23em] lg:-ml-01em mr-02em"> of </Text>
