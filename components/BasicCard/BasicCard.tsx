@@ -23,9 +23,6 @@ export type BasicCardProps = React.HTMLAttributes<HTMLDivElement> & {
   imageAspectRatio?: styles.BasicCardImageAspectRatio;
   cta?: React.ReactNode;
   textureBar?: React.ReactNode;
-  isCounter?: boolean;
-  // In number of seconds
-  counterDuration?: number;
   animation?: AnimationType;
   delay?: number;
 };
@@ -44,15 +41,12 @@ export const BasicCard = ({
   textureBar,
   paddingTop,
   isLightText,
-  isCounter,
-  counterDuration,
   animation = 'slideUp',
   delay,
   children,
   className,
   ...props
 }: BasicCardProps) => {
-  const headingProcessed = isCounter ? splitNumberString(heading) : undefined;
   const imageSize = imageAspectRatio === '4x3' ? '336x222' : '700x700';
 
   return (
@@ -61,7 +55,7 @@ export const BasicCard = ({
         as="article"
         width="full"
         pt={paddingTop}
-        className={cnb(styles.root(!!bgColor), accentBgColors[bgColor], className)}
+        className={cnb(styles.root, className)}
         {...props}
       >
         <FlexBox direction="col" className={styles.flex}>
@@ -73,43 +67,34 @@ export const BasicCard = ({
               loading="lazy"
               src={getProcessedImage(imageSrc, imageSize, imageFocus) || ''}
             />
-
-          {subheading && (
-            <Text 
-            font="serif"
-            leading="display" 
-            className={styles.subhead}>{subheading}</Text>
-          )}
-          {heading && (
-            <Heading
-              as={headingLevel}
-              font="serif"
-              leading="druk"
-              color={isLightText ? 'white' : 'black'}
-              size={isSmallHeading ? 3 : 4}
-              aria-hidden={isCounter}
-              className={styles.heading}
-            >
-              {isCounter ? (
-                <>
-                  {headingProcessed?.beforeNumber}
-                  <NumberCounter number={headingProcessed?.number} duration={counterDuration} />
-                  {headingProcessed?.afterNumber}
-                </>
-              ) : (
-                heading
-              )}
-            </Heading>
-          )}
-          <div className={cnb(styles.content)}>
-            <div className={styles.body}>
-              {body}
-            </div>
-            {!!cta && (
-              <div className={styles.cta}>
-                {cta}
-              </div>
+          <div className={cnb(styles.content, accentBgColors[bgColor])}>
+            {subheading && (
+              <Text 
+              font="sans"
+              leading="display" 
+              className={styles.subhead}>{subheading}</Text>
             )}
+            {heading && (
+              <Heading
+                as={headingLevel}
+                font="serif"
+                leading="druk"
+                color={isLightText ? 'white' : 'black'}
+                size={isSmallHeading ? 3 : 4}
+                className={styles.heading}
+              >
+                {heading}
+              </Heading>
+            )}
+              <div className={styles.body}>
+                {body}
+              </div>
+              {!!cta && (
+                <div className={styles.cta}>
+                  {cta}
+                </div>
+              )}
+            
           </div>
           {!!textureBar && (
             <div className={styles.texture}>
