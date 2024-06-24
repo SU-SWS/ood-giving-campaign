@@ -33,7 +33,7 @@
   "dependencies": {
     "@headlessui/react": "^2.1.0",
     "@heroicons/react": "^2.1.4",
-    "@netlify/plugin-nextjs": "^5.2.2",
+    "@netlify/plugin-nextjs": "^5.3.3",
     "@storyblok/react": "^3.0.8",
     "@typeform/embed-react": "^3.11.0",
     "cnbuilder": "^3.1.0",
