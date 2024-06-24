@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { type LinkProps } from 'next/link';
 import { CtaContent } from './CtaContent';
 import { type CtaCommonProps } from './Cta.types';
+import { marginTops, marginBottoms } from '@/utilities/datasource';
 import * as styles from './Cta.styles';
 
 export type CtaNextLinkProps = CtaCommonProps & LinkProps & {
@@ -24,6 +25,8 @@ export const CtaNextLink = React.forwardRef<HTMLAnchorElement, CtaNextLinkProps>
     iconProps,
     srText,
     target,
+    mt,
+    mb,
     children,
     className,
     ...rest
@@ -41,6 +44,8 @@ export const CtaNextLink = React.forwardRef<HTMLAnchorElement, CtaNextLinkProps>
         styles.ctaSizes[size] || styles.ctaSizes[styles.ctaSizeMap[variant]],
         curve ? styles.ctaCurves[curve] : '',
         color ? styles.ctaColors[color] : '',
+        mt ? marginTops[mt] : '',
+        mb ? marginBottoms[mb] : '',
         className,
       )}
     >

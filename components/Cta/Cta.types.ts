@@ -1,4 +1,5 @@
-import { type HeroIconProps, type IconType } from '../HeroIcon';
+import { type HeroIconProps, type IconType } from '@/components/HeroIcon';
+import { type MarginType } from '@/utilities/datasource';
 import * as styles from './Cta.styles';
 
 export type CtaVariantType = keyof typeof styles.ctaVariants;
@@ -42,5 +43,7 @@ export interface CtaCommonProps {
   iconPosition?: 'left' | 'right';
   animate?: IconAnimationType;
   iconProps?: Omit<HeroIconProps, 'icon'> & React.ComponentProps<'svg'>;
+  mt?: MarginType;
+  mb?: MarginType;
   children?: React.ReactNode;
 }

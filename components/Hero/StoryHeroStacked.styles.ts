@@ -16,7 +16,10 @@ export const heading = (
 });
 export const dek = 'max-w-900 text-balance mx-auto rs-mt-3';
 export const metadata = 'rs-mt-4';
+export const taxonomy = 'gap-12 rs-mt-1 list-unstyled leading-display';
+export const taxonomyItem = 'inline-block mb-0';
 export const image = 'rs-mt-4 w-full';
 export const mobileImage = 'size-full lg:hidden';
 export const captionWrapper = 'mt-06em';
 export const caption = 'caption *:leading-display mt-08em max-w-prose-wide';
+

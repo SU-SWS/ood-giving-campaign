@@ -15,7 +15,6 @@ import {
   Paragraph,
 } from '@/components/Typography';
 import { Container, type BgColorType } from '@/components/Container';
-import { ImageOverlay } from '@/components/ImageOverlay';
 import { RichText } from '@/components/RichText';
 import { WidthBox } from '@/components/WidthBox';
 import { accentBgColors, type PaddingType, type MarginType } from '@/utilities/datasource';

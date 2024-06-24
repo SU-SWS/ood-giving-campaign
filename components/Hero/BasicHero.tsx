@@ -1,7 +1,6 @@
 import { cnb } from 'cnbuilder';
 import { Container } from '@/components/Container';
 import { Heading, SrOnlyText, Text } from '@/components/Typography';
-import { ImageOverlay } from '@/components/ImageOverlay';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import {
   gradientFroms,

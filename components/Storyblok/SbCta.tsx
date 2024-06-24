@@ -7,9 +7,10 @@ import {
   type CtaCurveType,
   type IconAnimationType,
   type IconColorType,
-} from '../Cta';
-import { type IconType } from '../HeroIcon';
-import { type SbLinkType } from './Storyblok.types';
+} from '@/components/Cta';
+import { type IconType } from '@/components/HeroIcon';
+import { type SbLinkType } from '@/components/Storyblok/Storyblok.types';
+import { type MarginType } from '@/utilities/datasource';
 
 type SbCtaType = {
   blok: {
@@ -23,6 +24,8 @@ type SbCtaType = {
     icon?: IconType;
     iconColor?: IconColorType;
     animation?: IconAnimationType;
+    spacingTop?: MarginType;
+    spacingBottom?: MarginType;
   };
 };
 
@@ -37,6 +40,8 @@ export const SbCta = ({
     icon,
     iconColor,
     animation,
+    spacingTop,
+    spacingBottom,
   },
   blok,
 }: SbCtaType) => {
@@ -56,6 +61,8 @@ export const SbCta = ({
       icon={icon}
       iconProps={{ className: iconColors[iconColor] }}
       animate={animation}
+      mt={spacingTop}
+      mb={spacingBottom}
     >
       {label}
     </CtaLink>

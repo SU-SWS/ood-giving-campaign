@@ -25,9 +25,12 @@ import { SbScrollytelling } from '@/components/Storyblok/SbScrollytelling';
 import { SbSection } from '@/components/Storyblok/SbSection';
 import { SbSidebarCard } from '@/components/Storyblok/SbSidebarCard';
 import { SbSpacer } from '@/components/Storyblok/SbSpacer';
-import { SbStoryMvp } from '@/components/Storyblok/SbStoryMvp/SbStoryMvp';
 import { SbStoryCard } from '@/components/Storyblok/SbStoryCard';
+import { SbStoryFilterPage } from '@/components/Storyblok/SbStoryFilterPage/SbStoryFilterPage';
 import { SbStoryImage } from '@/components/Storyblok/SbStoryImage';
+import { SbStoryListHero } from '@/components/Storyblok/SbStoryListHero';
+import { SbStoryListNav } from '@/components/Storyblok/SbStoryListNav';
+import { SbStoryMvp } from '@/components/Storyblok/SbStoryMvp/SbStoryMvp';
 import { SbText } from '@/components/Storyblok/SbText';
 import { SbTextCard } from '@/components/Storyblok/SbTextCard';
 import { SbTexturedBar } from '@/components/Storyblok/SbTexturedBar';
@@ -63,8 +66,11 @@ export const components = {
   sbSection: SbSection,
   sbSidebarCard: SbSidebarCard,
   sbSpacer: SbSpacer,
-  sbStoryMvp: SbStoryMvp,
   sbStoryCard: SbStoryCard,
+  sbStoryFilterPage: SbStoryFilterPage,
+  sbStoryListHero: SbStoryListHero,
+  sbStoryListNav: SbStoryListNav,
+  sbStoryMvp: SbStoryMvp,
   sbStoryImage: SbStoryImage,
   sbText: SbText,
   sbTextCard: SbTextCard,

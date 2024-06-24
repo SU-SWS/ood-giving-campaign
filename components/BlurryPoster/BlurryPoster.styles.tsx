@@ -94,6 +94,8 @@ export const bodyWrapper = (imageOnLeft?: boolean, isTwoCol?: boolean) => cnb('c
 });
 export const dek = 'text-shadow-sm';
 export const metadata = 'rs-mt-4';
+export const taxonomy = 'gap-12 rs-mt-1 list-unstyled leading-display';
+export const taxonomyItem = 'inline-block mb-0';
 export const cta = 'rs-mt-4';
 
 export const imageWrapper = (imageOnLeft?: boolean, isTwoCol?: boolean, hasImage?: boolean) => cnb('w-full cc', {

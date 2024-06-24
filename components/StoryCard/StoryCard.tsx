@@ -3,11 +3,12 @@ import { AnimateInView, type AnimationType } from '@/components/Animate';
 import { CtaLink } from '@/components/Cta/CtaLink';
 import { FlexBox } from '@/components/FlexBox';
 import {
-  Heading, type HeadingType, Paragraph, type FontSizeType,
-} from '../Typography';
+  Heading, Paragraph, type HeadingType, type HeadingLevelNumberType,
+} from '@/components/Typography';
 import { SbLinkType } from '@/components/Storyblok/Storyblok.types';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { accentBorderColors, type AccentBorderColorType } from '@/utilities/datasource';
+import { taxonomyMap, type TaxonomyType } from '@/utilities/taxonomyMaps';
 import * as styles from './StoryCard.styles';
 
 export type StoryCardProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -20,11 +21,12 @@ export type StoryCardProps = React.HTMLAttributes<HTMLDivElement> & {
   tabColor?: AccentBorderColorType;
   href?: string;
   link?: SbLinkType;
-  taxonomy?: string[];
+  taxonomy?: TaxonomyType[];
   animation?: AnimationType;
   delay?: number;
   isHorizontal?: boolean;
   isListView?: boolean;
+  isDark?: boolean;
 };
 
 export const StoryCard = ({
@@ -42,15 +44,15 @@ export const StoryCard = ({
   delay,
   isListView,
   isHorizontal,
+  isDark,
   className,
   ...props
 }: StoryCardProps) => {
-  let headingSize: FontSizeType = 3;
-  if (isHorizontal) {
-    headingSize = 'f5';
-  } else if (isSmallHeading && !isHorizontal) {
-    headingSize = 2;
-  };
+  // The heading level of the tags should be one more than the heading level of the card, but maxes out at h6
+  const tagsHeadingLevelNumber: HeadingLevelNumberType =
+    Math.min(parseInt(headingLevel?.slice(1), 10) + 1, 6) as HeadingLevelNumberType;
+
+  const tagsHeadingLevel: HeadingType = `h${tagsHeadingLevelNumber}`;
 
   return (
     <AnimateInView animation={animation} delay={delay}>
@@ -58,7 +60,7 @@ export const StoryCard = ({
         className={cnb(styles.root(isHorizontal, isListView), className)}
         {...props}
       >
-        <div className={styles.cardWrapper(isHorizontal, isListView)}>
+        <div className={styles.cardWrapper(isHorizontal, isListView, isDark)}>
           {imageSrc && (
             <div className={styles.imageWrapper}>
               <picture>
@@ -95,9 +97,10 @@ export const StoryCard = ({
             {heading && (
               <Heading
                 as={headingLevel}
+                color={isDark ? 'white' : 'black'}
                 leading="none"
                 className={cnb(
-                  styles.heading(!!tabColor, isHorizontal, isSmallHeading, isListView),
+                  styles.heading(isHorizontal, isSmallHeading, isListView),
                   accentBorderColors[tabColor])
                 }
               >
@@ -108,11 +111,28 @@ export const StoryCard = ({
             )}
             {body && (
               <Paragraph
+                color={isDark ? 'white' : 'black'}
                 noMargin
                 className={cnb(styles.body(isHorizontal, isListView), accentBorderColors[tabColor])}
               >
                 {body}
               </Paragraph>
+            )}
+            {!!taxonomy?.length && (
+              <>
+                <Heading as={tagsHeadingLevel} className="sr-only">Story tags:</Heading>
+                <FlexBox as="ul" wrap="wrap" className={styles.taxonomy(isHorizontal, isListView)}>
+                  {taxonomy.map((item) => (
+                    taxonomyMap[item] ? (
+                      <li key={item} className={styles.taxonomyItem}>
+                        <CtaLink href={`/stories/list/${item}`} variant={isDark ? 'storyCardChipDark' : 'storyCardChip'} className={styles.taxonomyLink}>
+                          {taxonomyMap[item]}
+                        </CtaLink>
+                      </li>
+                    ) : null // Don't display the list item if the taxonomy item is not in the taxonomy map
+                  ))}
+                </FlexBox>
+              </>
             )}
           </FlexBox>
         </div>
