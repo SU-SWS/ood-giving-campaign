@@ -35,7 +35,7 @@
     "@heroicons/react": "^2.1.4",
     "@netlify/plugin-nextjs": "^5.3.3",
     "@storyblok/react": "^3.0.10",
-    "@typeform/embed-react": "^3.11.0",
+    "@typeform/embed-react": "^3.17.0",
     "cnbuilder": "^3.1.0",
     "cookies-next": "^4.2.1",
     "framer-motion": "^11.2.11",
