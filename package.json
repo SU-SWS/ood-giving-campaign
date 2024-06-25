@@ -41,7 +41,7 @@
     "framer-motion": "^11.2.11",
     "next": "^14.2.4",
     "react-loading-skeleton": "^3.3.1",
-    "react-player": "^2.15.1",
+    "react-player": "^2.16.0",
     "storyblok-rich-text-react-renderer-ts": "^3.2.0",
     "usehooks-ts": "^3.1.0"
   },
@@ -51,9 +51,9 @@
   },
   "devDependencies": {
     "@tailwindcss/container-queries": "^0.1.1",
-    "@types/node": "^20.4.7",
-    "@types/react": "^18.2",
-    "@types/react-dom": "^18.2",
+    "@types/node": "^20.14.8",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.16",
     "decanter": "^7.3.0",
     "eslint": "^8.50.0",
