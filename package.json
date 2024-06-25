@@ -37,10 +37,10 @@
     "@storyblok/react": "^3.0.10",
     "@typeform/embed-react": "^3.11.0",
     "cnbuilder": "^3.1.0",
-    "cookies-next": "^4.0.0",
+    "cookies-next": "^4.2.1",
     "framer-motion": "^11.2.11",
     "next": "^14.2.4",
-    "react-loading-skeleton": "^3.3.1",
+    "react-loading-skeleton": "^3.4.0",
     "react-player": "^2.16.0",
     "storyblok-rich-text-react-renderer-ts": "^3.2.0",
     "usehooks-ts": "^3.1.0"
@@ -54,13 +54,13 @@
     "@types/node": "^20.14.8",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "autoprefixer": "^10.4.16",
+    "autoprefixer": "^10.4.19",
     "decanter": "^7.3.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.4",
     "netlify-cli": "^17.29.0",
     "netlify-plugin-vault-variables": "^3.0.0",
-    "postcss": "^8.4.33",
+    "postcss": "^8.4.38",
     "typescript": "^5.5.2"
   },
   "optionalDependencies": {
