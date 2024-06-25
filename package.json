@@ -26,7 +26,7 @@
     "https-proxy-start": "local-ssl-proxy --source 3010 --target 3000 --cert ./dev/localhost.pem --key ./dev/localhost-key.pem",
     "vault": "netlify-plugin-vault-variables",
     "vault:local": "NODE_ENV=development netlify-plugin-vault-variables",
-    "lint:fix": "eslint \"src/**/*.{ts,tsx,js,jsx}\" --quiet --fix",
+    "lint:fix": "eslint \"{components,utilities}/**/*.{ts,tsx,js,jsx}\" --quiet --fix",
     "typecheck": "tsc --noEmit",
     "tsc": "tsc"
   },
@@ -34,7 +34,7 @@
     "@headlessui/react": "^2.1.0",
     "@heroicons/react": "^2.1.4",
     "@netlify/plugin-nextjs": "^5.3.3",
-    "@storyblok/react": "^3.0.8",
+    "@storyblok/react": "^3.0.10",
     "@typeform/embed-react": "^3.11.0",
     "cnbuilder": "^3.1.0",
     "cookies-next": "^4.0.0",
@@ -57,11 +57,11 @@
     "autoprefixer": "^10.4.16",
     "decanter": "^7.3.0",
     "eslint": "^8.50.0",
-    "eslint-config-next": "^14.2.3",
+    "eslint-config-next": "^14.2.4",
     "netlify-cli": "^17.29.0",
     "netlify-plugin-vault-variables": "^3.0.0",
     "postcss": "^8.4.33",
-    "typescript": "^5.1"
+    "typescript": "^5.5.2"
   },
   "optionalDependencies": {
     "local-ssl-proxy": "^2.0.5"
