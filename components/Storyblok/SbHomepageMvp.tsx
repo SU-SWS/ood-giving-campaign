@@ -17,7 +17,7 @@ type SbHomepageMvpProps = {
     changemakerBgImage?: SbImageType;
     changemakerHeading1?: string;
     changemakerHeading2?: string;
-    changemakerHeading3?: SbBlokData[];
+    changemakerHeading3?: string;
     changemakerIntro?: string;
     changemakerCta?: SbBlokData[];
     ankle?: SbBlokData[];
