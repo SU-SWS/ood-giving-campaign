@@ -18,6 +18,8 @@ type SbEventBannerProps = {
     _uid: string;
     heading?: string;
     body: StoryblokRichtext;
+    startDate?: string;
+    endDate?: string;
     cta?: SbBlokData[];
     bgImage?: SbImageType;
     featuredName?: string;
@@ -34,6 +36,8 @@ export const SbEventBanner = ({
   blok: {
     heading,
     body,
+    startDate,
+    endDate,
     cta,
     bgImage: { filename, focus } = {},
     featuredName,
@@ -58,6 +62,8 @@ export const SbEventBanner = ({
       {...storyblokEditable(blok)}
       heading={heading}
       body={Body}
+      startDate={startDate}
+      endDate={endDate}
       cta={Cta}
       bgImageSrc={filename}
       bgImageFocus={focus}

@@ -2,7 +2,7 @@ import { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
 import { AnimateInView } from '../Animate';
 import { Container } from '../Container';
-import { Heading, Text } from '../Typography';
+import { Heading, SrOnlyText, Text } from '../Typography';
 import { FlexBox } from '../FlexBox';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import * as styles from './EventBanner.styles';
@@ -18,6 +18,8 @@ import {
 type EventBannerProps = HTMLAttributes<HTMLDivElement> & {
   heading?: string;
   body?: React.ReactNode;
+  startDate?: string;
+  endDate?: string;
   cta?: React.ReactNode;
   bgImageSrc?: string;
   bgImageFocus?: string;
@@ -34,6 +36,8 @@ type EventBannerProps = HTMLAttributes<HTMLDivElement> & {
 export const EventBanner = ({
   heading,
   body,
+  startDate,
+  endDate,
   cta,
   bgImageSrc,
   bgImageFocus,
@@ -44,13 +48,24 @@ export const EventBanner = ({
   gradientTop,
   gradientBottom,
   gradientVia,
+  isHidden,
   ...props
 }: EventBannerProps) => {
   // To render a dark overlay, both a top and bottom gradient color must be selected
   const hasBgGradient = !!gradientTop && !!gradientBottom;
 
+  const startDateObj = startDate && new Date(startDate);
+  const startDateTime = startDate?.slice(0, 10);
+  const endDateTime = endDate && new Date(endDate);
+  const formattedStartMonth = startDateObj && startDateObj.toLocaleDateString('en-US', {
+    month: 'short',
+  });
+  const formattedStartDay = startDateObj && startDateObj.toLocaleDateString('en-US', {
+    day: 'numeric',
+  });
+
   return (
-    <Container {...props} as="section" bgColor={isDarkTheme ? 'black' : 'white'} width="full" py={8} className={styles.root}>
+    <Container {...props} as="section" bgColor={isDarkTheme ? 'black' : 'white'} width="full" pt={8} pb={9} className={styles.root}>
       {!!bgImageSrc && (
         <picture>
           <source
@@ -99,24 +114,35 @@ export const EventBanner = ({
           )}
         />
       )}
-      <Container className={styles.wrapper}>
-        <Heading as="h2" size="splash" font="druk" leading="druk" align="center" className={styles.heading}>
-          {heading}
-        </Heading>
-        {body && (
-          <AnimateInView animation="slideUp" delay={0.3}>
-            <Text font="serif" variant="big" weight="normal" className={styles.body(isDarkTheme)}>
-              {body}
+      <Container className={styles.content}>
+        <Text as="span" font="serif" weight="semibold" size={2} aria-hidden>Event</Text>
+        <FlexBox className="gap-95 rs-mt-8">
+          <div className="shrink-0">
+            <Text as="time" dateTime={startDateTime} className="flex flex-col items-center">
+              <Text as="span" font="serif" weight="semibold" size="f4">{formattedStartMonth}</Text>
+              <Text as="span" font="serif" weight="bold" size="f8">{formattedStartDay}</Text>
             </Text>
-          </AnimateInView>
-        )}
-        {cta && (
-          <AnimateInView animation="slideUp" delay={0.4}>
-            <FlexBox direction="col" className={styles.cta}>
-              {cta}
-            </FlexBox>
-          </AnimateInView>
-        )}
+          </div>
+          <div>
+            <Heading as="h2" size="splash" font="druk" leading="druk" className={styles.heading}>
+              <SrOnlyText>Event: </SrOnlyText>{heading}
+            </Heading>
+            {body && (
+              <AnimateInView animation="slideUp" delay={0.3}>
+                <Text font="serif" variant="intro" weight="normal" className={styles.body(isDarkTheme)}>
+                  {body}
+                </Text>
+              </AnimateInView>
+            )}
+            {cta && (
+              <AnimateInView animation="slideUp" delay={0.4}>
+                <FlexBox direction="col" className={styles.cta}>
+                  {cta}
+                </FlexBox>
+              </AnimateInView>
+            )}
+          </div>
+        </FlexBox>
       </Container>
     </Container>
   );
