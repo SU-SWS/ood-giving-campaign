@@ -1,5 +1,4 @@
 'use client';
-import { useRef } from 'react';
 import { PopupButton } from '@typeform/embed-react';
 import { type PopupOptions } from '@typeform/embed';
 
@@ -20,7 +19,7 @@ const PopUp = ({
   return (
     <PopupButton
       onClose={handleClose}
-      buttonProps={{ type: 'button', className: className }}
+      buttonProps={{ type: 'button', id, className }}
       noHeading
       keepSession
       id={id}
