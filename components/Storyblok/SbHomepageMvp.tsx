@@ -6,6 +6,7 @@ import { HomepageSplitHero } from '@/components/Homepage/HomepageSplitHero';
 import { TogetherSection } from '@/components/Homepage/TogetherSection';
 import { Changemaker } from '@/components/Homepage/Changemaker';
 import { getNumBloks } from '@/utilities/getNumBloks';
+import { type SbImageType } from '@/components/Storyblok/Storyblok.types';
 
 type SbHomepageMvpProps = {
   blok: {
@@ -13,6 +14,12 @@ type SbHomepageMvpProps = {
     title?: string;
     content?: SbBlokData[];
     changemakerCards?: SbBlokData[];
+    changemakerBgImage?: SbImageType;
+    changemakerHeading1?: string;
+    changemakerHeading2?: string;
+    changemakerHeading3?: SbBlokData[];
+    changemakerIntro?: string;
+    changemakerCta?: SbBlokData[];
     ankle?: SbBlokData[];
     mastheadPicker?: ISbStoryData[];
   };
@@ -23,12 +30,19 @@ export const SbHomepageMvp = ({
     title,
     content,
     changemakerCards,
+    changemakerBgImage: { filename: changemakerBgImageSrc, focus: changemakerBgImageFocus } = {},
+    changemakerHeading1,
+    changemakerHeading2,
+    changemakerHeading3,
+    changemakerIntro,
+    changemakerCta,
     ankle,
     mastheadPicker,
   },
   blok,
 }: SbHomepageMvpProps) => {
   const ChangemakerCards = !!getNumBloks(changemakerCards) ? <CreateBloks blokSection={changemakerCards} /> : undefined;
+  const ChangemakerCta = !!getNumBloks(changemakerCta) ? <CreateBloks blokSection={changemakerCta} /> : undefined;
 
   return (
     <div {...storyblokEditable(blok)}>
@@ -38,7 +52,16 @@ export const SbHomepageMvp = ({
           <Heading as="h1" srOnly>{title || 'Homepage'}</Heading>
           <HomepageSplitHero />
           <CreateBloks blokSection={content} />
-          <Changemaker changemakerCards={ChangemakerCards} />
+          <Changemaker
+            changemakerCards={ChangemakerCards}
+            changemakerBgImageSrc={changemakerBgImageSrc}
+            changemakerBgImageFocus={changemakerBgImageFocus}
+            changemakerHeading1={changemakerHeading1}
+            changemakerHeading2={changemakerHeading2}
+            changemakerHeading3={changemakerHeading3}
+            changemakerIntro={changemakerIntro}
+            changemakerCta={ChangemakerCta}
+          />
           <TogetherSection />
           <CreateBloks blokSection={ankle} />
         </div>
