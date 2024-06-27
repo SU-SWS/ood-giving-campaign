@@ -11,7 +11,7 @@ export const contentWrapper = 'lg:rs-pr-9 ml-0';
 export const heading = 'max-w-1000 rs-mb-1';
 
 export const thumbnailWrapper = 'inline-block';
-export const thumbnail = 'size-[0.75em]';
+export const thumbnail = 'size-100 md:size-150 xl:size-[21.5rem]';
 
 export const body = (isDarktheme: boolean) => cnb('max-w-prose mx-auto rs-mt-4 *:*:leading-snug text-balance mb-0', isDarktheme && 'text-shadow-sm');
 

@@ -152,6 +152,21 @@ export const EventBanner = ({
           </FlexBox>
           <div>
             <Text aria-hidden size="splash" font="druk" leading="druk" className={styles.heading}>{heading}</Text>
+            {featuredName && (
+              <FlexBox alignItems="start" className="grid-gap rs-mt-3">
+                {featuredImageSrc && (
+                  <img
+                    src={getProcessedImage(featuredImageSrc, '215x215', featuredImageFocus)}
+                    alt=""
+                    className={styles.thumbnail}
+                  />
+                )}
+                <div>
+                  <Text as="span" font="serif" size="f6" leading="tight" italic className="block mb-03em -mt-01em">featuring</Text>
+                  <Text as="span" size="f7" font="druk" leading="druk">{featuredName}</Text>
+                </div>
+              </FlexBox>
+            )}
             {body && (
               <AnimateInView animation="slideUp" delay={0.3}>
                 <Text font="serif" variant="intro" weight="normal" className={styles.body(isDarkTheme)}>
