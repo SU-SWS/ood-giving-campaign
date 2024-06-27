@@ -28,6 +28,9 @@ type SbEventBannerProps = {
     gradientTop?: GradientToType;
     gradientBottom?: GradientFromType;
     gradientVia?: GradientViaType;
+    isMultiDay?: boolean;
+    location?: string;
+    dateLocation?: SbBlokData[];
     isHidden?: boolean;
   };
 };
@@ -46,6 +49,9 @@ export const SbEventBanner = ({
     gradientTop,
     gradientBottom,
     gradientVia,
+    isMultiDay,
+    location,
+    dateLocation,
     isHidden,
   },
   blok,
@@ -56,6 +62,7 @@ export const SbEventBanner = ({
 
   const Cta = !!getNumBloks(cta) ? <CreateBloks blokSection={cta} /> : undefined;
   const Body = hasRichText(body) ? <RichText wysiwyg={body} textColor={isDarkTheme ? 'white' : 'black'} /> : undefined;
+  const DateLocation = !!getNumBloks(dateLocation) ? <CreateBloks blokSection={dateLocation} /> : undefined;
 
   return (
     <EventBanner
@@ -74,6 +81,9 @@ export const SbEventBanner = ({
       gradientTop={gradientTop}
       gradientBottom={gradientBottom}
       gradientVia={gradientVia}
+      isMultiDay={isMultiDay}
+      location={location}
+      dateLocation={DateLocation}
     />
   );
 };

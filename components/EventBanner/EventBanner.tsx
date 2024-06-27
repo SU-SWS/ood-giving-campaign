@@ -30,6 +30,9 @@ type EventBannerProps = HTMLAttributes<HTMLDivElement> & {
   gradientTop?: GradientToType;
   gradientBottom?: GradientFromType;
   gradientVia?: GradientViaType;
+  isMultiDay?: boolean;
+  location?: string;
+  dateLocation?: React.ReactNode;
   isHidden?: boolean;
 };
 
@@ -48,6 +51,9 @@ export const EventBanner = ({
   gradientTop,
   gradientBottom,
   gradientVia,
+  isMultiDay,
+  location,
+  dateLocation,
   isHidden,
   ...props
 }: EventBannerProps) => {
@@ -55,8 +61,11 @@ export const EventBanner = ({
   const hasBgGradient = !!gradientTop && !!gradientBottom;
 
   const startDateObj = startDate && new Date(startDate);
+  const endDateObj = endDate && new Date(endDate);
+
   const startDateTime = startDate?.slice(0, 10);
-  const endDateTime = endDate && new Date(endDate);
+  const endDateTime = endDate?.slice(0, 10);
+
   const formattedStartMonth = startDateObj && startDateObj.toLocaleDateString('en-US', {
     month: 'short',
   });
@@ -64,8 +73,15 @@ export const EventBanner = ({
     day: 'numeric',
   });
 
+  const formattedEndMonth = endDateObj && endDateObj.toLocaleDateString('en-US', {
+    month: 'short',
+  });
+  const formattedEndDay = endDateObj && endDateObj.toLocaleDateString('en-US', {
+    day: 'numeric',
+  });
+
   return (
-    <Container {...props} as="section" bgColor={isDarkTheme ? 'black' : 'white'} width="full" pt={8} pb={9} className={styles.root}>
+    <Container {...props} as="article" bgColor={isDarkTheme ? 'black' : 'white'} width="full" pt={8} pb={9} className={styles.root}>
       {!!bgImageSrc && (
         <picture>
           <source
@@ -115,18 +131,27 @@ export const EventBanner = ({
         />
       )}
       <Container className={styles.content}>
-        <Text as="span" font="serif" weight="semibold" size={2} aria-hidden>Event</Text>
-        <FlexBox className="gap-95 rs-mt-8">
-          <div className="shrink-0">
-            <Text as="time" dateTime={startDateTime} className="flex flex-col items-center">
-              <Text as="span" font="serif" weight="semibold" size="f4">{formattedStartMonth}</Text>
-              <Text as="span" font="serif" weight="bold" size="f8">{formattedStartDay}</Text>
-            </Text>
-          </div>
+        <Heading as="h2" font="serif" weight="semibold" size={2} aria-hidden>{`Event${isMultiDay ? 's' : ''}`}<SrOnlyText>{`:${heading}`}</SrOnlyText></Heading>
+        <FlexBox className="flex-col sm:flex-row gap-95 rs-mt-8">
+          <FlexBox alignItems="center" className="flex-row sm:flex-col shrink-0 gap-36">
+            {startDate && (
+              <Text as="time" dateTime={startDateTime} className="flex flex-col items-center">
+                <Text as="span" font="serif" weight="semibold" leading="tight" size={endDate ? 3 : 'f4'}>{formattedStartMonth}</Text>
+                <Text as="span" font="serif" weight="bold" leading="tight" size={endDate ? 'f7' : 'f8'}>{formattedStartDay}</Text>
+              </Text>
+            )}
+            {endDate && (
+              <>
+                <Text as="span" font="serif" weight="semibold" italic size={2} align="center">to</Text>
+                <Text as="time" dateTime={endDateTime} className="flex flex-col items-center">
+                  <Text as="span" font="serif" weight="semibold" leading="tight" size={3}>{formattedEndMonth}</Text>
+                  <Text as="span" font="serif" weight="bold" leading="tight" size="f7">{formattedEndDay}</Text>
+                </Text>
+              </>
+            )}
+          </FlexBox>
           <div>
-            <Heading as="h2" size="splash" font="druk" leading="druk" className={styles.heading}>
-              <SrOnlyText>Event: </SrOnlyText>{heading}
-            </Heading>
+            <Text aria-hidden size="splash" font="druk" leading="druk" className={styles.heading}>{heading}</Text>
             {body && (
               <AnimateInView animation="slideUp" delay={0.3}>
                 <Text font="serif" variant="intro" weight="normal" className={styles.body(isDarkTheme)}>
