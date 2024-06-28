@@ -1,5 +1,6 @@
 interface FormattedDate {
   dateTime: string | null;
+  year: string | null;
   monthShort: string | null;
   monthLong: string | null;
   day: string | null;
@@ -22,14 +23,19 @@ export const formatDate = (dateString: string): FormattedDate => {
   // For use in the datetime attribute in the HTML time element
   const dateTime = dateString ? dateString.slice(0, 10) : null;
 
+  const year = formatDateUS(dateObj, { year: 'numeric' });
+
   // 3-letter month
   const monthShort = formatDateUS(dateObj, { month: 'short' });
+
   // Full month name
   const monthLong = formatDateUS(dateObj, { month: 'long' });
+
   const day = formatDateUS(dateObj, { day: 'numeric' });
 
   return {
     dateTime,
+    year,
     monthShort,
     monthLong,
     day,
