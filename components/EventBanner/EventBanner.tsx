@@ -16,6 +16,7 @@ import {
 } from '@/utilities/datasource';
 import { type SbDateLocationProps } from '@/components/Storyblok/Storyblok.types';
 import * as styles from './EventBanner.styles';
+import { HeroIcon } from '../HeroIcon';
 
 type EventBannerProps = HTMLAttributes<HTMLDivElement> & {
   heading?: string;
@@ -140,7 +141,7 @@ export const EventBanner = ({
           <div>
             <Text aria-hidden size="splash" font="druk" leading="druk" className={styles.heading}>{heading}</Text>
             {featuredName && (
-              <FlexBox alignItems="start" className="grid-gap rs-mt-3">
+              <FlexBox alignItems="center" className="grid-gap rs-mt-3">
                 {featuredImageSrc && (
                   <img
                     src={getProcessedImage(featuredImageSrc, '215x215', featuredImageFocus)}
@@ -149,8 +150,8 @@ export const EventBanner = ({
                   />
                 )}
                 <div>
-                  <Text as="span" font="serif" size="f6" leading="tight" italic className="block mb-03em -mt-01em">featuring</Text>
-                  <Text as="span" size="f7" font="druk" leading="druk">{featuredName}</Text>
+                  <Text as="span" font="serif" size="f4" leading="tight" italic className="block mb-03em">featuring</Text>
+                  <Text as="span" size="f5" font="druk" leading="druk">{featuredName}</Text>
                 </div>
               </FlexBox>
             )}
@@ -164,15 +165,18 @@ export const EventBanner = ({
             {!!dateLocation?.length && (
               <>
                 <Heading as="h3" srOnly>Dates & Locations</Heading>
-                <FlexBox as="ul" direction="col" className="rs-mt-3 list-unstyled">
+                <FlexBox as="ul" direction="col" className="flex flex-col gap-12 rs-mt-3 list-unstyled">
                 {dateLocation.map(({ date, location }) => {
                   const { dateTime, monthShort, day } = formatDate(date);
                   return (
-                    <Text as="li" key={dateTime} className="block">
-                      <Text as="time" dateTime={dateTime} className="block">
+                    <Text as="li" size={1} color="black-20" key={dateTime} className="flex gap-18 lg:gap-38 mb-0">
+                      <Text as="time" dateTime={dateTime} className="block w-[3em]">
                         {monthShort} {day}
                       </Text>
-                      <Text className="block">{location}</Text>
+                      <div className="flex gap-03em">
+                        <HeroIcon title="location" icon="location" className="-mt-01em" />
+                        <Text className="grow" iconProps={{ className: 'grow-0'}}>{location}</Text>
+                      </div>
                     </Text>
                   );
                 })}
