@@ -1,11 +1,11 @@
 import { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
-import { AnimateInView } from '../Animate';
-import { Container } from '../Container';
-import { Heading, SrOnlyText, Text } from '../Typography';
-import { FlexBox } from '../FlexBox';
+import { AnimateInView } from '@/components/Animate';
+import { Container } from '@/components/Container';
+import { Heading, SrOnlyText, Text } from '@/components/Typography';
+import { FlexBox } from '@/components/FlexBox';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import * as styles from './EventBanner.styles';
+import { formatDate } from '@/utilities/formatDate';
 import {
   gradientFroms,
   type GradientFromType,
@@ -14,6 +14,8 @@ import {
   gradientVias,
   type GradientViaType,
 } from '@/utilities/datasource';
+import { type SbDateLocationProps } from '@/components/Storyblok/Storyblok.types';
+import * as styles from './EventBanner.styles';
 
 type EventBannerProps = HTMLAttributes<HTMLDivElement> & {
   heading?: string;
@@ -31,8 +33,8 @@ type EventBannerProps = HTMLAttributes<HTMLDivElement> & {
   gradientBottom?: GradientFromType;
   gradientVia?: GradientViaType;
   isMultiDay?: boolean;
-  location?: string;
-  dateLocation?: React.ReactNode;
+  location?: string; // For single-day events
+  dateLocation?: SbDateLocationProps[]; // For multi-day events
   isHidden?: boolean;
 };
 
@@ -60,25 +62,8 @@ export const EventBanner = ({
   // To render a dark overlay, both a top and bottom gradient color must be selected
   const hasBgGradient = !!gradientTop && !!gradientBottom;
 
-  const startDateObj = startDate && new Date(startDate);
-  const endDateObj = endDate && new Date(endDate);
-
-  const startDateTime = startDate?.slice(0, 10);
-  const endDateTime = endDate?.slice(0, 10);
-
-  const formattedStartMonth = startDateObj && startDateObj.toLocaleDateString('en-US', {
-    month: 'short',
-  });
-  const formattedStartDay = startDateObj && startDateObj.toLocaleDateString('en-US', {
-    day: 'numeric',
-  });
-
-  const formattedEndMonth = endDateObj && endDateObj.toLocaleDateString('en-US', {
-    month: 'short',
-  });
-  const formattedEndDay = endDateObj && endDateObj.toLocaleDateString('en-US', {
-    day: 'numeric',
-  });
+  const { dateTime: startDateTime, monthShort: startMonth, day: startDay } = formatDate(startDate);
+  const { dateTime: endDateTime, monthShort: formattedEndMonth, day: formattedEndDay} = formatDate(endDate);
 
   return (
     <Container {...props} as="article" bgColor={isDarkTheme ? 'black' : 'white'} width="full" pt={8} pb={9} className={styles.root}>
@@ -131,13 +116,15 @@ export const EventBanner = ({
         />
       )}
       <Container className={styles.content}>
-        <Heading as="h2" font="serif" weight="semibold" size={2} aria-hidden>{`Event${isMultiDay ? 's' : ''}`}<SrOnlyText>{`:${heading}`}</SrOnlyText></Heading>
-        <FlexBox className="flex-col sm:flex-row gap-95 rs-mt-8">
-          <FlexBox alignItems="center" className="flex-row sm:flex-col shrink-0 gap-36">
+        <Heading as="h2" font="serif" weight="semibold" size={2} aria-hidden>
+          {`Event${isMultiDay ? 's' : ''}`}<SrOnlyText>{`:${heading}`}</SrOnlyText>
+        </Heading>
+        <FlexBox className="flex-col sm:flex-row gap-45 md:gap-90 2xl:gap-95 rs-mt-8">
+          <FlexBox alignItems="center" className="flex-row sm:flex-col shrink-0 gap-26 md:gap-36">
             {startDate && (
               <Text as="time" dateTime={startDateTime} className="flex flex-col items-center">
-                <Text as="span" font="serif" weight="semibold" leading="tight" size={endDate ? 3 : 'f4'}>{formattedStartMonth}</Text>
-                <Text as="span" font="serif" weight="bold" leading="tight" size={endDate ? 'f7' : 'f8'}>{formattedStartDay}</Text>
+                <Text as="span" font="serif" weight="semibold" leading="tight" size={endDate ? 3 : 'f4'}>{startMonth}</Text>
+                <Text as="span" font="serif" weight="bold" leading="tight" size={endDate ? 'f7' : 'f8'}>{startDay}</Text>
               </Text>
             )}
             {endDate && (
@@ -173,6 +160,24 @@ export const EventBanner = ({
                   {body}
                 </Text>
               </AnimateInView>
+            )}
+            {!!dateLocation?.length && (
+              <>
+                <Heading as="h3" srOnly>Dates & Locations</Heading>
+                <FlexBox as="ul" direction="col" className="rs-mt-3 list-unstyled">
+                {dateLocation.map(({ date, location }) => {
+                  const { dateTime, monthShort, day } = formatDate(date);
+                  return (
+                    <Text as="li" key={dateTime} className="block">
+                      <Text as="time" dateTime={dateTime} className="block">
+                        {monthShort} {day}
+                      </Text>
+                      <Text className="block">{location}</Text>
+                    </Text>
+                  );
+                })}
+                </FlexBox>
+              </>
             )}
             {cta && (
               <AnimateInView animation="slideUp" delay={0.4}>

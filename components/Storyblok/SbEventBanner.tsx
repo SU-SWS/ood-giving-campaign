@@ -3,15 +3,10 @@ import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { EventBanner } from '@/components/EventBanner';
 import { CreateBloks } from '@/components/CreateBloks';
 import { RichText } from '@/components/RichText';
-import { type SbImageType } from './Storyblok.types';
+import { type SbImageType, type SbDateLocationProps } from './Storyblok.types';
 import { hasRichText } from '@/utilities/hasRichText';
 import { getNumBloks } from '@/utilities/getNumBloks';
-import {
-  type GradientFromType,
-  type GradientToType,
-  type GradientViaType,
-  BgBlurType,
-} from '@/utilities/datasource';
+import { type GradientFromType, type GradientToType, type GradientViaType } from '@/utilities/datasource';
 
 type SbEventBannerProps = {
   blok: {
@@ -30,7 +25,7 @@ type SbEventBannerProps = {
     gradientVia?: GradientViaType;
     isMultiDay?: boolean;
     location?: string;
-    dateLocation?: SbBlokData[];
+    dateLocation?: SbDateLocationProps[];
     isHidden?: boolean;
   };
 };
@@ -62,7 +57,6 @@ export const SbEventBanner = ({
 
   const Cta = !!getNumBloks(cta) ? <CreateBloks blokSection={cta} /> : undefined;
   const Body = hasRichText(body) ? <RichText wysiwyg={body} textColor={isDarkTheme ? 'white' : 'black'} /> : undefined;
-  const DateLocation = !!getNumBloks(dateLocation) ? <CreateBloks blokSection={dateLocation} /> : undefined;
 
   return (
     <EventBanner
@@ -83,7 +77,7 @@ export const SbEventBanner = ({
       gradientVia={gradientVia}
       isMultiDay={isMultiDay}
       location={location}
-      dateLocation={DateLocation}
+      dateLocation={dateLocation}
     />
   );
 };
