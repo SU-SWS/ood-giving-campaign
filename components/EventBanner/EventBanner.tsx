@@ -117,10 +117,11 @@ export const EventBanner = ({
         />
       )}
       <Container className={styles.content}>
+        {/* Display SR only heading in the format "Event(s): heading" at the beginning of the content for a11y */}
         <Heading as="h2" font="serif" weight="semibold" size={2} aria-hidden>
           {`Event${isMultiDay ? 's' : ''}`}<SrOnlyText>{`:${heading}`}</SrOnlyText>
         </Heading>
-        <FlexBox className="flex-col sm:flex-row gap-45 md:gap-90 2xl:gap-95 rs-mt-8">
+        <FlexBox className="flex-col sm:flex-row gap-26 md:gap-24 lg:gap-36 xl:60 2xl:gap-95 rs-mt-8">
           <FlexBox alignItems="center" className="flex-row sm:flex-col shrink-0 gap-26 md:gap-36">
             {startDate && (
               <Text as="time" dateTime={startDateTime} className="flex flex-col items-center">
@@ -169,7 +170,7 @@ export const EventBanner = ({
                 {dateLocation.map(({ date, location }) => {
                   const { dateTime, monthShort, day } = formatDate(date);
                   return (
-                    <Text as="li" size={1} color="black-20" key={dateTime} className="flex gap-18 lg:gap-38 mb-0">
+                    <Text as="li" size={1} color={isDarkTheme ? 'black-20' : 'black-80'} key={dateTime} className="flex gap-18 lg:gap-38 mb-0">
                       <Text as="time" dateTime={dateTime} className="block w-[3em]">
                         {monthShort} {day}
                       </Text>
@@ -182,6 +183,12 @@ export const EventBanner = ({
                 })}
                 </FlexBox>
               </>
+            )}
+            {location && (
+              <Text size={1} color={isDarkTheme ? 'black-20' : 'black-80'} className="flex gap-03em rs-mt-3">
+                <HeroIcon title="location" icon="location" className="-mt-01em" />
+                <Text className="grow" iconProps={{ className: 'grow-0'}}>{location}</Text>
+              </Text>
             )}
             {cta && (
               <AnimateInView animation="slideUp" delay={0.4}>
