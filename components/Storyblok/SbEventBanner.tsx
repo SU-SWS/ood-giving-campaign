@@ -1,6 +1,6 @@
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
-import { EventBanner } from '@/components/EventBanner';
+import { EventBanner, type EventBannerHeadingSizeType } from '@/components/EventBanner';
 import { CreateBloks } from '@/components/CreateBloks';
 import { RichText } from '@/components/RichText';
 import { type SbImageType, type SbDateLocationProps } from './Storyblok.types';
@@ -20,6 +20,8 @@ type SbEventBannerProps = {
     featuredName?: string;
     featuredImage?: SbImageType;
     isDarkTheme?: boolean;
+    isSerifHeading?: boolean;
+    headingSize?: EventBannerHeadingSizeType;
     gradientTop?: GradientToType;
     gradientBottom?: GradientFromType;
     gradientVia?: GradientViaType;
@@ -41,6 +43,8 @@ export const SbEventBanner = ({
     featuredName,
     featuredImage: { filename: featuredImageSrc, focus: featuredImageFocus } = {},
     isDarkTheme,
+    isSerifHeading,
+    headingSize,
     gradientTop,
     gradientBottom,
     gradientVia,
@@ -72,6 +76,8 @@ export const SbEventBanner = ({
       featuredImageSrc={featuredImageSrc}
       featuredImageFocus={featuredImageFocus}
       isDarkTheme={isDarkTheme}
+      isSerifHeading={isSerifHeading}
+      headingSize={headingSize}
       gradientTop={gradientTop}
       gradientBottom={gradientBottom}
       gradientVia={gradientVia}
