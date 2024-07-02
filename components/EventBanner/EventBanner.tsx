@@ -66,7 +66,7 @@ export const EventBanner = ({
   isHidden,
   ...props
 }: EventBannerProps) => {
-  // To render a dark overlay, both a top and bottom gradient color must be selected
+  // To render an overlay, both a top and bottom gradient color must be selected
   const hasBgGradient = !!gradientTop && !!gradientBottom;
 
   const { dateTime: startDateTime, monthShort: startMonth, day: startDay } = formatDate(startDate);
@@ -111,7 +111,7 @@ export const EventBanner = ({
           />
         </picture>
       )}
-      {/* Render the overlay if there's a background image, and if background blur or/and gradient is selected */}
+      {/* Render the overlay if there's a background image and if an overlay gradient is selected */}
       {!!bgImageSrc && hasBgGradient && (
         <div
           className={cnb(
@@ -122,24 +122,24 @@ export const EventBanner = ({
           )}
         />
       )}
-      <Container className={styles.content}>
-        {/* Display SR only heading in the format "Event(s): heading" at the beginning of the content for a11y */}
+      <Container className={styles.wrapper}>
+        {/* Attach SR only heading after Event(s): at the beginning of the content for a11y */}
         <Heading as="h2" font="serif" weight="semibold" size={2} aria-hidden>
           {`Event${isMultiDay ? 's' : ''}`}<SrOnlyText>{`:${heading}`}</SrOnlyText>
         </Heading>
-        <FlexBox className="flex-col sm:flex-row gap-26 sm:gap-30 md:gap-36 xl:gap-60 2xl:gap-95 rs-mt-8">
+        <FlexBox direction="col" className={styles.contentWrapper}>
           <AnimateInView animation="slideInFromLeft" delay={0.1}>
-            <FlexBox alignItems="center" className="flex-row sm:flex-col shrink-0 gap-26 md:gap-36">
+            <FlexBox alignItems="center" className={styles.dateWrapper}>
               {startDate && (
-                <Text as="time" dateTime={startDateTime} className="flex flex-col items-center">
-                  <Text as="span" font="serif" weight="semibold" leading="tight" size={endDate ? 3 : 'f4'}>{startMonth}</Text>
-                  <Text as="span" font="serif" weight="bold" leading="tight" size={endDate ? 'f7' : 'f8'}>{startDay}</Text>
+                <Text as="time" dateTime={startDateTime} className={styles.time}>
+                  <Text as="span" font="serif" weight="semibold" leading="tight" size={3}>{startMonth}</Text>
+                  <Text as="span" font="serif" weight="bold" leading="tight" size="f7">{startDay}</Text>
                 </Text>
               )}
               {endDate && (
                 <>
                   <Text as="span" font="serif" weight="semibold" italic size={2} align="center">to</Text>
-                  <Text as="time" dateTime={endDateTime} className="flex flex-col items-center">
+                  <Text as="time" dateTime={endDateTime} className={styles.time}>
                     <Text as="span" font="serif" weight="semibold" leading="tight" size={3}>{formattedEndMonth}</Text>
                     <Text as="span" font="serif" weight="bold" leading="tight" size="f7">{formattedEndDay}</Text>
                   </Text>
@@ -155,7 +155,7 @@ export const EventBanner = ({
             </AnimateInView>
             <AnimateInView animation="slideUp" delay={0.2}>
               {featuredName && (
-                <FlexBox alignItems="center" gap className="rs-mt-3">
+                <FlexBox alignItems="center" gap className={styles.featuredPerson}>
                   {featuredImageSrc && (
                     <img
                       src={getProcessedImage(featuredImageSrc, '200x200', featuredImageFocus)}
@@ -164,8 +164,8 @@ export const EventBanner = ({
                     />
                   )}
                   <div>
-                    <Text as="span" font="serif" size="f4" leading="tight" italic className="block mb-03em">featuring</Text>
-                    <Text as="span" size="f5" font="druk" leading="druk">{featuredName}</Text>
+                    <Text as="span" font="serif" size={3} leading="tight" italic className={styles.featuring}>featuring</Text>
+                    <Text as="span" size="f4" font="druk" leading="druk" className={styles.featuredName}>{featuredName}</Text>
                   </div>
                 </FlexBox>
               )}
@@ -176,19 +176,19 @@ export const EventBanner = ({
               )}
               {!!dateLocation?.length && (
                 <>
-                  <Heading as="h3" srOnly>Dates & Locations</Heading>
-                  <FlexBox as="ul" direction="col" className="flex flex-col gap-12 rs-mt-3 list-unstyled">
+                  <Heading as="h3" srOnly>List of dates & locations</Heading>
+                  <FlexBox as="ul" direction="col" className={styles.dateLocationList}>
                   {dateLocation.map(({ date, location }) => {
                     const { dateTime, monthShort, day } = formatDate(date);
                     return (
-                      <Text as="li" size={1} color={isDarkTheme ? 'black-20' : 'black-80'} key={dateTime} className="flex gap-18 lg:gap-38 mb-0">
-                        <Text as="time" dateTime={dateTime} className="block w-[3em]">
+                      <Text as="li" size={1} color={isDarkTheme ? 'black-20' : 'black-80'} key={dateTime} className={styles.dateLocationListItem}>
+                        <Text as="time" leading="display" dateTime={dateTime} className={styles.date}>
                           {monthShort} {day}
                         </Text>
-                        <div className="flex gap-03em">
-                          <HeroIcon title="location" icon="location" className="-mt-01em" />
-                          <Text className="grow" iconProps={{ className: 'grow-0'}}>{location}</Text>
-                        </div>
+                        <FlexBox alignItems="start" className={styles.locationWrapper}>
+                          <HeroIcon title="Location" icon="location" className={styles.locationIcon} />
+                          <Text leading="display" className="grow">{location}</Text>
+                        </FlexBox>
                       </Text>
                     );
                   })}
@@ -196,9 +196,9 @@ export const EventBanner = ({
                 </>
               )}
               {location && (
-                <Text size={1} color={isDarkTheme ? 'black-20' : 'black-80'} className="flex gap-03em rs-mt-3">
-                  <HeroIcon title="Location" icon="location" className="-mt-01em" />
-                  <Text className="grow" iconProps={{ className: 'grow-0'}}>{location}</Text>
+                <Text size={1} color={isDarkTheme ? 'black-20' : 'black'} className={styles.singleLocationWrapper}>
+                  <HeroIcon title="Location" icon="location" className={styles.locationIcon} />
+                  <Text leading="display" className="grow">{location}</Text>
                 </Text>
               )}
               {cta && (
