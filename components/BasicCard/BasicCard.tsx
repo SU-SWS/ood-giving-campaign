@@ -1,11 +1,9 @@
 import { cnb } from 'cnbuilder';
 import { AnimateInView, type AnimationType } from '@/components/Animate';
-import { NumberCounter } from '@/components/NumberCounter';
 import { Container } from '@/components/Container';
 import { FlexBox } from '@/components/FlexBox';
-import { Heading, type HeadingType, Text } from '../Typography';
+import { Heading, type HeadingType, Text } from '@/components/Typography';
 import { accentBgColors, type AccentColorType, type PaddingType } from '@/utilities/datasource';
-import { splitNumberString } from '@/utilities/splitNumberString';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import * as styles from './BasicCard.styles';
 
@@ -69,16 +67,15 @@ export const BasicCard = ({
             />
           <div className={cnb(styles.content, accentBgColors[bgColor])}>
             {subheading && (
-              <Text 
-              font="sans"
-              leading="display" 
+              <Text
+              leading="display"
               className={styles.subhead}>{subheading}</Text>
             )}
             {heading && (
               <Heading
                 as={headingLevel}
                 font="serif"
-                leading="druk"
+                leading="tight"
                 color={isLightText ? 'white' : 'black'}
                 size={isSmallHeading ? 3 : 4}
                 className={styles.heading}
@@ -94,7 +91,7 @@ export const BasicCard = ({
                   {cta}
                 </div>
               )}
-            
+
           </div>
           {!!textureBar && (
             <div className={styles.texture}>
