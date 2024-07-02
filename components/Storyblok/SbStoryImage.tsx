@@ -1,12 +1,12 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { type ImageAspectRatioType } from '@/utilities/datasource';
-import { type WidthType } from '../WidthBox';
+import { type WidthType } from '@/components/WidthBox';
 import { type PaddingType } from '@/utilities/datasource';
 import { hasRichText } from '@/utilities/hasRichText';
-import { StoryImage } from '../StoryImage';
-import { RichText } from '../RichText';
-import { type AnimationType } from '../Animate';
+import { StoryImage } from '@/components/StoryImage';
+import { RichText } from '@/components/RichText';
+import { type AnimationType } from '@/components/Animate';
 import { type SbImageType } from './Storyblok.types';
 
 type SbStoryImageProps = {

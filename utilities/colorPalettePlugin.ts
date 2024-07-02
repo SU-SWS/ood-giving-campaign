@@ -56,7 +56,4 @@ export const colorNameToHex = {
   'digital-red-xlight': '#F83535',
   white: '#FFFFFF',
   'plum-light': '#734675',
-  'black-50': '#00000080', 
-  'gc-black-10': '#F3F3F9',
-  'gc-black': '#17171A',
 };

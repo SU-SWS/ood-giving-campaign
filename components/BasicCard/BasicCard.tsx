@@ -3,22 +3,26 @@ import { AnimateInView, type AnimationType } from '@/components/Animate';
 import { Container } from '@/components/Container';
 import { FlexBox } from '@/components/FlexBox';
 import { Heading, type HeadingType, Text } from '@/components/Typography';
-import { accentBgColors, type AccentColorType, type PaddingType } from '@/utilities/datasource';
+import {
+  accentBgColors,
+  type AccentColorType,
+  imageAspectRatios,
+  type ImageAspectRatioType,
+} from '@/utilities/datasource';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import * as styles from './BasicCard.styles';
 
 export type BasicCardProps = React.HTMLAttributes<HTMLDivElement> & {
-  subheading?: string;
+  superhead?: string;
   heading?: string;
   headingLevel?: HeadingType;
   isSmallHeading?: boolean;
   isLightText?: boolean;
   bgColor?: AccentColorType;
   body?: React.ReactNode;
-  paddingTop?: PaddingType;
   imageSrc?: string;
   imageFocus?: string;
-  imageAspectRatio?: styles.BasicCardImageAspectRatio;
+  imageAspectRatio?: ImageAspectRatioType;
   cta?: React.ReactNode;
   textureBar?: React.ReactNode;
   animation?: AnimationType;
@@ -26,7 +30,7 @@ export type BasicCardProps = React.HTMLAttributes<HTMLDivElement> & {
 };
 
 export const BasicCard = ({
-  subheading,
+  superhead,
   heading,
   headingLevel = 'h3',
   isSmallHeading,
@@ -37,7 +41,6 @@ export const BasicCard = ({
   imageAspectRatio = '4x3',
   cta,
   textureBar,
-  paddingTop,
   isLightText,
   animation = 'slideUp',
   delay,
@@ -52,24 +55,27 @@ export const BasicCard = ({
       <Container
         as="article"
         width="full"
-        pt={paddingTop}
         className={cnb(styles.root, className)}
         {...props}
       >
         <FlexBox direction="col" className={styles.flex}>
-          {/* If number counter is enabled, aria-hidden the animated heading and add a SR only heading */}
+          {imageSrc && (
             <img
               width={imageAspectRatio === '4x3' ? 800 : 600}
-              height={222}
               alt=""
               loading="lazy"
               src={getProcessedImage(imageSrc, imageSize, imageFocus) || ''}
             />
+          )}
           <div className={cnb(styles.content, accentBgColors[bgColor])}>
-            {subheading && (
+            {superhead && (
               <Text
-              leading="display"
-              className={styles.subhead}>{subheading}</Text>
+                size="base"
+                weight="semibold"
+                leading="display"
+              >
+                {superhead}
+              </Text>
             )}
             {heading && (
               <Heading
@@ -77,7 +83,7 @@ export const BasicCard = ({
                 font="serif"
                 leading="tight"
                 color={isLightText ? 'white' : 'black'}
-                size={isSmallHeading ? 3 : 4}
+                size={isSmallHeading ? 2 : 3}
                 className={styles.heading}
               >
                 {heading}
@@ -86,16 +92,15 @@ export const BasicCard = ({
               <div className={styles.body}>
                 {body}
               </div>
-              {!!cta && (
-                <div className={styles.cta}>
-                  {cta}
-                </div>
-              )}
-
+            {!!cta && (
+              <div className={styles.cta}>
+                {cta}
+              </div>
+            )}
           </div>
           {!!textureBar && (
             <div className={styles.texture}>
-                {textureBar}
+              {textureBar}
             </div>
           )}
         </FlexBox>
