@@ -10,6 +10,7 @@ import { SbCtaBlock } from '@/components/Storyblok/SbCtaBlock';
 import { SbDataCard } from '@/components/Storyblok/SbDataCard';
 import { SbEmbed } from '@/components/Storyblok/SbEmbed';
 import { SbEmbedMedia } from '@/components/Storyblok/SbEmbedMedia';
+import { SbEventBanner } from '@/components/Storyblok/SbEventBanner';
 import { SbGrid } from '@/components/Storyblok/SbGrid';
 import { SbGridAlternating } from '@/components/Storyblok/SbGridAlternating';
 import { SbFeatureMasonry } from '@/components/Storyblok/SbFeatureMasonry';
@@ -48,6 +49,7 @@ export const components = {
   sbDataCard: SbDataCard,
   sbEmbedScript: SbEmbed,
   sbEmbedMedia: SbEmbedMedia,
+  sbEventBanner: SbEventBanner,
   sbGrid: SbGrid,
   sbGridAlternating: SbGridAlternating,
   sbFeatureMasonry: SbFeatureMasonry,

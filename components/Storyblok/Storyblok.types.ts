@@ -41,6 +41,12 @@ export type SbLinkType =
 /**
  * Reusable types for custom Storyblok components
  */
+export type SbDateLocationProps = {
+  _uid: string;
+  date?: string;
+  location?: string;
+};
+
 export type SbNavItemProps = {
   _uid: string;
   label?: string;
@@ -48,6 +54,7 @@ export type SbNavItemProps = {
 };
 
 export type SbTypographyProps = {
+  _uid: string;
   text?: string;
   font?: 'druk' | 'serif';
   size?: FontSizeType;
@@ -56,6 +63,7 @@ export type SbTypographyProps = {
 
 // Used for SbSection background color animation
 export type SbColorStopProps = {
+  _uid: string;
   stop: string;
   hexColor: string;
 };
