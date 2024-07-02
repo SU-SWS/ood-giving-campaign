@@ -10,6 +10,7 @@ import {
   type ImageAspectRatioType,
 } from '@/utilities/datasource';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
+import { getSbImageSize } from '@/utilities/getSbImageSize';
 import * as styles from './BasicCard.styles';
 
 export type BasicCardProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -36,9 +37,9 @@ export const BasicCard = ({
   isSmallHeading,
   bgColor,
   body,
-  imageSrc = '',
+  imageSrc,
   imageFocus,
-  imageAspectRatio = '4x3',
+  imageAspectRatio = '3x2',
   cta,
   textureBar,
   isLightText,
@@ -48,7 +49,12 @@ export const BasicCard = ({
   className,
   ...props
 }: BasicCardProps) => {
-  const imageSize = imageAspectRatio === '4x3' ? '336x222' : '700x700';
+  // const { width: originalWidth, height: originalHeight } = getSbImageSize(imageSrc);
+  // const cropSize = styles.imageCrops[imageAspectRatio];
+  // const cropWidth = parseInt(cropSize?.split('x')[0], 10);
+  // const cropHeight = imageAspectRatio === 'free'
+  //   ? Math.round(originalHeight * 2000 / originalWidth)
+  //   : parseInt(cropSize?.split('x')[1], 10);
 
   return (
     <AnimateInView animation={animation} delay={delay} className={styles.animateWrapper}>
@@ -60,12 +66,15 @@ export const BasicCard = ({
       >
         <FlexBox direction="col" className={styles.flex}>
           {imageSrc && (
-            <img
-              width={imageAspectRatio === '4x3' ? 800 : 600}
-              alt=""
-              loading="lazy"
-              src={getProcessedImage(imageSrc, imageSize, imageFocus) || ''}
-            />
+            <div className={imageAspectRatios[imageAspectRatio]}>
+              <img
+                // width={cropWidth}
+                // height={cropHeight}
+                alt=""
+                loading="lazy"
+                src={getProcessedImage(imageSrc, styles.imageCrops[imageAspectRatio], imageFocus)}
+              />
+            </div>
           )}
           <div className={cnb(styles.content, accentBgColors[bgColor])}>
             {superhead && (
@@ -73,6 +82,7 @@ export const BasicCard = ({
                 size="base"
                 weight="semibold"
                 leading="display"
+                color={isLightText ? 'white' : 'black'}
               >
                 {superhead}
               </Text>
@@ -83,7 +93,7 @@ export const BasicCard = ({
                 font="serif"
                 leading="tight"
                 color={isLightText ? 'white' : 'black'}
-                size={isSmallHeading ? 2 : 3}
+                size={isSmallHeading ? 1 : 2}
                 className={styles.heading}
               >
                 {heading}
