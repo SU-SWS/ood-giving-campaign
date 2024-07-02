@@ -15,6 +15,8 @@ export const accentBgColors = {
   'digital-red-light': 'bg-digital-red-light',
   'digital-red-xlight': 'bg-digital-red-xlight',
   'black-50': 'bg-black-true/50',
+  'gc-black': 'bg-gc-black',
+  'gc-black-10': 'bg-gc-black-10',
 };
 export type AccentColorType = keyof typeof accentBgColors;
 
@@ -35,6 +37,8 @@ export const accentBorderColors = {
   'digital-red-light': 'border-digital-red-light',
   'digital-red-xlight': 'border-digital-red-xlight',
   'black-50': 'border-black-true/50',
+  'gc-black': 'border-gc-black',
+  'gc-black-10': 'border-gc-black-10',
 };
 export type AccentBorderColorType = AccentColorType;
 
@@ -55,6 +59,8 @@ export const accentTextColors = {
   'digital-red-light': 'text-digital-red-light',
   'digital-red-xlight': 'text-digital-red-xlight',
   'black-50': 'text-black-true/50',
+  'gc-black': 'text-gc-black',
+  'gc-black-10': 'text-gc-black-10',
 };
 export type AccentTextColorType = AccentColorType;
 

@@ -1,6 +1,7 @@
 'use client';
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
 import { SbBanner } from '@/components/Storyblok/SbBanner';
+import { SbBasicCard } from '@/components/Storyblok/SbBasicCard';
 import { SbBasicPage } from '@/components/Storyblok/SbBasicPage';
 import { SbBlurryPoster } from '@/components/Storyblok/SbBlurryPoster';
 import { SbCardWysiwyg } from '@/components/Storyblok/SbCardWysiwyg';
@@ -40,6 +41,7 @@ import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
 
 export const components = {
   sbBanner: SbBanner,
+  sbBasicCard: SbBasicCard,
   sbBasicPage: SbBasicPage,
   sbBlurryPoster: SbBlurryPoster,
   sbCardWysiwyg: SbCardWysiwyg,
