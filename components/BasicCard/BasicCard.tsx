@@ -19,6 +19,7 @@ export type BasicCardProps = React.HTMLAttributes<HTMLDivElement> & {
   headingLevel?: HeadingType;
   isSmallHeading?: boolean;
   isLightText?: boolean;
+  isStretched?: boolean;
   bgColor?: AccentColorType;
   body?: React.ReactNode;
   imageSrc?: string;
@@ -35,6 +36,7 @@ export const BasicCard = ({
   heading,
   headingLevel = 'h3',
   isSmallHeading,
+  isStretched,
   bgColor,
   body,
   imageSrc,
@@ -57,14 +59,14 @@ export const BasicCard = ({
     : parseInt(cropSize?.split('x')[1], 10);
 
   return (
-    <AnimateInView animation={animation} delay={delay} className={styles.animateWrapper}>
+    <AnimateInView animation={animation} delay={delay} className={styles.animateWrapper(isStretched)}>
       <Container
         as="article"
         width="full"
         className={cnb(styles.root, className)}
         {...props}
       >
-        <FlexBox direction="col" className={styles.flex}>
+        <FlexBox direction="col" className={styles.flex(isStretched)}>
           {imageSrc && (
             <div className={imageAspectRatios[imageAspectRatio]}>
               <img
@@ -73,6 +75,7 @@ export const BasicCard = ({
                 alt=""
                 loading="lazy"
                 src={getProcessedImage(imageSrc, styles.imageCrops[imageAspectRatio], imageFocus)}
+                className={styles.image}
               />
             </div>
           )}

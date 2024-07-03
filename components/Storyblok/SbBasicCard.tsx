@@ -20,6 +20,7 @@ export type SbBasicCardProps = {
     isSmallHeading?: boolean;
     body: StoryblokRichtext;
     isLightText?: boolean;
+    isStretched?: boolean;
     cta?: SbBlokData[];
     textureBar?: SbBlokData[];
     image?: SbImageType;
@@ -38,6 +39,7 @@ export const SbBasicCard = ({
     heading,
     headingLevel,
     isSmallHeading,
+    isStretched,
     isLightText,
     body,
     image: { filename, focus } = {},
@@ -61,6 +63,7 @@ export const SbBasicCard = ({
       heading={heading}
       headingLevel={headingLevel || 'h3'}
       isSmallHeading={isSmallHeading}
+      isStretched={isStretched}
       isLightText={isLightText}
       imageSrc={filename}
       imageFocus={focus}

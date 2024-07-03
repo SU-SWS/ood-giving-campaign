@@ -1,20 +1,19 @@
 import { cnb } from 'cnbuilder';
 import { type ImageAspectRatioType } from '@/utilities/datasource';
+
 export const root = 'relative overflow-hidden size-full break-words';
+export const animateWrapper = (isStretched: boolean) => cnb(isStretched ? 'h-full' : 'h-auto');
+export const flex = (isStretched: boolean) => cnb(isStretched ? 'h-full' : 'h-auto');
 
-//export const animateWrapper = 'h-full';
-export const animateWrapper = '';
-
-//export const flex = 'h-full';
-export const flex = '';
-export const imageWrapper = (imageAspectRatio: ImageAspectRatioType) => cnb('', {
+export const imageWrapper = (imageAspectRatio: ImageAspectRatioType) => cnb('w-full', {
   'sm:aspect-w-3 sm:aspect-h-4': imageAspectRatio === '3x4',
 });
+export const image = 'w-full h-full object-cover';
 
 export const content = 'rs-px-2 rs-pt-2 rs-pb-3 grow';
-export const superhead = 'mb-10';
-export const heading = 'whitespace-pre-line mb-0';
-export const body = 'rs-mt-1';
+export const superhead = 'mb-10 first:mt-0';
+export const heading = 'whitespace-pre-line mb-0 first:mt-0';
+export const body = 'rs-mt-1 first:mt-0';
 export const cta = 'rs-mt-1';
 export const texture = '*:h-20 *:md:h-20 *:lg:h-20';
 
