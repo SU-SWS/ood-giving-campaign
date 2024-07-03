@@ -49,12 +49,12 @@ export const BasicCard = ({
   className,
   ...props
 }: BasicCardProps) => {
-  // const { width: originalWidth, height: originalHeight } = getSbImageSize(imageSrc);
-  // const cropSize = styles.imageCrops[imageAspectRatio];
-  // const cropWidth = parseInt(cropSize?.split('x')[0], 10);
-  // const cropHeight = imageAspectRatio === 'free'
-  //   ? Math.round(originalHeight * 2000 / originalWidth)
-  //   : parseInt(cropSize?.split('x')[1], 10);
+  const { width: originalWidth, height: originalHeight } = getSbImageSize(imageSrc);
+  const cropSize = styles.imageCrops[imageAspectRatio];
+  const cropWidth = parseInt(cropSize?.split('x')[0], 10);
+  const cropHeight = imageAspectRatio === 'free'
+    ? Math.round(originalHeight * 2000 / originalWidth)
+    : parseInt(cropSize?.split('x')[1], 10);
 
   return (
     <AnimateInView animation={animation} delay={delay} className={styles.animateWrapper}>
@@ -68,8 +68,8 @@ export const BasicCard = ({
           {imageSrc && (
             <div className={imageAspectRatios[imageAspectRatio]}>
               <img
-                // width={cropWidth}
-                // height={cropHeight}
+                width={cropWidth}
+                height={cropHeight}
                 alt=""
                 loading="lazy"
                 src={getProcessedImage(imageSrc, styles.imageCrops[imageAspectRatio], imageFocus)}
@@ -83,6 +83,7 @@ export const BasicCard = ({
                 weight="semibold"
                 leading="display"
                 color={isLightText ? 'white' : 'black'}
+                className={styles.superhead}
               >
                 {superhead}
               </Text>

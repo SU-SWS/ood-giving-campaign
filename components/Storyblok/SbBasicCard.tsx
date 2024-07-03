@@ -61,6 +61,7 @@ export const SbBasicCard = ({
       heading={heading}
       headingLevel={headingLevel || 'h3'}
       isSmallHeading={isSmallHeading}
+      isLightText={isLightText}
       imageSrc={filename}
       imageFocus={focus}
       imageAspectRatio={imageAspectRatio}

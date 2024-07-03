@@ -4,6 +4,9 @@
  * @returns An object containing the width and height of the image, or null if the URL is invalid.
  */
 export const getSbImageSize = (imageSrc: string): { width: number, height: number } | null => {
+  if (!imageSrc) {
+    return { width: 0, height: 0 };
+  }
   if (imageSrc?.startsWith('http')) {
     const imageSize = {
       width: parseInt(imageSrc?.split('/')[5].split('x')[0], 10),
@@ -12,6 +15,4 @@ export const getSbImageSize = (imageSrc: string): { width: number, height: numbe
 
     return imageSize;
   }
-
-  return null;
 };
