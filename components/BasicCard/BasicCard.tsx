@@ -68,7 +68,7 @@ export const BasicCard = ({
       >
         <FlexBox direction="col" className={styles.flex(isStretched)}>
           {imageSrc && (
-            <div className={imageAspectRatios[imageAspectRatio]}>
+            <div className={styles.imageWrapper}>
               <img
                 width={cropWidth}
                 height={cropHeight}

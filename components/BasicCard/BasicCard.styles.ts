@@ -5,9 +5,7 @@ export const root = 'relative overflow-hidden size-full break-words';
 export const animateWrapper = (isStretched: boolean) => cnb(isStretched ? 'h-full' : 'h-auto');
 export const flex = (isStretched: boolean) => cnb(isStretched ? 'h-full' : 'h-auto');
 
-export const imageWrapper = (imageAspectRatio: ImageAspectRatioType) => cnb('w-full', {
-  'sm:aspect-w-3 sm:aspect-h-4': imageAspectRatio === '3x4',
-});
+export const imageWrapper = 'w-full object-cover grow-0';
 export const image = 'w-full h-full object-cover';
 
 export const content = 'rs-px-2 rs-pt-2 rs-pb-3 grow';
