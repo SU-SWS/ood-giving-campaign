@@ -55,7 +55,7 @@ export const BasicCard = ({
   const cropSize = styles.imageCrops[imageAspectRatio];
   const cropWidth = parseInt(cropSize?.split('x')[0], 10);
   const cropHeight = imageAspectRatio === 'free'
-    ? Math.round(originalHeight * 2000 / originalWidth)
+    ? Math.round(originalHeight * 600 / originalWidth)
     : parseInt(cropSize?.split('x')[1], 10);
 
   return (
@@ -74,7 +74,7 @@ export const BasicCard = ({
                 height={cropHeight}
                 alt=""
                 loading="lazy"
-                src={getProcessedImage(imageSrc, styles.imageCrops[imageAspectRatio], imageFocus)}
+                src={getProcessedImage(imageSrc, cropSize, imageFocus)}
                 className={styles.image}
               />
             </div>
