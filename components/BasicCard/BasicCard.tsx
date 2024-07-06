@@ -103,9 +103,11 @@ export const BasicCard = ({
                 {heading}
               </Heading>
             )}
+            {!!body && (
               <div className={styles.body}>
                 {body}
               </div>
+            )}
             {!!cta && (
               <div className={styles.cta}>
                 {cta}

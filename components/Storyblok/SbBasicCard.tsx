@@ -52,7 +52,14 @@ export const SbBasicCard = ({
   },
   blok,
 }: SbBasicCardProps) => {
-  const Body = hasRichText(body) ? <RichText wysiwyg={body} baseFontSize="card" textColor={isLightText ? 'white' : 'black'} /> : undefined;
+  const Body = hasRichText(body) ?
+    <RichText
+      wysiwyg={body}
+      baseFontSize="card"
+      textColor={isLightText ? 'white' : 'black'}
+      linkColor = {isLightText ? 'white' : 'unset'}
+    />
+    : undefined;
   const Cta = !!getNumBloks(cta) ? <CreateBloks blokSection={cta} /> : undefined;
   const TextureBar = !!getNumBloks(textureBar) ? <CreateBloks blokSection={textureBar} /> : undefined;
 

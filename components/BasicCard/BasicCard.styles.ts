@@ -1,5 +1,4 @@
 import { cnb } from 'cnbuilder';
-import { type ImageAspectRatioType } from '@/utilities/datasource';
 
 export const root = 'relative overflow-hidden size-full break-words';
 export const animateWrapper = (isStretched: boolean) => cnb(isStretched ? 'h-full' : 'h-auto');

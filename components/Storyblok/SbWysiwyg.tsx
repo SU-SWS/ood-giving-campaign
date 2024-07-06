@@ -58,6 +58,7 @@ export const SbWysiwyg = ({
         textColor={isDarkTheme || isLightText ? 'white' : 'black'}
         textAlign={textAlign}
         bgColor={bgColor}
+        linkColor={isDarkTheme || isLightText ? 'digital-red-xlight' : 'unset'}
       />
     </WidthBox>
   );
