@@ -25,9 +25,8 @@ const chipDark = 'border-gc-black-80 bg-gc-black-90 text-gc-black-40 hocus:borde
 
 export const ctaVariants = {
   solid: 'block w-fit relative z-10 font-normal decoration-2 decoration-transparent underline-offset-4 hocus:decoration-white/80 leading-display bg-digital-red text-white hocus:text-white border-2 border-digital-red-light focus-visible:outline-none after:block after:content-[""] after:absolute after:top-0 after:left-0 after:w-0 after:h-full after:bg-gradient-to-r after:from-cardinal-red after:to-cardinal-red-dark after:transition-all after:z-[-1] hocus:after:w-full overflow-hidden',
-  inline: 'inline underline decoration-1 hocus:decoration-2 underline-offset-2',
-  inlineDark: 'inline text-digital-red-xlight hocus:text-white underline decoration-1 hocus:decoration-2 underline-offset-2',
-  ghost: 'block w-fit font-normal leading-display bg-transparent hocus:text-current border-2 border-current focus-visible:outline-none underline-offset-4 decoration-transparent hocus:decoration-current',
+  inline: 'inline underline decoration-1 hocus:decoration-2 underline-offset-2', // inline links in WYSIWYG for example
+  ghost: 'block w-fit font-normal leading-display bg-transparent border-2 border-current focus-visible:outline-none underline-offset-4 decoration-transparent hocus:decoration-current',
   'ghost-swipe': `${ghostSwipeBase} bg-transparent`,
   'ghost-swipe-overlay': `${ghostSwipeBase} bg-black-true/40`, // Use for split poster over images
   link: '!p-0 inline-block w-fit font-normal leading-display text-current hocus:text-current no-underline decoration-2 underline-offset-4 focus-visible:ring-2 focus-visible:ring-digital-red-light focus-visible:outline-none focus-visible:rounded',
@@ -46,10 +45,12 @@ export const ctaVariants = {
 };
 
 export const ctaColors = {
-  black: 'text-gc-black',
-  white: 'text-white',
-  'digital-red': 'text-digital-red',
-  current: 'text-current',
+  black: 'text-gc-black hocus:text-gc-black',
+  white: 'text-white hocus:text-white',
+  'digital-red': 'text-digital-red hocus:text-digital-red',
+  'digital-red-xlight': 'text-digital-red-xlight hocus:text-white',
+  current: 'text-current hocus:text-current',
+  unset: '',
 };
 
 const tlBase = 'rounded-tl-[1.6rem] lg:rounded-tl-[2rem]';
@@ -93,7 +94,6 @@ export const ctaSizeMap: CtaSizeMapType = {
   solid: 'default',
   ghost: 'default',
   inline: 'unset',
-  inlineDark: 'unset',
   'ghost-swipe': 'default',
   'ghost-swipe-overlay': 'default',
   mainNavFeatured: 'unset',
