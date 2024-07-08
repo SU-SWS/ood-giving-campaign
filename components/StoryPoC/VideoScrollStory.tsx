@@ -14,7 +14,6 @@ export const VideoScrollStory = () => {
   const robinsEgg = colorNameToHex['robins-egg'];
   const lime = colorNameToHex.lime;
   const lavender = colorNameToHex.lavender;
-  const fuchsia = colorNameToHex.fuchsia;
   const plumLight = colorNameToHex['plum-light'];
   const colorChange = useTransform(scrollYProgress, [0, 0.33, 0.67, 1], [robinsEgg, lime, lavender, plumLight]);
 

@@ -1,6 +1,7 @@
 'use client';
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
 import { SbBanner } from '@/components/Storyblok/SbBanner';
+import { SbBasicCard } from '@/components/Storyblok/SbBasicCard';
 import { SbBasicPage } from '@/components/Storyblok/SbBasicPage';
 import { SbBlurryPoster } from '@/components/Storyblok/SbBlurryPoster';
 import { SbCardWysiwyg } from '@/components/Storyblok/SbCardWysiwyg';
@@ -10,6 +11,7 @@ import { SbCtaBlock } from '@/components/Storyblok/SbCtaBlock';
 import { SbDataCard } from '@/components/Storyblok/SbDataCard';
 import { SbEmbed } from '@/components/Storyblok/SbEmbed';
 import { SbEmbedMedia } from '@/components/Storyblok/SbEmbedMedia';
+import { SbEventBanner } from '@/components/Storyblok/SbEventBanner';
 import { SbGrid } from '@/components/Storyblok/SbGrid';
 import { SbGridAlternating } from '@/components/Storyblok/SbGridAlternating';
 import { SbFeatureMasonry } from '@/components/Storyblok/SbFeatureMasonry';
@@ -39,6 +41,7 @@ import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
 
 export const components = {
   sbBanner: SbBanner,
+  sbBasicCard: SbBasicCard,
   sbBasicPage: SbBasicPage,
   sbBlurryPoster: SbBlurryPoster,
   sbCardWysiwyg: SbCardWysiwyg,
@@ -48,6 +51,7 @@ export const components = {
   sbDataCard: SbDataCard,
   sbEmbedScript: SbEmbed,
   sbEmbedMedia: SbEmbedMedia,
+  sbEventBanner: SbEventBanner,
   sbGrid: SbGrid,
   sbGridAlternating: SbGridAlternating,
   sbFeatureMasonry: SbFeatureMasonry,

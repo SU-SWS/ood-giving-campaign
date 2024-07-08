@@ -1,6 +1,6 @@
 {
   "name": "ood-giving-campaign",
-  "version": "2.2.2",
+  "version": "2.4.0",
   "description": "Momentum",
   "author": "Stanford University",
   "keywords": [
@@ -34,6 +34,7 @@
     "@headlessui/react": "^2.1.0",
     "@heroicons/react": "^2.1.4",
     "@netlify/plugin-nextjs": "^5.3.3",
+    "@next/third-parties": "^14.2.4",
     "@storyblok/react": "^3.0.10",
     "@typeform/embed-react": "^3.17.0",
     "cnbuilder": "^3.1.0",

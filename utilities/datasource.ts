@@ -11,10 +11,13 @@ export const accentBgColors = {
   spirited: 'bg-spirited',
   white: 'bg-white',
   'cardinal-red': 'bg-cardinal-red',
+  'cardinal-red-xdark': 'bg-cardinal-red-xdark',
   'digital-red': 'bg-digital-red',
   'digital-red-light': 'bg-digital-red-light',
   'digital-red-xlight': 'bg-digital-red-xlight',
   'black-50': 'bg-black-true/50',
+  'gc-black': 'bg-gc-black',
+  'gc-black-10': 'bg-gc-black-10',
 };
 export type AccentColorType = keyof typeof accentBgColors;
 
@@ -31,10 +34,13 @@ export const accentBorderColors = {
   spirited: 'border-spirited',
   white: 'border-white',
   'cardinal-red': 'border-cardinal-red',
+  'cardinal-red-xdark': 'border-cardinal-red-xdark',
   'digital-red': 'border-digital-red',
   'digital-red-light': 'border-digital-red-light',
   'digital-red-xlight': 'border-digital-red-xlight',
   'black-50': 'border-black-true/50',
+  'gc-black': 'border-gc-black',
+  'gc-black-10': 'border-gc-black-10',
 };
 export type AccentBorderColorType = AccentColorType;
 
@@ -51,10 +57,13 @@ export const accentTextColors = {
   spirited: 'text-spirited',
   white: 'text-white',
   'cardinal-red': 'text-cardinal-red',
+  'cardinal-red-xdark': 'text-cardinal-red-xdark',
   'digital-red': 'text-digital-red',
   'digital-red-light': 'text-digital-red-light',
   'digital-red-xlight': 'text-digital-red-xlight',
   'black-50': 'text-black-true/50',
+  'gc-black': 'text-gc-black',
+  'gc-black-10': 'text-gc-black-10',
 };
 export type AccentTextColorType = AccentColorType;
 
