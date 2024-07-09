@@ -25,6 +25,7 @@ export type RichTextProps = {
   type?: 'default' | 'card';
   baseFontSize?: RichTextBaseFontSizeType;
   textColor?: 'black' | 'white' | 'black-70';
+  linkColor?: 'unset' | 'white' | 'digital-red-xlight';
   bgColor?: 'black' | 'black-50' | 'black-60' | 'black-70' | 'white' | 'none';
   textAlign?: TextAlignType;
   className?: string;
@@ -50,6 +51,7 @@ export const RichText = ({
   type,
   baseFontSize = 'default',
   textColor = 'black',
+  linkColor = 'unset',
   bgColor = 'none',
   textAlign = 'left',
   className,
@@ -84,7 +86,8 @@ export const RichText = ({
         return (
           <CtaLink
             sbLink={sbLink}
-            variant={textColor === 'white' ? 'inlineDark' : 'inline'}
+            variant="inline"
+            color={linkColor}
             className="*:inline"
             // Custom link attributes are not supported by the rich text renderer currently
             // Adding rel="noopener" for all eternal links for security reasons

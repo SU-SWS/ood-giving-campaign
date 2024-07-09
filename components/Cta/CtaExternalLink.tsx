@@ -17,7 +17,7 @@ export const CtaExternalLink = React.forwardRef<HTMLAnchorElement, CtaExternalLi
   (props, ref) => {
     const {
       variant = 'link',
-      color = variant !== 'inline' && variant !== 'inlineDark' ? 'white' : '',
+      color = variant !== 'inline' ? 'white' : '',
       size,
       curve,
       icon,

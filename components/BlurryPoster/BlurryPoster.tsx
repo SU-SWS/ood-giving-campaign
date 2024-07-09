@@ -17,6 +17,7 @@ import {
 } from '@/utilities/datasource';
 import { type SbTypographyProps } from '@/components/Storyblok/Storyblok.types';
 import { taxonomyMap, type TaxonomyType } from '@/utilities/taxonomyMaps';
+import { formatDate } from '@/utilities/formatDate';
 import * as styles from './BlurryPoster.styles';
 
 /**
@@ -86,14 +87,12 @@ export const BlurryPoster = ({
   className,
   ...props
 }: BlurryPosterProps) => {
-  const dateTime = publishedDate && new Date(publishedDate);
-  const formattedDate = dateTime && dateTime.toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  });
-  // We're using the date only (no time) version of the date picker so trimming the time off
-  const date = publishedDate?.slice(0, 10);
+  const {
+    dateTime,
+    monthLong,
+    day,
+    year,
+  } = formatDate(publishedDate);
 
   let i = 1;
 
@@ -215,8 +214,8 @@ export const BlurryPoster = ({
                   {byline && (
                     <Text>{byline}</Text>
                   )}
-                  {date && (
-                    <time dateTime={date}>{formattedDate}</time>
+                  {publishedDate && (
+                    <time dateTime={dateTime}>{`${monthLong} ${day}, ${year}`}</time>
                   )}
                 </div>
               )}

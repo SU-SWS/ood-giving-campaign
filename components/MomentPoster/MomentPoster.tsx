@@ -1,9 +1,9 @@
 import { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
-import { AnimateInView } from '../Animate';
-import { Container } from '../Container';
-import { Heading, Text } from '../Typography';
-import { FlexBox } from '../FlexBox';
+import { AnimateInView } from '@/components/Animate';
+import { Container } from '@/components/Container';
+import { Heading, Text } from '@/components/Typography';
+import { FlexBox } from '@/components/FlexBox';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import * as styles from './MomentPoster.styles';
 import {
