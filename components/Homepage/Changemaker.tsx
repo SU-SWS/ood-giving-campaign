@@ -10,6 +10,9 @@ type ChangemakerProps = React.HTMLAttributes<HTMLDivElement> & {
 export const Changemaker = ({
   changemakerCards,
 }: ChangemakerProps) => {
+  if (!changemakerCards) {
+    return null;
+  }
   const bgImage = getProcessedImage('https://a-us.storyblok.com/f/1005200/3089x2048/aee2ea28c6/21664-18-0021_cmyk.jpg', '2000x0');
 
   return (

@@ -242,7 +242,7 @@ export const SbSection = ({
                 font={isSerifHeader ? 'serif' : 'sans'}
                 weight={isSerifHeader ? 'semibold' : 'normal'}
                 align={headerAlign}
-                color={bgColor === 'black' ? 'black-20' : 'black'}
+                color={bgColor === 'black' ? 'white' : 'black'}
                 noMargin
                 className={styles.subhead(headerAlign)}
               >
