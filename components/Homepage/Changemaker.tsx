@@ -35,9 +35,9 @@ export const Changemaker = ({
       style={{ backgroundImage: `url('${bgImage}')` }}
       py={10}
     >
-      <div className="absolute top-0 left-0 size-full bg-gradient-to-t from-gc-black via-gc-black/40" />
+      <div className="absolute top-0 left-0 size-full bg-gradient-to-t from-gc-black to-black/30 lg:to-transparent via-gc-black/40" />
       <Container className="relative z-10">
-        <Heading size="f7" font="serif" leading="tight" align="center" className="max-w-[110rem] mx-auto rs-mb-4">
+        <Heading font="serif" leading="tight" align="center" className="fluid-type-6 md:fluid-type-7 max-w-[110rem] mx-auto rs-mb-4">
           <AnimateInView animation="slideInFromRight">
             <Text as="span" font="serif" className="block">
               {changemakerHeading1}
