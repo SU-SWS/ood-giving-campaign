@@ -19,18 +19,21 @@ export const paletteAccentColors: PaletteAccentColorType = {
   '#005776': 'sapphire',
   '#E04F39': 'spirited',
   '#8C1515': 'cardinal-red',
+  '#7A0000': 'cardinal-red-xdark',
   '#B1040E': 'digital-red',
   '#E50808': 'digital-red-light',
   '#F83535': 'digital-red-xlight',
   '#FFFFFF': 'white',
   '#00000080': 'black-50',
+  '#F3F3F9': 'gc-black-10',
+  '#17171A': 'gc-black',
 };
 
 /**
  * Writing all the hex colors out for PaletteAccentHexColorType since when I tried to use
  * keyof typeof paletteAccentColors, it infers that the type is string | number which is incorrect
  */
-export type PaletteAccentHexColorType = '#ECC7CD' | '#E31C79' | '#C5B4E3' | '#DBE442' | '#175E54' | '#485CC7' | '#E98300' | '#77C5D5' | '#005776' | '#E04F39' | '#8C1515' | '#B1040E' | '#E50808' | '#F83535' | '#FFFFFF' | '#00000080';
+export type PaletteAccentHexColorType = '#ECC7CD' | '#E31C79' | '#C5B4E3' | '#DBE442' | '#175E54' | '#485CC7' | '#E98300' | '#77C5D5' | '#005776' | '#E04F39' | '#8C1515' | '#7A0000' | '#B1040E' | '#E50808' | '#F83535' | '#FFFFFF' | '#00000080' | '#F3F3F9' | '#17171A';
 
 /**
  * Use for Framer Motion color mapping animation only
@@ -54,5 +57,4 @@ export const colorNameToHex = {
   'digital-red-xlight': '#F83535',
   white: '#FFFFFF',
   'plum-light': '#734675',
-  'black-50': '#00000080',
 };

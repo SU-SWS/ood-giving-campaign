@@ -62,7 +62,7 @@ export const imageCropsMobile = {
   '8x5': '640x400',
   '9x16': '630x1120',
   '16x9': '640x360',
-  'free': '575x0',
+  'free': '600x0',
 };
 
 export const root = (isFullHeight?: boolean) => cnb(isFullHeight ? 'h-full' : '');

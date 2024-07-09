@@ -46,7 +46,6 @@ export const StoryImage = ({
   className,
   ...props
 }: StoryImageProps) => {
-
   const { width: originalWidth, height: originalHeight } = getSbImageSize(imageSrc);
   const cropSize = styles.imageCropsDesktop[aspectRatio];
   /**
