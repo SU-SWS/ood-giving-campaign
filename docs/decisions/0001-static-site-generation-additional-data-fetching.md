@@ -1,4 +1,4 @@
-# Use Markdown Any Decision Records
+# Fetching additional data for dynamic components
 
 ## Context and Problem Statement
 
