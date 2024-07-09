@@ -25,6 +25,9 @@ export const Changemaker = ({
   changemakerIntro,
   changemakerCta,
 }: ChangemakerProps) => {
+  if (!changemakerCards) {
+    return null;
+  }
   const bgImage = getProcessedImage(changemakerBgImageSrc, '2000x1500', changemakerBgImageFocus);
 
   return (
