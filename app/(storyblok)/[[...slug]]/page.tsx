@@ -7,22 +7,15 @@ import { resolveRelations } from '@/utilities/resolveRelations';
 import { getPageMetadata } from '@/utilities/getPageMetadata';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
 import { notFound } from 'next/navigation';
+import getStoryData from '@/utilities/data/getStoryData';
+import getStoryList from '@/utilities/data/getStoryList';
 
 type PathsType = {
   slug: string[];
 };
 
 type ParamsType = {
-  slug: string[];
-};
-
-type FilterQuery = {
-  initiatives?: {
-    in_array: string;
-  };
-  themes?: {
-    in_array: string;
-  };
+  params: PathsType;
 };
 
 // Storyblok bridge options.
@@ -89,114 +82,17 @@ export async function generateStaticParams() {
   return paths;
 };
 
-
-/**
- * Get the data out of the Storyblok API for the page.
- *
- * Make sure to not export the below functions otherwise there will be a typescript error
- * https://github.com/vercel/next.js/discussions/48724
- */
-async function getStoryData(params: { slug: string[] }) {
-  const activeEnv = process.env.NODE_ENV || 'development';
-  const storyblokApi: StoryblokClient = getStoryblokApi();
-  const slug = Array.isArray(params.slug) ? params.slug.join('/') : 'home';
-
-  const sbParams: ISbStoriesParams = {
-    version: activeEnv === 'development' ? 'draft' : 'published',
-    cv: activeEnv === 'development' ? Date.now() : undefined,
-    resolve_relations: resolveRelations,
-  };
-
-  try {
-    const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
-    return story;
-  }
-  catch (error) {
-    if (typeof error === 'string') {
-      try {
-        const parsedError = JSON.parse(error);
-        if (parsedError.status === 404) {
-          return { data: 404 };
-        }
-      }
-      catch (e) {
-        console.error('Error', error);
-      }
-    }
-  }
-
-  return { data: 404 };
-};
-
-/**
- * Get a list of stories that are of component sbStoryMvp in reverse chronological order.
- * This is used for the story filter pages.
- */
-async function getStoryList(params: { slug: string[] }) {
-  const activeEnv = process.env.NODE_ENV || 'development';
-  const storyblokApi: StoryblokClient = getStoryblokApi();
-  const fullslug = params.slug ? params.slug.join('/') : 'home';
-  let slug = '';
-  let orQuery: FilterQuery[] = [];
-
-  /**
-   * If the page is inside the folder stories/list/ (story list pages filtered by taxonomy),
-   * add a filter query to only return stories that has an initiative or theme that matches the slug of that story.
-   * E.g., if the full slug is stories/list/preparing-citizens,
-   * only return stories that have 'preparing-citizens' tagged as a theme or initiative.
-   */
-  if (fullslug.includes('stories/list/')) {
-    slug = params.slug[params.slug.length - 1];
-    orQuery = [
-      {
-        initiatives: {
-          in_array: slug,
-        },
-      },
-      {
-        themes: {
-          in_array: slug,
-        },
-      },
-    ];
-  }
-
-  const sbParams: ISbStoriesParams = {
-    version: 'published', // Only show published stories for now
-    cv: activeEnv === 'development' ? Date.now() : undefined,
-    starts_with: 'stories/', // Only return stories that are inside the stories/ folder
-    sort_by: 'first_published_at:desc',
-    // When the number of stories gets larger, we should think about pagination. For now get the max number 100.
-    per_page: 100,
-    filter_query: {
-      component: {
-        in: 'sbStoryMvp', // Only return stories that are of component sbStoryMvp.
-      },
-      __or: orQuery,
-    },
-  };
-
-  try {
-    const storyList = await storyblokApi.getAll('cdn/stories', sbParams);
-    return storyList;
-  }
-  catch (error) {
-    console.error('Error fetching stories:', error);
-    return [];
-  }
-}
-
 /**
  * Generate the SEO metadata for the page.
  */
-export async function generateMetadata({ params }: { params: ParamsType }): Promise<Metadata> {
+export async function generateMetadata({ params }: ParamsType): Promise<Metadata> {
   try {
-    const { data } = await getStoryData(params);
+    const slug = params.slug ? params.slug.join('/') : 'home';
+    const { data } = await getStoryData({ path: slug });
     if (!data.story || !data.story.content) {
       notFound();
     }
     const blok = data.story.content;
-    const slug = params.slug ? params.slug.join('/') : 'home';
     const meta = getPageMetadata({ blok, slug });
     return meta;
   }
@@ -210,27 +106,34 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
 /**
  * Fetch the path data for the page and render it.
  */
-export default async function Page({ params }: { params: ParamsType }) {
-  const { data } = await getStoryData(params);
+export default async function Page({ params }: ParamsType) {
   const slug = params.slug ? params.slug.join('/') : 'home';
+  // Get data out of the API.
+  const { data } = await getStoryData({ path: slug });
 
-  let storyList;
-  if (slug === 'stories' || slug.includes('stories/list/')) {
-    storyList = await getStoryList(params);
+  // Define an additional data container to pass through server data fetch to client components.
+  // as everything below the `StoryblokStory` is a client side component.
+  let extra = {};
+
+  // Get additional data for those stories that need it.
+  if (data?.story?.content?.component === 'sbStoryFilterPage') {
+    extra = await getStoryList({ path: slug });
   }
 
+  // Failed to fetch from API because story slug was not found.
   if (data === 404) {
     notFound();
   }
 
+  // Return the story.
   return (
     <StoryblokStory
       story={data.story}
-      storyList={storyList}
+      extra={extra}
       bridgeOptions={bridgeOptions}
       slug={slug}
       name={data.story.name}
     />
   );
-
 };
+

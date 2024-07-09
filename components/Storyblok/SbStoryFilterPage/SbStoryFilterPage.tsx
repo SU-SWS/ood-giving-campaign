@@ -35,7 +35,7 @@ type SbStoryFilterPageProps = {
   };
   name?: string; // The name of the Storyblok story
   slug?: string;
-  storyList?: ISbStoryData[];
+  extra?: ISbStoryData[];
 };
 
 export const SbStoryFilterPage = ({
@@ -51,7 +51,7 @@ export const SbStoryFilterPage = ({
   blok,
   name,
   slug,
-  storyList,
+  extra,
 }: SbStoryFilterPageProps) => {
   /**
    * Extract uuid's from the featured stories into a Set.
@@ -65,7 +65,7 @@ export const SbStoryFilterPage = ({
    * to exclude items with uuid that are in the featuredStoryUUIDSet,
    * ie, we remove stories that are already added as featured stories cards.
    */
-  const filteredStoryList = storyList.filter(item => !featuredStoryUUIDSet.has(item.uuid));
+  const filteredStoryList = extra.filter(item => !featuredStoryUUIDSet.has(item.uuid));
 
   const hasIntro = hasRichText(intro);
   const hasFeaturedStories = !!getNumBloks(featuredStories);

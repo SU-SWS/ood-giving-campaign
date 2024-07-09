@@ -2,8 +2,8 @@ import { cnb } from 'cnbuilder';
 
 /**
  * We originally used container query for this component, but removed it because Firefox didn't like it
- * when using that together with the Headless UI Dialog. It caused a weird bug when you have the dialog open and click around,
- * sometimes it will bring the body content under the dialog overlay to the front even though it is no focasable.
+ * when using that together with the Headless UI Dialog. It caused a weird bug when you have the dialog open and click
+ * around sometimes it will bring the body content under the dialog overlay to the front even though it is no focusable.
  */
 export const root = (isHorizontal: boolean) => cnb('relative w-full mx-auto break-words max-w-[29rem]', {
   'sm:max-w-300 lg:max-w-[35rem]': !isHorizontal,
