@@ -1,3 +1,4 @@
+import { type ISbStoryData } from '@storyblok/react/rsc';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { type SbImageType, type SbLinkType } from '@/components/Storyblok/Storyblok.types';
 import { config } from './config';
@@ -18,6 +19,7 @@ type PageMetadataProps = {
     title: string;
     dek?: string;
     heroImage?: SbImageType;
+    heroPicker?: ISbStoryData[];
     bgImage?: SbImageType;
     noindex?: boolean;
     canonicalUrl?: SbLinkType;
@@ -31,6 +33,7 @@ export const getPageMetadata = ({
     title: pageTitle,
     dek,
     heroImage: { filename = '', focus = '' } = {},
+    heroPicker,
     bgImage: { filename: bgFilename = '', focus: bgFocus = '' } = {},
     noindex = false,
     canonicalUrl,
@@ -49,13 +52,15 @@ export const getPageMetadata = ({
 }: PageMetadataProps) => {
   // We only care about canonical URL for production so ok to use the prod URL here
   const { siteTitle, siteDescription, siteUrlProd: siteUrl } = config;
+  const heroPickerImage = heroPicker?.[0]?.content?.heroImage?.filename;
+  const heroPickerFocus = heroPicker?.[0]?.content?.heroImage?.focus;
 
   const title = seoTitle || pageTitle;
   const searchTitle = slug === 'home' ? 'Home' : title;
   const description = seoDescription || dek || siteDescription;
   const ogTitle = og_title || title;
   const ogDescription = og_description || description;
-  const heroImageCropped = getProcessedImage(filename || bgFilename, '1200x630', focus || bgFocus);
+  const heroImageCropped = getProcessedImage(filename || bgFilename || heroPickerImage, '1200x630', focus || bgFocus || heroPickerFocus);
 
   /**
    * The og_image and twitter_image fields provided by the Storyblok SEO plugin has no image focus support
