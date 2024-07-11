@@ -28,7 +28,7 @@ import { SbSection } from '@/components/Storyblok/SbSection';
 import { SbSidebarCard } from '@/components/Storyblok/SbSidebarCard';
 import { SbSpacer } from '@/components/Storyblok/SbSpacer';
 import { SbStoryCard } from '@/components/Storyblok/SbStoryCard';
-import { SbStoryFilterPage } from '@/components/Storyblok/SbStoryFilterPage/SbStoryFilterPage';
+import { SbStoryFilterPage } from '@/components/Storyblok/SbStoryFilterPage';
 import { SbStoryImage } from '@/components/Storyblok/SbStoryImage';
 import { SbStoryListHero } from '@/components/Storyblok/SbStoryListHero';
 import { SbStoryListNav } from '@/components/Storyblok/SbStoryListNav';
