@@ -38,7 +38,7 @@ async function getStoryList({ path }: getStoryDataProps) {
 
   // For more related documentation see app/(storyblok)/[[...slug]]/page.tsx
   const sbParams: ISbStoriesParams = {
-    version: 'published',
+    version: activeEnv === 'development' ? 'draft' : 'published',
     cv: activeEnv === 'development' ? Date.now() : undefined,
     starts_with: 'stories/',
     sort_by: 'first_published_at:desc',
