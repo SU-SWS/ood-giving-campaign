@@ -1,5 +1,6 @@
 export type getStoryDataProps = {
   path: string;
+  isEditor?: boolean;
 };
 
 export type PageProps = {
