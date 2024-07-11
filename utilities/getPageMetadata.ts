@@ -60,7 +60,7 @@ export const getPageMetadata = ({
   const description = seoDescription || dek || siteDescription;
   const ogTitle = og_title || title;
   const ogDescription = og_description || description;
-  const heroImageCropped = getProcessedImage(filename || bgFilename || heroPickerImage, '1200x630', focus || bgFocus || heroPickerFocus);
+  const heroImageCropped = getProcessedImage(filename, '1200x630', focus) || getProcessedImage(bgFilename, '1200x630', bgFocus) || getProcessedImage(heroPickerImage, '1200x630', heroPickerFocus);
 
   /**
    * The og_image and twitter_image fields provided by the Storyblok SEO plugin has no image focus support
