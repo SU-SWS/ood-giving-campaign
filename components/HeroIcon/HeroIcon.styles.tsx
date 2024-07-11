@@ -32,7 +32,7 @@ export const iconMap = {
   'arrow-down': ArrowDownIcon,
   back: ArrowLeftIcon,
   copy: DocumentDuplicateIcon,
-  'check-circle': CheckIcon,
+  check: CheckIcon,
   'chevron-down': ChevronDownIcon,
   'chevron-right': ChevronRightIcon,
   'chevron-up': ChevronUpIcon,

@@ -66,7 +66,7 @@ export default function RootLayout({ children }: LayoutProps) {
           <body>
             <FlexBox justifyContent="between" direction="col" className="min-h-screen relative">
               {children}
-              <footer>
+              <footer className="relative">
                 <LocalFooterMvp />
                 <GlobalFooter />
               </footer>
