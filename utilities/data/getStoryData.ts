@@ -11,9 +11,10 @@ import { getStoryblokApi, StoryblokClient } from '@storyblok/react/rsc';
  */
 async function getStoryData({ path }: getStoryDataProps): Promise<ISbResult | { data: 404 }> {
   const storyblokApi: StoryblokClient = getStoryblokApi();
+  const activeEnv = process.env.NODE_ENV || 'development';
   let sbParams: ISbStoriesParams = {
-    version: 'draft',
-    cv: Date.now(),
+    version: activeEnv === 'development' ? 'draft' : 'published',
+    cv: activeEnv === 'development' ? Date.now() : undefined,
     resolve_relations: resolveRelations,
   };
 
