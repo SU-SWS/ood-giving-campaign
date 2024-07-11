@@ -87,11 +87,10 @@ export const themes = {
   },
 };
 
-// Stories
+// Stories landing page
 export const storiesRoot = '/stories';
 
-// Newsletter signup
+// Other pages
 export const newsletterSignup = '/newsletter/sign-up';
-
-// Changemakers
 export const changemakers = '/changemakers';
+export const contactUs = '/contact-us';
