@@ -64,7 +64,7 @@ export default async function Page({ searchParams }: PageProps) {
   const slug = searchParams.path.replace(/\/$/, '');
 
   // Get data out of the API.
-  const { data } = await getStoryData(searchParams);
+  const { data } = await getStoryData({ path: slug, isEditor: true });
 
   // An extra container for passing along additional fetched data.
   let extra = {};
