@@ -88,7 +88,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: ParamsType): Promise<Metadata> {
   try {
     const slug = params.slug ? params.slug.join('/') : 'home';
-    const { data } = await getStoryData({ path: slug, isEditor: false });
+    const { data } = await getStoryData({ path: slug });
     if (!data.story || !data.story.content) {
       notFound();
     }
@@ -109,7 +109,7 @@ export async function generateMetadata({ params }: ParamsType): Promise<Metadata
 export default async function Page({ params }: ParamsType) {
   const slug = params.slug ? params.slug.join('/') : 'home';
   // Get data out of the API.
-  const { data } = await getStoryData({ path: slug, isEditor: false });
+  const { data } = await getStoryData({ path: slug });
 
   // Define an additional data container to pass through server data fetch to client components.
   // as everything below the `StoryblokStory` is a client side component.
