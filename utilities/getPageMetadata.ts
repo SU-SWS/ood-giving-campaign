@@ -72,10 +72,7 @@ export const getPageMetadata = ({
   const twitterCropped = getProcessedImage(twitter_image, '1200x600');
   const ogImage = ogCropped || heroImageCropped;
 
-  let ogType = 'website';
-  if (component === 'sbStoryMvp') {
-    ogType = 'article';
-  }
+  const ogType = component === 'sbStoryMvp' ? 'article' : 'website';
 
   // Self reference URL is the page's URL without any query params
   const selfReferencingUrl = slug !== 'home' ? `${siteUrl}/${slug}` : siteUrl;
