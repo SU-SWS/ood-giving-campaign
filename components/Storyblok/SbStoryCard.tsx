@@ -3,6 +3,7 @@ import { type AnimationType } from '@/components/Animate';
 import { type HeadingType } from '@/components/Typography';
 import { StoryCard } from '@/components/StoryCard';
 import { type SbImageType, type SbLinkType } from './Storyblok.types';
+import { type InitiativesType, type ThemesType } from '@/utilities/taxonomyMaps';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
 
 export type SbStoryCardProps = {
@@ -12,12 +13,16 @@ export type SbStoryCardProps = {
       content?: {
         title?: string;
         dek?: string;
-        topics?: string[];
+        initiatives?: InitiativesType[];
+        themes?: ThemesType[];
         heroImage?: SbImageType;
         bgImage?: SbImageType;
         cardTitle?: string;
         cardTeaser?: string;
         cardImage?: SbImageType;
+        tabColor?: {
+          value?: PaletteAccentHexColorType;
+        }
       },
       full_slug?: string;
     };
@@ -32,7 +37,7 @@ export type SbStoryCardProps = {
     animation?: AnimationType;
     delay?: number;
     isHorizontal?: boolean;
-    isListView?: boolean;
+    isDark?: boolean;
   };
 };
 
@@ -42,12 +47,14 @@ export const SbStoryCard = ({
       content: {
         title = '',
         dek = '',
-        topics = [],
+        initiatives = [],
+        themes = [],
         heroImage: { filename: heroFilename = '', focus: heroFocus = '' } = {},
         bgImage: { filename: bgFilename = '', focus: bgFocus = '' } = {},
         cardTitle = '',
         cardTeaser = '',
         cardImage: { filename: storyCardFilename = '', focus: storyCardFocus = '' } = {},
+        tabColor: { value: storyTabColorValue } = {},
       } = {},
       full_slug,
     } = {},
@@ -61,25 +68,29 @@ export const SbStoryCard = ({
     animation,
     delay,
     isHorizontal,
-    isListView,
+    isDark,
   },
   blok,
-}: SbStoryCardProps) => (
-  <StoryCard
-    {...storyblokEditable(blok)}
-    heading={heading || cardTitle || title}
-    headingLevel={headingLevel}
-    isSmallHeading={isSmallHeading}
-    body={cardTeaser || dek}
-    imageSrc={cardImage || storyCardFilename || heroFilename || bgFilename }
-    imageFocus={cardFocus || storyCardFocus || heroFocus || bgFocus}
-    tabColor={paletteAccentColors[value]}
-    link={link}
-    href={`/${full_slug}`}
-    animation={animation}
-    delay={delay}
-    taxonomy={topics}
-    isHorizontal={isHorizontal}
-    isListView={isListView}
-  />
-);
+}: SbStoryCardProps) => {
+  const taxonomyArray = [...initiatives, ...themes];
+
+  return (
+    <StoryCard
+      {...storyblokEditable(blok)}
+      heading={heading || cardTitle || title}
+      headingLevel={headingLevel}
+      isSmallHeading={isSmallHeading}
+      body={cardTeaser || dek}
+      imageSrc={cardImage || storyCardFilename || heroFilename || bgFilename }
+      imageFocus={cardFocus || storyCardFocus || heroFocus || bgFocus}
+      tabColor={paletteAccentColors[value || storyTabColorValue]}
+      link={link}
+      href={`/${full_slug}`}
+      animation={animation}
+      delay={delay}
+      taxonomy={taxonomyArray}
+      isHorizontal={isHorizontal}
+      isDark={isDark}
+    />
+  );
+};

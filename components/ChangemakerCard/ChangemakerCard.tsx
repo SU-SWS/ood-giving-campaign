@@ -198,16 +198,16 @@ export const ChangemakerCard = ({
         </article>
       </AnimateInView>
       {/* Content is displayed in a modal for XS breakpoint only */}
-      <Transition show={isModalOpen} appear>
+      <Transition show={isModalOpen}>
         <Dialog onClose={() => setIsModalOpen(false)} className={styles.dialog}>
           <TransitionChild
-              enter="ease-out duration-300"
-              enterFrom="opacity-0"
-              enterTo="opacity-100"
-              leave="ease-in duration-300"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
-            >
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-300"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
             <div className={styles.dialogOverlay} />
           </TransitionChild>
           <TransitionChild

@@ -2,8 +2,9 @@ import React, { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
 import { AnimateInView } from '@/components/Animate';
 import { Container } from '@/components/Container';
-import { Grid } from '@/components/Grid';
+import { CtaLink } from '@/components/Cta';
 import { FlexBox } from '@/components/FlexBox';
+import { Grid } from '@/components/Grid';
 import {
   Heading, Paragraph, Text, type HeadingType, SrOnlyText,
 } from '@/components/Typography';
@@ -14,7 +15,8 @@ import {
   heroOverlays,
   type HeroOverlayType,
 } from '@/utilities/datasource';
-import { type SbTypographyProps } from '../Storyblok/Storyblok.types';
+import { type SbTypographyProps } from '@/components/Storyblok/Storyblok.types';
+import { taxonomyMap, type TaxonomyType } from '@/utilities/taxonomyMaps';
 import { formatDate } from '@/utilities/formatDate';
 import * as styles from './BlurryPoster.styles';
 
@@ -44,6 +46,7 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   body?: string;
   byline?: string;
   publishedDate?: string;
+  taxonomy?: TaxonomyType[];
   imageSrc?: string;
   imageFocus?: string;
   alt?: string;
@@ -74,6 +77,7 @@ export const BlurryPoster = ({
   body,
   byline,
   publishedDate,
+  taxonomy,
   imageSrc,
   imageFocus,
   alt,
@@ -214,6 +218,22 @@ export const BlurryPoster = ({
                     <time dateTime={dateTime}>{`${monthLong} ${day}, ${year}`}</time>
                   )}
                 </div>
+              )}
+              {!!taxonomy?.length && (
+                <>
+                  <Heading as="h2" className="sr-only">Story tags:</Heading>
+                  <FlexBox as="ul" wrap="wrap" className={styles.taxonomy}>
+                    {taxonomy.map((item) => (
+                      taxonomyMap[item] ? (
+                        <li key={item} className={styles.taxonomyItem}>
+                          <CtaLink href={`/stories/list/${item}`} variant={bgColor === 'black' ? 'storyCardChipDark' : 'storyCardChip'}>
+                            {taxonomyMap[item]}
+                          </CtaLink>
+                        </li>
+                      ) : null
+                    ))}
+                  </FlexBox>
+                </>
               )}
               {cta && (
                 <div className={styles.cta}>

@@ -4,6 +4,7 @@ import { cnb } from 'cnbuilder';
 import { CtaContent } from './CtaContent';
 import { type CtaCommonProps } from './Cta.types';
 import { type SbLinkType } from '../Storyblok/Storyblok.types';
+import { marginTops, marginBottoms } from '@/utilities/datasource';
 import * as styles from './Cta.styles';
 import useUTMs from '@/hooks/useUTMs';
 
@@ -24,6 +25,8 @@ export const CtaExternalLink = React.forwardRef<HTMLAnchorElement, CtaExternalLi
       animate,
       iconProps,
       srText,
+      mt,
+      mb,
       children,
       className,
       href,
@@ -51,6 +54,8 @@ export const CtaExternalLink = React.forwardRef<HTMLAnchorElement, CtaExternalLi
           styles.ctaSizes[size] || styles.ctaSizes[styles.ctaSizeMap[variant]],
           curve ? styles.ctaCurves[curve] : '',
           color ? styles.ctaColors[color] : '',
+          mt ? marginTops[mt] : '',
+          mb ? marginBottoms[mb] : '',
           className,
         )}
       >

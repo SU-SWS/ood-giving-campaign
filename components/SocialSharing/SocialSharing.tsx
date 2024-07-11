@@ -66,7 +66,7 @@ export const SocialSharing = ({
                 className={styles.copiedTextBubble}
                 weight="semibold"
                 leading="none"
-                icon="check-circle"
+                icon="check"
                 aria-hidden={buttonState !== 'copied'}
               >
                 Link copied

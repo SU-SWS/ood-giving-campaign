@@ -19,9 +19,10 @@ const brochureBase = 'inline-block font-bold font-serif no-underline hocus:no-un
 const brochureIlluminating = 'from-illuminating to-illuminating';
 const brochurePoppy = 'from-poppy to-poppy';
 
-const chipBase = 'relative inline-block border leading-display rounded-full font-normal no-underline underline-offset-4 hocus:underline hocus:bg-digital-red-light hocus:text-white';
-const chipLight = 'border-gc-black/10 bg-gc-black-10 text-gc-black-80 hocus:border-digital-red-xlight';
-const chipDark = 'border-gc-black-80 bg-gc-black-90 text-gc-black-40 hocus:border-digital-red-xlight';
+const chipBase = 'relative inline-block leading-display rounded-full font-normal no-underline underline-offset-4 hocus:underline decoration-1 hocus:bg-digital-red-light hocus:text-white';
+const chipLight = 'border border-gc-black/10 bg-gc-black-10 text-gc-black-80 hocus:border-digital-red-xlight';
+const chipDark = 'border border-gc-black-80 bg-gc-black-90 text-gc-black-40 hocus:border-digital-red-xlight';
+const chipNav = 'bg-gc-black-90 text-gc-black-40 hocus-visible:bg-gradient-to-r hocus-visible:from-digital-red hocus-visible:to-cardinal-red-dark border-2 border-gc-black-90 hocus-visible:border-digital-red-xlight';
 
 export const ctaVariants = {
   solid: 'block w-fit relative z-10 font-normal decoration-2 decoration-transparent underline-offset-4 hocus:decoration-white/80 leading-display bg-digital-red text-white hocus:text-white border-2 border-digital-red-light focus-visible:outline-none after:block after:content-[""] after:absolute after:top-0 after:left-0 after:w-0 after:h-full after:bg-gradient-to-r after:from-cardinal-red after:to-cardinal-red-dark after:transition-all after:z-[-1] hocus:after:w-full overflow-hidden',
@@ -39,6 +40,7 @@ export const ctaVariants = {
   chip: 'inline-block leading-display no-underline text-current rounded-full border-2 border-current hocus:text-current font-normal underline-offset-4 decoration-transparent hocus-visible:decoration-current hocus-visible:decoration-2',
   storyCardChip: `${chipBase} ${chipLight}`,
   storyCardChipDark: `${chipBase} ${chipDark}`,
+  storyListNav: `${chipBase} ${chipNav}`,
   brochure: `${brochureBase} ${brochureIlluminating}`,
   brochurePoppy: `${brochureBase} ${brochurePoppy}`,
   unset: '',
@@ -86,6 +88,7 @@ export const ctaSizes: CtaSizeObjectType = {
   close: 'text-18 md:text-21',
   chip: 'py-7 px-22 text-18',
   storyCardChip: 'text-15 py-6 px-16 lg:text-17 lg:pt-8 lg:pb-7 lg:px-18',
+  storyListNav: 'text-16 py-12 px-24 lg:text-20 lg:pt-15 lg:pb-16 lg:px-34',
   brochure: 'text-20 xl:text-30 py-12',
   unset: '',
 };
@@ -106,6 +109,7 @@ export const ctaSizeMap: CtaSizeMapType = {
   chip: 'chip',
   storyCardChip: 'storyCardChip',
   storyCardChipDark: 'storyCardChip',
+  storyListNav: 'storyListNav',
   brochure: 'brochure',
   brochurePoppy: 'brochure',
   unset: 'unset',

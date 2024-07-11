@@ -7,13 +7,15 @@ import { resolveRelations } from '@/utilities/resolveRelations';
 import { getPageMetadata } from '@/utilities/getPageMetadata';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
 import { notFound } from 'next/navigation';
+import getStoryData from '@/utilities/data/getStoryData';
+import getStoryList from '@/utilities/data/getStoryList';
 
 type PathsType = {
   slug: string[];
 };
 
 type ParamsType = {
-  slug: string[];
+  params: PathsType;
 };
 
 // Storyblok bridge options.
@@ -80,56 +82,17 @@ export async function generateStaticParams() {
   return paths;
 };
 
-
-/**
- * Get the data out of the Storyblok API for the page.
- *
- * Make sure to not export the below functions otherwise there will be a typescript error
- * https://github.com/vercel/next.js/discussions/48724
- */
-async function getStoryData(params: { slug: string[] }) {
-  const activeEnv = process.env.NODE_ENV || 'development';
-  const storyblokApi: StoryblokClient = getStoryblokApi();
-  const slug = Array.isArray(params.slug) ? params.slug.join('/') : 'home';
-
-  const sbParams: ISbStoriesParams = {
-    version: activeEnv === 'development' ? 'draft' : 'published',
-    cv: activeEnv === 'development' ? Date.now() : undefined,
-    resolve_relations: resolveRelations,
-  };
-
-  try {
-    const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
-    return story;
-  }
-  catch (error) {
-    if (typeof error === 'string') {
-      try {
-        const parsedError = JSON.parse(error);
-        if (parsedError.status === 404) {
-          return { data: 404 };
-        }
-      }
-      catch (e) {
-        console.error('Error', error);
-      }
-    }
-  }
-
-  return { data: 404 };
-};
-
 /**
  * Generate the SEO metadata for the page.
  */
-export async function generateMetadata({ params }: { params: ParamsType }): Promise<Metadata> {
+export async function generateMetadata({ params }: ParamsType): Promise<Metadata> {
   try {
-    const { data } = await getStoryData(params);
+    const slug = params.slug ? params.slug.join('/') : 'home';
+    const { data } = await getStoryData({ path: slug });
     if (!data.story || !data.story.content) {
       notFound();
     }
     const blok = data.story.content;
-    const slug = params.slug ? params.slug.join('/') : 'home';
     const meta = getPageMetadata({ blok, slug });
     return meta;
   }
@@ -143,16 +106,34 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
 /**
  * Fetch the path data for the page and render it.
  */
-export default async function Page({ params }: { params: ParamsType }) {
-  const { data } = await getStoryData(params);
-  const slug = params.slug ? params.slug.join('/') : '';
+export default async function Page({ params }: ParamsType) {
+  const slug = params.slug ? params.slug.join('/') : 'home';
+  // Get data out of the API.
+  const { data } = await getStoryData({ path: slug });
 
+  // Define an additional data container to pass through server data fetch to client components.
+  // as everything below the `StoryblokStory` is a client side component.
+  let extra = {};
+
+  // Get additional data for those stories that need it.
+  if (data?.story?.content?.component === 'sbStoryFilterPage') {
+    extra = await getStoryList({ path: slug });
+  }
+
+  // Failed to fetch from API because story slug was not found.
   if (data === 404) {
     notFound();
   }
 
+  // Return the story.
   return (
-    <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} slug={slug} />
+    <StoryblokStory
+      story={data.story}
+      extra={extra}
+      bridgeOptions={bridgeOptions}
+      slug={slug}
+      name={data.story.name}
+    />
   );
-
 };
+

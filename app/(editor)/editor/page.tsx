@@ -1,28 +1,12 @@
+import type { PageProps } from '@/utilities/data/types';
 import crypto from 'crypto';
-import {
-  ISbStoriesParams, getStoryblokApi, storyblokInit, apiPlugin, StoryblokStory, StoryblokClient,
-} from '@storyblok/react/rsc';
+import { storyblokInit, apiPlugin, StoryblokStory } from '@storyblok/react/rsc';
 import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { notFound } from 'next/navigation';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
-import { ISbResult } from '@storyblok/react';
-
-type PageProps = {
-  searchParams: {
-    accessToken: string,
-    path: string,
-    _storyblok: string, // ID of space (eg: 1005200)
-    _storyblok_c: string,
-    _storyblok_version: string,
-    _storyblok_lang: string,
-    _storyblok_release: string, // number as a string eg: '0'
-    _storyblok_rl: string, // eg: '1698435696245'
-    '_storyblok_tk[space_id]': string, // eg: '1005200'
-    '_storyblok_tk[timestamp]': string, // eg: '1698435695'
-    '_storyblok_tk[token]': string // eg: '654efea80d36a0b2bas3640ea937b0e0d4cc0234'
-  };
-};
+import getStoryData from '@/utilities/data/getStoryData';
+import getStoryList from '@/utilities/data/getStoryList';
 
 // Control what happens when a dynamic segment is visited that was not generated with generateStaticParams.
 export const dynamic = 'force-dynamic';
@@ -51,45 +35,9 @@ storyblokInit({
 });
 
 /**
- * Get the data out of the Storyblok API for the page.
- *
- * Make sure to not export the below functions otherwise there will be a typescript error
- * https://github.com/vercel/next.js/discussions/48724
- */
-async function getStoryData({ path }: PageProps['searchParams']): Promise<ISbResult | { data: 404 }> {
-  const storyblokApi: StoryblokClient = getStoryblokApi();
-  let sbParams: ISbStoriesParams = {
-    version: 'draft',
-    cv: Date.now(),
-    resolve_relations: resolveRelations,
-  };
-
-  const slug = path.replace(/\/$/, '') || 'home'; // Remove trailing slash or if no slash, use home.
-
-  try {
-    const story: ISbResult = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
-    return story;
-  } catch (error) {
-    if (typeof error === 'string') {
-      try {
-        const parsedError = JSON.parse(error);
-        if (parsedError.status === 404) {
-          return { data: 404 };
-        }
-      }
-      catch (e) {
-        throw error;
-      }
-    }
-    throw error;
-  }
-
-};
-
-/**
  * Validate the editor token.
  *
- * Removed time limit check to support client workflows of several days, or weeks 
+ * Removed time limit check to support client workflows of several days, or weeks
  * of using the preview link for review.
  */
 const validateEditor = (searchParams: PageProps['searchParams']) => {
@@ -118,6 +66,14 @@ export default async function Page({ searchParams }: PageProps) {
   // Get data out of the API.
   const { data } = await getStoryData(searchParams);
 
+  // An extra container for passing along additional fetched data.
+  let extra = {};
+
+  // Get additional data for those stories that need it.
+  if (data?.story?.content?.component === 'sbStoryFilterPage') {
+    extra = await getStoryList(searchParams);
+  }
+
   // Failed to fetch from API because story slug was not found.
   if (data === 404) {
     notFound();
@@ -125,6 +81,12 @@ export default async function Page({ searchParams }: PageProps) {
 
   // Return the story.
   return (
-    <StoryblokStory story={data.story} bridgeOptions={bridgeOptions} slug={slug} />
+    <StoryblokStory
+      story={data.story}
+      extra={extra}
+      bridgeOptions={bridgeOptions}
+      slug={slug}
+      name={data.story.name}
+    />
   );
 };
