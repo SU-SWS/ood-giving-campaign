@@ -22,7 +22,7 @@ export const headerContent = (hasBarColor: boolean, hasSuperhead: boolean, heade
 });
 export const heading = (isSerifHeader: boolean, isSmallHeading: boolean, headerAlign?: AlignType ) => cnb(
   'mb-0', {
-  'text-balance mx-auto max-w-1000': headerAlign === 'center',
+  'text-balance mx-auto max-w-[110rem]': headerAlign === 'center',
   'fluid-type-6': isSerifHeader,
   'md:fluid-type-7': isSerifHeader && !isSmallHeading,
   'fluid-type-7': !isSerifHeader,
