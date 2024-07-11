@@ -16,6 +16,7 @@ export type SbSEOType = {
 
 type PageMetadataProps = {
   blok: {
+    component: string;
     title: string;
     dek?: string;
     heroImage?: SbImageType;
@@ -30,6 +31,7 @@ type PageMetadataProps = {
 
 export const getPageMetadata = ({
   blok: {
+    component,
     title: pageTitle,
     dek,
     heroImage: { filename = '', focus = '' } = {},
@@ -71,7 +73,7 @@ export const getPageMetadata = ({
   const ogImage = ogCropped || heroImageCropped;
 
   let ogType = 'website';
-  if (slug.startsWith('stories/')) {
+  if (component === 'sbStoryMvp') {
     ogType = 'article';
   }
 
