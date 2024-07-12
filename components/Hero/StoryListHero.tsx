@@ -1,4 +1,4 @@
-import { cnb } from 'cnbuilder';
+import { AnimateInView } from '@/components/Animate';
 import { Container } from '@/components/Container';
 import { Heading, Text } from '@/components/Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
@@ -30,29 +30,32 @@ export const StoryListHero = ({
         className={styles.root}
       >
         <Container className={styles.contentWrapper}>
-          <Heading
-            as="h1"
-            align="center"
-            leading="none"
-            color="white"
-            className={styles.heading(!!subheading)}
-          >
-            <Text as="span" font="druk" size={subheading ? 'f5' : 'splash'} leading="druk">Stories</Text>
-            <Text as="span" font="serif" size={subheading ? 'f4' : 'f7'} weight="normal" italic className="relative -top-02em md:-top-[.23em] lg:-ml-01em mr-02em"> of </Text>
-            <Text as="span" font="druk" size={subheading ? 'f5' : 'splash'} leading="druk">Impact</Text>
-            {subheading && (
-              <Text
-                size='f7'
-                font="serif"
-                align="center"
-                leading="tight"
-                color="white"
-                className={styles.subhead}
-              >
-                {subheading}
-              </Text>
-            )}
-          </Heading>
+          <AnimateInView animation="slideUp">
+            <Heading
+              as="h1"
+              align="center"
+              leading="none"
+              color="white"
+              className={styles.heading(!!subheading)}
+            >
+              <Text as="span" font="druk" size={subheading ? 'f5' : 'splash'} leading="druk">Stories</Text>
+              <Text as="span" font="serif" size={subheading ? 'f4' : 'f7'} weight="normal" italic className="relative -top-02em md:-top-[.23em] lg:-ml-01em mr-02em"> of </Text>
+              <Text as="span" font="druk" size={subheading ? 'f5' : 'splash'} leading="druk">Impact</Text>
+              {subheading && (
+                <Text
+                  as="span"
+                  size='f7'
+                  font="serif"
+                  align="center"
+                  leading="tight"
+                  color="white"
+                  className={styles.subhead}
+                >
+                  {subheading}
+                </Text>
+              )}
+            </Heading>
+          </AnimateInView>
         </Container>
         {!!imageSrc && (
           <picture>
