@@ -9,11 +9,12 @@ import { getStoryblokApi, StoryblokClient } from '@storyblok/react/rsc';
  * Make sure to not export the below functions otherwise there will be a typescript error
  * https://github.com/vercel/next.js/discussions/48724
  */
-async function getStoryData({ path }: getStoryDataProps): Promise<ISbResult | { data: 404 }> {
+async function getStoryData({ path, isEditor = false }: getStoryDataProps): Promise<ISbResult | { data: 404 }> {
   const storyblokApi: StoryblokClient = getStoryblokApi();
+  const activeEnv = process.env.NODE_ENV || 'development';
   let sbParams: ISbStoriesParams = {
-    version: 'draft',
-    cv: Date.now(),
+    version: activeEnv === 'development' || isEditor ? 'draft' : 'published',
+    cv: activeEnv === 'development' || isEditor ? Date.now() : undefined,
     resolve_relations: resolveRelations,
   };
 
