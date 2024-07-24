@@ -22,8 +22,9 @@ export const LocalFooterMvp = () => (
     <FlexBox direction="col" className={styles.flexWrapper}>
       <LogoLockup text="Momentum" color="white" isLink className={styles.logo} />
       <FlexBox as="ul" wrap="wrap" className={styles.ul}>
-        <li><CtaLink color="white" href={routes.initiativesRoot} size="large">Initiatives</CtaLink></li>
+        <li><CtaLink color="white" href={routes.storiesRoot} size="large">Stories</CtaLink></li>
         <li><CtaLink color="white" href={routes.changemakers} size="large">Changemakers</CtaLink></li>
+        <li><CtaLink color="white" href={routes.initiativesRoot} size="large">Initiatives</CtaLink></li>
         <li><CtaLink color="white" href={routes.contactUs} size="large">Contact us</CtaLink></li>
       </FlexBox>
       <Grid lg={2} pt={8} gap="default" className={styles.grid}>
