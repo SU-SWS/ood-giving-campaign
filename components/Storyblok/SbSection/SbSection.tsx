@@ -16,6 +16,7 @@ import {
 } from '@/components/Typography';
 import { Container, type BgColorType } from '@/components/Container';
 import { RichText } from '@/components/RichText';
+import { captionBgColors, type CaptionBgColorType } from '@/components/StoryImage';
 import { WidthBox } from '@/components/WidthBox';
 import { accentBgColors, type PaddingType, type MarginType } from '@/utilities/datasource';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
@@ -49,6 +50,8 @@ type SbSectionProps = {
     cta?: SbBlokData[];
     caption?: StoryblokRichtext;
     captionColumnWidth?: '12' | '10' | '8' | '6' | '4';
+    isLightCaption?: boolean;
+    captionBgColor?: CaptionBgColorType;
     barColor?: {
       value?: PaletteAccentHexColorType;
     }
@@ -80,6 +83,8 @@ export const SbSection = ({
     cta,
     caption,
     captionColumnWidth,
+    isLightCaption,
+    captionBgColor,
     barColor: { value: barColorValue } = {},
     bgColor,
     bgImage: { filename, focus } = {},
@@ -260,10 +265,11 @@ export const SbSection = ({
         </Container>
       </m.div>
       {hasRichText(caption) && (
-        <WidthBox boundingWidth="site" width={captionColumnWidth}>
+        <WidthBox boundingWidth="site" width={captionColumnWidth} className={captionBgColors[captionBgColor]}>
           <RichText
             wysiwyg={caption}
-            textColor="black-70"
+            textColor={isLightCaption ? 'white' : 'black-70'}
+            linkColor={isLightCaption ? 'digital-red-xlight' : 'unset'}
             className={styles.caption}
           />
         </WidthBox>
