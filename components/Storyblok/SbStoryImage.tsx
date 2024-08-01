@@ -4,7 +4,7 @@ import { type ImageAspectRatioType } from '@/utilities/datasource';
 import { type WidthType } from '@/components/WidthBox';
 import { type PaddingType } from '@/utilities/datasource';
 import { hasRichText } from '@/utilities/hasRichText';
-import { StoryImage } from '@/components/StoryImage';
+import { StoryImage, CaptionBgColorType } from '@/components/StoryImage';
 import { RichText } from '@/components/RichText';
 import { type AnimationType } from '@/components/Animate';
 import { type SbImageType } from './Storyblok.types';
@@ -25,6 +25,7 @@ type SbStoryImageProps = {
     spacingBottom?: PaddingType;
     isCaptionInset?: boolean;
     isCaptionLight?: boolean;
+    captionBgColor?: CaptionBgColorType;
     animation?: AnimationType;
     delay?: number;
     isHidden?: boolean;
@@ -46,6 +47,7 @@ export const SbStoryImage = ({
     spacingBottom,
     isCaptionInset,
     isCaptionLight,
+    captionBgColor = 'transparent',
     animation = 'none',
     delay,
     isHidden,
@@ -80,6 +82,7 @@ export const SbStoryImage = ({
       spacingTop={spacingTop}
       spacingBottom={spacingBottom}
       isCaptionInset={isCaptionInset}
+      captionBgColor={captionBgColor}
       animation={animation}
       delay={delay}
     />
