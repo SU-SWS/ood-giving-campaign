@@ -16,7 +16,6 @@ import {
 } from '@/components/Typography';
 import { Container, type BgColorType } from '@/components/Container';
 import { RichText } from '@/components/RichText';
-import { captionBgColors, type CaptionBgColorType } from '@/components/StoryImage';
 import { WidthBox } from '@/components/WidthBox';
 import { accentBgColors, type PaddingType, type MarginType } from '@/utilities/datasource';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
@@ -51,7 +50,7 @@ type SbSectionProps = {
     caption?: StoryblokRichtext;
     captionColumnWidth?: '12' | '10' | '8' | '6' | '4';
     isLightCaption?: boolean;
-    captionBgColor?: CaptionBgColorType;
+    captionBgColor?: BgColorType;
     barColor?: {
       value?: PaletteAccentHexColorType;
     }
@@ -265,7 +264,7 @@ export const SbSection = ({
         </Container>
       </m.div>
       {hasRichText(caption) && (
-        <WidthBox boundingWidth="site" width={captionColumnWidth} className={captionBgColors[captionBgColor]}>
+        <WidthBox boundingWidth="site" width={captionColumnWidth} bgColor={captionBgColor}>
           <RichText
             wysiwyg={caption}
             textColor={isLightCaption ? 'white' : 'black-70'}

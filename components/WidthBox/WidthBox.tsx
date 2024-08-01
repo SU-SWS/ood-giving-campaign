@@ -1,5 +1,5 @@
 import { cnb } from 'cnbuilder';
-import { Container, type ContainerProps } from '../Container';
+import { Container, type ContainerProps, type BgColorType } from '../Container';
 import { Grid, type GridProps } from '../Grid';
 import * as styles from './WidthBox.styles';
 
@@ -19,6 +19,7 @@ type NonFullWidthBoxProps = GridProps & {
   boundingWidth?: 'full' | 'site';
   width?: '12' | '10' | '8' | '6' | '4';
   align?: 'left' | 'center';
+  bgColor?: BgColorType;
 };
 
 export type WidthType = NonFullWidthBoxProps['width'];
@@ -28,6 +29,7 @@ export const WidthBox = ({
   boundingWidth = 'full',
   width = '12',
   align = 'center',
+  bgColor,
   children,
   className,
   ...props
@@ -37,6 +39,7 @@ export const WidthBox = ({
     return (
       <Container
         {...props as FullWidthBoxProps}
+        bgColor={bgColor}
         width={boundingWidth}
         className={className}
       >
@@ -46,7 +49,7 @@ export const WidthBox = ({
   }
 
   return (
-    <Container width={boundingWidth}>
+    <Container width={boundingWidth} bgColor={bgColor}>
       <Grid {...props as NonFullWidthBoxProps} gap="default" sm={12} className={className}>
         <div
           className={cnb(
