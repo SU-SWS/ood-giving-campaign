@@ -49,6 +49,8 @@ type SbSectionProps = {
     cta?: SbBlokData[];
     caption?: StoryblokRichtext;
     captionColumnWidth?: '12' | '10' | '8' | '6' | '4';
+    isLightCaption?: boolean;
+    captionBgColor?: BgColorType;
     barColor?: {
       value?: PaletteAccentHexColorType;
     }
@@ -80,6 +82,8 @@ export const SbSection = ({
     cta,
     caption,
     captionColumnWidth,
+    isLightCaption,
+    captionBgColor,
     barColor: { value: barColorValue } = {},
     bgColor,
     bgImage: { filename, focus } = {},
@@ -260,10 +264,11 @@ export const SbSection = ({
         </Container>
       </m.div>
       {hasRichText(caption) && (
-        <WidthBox boundingWidth="site" width={captionColumnWidth}>
+        <WidthBox boundingWidth="site" width={captionColumnWidth} bgColor={captionBgColor}>
           <RichText
             wysiwyg={caption}
-            textColor="black-70"
+            textColor={isLightCaption ? 'white' : 'black-70'}
+            linkColor={isLightCaption ? 'digital-red-xlight' : 'unset'}
             className={styles.caption}
           />
         </WidthBox>

@@ -16,13 +16,14 @@ type StoryImageProps = React.HTMLAttributes<HTMLDivElement> & {
   isParallax?: boolean;
   alt?: string;
   caption?: React.ReactNode;
+  isCaptionInset?: boolean;
+  captionBgColor?: styles.CaptionBgColorType;
   aspectRatio?: ImageAspectRatioType;
   isFullHeight?: boolean;
   boundingWidth?: 'site' | 'full';
   width?: WidthType;
   spacingTop?: PaddingType;
   spacingBottom?: PaddingType;
-  isCaptionInset?: boolean;
   animation?: AnimationType;
   delay?: number;
 };
@@ -41,6 +42,7 @@ export const StoryImage = ({
   spacingTop,
   spacingBottom,
   isCaptionInset,
+  captionBgColor = 'transparent',
   animation = 'none',
   delay,
   className,
@@ -101,8 +103,12 @@ export const StoryImage = ({
             )}
           </div>
           {caption && (
-            <Container as="figcaption" width={isCaptionInset ? 'site' : 'full'}>
-              <div className={styles.caption}>
+            <Container
+              as="figcaption"
+              width={isCaptionInset ? 'site' : 'full'}
+              className={cnb(styles.captionWrapper, styles.captionBgColors[captionBgColor])}
+            >
+              <div className={styles.caption(captionBgColor)}>
                 {caption}
               </div>
             </Container>
