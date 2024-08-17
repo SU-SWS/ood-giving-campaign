@@ -1,8 +1,10 @@
+import { useRef, useState } from 'react';
 import { storyblokEditable, type SbBlokData, type ISbStoryData } from '@storyblok/react/rsc';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { Container } from '@/components/Container';
 import { CreateBloks } from '@/components/CreateBloks';
 import { CreateStories } from '@/components/CreateStories';
+import { CtaButton } from '@/components/Cta';
 import { Grid } from '@/components/Grid';
 import { Heading } from '@/components/Typography';
 import { RichText } from '@/components/RichText';
@@ -53,6 +55,9 @@ export const SbStoryFilterPage = ({
   slug,
   extra,
 }: SbStoryFilterPageProps) => {
+  // Maximum number of stories to show before the "Show all" button is displayed
+  const MAX_STORIES_BEFORE_SHOWALL = 10;
+
   /**
    * Extract uuid's from the featured stories into a Set.
    * The reason for using a Set in this case is its O(1) average time complexity for lookups,
@@ -66,9 +71,19 @@ export const SbStoryFilterPage = ({
    * ie, we remove stories that are already added as featured stories cards.
    */
   const filteredStoryList = extra.filter(item => !featuredStoryUUIDSet.has(item.uuid));
-
   const hasIntro = hasRichText(intro);
   const hasFeaturedStories = !!getNumBloks(featuredStories);
+
+  const [showAll, setShowAll] = useState(false);
+  const storyListToDisplay = showAll ? filteredStoryList : filteredStoryList.slice(0, MAX_STORIES_BEFORE_SHOWALL);
+  const firstStoryAfterShowAllRef = useRef(null);
+
+  const handleShowAll = () => {
+    setShowAll(true);
+    setTimeout(() => {
+      firstStoryAfterShowAllRef.current?.focus();
+    }, 200);
+  };
 
   return (
     <div {...storyblokEditable(blok)}>
@@ -95,7 +110,7 @@ export const SbStoryFilterPage = ({
             <>
             {hasFeaturedStories && <Heading as="h3" srOnly>Other stories</Heading>}
               <Grid as="ul" pt={6} className="list-unstyled *:mb-0 gap-y-45 md:gap-y-90 2xl:gap-y-95">
-                {filteredStoryList.map((story) => {
+                {storyListToDisplay.map((story, index) => {
                   const {
                     cardTitle,
                     title,
@@ -112,6 +127,7 @@ export const SbStoryFilterPage = ({
                   return (
                     <li key={story.uuid}>
                       <StoryCard
+                        ref={index === MAX_STORIES_BEFORE_SHOWALL ? firstStoryAfterShowAllRef : null}
                         isListView
                         isDark
                         heading={cardTitle || title}
@@ -129,6 +145,14 @@ export const SbStoryFilterPage = ({
                   );
                 })}
               </Grid>
+              {!showAll && filteredStoryList.length > MAX_STORIES_BEFORE_SHOWALL && (
+                <CtaButton
+                  onClick={handleShowAll}
+                  className={styles.showAllButton}
+                >
+                  Show all stories
+                </CtaButton>
+              )}
             </>
           )}
         </Container>
