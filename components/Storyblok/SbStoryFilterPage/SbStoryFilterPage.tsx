@@ -147,6 +147,11 @@ export const SbStoryFilterPage = ({
               </Grid>
               {!showAll && filteredStoryList.length > MAX_STORIES_BEFORE_SHOWALL && (
                 <CtaButton
+                  variant="ghost-swipe"
+                  color="white"
+                  size="large"
+                  icon="chevron-down"
+                  animate="down"
                   onClick={handleShowAll}
                   className={styles.showAllButton}
                 >
