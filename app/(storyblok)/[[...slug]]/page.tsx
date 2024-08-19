@@ -5,7 +5,7 @@ import {
 import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { getPageMetadata } from '@/utilities/getPageMetadata';
-import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
+import { ComponentNotFound } from '@/components/Storyblok/ComponentNotFound';
 import { notFound } from 'next/navigation';
 import getStoryData from '@/utilities/data/getStoryData';
 import getStoryList from '@/utilities/data/getStoryList';

@@ -40,7 +40,7 @@ import { SbTriangle } from '@/components/Storyblok/SbTriangle';
 import { SbTypeform } from '@/components/Storyblok/SbTypeform';
 import { SbVerticalPoster } from './Storyblok/SbVerticalPoster';
 import { SbWysiwyg } from '@/components/Storyblok/SbWysiwyg';
-import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
+import { ComponentNotFound } from '@/components/Storyblok/ComponentNotFound';
 
 export const components = {
   sbBanner: SbBanner,
