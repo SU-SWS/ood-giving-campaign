@@ -1,4 +1,3 @@
-import StoryblokProvider from '@/components/StoryblokProvider';
 import {
   ISbStoriesParams, getStoryblokApi, storyblokInit, apiPlugin, StoryblokStory, StoryblokClient,
 } from '@storyblok/react/rsc';
