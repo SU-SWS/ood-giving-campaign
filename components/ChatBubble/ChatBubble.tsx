@@ -1,9 +1,9 @@
+import { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
 import { AnimateInView, type AnimationType } from '@/components/Animate';
-import { Text } from '@/components/Typography';
 import * as styles from './ChatBubble.styles';
 
-type ChatBubbleProps = {
+type ChatBubbleProps = HTMLAttributes<HTMLDivElement> & {
   align?: 'left' | 'right';
   bgColor?: styles.BubbleColorType;
   animation?: AnimationType;
@@ -19,21 +19,21 @@ export const ChatBubble = ({
   delay,
   children,
   className,
+  ...props
 }: ChatBubbleProps) => {
 
   return (
-    <AnimateInView animation={animation} delay={delay} duration={0.2} className={className}>
-      <Text
-        color="white"
-        leading="display"
+    <AnimateInView animation={animation} delay={delay} duration={0.4} className={className}>
+      <div
+        {...props}
         className={cnb(
-          'rounded-[2rem] bg-black pt-9 pb-8 px-16 w-fit text-18 max-w-[80%]',
+          'rounded-[2rem] bg-black rs-p-0 w-fit max-w-[80%] text-19',
           styles.BubbleColors[bgColor],
           align === 'right' ? 'mr-0 ml-auto' : '',
         )}
       >
         {children}
-      </Text>
+      </div>
     </AnimateInView>
   );
 };
