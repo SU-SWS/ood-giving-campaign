@@ -4,7 +4,7 @@ import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { Container } from '@/components/Container';
 import { CreateBloks } from '@/components/CreateBloks';
 import { CreateStories } from '@/components/CreateStories';
-import { CtaButton } from '@/components/Cta';
+import { CtaButton, CtaLink } from '@/components/Cta';
 import { Grid } from '@/components/Grid';
 import { Heading } from '@/components/Typography';
 import { RichText } from '@/components/RichText';
@@ -145,18 +145,34 @@ export const SbStoryFilterPage = ({
                   );
                 })}
               </Grid>
-              {!showAll && filteredStoryList.length > MAX_STORIES_BEFORE_SHOWALL && (
-                <CtaButton
-                  variant="ghost-swipe"
-                  color="white"
-                  size="large"
-                  icon="chevron-down"
-                  animate="down"
-                  onClick={handleShowAll}
-                  className={styles.showAllButton}
-                >
-                  Show all stories
-                </CtaButton>
+              {filteredStoryList.length > MAX_STORIES_BEFORE_SHOWALL && (
+                <>
+                  {showAll ? (
+                    <CtaLink
+                      href="#story-list-nav-heading"
+                      variant="ghost-swipe"
+                      color="white"
+                      size="large"
+                      icon="chevron-up"
+                      animate="up"
+                      className={styles.showAllButton}
+                    >
+                      Back to top
+                    </CtaLink>
+                  ) : (
+                  <CtaButton
+                    variant="ghost-swipe"
+                    color="white"
+                    size="large"
+                    icon="chevron-down"
+                    animate="down"
+                    onClick={handleShowAll}
+                    className={styles.showAllButton}
+                  >
+                    Show all stories
+                  </CtaButton>
+                  )}
+                </>
               )}
             </>
           )}
