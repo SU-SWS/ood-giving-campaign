@@ -101,7 +101,7 @@ export const SbStoryFilterPage = ({
           {hasFeaturedStories && (
             <>
               <Heading as="h3" srOnly>{`Featured Stor${getNumBloks(featuredStories) > 1 ? 'ies' : 'y'}`}</Heading>
-              <Grid py={6} isList className="gap-y-45 md:gap-y-90 2xl:gap-y-95">
+              <Grid py={6} isList className={styles.featuredGrid}>
                 <CreateBloks blokSection={featuredStories} isListItems />
               </Grid>
             </>
@@ -109,7 +109,7 @@ export const SbStoryFilterPage = ({
           {!!filteredStoryList?.length && (
             <>
             {hasFeaturedStories && <Heading as="h3" srOnly>Other stories</Heading>}
-              <Grid as="ul" pt={6} className="list-unstyled *:mb-0 gap-y-45 md:gap-y-90 2xl:gap-y-95">
+              <Grid isList pt={6} className={styles.otherGrid}>
                 {storyListToDisplay.map((story, index) => {
                   const {
                     cardTitle,
