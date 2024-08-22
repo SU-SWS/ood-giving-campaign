@@ -47,7 +47,8 @@ export const SbChatBubble = ({
     >
       {hasRichText(content) && (
         <RichText
-          textColor="white"
+          textColor={paletteBubbleColors[value] === 'black-10' ? 'black' : 'white'}
+          linkColor={paletteBubbleColors[value] === 'black-10' ? 'unset' : 'white'}
           wysiwyg={content}
         />
       )}

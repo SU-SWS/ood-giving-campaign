@@ -46,11 +46,12 @@ export const paletteBubbleColors: PaletteBubbleColorType = {
 };
 export type PaletteBubbleHexColorType = '#006CB8' | '#008566' | '#EAEAEA' | '#544948' | '#2E2D29';
 
-export const bubble = (bgColor: BubbleColorType, align: 'left' | 'right', addTail: boolean) => cnb('relative rounded-[2rem] bg-black text-white rs-p-0 w-fit text-16 md:text-19 max-w-[80%] 2xl:max-w-500 whitespace-pre-line',
+export const bubble = (bgColor: BubbleColorType, align: 'left' | 'right', addTail: boolean) => cnb('relative rounded-[2rem] bg-black rs-p-0 w-fit text-16 md:text-19 max-w-[80%] 2xl:max-w-500 whitespace-pre-line',
   align === 'right' && 'mr-0 ml-auto',
   addTail && bubbleTailTopColors[bgColor],
   addTail && align === 'left' && bubbleTailLeftColors[bgColor],
   addTail && align === 'right' && bubbleTailRightColors[bgColor],
+  bgColor === 'black-10' ? 'text-gc-black' : 'text-white',
   bubbleColors[bgColor],
   {
     'after:content-[""] after:absolute after:border-[1rem] after:border-b-transparent after:-bottom-12': addTail,
