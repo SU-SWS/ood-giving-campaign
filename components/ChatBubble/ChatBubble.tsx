@@ -1,11 +1,11 @@
 import { HTMLAttributes } from 'react';
-import { cnb } from 'cnbuilder';
 import { AnimateInView, type AnimationType } from '@/components/Animate';
 import * as styles from './ChatBubble.styles';
 
 type ChatBubbleProps = HTMLAttributes<HTMLDivElement> & {
   align?: 'left' | 'right';
   bgColor?: styles.BubbleColorType;
+  addTail?: boolean; // Add a tail to the speech bubble
   animation?: AnimationType;
   delay?: number;
   children: React.ReactNode;
@@ -15,22 +15,20 @@ type ChatBubbleProps = HTMLAttributes<HTMLDivElement> & {
 export const ChatBubble = ({
   align = 'left',
   bgColor = 'blue',
+  addTail,
   animation = 'zoomIn',
   delay,
   children,
   className,
   ...props
 }: ChatBubbleProps) => {
+  if (!children) return null;
 
   return (
     <AnimateInView animation={animation} delay={delay} duration={0.4} className={className}>
       <div
         {...props}
-        className={cnb(
-          'rounded-[2rem] bg-black rs-p-0 w-fit max-w-[80%] text-19',
-          styles.BubbleColors[bgColor],
-          align === 'right' ? 'mr-0 ml-auto' : '',
-        )}
+        className={styles.bubble(bgColor, align, addTail)}
       >
         {children}
       </div>
