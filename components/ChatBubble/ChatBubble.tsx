@@ -1,5 +1,6 @@
 import { HTMLAttributes } from 'react';
 import { AnimateInView, type AnimationType } from '@/components/Animate';
+import { AnimatedEllipsis } from './AnimatedEllipsis';
 import * as styles from './ChatBubble.styles';
 
 type ChatBubbleProps = HTMLAttributes<HTMLDivElement> & {
@@ -25,11 +26,12 @@ export const ChatBubble = ({
   if (!children) return null;
 
   return (
-    <AnimateInView animation={animation} delay={delay} duration={0.4} className={className}>
+    <AnimateInView animation={animation} delay={delay} duration={0.6} className={className}>
       <div
         {...props}
         className={styles.bubble(bgColor, align, addTail)}
       >
+        <AnimatedEllipsis />
         {children}
       </div>
     </AnimateInView>

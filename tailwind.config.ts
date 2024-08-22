@@ -24,6 +24,7 @@ export default {
       colors: require(`${dir}/theme/gc-colors.js`)(),
       fontFamily: require(`${dir}/theme/gc-fontFamily.js`)(),
       lineHeight: require(`${dir}/theme/gc-lineHeight.js`)(),
+      keyframes: require(`${dir}/theme/gc-keyframes.js`)(),
       screens: require(`${dir}/theme/gc-screens.js`)(),
     },
   },
