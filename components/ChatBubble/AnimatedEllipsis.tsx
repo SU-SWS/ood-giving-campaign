@@ -1,6 +1,7 @@
 import { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
-import * as styles from './ChatBubble.styles';
+import { SrOnlyText } from '@/components/Typography';
+import * as styles from './AnimatedEllipsis.styles';
 
 type AnimatedEllipsisProps = HTMLAttributes<HTMLDivElement>;
 
@@ -9,10 +10,11 @@ export const AnimatedEllipsis = ({
   ...props
 }: AnimatedEllipsisProps) => {
   return (
-    <div className={cnb('flex gap-10 *:size-10 *:rounded-full opacity-20 scale-75 *:bg-white animate-[ellipsis_1s_0.5s_linear_alternate_infinite]', className)}>
-      <div className="[animation-delay:.25s]" />
-      <div />
-      <div className="[animation-delay:.75s]" />
+    <div className={cnb(styles.root, className)} {...props}>
+      <SrOnlyText>Typing</SrOnlyText>
+      <div className={styles.dot} aria-hidden />
+      <div className={styles.dot} aria-hidden />
+      <div className={styles.dot} aria-hidden />
     </div>
   );
 };

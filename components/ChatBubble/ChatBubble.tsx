@@ -31,7 +31,7 @@ export const ChatBubble = ({
         {...props}
         className={styles.bubble(bgColor, align, addTail)}
       >
-        <AnimatedEllipsis />
+        {/* <AnimatedEllipsis /> */}
         {children}
       </div>
     </AnimateInView>
