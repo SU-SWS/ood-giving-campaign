@@ -63,7 +63,7 @@ export const SbStoryListNav = ({
   return (
     <Container width="full" bgColor="black" className={styles.root} {...storyblokEditable(blok)}>
       <Container as="nav" aria-label="Story list page menu">
-        <Heading size="base" align="center" className={styles.heading}>{heading}</Heading>
+        <Heading id="story-list-nav-heading" size="base" align="center" className={styles.heading}>{heading}</Heading>
         <div className={styles.desktop}>
           <StoryListContent blok={blok} fullSlug={fullSlug} name={name} />
         </div>

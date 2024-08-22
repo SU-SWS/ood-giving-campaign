@@ -1,3 +1,4 @@
+import React from 'react';
 import { cnb } from 'cnbuilder';
 import { AnimateInView, type AnimationType } from '@/components/Animate';
 import { CtaLink } from '@/components/Cta/CtaLink';
@@ -29,7 +30,7 @@ export type StoryCardProps = React.HTMLAttributes<HTMLDivElement> & {
   isDark?: boolean;
 };
 
-export const StoryCard = ({
+export const StoryCard = React.forwardRef<HTMLAnchorElement, StoryCardProps>(({
   heading,
   headingLevel = 'h3',
   isSmallHeading,
@@ -47,7 +48,7 @@ export const StoryCard = ({
   isDark,
   className,
   ...props
-}: StoryCardProps) => {
+}, ref) => {
   // The heading level of the tags should be one more than the heading level of the card, but maxes out at h6
   const tagsHeadingLevelNumber: HeadingLevelNumberType =
     Math.min(parseInt(headingLevel?.slice(1), 10) + 1, 6) as HeadingLevelNumberType;
@@ -104,7 +105,7 @@ export const StoryCard = ({
                   accentBorderColors[tabColor])
                 }
               >
-                <CtaLink sbLink={link} href={href} className={styles.headingLink}>
+                <CtaLink ref={ref} sbLink={link} href={href} className={styles.headingLink}>
                   {heading}
                 </CtaLink>
               </Heading>
@@ -139,4 +140,4 @@ export const StoryCard = ({
       </article>
     </AnimateInView>
   );
-};
+});
