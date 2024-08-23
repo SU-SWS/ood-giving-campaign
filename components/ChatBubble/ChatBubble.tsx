@@ -1,5 +1,5 @@
 import {
-  HTMLAttributes, useState, useEffect, useRef
+  HTMLAttributes, useState, useEffect, useRef,
 } from 'react';
 import { useInView } from 'framer-motion';
 import { AnimateInView, type AnimationType } from '@/components/Animate';
@@ -40,7 +40,7 @@ export const ChatBubble = ({
 
       return () => clearTimeout(timer);
     }
-  }, [isInView]);
+  }, [isInView, delay]);
 
   return (
     <AnimateInView animation={animation} delay={delay} duration={0.6} className={className}>
