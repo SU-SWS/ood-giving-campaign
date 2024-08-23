@@ -1,4 +1,6 @@
-import { HTMLAttributes, useState, useEffect, useRef } from 'react';
+import {
+  HTMLAttributes, useState, useEffect, useRef
+} from 'react';
 import { useInView } from 'framer-motion';
 import { AnimateInView, type AnimationType } from '@/components/Animate';
 import { AnimatedEllipsis } from './AnimatedEllipsis';
