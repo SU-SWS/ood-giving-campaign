@@ -87,7 +87,7 @@ export const ChangemakerCard = ({
       <AnimateInView animation={animation} delay={delay}>
         <article
           ref={cardRef}
-          className={cnb(styles.root(isHorizontal), className)}
+          className={cnb('changemaker-card', styles.root(isHorizontal), className)}
           {...props}
         >
           <div className={styles.cardInner(isHorizontal)}>
