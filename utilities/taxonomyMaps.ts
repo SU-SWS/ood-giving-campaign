@@ -22,6 +22,7 @@ export type InitiativesType = keyof typeof initiativesMap;
 export const themesMap = {
   'accelerating-solutions': 'Accelerating Solutions',
   'catalyzing-discovery': 'Catalyzing Discovery',
+  'living-our-values': 'Living Our Values',
   'preparing-citizens': 'Preparing Citizens',
   'sustaining-life': 'Sustaining Life',
 };
