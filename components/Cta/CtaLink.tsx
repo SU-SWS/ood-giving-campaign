@@ -47,6 +47,10 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
     if (isInternal) {
       myLink = cachedUrl || href;
 
+      if (myLink === 'home') {
+        myLink = '';
+      }
+
       if (!myLink?.startsWith('/')) {
         myLink = `/${myLink}`;
       }
