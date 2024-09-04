@@ -1,5 +1,5 @@
 'use client';
-import { GoogleTagManager } from '@next/third-parties/google'
+import { GoogleTagManager } from '@next/third-parties/google';
 import { useEffect } from 'react';
 import useUTMs from '@/hooks/useUTMs';
 const GTM_ID = 'GTM-5RGQ5DD';
