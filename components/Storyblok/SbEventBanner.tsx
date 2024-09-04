@@ -11,6 +11,7 @@ import { type GradientFromType, type GradientToType, type GradientViaType } from
 type SbEventBannerProps = {
   blok: {
     _uid: string;
+    id: string;
     heading?: string;
     body: StoryblokRichtext;
     startDate?: string;
@@ -34,6 +35,7 @@ type SbEventBannerProps = {
 
 export const SbEventBanner = ({
   blok: {
+    id,
     heading,
     body,
     startDate,
@@ -65,6 +67,7 @@ export const SbEventBanner = ({
   return (
     <EventBanner
       {...storyblokEditable(blok)}
+      id={id}
       heading={heading}
       body={Body}
       startDate={startDate}

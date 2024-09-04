@@ -10,6 +10,7 @@ import { RichText } from '../RichText';
 type SbEmbedMediaProps = {
   blok: {
     _uid: string;
+    id: string;
     mediaUrl: string;
     caption?: StoryblokRichtext;
     aspectRatio?: MediaAspectRatioType;
@@ -27,6 +28,7 @@ type SbEmbedMediaProps = {
 
 export const SbEmbedMedia = ({
   blok: {
+    id,
     mediaUrl,
     caption,
     aspectRatio,
@@ -51,6 +53,7 @@ export const SbEmbedMedia = ({
   return (
     <EmbedMedia
       {...storyblokEditable(blok)}
+      id={id}
       mediaUrl={mediaUrl}
       caption={Caption}
       aspectRatio={aspectRatio}

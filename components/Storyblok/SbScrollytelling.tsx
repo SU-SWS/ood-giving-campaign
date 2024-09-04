@@ -16,6 +16,7 @@ import { type MarginType } from '@/utilities/datasource';
 type SbScrollytellingProps = {
   blok: {
     _uid: string;
+    id: string;
     heading?: string;
     headingLevel?: HeadingType;
     subheading?: string;
@@ -34,6 +35,7 @@ type SbScrollytellingProps = {
 
 export const SbScrollytelling = ({
   blok: {
+    id,
     heading,
     headingLevel,
     subheading,
@@ -59,6 +61,7 @@ export const SbScrollytelling = ({
   return (
     <Scrollytelling
       {...storyblokEditable(blok)}
+      id={id}
       heading={heading}
       headingLevel={headingLevel}
       subheading={subheading}
