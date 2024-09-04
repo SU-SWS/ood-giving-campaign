@@ -7,6 +7,7 @@ import { type PaddingType, type MarginType } from '@/utilities/datasource';
 type SbGridProps = {
   blok: {
     _uid: string;
+    id: string;
     // Turn grid into <ul> and items into <li>
     isList?: boolean;
     gap?: GridGapType;
@@ -35,6 +36,7 @@ type SbGridProps = {
 
 export const SbGrid = ({
   blok: {
+    id,
     isList,
     gap,
     boundingWidth = 'full',
@@ -63,6 +65,7 @@ export const SbGrid = ({
   return (
     <WidthBox
       {...storyblokEditable(blok)}
+      id={id}
       boundingWidth={boundingWidth}
       width={width}
       align={align}

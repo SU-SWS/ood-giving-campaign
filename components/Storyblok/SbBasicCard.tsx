@@ -14,6 +14,7 @@ import { type SbImageType } from './Storyblok.types';
 export type SbBasicCardProps = {
   blok: {
     _uid: string;
+    id: string;
     superhead?: string;
     heading?: string;
     headingLevel?: HeadingType;
@@ -35,6 +36,7 @@ export type SbBasicCardProps = {
 
 export const SbBasicCard = ({
   blok: {
+    id,
     superhead,
     heading,
     headingLevel,
@@ -66,6 +68,7 @@ export const SbBasicCard = ({
   return (
     <BasicCard
       {...storyblokEditable(blok)}
+      id={id}
       superhead={superhead}
       heading={heading}
       headingLevel={headingLevel || 'h3'}

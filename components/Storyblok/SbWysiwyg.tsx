@@ -8,6 +8,7 @@ import { type PaddingType } from '@/utilities/datasource';
 type SbWysiwygProps = {
   blok: {
     _uid: string;
+    id: string;
     content: StoryblokRichtext;
     // TODO: I might remove this option and just pass down the color from the parent
     isLightText?: boolean;
@@ -25,6 +26,7 @@ type SbWysiwygProps = {
 
 export const SbWysiwyg = ({
   blok: {
+    id,
     content,
     isLightText,
     textAlign,
@@ -46,6 +48,7 @@ export const SbWysiwyg = ({
   return (
     <WidthBox
       {...storyblokEditable(blok)}
+      id={id}
       boundingWidth={boundingWidth}
       width={width}
       pt={spacingTop}

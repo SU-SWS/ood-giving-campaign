@@ -9,6 +9,7 @@ import { getNumBloks } from '@/utilities/getNumBloks';
 export type SbSidebarCardProps = {
   blok: {
     _uid: string;
+    id: string;
     heading?: string;
     headingLevel?: HeadingType;
     isSmallHeading?: boolean;
@@ -30,6 +31,7 @@ export type SbSidebarCardProps = {
 
 export const SbSidebarCard = ({
   blok: {
+    id,
     heading,
     headingLevel,
     isSmallHeading,
@@ -51,6 +53,7 @@ export const SbSidebarCard = ({
   return (
     <SidebarCard
       {...storyblokEditable(blok)}
+      id={id}
       heading={heading}
       headingLevel={headingLevel}
       isSmallHeading={isSmallHeading}

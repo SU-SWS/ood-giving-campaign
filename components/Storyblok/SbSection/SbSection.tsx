@@ -38,6 +38,7 @@ import * as styles from './SbSection.styles';
 type SbSectionProps = {
   blok: {
     _uid: string;
+    id?: string;
     content?: SbBlokData[];
     superhead?: string;
     heading?: string;
@@ -71,6 +72,7 @@ type SbSectionProps = {
 
 export const SbSection = ({
   blok: {
+    id,
     content,
     superhead,
     heading,
@@ -139,6 +141,7 @@ export const SbSection = ({
 
   return (
     <Container
+      id={id}
       as={!!heading ? 'section' : 'div'}
       width="full"
       mt={marginTop}
