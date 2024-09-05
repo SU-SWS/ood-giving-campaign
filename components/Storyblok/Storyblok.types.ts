@@ -1,4 +1,6 @@
+import { image } from './../Banner/Banner.styles';
 import { type FontSizeType } from '@/components/Typography';
+import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 
 /**
  * Generic types for Storyblok fields
@@ -71,4 +73,20 @@ export type SbColorStopProps = {
 // Storyblok Native Color Picker
 export type SbColorPickerType = {
   color?: string;
+};
+
+export type SbSliderType = {
+  value?: number;
+}
+
+// Used for Annotated Image component
+export type SbImageHotspotType = {
+  _uid: string;
+  positionX: SbSliderType;
+  positionY: SbSliderType;
+  heading: string;
+  arialabel: string;
+  subhead: string;
+  description: StoryblokRichtext;
+  image: SbImageType;
 };
