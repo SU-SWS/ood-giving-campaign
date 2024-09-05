@@ -17,6 +17,7 @@ import {
 export type SbTextProps = {
   blok: {
     _uid: string;
+    id: string;
     text: string;
     color?: TextColorType;
     headingLevel?: HeadingType;
@@ -42,6 +43,7 @@ export type SbTextProps = {
 
 export const SbText = ({
   blok: {
+    id,
     text,
     color,
     headingLevel,
@@ -67,6 +69,7 @@ export const SbText = ({
 }: SbTextProps) => (
   <AnimateInView {...storyblokEditable(blok)} animation={animation} delay={delay}>
     <WidthBox
+      id={id}
       boundingWidth={boundingWidth}
       width={width}
       mt={marginTop}

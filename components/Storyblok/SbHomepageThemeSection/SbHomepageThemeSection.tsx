@@ -26,6 +26,7 @@ import { getNumBloks } from '@/utilities/getNumBloks';
 type SbHomepageThemeSectionProps = {
   blok: {
     _uid: string;
+    id: string;
     superhead?: string;
     heading?: string;
     intro?: StoryblokRichtext;
@@ -43,6 +44,7 @@ type SbHomepageThemeSectionProps = {
 
 export const SbHomepageThemeSection = ({
   blok: {
+    id,
     superhead,
     heading,
     intro,
@@ -66,6 +68,7 @@ export const SbHomepageThemeSection = ({
 
   return (
     <Container
+      id={id}
       as="section"
       bgColor={isDarkTheme ? 'black' : 'white'}
       py={10}
