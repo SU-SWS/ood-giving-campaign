@@ -13,6 +13,7 @@ export type SbTypeformProps = {
     id: string;
     autoFocus: false;
     component: string;
+    embedLabel?: string;
     embedType: 'slider' | 'popup' | 'popover' | 'sidetab' | 'widget';
     autoResize: boolean;
     fullScreen: boolean;
@@ -42,6 +43,7 @@ export const SbTypeform = ({
   const {
     id,
     autoFocus,
+    embedLabel = '',
     embedType,
     autoResize,
     fullScreen,
@@ -62,6 +64,9 @@ export const SbTypeform = ({
   const height = parseInt(embedHeight, 10);
   const resize = autoResize || !height;
   const opacity = transparent ? 0 : 100;
+  const iframeProps = {
+    ariaLabel: embedLabel ? embedLabel : undefined,
+  };
 
   switch (embedType) {
     case 'slider': {
@@ -81,6 +86,7 @@ export const SbTypeform = ({
             hideHeaders={hideHeader}
             transitiveSearchParams={transitiveParams}
             displayAsFullScreenModal={displayAsFullScreenModal}
+            iframeProps={iframeProps}
           >
             <span className={styles.fauxCTA}>{buttonLabel}</span>
           </Slider>
@@ -102,6 +108,7 @@ export const SbTypeform = ({
           displayAsFullScreenModal={displayAsFullScreenModal}
           autoResize={resize}
           height={!resize ? embedHeight : undefined}
+          iframeProps={iframeProps}
         />
       );
     }
@@ -120,6 +127,7 @@ export const SbTypeform = ({
           displayAsFullScreenModal={displayAsFullScreenModal}
           autoResize={resize}
           height={!resize ? embedHeight : undefined}
+          iframeProps={iframeProps}
         />
       );
     }
@@ -144,6 +152,7 @@ export const SbTypeform = ({
             autoResize={resize}
             height={!resize ? embedHeight : undefined}
             className={styles.fauxCTA}
+            iframeProps={iframeProps}
           >
             {buttonLabel}
           </PopUp>
@@ -173,6 +182,7 @@ export const SbTypeform = ({
             opacity={opacity}
             height={!resize ? embedHeight : undefined}
             className='w-full'
+            iframeProps={iframeProps}
           />
         </Container>
       );
