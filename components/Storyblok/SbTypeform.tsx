@@ -65,7 +65,7 @@ export const SbTypeform = ({
   const resize = autoResize || !height;
   const opacity = transparent ? 0 : 100;
   const iframeProps = {
-    ariaLabel: embedLabel ?? undefined,
+    ariaLabel: embedLabel ? embedLabel : undefined,
   };
 
   switch (embedType) {
