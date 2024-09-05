@@ -9,7 +9,7 @@ import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { getSbImageSize } from '@/utilities/getSbImageSize';
 import * as styles from './StoryImage.styles';
 
-type StoryImageProps = React.HTMLAttributes<HTMLDivElement> & {
+export type StoryImageProps = React.HTMLAttributes<HTMLDivElement> & {
   imageSrc: string;
   imageFocus?: string;
   isLoadingEager?: boolean;
