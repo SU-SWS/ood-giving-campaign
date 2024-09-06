@@ -85,7 +85,7 @@ export type SbImageHotspotType = {
   positionX: SbSliderType;
   positionY: SbSliderType;
   heading: string;
-  arialabel: string;
+  ariaLabel: string;
   subhead: string;
   description: StoryblokRichtext;
   image: SbImageType;
