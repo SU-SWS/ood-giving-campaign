@@ -1,8 +1,5 @@
 import { useId, useRef, useState } from 'react';
 import {
-  Popover, PopoverButton, PopoverPanel,
-} from '@headlessui/react';
-import {
   Description, Dialog, DialogPanel, DialogTitle, Transition, TransitionChild,
 } from '@headlessui/react';
 import { cnb } from 'cnbuilder';
@@ -41,7 +38,7 @@ export const ImageHotspot = ({
           ref={buttonRef}
           onClick={() => setIsModalOpen(true)}
           aria-haspopup="dialog"
-          aria-label={`Open ${ariaLabel}`}
+          aria-label={`Open ${ariaLabel || heading}`}
           className={styles.button}
           style={{ top: `${y * 100}%`, left: `${x * 100}%` }}
         >
@@ -87,10 +84,10 @@ export const ImageHotspot = ({
                   {subhead && (
                     <Description className={styles.srOnly}>{subhead}</Description>
                   )}
-                  {/* <div className="bg-white w-4/5 text-gc-black">
-                    <h2>{heading}</h2>
+                  <div className="bg-white w-full aspect-2 text-gc-black">
+                    <Heading size={3}>{heading}</Heading>
                     <span>{subhead}</span>
-                  </div> */}
+                  </div>
                 </DialogPanel>
               </div>
             </TransitionChild>
