@@ -1,8 +1,11 @@
+import { useId, useRef, useState } from 'react';
 import {
-  Popover, PopoverButton, PopoverPanel, Transition,
+  Popover, PopoverButton, PopoverPanel,
+} from '@headlessui/react';
+import {
+  Description, Dialog, DialogPanel, DialogTitle, Transition, TransitionChild,
 } from '@headlessui/react';
 import { cnb } from 'cnbuilder';
-import { useReducedMotion } from 'framer-motion';
 import { Grid } from '@/components/Grid';
 import { Heading } from '@/components/Typography';
 import { HeroIcon } from '@/components/HeroIcon';
@@ -28,38 +31,71 @@ export const ImageHotspot = ({
   description,
   image,
 }: SbImageHotspotType) => {
-  // Reduce motion users will only see opacity change when opening/closing the modal
-  const preferReducedMotion = useReducedMotion();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <Popover aria-label={ariaLabel}>
-    {({ open }) => (
       <>
-        <PopoverButton
+        <button
+          type="button"
+          ref={buttonRef}
+          onClick={() => setIsModalOpen(true)}
+          aria-haspopup="dialog"
           aria-label={`Open ${ariaLabel}`}
-          className={styles.button(open)}
+          className={styles.button}
           style={{ top: `${y * 100}%`, left: `${x * 100}%` }}
         >
-          <HeroIcon noBaseStyle icon={open ? 'close' : 'menu'} strokeWidth={1.8} className={styles.menuIcon(open)} />
-        </PopoverButton>
-        <Transition
-          enter="duration-300 ease-out"
-          enterFrom={cnb('opacity-0', !preferReducedMotion && '-translate-y-30')}
-          enterTo="opacity-100 translate-y-0"
-          leave="duration-200 ease-out"
-          leaveFrom="opacity-100 translate-y-0"
-          leaveTo={cnb('opacity-0', !preferReducedMotion && '-translate-y-30')}
-          >
-          <PopoverPanel className={styles.panel}>
-            <div className={styles.panelWrapper}>
-              <Grid sm={2} xxl={3} className={styles.panelOuterGrid}>
-                Placeholder
-              </Grid>
-            </div>
-          </PopoverPanel>
+          <HeroIcon noBaseStyle icon="plus" strokeWidth={2} className={styles.icon} />
+        </button>
+        <Transition show={isModalOpen}>
+          <Dialog onClose={() => setIsModalOpen(false)} className={styles.dialog}>
+            <TransitionChild
+              enter="ease-out duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-300"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <div className={styles.dialogOverlay} />
+            </TransitionChild>
+            <TransitionChild
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <div className={styles.dialogWrapper}>
+                <DialogPanel className={styles.dialogPanel}>
+                  <button
+                    type="button"
+                    aria-label="Close modal"
+                    onClick={() => setIsModalOpen(false)}
+                    className={styles.modalClose}
+                  >
+                    <HeroIcon
+                      noBaseStyle
+                      focusable="false"
+                      strokeWidth={2}
+                      icon='close'
+                      className={styles.modalIcon}
+                    />
+                  </button>
+                  <DialogTitle className={styles.srOnly}>{heading}</DialogTitle>
+                  {subhead && (
+                    <Description className={styles.srOnly}>{subhead}</Description>
+                  )}
+                  {/* <div className="bg-white w-4/5 text-gc-black">
+                    <h2>{heading}</h2>
+                    <span>{subhead}</span>
+                  </div> */}
+                </DialogPanel>
+              </div>
+            </TransitionChild>
+          </Dialog>
         </Transition>
       </>
-    )}
-  </Popover>
   );
 };
