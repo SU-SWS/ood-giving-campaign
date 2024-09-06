@@ -1,11 +1,10 @@
 import { Container } from '@/components/Container';
-import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { ImageHotspot } from './ImageHotspot';
 import { StoryImage, type StoryImageProps } from '@/components/StoryImage';
 import { type ImageAspectRatioType } from '@/utilities/datasource';
 import { type WidthType } from '@/components/WidthBox';
 import { type MarginType } from '@/utilities/datasource';
-import { type SbImageType, type SbImageHotspotType } from '@/components/Storyblok/Storyblok.types';
+import { type SbImageHotspotType } from '@/components/Storyblok/Storyblok.types';
 import { type CaptionBgColorType } from '@/components/StoryImage';
 import * as styles from './AnnotatedImage.styles';
 
@@ -53,9 +52,19 @@ export const AnnotatedImage = ({
         captionBgColor={captionBgColor}
       />
       {/* Hotspots */}
-      {hotspots.map((hotspot, index) => (
-        <ImageHotspot key={index} {...hotspot} />
-      ))}
+      {!!hotspots?.length &&
+        (hotspots.length > 1 ? (
+          <ul className={styles.ul}>
+            {hotspots.map((hotspot) => (
+              <li key={hotspot.ariaLabel} className={styles.li}>
+                <ImageHotspot {...hotspot} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <ImageHotspot {...hotspots[0]} />
+        ))
+      }
     </Container>
   );
 };

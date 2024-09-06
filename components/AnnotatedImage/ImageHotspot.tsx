@@ -3,21 +3,12 @@ import {
   Description, Dialog, DialogPanel, DialogTitle, Transition, TransitionChild,
 } from '@headlessui/react';
 import { cnb } from 'cnbuilder';
+import { CreateBloks } from '../CreateBloks';
 import { Grid } from '@/components/Grid';
 import { Heading } from '@/components/Typography';
 import { HeroIcon } from '@/components/HeroIcon';
 import { type SbImageHotspotType } from '../Storyblok/Storyblok.types';
 import * as styles from './ImageHotspot.styles';
-
-// export type ImageHotspotType = {
-//   positionX: number;
-//   positionY: number;
-//   heading?: string;
-//   subhead?: string;
-//   description?: React.ReactNode;
-//   imageSrc?: string;
-//   imageFocus?: string;
-// }
 
 export const ImageHotspot = ({
   positionX: { value: x } = {},
@@ -27,6 +18,7 @@ export const ImageHotspot = ({
   subhead,
   description,
   image,
+  content,
 }: SbImageHotspotType) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -66,27 +58,28 @@ export const ImageHotspot = ({
             >
               <div className={styles.dialogWrapper}>
                 <DialogPanel className={styles.dialogPanel}>
-                  <button
-                    type="button"
-                    aria-label="Close modal"
-                    onClick={() => setIsModalOpen(false)}
-                    className={styles.modalClose}
-                  >
-                    <HeroIcon
-                      noBaseStyle
-                      focusable="false"
-                      strokeWidth={2}
-                      icon='close'
-                      className={styles.modalIcon}
-                    />
-                  </button>
                   <DialogTitle className={styles.srOnly}>{heading}</DialogTitle>
                   {subhead && (
                     <Description className={styles.srOnly}>{subhead}</Description>
                   )}
-                  <div className="bg-white w-full aspect-2 text-gc-black">
+                  <div className="relative flex items-center bg-black-true/60 w-full aspect-2 text-gc-black">
+                    <button
+                      type="button"
+                      aria-label="Close modal"
+                      onClick={() => setIsModalOpen(false)}
+                      className={styles.modalClose}
+                    >
+                      <HeroIcon
+                        noBaseStyle
+                        focusable="false"
+                        strokeWidth={2}
+                        icon='close'
+                        className={styles.modalIcon}
+                      />
+                    </button>
                     <Heading size={3}>{heading}</Heading>
                     <span>{subhead}</span>
+                    <CreateBloks blokSection={content} />
                   </div>
                 </DialogPanel>
               </div>

@@ -1,4 +1,4 @@
-import { image } from './../Banner/Banner.styles';
+import { type SbBlokData } from '@storyblok/react/rsc';
 import { type FontSizeType } from '@/components/Typography';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 
@@ -89,4 +89,5 @@ export type SbImageHotspotType = {
   subhead: string;
   description: StoryblokRichtext;
   image: SbImageType;
+  content: SbBlokData[];
 };
