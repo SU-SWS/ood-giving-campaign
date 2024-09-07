@@ -2,6 +2,7 @@ import { useId, useRef, useState } from 'react';
 import {
   Description, Dialog, DialogPanel, DialogTitle, Transition, TransitionChild,
 } from '@headlessui/react';
+import { useOnClickOutside } from 'usehooks-ts';
 import { cnb } from 'cnbuilder';
 import { CreateBloks } from '../CreateBloks';
 import { Grid } from '@/components/Grid';
@@ -22,6 +23,11 @@ export const ImageHotspot = ({
 }: SbImageHotspotType) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useOnClickOutside(panelRef, () => {
+    setIsModalOpen(false);
+  });
 
   return (
       <>
@@ -62,7 +68,7 @@ export const ImageHotspot = ({
                   {subhead && (
                     <Description className={styles.srOnly}>{subhead}</Description>
                   )}
-                  <div className="relative flex items-center bg-black-true/60 w-full aspect-2 text-gc-black">
+                  <div ref={panelRef} className="relative flex items-center bg-black-true/60 w-full h-screen md:h-auto md:aspect-1 lg:aspect-[3/2] 2xl:aspect-[16/9] 3xl:aspect-2 text-gc-black">
                     <button
                       type="button"
                       aria-label="Close modal"

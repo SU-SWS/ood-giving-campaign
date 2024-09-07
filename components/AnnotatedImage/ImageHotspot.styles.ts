@@ -8,6 +8,6 @@ export const dialog = 'relative z-[150]';
 export const srOnly = 'sr-only';
 export const dialogOverlay = 'fixed inset-0 bg-gc-black/50 backdrop-blur-md w-screen';
 export const dialogWrapper = 'fixed inset-0 w-screen overflow-y-auto overscroll-contain';
-export const dialogPanel = 'relative cc flex items-center w-screen min-h-screen inset-0 pt-20 pb-60 text-white';
+export const dialogPanel = 'relative md:cc flex items-center w-screen min-h-screen inset-0 text-white';
 export const modalClose = 'absolute top-20 right-20 block mr-0 ml-auto rs-mb-2 p-9 border-2 border-white rounded-full hocus:border-dashed transition-transform';
 export const modalIcon = 'text-white size-26';
