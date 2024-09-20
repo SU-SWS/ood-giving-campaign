@@ -27,9 +27,9 @@ export const ImageHotspot = ({
   const panelRef = useRef<HTMLDivElement>(null);
 
   const handleClick = () => {
-    setIsModalOpen(true)
+    setIsModalOpen(true);
     if (!isClicked) {
-      setIsClicked(true)
+      setIsClicked(true);
     }
   };
 
@@ -39,17 +39,21 @@ export const ImageHotspot = ({
 
   return (
       <>
-        <button
-          type="button"
-          ref={buttonRef}
-          onClick={handleClick}
-          aria-haspopup="dialog"
-          aria-label={`Open ${ariaLabel || heading}`}
-          className={styles.button(isClicked)}
-          style={{ top: `${y * 100}%`, left: `${x * 100}%` }}
-        >
-          <HeroIcon noBaseStyle icon="plus" strokeWidth={2} className={styles.icon} />
-        </button>
+        <div className={styles.hotspotWrapper} style={{ top: `${y * 100}%`, left: `${x * 100}%` }}>
+          <button
+            type="button"
+            ref={buttonRef}
+            onClick={handleClick}
+            aria-haspopup="dialog"
+            aria-label={`Open modal ${ariaLabel || heading}`}
+            className={styles.button}
+          >
+            <HeroIcon noBaseStyle icon="plus" strokeWidth={2} className={styles.icon} />
+          </button>
+          {!isClicked && (
+            <span aria-hidden="true" className={styles.hotspotRing} />
+          )}
+        </div>
         <Transition show={isModalOpen}>
           <Dialog onClose={() => setIsModalOpen(false)} className={styles.dialog}>
             <TransitionChild
@@ -72,7 +76,7 @@ export const ImageHotspot = ({
             >
               <div className={styles.dialogWrapper}>
                 <DialogPanel className={styles.dialogPanel}>
-                  <DialogTitle className={styles.srOnly}>{heading}</DialogTitle>
+                  <DialogTitle className={styles.srOnly}>{heading || ariaLabel}</DialogTitle>
                   {subhead && (
                     <Description className={styles.srOnly}>{subhead}</Description>
                   )}

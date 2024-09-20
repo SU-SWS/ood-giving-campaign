@@ -1,8 +1,7 @@
-import { cnb } from 'cnbuilder';
-
-export const button = (isClicked: boolean) => cnb('group flex items-center justify-center absolute z-[100] size-50 bg-black-true/50 rounded-full border-2 border-white hocus-visible:bg-black-true/70 hocus-visible:border-dashed group-aria-expanded:rotate-45 transition-transform hocus-visible:bg-gc-black/80 transition-colors hocus-visible:outline-none focus-visible:ring-4 focus-visible:ring-digital-red-xlight',
-  !isClicked && 'before:content-[""] before:size-50 before:black before:absolute before:bg-digital-red-xlight before:z-[90] before:animate-[hotspot_2s_cubic-bezier(0,0,0.2,1)_infinite] before:rounded-full');
-export const icon = 'z-[100] will-change text-white group-hocus-visible:scale-125 group-aria-expanded:rotate-45 transition-transform w-30';
+export const hotspotWrapper = 'absolute';
+export const button = 'group flex relative z-[100] items-center justify-center size-50 bg-black-true/60 rounded-full border-2 border-white hocus-visible:bg-black-true/70 hocus-visible:border-dashed transition-transform hocus-visible:bg-gc-black/80 transition-colors hocus-visible:outline-none focus-visible:ring-4 focus-visible:ring-digital-red-xlight';
+export const icon = 'z-[100] will-change w-30 text-white group-hocus-visible:scale-110 group-aria-expanded:rotate-45 transition-transform';
+export const hotspotRing = 'absolute top-6 left-6 content-[""] size-38 bg-transparent ring-[10px] ring-offset-0 ring-white border-white z-[80] animate-[hotspot_2s_cubic-bezier(0,0,0.2,1)_infinite] rounded-full';
 
 // Modal styles
 export const dialog = 'relative z-[150]';
