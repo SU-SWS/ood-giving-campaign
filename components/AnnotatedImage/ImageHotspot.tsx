@@ -23,7 +23,15 @@ export const ImageHotspot = ({
 }: SbImageHotspotType) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const [isClicked, setIsClicked] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
+
+  const handleClick = () => {
+    setIsModalOpen(true)
+    if (!isClicked) {
+      setIsClicked(true)
+    }
+  };
 
   useOnClickOutside(panelRef, () => {
     setIsModalOpen(false);
@@ -34,10 +42,10 @@ export const ImageHotspot = ({
         <button
           type="button"
           ref={buttonRef}
-          onClick={() => setIsModalOpen(true)}
+          onClick={handleClick}
           aria-haspopup="dialog"
           aria-label={`Open ${ariaLabel || heading}`}
-          className={styles.button}
+          className={styles.button(isClicked)}
           style={{ top: `${y * 100}%`, left: `${x * 100}%` }}
         >
           <HeroIcon noBaseStyle icon="plus" strokeWidth={2} className={styles.icon} />
