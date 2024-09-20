@@ -68,7 +68,7 @@ export const ImageHotspot = ({
                   {subhead && (
                     <Description className={styles.srOnly}>{subhead}</Description>
                   )}
-                  <div ref={panelRef} className="relative flex items-center bg-black-true/60 w-full h-screen md:h-auto md:aspect-1 lg:aspect-[3/2] 2xl:aspect-[16/9] 3xl:aspect-2 text-gc-black">
+                  <div ref={panelRef} className="relative flex items-center justify-center text-white bg-black-true/60 w-full h-screen md:h-auto md:aspect-1 lg:aspect-[3/2] 2xl:aspect-[16/9] 3xl:aspect-2">
                     <button
                       type="button"
                       aria-label="Close modal"
