@@ -42,7 +42,7 @@ export const ImageHotspot = ({
     setIsModalOpen(false);
   });
 
-  const DescriptionRichText = hasRichText(description) ? <RichText wysiwyg={description} baseFontSize="card" className="rs-mt-3" /> : undefined;
+  const DescriptionRichText = hasRichText(description) ? <RichText wysiwyg={description} baseFontSize="card" className="rs-mt-3 *:max-w-prose" /> : undefined;
 
   return (
       <>
@@ -104,12 +104,12 @@ export const ImageHotspot = ({
                     </button>
                     {modalContentType === 'text-image' && (
                       <Grid xl={12} className="h-full">
-                        <div className="lg:col-span-6 2xl:col-span-5 rs-pt-5 rs-pb-3 rs-px-3">
+                        <div className="xl:col-span-6 2xl:col-span-5 rs-pt-5 rs-pb-3 rs-px-3">
                           <Heading size={3} className="mb-02em leading-tight">{heading}</Heading>
                           <Text as="span" weight="semibold">{subhead}</Text>
                           {DescriptionRichText}
                         </div>
-                        <div className="lg:col-span-6 2xl:col-span-7">
+                        <div className="xl:col-span-6 2xl:col-span-7">
                           <img
                             alt={alt || ''}
                             src={getProcessedImage(filename, '1200x800', focus) || ''}

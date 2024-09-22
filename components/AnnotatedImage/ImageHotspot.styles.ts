@@ -10,12 +10,12 @@ export const hotspotRing = 'absolute top-6 left-6 content-[""] size-38 bg-transp
 export const dialog = 'relative z-[150]';
 export const srOnly = 'sr-only';
 export const dialogOverlay = 'fixed inset-0 bg-gc-black/50 backdrop-blur-md w-screen';
-export const dialogWrapper = 'fixed inset-0 w-screen overflow-y-auto overscroll-contain';
+export const dialogWrapper = 'fixed inset-0 w-screen overflow-y-auto overscroll-contain overflow-x-hidden';
 export const dialogPanel = 'relative md:cc flex items-center w-screen min-h-screen inset-0 text-white text-white';
-export const modalClose = 'absolute top-20 z-[200] right-20 block mr-0 ml-auto rs-mb-2 p-9 border-2 border-digital-red-xlight bg-black-true rounded-full hocus-visible:border-dashed hocus-visible:border-white transition-transform';
+export const modalClose = 'absolute top-20 z-[200] right-20 block mr-0 ml-auto rs-mb-2 p-9 border-2 border-digital-red-xlight bg-black-true rounded-full hocus-visible:border-dashed hocus-visible:border-white transition-transform hocus-visible:rotate-90';
 export const modalIcon = 'text-white size-26';
 
-export const contentWrapper = (modalContentType: SbImageHotspotModalContentType) => cnb('relative flex items-center justify-center w-full h-screen md:h-auto md:aspect-1 lg:aspect-[3/2] 2xl:aspect-[16/9] 3xl:aspect-2', {
+export const contentWrapper = (modalContentType: SbImageHotspotModalContentType) => cnb('relative flex items-center justify-center w-full h-screen md:h-auto 2xl:aspect-[16/9] 3xl:aspect-2', {
   'bg-white text-black': modalContentType === 'text-image',
   'bg-black-true/60 text-white': modalContentType !== 'text-image',
 });
