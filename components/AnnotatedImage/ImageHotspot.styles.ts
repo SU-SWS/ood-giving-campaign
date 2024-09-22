@@ -1,3 +1,6 @@
+import { cnb } from 'cnbuilder';
+import { type SbImageHotspotModalContentType } from '@/components/Storyblok/Storyblok.types';
+
 export const hotspotWrapper = 'absolute';
 export const button = 'group flex relative z-[100] items-center justify-center size-50 bg-black-true/60 rounded-full border-2 border-white hocus-visible:bg-black-true/70 hocus-visible:border-dashed transition-transform hocus-visible:bg-gc-black/80 transition-colors hocus-visible:outline-none focus-visible:ring-4 focus-visible:ring-digital-red-xlight';
 export const icon = 'z-[100] will-change w-30 text-white group-hocus-visible:scale-110 group-aria-expanded:rotate-45 transition-transform';
@@ -11,3 +14,8 @@ export const dialogWrapper = 'fixed inset-0 w-screen overflow-y-auto overscroll-
 export const dialogPanel = 'relative md:cc flex items-center w-screen min-h-screen inset-0 text-white text-white';
 export const modalClose = 'absolute top-20 z-[200] right-20 block mr-0 ml-auto rs-mb-2 p-9 border-2 border-digital-red-xlight bg-black-true rounded-full hocus-visible:border-dashed hocus-visible:border-white transition-transform';
 export const modalIcon = 'text-white size-26';
+
+export const contentWrapper = (modalContentType: SbImageHotspotModalContentType) => cnb('relative flex items-center justify-center w-full h-screen md:h-auto md:aspect-1 lg:aspect-[3/2] 2xl:aspect-[16/9] 3xl:aspect-2', {
+  'bg-white text-black': modalContentType === 'text-image',
+  'bg-black-true/60 text-white': modalContentType !== 'text-image',
+});

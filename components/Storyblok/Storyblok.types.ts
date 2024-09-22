@@ -80,14 +80,18 @@ export type SbSliderType = {
 }
 
 // Used for Annotated Image component
+export type SbImageHotspotModalContentType =  'text-image' | 'fullwidth-image' | 'component';
+
 export type SbImageHotspotType = {
   _uid: string;
   positionX: SbSliderType;
   positionY: SbSliderType;
+  modalContentType: SbImageHotspotModalContentType;
   heading: string;
   ariaLabel: string;
   subhead: string;
   description: StoryblokRichtext;
   image: SbImageType;
+  alt: string;
   content: SbBlokData[];
 };

@@ -1,4 +1,4 @@
-import { useId, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import {
   Description, Dialog, DialogPanel, DialogTitle, Transition, TransitionChild,
 } from '@headlessui/react';
@@ -6,19 +6,24 @@ import { useOnClickOutside } from 'usehooks-ts';
 import { cnb } from 'cnbuilder';
 import { CreateBloks } from '../CreateBloks';
 import { Grid } from '@/components/Grid';
-import { Heading } from '@/components/Typography';
+import { Heading, Text } from '@/components/Typography';
 import { HeroIcon } from '@/components/HeroIcon';
-import { type SbImageHotspotType } from '../Storyblok/Storyblok.types';
+import { RichText } from '@/components/RichText';
+import { type SbImageHotspotType } from '@/components/Storyblok/Storyblok.types';
+import { getProcessedImage } from '@/utilities/getProcessedImage';
+import { hasRichText } from '@/utilities/hasRichText';
 import * as styles from './ImageHotspot.styles';
 
 export const ImageHotspot = ({
   positionX: { value: x } = {},
   positionY: { value: y } = {},
+  modalContentType,
   heading,
   ariaLabel,
   subhead,
   description,
-  image,
+  image: { filename, focus } = {},
+  alt,
   content,
 }: SbImageHotspotType) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,6 +41,8 @@ export const ImageHotspot = ({
   useOnClickOutside(panelRef, () => {
     setIsModalOpen(false);
   });
+
+  const DescriptionRichText = hasRichText(description) ? <RichText wysiwyg={description} baseFontSize="card" className="rs-mt-3" /> : undefined;
 
   return (
       <>
@@ -80,7 +87,7 @@ export const ImageHotspot = ({
                   {subhead && (
                     <Description className={styles.srOnly}>{subhead}</Description>
                   )}
-                  <div ref={panelRef} className="relative flex items-center justify-center text-white bg-black-true/60 w-full h-screen md:h-auto md:aspect-1 lg:aspect-[3/2] 2xl:aspect-[16/9] 3xl:aspect-2">
+                  <div ref={panelRef} className={styles.contentWrapper(modalContentType)}>
                     <button
                       type="button"
                       aria-label="Close modal"
@@ -95,8 +102,22 @@ export const ImageHotspot = ({
                         className={styles.modalIcon}
                       />
                     </button>
-                    <Heading size={3}>{heading}</Heading>
-                    <span>{subhead}</span>
+                    {modalContentType === 'text-image' && (
+                      <Grid xl={12} className="h-full">
+                        <div className="lg:col-span-6 2xl:col-span-5 rs-pt-5 rs-pb-3 rs-px-3">
+                          <Heading size={3} className="mb-02em leading-tight">{heading}</Heading>
+                          <Text as="span" weight="semibold">{subhead}</Text>
+                          {DescriptionRichText}
+                        </div>
+                        <div className="lg:col-span-6 2xl:col-span-7">
+                          <img
+                            alt={alt || ''}
+                            src={getProcessedImage(filename, '1200x800', focus) || ''}
+                            className="object-cover size-full"
+                          />
+                        </div>
+                      </Grid>
+                    )}
                     <CreateBloks blokSection={content} />
                   </div>
                 </DialogPanel>
