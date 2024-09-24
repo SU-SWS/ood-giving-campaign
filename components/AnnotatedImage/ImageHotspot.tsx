@@ -6,6 +6,7 @@ import { useOnClickOutside } from 'usehooks-ts';
 import { cnb } from 'cnbuilder';
 import { CreateBloks } from '../CreateBloks';
 import { Grid } from '@/components/Grid';
+import { FlexBox } from '@/components/FlexBox';
 import { Heading, Text } from '@/components/Typography';
 import { HeroIcon } from '@/components/HeroIcon';
 import { RichText } from '@/components/RichText';
@@ -111,7 +112,7 @@ export const ImageHotspot = ({
                     </button>
                     {modalContentType === 'text-image' && (
                       <Grid xl={12} className="h-full">
-                        <div className="xl:col-span-6 2xl:col-span-5 rs-pt-6 rs-pb-3 bg-white">
+                        <div className="xl:col-span-6 2xl:col-span-5 pt-90 rs-pb-3 bg-white">
                           <div className="border-l-[1.2rem] md:border-l-[1.8rem] border-digital-red-light">
                             <Heading size={3} className="mb-02em leading-tight ml-22 md:ml-40 2xl:ml-43">{heading}</Heading>
                             <Text as="span" weight="semibold" className="ml-22 md:ml-40 2xl:ml-43">{subhead}</Text>
@@ -124,7 +125,7 @@ export const ImageHotspot = ({
                             src={getProcessedImage(filename, '1200x800', focus) || ''}
                             className="object-cover size-full"
                           />
-                          <div className="absolute px-18 pt-14 pb-16 bg-black-true/70 bottom-30 left-30 max-w-[30rem] md:max-w-[40rem] xl:max-w-[50rem] z-[110]">
+                          <div className="sm:absolute px-18 pt-14 pb-16 bg-black-true/70 sm:bottom-20 sm:left-20 md:bottom-30 md:left-30 max-w-full sm:max-w-[30rem] md:max-w-[40rem] 2xl:max-w-[50%] z-[110]">
                             {Caption}
                           </div>
                         </div>
