@@ -1,5 +1,5 @@
-import { Container } from '@/components/Container';
 import { ImageHotspot } from './ImageHotspot';
+import { Container } from '@/components/Container';
 import { StoryImage, type StoryImageProps } from '@/components/StoryImage';
 import { type ImageAspectRatioType } from '@/utilities/datasource';
 import { type WidthType } from '@/components/WidthBox';
@@ -8,19 +8,10 @@ import { type SbImageHotspotType } from '@/components/Storyblok/Storyblok.types'
 import { type CaptionBgColorType } from '@/components/StoryImage';
 import * as styles from './AnnotatedImage.styles';
 
-type AnnotatedImageProps = StoryImageProps & {
+type AnnotatedImageProps = Omit<StoryImageProps, 'width' | 'isParallax' | 'animation' | 'delay' | 'isFullHeight'>  & {
   hotspots: SbImageHotspotType[];
-  imageSrc?: string;
-  imageFocus?: string;
-  alt?: string;
-  aspectRatio?: ImageAspectRatioType;
-  boundingWidth?: 'site' | 'full';
-  width?: WidthType;
   marginTop?: MarginType;
   marginBottom?: MarginType;
-  caption?: React.ReactNode;
-  isCaptionInset?: boolean;
-  captionBgColor?: CaptionBgColorType;
 };
 
 export const AnnotatedImage = ({
@@ -29,42 +20,44 @@ export const AnnotatedImage = ({
   imageFocus,
   alt,
   aspectRatio,
-  boundingWidth = 'full',
-  width,
   caption,
   isCaptionInset,
   captionBgColor,
+  boundingWidth,
   marginTop,
   marginBottom,
   ...props
 }: AnnotatedImageProps) => {
   return (
-    <Container width="full" mt={marginTop} mb={marginBottom} className={styles.root} {...props}>
-      <StoryImage
-        imageSrc={imageSrc}
-        imageFocus={imageFocus}
-        alt={alt}
-        aspectRatio={aspectRatio}
-        boundingWidth={boundingWidth}
-        width={width}
-        caption={caption}
-        isCaptionInset={isCaptionInset}
-        captionBgColor={captionBgColor}
-      />
-      {/* Hotspots */}
-      {!!hotspots?.length &&
-        (hotspots.length > 1 ? (
-          <ul className={styles.ul}>
-            {hotspots.map((hotspot) => (
-              <li key={hotspot.ariaLabel} className={styles.li}>
-                <ImageHotspot {...hotspot} />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <ImageHotspot {...hotspots[0]} />
-        ))
-      }
+    <Container width={boundingWidth} mt={marginTop} mb={marginBottom} className={styles.root} {...props}>
+      {/* Extra div is essential to ensure hotspot doesn't move relative to image when browser is resized */}
+      <div className="relative">
+        <StoryImage
+          imageSrc={imageSrc}
+          imageFocus={imageFocus}
+          alt={alt}
+          aspectRatio={aspectRatio}
+          boundingWidth="full"
+          width="12"
+          caption={caption}
+          isCaptionInset={isCaptionInset}
+          captionBgColor={captionBgColor}
+        />
+        {/* Hotspots */}
+        {!!hotspots?.length &&
+          (hotspots.length > 1 ? (
+            <ul className={styles.ul}>
+              {hotspots.map((hotspot) => (
+                <li key={hotspot.ariaLabel} className={styles.li}>
+                  <ImageHotspot {...hotspot} />
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <ImageHotspot {...hotspots[0]} />
+          ))
+        }
+      </div>
     </Container>
   );
 };

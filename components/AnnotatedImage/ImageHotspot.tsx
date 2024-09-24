@@ -90,7 +90,7 @@ export const ImageHotspot = ({
               leaveTo="opacity-0 scale-95"
             >
               <div className={styles.dialogWrapper}>
-                <DialogPanel className={styles.dialogPanel}>
+                <DialogPanel className={styles.dialogPanel(modalContentType)}>
                   <DialogTitle className={styles.srOnly}>{heading || ariaLabel}</DialogTitle>
                   {subhead && (
                     <Description className={styles.srOnly}>{subhead}</Description>

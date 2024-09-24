@@ -33,7 +33,6 @@ export const SbAnnotatedImage = ({
     caption,
     aspectRatio,
     boundingWidth = 'full',
-    width,
     marginTop,
     marginBottom,
     isCaptionInset,
@@ -61,7 +60,6 @@ export const SbAnnotatedImage = ({
       caption={Caption}
       aspectRatio={aspectRatio}
       boundingWidth={boundingWidth}
-      width={width}
       marginTop={marginTop}
       marginBottom={marginBottom}
       isCaptionInset={isCaptionInset}
