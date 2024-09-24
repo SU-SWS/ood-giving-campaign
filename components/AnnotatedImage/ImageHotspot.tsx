@@ -23,8 +23,11 @@ export const ImageHotspot = ({
   subhead,
   description,
   image: { filename, focus } = {},
+  caption,
   alt,
   content,
+  isVerticalCard,
+  descriptionSize,
 }: SbImageHotspotType) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -42,7 +45,11 @@ export const ImageHotspot = ({
     setIsModalOpen(false);
   });
 
-  const DescriptionRichText = hasRichText(description) ? <RichText wysiwyg={description} baseFontSize="card" className="rs-mt-3 *:max-w-prose" /> : undefined;
+  const DescriptionRichText = hasRichText(description) ? <RichText wysiwyg={description} baseFontSize="card" className="rs-mt-3 *:max-w-prose rs-px-4" /> : undefined;
+
+  const Caption = hasRichText(caption)
+  ? <RichText wysiwyg={caption} textColor="white" linkColor="digital-red-xlight" className="gc-caption first:*:mt-0 *:leading-display" />
+  : undefined;
 
   return (
       <>
@@ -104,17 +111,22 @@ export const ImageHotspot = ({
                     </button>
                     {modalContentType === 'text-image' && (
                       <Grid xl={12} className="h-full">
-                        <div className="xl:col-span-6 2xl:col-span-5 rs-pt-5 rs-pb-3 rs-px-3">
-                          <Heading size={3} className="mb-02em leading-tight">{heading}</Heading>
-                          <Text as="span" weight="semibold">{subhead}</Text>
+                        <div className="xl:col-span-6 2xl:col-span-5 rs-pt-6 rs-pb-3 bg-white">
+                          <div className="border-l-[1.2rem] md:border-l-[1.8rem] border-digital-red-light">
+                            <Heading size={3} className="mb-02em leading-tight ml-22 md:ml-40 2xl:ml-43">{heading}</Heading>
+                            <Text as="span" weight="semibold" className="ml-22 md:ml-40 2xl:ml-43">{subhead}</Text>
+                          </div>
                           {DescriptionRichText}
                         </div>
-                        <div className="xl:col-span-6 2xl:col-span-7">
+                        <div className="relative xl:col-span-6 2xl:col-span-7">
                           <img
                             alt={alt || ''}
                             src={getProcessedImage(filename, '1200x800', focus) || ''}
                             className="object-cover size-full"
                           />
+                          <div className="absolute px-18 pt-14 pb-16 bg-black-true/70 bottom-30 left-30 max-w-[30rem] md:max-w-[40rem] z-[110]">
+                            {Caption}
+                          </div>
                         </div>
                       </Grid>
                     )}

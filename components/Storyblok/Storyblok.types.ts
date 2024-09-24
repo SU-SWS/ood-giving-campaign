@@ -1,3 +1,4 @@
+import { caption } from './../Hero/StoryHero.styles';
 import { type SbBlokData } from '@storyblok/react/rsc';
 import { type FontSizeType } from '@/components/Typography';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
@@ -81,6 +82,7 @@ export type SbSliderType = {
 
 // Used for Annotated Image component
 export type SbImageHotspotModalContentType =  'text-image' | 'fullwidth-image' | 'component';
+export type SbImageHotspotDescriptionSizeType = 'small' | 'medium' | 'large';
 
 export type SbImageHotspotType = {
   _uid: string;
@@ -92,6 +94,9 @@ export type SbImageHotspotType = {
   subhead: string;
   description: StoryblokRichtext;
   image: SbImageType;
+  caption: StoryblokRichtext;
   alt: string;
   content: SbBlokData[];
+  isVerticalCard: boolean;
+  descriptionSize: SbImageHotspotDescriptionSizeType;
 };
