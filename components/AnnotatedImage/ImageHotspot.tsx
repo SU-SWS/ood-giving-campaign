@@ -124,7 +124,7 @@ export const ImageHotspot = ({
                             src={getProcessedImage(filename, '1200x800', focus) || ''}
                             className="object-cover size-full"
                           />
-                          <div className="absolute px-18 pt-14 pb-16 bg-black-true/70 bottom-30 left-30 max-w-[30rem] md:max-w-[40rem] z-[110]">
+                          <div className="absolute px-18 pt-14 pb-16 bg-black-true/70 bottom-30 left-30 max-w-[30rem] md:max-w-[40rem] xl:max-w-[50rem] z-[110]">
                             {Caption}
                           </div>
                         </div>
