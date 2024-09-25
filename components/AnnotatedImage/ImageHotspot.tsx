@@ -120,12 +120,22 @@ export const ImageHotspot = ({
                           {DescriptionRichText}
                         </div>
                         <div className="relative xl:col-span-6 2xl:col-span-7">
-                          <img
-                            alt={alt || ''}
-                            src={getProcessedImage(filename, '1200x800', focus) || ''}
-                            className="object-cover size-full"
-                          />
-                          <div className="sm:absolute px-18 pt-14 pb-16 bg-black-true/70 sm:bottom-20 sm:left-20 md:bottom-30 md:left-30 max-w-full sm:max-w-[30rem] md:max-w-[40rem] 2xl:max-w-[50%] z-[110]">
+                          <picture>
+                            <source
+                              src={getProcessedImage(filename, '1200x800', focus) || ''}
+                              media="(min-width: 576px)"
+                            />
+                            <source
+                              media="(max-width: 575px)"
+                              src={getProcessedImage(filename, '600x0', focus) || ''}
+                            />
+                            <img
+                              alt={alt || ''}
+                              src={getProcessedImage(filename, '1200x800', focus) || ''}
+                              className="xl:object-cover w-full xl:h-full"
+                            />
+                          </picture>
+                          <div className="sm:absolute px-18 pt-14 pb-16 bg-black-true/80 sm:bg-black-true/70 sm:bottom-20 sm:left-20 md:bottom-30 md:left-30 max-w-full sm:max-w-[30rem] md:max-w-[40rem] 2xl:max-w-[50%] z-[110]">
                             {Caption}
                           </div>
                         </div>
