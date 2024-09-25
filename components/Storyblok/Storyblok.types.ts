@@ -82,7 +82,7 @@ export type SbSliderType = {
 
 // Used for Annotated Image component
 export type SbImageHotspotModalContentType =  'text-image' | 'fullwidth-image' | 'component';
-export type SbImageHotspotDescriptionSizeType = 'small' | 'medium' | 'large';
+export type SbImageHotspotDescriptionSizeType = 'card' | 'default' | 'big';
 
 export type SbImageHotspotType = {
   _uid: string;

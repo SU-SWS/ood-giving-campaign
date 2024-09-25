@@ -46,7 +46,9 @@ export const ImageHotspot = ({
     setIsModalOpen(false);
   });
 
-  const DescriptionRichText = hasRichText(description) ? <RichText wysiwyg={description} baseFontSize="card" className="rs-mt-3 *:max-w-prose rs-px-4" /> : undefined;
+  const DescriptionRichText = hasRichText(description)
+  ? <RichText wysiwyg={description} baseFontSize={descriptionSize} className="rs-mt-3 *:max-w-prose *:leading-snug rs-px-4" />
+  : undefined;
 
   const Caption = hasRichText(caption)
   ? <RichText wysiwyg={caption} textColor="white" linkColor="digital-red-xlight" className="gc-caption first:*:mt-0 *:leading-display" />
@@ -112,7 +114,7 @@ export const ImageHotspot = ({
                     </button>
                     {modalContentType === 'text-image' && (
                       <Grid xl={12} className="h-full">
-                        <div className="xl:col-span-6 2xl:col-span-5 pt-90 rs-pb-3 bg-white">
+                        <div className="xl:col-span-6 2xl:col-span-5 pt-90 rs-pb-4 bg-white">
                           <div className="border-l-[1.2rem] md:border-l-[1.8rem] border-digital-red-light">
                             <Heading size={3} className="mb-02em leading-tight ml-22 md:ml-40 2xl:ml-43">{heading}</Heading>
                             <Text as="span" weight="semibold" className="ml-22 md:ml-40 2xl:ml-43">{subhead}</Text>
