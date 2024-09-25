@@ -45,6 +45,7 @@ export const StoryImage = ({
   captionBgColor = 'transparent',
   animation = 'none',
   delay,
+  children,
   className,
   ...props
 }: StoryImageProps) => {
@@ -101,6 +102,7 @@ export const StoryImage = ({
                 </picture>
               </Parallax>
             )}
+            {children}
           </div>
           {caption && (
             <Container

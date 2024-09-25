@@ -38,21 +38,22 @@ export const AnnotatedImage = ({
           caption={caption}
           isCaptionInset={isCaptionInset}
           captionBgColor={captionBgColor}
-        />
-        {/* Hotspots */}
-        {!!hotspots?.length &&
-          (hotspots.length > 1 ? (
-            <ul className={styles.ul}>
-              {hotspots.map((hotspot) => (
-                <li key={hotspot.ariaLabel} className={styles.li}>
-                  <ImageHotspot {...hotspot} />
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <ImageHotspot {...hotspots[0]} />
-          ))
-        }
+        >
+          {/* Hotspots */}
+          {!!hotspots?.length &&
+            (hotspots.length > 1 ? (
+              <ul className={styles.ul}>
+                {hotspots.map((hotspot) => (
+                  <li key={hotspot.ariaLabel} className={styles.li}>
+                    <ImageHotspot {...hotspot} />
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <ImageHotspot {...hotspots[0]} />
+            ))
+          }
+        </StoryImage>
       </div>
     </Container>
   );
