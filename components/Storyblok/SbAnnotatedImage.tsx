@@ -1,10 +1,11 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
-import { type ImageAspectRatioType } from '@/utilities/datasource';
-import { type WidthType } from '@/components/WidthBox';
-import { type MarginType } from '@/utilities/datasource';
 import { AnnotatedImage } from '@/components/AnnotatedImage';
+import { type WidthType } from '@/components/WidthBox';
 import { RichText } from '@/components/RichText';
+import { hasRichText } from '@/utilities/hasRichText';
+import { type ImageAspectRatioType } from '@/utilities/datasource';
+import { type MarginType } from '@/utilities/datasource';
 import { type SbImageType, type SbImageHotspotType } from './Storyblok.types';
 
 type SbAnnotatedImageProps = {
@@ -47,7 +48,7 @@ export const SbAnnotatedImage = ({
     return null;
   }
 
-  const Caption = caption ? (
+  const Caption = hasRichText(caption) ? (
     <RichText textColor={isCaptionLight ? 'white' : 'black-70'} wysiwyg={caption} />
   ) : undefined;
 
