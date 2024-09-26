@@ -53,8 +53,8 @@
   },
   "devDependencies": {
     "@tailwindcss/container-queries": "^0.1.1",
-    "@types/node": "^20.14.8",
-    "@types/react": "^18.3.3",
+    "@types/node": "^22.7.2",
+    "@types/react": "^18.3.9",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.19",
     "decanter": "^7.3.0",
@@ -64,7 +64,7 @@
     "netlify-cli": "^17.36.2",
     "netlify-plugin-vault-variables": "^3.0.0",
     "postcss": "^8.4.38",
-    "typescript": "^5.5.2"
+    "typescript": "^5.6.2"
   },
   "optionalDependencies": {
     "local-ssl-proxy": "^2.0.5"
