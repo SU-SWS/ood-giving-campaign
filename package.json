@@ -42,7 +42,7 @@
     "cookies-next": "^4.2.1",
     "framer-motion": "^11.7.0",
     "next": "^14.2.13",
-    "react-loading-skeleton": "^3.4.0",
+    "react-loading-skeleton": "^3.5.0",
     "react-player": "^2.16.0",
     "storyblok-rich-text-react-renderer-ts": "^3.2.0",
     "usehooks-ts": "^3.1.0"
@@ -56,14 +56,14 @@
     "@types/node": "^22.7.2",
     "@types/react": "^18.3.9",
     "@types/react-dom": "^18.3.0",
-    "autoprefixer": "^10.4.19",
+    "autoprefixer": "^10.4.20",
     "decanter": "^7.3.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.13",
     "madr": "^3.0.0",
     "netlify-cli": "^17.36.2",
     "netlify-plugin-vault-variables": "^3.0.0",
-    "postcss": "^8.4.38",
+    "postcss": "^8.4.47",
     "typescript": "^5.6.2"
   },
   "optionalDependencies": {
