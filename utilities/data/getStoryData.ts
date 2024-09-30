@@ -2,6 +2,7 @@ import type { getStoryDataProps } from '@/utilities/data/types';
 import type { ISbStoriesParams, ISbResult } from '@storyblok/react';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { getStoryblokApi, StoryblokClient } from '@storyblok/react/rsc';
+import { getActiveEnv } from '../getActiveEnv';
 
 /**
  * Get the data out of the Storyblok API for the page.
@@ -11,10 +12,11 @@ import { getStoryblokApi, StoryblokClient } from '@storyblok/react/rsc';
  */
 async function getStoryData({ path, isEditor = false }: getStoryDataProps): Promise<ISbResult | { data: 404 }> {
   const storyblokApi: StoryblokClient = getStoryblokApi();
-  const activeEnv = process.env.NODE_ENV || 'development';
+  const activeEnv = getActiveEnv();
+
   let sbParams: ISbStoriesParams = {
-    version: activeEnv === 'development' || isEditor ? 'draft' : 'published',
-    cv: activeEnv === 'development' || isEditor ? Date.now() : undefined,
+    version: activeEnv === 'production' && !isEditor ? 'published' : 'draft',
+    cv: Date.now(),
     resolve_relations: resolveRelations,
   };
 
@@ -23,17 +25,9 @@ async function getStoryData({ path, isEditor = false }: getStoryDataProps): Prom
   try {
     const story: ISbResult = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
     return story;
-  } catch (error) {
-    if (typeof error === 'string') {
-      try {
-        const parsedError = JSON.parse(error);
-        if (parsedError.status === 404) {
-          return { data: 404 };
-        }
-      }
-      catch (e) {
-        throw error;
-      }
+  } catch (error: any) {
+    if (error && error.status && error.status === 404) {
+      return { data: 404 };
     }
     throw error;
   }

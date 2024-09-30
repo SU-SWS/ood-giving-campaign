@@ -18,7 +18,7 @@
     # The vault service endpoint
     endpoint = 'https://vault.stanford.edu'
     # Order doesn't matter here as these will be fetched asyncronously. Try not to have dupes.
-    secrets = ['secret/data/projects/adapt/ood-giving-campaign']
+    secrets = ['secret/data/projects/adapt/stanford-tour-dev'] # TODO: CHANGE BACK TO ood-giving-campgain
     # Set which environment variables to use for the approle login
     secretId = 'VAULT_SECRET_ID'
     roleId = 'VAULT_ROLE_ID'
