@@ -47,7 +47,6 @@ export const CtaNextLink = React.forwardRef<HTMLAnchorElement, CtaNextLinkProps>
   }
 
   const strippedHref = `/${cleanParts.join('/')}`;
-  console.log('strippedHref:', strippedHref);
 
   return (
     <Link
