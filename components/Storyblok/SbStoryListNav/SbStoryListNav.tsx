@@ -10,6 +10,7 @@ import { FlexBox } from '@/components/FlexBox';
 import { Heading } from '@/components/Typography';
 import { HeroIcon } from '@/components/HeroIcon';
 import * as styles from './SbStoryListNav.styles';
+import { sbStripSlugURL } from '@/utilities/sbStripSlugUrl';
 
 type SbStoryListNavType = {
   blok: {
@@ -26,7 +27,7 @@ const StoryListContent = ({ blok: { links }, fullSlug }: SbStoryListNavType) => 
   return (
     <ul className={styles.list}>
       {links.map((link) => {
-        const cached_url = link.link?.cached_url ? link.link.cached_url : '';
+        const cached_url = link.link?.cached_url ? sbStripSlugURL(link.link.cached_url) : '';
         const isCurrentPage = fullSlug === cached_url || (fullSlug === 'stories' && cached_url === 'stories/');
         return (
           <li key={link._uid} className={styles.listItem}>

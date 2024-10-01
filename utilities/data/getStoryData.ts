@@ -6,9 +6,6 @@ import { isProduction } from '../getActiveEnv';
 
 /**
  * Get the data out of the Storyblok API for the page.
- *
- * Make sure to not export the below functions otherwise there will be a typescript error
- * https://github.com/vercel/next.js/discussions/48724
  */
 async function getStoryData({ path, isEditor = false }: getStoryDataProps): Promise<ISbResult | { data: 404 }> {
   const storyblokApi: StoryblokClient = getStoryblokApi();
@@ -20,7 +17,7 @@ async function getStoryData({ path, isEditor = false }: getStoryDataProps): Prom
     resolve_relations: resolveRelations,
   };
 
-  const slug = path.replace(/\/$/, '') || 'home'; // Remove trailing slash or if no slash, use home.
+  const slug = path.replace(/\/$/, ''); // Remove trailing slash.
 
   try {
     const story: ISbResult = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);

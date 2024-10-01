@@ -163,7 +163,7 @@ export default async function Page({ params }: ParamsType) {
       story={data.story}
       extra={extra}
       bridgeOptions={bridgeOptions}
-      slug={slug}
+      slug={slugPath}
       name={data.story.name}
     />
   );
