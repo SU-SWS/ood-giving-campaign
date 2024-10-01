@@ -9,7 +9,7 @@ import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
 import { notFound } from 'next/navigation';
 import getStoryData from '@/utilities/data/getStoryData';
 import getStoryList from '@/utilities/data/getStoryList';
-import { getActiveEnv } from '@/utilities/getActiveEnv';
+import { isProduction } from '@/utilities/getActiveEnv';
 import { getSlugPrefix } from '@/utilities/getSlugPrefix';
 
 type PathsType = {
@@ -56,11 +56,11 @@ storyblokInit({
  * Generate the list of stories to statically render.
  */
 export async function generateStaticParams() {
-  const activeEnv = getActiveEnv();
+  const isProd = isProduction();
   // Fetch new content from storyblok.
   const storyblokApi: StoryblokClient = getStoryblokApi();
   let sbParams: ISbStoriesParams = {
-    version: activeEnv === 'production' ? 'published' : 'draft',
+    version: isProd ? 'published' : 'draft',
     cv: Date.now(),
     resolve_links: '0',
     resolve_assets: 0,

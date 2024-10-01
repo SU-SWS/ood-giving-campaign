@@ -42,14 +42,3 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Strict-Transport-Security = "max-age=31536000"
     Permissions-Policy = "vibrate=(), geolocation=(), midi=(), notifications=(), push=(), microphone=(), camera=(), magnetometer=(), gyroscope=(), speaker=()"
-
-[[redirects]]
-  from = "/home"
-  to = "/"
-  status = 301
-  force = true
-
-# CONTEXTUAL PLUGINS
-# ##############################################################################
-[[context.production.plugins]]
-  package = "netlify-plugin-submit-sitemap"

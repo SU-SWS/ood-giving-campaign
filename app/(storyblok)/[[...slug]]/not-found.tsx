@@ -6,7 +6,7 @@ import {
 import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
-import { getActiveEnv } from '@/utilities/getActiveEnv';
+import { isProduction } from '@/utilities/getActiveEnv';
 
 // Storyblok bridge options.
 const bridgeOptions = {
@@ -37,10 +37,10 @@ storyblokInit({
  * https://github.com/vercel/next.js/discussions/48724
  */
 async function getStoryData(slug = 'momentum/page-not-found') {
-  const activeEnv = getActiveEnv();
+  const isProd = isProduction();
   const storyblokApi: StoryblokClient = getStoryblokApi();
   const sbParams: ISbStoriesParams = {
-    version: activeEnv === 'production' ? 'published' : 'draft',
+    version: isProd ? 'published' : 'draft',
     cv: Date.now(),
     resolve_relations: resolveRelations,
   };

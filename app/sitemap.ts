@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 import StoryblokClient from 'storyblok-js-client';
 import { ISbStoriesParams } from '@storyblok/react/rsc';
-import { getActiveEnv } from '@/utilities/getActiveEnv';
+import { isProduction } from '@/utilities/getActiveEnv';
 import { getSlugPrefix } from '@/utilities/getSlugPrefix';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -15,10 +15,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     region: 'us',
   });
 
-  const activeEnv = getActiveEnv();
+  const isProd = isProduction();
   // Fetch new content from storyblok.
   let sbParams: ISbStoriesParams = {
-    version: activeEnv === 'production' ? 'published' : 'draft',
+    version: isProd ? 'published' : 'draft',
     cv: Date.now(),
     resolve_links: '0',
     resolve_assets: 0,

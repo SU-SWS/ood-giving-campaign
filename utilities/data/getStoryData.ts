@@ -2,7 +2,7 @@ import type { getStoryDataProps } from '@/utilities/data/types';
 import type { ISbStoriesParams, ISbResult } from '@storyblok/react';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { getStoryblokApi, StoryblokClient } from '@storyblok/react/rsc';
-import { getActiveEnv } from '../getActiveEnv';
+import { isProduction } from '../getActiveEnv';
 
 /**
  * Get the data out of the Storyblok API for the page.
@@ -12,10 +12,10 @@ import { getActiveEnv } from '../getActiveEnv';
  */
 async function getStoryData({ path, isEditor = false }: getStoryDataProps): Promise<ISbResult | { data: 404 }> {
   const storyblokApi: StoryblokClient = getStoryblokApi();
-  const activeEnv = getActiveEnv();
+  const isProd = isProduction();
 
   let sbParams: ISbStoriesParams = {
-    version: activeEnv === 'production' && !isEditor ? 'published' : 'draft',
+    version: isProd && !isEditor ? 'published' : 'draft',
     cv: Date.now(),
     resolve_relations: resolveRelations,
   };
