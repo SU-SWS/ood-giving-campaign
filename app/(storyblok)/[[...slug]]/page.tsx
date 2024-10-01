@@ -65,7 +65,7 @@ export async function generateStaticParams() {
     resolve_links: '0',
     resolve_assets: 0,
     per_page: 100,
-    starts_with: getSlugPrefix(),
+    starts_with: getSlugPrefix() + '/',
   };
 
   // Use the `cdn/links` endpoint to get a list of all stories without all the extra data.
@@ -74,6 +74,7 @@ export async function generateStaticParams() {
   let paths: PathsType[] = [];
 
   stories.forEach((story) => {
+
     const slug = story.slug;
     const splitSlug = slug.split('/');
 
@@ -83,14 +84,17 @@ export async function generateStaticParams() {
     // Remove the first element which is the prefix.
     cleanSlug.shift();
 
-    // If the slug is empty, default to root.
+    // Ensure there is at least one element
     if (cleanSlug.length === 0) {
-      paths.push({ slug: ['root'] });
-    } else {
-      paths.push({ slug: cleanSlug });
+      cleanSlug.push('');
     }
 
+    paths.push({ slug: cleanSlug });
+
   });
+
+  // Add the home page.
+  paths.push({ slug: [''] });
 
   return paths;
 };
@@ -103,14 +107,11 @@ export async function generateMetadata({ params }: ParamsType): Promise<Metadata
   try {
 
     // Convert the slug to a path.
-    let slugPath = slug.join('/');
+    const slugPath = slug ? slug.join('/') : '';
 
-    // If the slug is root, remove it.
-    if (slugPath === 'root') {
-      slugPath = '';
-    }
     // Construct the slug for Storyblok.
-    const prefixedSlug = getSlugPrefix() + slugPath;
+    const prefixedSlug = getSlugPrefix() + '/' + slugPath;
+
     // Get the story data.
     const { data } = await getStoryData({ path: prefixedSlug });
     if (!data.story || !data.story.content) {
@@ -132,15 +133,12 @@ export async function generateMetadata({ params }: ParamsType): Promise<Metadata
  */
 export default async function Page({ params }: ParamsType) {
   const { slug } = params;
-  // Convert the slug to a path.
-  let slugPath = slug.join('/');
 
-  // If the slug is root, remove it.
-  if (slugPath === 'root') {
-    slugPath = '';
-  }
+  // Convert the slug to a path.
+  const slugPath = slug ? slug.join('/') : '';
+
   // Construct the slug for Storyblok.
-  const prefixedSlug = getSlugPrefix() + slugPath;
+  const prefixedSlug = getSlugPrefix() + '/' + slugPath;
 
   // Get data out of the API.
   const { data } = await getStoryData({ path: prefixedSlug });

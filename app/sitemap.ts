@@ -1,5 +1,8 @@
 import { MetadataRoute } from 'next';
 import StoryblokClient from 'storyblok-js-client';
+import { ISbStoriesParams } from '@storyblok/react/rsc';
+import { getActiveEnv } from '@/utilities/getActiveEnv';
+import { getSlugPrefix } from '@/utilities/getSlugPrefix';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
@@ -12,15 +15,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     region: 'us',
   });
 
+  const activeEnv = getActiveEnv();
+  // Fetch new content from storyblok.
+  let sbParams: ISbStoriesParams = {
+    version: activeEnv === 'production' ? 'published' : 'draft',
+    cv: Date.now(),
+    resolve_links: '0',
+    resolve_assets: 0,
+    per_page: 100,
+    starts_with: getSlugPrefix() + '/',
+  };
+
   // Fetch all the stories from SB.
   // We use the `cdn/stories` endpoint because it has the last published time which `cdn/links` does not.
-  const response = await storyblokClient.getAll('cdn/stories', {
-    version: 'published',
-    cv: Date.now(),
-  });
+  const response = await storyblokClient.getAll('cdn/stories', sbParams);
 
   // Exclude any stories with noindex set to true and those inside the Global Components or Test folders in Storyblok
-  const indexStories = response.filter((story) => (!story.content?.noindex) && !story.full_slug?.startsWith('global-components/') && !story.full_slug?.startsWith('test/'));
+  const indexStories = response.filter(
+    (story) =>
+      !story.content?.noindex &&
+      !story.full_slug?.search(/\/global-components\//) &&
+      !story.full_slug?.search(/\/test\//),
+  );
   const currentURL = process.env.URL || process.env.DEPLOY_PRIME_URL || 'https://momentum.stanford.edu';
 
   const ret = indexStories.map((story) => {
@@ -28,8 +44,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return {
       url: url.replace(/\/+$/, ''),
       lastModified: new Date(story.published_at),
-      changeFrequency: 'daily' as const, // Added in 13.4.5
-      priority: 0.5, // Added in 13.4.5
+      changeFrequency: 'daily' as const,
+      priority: 0.5,
     };
   });
 
