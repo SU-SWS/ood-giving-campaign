@@ -39,19 +39,14 @@ export const CtaNextLink = React.forwardRef<HTMLAnchorElement, CtaNextLinkProps>
   const hrefParts = path.split('/');
 
   // Remove empty strings from the array.
-  for (let i = 0; i < hrefParts.length; i++) {
-    if (hrefParts[i] === '') {
-      hrefParts.splice(i, 1);
-      i--;
-    }
-  }
+  const cleanParts = hrefParts.filter((s:string) => s.length);
 
   // If the first part of the URL is the slug prefix, remove it.
-  if (hrefParts[0] === prefix) {
-    hrefParts.shift();
+  if (cleanParts[0] === prefix) {
+    cleanParts.shift();
   }
 
-  const strippedHref = `/${hrefParts.join('/')}`;
+  const strippedHref = `/${cleanParts.join('/')}`;
   console.log('strippedHref:', strippedHref);
 
   return (
