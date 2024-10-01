@@ -41,7 +41,7 @@ async function getStoryList({ path }: getStoryDataProps) {
   const sbParams: ISbStoriesParams = {
     version: activeEnv === 'production' ? 'published' : 'draft',
     cv: Date.now(),
-    starts_with: `${getSlugPrefix()}stories/`,
+    starts_with: `${getSlugPrefix()}/stories/`,
     sort_by: 'first_published_at:desc',
     per_page: 100,
     filter_query: {
