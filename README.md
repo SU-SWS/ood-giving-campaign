@@ -10,6 +10,8 @@ Netlify hosted, Next.js built, Storyblok headless CMS site for the Stanford Mome
 Environment variable set up and installation
 ---
 
+For more information on what the environment variables are and do see: [Environment Vars](./docs/environment-variables.md)  
+
 _Development_
 
 1. Create a new `.env` file by cloning the `example.env` file provided:
