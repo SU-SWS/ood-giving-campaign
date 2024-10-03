@@ -28,7 +28,7 @@
   [plugins.inputs]
     username = 'Stanford'
     password = 'OnPurpose'
-    context = ['branch-deploy'] # TODO: Restore deploy-preview before merge
+    context = ['branch-deploy', 'deploy-preview']
     file = '.next/_headers'
 
 # HEADERS
