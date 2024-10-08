@@ -178,8 +178,6 @@ export default async (req: Request) => {
   const netlifyHookID = process.env.NETLIFY_DEPLOY_HOOK_ID ?? '';
   const webhookSecret = process.env.STORYBLOK_WEBHOOK_SECRET ?? '';
 
-  pingSlack('Storyblok webhook triggered');
-
   // VALIDATE THE REQUEST AND PAYLOAD.
   // ---------------------------------------------------
   try {
@@ -206,7 +204,7 @@ export default async (req: Request) => {
   }
   catch (error) {
     console.error('Error:', error);
-    pingSlack(`Failed to parse payload: ${error}`);
+    await pingSlack(`Failed to parse payload: ${error}`);
     return;
   }
 
@@ -230,7 +228,7 @@ export default async (req: Request) => {
       story = await fetchStory(story_id);
     } catch (error) {
       console.error('Error:', error);
-      pingSlack(`Failed to fetch story: ${error}`);
+      await pingSlack(`Failed to fetch story: ${error}`);
       return;
     }
     const { full_slug } = story;
@@ -247,7 +245,7 @@ export default async (req: Request) => {
   }
   catch (error) {
     console.error('Error:', error);
-    pingSlack(`Failed to trigger build: ${error}`);
+    await pingSlack(`Failed to trigger build: ${error}`);
   }
 
   console.log('++++++++ END WEBHOOK ++++++++');
