@@ -105,13 +105,8 @@ const pingSlack = async (message: string) => {
  */
 const fetchStory = async (storyID: string) => {
   console.log('Fetching story:', storyID);
-  const context = process.env.CONTEXT;
-  let sbToken;
-  if (context === 'production') {
-    sbToken = process.env.PRODUCTION_STORYBLOK_ACCESS_TOKEN || process.env.STORYBLOK_ACCESS_TOKEN;
-  } else {
-    sbToken = process.env.STORYBLOK_ACCESS_TOKEN;
-  }
+  const sbToken = process.env.STORYBLOK_PREVIEW_EDITOR_TOKEN;
+
   const sbConfig = {
     accessToken: sbToken,
     region: 'us'
