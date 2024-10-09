@@ -6,6 +6,7 @@ import { CtaContent } from './CtaContent';
 import { type CtaCommonProps } from './Cta.types';
 import { marginTops, marginBottoms } from '@/utilities/datasource';
 import * as styles from './Cta.styles';
+import { getSlugPrefix } from '@/utilities/getSlugPrefix';
 
 export type CtaNextLinkProps = CtaCommonProps & LinkProps & {
   target?: React.HTMLAttributeAnchorTarget;
@@ -32,11 +33,26 @@ export const CtaNextLink = React.forwardRef<HTMLAnchorElement, CtaNextLinkProps>
     ...rest
   } = props;
 
+  // Normalize the href and strip the slug prefix.
+  const prefix = getSlugPrefix();
+  const path = href.toString();
+  const hrefParts = path.split('/');
+
+  // Remove empty strings from the array.
+  const cleanParts = hrefParts.filter((s:string) => s.length);
+
+  // If the first part of the URL is the slug prefix, remove it.
+  if (cleanParts[0] === prefix) {
+    cleanParts.shift();
+  }
+
+  const strippedHref = `/${cleanParts.join('/')}`;
+
   return (
     <Link
       {...rest}
       ref={ref}
-      href={href}
+      href={strippedHref}
       target={target}
       className={cnb(
         styles.cta,
