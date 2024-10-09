@@ -34,6 +34,7 @@
   "dependencies": {
     "@headlessui/react": "^2.1.8",
     "@heroicons/react": "^2.1.5",
+    "@netlify/functions": "^2.8.2",
     "@netlify/plugin-nextjs": "^5.7.2",
     "@next/third-parties": "^14.2.13",
     "@storyblok/react": "^3.0.14",

@@ -16,6 +16,8 @@ You can find Architectural Decision Records and more documentation in the [docs]
 Environment variable set up and installation
 ---
 
+For more information on what the environment variables are and do see: [Environment Vars](./docs/environment-variables.md)  
+
 _Development_
 
 1. Create a new `.env` file by cloning the `example.env` file provided:
