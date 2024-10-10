@@ -9,6 +9,8 @@ import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
 import { notFound } from 'next/navigation';
 import getStoryData from '@/utilities/data/getStoryData';
 import getStoryList from '@/utilities/data/getStoryList';
+import { isProduction } from '@/utilities/getActiveEnv';
+import { getSlugPrefix } from '@/utilities/getSlugPrefix';
 
 type PathsType = {
   slug: string[];
@@ -54,15 +56,15 @@ storyblokInit({
  * Generate the list of stories to statically render.
  */
 export async function generateStaticParams() {
-  const activeEnv = process.env.NODE_ENV || 'development';
+  const isProd = isProduction();
   // Fetch new content from storyblok.
   const storyblokApi: StoryblokClient = getStoryblokApi();
   let sbParams: ISbStoriesParams = {
-    version: activeEnv === 'development' ? 'draft' : 'published',
-    cv: activeEnv === 'development' ? Date.now() : undefined,
+    version: isProd ? 'published' : 'draft',
     resolve_links: '0',
     resolve_assets: 0,
     per_page: 100,
+    starts_with: getSlugPrefix() + '/',
   };
 
   // Use the `cdn/links` endpoint to get a list of all stories without all the extra data.
@@ -71,13 +73,27 @@ export async function generateStaticParams() {
   let paths: PathsType[] = [];
 
   stories.forEach((story) => {
+
     const slug = story.slug;
     const splitSlug = slug.split('/');
-    paths.push({ slug: splitSlug });
+
+    // Remove any empty strings.
+    const cleanSlug = splitSlug.filter((s:string) => s.length);
+
+    // Remove the first element which is the prefix.
+    cleanSlug.shift();
+
+    // Ensure there is at least one element
+    if (cleanSlug.length === 0) {
+      cleanSlug.push('');
+    }
+
+    paths.push({ slug: cleanSlug });
+
   });
 
-  // Add home page as index.
-  paths.push({ slug: [] });
+  // Add the home page.
+  paths.push({ slug: [''] });
 
   return paths;
 };
@@ -86,18 +102,26 @@ export async function generateStaticParams() {
  * Generate the SEO metadata for the page.
  */
 export async function generateMetadata({ params }: ParamsType): Promise<Metadata> {
+  const { slug } = params;
   try {
-    const slug = params.slug ? params.slug.join('/') : 'home';
-    const { data } = await getStoryData({ path: slug });
+
+    // Convert the slug to a path.
+    const slugPath = slug ? slug.join('/') : '';
+
+    // Construct the slug for Storyblok.
+    const prefixedSlug = getSlugPrefix() + '/' + slugPath;
+
+    // Get the story data.
+    const { data } = await getStoryData({ path: prefixedSlug });
     if (!data.story || !data.story.content) {
       notFound();
     }
     const blok = data.story.content;
-    const meta = getPageMetadata({ blok, slug });
+    const meta = getPageMetadata({ blok, slug: slugPath });
     return meta;
   }
   catch (error) {
-    console.log('Metadata error:', error, params.slug);
+    console.log('Metadata error:', error, slug);
   }
 
   notFound();
@@ -107,9 +131,16 @@ export async function generateMetadata({ params }: ParamsType): Promise<Metadata
  * Fetch the path data for the page and render it.
  */
 export default async function Page({ params }: ParamsType) {
-  const slug = params.slug ? params.slug.join('/') : 'home';
+  const { slug } = params;
+
+  // Convert the slug to a path.
+  const slugPath = slug ? slug.join('/') : '';
+
+  // Construct the slug for Storyblok.
+  const prefixedSlug = getSlugPrefix() + '/' + slugPath;
+
   // Get data out of the API.
-  const { data } = await getStoryData({ path: slug });
+  const { data } = await getStoryData({ path: prefixedSlug });
 
   // Define an additional data container to pass through server data fetch to client components.
   // as everything below the `StoryblokStory` is a client side component.
@@ -117,7 +148,7 @@ export default async function Page({ params }: ParamsType) {
 
   // Get additional data for those stories that need it.
   if (data?.story?.content?.component === 'sbStoryFilterPage') {
-    extra = await getStoryList({ path: slug });
+    extra = await getStoryList({ path: prefixedSlug });
   }
 
   // Failed to fetch from API because story slug was not found.
@@ -131,7 +162,7 @@ export default async function Page({ params }: ParamsType) {
       story={data.story}
       extra={extra}
       bridgeOptions={bridgeOptions}
-      slug={slug}
+      slug={slugPath}
       name={data.story.name}
     />
   );

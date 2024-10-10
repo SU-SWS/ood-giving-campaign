@@ -11,21 +11,7 @@ const nextConfig = {
   env: {
     DEPLOY_PRIME_URL: process.env.DEPLOY_PRIME_URL,
     CONTEXT: process.env.CONTEXT,
-  },
-  async redirects() {
-    return [
-      {
-        source: '/home',
-        destination: '/',
-        permanent: true,
-        missing: [
-          {
-            type: 'query',
-            key: '_rsc',
-          },
-        ],
-      },
-    ];
+    STORYBLOK_SLUG_PREFIX: process.env.STORYBLOK_SLUG_PREFIX,
   },
 };
 
