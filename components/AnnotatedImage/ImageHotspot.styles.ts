@@ -13,13 +13,14 @@ export const srOnly = 'sr-only';
 export const dialogOverlay = 'fixed inset-0 bg-gc-black/60 backdrop-blur-lg w-screen';
 export const dialogWrapper = 'fixed inset-0 sm:py-30 w-screen overflow-y-auto overscroll-contain overflow-x-hidden';
 export const dialogPanel  = (modalContentType: SbImageHotspotModalContentType) => cnb(
-  'relative sm:cc flex w-screen min-h-screen inset-0 break-words text-white text-white',
-  modalContentType === 'text-image' ? 'items-start sm:items-center' : 'items-center',
+  'relative sm:cc flex w-screen min-h-screen inset-0 break-words',
+  (modalContentType === 'text-image' || modalContentType === 'text') ? 'items-start sm:items-center' : 'items-center text-white',
 );
 export const modalClose = 'absolute top-20 z-[200] right-20 block mr-0 ml-auto rs-mb-2 p-9 border-2 border-digital-red-xlight bg-black-true rounded-full hocus-visible:border-dashed hocus-visible:border-white transition-transform hocus-visible:rotate-90';
 export const modalIcon = 'text-white size-26';
 
-export const contentWrapper = (modalContentType: SbImageHotspotModalContentType) => cnb('relative flex items-center justify-center w-full 2xl:aspect-[16/9] 3xl:aspect-2', {
-  'bg-white text-black sm:h-auto': modalContentType === 'text-image',
-  'bg-black-true/70 text-white h-screen sm:h-auto': modalContentType !== 'text-image',
+export const contentWrapper = (modalContentType: SbImageHotspotModalContentType) => cnb('relative flex items-center justify-center w-full ', {
+  'bg-white text-black sm:h-auto': modalContentType === 'text-image' || modalContentType === 'text',
+  'bg-black-true/70 text-white h-screen sm:h-auto': modalContentType !== 'text-image' && modalContentType !== 'text',
+  '2xl:aspect-[16/9] 3xl:aspect-2': modalContentType !== 'text',
 });

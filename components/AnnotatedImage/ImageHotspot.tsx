@@ -114,7 +114,7 @@ export const ImageHotspot = ({
                     </button>
                     {modalContentType !== 'component' && (
                       <Grid xl={modalContentType === 'text-image' ? 12 : 1} className="h-full">
-                        {modalContentType === 'text-image' && (
+                        {(modalContentType === 'text-image' || modalContentType === 'text') && (
                           <div className="xl:col-span-6 2xl:col-span-5 pt-90 rs-pb-4 bg-white">
                             <div className="border-l-[1.2rem] md:border-l-[1.8rem] border-digital-red-light">
                               <Heading size={3} className="mb-02em leading-tight ml-22 md:ml-40 2xl:ml-43">{heading}</Heading>
@@ -123,30 +123,32 @@ export const ImageHotspot = ({
                             {DescriptionRichText}
                           </div>
                         )}
-                        <div className="relative xl:col-span-6 2xl:col-span-7">
-                          <picture>
-                            <source
-                              src={getProcessedImage(filename, '1200x800', focus) || ''}
-                              media="(min-width: 992px)"
-                            />
-                            <source
-                              media="(max-width: 991px)"
-                              src={getProcessedImage(filename, '1000x0', focus) || ''}
-                            />
-                            <source
-                              media="(max-width: 575px)"
-                              src={getProcessedImage(filename, '600x0', focus) || ''}
-                            />
-                            <img
-                              alt={alt || ''}
-                              src={getProcessedImage(filename, '1200x800', focus) || ''}
-                              className="xl:object-cover w-full xl:h-full"
-                            />
-                          </picture>
-                          <div className="sm:absolute px-18 pt-14 pb-16 bg-black-true/90 sm:bg-black-true/70 sm:bottom-20 sm:left-20 md:bottom-30 md:left-30 max-w-full sm:max-w-[30rem] md:max-w-[40rem] 2xl:max-w-[50%] z-[110]">
-                            {Caption}
+                        {(modalContentType === 'fullwidth-image' || modalContentType === 'text-image') && (
+                          <div className="relative xl:col-span-6 2xl:col-span-7">
+                            <picture>
+                              <source
+                                src={getProcessedImage(filename, '1200x800', focus) || ''}
+                                media="(min-width: 992px)"
+                              />
+                              <source
+                                media="(max-width: 991px)"
+                                src={getProcessedImage(filename, '1000x0', focus) || ''}
+                              />
+                              <source
+                                media="(max-width: 575px)"
+                                src={getProcessedImage(filename, '600x0', focus) || ''}
+                              />
+                              <img
+                                alt={alt || ''}
+                                src={getProcessedImage(filename, '1200x800', focus) || ''}
+                                className="xl:object-cover w-full xl:h-full"
+                              />
+                            </picture>
+                            <div className="sm:absolute px-18 pt-14 pb-16 bg-black-true/90 sm:bg-black-true/70 sm:bottom-20 sm:left-20 md:bottom-30 md:left-30 max-w-full sm:max-w-[30rem] md:max-w-[40rem] 2xl:max-w-[50%] z-[110]">
+                              {Caption}
+                            </div>
                           </div>
-                        </div>
+                        )}
                       </Grid>
                     )}
                     <CreateBloks blokSection={content} />
