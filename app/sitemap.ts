@@ -20,7 +20,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Fetch new content from storyblok.
   let sbParams: ISbStoriesParams = {
     version: isProd ? 'published' : 'draft',
-    cv: Date.now(),
     resolve_links: '0',
     resolve_assets: 0,
     per_page: 100,

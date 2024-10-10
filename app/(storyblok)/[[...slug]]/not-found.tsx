@@ -41,7 +41,6 @@ async function getStoryData(slug = 'momentum/page-not-found') {
   const storyblokApi: StoryblokClient = getStoryblokApi();
   const sbParams: ISbStoriesParams = {
     version: isProd ? 'published' : 'draft',
-    cv: Date.now(),
     resolve_relations: resolveRelations,
   };
 
