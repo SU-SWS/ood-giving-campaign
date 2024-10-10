@@ -50,13 +50,13 @@ export const StoryImage = ({
   ...props
 }: StoryImageProps) => {
   const { width: originalWidth, height: originalHeight } = getSbImageSize(imageSrc);
-  const cropSize = styles.imageCropsDesktop[aspectRatio];
+  const cropSize = styles.imageCropsDesktop[aspectRatio] || styles.imageCropsDesktop['free'];
   /**
    * Crop width and height are used for width and height attributes on the img element.
    * They don't need to be exact as long as the aspect ratio is correct.
    */
   const cropWidth = parseInt(cropSize?.split('x')[0], 10);
-  const cropHeight = aspectRatio === 'free'
+  const cropHeight = aspectRatio === 'free' || !aspectRatio
     ? Math.round(originalHeight * 2000 / originalWidth)
     : parseInt(cropSize?.split('x')[1], 10);
 
