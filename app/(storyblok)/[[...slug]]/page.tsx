@@ -61,7 +61,7 @@ export async function generateStaticParams() {
   const storyblokApi: StoryblokClient = getStoryblokApi();
   let sbParams: ISbStoriesParams = {
     version: isProd ? 'published' : 'draft',
-    cv:  isProd ? undefined : Date.now(),
+    // cv:  isProd ? undefined : Date.now(),
     resolve_links: '0',
     resolve_assets: 0,
     per_page: 100,
