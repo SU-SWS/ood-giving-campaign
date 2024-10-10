@@ -13,7 +13,6 @@ async function getStoryData({ path, isEditor = false }: getStoryDataProps): Prom
 
   let sbParams: ISbStoriesParams = {
     version: isProd && !isEditor ? 'published' : 'draft',
-    // cv:  isProd ? undefined : Date.now(),
     resolve_relations: resolveRelations,
   };
 
