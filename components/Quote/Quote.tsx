@@ -24,6 +24,7 @@ export type QuoteProps = React.HTMLAttributes<HTMLDivElement> & {
   barColor?: AccentBorderColorType;
   quoteColor?: AccentTextColorType;
   quoteOnRight?: boolean;
+  verticalAlign?: styles.QuoteVerticalAlignType;
   animation?: AnimationType;
   delay?: number;
 };
@@ -39,6 +40,7 @@ export const Quote = ({
   quoteColor,
   barColor,
   quoteOnRight,
+  verticalAlign = 'bottom',
   animation = 'slideUp',
   delay,
   children,
@@ -51,7 +53,11 @@ export const Quote = ({
       width="full"
       pt={addDarkOverlay && !isMinimal ? 6 : undefined}
       pb={addDarkOverlay && !isMinimal ? 4 : undefined}
-      className={cnb(styles.root(isMinimal, addDarkOverlay, quoteOnRight, !!barColor), className)}
+      className={cnb(
+        styles.root(isMinimal, addDarkOverlay, quoteOnRight, !!barColor),
+        styles.verticalAlignments[verticalAlign],
+        className,
+      )}
       {...props}
     >
       <blockquote className={cnb(styles.content(!!barColor, quoteOnRight), accentBorderColors[barColor])}>
