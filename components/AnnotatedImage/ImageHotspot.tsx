@@ -3,14 +3,11 @@ import {
   Description, Dialog, DialogPanel, DialogTitle, Transition, TransitionChild,
 } from '@headlessui/react';
 import { useOnClickOutside } from 'usehooks-ts';
-import { cnb } from 'cnbuilder';
 import { CreateBloks } from '../CreateBloks';
 import { Grid } from '@/components/Grid';
-import { FlexBox } from '@/components/FlexBox';
 import { Heading, Text } from '@/components/Typography';
 import { HeroIcon } from '@/components/HeroIcon';
 import { RichText } from '@/components/RichText';
-import { StoryImage } from '@/components/StoryImage';
 import { type SbImageHotspotType } from '@/components/Storyblok/Storyblok.types';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { hasRichText } from '@/utilities/hasRichText';
@@ -99,7 +96,7 @@ export const ImageHotspot = ({
                   {subhead && (
                     <Description className={styles.srOnly}>{subhead}</Description>
                   )}
-                  <div ref={panelRef} className={styles.contentWrapper(modalContentType)}>
+                  <div ref={panelRef} className={styles.contentWrapper(modalContentType, isVerticalCard)}>
                     <button
                       type="button"
                       aria-label="Close modal"
@@ -114,19 +111,26 @@ export const ImageHotspot = ({
                         className={styles.modalIcon}
                       />
                     </button>
-                    {modalContentType !== 'component' && (
-                      <Grid xl={modalContentType === 'text-image' ? 12 : 1} className="h-full">
+                    {/* Content for modals with text+image, fullwidth image or text only */}
+                    {(modalContentType !== 'component' && modalContentType !== 'image-quote') && (
+                      <Grid xl={modalContentType === 'text-image' && !isVerticalCard ? 12 : 1} className={styles.grid}>
                         {(modalContentType === 'text-image' || modalContentType === 'text') && (
-                          <div className="xl:col-span-6 2xl:col-span-5 pt-90 rs-pb-4 bg-white">
-                            <div className="border-l-[1.2rem] md:border-l-[1.8rem] border-digital-red-light">
-                              <Heading size={3} className="mb-02em leading-tight ml-22 md:ml-40 2xl:ml-43">{heading}</Heading>
-                              <Text as="span" weight="semibold" className="ml-22 md:ml-40 2xl:ml-43">{subhead}</Text>
-                            </div>
+                          <div className={styles.textWrapper(isVerticalCard)}>
+                            {(heading || subhead) && (
+                              <div className={styles.header}>
+                                {heading &&
+                                  <Heading size={3} className="mb-02em leading-tight ml-22 md:ml-40 2xl:ml-43">{heading}</Heading>
+                                }
+                                {subhead &&
+                                  <Text weight="semibold" className="ml-22 md:ml-40 2xl:ml-43">{subhead}</Text>
+                                }
+                              </div>
+                            )}
                             {DescriptionRichText}
                           </div>
                         )}
                         {(modalContentType === 'fullwidth-image' || modalContentType === 'text-image') && (
-                          <figure className="relative xl:col-span-6 2xl:col-span-7">
+                          <figure className={styles.figure(isVerticalCard)}>
                             <picture>
                               <source
                                 src={getProcessedImage(filename, '1500x750', focus)}
@@ -161,8 +165,8 @@ export const ImageHotspot = ({
                         )}
                       </Grid>
                     )}
-                    {modalContentType === 'component' && !!getNumBloks(content) && (
-                      <div className="py-100 sm:rs-px-1">
+                    {(modalContentType === 'component' || modalContentType === 'image-quote') && !!getNumBloks(content) && (
+                      <div className={styles.nestedComponentWrapper(modalContentType)}>
                         <CreateBloks blokSection={content} />
                       </div>
                     )}

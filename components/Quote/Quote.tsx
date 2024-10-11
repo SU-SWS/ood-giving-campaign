@@ -51,8 +51,7 @@ export const Quote = ({
   return (<AnimateInView animation={animation} delay={delay}>
     <Container
       width="full"
-      pt={addDarkOverlay && !isMinimal ? 6 : undefined}
-      pb={addDarkOverlay && !isMinimal ? 4 : undefined}
+      py={addDarkOverlay && !isMinimal ? 5 : undefined}
       className={cnb(
         styles.root(isMinimal, addDarkOverlay, quoteOnRight, !!barColor),
         styles.verticalAlignments[verticalAlign],

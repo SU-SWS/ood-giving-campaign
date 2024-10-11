@@ -13,14 +13,13 @@ export const root = (
   quoteOnRight: boolean,
   hasBar: boolean,
 ) => cnb('relative break-words flex flex-col lg:max-w-prose-wide lg:ml-0', {
-  'max-w-[90%] sm:max-w-4/5 mx-auto md:max-w-full': isMinimal && !addDarkOverlay,
+  'max-w-[90%] sm:max-w-4/5 mx-auto md:max-w-full h-full': isMinimal && !addDarkOverlay,
   'bg-gc-black/50 backdrop-blur-sm h-full *:mb-0 text-white': addDarkOverlay && !isMinimal,
   'rs-pl-4': !quoteOnRight && (!isMinimal || addDarkOverlay),
   'rs-pr-4': quoteOnRight && (!isMinimal || addDarkOverlay),
   'rs-px-4': addDarkOverlay && !hasBar,
 });
-export const content = (hasBar: boolean, quoteOnRight: boolean) => cnb('', {
-  '' : !hasBar,
+export const content = (hasBar: boolean, quoteOnRight: boolean) => cnb({
   'border-r-[1.4rem] 2xl:border-r-[2rem] rs-pr-2' : hasBar && !quoteOnRight,
   'border-l-[1.4rem] 2xl:border-l-[2rem] rs-pl-2' : hasBar && quoteOnRight,
 });

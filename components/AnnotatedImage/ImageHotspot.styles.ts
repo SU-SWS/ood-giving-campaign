@@ -19,9 +19,15 @@ export const dialogPanel  = (modalContentType: SbImageHotspotModalContentType) =
 export const modalClose = 'absolute top-20 z-[200] right-20 block mr-0 ml-auto rs-mb-2 p-9 border-2 border-digital-red-xlight bg-black-true rounded-full hocus-visible:border-dashed hocus-visible:border-white transition-transform hocus-visible:rotate-90';
 export const modalIcon = 'text-white size-26';
 
-export const contentWrapper = (modalContentType: SbImageHotspotModalContentType) => cnb('relative flex items-center justify-center', {
-  'min-h-screen sm:min-h-0': modalContentType !== 'text-image' && modalContentType !== 'text',
+export const grid = 'h-full';
+export const contentWrapper = (modalContentType: SbImageHotspotModalContentType, isVerticalCard: boolean) => cnb('relative flex items-center justify-center', {
+  'min-h-screen sm:min-h-[auto] bg-black-true/70 text-white': modalContentType !== 'text-image' && modalContentType !== 'text',
   'bg-white text-black': modalContentType === 'text-image' || modalContentType === 'text',
-  'bg-black-true/70 text-white': modalContentType !== 'text-image' && modalContentType !== 'text',
-  'w-full 2xl:aspect-[16/9] 3xl:aspect-2': modalContentType !== 'text' && modalContentType !== 'fullwidth-image',
+  'w-full 2xl:aspect-[16/9] 3xl:aspect-2': modalContentType !== 'text' && modalContentType !== 'fullwidth-image' && modalContentType !== 'image-quote' && !isVerticalCard,
+  'max-w-1000': modalContentType === 'text-image' && isVerticalCard,
 });
+export const textWrapper = (isVerticalCard: boolean) => cnb('pt-90 rs-pb-4 bg-white', !isVerticalCard && 'xl:col-span-6 2xl:col-span-5');
+export const header = 'border-l-[1.2rem] md:border-l-[1.8rem] border-digital-red-light';
+export const figure = (isVerticalCard: boolean) => cnb('relative ', !isVerticalCard && 'xl:col-span-6 2xl:col-span-7');
+
+export const nestedComponentWrapper = (modalContentType: SbImageHotspotModalContentType) => modalContentType === 'component' && 'py-100 sm:rs-px-1';
