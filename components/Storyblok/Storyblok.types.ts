@@ -1,4 +1,3 @@
-import { caption } from './../Hero/StoryHero.styles';
 import { type SbBlokData } from '@storyblok/react/rsc';
 import { type FontSizeType } from '@/components/Typography';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';

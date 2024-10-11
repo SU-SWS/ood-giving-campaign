@@ -10,9 +10,11 @@ import { FlexBox } from '@/components/FlexBox';
 import { Heading, Text } from '@/components/Typography';
 import { HeroIcon } from '@/components/HeroIcon';
 import { RichText } from '@/components/RichText';
+import { StoryImage } from '@/components/StoryImage';
 import { type SbImageHotspotType } from '@/components/Storyblok/Storyblok.types';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { hasRichText } from '@/utilities/hasRichText';
+import { getNumBloks } from '@/utilities/getNumBloks';
 import * as styles from './ImageHotspot.styles';
 
 export const ImageHotspot = ({
@@ -51,7 +53,7 @@ export const ImageHotspot = ({
   : undefined;
 
   const Caption = hasRichText(caption)
-  ? <RichText wysiwyg={caption} textColor="white" linkColor="digital-red-xlight" className="gc-caption first:*:mt-0 *:leading-display" />
+  ? <RichText wysiwyg={caption} textColor="white" linkColor="digital-red-xlight" className="first:*:mt-0 *:leading-display" />
   : undefined;
 
   return (
@@ -124,34 +126,46 @@ export const ImageHotspot = ({
                           </div>
                         )}
                         {(modalContentType === 'fullwidth-image' || modalContentType === 'text-image') && (
-                          <div className="relative xl:col-span-6 2xl:col-span-7">
+                          <figure className="relative xl:col-span-6 2xl:col-span-7">
                             <picture>
                               <source
-                                src={getProcessedImage(filename, '1200x800', focus) || ''}
-                                media="(min-width: 992px)"
+                                src={getProcessedImage(filename, '1500x750', focus)}
+                                media="(min-width: 1500px)"
+                              />
+                              <source
+                                src={getProcessedImage(filename, '1200x600', focus)}
+                                media="(max-width: 1199px)"
                               />
                               <source
                                 media="(max-width: 991px)"
-                                src={getProcessedImage(filename, '1000x0', focus) || ''}
+                                src={getProcessedImage(filename, '1000x500', focus)}
                               />
                               <source
                                 media="(max-width: 575px)"
-                                src={getProcessedImage(filename, '600x0', focus) || ''}
+                                src={getProcessedImage(filename, '600x300', focus)}
                               />
                               <img
                                 alt={alt || ''}
-                                src={getProcessedImage(filename, '1200x800', focus) || ''}
+                                src={getProcessedImage(filename, '1500x750', focus)}
                                 className="xl:object-cover w-full xl:h-full"
+                                width="1500"
+                                height="750"
                               />
                             </picture>
-                            <div className="sm:absolute px-18 pt-14 pb-16 bg-black-true/90 sm:bg-black-true/70 sm:bottom-20 sm:left-20 md:bottom-30 md:left-30 max-w-full sm:max-w-[30rem] md:max-w-[40rem] 2xl:max-w-[50%] z-[110]">
-                              {Caption}
-                            </div>
-                          </div>
+                            {hasRichText(caption) && (
+                              <figcaption className="sm:absolute px-18 pt-14 pb-16 bg-black-true/90 sm:bg-black-true/70 sm:bottom-20 sm:left-20 md:bottom-30 md:left-30 max-w-full sm:max-w-[30rem] md:max-w-[40rem] 2xl:max-w-400s z-[110]">
+                                {Caption}
+                              </figcaption>
+                            )}
+                          </figure>
                         )}
                       </Grid>
                     )}
-                    <CreateBloks blokSection={content} />
+                    {modalContentType === 'component' && !!getNumBloks(content) && (
+                      <div className="py-100 rs-px-1">
+                        <CreateBloks blokSection={content} />
+                      </div>
+                    )}
                   </div>
                 </DialogPanel>
               </div>
