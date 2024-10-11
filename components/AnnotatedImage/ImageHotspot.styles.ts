@@ -20,7 +20,7 @@ export const modalClose = 'absolute top-20 z-[200] right-20 block mr-0 ml-auto r
 export const modalIcon = 'text-white size-26';
 
 export const contentWrapper = (modalContentType: SbImageHotspotModalContentType) => cnb('relative flex items-center justify-center', {
-  'min-h-screen sm:h-auto': modalContentType !== 'text-image' && modalContentType !== 'text',
+  'min-h-screen sm:min-h-0': modalContentType !== 'text-image' && modalContentType !== 'text',
   'bg-white text-black': modalContentType === 'text-image' || modalContentType === 'text',
   'bg-black-true/70 text-white': modalContentType !== 'text-image' && modalContentType !== 'text',
   'w-full 2xl:aspect-[16/9] 3xl:aspect-2': modalContentType !== 'text' && modalContentType !== 'fullwidth-image',
