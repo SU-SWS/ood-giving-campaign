@@ -1,5 +1,10 @@
+import { getStoryblokRedirects } from './utilities/data/getStoryblokRedirects.mjs';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  eslint: {
+    dirs: ['app', 'components', 'contexts', 'hooks', 'pages', 'services', 'utilities'],
+  },
   images: {
     remotePatterns: [
       {
@@ -13,6 +18,10 @@ const nextConfig = {
     CONTEXT: process.env.CONTEXT,
     STORYBLOK_SLUG_PREFIX: process.env.STORYBLOK_SLUG_PREFIX,
   },
+  async redirects() {
+    const storyblokRedirects = await getStoryblokRedirects();
+    return storyblokRedirects;
+  },
 };
 
-module.exports = nextConfig;
+export default nextConfig;
