@@ -153,7 +153,7 @@ export const ImageHotspot = ({
                               />
                             </picture>
                             {hasRichText(caption) && (
-                              <figcaption className="sm:absolute px-18 pt-14 pb-16 bg-black-true/90 sm:bg-black-true/70 sm:bottom-20 sm:left-20 md:bottom-30 md:left-30 max-w-full sm:max-w-[30rem] md:max-w-[40rem] 2xl:max-w-400s z-[110]">
+                              <figcaption className="sm:absolute mt-0 px-18 pt-14 pb-16 bg-black-true/90 sm:bg-black-true/70 sm:bottom-20 sm:left-20 md:bottom-30 md:left-30 max-w-full sm:max-w-[30rem] md:max-w-[40rem] 2xl:max-w-400s z-[110]">
                                 {Caption}
                               </figcaption>
                             )}
@@ -162,7 +162,7 @@ export const ImageHotspot = ({
                       </Grid>
                     )}
                     {modalContentType === 'component' && !!getNumBloks(content) && (
-                      <div className="py-100 rs-px-1">
+                      <div className="py-100 sm:rs-px-1">
                         <CreateBloks blokSection={content} />
                       </div>
                     )}
