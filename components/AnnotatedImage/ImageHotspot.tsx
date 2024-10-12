@@ -119,29 +119,29 @@ export const ImageHotspot = ({
                             {(heading || subhead) && (
                               <div className={styles.header}>
                                 {heading &&
-                                  <Heading size={3} className="mb-02em leading-tight ml-22 md:ml-40 2xl:ml-43">{heading}</Heading>
+                                  <Heading size={3} className={styles.heading}>{heading}</Heading>
                                 }
                                 {subhead &&
-                                  <Text weight="semibold" className="ml-22 md:ml-40 2xl:ml-43">{subhead}</Text>
+                                  <Text weight="semibold" className={styles.subhead}>{subhead}</Text>
                                 }
                               </div>
                             )}
                             {DescriptionRichText}
                           </div>
                         )}
-                        {(modalContentType === 'fullwidth-image' || modalContentType === 'text-image') && (
+                        {(modalContentType === 'fullwidth-image' || modalContentType === 'text-image') && filename && (
                           <figure className={styles.figure(isVerticalCard)}>
                             <picture>
                               <source
                                 src={getProcessedImage(filename, '1500x750', focus)}
-                                media="(min-width: 1500px)"
+                                media="(min-width: 1200px)"
                               />
                               <source
                                 src={getProcessedImage(filename, '1200x600', focus)}
-                                media="(max-width: 1199px)"
+                                media="(min-width: 992px)"
                               />
                               <source
-                                media="(max-width: 991px)"
+                                media="(min-width: 576x)"
                                 src={getProcessedImage(filename, '1000x500', focus)}
                               />
                               <source
@@ -151,13 +151,13 @@ export const ImageHotspot = ({
                               <img
                                 alt={alt || ''}
                                 src={getProcessedImage(filename, '1500x750', focus)}
-                                className="xl:object-cover w-full xl:h-full"
+                                className={styles.image}
                                 width="1500"
                                 height="750"
                               />
                             </picture>
                             {hasRichText(caption) && (
-                              <figcaption className="sm:absolute mt-0 px-18 pt-14 pb-16 bg-black-true/90 sm:bg-black-true/70 sm:bottom-20 sm:left-20 md:bottom-30 md:left-30 max-w-full sm:max-w-[30rem] md:max-w-[40rem] 2xl:max-w-400s z-[110]">
+                              <figcaption className={styles.figcaption}>
                                 {Caption}
                               </figcaption>
                             )}

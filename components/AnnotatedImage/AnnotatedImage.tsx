@@ -28,7 +28,7 @@ export const AnnotatedImage = ({
   return (
     <Container width={boundingWidth} mt={marginTop} mb={marginBottom} className={styles.root} {...props}>
       {/* Extra div is essential to ensure hotspot doesn't move relative to image when browser is resized */}
-      <div className="relative @container">
+      <div className={styles.imageWrapper}>
         <StoryImage
           imageSrc={imageSrc}
           imageFocus={imageFocus}

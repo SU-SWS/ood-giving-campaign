@@ -28,6 +28,10 @@ export const contentWrapper = (modalContentType: SbImageHotspotModalContentType,
 });
 export const textWrapper = (isVerticalCard: boolean) => cnb('pt-90 rs-pb-4 bg-white', !isVerticalCard && 'xl:col-span-6 2xl:col-span-5');
 export const header = 'border-l-[1.2rem] md:border-l-[1.8rem] border-digital-red-light';
+export const heading = 'mb-02em leading-tight ml-22 md:ml-40 2xl:ml-43';
+export const subhead = 'ml-22 md:ml-40 2xl:ml-43';
 export const figure = (isVerticalCard: boolean) => cnb('relative ', !isVerticalCard && 'xl:col-span-6 2xl:col-span-7');
+export const image = 'xl:object-cover w-full xl:h-full';
+export const figcaption = 'md:absolute mt-0 px-18 pt-14 pb-16 bg-black-true/90 md:bg-black-true/70 sm:bottom-20 md:bottom-30 md:left-30 max-w-full md:max-w-[40rem] 2xl:max-w-400s z-[110]';
 
 export const nestedComponentWrapper = (modalContentType: SbImageHotspotModalContentType) => modalContentType === 'component' && 'py-100 sm:rs-px-1';
