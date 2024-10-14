@@ -14,6 +14,7 @@ type SbAnnotatedImageProps = {
     image: SbImageType;
     alt?: string;
     caption?: StoryblokRichtext;
+    isLoadingEager?: boolean;
     aspectRatio?: ImageAspectRatioType;
     boundingWidth?: 'site' | 'full';
     width?: WidthType;
@@ -33,6 +34,7 @@ export const SbAnnotatedImage = ({
     alt,
     caption,
     aspectRatio,
+    isLoadingEager,
     boundingWidth = 'full',
     marginTop,
     marginBottom,
@@ -59,6 +61,7 @@ export const SbAnnotatedImage = ({
       imageFocus={focus}
       alt={alt}
       caption={Caption}
+      isLoadingEager={isLoadingEager}
       aspectRatio={aspectRatio}
       boundingWidth={boundingWidth}
       marginTop={marginTop}

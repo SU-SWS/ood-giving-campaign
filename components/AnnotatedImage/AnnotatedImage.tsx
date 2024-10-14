@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import { ImageHotspot } from './ImageHotspot';
 import { Container } from '@/components/Container';
 import { StoryImage, type StoryImageProps } from '@/components/StoryImage';
@@ -16,6 +17,7 @@ export const AnnotatedImage = ({
   imageSrc,
   imageFocus,
   alt,
+  isLoadingEager,
   aspectRatio,
   caption,
   isCaptionInset,
@@ -25,6 +27,8 @@ export const AnnotatedImage = ({
   marginBottom,
   ...props
 }: AnnotatedImageProps) => {
+  const uniqueId = useId();
+
   return (
     <Container width={boundingWidth} mt={marginTop} mb={marginBottom} className={styles.root} {...props}>
       {/* Extra div is essential to ensure hotspot doesn't move relative to image when browser is resized */}
@@ -33,6 +37,7 @@ export const AnnotatedImage = ({
           imageSrc={imageSrc}
           imageFocus={imageFocus}
           alt={alt}
+          isLoadingEager={isLoadingEager}
           aspectRatio={aspectRatio}
           width="12"
           caption={caption}
@@ -44,7 +49,7 @@ export const AnnotatedImage = ({
             (hotspots.length > 1 ? (
               <ul className={styles.ul}>
                 {hotspots.map((hotspot) => (
-                  <li key={hotspot.ariaLabel} className={styles.li}>
+                  <li key={`${uniqueId}-${hotspot.heading || hotspot.ariaLabel}`} className={styles.li}>
                     <ImageHotspot {...hotspot} />
                   </li>
                 ))}
