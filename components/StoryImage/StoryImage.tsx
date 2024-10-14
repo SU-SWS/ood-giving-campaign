@@ -9,7 +9,7 @@ import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { getSbImageSize } from '@/utilities/getSbImageSize';
 import * as styles from './StoryImage.styles';
 
-type StoryImageProps = React.HTMLAttributes<HTMLDivElement> & {
+export type StoryImageProps = React.HTMLAttributes<HTMLDivElement> & {
   imageSrc: string;
   imageFocus?: string;
   isLoadingEager?: boolean;
@@ -45,17 +45,18 @@ export const StoryImage = ({
   captionBgColor = 'transparent',
   animation = 'none',
   delay,
+  children,
   className,
   ...props
 }: StoryImageProps) => {
   const { width: originalWidth, height: originalHeight } = getSbImageSize(imageSrc);
-  const cropSize = styles.imageCropsDesktop[aspectRatio];
+  const cropSize = styles.imageCropsDesktop[aspectRatio] || styles.imageCropsDesktop['free'];
   /**
    * Crop width and height are used for width and height attributes on the img element.
    * They don't need to be exact as long as the aspect ratio is correct.
    */
   const cropWidth = parseInt(cropSize?.split('x')[0], 10);
-  const cropHeight = aspectRatio === 'free'
+  const cropHeight = aspectRatio === 'free' || !aspectRatio
     ? Math.round(originalHeight * 2000 / originalWidth)
     : parseInt(cropSize?.split('x')[1], 10);
 
@@ -101,6 +102,7 @@ export const StoryImage = ({
                 </picture>
               </Parallax>
             )}
+            {children}
           </div>
           {caption && (
             <Container
