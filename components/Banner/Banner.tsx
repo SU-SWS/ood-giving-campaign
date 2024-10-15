@@ -58,6 +58,7 @@ export const Banner = ({
               className={styles.image}
               width={360}
               height={360}
+              loading="lazy"
             />
           </AnimateInView>
         </div>
