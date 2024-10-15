@@ -69,7 +69,16 @@ export async function generateStaticParams() {
 
   // Use the `cdn/links` endpoint to get a list of all stories without all the extra data.
   const response = await storyblokApi.getAll('cdn/links', sbParams);
-  const stories = response.filter((link) => link.is_folder === false);
+
+  // Filters
+  let stories = response;
+  // Filter out folders.
+  stories = response.filter((link) => link.is_folder === false);
+  // Filter out test content by filtering out the `test` folder.
+  stories = stories.filter((link) => !link.slug.startsWith(getSlugPrefix() + '/test'));
+  // Filter out globals by filtering out the `global-components` folder.
+  stories = stories.filter((link) => !link.slug.startsWith(getSlugPrefix() + '/global-components'));
+
   let paths: PathsType[] = [];
 
   stories.forEach((story) => {
