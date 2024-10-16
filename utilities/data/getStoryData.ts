@@ -15,6 +15,7 @@ async function getStoryData({ path, isEditor = false }: getStoryDataProps): Prom
     version: isProd && !isEditor ? 'published' : 'draft',
     cv: isEditor ? Date.now() : undefined,
     resolve_relations: resolveRelations,
+    token: isEditor ? process.env.STORYBLOK_PREVIEW_EDITOR_TOKEN : process.env.STORYBLOK_ACCESS_TOKEN,
   };
 
   const slug = path.replace(/\/$/, ''); // Remove trailing slash.
