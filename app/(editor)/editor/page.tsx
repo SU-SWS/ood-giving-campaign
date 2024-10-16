@@ -1,5 +1,4 @@
 import type { PageProps } from '@/utilities/data/types';
-import crypto from 'crypto';
 import { storyblokInit, apiPlugin, StoryblokStory } from '@storyblok/react/rsc';
 import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
@@ -40,17 +39,6 @@ storyblokInit({
  */
 const validateEditor = (searchParams: PageProps['searchParams']) => {
 
-  /**
-   * This was removed as the signature is using a different token and we have no control,
-   * or visibility, into which token is being used.
-   */
-  // const validationString = searchParams['_storyblok_tk[space_id]'] + ':' + process.env.STORYBLOK_PREVIEW_EDITOR_TOKEN + ':' + searchParams['_storyblok_tk[timestamp]'];
-  // const validationToken = crypto.createHash('sha1').update(validationString).digest('hex');
-  // if (searchParams['_storyblok_tk[token]'] == validationToken) {
-  //   //You're in the edit mode.
-  //   return true;
-  // }
-
   // See if the token is in the query string matches the one in the environment.
   const queryAccessToken = searchParams['accessToken'];
   const validationToken = process.env.STORYBLOK_PREVIEW_EDITOR_TOKEN;
@@ -70,6 +58,7 @@ export default async function Page({ searchParams }: PageProps) {
 
   // Not a valid editor token.
   if (!validateEditor(searchParams)) {
+    console.error('Invalid editor token.');
     notFound();
   }
 
