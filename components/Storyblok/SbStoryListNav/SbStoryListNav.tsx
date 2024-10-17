@@ -10,7 +10,6 @@ import { FlexBox } from '@/components/FlexBox';
 import { Heading } from '@/components/Typography';
 import { HeroIcon } from '@/components/HeroIcon';
 import * as styles from './SbStoryListNav.styles';
-import { sbStripSlugURL } from '@/utilities/sbStripSlugUrl';
 
 type SbStoryListNavType = {
   blok: {
@@ -26,21 +25,22 @@ type SbStoryListNavType = {
 const StoryListContent = ({ blok: { links }, fullSlug }: SbStoryListNavType) => {
   return (
     <ul className={styles.list}>
-      {links.map((link) => {
-        const cached_url = link.link?.cached_url ? sbStripSlugURL(link.link.cached_url) : '';
-        const isCurrentPage = fullSlug === cached_url || (fullSlug === 'stories' && cached_url === 'stories/');
+      {links.map(({ _uid, label, link }) => {
+        const cachedUrl = link?.cached_url || '';
+        const isCurrentPage = fullSlug === cachedUrl || (fullSlug === 'stories' && cachedUrl === 'stories/');
+
         return (
-          <li key={link._uid} className={styles.listItem}>
+          <li key={_uid} className={styles.listItem}>
             <CtaLink
               aria-current={isCurrentPage ? 'page' : undefined}
-              sbLink={link.link}
+              sbLink={link}
               variant="storyListNav"
               color="current"
               className={styles.cta(isCurrentPage)}
               srText='stories'
             >
               <FlexBox alignItems="center" className={styles.ctaInner}>
-                <span className="grow leading-display">{link.label}</span>
+                <span className="grow leading-display">{label}</span>
                 {isCurrentPage && <HeroIcon icon="check" className={styles.checkIcon} />}
               </FlexBox>
             </CtaLink>
