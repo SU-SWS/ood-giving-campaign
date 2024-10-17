@@ -43,7 +43,7 @@ export const sbStripSlugURL = (url:string): string => {
     return '/';
   }
 
-  const parts = urlNoSlashOnEnds.split('/');
+  const parts = urlNoSlashOnEnds?.split('/');
 
  // If all the array items are empty strings, return a slash.
   if (parts.every(part => part === '')) {
