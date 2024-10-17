@@ -9,6 +9,7 @@ import { CtaLink } from '@/components/Cta';
 import { FlexBox } from '@/components/FlexBox';
 import { Heading } from '@/components/Typography';
 import { HeroIcon } from '@/components/HeroIcon';
+import { sbStripSlugURL } from '@/utilities/sbStripSlugUrl';
 import * as styles from './SbStoryListNav.styles';
 
 type SbStoryListNavType = {
@@ -26,8 +27,9 @@ const StoryListContent = ({ blok: { links }, fullSlug }: SbStoryListNavType) => 
   return (
     <ul className={styles.list}>
       {links.map(({ _uid, label, link }) => {
-        const cachedUrl = link?.cached_url || '';
-        const isCurrentPage = fullSlug === cachedUrl || (fullSlug === 'stories' && cachedUrl === 'stories/');
+        const processedCachedUrl = sbStripSlugURL(link?.cached_url || '');
+        const processedFullSlug = sbStripSlugURL(fullSlug);
+        const isCurrentPage = processedFullSlug === processedCachedUrl;
 
         return (
           <li key={_uid} className={styles.listItem}>
