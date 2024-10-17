@@ -34,13 +34,12 @@ export const CtaNextLink = React.forwardRef<HTMLAnchorElement, CtaNextLinkProps>
     ...rest
   } = props;
   const strippedHref = sbStripSlugURL(href);
-  const processedHref = strippedHref.startsWith('/') ? strippedHref : `/${strippedHref}`;
 
   return (
     <Link
       {...rest}
       ref={ref}
-      href={processedHref}
+      href={strippedHref}
       target={target}
       className={cnb(
         styles.cta,

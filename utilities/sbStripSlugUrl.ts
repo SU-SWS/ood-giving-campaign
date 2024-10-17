@@ -53,5 +53,9 @@ export const sbStripSlugURL = (url:string): string => {
   if (parts[0] === prefix) {
     parts.shift();
   }
-  return parts.join('/');
+
+  const strippedUrl = parts.join('/');
+
+  // Make sure the return URL has a leading slash.
+  return strippedUrl.startsWith('/') ? strippedUrl : `/${strippedUrl}`;
 };
