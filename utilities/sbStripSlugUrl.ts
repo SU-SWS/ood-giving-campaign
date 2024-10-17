@@ -31,9 +31,31 @@ export const sbStripSlugURL = (url:string): string => {
     return '';
   }
 
-  const parts = url.split('/');
+  // Remove both leading and trailing slashes from the URL if exist.
+  const urlNoSlashOnEnds = url.replace(/^\/|\/$/g, '');
+
+  /**
+   * If the URL is just the prefix, return a slash.
+   * Occasionally the cached_url for the momentum homepage still shows up as
+   * 'home' so adding the last check just in case.
+   */
+  if (urlNoSlashOnEnds === prefix || urlNoSlashOnEnds === 'home') {
+    return '/';
+  }
+
+  const parts = urlNoSlashOnEnds?.split('/');
+
+ // If all the array items are empty strings, return a slash.
+  if (parts.every(part => part === '')) {
+    return '/';
+  }
+
   if (parts[0] === prefix) {
     parts.shift();
   }
-  return parts.join('/');
+
+  const strippedUrl = parts.join('/');
+
+  // Make sure the return URL has a leading slash.
+  return strippedUrl.startsWith('/') ? strippedUrl : `/${strippedUrl}`;
 };
