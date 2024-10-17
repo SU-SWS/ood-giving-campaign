@@ -49,7 +49,7 @@ const sanitizeRedirectCode = (code) => {
  * @returns {string}
  */
 const sanitizeSourcePath = (str) => {
-  const parts = str.split('?');
+  const parts = str?.split('?');
   const path = parts[0];
   return path;
 };
