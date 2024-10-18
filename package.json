@@ -32,7 +32,7 @@
     "tsc": "tsc"
   },
   "dependencies": {
-    "@headlessui/react": "^2.1.8",
+    "@headlessui/react": "^2.1.10",
     "@heroicons/react": "^2.1.5",
     "@netlify/functions": "^2.8.2",
     "@netlify/plugin-nextjs": "^5.7.2",
