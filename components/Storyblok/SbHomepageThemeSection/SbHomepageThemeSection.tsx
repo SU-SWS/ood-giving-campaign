@@ -65,6 +65,7 @@ export const SbHomepageThemeSection = ({
   }
 
   const hasBgGradient = !!gradientTop && !!gradientBottom;
+  const hasBgBlur = !!bgBlur && bgBlur !== 'none';
 
   return (
     <Container
@@ -80,39 +81,39 @@ export const SbHomepageThemeSection = ({
         <>
           <picture>
             <source
-              srcSet={getProcessedImage(filename, bgBlur !== 'none' ? '1000x1500' : '2000x3000', focus)}
+              srcSet={getProcessedImage(filename, hasBgBlur ? '1000x1500' : '2000x3000', focus)}
               media="(min-width: 1200px)"
               // Exact height and width don't matter as long as aspect ratio is the same as the image
               width={2000}
               height={3000}
             />
             <source
-              srcSet={getProcessedImage(filename, bgBlur !== 'none' ? '600x900' : '1200x1800', focus)}
+              srcSet={getProcessedImage(filename, hasBgBlur ? '600x900' : '1200x1800', focus)}
               media="(min-width: 768px)"
               width={1200}
               height={1800}
             />
             <source
-              srcSet={getProcessedImage(filename, bgBlur !== 'none' ? '400x600' : '800x1200', focus)}
+              srcSet={getProcessedImage(filename, hasBgBlur ? '400x600' : '800x1200', focus)}
               media="(min-width: 461px)"
               width={800}
               height={1200}
             />
             <source
-              srcSet={getProcessedImage(filename, bgBlur !== 'none' ? '200x300' : '600x900', focus)}
+              srcSet={getProcessedImage(filename, hasBgBlur ? '200x300' : '600x900', focus)}
               media="(max-width: 460px)"
               width={600}
               height={900}
             />
             <img
-              src={getProcessedImage(filename, bgBlur !== 'none' ? '1000x600' : '2000x3000', focus)}
+              src={getProcessedImage(filename, hasBgBlur ? '1000x600' : '2000x3000', focus)}
               alt=""
               width={2000}
               height={3000}
               className={styles.bgImage}
             />
           </picture>
-          {(bgBlur !== 'none' || hasBgGradient) && (
+          {(hasBgBlur || hasBgGradient) && (
             <div
               className={cnb(
                 styles.overlay(hasBgGradient),
