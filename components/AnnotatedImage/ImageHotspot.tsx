@@ -46,7 +46,7 @@ export const ImageHotspot = ({
   });
 
   const DescriptionRichText = hasRichText(description)
-  ? <RichText wysiwyg={description} baseFontSize={descriptionSize} className="rs-mt-3 *:max-w-prose *:leading-snug rs-px-4" />
+  ? <RichText wysiwyg={description} baseFontSize={descriptionSize} className="rs-mt-3 *:max-w-prose *:leading-snug rs-pl-4" />
   : undefined;
 
   const Caption = hasRichText(caption)
@@ -131,31 +131,79 @@ export const ImageHotspot = ({
                         )}
                         {(modalContentType === 'fullwidth-image' || modalContentType === 'text-image') && filename && (
                           <figure className={styles.figure(isVerticalCard)}>
-                            <picture>
-                              <source
-                                src={getProcessedImage(filename, '1500x750', focus)}
-                                media="(min-width: 1200px)"
-                              />
-                              <source
-                                src={getProcessedImage(filename, '1200x600', focus)}
-                                media="(min-width: 992px)"
-                              />
-                              <source
-                                media="(min-width: 576x)"
-                                src={getProcessedImage(filename, '1000x500', focus)}
-                              />
-                              <source
-                                media="(max-width: 575px)"
-                                src={getProcessedImage(filename, '600x300', focus)}
-                              />
-                              <img
-                                alt={alt || ''}
-                                src={getProcessedImage(filename, '1500x750', focus)}
-                                className={styles.image}
-                                width="1500"
-                                height="750"
-                              />
-                            </picture>
+                            {modalContentType === 'fullwidth-image' && (
+                              <picture>
+                                <source
+                                  media="(min-width: 1200px)"
+                                  src={getProcessedImage(filename, '1500x750', focus)}
+                                />
+                                <source
+                                  media="(min-width: 992px)"
+                                  src={getProcessedImage(filename, '1200x600', focus)}
+                                />
+                                <source
+                                  media="(min-width: 576x)"
+                                  src={getProcessedImage(filename, '1000x500', focus)}
+                                />
+                                <source
+                                  media="(max-width: 575px)"
+                                  src={getProcessedImage(filename, '600x300', focus)}
+                                />
+                                <img
+                                  alt={alt || ''}
+                                  fetchPriority="high"
+                                  src={getProcessedImage(filename, '1500x750', focus)}
+                                  className={styles.image}
+                                  width="1500"
+                                  height="750"
+                                />
+                              </picture>
+                            )}
+                            {modalContentType === 'text-image' && (
+                              <picture>
+                                {isVerticalCard ? (
+                                  <source
+                                    media="(min-width: 1200px)"
+                                    src={getProcessedImage(filename, '1200x800', focus)}
+                                  />
+                                ): (
+                                  <>
+                                    <source
+                                      media="(min-width: 1500px)"
+                                      src={getProcessedImage(filename, '800x600', focus)}
+                                    />
+                                    <source
+                                      media="(min-width: 1200px)"
+                                      src={getProcessedImage(filename, '700x700', focus)}
+                                    />
+                                  </>
+                                )}
+                                <source
+                                  media="(min-width: 992px)"
+                                  src={getProcessedImage(filename, '1200x800', focus)}
+                                />
+                                <source
+                                  media="(min-width: 768px)"
+                                  src={getProcessedImage(filename, '1000x750', focus)}
+                                />
+                                <source
+                                  media="(min-width: 576px)"
+                                  src={getProcessedImage(filename, '810x540', focus)}
+                                />
+                                <source
+                                  media="(max-width: 575px)"
+                                  src={getProcessedImage(filename, '600x400', focus)}
+                                />
+                                <img
+                                  alt={alt || ''}
+                                  fetchPriority="high"
+                                  src={getProcessedImage(filename, isVerticalCard ? '1200x800' : '800x600', focus)}
+                                  className={styles.image}
+                                  width={isVerticalCard ? 1200 : 800}
+                                  height={isVerticalCard ? 800 : 600}
+                                />
+                              </picture>
+                            )}
                             {hasRichText(caption) && (
                               <figcaption className={styles.figcaption}>
                                 {Caption}
