@@ -47,7 +47,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const currentURL = process.env.URL || process.env.DEPLOY_PRIME_URL || 'https://momentum.stanford.edu';
 
   const ret = indexStories.map((story) => {
-    const url =  `${currentURL}/${sbStripSlugURL(story.full_slug)}`;
+    const url =  `${currentURL}${sbStripSlugURL(story.full_slug)}`;
     return {
       url: url.replace(/\/+$/, ''),
       lastModified: new Date(story.published_at),
