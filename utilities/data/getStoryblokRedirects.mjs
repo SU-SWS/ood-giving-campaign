@@ -49,7 +49,7 @@ const sanitizeRedirectCode = (code) => {
  * @returns {string}
  */
 const sanitizeSourcePath = (str) => {
-  const parts = str?.split('?');
+  const parts = str.split('?');
   const path = parts[0];
   return path;
 };
@@ -106,7 +106,7 @@ export const getStoryblokRedirects = async () => {
     source: sanitizeSourcePath(entry.content.from),
     has: extractQueryParameters(entry.content.from),
     destination: entry.content.to,
-    statusCode: sanitizeRedirectCode(entry.content.statusCode || 301),
+    statusCode: sanitizeRedirectCode(entry.content.statusCode),
   }));
   return redirects;
 };
