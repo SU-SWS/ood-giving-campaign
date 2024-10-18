@@ -100,12 +100,13 @@ export const getStoryblokRedirects = async () => {
     return [];
   }
 
-  const redirects = stories.map(entry => ({
+  const redirects = stories
+  .filter(entry => entry.content.from && entry.content.to) // Filter out entries without "from" or "to"
+  .map(entry => ({
     source: sanitizeSourcePath(entry.content.from),
     has: extractQueryParameters(entry.content.from),
     destination: entry.content.to,
     statusCode: sanitizeRedirectCode(entry.content.statusCode),
   }));
-
   return redirects;
 };
