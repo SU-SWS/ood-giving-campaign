@@ -14,6 +14,7 @@ type FeatureMasonryProps = React.HTMLAttributes<HTMLDivElement> & {
   audioBgImageSrc?: string;
   audioBgImageFocus?: string;
   quoteBody?: string;
+  quoteSource?: string;
   quoteBgImageSrc?: string;
   quoteBgImageFocus?: string;
   imageSrc1?: string;
@@ -29,6 +30,7 @@ export const FeatureMasonry = ({
   audioBgImageSrc,
   audioBgImageFocus,
   quoteBody,
+  quoteSource,
   quoteBgImageSrc,
   quoteBgImageFocus,
   imageSrc1,
@@ -80,7 +82,7 @@ export const FeatureMasonry = ({
               quoteColor="flamingo"
               body={quoteBody}
               isLargeBody
-              source="Eden Hadar, ’26"
+              source={quoteSource}
               className="relative z-10 !pl-0"
             />
           </div>
