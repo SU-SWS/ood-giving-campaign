@@ -8,6 +8,7 @@ export type SbFeatureMasonryProps = {
     audioUrl?: string;
     audioBgImage?: SbImageType;
     quoteBody?: string;
+    quoteSource?: string;
     quoteBgImage?: SbImageType;
     image1?: SbImageType;
     imageAlt1?: string;
@@ -23,6 +24,7 @@ export const SbFeatureMasonry = ({
     audioUrl,
     audioBgImage: { filename: audioBgImageSrc, focus: audioBgImagFocus } = {},
     quoteBody,
+    quoteSource,
     quoteBgImage: { filename: quoteBgImageSrc, focus: quoteBgImageFocus } = {},
     image1: { filename: imageSrc1, focus: imageFocus1 } = {},
     imageAlt1,
@@ -44,6 +46,7 @@ export const SbFeatureMasonry = ({
       audioBgImageSrc={audioBgImageSrc}
       audioBgImageFocus={audioBgImagFocus}
       quoteBody={quoteBody}
+      quoteSource={quoteSource}
       quoteBgImageSrc={quoteBgImageSrc}
       quoteBgImageFocus={quoteBgImageFocus}
       imageSrc1={imageSrc1}

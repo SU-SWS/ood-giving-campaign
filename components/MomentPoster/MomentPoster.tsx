@@ -57,38 +57,39 @@ export const MomentPoster = ({
 }: MomentPosterProps) => {
   // To render a dark overlay, both a top and bottom gradient color must be selected
   const hasBgGradient = !!gradientTop && !!gradientBottom;
+  const hasBgBlur = !!bgBlur && bgBlur !== 'none';
 
   return (
     <Container {...props} as="section" bgColor={isDarkTheme ? 'black' : 'white'} width="full" py={8} className={styles.root}>
       {!!bgImageSrc && (
         <picture>
           <source
-            srcSet={getProcessedImage(bgImageSrc, bgBlur !== 'none' ? '1200x800' : '1800x1200', bgImageFocus)}
+            srcSet={getProcessedImage(bgImageSrc, hasBgBlur ? '1200x800' : '1800x1200', bgImageFocus)}
             media="(min-width: 1200px)"
             // Exact height and width don't matter as long as aspect ratio is the same as the image
             width={1800}
             height={1200}
           />
           <source
-            srcSet={getProcessedImage(bgImageSrc, bgBlur !== 'none' ? '600x600' : '1200x1200', bgImageFocus)}
+            srcSet={getProcessedImage(bgImageSrc, hasBgBlur ? '600x600' : '1200x1200', bgImageFocus)}
             media="(min-width: 768px)"
             width={1200}
             height={1200}
           />
           <source
-            srcSet={getProcessedImage(bgImageSrc, bgBlur !== 'none' ? '400x600' : '800x1200', bgImageFocus)}
+            srcSet={getProcessedImage(bgImageSrc, hasBgBlur ? '400x600' : '800x1200', bgImageFocus)}
             media="(min-width: 461px)"
             width={800}
             height={1200}
           />
           <source
-            srcSet={getProcessedImage(bgImageSrc, bgBlur !== 'none' ? '230x460' : '460x920', bgImageFocus)}
+            srcSet={getProcessedImage(bgImageSrc, hasBgBlur ? '230x460' : '460x920', bgImageFocus)}
             media="(max-width: 460px)"
             width={460}
             height={920}
           />
           <img
-            src={getProcessedImage(bgImageSrc, bgBlur !== 'none' ? '1200x800' : '1800x1200', bgImageFocus)}
+            src={getProcessedImage(bgImageSrc, hasBgBlur ? '1200x800' : '1800x1200', bgImageFocus)}
             alt=""
             loading="lazy"
             width={1800}
@@ -98,7 +99,7 @@ export const MomentPoster = ({
         </picture>
       )}
       {/* Render the overlay if there's a background image, and if background blur or/and gradient is selected */}
-      {!!bgImageSrc && (bgBlur !== 'none' || hasBgGradient) && (
+      {!!bgImageSrc && (hasBgBlur || hasBgGradient) && (
         <div
           className={cnb(
             styles.overlay(hasBgGradient),
