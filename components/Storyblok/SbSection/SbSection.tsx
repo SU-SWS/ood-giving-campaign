@@ -105,6 +105,7 @@ export const SbSection = ({
   const hasHeader = heading || superhead || subheading;
   // To render a dark overlay, both a top and bottom gradient color must be selected
   const hasBgGradient = !!gradientTop && !!gradientBottom;
+  const hasBgBlur = !!bgBlur && bgBlur !== 'none';
 
   const ref = useRef<HTMLDivElement>(null);
   const stops = [];
@@ -161,32 +162,32 @@ export const SbSection = ({
           {!!filename && (
             <picture>
               <source
-                srcSet={getProcessedImage(filename, bgBlur !== 'none' ? '1200x800' : '2100x1400', focus)}
+                srcSet={getProcessedImage(filename, hasBgBlur ? '1200x800' : '2100x1400', focus)}
                 media="(min-width: 1200px)"
                 // Exact height and width don't matter as long as aspect ratio is the same as the image
                 width={2100}
                 height={1400}
               />
               <source
-                srcSet={getProcessedImage(filename, bgBlur !== 'none' ? '600x600' : '1200x1200', focus)}
+                srcSet={getProcessedImage(filename, hasBgBlur ? '600x600' : '1200x1200', focus)}
                 media="(min-width: 768px)"
                 width={1200}
                 height={1200}
               />
               <source
-                srcSet={getProcessedImage(filename, bgBlur !== 'none' ? '400x600' : '800x1200', focus)}
+                srcSet={getProcessedImage(filename, hasBgBlur ? '400x600' : '800x1200', focus)}
                 media="(min-width: 461px)"
                 width={800}
                 height={1200}
               />
               <source
-                srcSet={getProcessedImage(filename, bgBlur !== 'none' ? '230x460' : '460x920', focus)}
+                srcSet={getProcessedImage(filename, hasBgBlur ? '230x460' : '460x920', focus)}
                 media="(max-width: 460px)"
                 width={460}
                 height={920}
               />
               <img
-                src={getProcessedImage(filename, bgBlur !== 'none' ? '1200x800' : '1800x1200', focus)}
+                src={getProcessedImage(filename, hasBgBlur ? '1200x800' : '1800x1200', focus)}
                 alt=""
                 width={1800}
                 height={1200}
@@ -195,7 +196,7 @@ export const SbSection = ({
             </picture>
           )}
           {/* Render the overlay if there's a background image, and if background blur or/and gradient is selected */}
-          {!!filename && (bgBlur !== 'none' || hasBgGradient) && (
+          {!!filename && (hasBgBlur || hasBgGradient) && (
             <div
               className={cnb(
                 styles.overlay(hasBgGradient),

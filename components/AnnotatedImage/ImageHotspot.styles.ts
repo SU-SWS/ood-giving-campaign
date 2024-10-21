@@ -19,19 +19,19 @@ export const dialogPanel  = (modalContentType: SbImageHotspotModalContentType) =
 export const modalClose = 'absolute top-20 z-[200] right-20 block mr-0 ml-auto rs-mb-2 p-9 border-2 border-digital-red-xlight bg-black-true rounded-full hocus-visible:border-dashed hocus-visible:border-white transition-transform hocus-visible:rotate-90';
 export const modalIcon = 'text-white size-26';
 
-export const grid = 'h-full';
+export const grid = 'size-full';
 export const contentWrapper = (modalContentType: SbImageHotspotModalContentType, isVerticalCard: boolean) => cnb('relative flex items-center justify-center', {
   'min-h-screen sm:min-h-[auto] bg-black-true/70 text-white': modalContentType !== 'text-image' && modalContentType !== 'text',
   'bg-white text-black': modalContentType === 'text-image' || modalContentType === 'text',
-  'w-full 2xl:aspect-[16/9] 3xl:aspect-2': modalContentType !== 'text' && modalContentType !== 'fullwidth-image' && modalContentType !== 'image-quote' && !isVerticalCard,
-  'max-w-1000': modalContentType === 'text-image' && isVerticalCard,
+  'w-full xl:aspect-[16/9] 3xl:aspect-2': modalContentType !== 'text' && modalContentType !== 'fullwidth-image' && modalContentType !== 'image-quote' && !isVerticalCard,
+  'xl:max-w-1000 2xl:w-1000': modalContentType === 'text-image' && isVerticalCard,
 });
-export const textWrapper = (isVerticalCard: boolean) => cnb('pt-90 rs-pb-4 bg-white', !isVerticalCard && 'xl:col-span-6 2xl:col-span-5');
+export const textWrapper = (isVerticalCard: boolean) => cnb('pt-90 rs-pb-4 rs-pr-4 bg-white', !isVerticalCard && 'xl:col-span-6 2xl:col-span-5');
 export const header = 'border-l-[1.2rem] md:border-l-[1.8rem] border-digital-red-light';
 export const heading = 'mb-02em leading-tight ml-22 md:ml-40 2xl:ml-43';
 export const subhead = 'ml-22 md:ml-40 2xl:ml-43';
 export const figure = (isVerticalCard: boolean) => cnb('relative ', !isVerticalCard && 'xl:col-span-6 2xl:col-span-7');
 export const image = 'xl:object-cover w-full xl:h-full';
-export const figcaption = 'md:absolute mt-0 px-18 pt-14 pb-16 bg-black-true/90 md:bg-black-true/70 sm:bottom-20 md:bottom-30 md:left-30 max-w-full md:max-w-[40rem] 2xl:max-w-400s z-[110]';
+export const figcaption = 'lg:absolute mt-0 px-18 pt-14 pb-16 bg-black-true/80 lg:bg-black-true/70 sm:bottom-20 lg:bottom-30 lg:left-30 max-w-full lg:max-w-400 z-[110] *:max-w-prose-wide';
 
 export const nestedComponentWrapper = (modalContentType: SbImageHotspotModalContentType) => modalContentType === 'component' && 'py-100 sm:rs-px-1';

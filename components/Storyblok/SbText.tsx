@@ -14,6 +14,9 @@ import {
   type HeadingType,
 } from '../Typography';
 
+/**
+ * This component is named "Typography" in the Storyblok UI.
+ */
 export type SbTextProps = {
   blok: {
     _uid: string;
