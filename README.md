@@ -7,8 +7,16 @@ Description
 
 Netlify hosted, Next.js built, Storyblok headless CMS site for the Stanford Momentum website.
 
+Documentation and Decision Records
+---
+
+You can find Architectural Decision Records and more documentation in the [docs](docs/) & [docs/decisions](docs/decisions/) directories. 
+
+
 Environment variable set up and installation
 ---
+
+For more information on what the environment variables are and do see: [Environment Vars](./docs/environment-variables.md)  
 
 _Development_
 

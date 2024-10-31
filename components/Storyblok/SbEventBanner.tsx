@@ -12,6 +12,7 @@ type SbEventBannerProps = {
   blok: {
     _uid: string;
     id: string;
+    superhead?: string;
     heading?: string;
     body: StoryblokRichtext;
     startDate?: string;
@@ -36,6 +37,7 @@ type SbEventBannerProps = {
 export const SbEventBanner = ({
   blok: {
     id,
+    superhead,
     heading,
     body,
     startDate,
@@ -68,6 +70,7 @@ export const SbEventBanner = ({
     <EventBanner
       {...storyblokEditable(blok)}
       id={id}
+      superhead={superhead || 'Event'}
       heading={heading}
       body={Body}
       startDate={startDate}

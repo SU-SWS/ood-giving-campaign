@@ -1,5 +1,6 @@
 'use client';
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
+import { SbAnnotatedImage } from './Storyblok/SbAnnotatedImage';
 import { SbBanner } from '@/components/Storyblok/SbBanner';
 import { SbBasicCard } from '@/components/Storyblok/SbBasicCard';
 import { SbBasicPage } from '@/components/Storyblok/SbBasicPage';
@@ -44,6 +45,7 @@ import { SbWysiwyg } from '@/components/Storyblok/SbWysiwyg';
 import { ComponentNotFound } from '@/components/Storyblok/ComponentNotFound';
 
 export const components = {
+  sbAnnotatedImage: SbAnnotatedImage,
   sbBanner: SbBanner,
   sbBasicCard: SbBasicCard,
   sbBasicPage: SbBasicPage,

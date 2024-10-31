@@ -2,38 +2,30 @@ import type { getStoryDataProps } from '@/utilities/data/types';
 import type { ISbStoriesParams, ISbResult } from '@storyblok/react';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { getStoryblokApi, StoryblokClient } from '@storyblok/react/rsc';
+import { isProduction } from '../getActiveEnv';
 
 /**
  * Get the data out of the Storyblok API for the page.
- *
- * Make sure to not export the below functions otherwise there will be a typescript error
- * https://github.com/vercel/next.js/discussions/48724
  */
 async function getStoryData({ path, isEditor = false }: getStoryDataProps): Promise<ISbResult | { data: 404 }> {
   const storyblokApi: StoryblokClient = getStoryblokApi();
-  const activeEnv = process.env.NODE_ENV || 'development';
+  const isProd = isProduction();
+
   let sbParams: ISbStoriesParams = {
-    version: activeEnv === 'development' || isEditor ? 'draft' : 'published',
-    cv: activeEnv === 'development' || isEditor ? Date.now() : undefined,
+    version: isProd && !isEditor ? 'published' : 'draft',
+    cv: isEditor ? Date.now() : undefined,
     resolve_relations: resolveRelations,
+    token: isEditor ? process.env.STORYBLOK_PREVIEW_EDITOR_TOKEN : process.env.STORYBLOK_ACCESS_TOKEN,
   };
 
-  const slug = path.replace(/\/$/, '') || 'home'; // Remove trailing slash or if no slash, use home.
+  const slug = path.replace(/\/$/, ''); // Remove trailing slash.
 
   try {
     const story: ISbResult = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
     return story;
-  } catch (error) {
-    if (typeof error === 'string') {
-      try {
-        const parsedError = JSON.parse(error);
-        if (parsedError.status === 404) {
-          return { data: 404 };
-        }
-      }
-      catch (e) {
-        throw error;
-      }
+  } catch (error: any) {
+    if (error && error.status && error.status === 404) {
+      return { data: 404 };
     }
     throw error;
   }

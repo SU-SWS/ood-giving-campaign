@@ -2,6 +2,7 @@ import { type ISbStoryData } from '@storyblok/react/rsc';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { type SbImageType, type SbLinkType } from '@/components/Storyblok/Storyblok.types';
 import { config } from './config';
+import { sbStripSlugURL } from './sbStripSlugUrl';
 
 export type SbSEOType = {
   title?: string;
@@ -78,7 +79,7 @@ export const getPageMetadata = ({
   const selfReferencingUrl = slug !== 'home' ? `${siteUrl}/${slug}` : siteUrl;
   // If the canonical URL is entered in Storyblok, find the full URL for it
   const canonicalNotSelf = canonicalUrl?.linktype === 'story' && canonicalUrl.cached_url
-    ? `${siteUrl}/${canonicalUrl.cached_url}`
+    ? `${siteUrl}${sbStripSlugURL(canonicalUrl.cached_url)}`
     : canonicalUrl?.url;
   const canonical = canonicalNotSelf || selfReferencingUrl;
 

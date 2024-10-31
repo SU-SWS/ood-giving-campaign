@@ -21,6 +21,7 @@ import { HeroIcon } from '../HeroIcon';
 export type EventBannerHeadingSizeType = 'small' | 'medium' | 'large';
 
 type EventBannerProps = HTMLAttributes<HTMLDivElement> & {
+  superhead?: string;
   heading?: string;
   body?: React.ReactNode;
   startDate?: string;
@@ -44,6 +45,7 @@ type EventBannerProps = HTMLAttributes<HTMLDivElement> & {
 };
 
 export const EventBanner = ({
+  superhead,
   heading,
   body,
   startDate,
@@ -123,9 +125,9 @@ export const EventBanner = ({
         />
       )}
       <Container className={styles.wrapper}>
-        {/* Attach SR only heading after Event(s): at the beginning of the content for a11y */}
-        <Heading as="h2" font="serif" weight="semibold" size={2} aria-hidden>
-          {`Event${isMultiDay ? 's' : ''}`}<SrOnlyText>{`:${heading}`}</SrOnlyText>
+        {/* Attach SR only heading after superhead: at the beginning of the content for a11y */}
+        <Heading font="serif" weight="semibold" size={2} aria-hidden>
+          {superhead}<SrOnlyText>{`:${heading}`}</SrOnlyText>
         </Heading>
         <FlexBox direction="col" className={styles.contentWrapper}>
           <AnimateInView animation="slideInFromLeft" delay={0.1}>
@@ -181,7 +183,7 @@ export const EventBanner = ({
                   {dateLocation.map(({ date, location }) => {
                     const { dateTime, monthShort, day } = formatDate(date);
                     return (
-                      <Text as="li" size={1} color={isDarkTheme ? 'black-20' : 'black-80'} key={dateTime} className={styles.dateLocationListItem}>
+                      <Text as="li" size={1} color={isDarkTheme ? 'white' : 'black-80'} key={dateTime} className={styles.dateLocationListItem}>
                         <Text as="time" leading="display" dateTime={dateTime} className={styles.date}>
                           {monthShort} {day}
                         </Text>
@@ -196,7 +198,7 @@ export const EventBanner = ({
                 </>
               )}
               {location && (
-                <Text size={1} color={isDarkTheme ? 'black-20' : 'black'} className={styles.singleLocationWrapper}>
+                <Text size={1} color={isDarkTheme ? 'white' : 'black'} className={styles.singleLocationWrapper}>
                   <HeroIcon title="Location" icon="location" className={styles.locationIcon} />
                   <Text leading="display" className="grow">{location}</Text>
                 </Text>

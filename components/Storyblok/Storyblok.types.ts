@@ -1,4 +1,6 @@
+import { type SbBlokData } from '@storyblok/react/rsc';
 import { type FontSizeType } from '@/components/Typography';
+import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 
 /**
  * Generic types for Storyblok fields
@@ -71,4 +73,29 @@ export type SbColorStopProps = {
 // Storyblok Native Color Picker
 export type SbColorPickerType = {
   color?: string;
+};
+
+export type SbSliderType = {
+  value?: number;
+}
+
+// Used for Annotated Image component
+export type SbImageHotspotModalContentType =  'text-image' | 'fullwidth-image' | 'text' | 'component' | 'image-quote';
+export type SbImageHotspotDescriptionSizeType = 'card' | 'default' | 'big';
+
+export type SbImageHotspotType = {
+  _uid: string;
+  positionX: SbSliderType;
+  positionY: SbSliderType;
+  modalContentType: SbImageHotspotModalContentType;
+  heading: string;
+  ariaLabel: string;
+  subhead: string;
+  description: StoryblokRichtext;
+  image: SbImageType;
+  caption: StoryblokRichtext;
+  alt: string;
+  content: SbBlokData[];
+  isVerticalCard: boolean;
+  descriptionSize: SbImageHotspotDescriptionSizeType;
 };
