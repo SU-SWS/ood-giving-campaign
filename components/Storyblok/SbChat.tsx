@@ -3,12 +3,13 @@ import { Chat } from '@/components/Chat';
 import { WidthBox, type WidthType } from '@/components/WidthBox';
 import { CreateBloks } from '@/components/CreateBloks';
 import { type MarginType } from '@/utilities/datasource';
+import { type GridGapType } from '@/components/Grid/Grid.types';
 
 type SbChatProps = {
   blok: {
     _uid: string;
     id: string;
-    //gap?: GridGapType;
+    gap?: GridGapType;
     boundingWidth?: 'site' | 'full';
     width?: WidthType;
     messages: SbBlokData[];
@@ -21,7 +22,7 @@ type SbChatProps = {
 export const SbChat = ({
   blok: {
     id,
-    //gap,
+    gap,
     boundingWidth = 'full',
     width,
     messages,
@@ -44,7 +45,7 @@ export const SbChat = ({
       mt={marginTop}
       mb={marginBottom}
     >
-      <Chat>
+      <Chat gap={gap}>
         <CreateBloks blokSection={messages} />
       </Chat>
     </WidthBox>

@@ -15,6 +15,8 @@ type SbChatBubbleProps = {
     }
     align: 'left' | 'right';
     addTail: boolean;
+    showTyping: boolean;
+    addTopSpacing: boolean;
     animation: AnimationType;
     delay: number;
   };
@@ -27,6 +29,8 @@ export const SbChatBubble = ({
     bgColor: { value } = {},
     align,
     addTail,
+    showTyping,
+    addTopSpacing,
     animation,
     delay,
   },
@@ -42,6 +46,8 @@ export const SbChatBubble = ({
       bgColor={paletteBubbleColors[value]}
       align={align}
       addTail={addTail}
+      showTyping={showTyping}
+      addTopSpacing={addTopSpacing}
       animation={animation}
       delay={delay}
     >
