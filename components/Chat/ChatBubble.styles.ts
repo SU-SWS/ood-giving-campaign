@@ -66,22 +66,27 @@ export const paletteBubbleColors: PaletteBubbleColorType = {
 };
 export type PaletteBubbleHexColorType = '#006CB8' | '#008566' | '#EAEAEA' | '#544948' | '#2E2D29' | '#7A0000' | '#8C1515' | '#B1040E' | '#E50808';
 
+export const flexbox = (addTopSpacing: boolean) => cnb('flex gap-10 md:gap-20', addTopSpacing && 'rs-mt-4');
+
 export const bubble = (
   bgColor: BubbleColorType,
+  isRenderLightText: boolean,
   align: 'left' | 'right',
   addTail: boolean,
-  addTopSpacing: boolean,
-) => cnb('relative rounded-[2rem] bg-black rs-px-0 pt-18 pb-16 md:pt-21 md:pb-19 w-fit 2xl:text-21 *:*:leading-cozy max-w-[80%] 2xl:max-w-500 whitespace-pre-line',
+) => cnb('relative rounded-[2rem] w-fit *:*:leading-cozy *:*:font-sans max-w-[80%] 2xl:max-w-500 whitespace-pre-line',
   align === 'right' && 'mr-0 ml-auto',
-  addTail && bubbleTailTopColors[bgColor],
-  addTail && align === 'left' && bubbleTailLeftColors[bgColor],
-  addTail && align === 'right' && bubbleTailRightColors[bgColor],
-  bgColor === 'black-10' ? 'text-gc-black' : 'text-white',
-  addTopSpacing && 'rs-mt-4',
-  bubbleColors[bgColor],
+  (addTail && !!bgColor) && bubbleTailTopColors[bgColor],
+  (addTail && !!bgColor && align === 'left') && bubbleTailLeftColors[bgColor],
+  (addTail && !!bgColor && align === 'right') && bubbleTailRightColors[bgColor],
   {
-    'after:content-[""] after:absolute after:border-[1rem] after:border-b-transparent after:-bottom-12': addTail,
+    'rs-px-0 pt-18 pb-16 md:pt-21 md:pb-19': !!bgColor,
+    'text-gc-black': bgColor === 'black-10' || (!isRenderLightText && !bgColor),
+    'text-white': (!!bgColor && bgColor !== 'black-10') || (isRenderLightText && !bgColor),
+  },
+  {
+    'after:content-[""] after:absolute after:border-[1rem] after:border-b-transparent after:-bottom-12': addTail && !!bgColor,
     'after:border-r-transparent after:left-10 after:rotate-[12deg]': addTail && align === 'left',
     'after:border-l-transparent after:right-10 after:rotate-[-12deg]': addTail && align === 'right',
   },
+  !!bgColor && bubbleColors[bgColor],
 );

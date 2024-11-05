@@ -4,15 +4,18 @@ import { type AnimationType } from '@/components/Animate';
 import { ChatBubble, paletteBubbleColors, type PaletteBubbleHexColorType  } from '@/components/Chat';
 import { RichText } from '@/components/RichText';
 import { hasRichText } from '@/utilities/hasRichText';
+import { type SbImageType } from './Storyblok.types';
 
 type SbChatBubbleProps = {
   blok: {
     _uid: string;
     content: StoryblokRichtext;
     plainText: string;
+    avatarImage?: SbImageType;
     bgColor: {
       value?: PaletteBubbleHexColorType;
     }
+    isLightText: boolean;
     align: 'left' | 'right';
     addTail: boolean;
     showTyping: boolean;
@@ -26,7 +29,9 @@ export const SbChatBubble = ({
   blok: {
     content,
     plainText,
+    avatarImage: { filename, focus } = {},
     bgColor: { value } = {},
+    isLightText,
     align,
     addTail,
     showTyping,
@@ -40,10 +45,15 @@ export const SbChatBubble = ({
     return null;
   }
 
+  const isRenderLightText = !!value && paletteBubbleColors[value] !== 'black-10' || (isLightText && !value);
+
   return (
     <ChatBubble
       {...storyblokEditable(blok)}
+      avatarImageSrc={filename}
+      avatarImageFocus={focus}
       bgColor={paletteBubbleColors[value]}
+      isRenderLightText={isRenderLightText}
       align={align}
       addTail={addTail}
       showTyping={showTyping}
@@ -53,8 +63,9 @@ export const SbChatBubble = ({
     >
       {hasRichText(content) && (
         <RichText
-          textColor={paletteBubbleColors[value] === 'black-10' ? 'black' : 'white'}
-          linkColor={paletteBubbleColors[value] === 'black-10' ? 'unset' : 'white'}
+          type="card"
+          textColor={isRenderLightText ? 'white' : 'black'}
+          linkColor={isRenderLightText ? 'white' : 'unset'}
           wysiwyg={content}
         />
       )}
