@@ -7,7 +7,7 @@ import { SbBasicPage } from '@/components/Storyblok/SbBasicPage';
 import { SbBlurryPoster } from '@/components/Storyblok/SbBlurryPoster';
 import { SbCardWysiwyg } from '@/components/Storyblok/SbCardWysiwyg';
 import { SbChangemakerCard } from '@/components/Storyblok/SbChangemakerCard';
-import { SbChat } from '@/components/Storyblok/sbChat';
+import { SbChat } from '@/components/Storyblok/SbChat';
 import { SbChatBubble } from '@/components/Storyblok/SbChatBubble';
 import { SbCta } from '@/components/Storyblok/SbCta';
 import { SbCtaBlock } from '@/components/Storyblok/SbCtaBlock';
