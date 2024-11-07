@@ -6,19 +6,14 @@ import {
   marginVerticals,
   type MarginType,
 } from '@/utilities/datasource';
-import { type GridGapType } from '@/components/Grid/Grid.types';
-import * as styles from '@/components/Grid/Grid.styles';
-
 
 export type ChatProps = HTMLAttributes<HTMLElement> & {
-  gap?:GridGapType;
   mt?: MarginType;
   mb?: MarginType;
   my?: MarginType;
 };
 
 export const Chat = ({
-  gap,
   mt,
   mb,
   my,
@@ -29,8 +24,7 @@ export const Chat = ({
   <div
     {...props}
     className={cnb(
-      'grid',
-      gap ? styles.gridGaps[gap] : '',
+      'grid gap-4',
       mt ? marginTops[mt] : '',
       mb ? marginBottoms[mb] : '',
       my ? marginVerticals[my] : '',

@@ -8,7 +8,6 @@ type SbChatProps = {
   blok: {
     _uid: string;
     id: string;
-    gap?: GridGapType;
     boundingWidth?: 'site' | 'full';
     width?: WidthType;
     messages: SbBlokData[];
@@ -21,7 +20,6 @@ type SbChatProps = {
 export const SbChat = ({
   blok: {
     id,
-    gap,
     boundingWidth = 'full',
     width,
     messages,
@@ -59,7 +57,7 @@ export const SbChat = ({
       mt={marginTop}
       mb={marginBottom}
     >
-      <Chat gap={gap}>
+      <Chat>
         {messages.map((message, index) => (
           <StoryblokComponent blok={message} key={message._uid} delay={delays[index]} />
         ))}

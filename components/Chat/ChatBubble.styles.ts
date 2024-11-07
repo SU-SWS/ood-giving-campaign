@@ -78,7 +78,7 @@ export const bubble = (
   align: 'left' | 'right',
   isRenderBubbleTail: boolean,
   addIndent: boolean,
-) => cnb('relative w-fit *:*:leading-cozy *:*:font-sans max-w-[80%] 2xl:max-w-500 whitespace-pre-line',
+) => cnb('relative w-fit leading-cozy *:*:leading-cozy *:*:font-sans max-w-[80%] 2xl:max-w-500 whitespace-pre-line',
   align === 'right' && 'mr-0 ml-auto',
   !!bgColor && bubbleColors[bgColor],
   isRenderBubbleTail && bubbleTailTopColors[bgColor],

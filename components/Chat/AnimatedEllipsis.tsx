@@ -5,19 +5,21 @@ import * as styles from './AnimatedEllipsis.styles';
 
 type AnimatedEllipsisProps = HTMLAttributes<HTMLDivElement> & {
   color?: 'black' | 'white';
+  isMessageMinimal?: boolean;
 }
 
 export const AnimatedEllipsis = ({
   color,
+  isMessageMinimal,
   className,
   ...props
 }: AnimatedEllipsisProps) => {
   return (
-    <div className={cnb(styles.root(color), className)} {...props}>
-      <SrOnlyText>Typing</SrOnlyText>
-      <div className={styles.dot} aria-hidden />
-      <div className={styles.dot} aria-hidden />
-      <div className={styles.dot} aria-hidden />
+    <div className={cnb(styles.root(color, isMessageMinimal), className)} {...props}>
+      <SrOnlyText>Typing message</SrOnlyText>
+      <div className={styles.dot} aria-hidden="true" />
+      <div className={styles.dot} aria-hidden="true" />
+      <div className={styles.dot} aria-hidden="true" />
     </div>
   );
 };

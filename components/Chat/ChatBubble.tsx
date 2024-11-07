@@ -60,21 +60,20 @@ export const ChatBubble = ({
   }, [isInView, showTyping, delay]);
 
   return (
-    <AnimateInView animation="zoomIn" delay={delay} duration={0.6} className={className}>
+    <AnimateInView animation="zoomIn" delay={delay} duration={0.6} className={className} {...props}>
       <FlexBox alignItems={isAvatarAlignBottom ? 'end' : 'start'} className={styles.flexbox( align, addTopSpacing)}>
         {avatarImageSrc && (
           <img
             src={getProcessedImage(avatarImageSrc, '60x60', avatarImageFocus)}
-            alt={`${avatarAlt} says` || ''}
+            alt={avatarAlt ? `${avatarAlt} says` : ''}
             className={styles.avatar}
           />
         )}
         <div
-          {...props}
           ref={ref}
           className={styles.bubble(bgColor, isRenderLightText, align, isRenderBubbleTail, addIndent)}
         >
-          {showDots ? <AnimatedEllipsis color={isRenderLightText ? 'white' : 'black'} /> : children}
+          {showDots ? <AnimatedEllipsis isMessageMinimal={!bgColor} color={isRenderLightText ? 'white' : 'black'} /> : children}
         </div>
       </FlexBox>
     </AnimateInView>
