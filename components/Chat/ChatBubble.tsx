@@ -11,12 +11,15 @@ import * as styles from './ChatBubble.styles';
 type ChatBubbleProps = HTMLAttributes<HTMLDivElement> & {
   avatarImageSrc?: string;
   avatarImageFocus?: string;
+  avatarAlt?: string;
   align?: 'left' | 'right';
   bgColor?: styles.BubbleColorType;
   isRenderLightText?: boolean;
   addTail?: boolean; // Add a tail to the speech bubble
   showTyping?: boolean; // Show "typing" animated dots
   addTopSpacing?: boolean;
+  addIndent?: boolean;
+  isAvatarAlignBottom?: boolean;
   animation?: AnimationType;
   delay?: number;
   children: React.ReactNode;
@@ -26,18 +29,22 @@ type ChatBubbleProps = HTMLAttributes<HTMLDivElement> & {
 export const ChatBubble = ({
   avatarImageSrc,
   avatarImageFocus,
+  avatarAlt,
   align = 'left',
   bgColor,
   isRenderLightText,
   addTail,
   showTyping,
   addTopSpacing,
+  addIndent,
+  isAvatarAlignBottom,
   animation = 'zoomIn',
   delay,
   children,
   className,
   ...props
 }: ChatBubbleProps) => {
+  const isRenderBubbleTail = addTail && !!bgColor;
   const [showDots, setShowDots] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -56,18 +63,18 @@ export const ChatBubble = ({
 
   return (
     <AnimateInView animation={animation} delay={delay} duration={0.6} className={className}>
-      <FlexBox alignItems="start" className={styles.flexbox(addTopSpacing)}>
+      <FlexBox alignItems={isAvatarAlignBottom ? 'end' : 'start'} className={styles.flexbox( align, addTopSpacing)}>
         {avatarImageSrc && (
           <img
             src={getProcessedImage(avatarImageSrc, '60x60', avatarImageFocus)}
-            alt=""
-            className="rounded-full w-40 md:w-60"
+            alt={`${avatarAlt} says` || ''}
+            className={styles.avatar}
           />
         )}
         <div
           {...props}
           ref={ref}
-          className={styles.bubble(bgColor, isRenderLightText, align, addTail)}
+          className={styles.bubble(bgColor, isRenderLightText, align, isRenderBubbleTail, addIndent)}
         >
           {showDots ? <AnimatedEllipsis color={isRenderLightText ? 'white' : 'black'} /> : children}
         </div>

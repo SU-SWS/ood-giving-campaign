@@ -12,6 +12,7 @@ type SbChatBubbleProps = {
     content: StoryblokRichtext;
     plainText: string;
     avatarImage?: SbImageType;
+    avatarAlt?: string;
     bgColor: {
       value?: PaletteBubbleHexColorType;
     }
@@ -20,6 +21,8 @@ type SbChatBubbleProps = {
     addTail: boolean;
     showTyping: boolean;
     addTopSpacing: boolean;
+    addIndent: boolean;
+    isAvatarAlignBottom: boolean;
     animation: AnimationType;
     delay: number;
   };
@@ -30,12 +33,15 @@ export const SbChatBubble = ({
     content,
     plainText,
     avatarImage: { filename, focus } = {},
+    avatarAlt,
     bgColor: { value } = {},
     isLightText,
     align,
     addTail,
     showTyping,
     addTopSpacing,
+    addIndent,
+    isAvatarAlignBottom,
     animation,
     delay,
   },
@@ -52,12 +58,15 @@ export const SbChatBubble = ({
       {...storyblokEditable(blok)}
       avatarImageSrc={filename}
       avatarImageFocus={focus}
+      avatarAlt={avatarAlt}
       bgColor={paletteBubbleColors[value]}
       isRenderLightText={isRenderLightText}
       align={align}
       addTail={addTail}
       showTyping={showTyping}
       addTopSpacing={addTopSpacing}
+      addIndent={addIndent}
+      isAvatarAlignBottom={isAvatarAlignBottom}
       animation={animation}
       delay={delay}
     >

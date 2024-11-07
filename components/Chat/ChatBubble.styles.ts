@@ -66,27 +66,36 @@ export const paletteBubbleColors: PaletteBubbleColorType = {
 };
 export type PaletteBubbleHexColorType = '#006CB8' | '#008566' | '#EAEAEA' | '#544948' | '#2E2D29' | '#7A0000' | '#8C1515' | '#B1040E' | '#E50808';
 
-export const flexbox = (addTopSpacing: boolean) => cnb('flex gap-10 md:gap-20', addTopSpacing && 'rs-mt-4');
-
+export const flexbox = (align: 'left' | 'right', addTopSpacing: boolean) => cnb(
+  'flex gap-10 md:gap-20',
+  addTopSpacing && 'rs-mt-4',
+  align === 'right' && 'flex-row-reverse',
+);
+export const avatar = 'rounded-full w-40 md:w-60';
 export const bubble = (
   bgColor: BubbleColorType,
   isRenderLightText: boolean,
   align: 'left' | 'right',
-  addTail: boolean,
-) => cnb('relative rounded-[2rem] w-fit *:*:leading-cozy *:*:font-sans max-w-[80%] 2xl:max-w-500 whitespace-pre-line',
+  isRenderBubbleTail: boolean,
+  addIndent: boolean,
+) => cnb('relative w-fit *:*:leading-cozy *:*:font-sans max-w-[80%] 2xl:max-w-500 whitespace-pre-line',
   align === 'right' && 'mr-0 ml-auto',
-  (addTail && !!bgColor) && bubbleTailTopColors[bgColor],
-  (addTail && !!bgColor && align === 'left') && bubbleTailLeftColors[bgColor],
-  (addTail && !!bgColor && align === 'right') && bubbleTailRightColors[bgColor],
+  !!bgColor && bubbleColors[bgColor],
+  isRenderBubbleTail && bubbleTailTopColors[bgColor],
+  (isRenderBubbleTail && align === 'left') && bubbleTailLeftColors[bgColor],
+  (isRenderBubbleTail && align === 'right') && bubbleTailRightColors[bgColor],
   {
-    'rs-px-0 pt-18 pb-16 md:pt-21 md:pb-19': !!bgColor,
+    'after:content-[""] after:absolute after:border-[1rem] after:border-b-transparent after:-bottom-12': isRenderBubbleTail && !!bgColor,
+    'after:border-r-transparent after:left-10 after:rotate-[12deg]': isRenderBubbleTail && align === 'left',
+    'after:border-l-transparent after:right-10 after:rotate-[-12deg]': isRenderBubbleTail && align === 'right',
+  },
+  {
+    'rounded-[2rem] rs-px-1 pt-18 pb-16 md:pt-21 md:pb-19 2xl:pt-23 2xl:pb-21': !!bgColor,
     'text-gc-black': bgColor === 'black-10' || (!isRenderLightText && !bgColor),
     'text-white': (!!bgColor && bgColor !== 'black-10') || (isRenderLightText && !bgColor),
   },
   {
-    'after:content-[""] after:absolute after:border-[1rem] after:border-b-transparent after:-bottom-12': addTail && !!bgColor,
-    'after:border-r-transparent after:left-10 after:rotate-[12deg]': addTail && align === 'left',
-    'after:border-l-transparent after:right-10 after:rotate-[-12deg]': addTail && align === 'right',
+    'ml-50 md:ml-80': addIndent && align === 'left',
+    'mr-50 md:mr-80': addIndent && align === 'right',
   },
-  !!bgColor && bubbleColors[bgColor],
 );
