@@ -20,7 +20,6 @@ type ChatBubbleProps = HTMLAttributes<HTMLDivElement> & {
   addTopSpacing?: boolean;
   addIndent?: boolean;
   isAvatarAlignBottom?: boolean;
-  animation?: AnimationType;
   delay?: number;
   children: React.ReactNode;
   className?: string;
@@ -38,7 +37,6 @@ export const ChatBubble = ({
   addTopSpacing,
   addIndent,
   isAvatarAlignBottom,
-  animation = 'zoomIn',
   delay,
   children,
   className,
@@ -62,7 +60,7 @@ export const ChatBubble = ({
   }, [isInView, showTyping, delay]);
 
   return (
-    <AnimateInView animation={animation} delay={delay} duration={0.6} className={className}>
+    <AnimateInView animation="zoomIn" delay={delay} duration={0.6} className={className}>
       <FlexBox alignItems={isAvatarAlignBottom ? 'end' : 'start'} className={styles.flexbox( align, addTopSpacing)}>
         {avatarImageSrc && (
           <img

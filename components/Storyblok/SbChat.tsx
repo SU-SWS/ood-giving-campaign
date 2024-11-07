@@ -1,4 +1,4 @@
-import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
+import { storyblokEditable, StoryblokComponent, type SbBlokData } from '@storyblok/react/rsc';
 import { Chat } from '@/components/Chat';
 import { WidthBox, type WidthType } from '@/components/WidthBox';
 import { CreateBloks } from '@/components/CreateBloks';
@@ -46,7 +46,16 @@ export const SbChat = ({
       mb={marginBottom}
     >
       <Chat gap={gap}>
-        <CreateBloks blokSection={messages} />
+        {messages.map((message, index) => {
+          // Calculate cumulative delay up to the current index
+          const cumulativeDelay = messages.slice(0, index).reduce((delay, message) => {
+            return delay + 0.6 + (message.showTyping ? 2 : 0);
+          }, 0);
+
+          return (
+            <StoryblokComponent blok={message} key={message._uid} delay={cumulativeDelay} />
+          );
+    })}
       </Chat>
     </WidthBox>
   );
