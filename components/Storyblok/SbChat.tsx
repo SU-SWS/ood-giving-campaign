@@ -2,7 +2,6 @@ import { storyblokEditable, StoryblokComponent, type SbBlokData } from '@storybl
 import { Chat } from '@/components/Chat';
 import { WidthBox, type WidthType } from '@/components/WidthBox';
 import { type MarginType } from '@/utilities/datasource';
-import { type GridGapType } from '@/components/Grid/Grid.types';
 
 type SbChatProps = {
   blok: {

@@ -2,7 +2,7 @@ import {
   HTMLAttributes, useState, useEffect, useRef,
 } from 'react';
 import { useInView } from 'framer-motion';
-import { AnimateInView, type AnimationType } from '@/components/Animate';
+import { AnimateInView } from '@/components/Animate';
 import { FlexBox } from '@/components/FlexBox';
 import { AnimatedEllipsis } from './AnimatedEllipsis';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
@@ -51,9 +51,14 @@ export const ChatBubble = ({
     if (isInView && showTyping) {
       setShowDots(true);
 
+      /**
+       * The 2 corresponds to the 2 second typing animation.
+       * The delay is the calculated cumulative delay depending on the position of the message in the chat,
+       * and whether the message has the typing animation enabled.
+       */
       const timer = setTimeout(() => {
         setShowDots(false);
-      }, 2000 + delay * 1000);
+      }, (2 + delay) * 1000);
 
       return () => clearTimeout(timer);
     }
