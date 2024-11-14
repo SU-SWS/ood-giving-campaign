@@ -5,7 +5,7 @@ import {
 } from '@storyblok/react/rsc';
 import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
-import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
+import { ComponentNotFound } from '@/components/Storyblok/ComponentNotFound';
 import { isProduction } from '@/utilities/getActiveEnv';
 
 // Storyblok bridge options.
