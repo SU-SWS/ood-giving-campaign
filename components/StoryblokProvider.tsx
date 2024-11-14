@@ -7,6 +7,8 @@ import { SbBasicPage } from '@/components/Storyblok/SbBasicPage';
 import { SbBlurryPoster } from '@/components/Storyblok/SbBlurryPoster';
 import { SbCardWysiwyg } from '@/components/Storyblok/SbCardWysiwyg';
 import { SbChangemakerCard } from '@/components/Storyblok/SbChangemakerCard';
+import { SbChat } from '@/components/Storyblok/SbChat';
+import { SbChatBubble } from '@/components/Storyblok/SbChatBubble';
 import { SbCta } from '@/components/Storyblok/SbCta';
 import { SbCtaBlock } from '@/components/Storyblok/SbCtaBlock';
 import { SbDataCard } from '@/components/Storyblok/SbDataCard';
@@ -41,7 +43,7 @@ import { SbTriangle } from '@/components/Storyblok/SbTriangle';
 import { SbTypeform } from '@/components/Storyblok/SbTypeform';
 import { SbVerticalPoster } from './Storyblok/SbVerticalPoster';
 import { SbWysiwyg } from '@/components/Storyblok/SbWysiwyg';
-import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
+import { ComponentNotFound } from '@/components/Storyblok/ComponentNotFound';
 
 export const components = {
   sbAnnotatedImage: SbAnnotatedImage,
@@ -51,6 +53,8 @@ export const components = {
   sbBlurryPoster: SbBlurryPoster,
   sbCardWysiwyg: SbCardWysiwyg,
   sbChangemakerCard: SbChangemakerCard,
+  sbChat: SbChat,
+  sbChatBubble: SbChatBubble,
   sbCta: SbCta,
   sbCtaBlock: SbCtaBlock,
   sbDataCard: SbDataCard,

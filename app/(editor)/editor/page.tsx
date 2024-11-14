@@ -3,7 +3,7 @@ import { storyblokInit, apiPlugin, StoryblokStory } from '@storyblok/react/rsc';
 import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { notFound } from 'next/navigation';
-import ComponentNotFound from '@/components/Storyblok/ComponentNotFound';
+import { ComponentNotFound } from '@/components/Storyblok/ComponentNotFound';
 import getStoryData from '@/utilities/data/getStoryData';
 import getStoryList from '@/utilities/data/getStoryList';
 
