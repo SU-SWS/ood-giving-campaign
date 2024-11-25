@@ -12,7 +12,7 @@ export const dialog = 'relative z-[150]';
 export const srOnly = 'sr-only';
 export const dialogOverlay = 'fixed inset-0 bg-gc-black/60 backdrop-blur-lg w-screen';
 export const dialogWrapper = 'fixed inset-0 sm:py-30 w-screen overflow-y-auto overscroll-contain overflow-x-hidden';
-export const dialogPanel  = (modalContentType: SbImageHotspotModalContentType) => cnb(
+export const dialogPanel = (modalContentType: SbImageHotspotModalContentType) => cnb(
   'relative sm:cc flex w-screen min-h-screen inset-0 break-words justify-center',
   (modalContentType === 'text-image' || modalContentType === 'text') ? 'items-start sm:items-center' : 'items-center text-white',
 );

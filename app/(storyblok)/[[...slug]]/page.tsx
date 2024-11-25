@@ -59,7 +59,7 @@ export async function generateStaticParams() {
   const isProd = isProduction();
   // Fetch new content from storyblok.
   const storyblokApi: StoryblokClient = getStoryblokApi();
-  let sbParams: ISbStoriesParams = {
+  const sbParams: ISbStoriesParams = {
     version: isProd ? 'published' : 'draft',
     resolve_links: '0',
     resolve_assets: 0,
@@ -79,7 +79,7 @@ export async function generateStaticParams() {
   // Filter out globals by filtering out the `global-components` folder.
   stories = stories.filter((link) => !link.slug.startsWith(getSlugPrefix() + '/global-components'));
 
-  let paths: PathsType[] = [];
+  const paths: PathsType[] = [];
 
   stories.forEach((story) => {
 

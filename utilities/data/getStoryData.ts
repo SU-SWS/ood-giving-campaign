@@ -11,7 +11,7 @@ async function getStoryData({ path, isEditor = false }: getStoryDataProps): Prom
   const storyblokApi: StoryblokClient = getStoryblokApi();
   const isProd = isProduction();
 
-  let sbParams: ISbStoriesParams = {
+  const sbParams: ISbStoriesParams = {
     version: isProd && !isEditor ? 'published' : 'draft',
     cv: isEditor ? Date.now() : undefined,
     resolve_relations: resolveRelations,
@@ -23,6 +23,7 @@ async function getStoryData({ path, isEditor = false }: getStoryDataProps): Prom
   try {
     const story: ISbResult = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
     return story;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     if (error && error.status && error.status === 404) {
       return { data: 404 };

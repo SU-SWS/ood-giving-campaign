@@ -89,15 +89,15 @@ export const ScrollytellingDemo = () => {
       </Grid>
       <Grid md={3} className="border-t border-black-50 -mt-1">
         <div className="sticky top-0 bg-black self-start h-screen col-span-2">
-        <FlexBox className="h-full" alignItems="stretch">
-          <div className="relative bg-white border-r-black-50 border-r uppercase font-bold">
-            <Text align="center" font="druk-wide" leading="normal" className="text-vertical-lr -rotate-180 h-screen">
-              Chapter 2
-            </Text>
-          </div>
-          <div className="size-full">
-            <figure className="relative h-full w-full overflow-hidden">
-              {section4InView && (
+          <FlexBox className="h-full" alignItems="stretch">
+            <div className="relative bg-white border-r-black-50 border-r uppercase font-bold">
+              <Text align="center" font="druk-wide" leading="normal" className="text-vertical-lr -rotate-180 h-screen">
+                Chapter 2
+              </Text>
+            </div>
+            <div className="size-full">
+              <figure className="relative h-full w-full overflow-hidden">
+                {section4InView && (
                 <>
                   <img
                     loading="eager"
@@ -114,7 +114,7 @@ export const ScrollytellingDemo = () => {
                   </figcaption>
                 </>
               )}
-              {section5AtTop && (
+                {section5AtTop && (
                 <>
                   <m.img
                     loading="eager"
@@ -137,7 +137,7 @@ export const ScrollytellingDemo = () => {
                   </figcaption>
                 </>
               )}
-              {section6AtTop && (
+                {section6AtTop && (
                 // eslint-disable-next-line max-len
                 // <iframe width="100%" height="100%" src="https://www.youtube.com/embed/ehFCaL2PUyo?autoplay=1&enablejsapi=1&rel=0&mute=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
                 <>
@@ -162,9 +162,9 @@ export const ScrollytellingDemo = () => {
                   </figcaption>
                 </>
               )}
-            </figure>
-          </div>
-        </FlexBox>
+              </figure>
+            </div>
+          </FlexBox>
         </div>
         <div className="relative bg-gc-black text-white rs-py-6 rs-px-4">
           <section ref={section4Ref}>

@@ -47,6 +47,7 @@ async function getStoryData(slug = 'momentum/page-not-found') {
   try {
     const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
     return story;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
 
     if (error && error.status && error.status === 404) {
