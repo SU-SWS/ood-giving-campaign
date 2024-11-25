@@ -1,14 +1,14 @@
 import { Metadata } from 'next';
 import {
-  ISbStoriesParams, getStoryblokApi, storyblokInit, apiPlugin, StoryblokStory, StoryblokClient,
+  storyblokInit, apiPlugin, StoryblokStory,
 } from '@storyblok/react/rsc';
 import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { getPageMetadata } from '@/utilities/getPageMetadata';
 import { ComponentNotFound } from '@/components/Storyblok/ComponentNotFound';
 import { notFound } from 'next/navigation';
-import getStoryData from '@/utilities/data/getStoryData';
-import getStoryList from '@/utilities/data/getStoryList';
+import { getStoryDataCached, getConfigBlokCached, getAllStoriesCached } from '@/utilities/data/';
+import { getStoryListCached } from '@/utilities/data/getStoryList';
 import { isProduction } from '@/utilities/getActiveEnv';
 import { getSlugPrefix } from '@/utilities/getSlugPrefix';
 
@@ -57,25 +57,15 @@ storyblokInit({
  */
 export async function generateStaticParams() {
   const isProd = isProduction();
-  // Fetch new content from storyblok.
-  const storyblokApi: StoryblokClient = getStoryblokApi();
-  const sbParams: ISbStoriesParams = {
-    version: isProd ? 'published' : 'draft',
-    resolve_links: '0',
-    resolve_assets: 0,
-    per_page: 100,
-    starts_with: getSlugPrefix() + '/',
-  };
 
-  // Use the `cdn/links` endpoint to get a list of all stories without all the extra data.
-  const response = await storyblokApi.getAll('cdn/links', sbParams);
-
-  // Filters
-  let stories = response;
+  // Get all the stories.
+  let stories = await getAllStoriesCached();
   // Filter out folders.
-  stories = response.filter((link) => link.is_folder === false);
+  stories = stories.filter((link) => link.is_folder === false);
   // Filter out test content by filtering out the `test` folder.
-  stories = stories.filter((link) => !link.slug.startsWith(getSlugPrefix() + '/test'));
+  if (isProd) {
+    stories = stories.filter((link) => !link.slug.startsWith(getSlugPrefix() + '/test'));
+  }
   // Filter out globals by filtering out the `global-components` folder.
   stories = stories.filter((link) => !link.slug.startsWith(getSlugPrefix() + '/global-components'));
 
@@ -101,9 +91,6 @@ export async function generateStaticParams() {
 
   });
 
-  // Add the home page.
-  paths.push({ slug: [''] });
-
   return paths;
 };
 
@@ -112,28 +99,17 @@ export async function generateStaticParams() {
  */
 export async function generateMetadata({ params }: ParamsType): Promise<Metadata> {
   const { slug } = params;
-  try {
+  const slugPrefix = getSlugPrefix();
+  const slugPath = slug ? slug.join('/') : '';
+  const prefixedSlug = slugPrefix + '/' + slugPath;
+  const config = await getConfigBlokCached();
 
-    // Convert the slug to a path.
-    const slugPath = slug ? slug.join('/') : '';
+  // Get the story data.
+  const { data: { story } } = await getStoryDataCached({ path: prefixedSlug });
 
-    // Construct the slug for Storyblok.
-    const prefixedSlug = getSlugPrefix() + '/' + slugPath;
-
-    // Get the story data.
-    const { data } = await getStoryData({ path: prefixedSlug });
-    if (!data.story || !data.story.content) {
-      notFound();
-    }
-    const blok = data.story.content;
-    const meta = getPageMetadata({ blok, slug: slugPath });
-    return meta;
-  }
-  catch (error) {
-    console.log('Metadata error:', error, slug);
-  }
-
-  notFound();
+  // Generate the metadata.
+  const meta = getPageMetadata({ story, sbConfig: config, slug: slugPath });
+  return meta;
 }
 
 /**
@@ -149,7 +125,7 @@ export default async function Page({ params }: ParamsType) {
   const prefixedSlug = getSlugPrefix() + '/' + slugPath;
 
   // Get data out of the API.
-  const { data } = await getStoryData({ path: prefixedSlug });
+  const { data } = await getStoryDataCached({ path: prefixedSlug });
 
   // Define an additional data container to pass through server data fetch to client components.
   // as everything below the `StoryblokStory` is a client side component.
@@ -157,7 +133,7 @@ export default async function Page({ params }: ParamsType) {
 
   // Get additional data for those stories that need it.
   if (data?.story?.content?.component === 'sbStoryFilterPage') {
-    extra = await getStoryList({ path: prefixedSlug });
+    extra = await getStoryListCached({ path: prefixedSlug });
   }
 
   // Failed to fetch from API because story slug was not found.

@@ -1,12 +1,12 @@
 import React from 'react';
 import StoryblokProvider from '@/components/StoryblokProvider';
 import {
-  ISbStoriesParams, getStoryblokApi, storyblokInit, apiPlugin, StoryblokStory, StoryblokClient,
+  storyblokInit, apiPlugin, StoryblokStory,
 } from '@storyblok/react/rsc';
 import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { ComponentNotFound } from '@/components/Storyblok/ComponentNotFound';
-import { isProduction } from '@/utilities/getActiveEnv';
+import { getStoryDataCached } from '@/utilities/data/getStoryData';
 
 // Storyblok bridge options.
 const bridgeOptions = {
@@ -31,35 +31,10 @@ storyblokInit({
 });
 
 /**
- * Get the data out of the Storyblok API for the page.
- *
- * Make sure to not export the below functions otherwise there will be a typescript error
- * https://github.com/vercel/next.js/discussions/48724
+ * Get the story data from the Storyblok API through the cache.
  */
-async function getStoryData(slug = 'momentum/page-not-found') {
-  const isProd = isProduction();
-  const storyblokApi: StoryblokClient = getStoryblokApi();
-  const sbParams: ISbStoriesParams = {
-    version: isProd ? 'published' : 'draft',
-    resolve_relations: resolveRelations,
-  };
-
-  try {
-    const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
-    return story;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } catch (error: any) {
-
-    if (error && error.status && error.status === 404) {
-      return { data: 404 };
-    }
-
-    throw error;
-  }
-};
-
 export default async function PageNotFound() {
-  const { data } = await getStoryData();
+  const { data } = await getStoryDataCached({ path: 'momentum/page-not-found'});
 
   if (data === 404) {
     return (
