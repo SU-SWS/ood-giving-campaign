@@ -7,6 +7,11 @@ import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { ComponentNotFound } from '@/components/Storyblok/ComponentNotFound';
 import { isProduction } from '@/utilities/getActiveEnv';
+import { getSlugPrefix } from '@/utilities/getSlugPrefix';
+import { Metadata } from 'next';
+import { getStoryDataCached } from '@/utilities/data/getStoryData';
+import { getConfigBlokCached } from '@/utilities/data/getConfigBlok';
+import { getPageMetadata } from '@/utilities/getPageMetadata';
 
 // Storyblok bridge options.
 const bridgeOptions = {
@@ -57,6 +62,24 @@ async function getStoryData(slug = 'momentum/page-not-found') {
     throw error;
   }
 };
+
+/**
+ * Generate the SEO metadata for the page.
+ */
+export async function generateMetadata(): Promise<Metadata> {
+
+  const slugPrefix = getSlugPrefix();
+  const prefixedSlug = slugPrefix + '/page-not-found';
+  const config = await getConfigBlokCached();
+
+
+  // Get the story data.
+  const { data: { story } } = await getStoryDataCached({ path: prefixedSlug });
+
+  // Generate the metadata.
+  const meta = getPageMetadata({ story, sbConfig: config, slug: prefixedSlug });
+  return meta;
+}
 
 export default async function PageNotFound() {
   const { data } = await getStoryData();

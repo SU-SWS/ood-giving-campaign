@@ -11,7 +11,7 @@ export const getConfigBlok = async () => {
 
   // Get the global configuration.
   const { data: { story: config } } = await storyblokApi.get(
-    'cdn/stories/tour/global-components/configuration/site-configuration',
+    'cdn/stories/momentum/global-components/configuration/site-configuration',
     {
       version: isProd ? 'published' : 'draft',
       token: process.env.STORYBLOK_ACCESS_TOKEN,
