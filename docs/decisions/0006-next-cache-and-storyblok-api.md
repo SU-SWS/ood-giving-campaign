@@ -22,8 +22,12 @@ Storyblok JS Client Cache
 Nextjs Unstable Cache
 * https://nextjs.org/docs/app/api-reference/functions/unstable_cache
 
+
+We have added a 'patch' to the Netlify config to bypass the 2MB limit of the default unstable_cache. This little 'hack' simply re-imports the existing cache handler. https://github.com/vercel/next.js/discussions/48324#discussioncomment-10542097
+
 ## Consequences
 
 * Caching in Nextjs should help mitigate against multiple API calls for the same thing on a single build
 * Developers will need to opt-in to using the cache as it is not a default
 * The utility functions are caching 'indefinitely' as they should be cleared on every build.
+* Had to 'hack' the default cache handler to support responses greater than 2MB.
