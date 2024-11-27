@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { type SbBlokData } from '@storyblok/react/rsc';
 import { type FontSizeType } from '@/components/Typography';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
@@ -80,7 +81,7 @@ export type SbSliderType = {
 }
 
 // Used for Annotated Image component
-export type SbImageHotspotModalContentType =  'text-image' | 'fullwidth-image' | 'text' | 'component' | 'image-quote';
+export type SbImageHotspotModalContentType = 'text-image' | 'fullwidth-image' | 'text' | 'component' | 'image-quote';
 export type SbImageHotspotDescriptionSizeType = 'card' | 'default' | 'big';
 
 export type SbImageHotspotType = {

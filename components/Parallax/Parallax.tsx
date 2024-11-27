@@ -6,7 +6,6 @@ import {
   useTransform,
   useSpring,
   useReducedMotion,
-  MotionValue,
 } from 'framer-motion';
 
 type ParallaxProps = {

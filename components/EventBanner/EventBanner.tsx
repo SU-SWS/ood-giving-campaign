@@ -180,7 +180,7 @@ export const EventBanner = ({
                 <>
                   <Heading as="h3" srOnly>List of dates & locations</Heading>
                   <FlexBox as="ul" direction="col" className={styles.dateLocationList}>
-                  {dateLocation.map(({ date, location }) => {
+                    {dateLocation.map(({ date, location }) => {
                     const { dateTime, monthShort, day } = formatDate(date);
                     return (
                       <Text as="li" size={1} color={isDarkTheme ? 'white' : 'black-80'} key={dateTime} className={styles.dateLocationListItem}>

@@ -99,7 +99,7 @@ export const ScrollyFullwidth = () => {
               Cras dui ipsum, aliquet eget nibh ut, sollicitudin pharetra risus.
             </Paragraph>
             <Paragraph className="bg-black/80 rs-p-2 mt-300">
-            Cras dui ipsum, aliquet eget nibh ut, sollicitudin pharetra risus.
+              Cras dui ipsum, aliquet eget nibh ut, sollicitudin pharetra risus.
             </Paragraph>
           </section>
         </div>
@@ -115,7 +115,7 @@ export const ScrollyFullwidth = () => {
             overlay="black-70"
           />
           <Grid sm={2} gap="split" alignItems="center" className="w-3/4 mx-auto h-screen">
-          <div className={cnb('relative z-20 transition-all', cat2contentInView ? 'opacity-30 blur-sm' : 'opacity-100 blur-none')}>
+            <div className={cnb('relative z-20 transition-all', cat2contentInView ? 'opacity-30 blur-sm' : 'opacity-100 blur-none')}>
               <div className="rs-mb-0">
                 <Text font="serif" size={1} weight="semibold" align="center">
                   Meowy Meowington

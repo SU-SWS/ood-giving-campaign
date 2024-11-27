@@ -12,7 +12,7 @@ import React, { useRef, useEffect } from 'react';
 import { WidthBox, type WidthType } from '../WidthBox';
 import { type PaddingType } from '@/utilities/datasource';
 
-export interface EmbedProps extends  React.HTMLAttributes<HTMLDivElement> {
+export interface EmbedProps extends React.HTMLAttributes<HTMLDivElement> {
   id?: string;
   src?: string;
   content?: string;
@@ -83,7 +83,7 @@ id, src, content, boundingWidth, spacingTop, spacingBottom, className, width, ..
     );
   }
 
-  return (<p className='bg-digital-red text-white text-30'>You must provide either an src or content to the embed</p>);
+  return (<p className="bg-digital-red text-white text-30">You must provide either an src or content to the embed</p>);
 };
 
 export default Embed;
