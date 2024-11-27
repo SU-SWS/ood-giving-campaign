@@ -26,8 +26,6 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
     } = props;
 
     const {
-      id,
-      fieldtype,
       linktype,
       cached_url: cachedUrl,
       url,

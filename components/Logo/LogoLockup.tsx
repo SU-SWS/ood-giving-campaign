@@ -1,4 +1,4 @@
-import React, { AllHTMLAttributes } from 'react';
+import React from 'react';
 import { cnb } from 'cnbuilder';
 import { StanfordLogo } from '@/components/StanfordLogo';
 import Link from 'next/link';

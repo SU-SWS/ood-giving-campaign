@@ -39,7 +39,7 @@ const StoryListContent = ({ blok: { links }, fullSlug }: SbStoryListNavType) => 
               variant="storyListNav"
               color="current"
               className={styles.cta(isCurrentPage)}
-              srText='stories'
+              srText="stories"
             >
               <FlexBox alignItems="center" className={styles.ctaInner}>
                 <span className="grow leading-display">{label}</span>
@@ -81,7 +81,7 @@ export const SbStoryListNav = ({
             <FlexBox alignItems="center" className={styles.filterBtnInner}>
               <span className={styles.filterBtnLabel}>{!isStoryLandingPage ? name : 'All'}</span>
               <HeroIcon
-                icon='chevron-down'
+                icon="chevron-down"
                 strokeWidth={2}
                 className={styles.filterChevron}
               />
@@ -119,7 +119,7 @@ export const SbStoryListNav = ({
                           noBaseStyle
                           focusable="false"
                           strokeWidth={2}
-                          icon='close'
+                          icon="close"
                           className={styles.closeIcon}
                         />
                       </CloseButton>

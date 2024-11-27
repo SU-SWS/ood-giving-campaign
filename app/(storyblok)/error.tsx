@@ -14,10 +14,10 @@ export default function Error({error, reset}: {
   }, [error]);
 
   return (
-    <div className='bg-black'>
+    <div className="bg-black">
       <Masthead />
       <main>
-        <Container width='site' className='rs-my-8 text-white'>
+        <Container width="site" className="rs-my-8 text-white">
           <h1>Something went wrong.</h1>
           <p>Try refreshing your browser.</p>
         </Container>

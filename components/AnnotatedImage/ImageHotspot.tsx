@@ -54,9 +54,9 @@ export const ImageHotspot = ({
   : undefined;
 
   return (
-      <>
-        <div className={styles.hotspotWrapper} style={{ top: `${y * 100}%`, left: `${x * 100}%` }}>
-          <button
+    <>
+      <div className={styles.hotspotWrapper} style={{ top: `${y * 100}%`, left: `${x * 100}%` }}>
+        <button
             type="button"
             ref={buttonRef}
             onClick={handleClick}
@@ -64,15 +64,15 @@ export const ImageHotspot = ({
             aria-label={`Open modal ${ariaLabel || heading}`}
             className={styles.button}
           >
-            <HeroIcon noBaseStyle icon="plus" strokeWidth={2} className={styles.icon} />
-          </button>
-          {!isClicked && (
-            <span aria-hidden="true" className={styles.hotspotRing} />
+          <HeroIcon noBaseStyle icon="plus" strokeWidth={2} className={styles.icon} />
+        </button>
+        {!isClicked && (
+        <span aria-hidden="true" className={styles.hotspotRing} />
           )}
-        </div>
-        <Transition show={isModalOpen}>
-          <Dialog onClose={() => setIsModalOpen(false)} className={styles.dialog}>
-            <TransitionChild
+      </div>
+      <Transition show={isModalOpen}>
+        <Dialog onClose={() => setIsModalOpen(false)} className={styles.dialog}>
+          <TransitionChild
               enter="ease-out duration-300"
               enterFrom="opacity-0"
               enterTo="opacity-100"
@@ -80,9 +80,9 @@ export const ImageHotspot = ({
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <div className={styles.dialogOverlay} />
-            </TransitionChild>
-            <TransitionChild
+            <div className={styles.dialogOverlay} />
+          </TransitionChild>
+          <TransitionChild
               enter="ease-out duration-300"
               enterFrom="opacity-0 scale-95"
               enterTo="opacity-100 scale-100"
@@ -90,66 +90,66 @@ export const ImageHotspot = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className={styles.dialogWrapper}>
-                <DialogPanel className={styles.dialogPanel(modalContentType)}>
-                  <DialogTitle className={styles.srOnly}>{heading || ariaLabel}</DialogTitle>
-                  {subhead && (
-                    <Description className={styles.srOnly}>{subhead}</Description>
+            <div className={styles.dialogWrapper}>
+              <DialogPanel className={styles.dialogPanel(modalContentType)}>
+                <DialogTitle className={styles.srOnly}>{heading || ariaLabel}</DialogTitle>
+                {subhead && (
+                <Description className={styles.srOnly}>{subhead}</Description>
                   )}
-                  <div ref={panelRef} className={styles.contentWrapper(modalContentType, isVerticalCard)}>
-                    <button
+                <div ref={panelRef} className={styles.contentWrapper(modalContentType, isVerticalCard)}>
+                  <button
                       type="button"
                       aria-label="Close modal"
                       onClick={() => setIsModalOpen(false)}
                       className={styles.modalClose}
                     >
-                      <HeroIcon
+                    <HeroIcon
                         noBaseStyle
                         focusable="false"
                         strokeWidth={2}
-                        icon='close'
+                        icon="close"
                         className={styles.modalIcon}
                       />
-                    </button>
-                    {/* Content for modals with text+image, fullwidth image or text only */}
-                    {(modalContentType !== 'component' && modalContentType !== 'image-quote') && (
-                      <Grid xl={modalContentType === 'text-image' && !isVerticalCard ? 12 : 1} className={styles.grid}>
-                        {(modalContentType === 'text-image' || modalContentType === 'text') && (
-                          <div className={styles.textWrapper(isVerticalCard)}>
-                            {(heading || subhead) && (
-                              <div className={styles.header}>
-                                {heading &&
-                                  <Heading size={3} className={styles.heading}>{heading}</Heading>
+                  </button>
+                  {/* Content for modals with text+image, fullwidth image or text only */}
+                  {(modalContentType !== 'component' && modalContentType !== 'image-quote') && (
+                  <Grid xl={modalContentType === 'text-image' && !isVerticalCard ? 12 : 1} className={styles.grid}>
+                    {(modalContentType === 'text-image' || modalContentType === 'text') && (
+                    <div className={styles.textWrapper(isVerticalCard)}>
+                      {(heading || subhead) && (
+                      <div className={styles.header}>
+                        {heading &&
+                        <Heading size={3} className={styles.heading}>{heading}</Heading>
                                 }
-                                {subhead &&
-                                  <Text weight="semibold" className={styles.subhead}>{subhead}</Text>
+                        {subhead &&
+                        <Text weight="semibold" className={styles.subhead}>{subhead}</Text>
                                 }
-                              </div>
+                      </div>
                             )}
-                            {DescriptionRichText}
-                          </div>
+                      {DescriptionRichText}
+                    </div>
                         )}
-                        {(modalContentType === 'fullwidth-image' || modalContentType === 'text-image') && filename && (
-                          <figure className={styles.figure(isVerticalCard)}>
-                            {modalContentType === 'fullwidth-image' && (
-                              <picture>
-                                <source
+                    {(modalContentType === 'fullwidth-image' || modalContentType === 'text-image') && filename && (
+                    <figure className={styles.figure(isVerticalCard)}>
+                      {modalContentType === 'fullwidth-image' && (
+                      <picture>
+                        <source
                                   media="(min-width: 1200px)"
                                   src={getProcessedImage(filename, '1500x750', focus)}
                                 />
-                                <source
+                        <source
                                   media="(min-width: 992px)"
                                   src={getProcessedImage(filename, '1200x600', focus)}
                                 />
-                                <source
+                        <source
                                   media="(min-width: 576x)"
                                   src={getProcessedImage(filename, '1000x500', focus)}
                                 />
-                                <source
+                        <source
                                   media="(max-width: 575px)"
                                   src={getProcessedImage(filename, '600x300', focus)}
                                 />
-                                <img
+                        <img
                                   alt={alt || ''}
                                   fetchPriority="high"
                                   src={getProcessedImage(filename, '1500x750', focus)}
@@ -157,12 +157,12 @@ export const ImageHotspot = ({
                                   width="1500"
                                   height="750"
                                 />
-                              </picture>
+                      </picture>
                             )}
-                            {modalContentType === 'text-image' && (
-                              <picture>
-                                {isVerticalCard ? (
-                                  <source
+                      {modalContentType === 'text-image' && (
+                      <picture>
+                        {isVerticalCard ? (
+                          <source
                                     media="(min-width: 1200px)"
                                     src={getProcessedImage(filename, '1200x800', focus)}
                                   />
@@ -178,23 +178,23 @@ export const ImageHotspot = ({
                                     />
                                   </>
                                 )}
-                                <source
+                        <source
                                   media="(min-width: 992px)"
                                   src={getProcessedImage(filename, '1200x800', focus)}
                                 />
-                                <source
+                        <source
                                   media="(min-width: 768px)"
                                   src={getProcessedImage(filename, '1000x750', focus)}
                                 />
-                                <source
+                        <source
                                   media="(min-width: 576px)"
                                   src={getProcessedImage(filename, '810x540', focus)}
                                 />
-                                <source
+                        <source
                                   media="(max-width: 575px)"
                                   src={getProcessedImage(filename, '600x400', focus)}
                                 />
-                                <img
+                        <img
                                   alt={alt || ''}
                                   fetchPriority="high"
                                   src={getProcessedImage(filename, isVerticalCard ? '1200x800' : '800x600', focus)}
@@ -202,28 +202,28 @@ export const ImageHotspot = ({
                                   width={isVerticalCard ? 1200 : 800}
                                   height={isVerticalCard ? 800 : 600}
                                 />
-                              </picture>
+                      </picture>
                             )}
-                            {hasRichText(caption) && (
-                              <figcaption className={styles.figcaption}>
-                                {Caption}
-                              </figcaption>
+                      {hasRichText(caption) && (
+                      <figcaption className={styles.figcaption}>
+                        {Caption}
+                      </figcaption>
                             )}
-                          </figure>
+                    </figure>
                         )}
-                      </Grid>
+                  </Grid>
                     )}
-                    {(modalContentType === 'component' || modalContentType === 'image-quote') && !!getNumBloks(content) && (
-                      <div className={styles.nestedComponentWrapper(modalContentType)}>
-                        <CreateBloks blokSection={content} />
-                      </div>
-                    )}
+                  {(modalContentType === 'component' || modalContentType === 'image-quote') && !!getNumBloks(content) && (
+                  <div className={styles.nestedComponentWrapper(modalContentType)}>
+                    <CreateBloks blokSection={content} />
                   </div>
-                </DialogPanel>
-              </div>
-            </TransitionChild>
-          </Dialog>
-        </Transition>
-      </>
+                    )}
+                </div>
+              </DialogPanel>
+            </div>
+          </TransitionChild>
+        </Dialog>
+      </Transition>
+    </>
   );
 };

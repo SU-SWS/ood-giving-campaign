@@ -44,7 +44,7 @@ export const StoryListHero = ({
               {subheading && (
                 <Text
                   as="span"
-                  size='f7'
+                  size="f7"
                   font="serif"
                   align="center"
                   leading="tight"

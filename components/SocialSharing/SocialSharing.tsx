@@ -27,6 +27,7 @@ export const SocialSharing = ({
   isTop,
   className,
 }: SocialSharingProps) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [copiedText, copy] = useCopyToClipboard();
   const [buttonState, setButtonState] = useState('default');
 

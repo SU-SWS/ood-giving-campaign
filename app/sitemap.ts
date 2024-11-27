@@ -18,7 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const isProd = isProduction();
   // Fetch new content from storyblok.
-  let sbParams: ISbStoriesParams = {
+  const sbParams: ISbStoriesParams = {
     version: isProd ? 'published' : 'draft',
     resolve_links: '0',
     resolve_assets: 0,
@@ -47,7 +47,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const currentURL = process.env.URL || process.env.DEPLOY_PRIME_URL || 'https://momentum.stanford.edu';
 
   const ret = indexStories.map((story) => {
-    const url =  `${currentURL}${sbStripSlugURL(story.full_slug)}`;
+    const url = `${currentURL}${sbStripSlugURL(story.full_slug)}`;
     return {
       url: url.replace(/\/+$/, ''),
       lastModified: new Date(story.published_at),
