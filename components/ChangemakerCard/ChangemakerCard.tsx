@@ -4,13 +4,12 @@ import { useId, useRef, useState } from 'react';
 import {
   Description, Dialog, DialogPanel, DialogTitle, Transition, TransitionChild,
 } from '@headlessui/react';
-import { useMediaQuery, useOnClickOutside, useToggle } from 'usehooks-ts';
+import { useOnClickOutside, useToggle } from 'usehooks-ts';
 import { AnimateInView, type AnimationType } from '@/components/Animate';
 import { Heading, type HeadingType, Text } from '@/components/Typography';
 import { FlexBox } from '@/components/FlexBox';
 import { HeroIcon } from '@/components/HeroIcon';
 import useEscape from '@/hooks/useEscape';
-import { config } from '@/utilities/config';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import * as styles from './ChangemakerCard.styles';
 
@@ -41,8 +40,6 @@ export const ChangemakerCard = ({
   className,
   ...props
 }: ChangemakerCardProps) => {
-  const isNotPhone = useMediaQuery(`(min-width: ${config.breakpoints.sm}px)`);
-
   const cardRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -52,19 +49,6 @@ export const ChangemakerCard = ({
 
   // For the mobile modal
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleClick = () => {
-    // If it's not XS breakpoint, toggle the card content and if it is shown, focus on contentRef
-    if (isNotPhone) {
-      toggle();
-      if (!isShown) {
-        contentRef.current?.focus();
-      }
-    } else {
-      // Open the modal if it's XS breakpoint
-      setIsModalOpen(true);
-    }
-  };
 
   // If card content is shown, clicking outside it will dismiss it
   useOnClickOutside(cardRef, () => {
@@ -164,27 +148,13 @@ export const ChangemakerCard = ({
                 )}
               </FlexBox>
             </div>
-            {/* Content layer */}
-            {/* Content is displayed on an overlay over the card for all breakpoint except XS */}
-            <FlexBox
-              id={contentId}
-              aria-labelledby={headingId}
-              direction="col"
-              className={styles.cardContent(isHorizontal)}
-              aria-hidden={!isShown}
-            >
-              <div ref={contentRef} tabIndex={isShown ? 0 : -1} className={styles.contentWrapper(isHorizontal)}>
-                {children}
-              </div>
-            </FlexBox>
             <button
               ref={buttonRef}
               type="button"
-              onClick={handleClick}
-              aria-label={isShown ? 'Dismiss' : `Read more about ${heading}`}
-              aria-controls={isNotPhone ? contentId : undefined}
-              aria-expanded={isShown || isModalOpen}
-              aria-haspopup={isNotPhone ? undefined : 'dialog'}
+              onClick={() => setIsModalOpen(true)}
+              aria-label={`Read more about ${heading}`}
+              aria-expanded={isModalOpen}
+              aria-haspopup="dialog"
               className={styles.button}
             >
               <HeroIcon
