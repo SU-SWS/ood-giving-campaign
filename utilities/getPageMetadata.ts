@@ -1,8 +1,9 @@
 import { type ISbStoryData } from '@storyblok/react/rsc';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { type SbImageType, type SbLinkType } from '@/components/Storyblok/Storyblok.types';
+import { type SbLinkType } from '@/components/Storyblok/Storyblok.types';
 import { config } from './config';
 import { sbStripSlugURL } from './sbStripSlugUrl';
+import { getFirstImage } from './getFirstImage';
 
 export type SbSEOType = {
   title?: string;
@@ -16,91 +17,113 @@ export type SbSEOType = {
 };
 
 type PageMetadataProps = {
-  blok: {
-    component: string;
-    title: string;
-    dek?: string;
-    heroImage?: SbImageType;
-    heroPicker?: ISbStoryData[];
-    bgImage?: SbImageType;
-    noindex?: boolean;
-    canonicalUrl?: SbLinkType;
-    seo?: SbSEOType;
-  },
+  story: ISbStoryData & {
+    content: ISbStoryData['content'] & {
+      noindex?: boolean;
+      seo?: SbSEOType;
+      title?: string;
+      canonicalUrl?: SbLinkType;
+    };
+  };
+  sbConfig: ISbStoryData;
   slug: string;
 };
 
-export const getPageMetadata = ({
-  blok: {
-    component,
-    title: pageTitle,
-    dek,
-    heroImage: { filename = '', focus = '' } = {},
-    heroPicker,
-    bgImage: { filename: bgFilename = '', focus: bgFocus = '' } = {},
-    noindex = false,
-    canonicalUrl,
-    seo: {
-      title: seoTitle,
-      description: seoDescription,
-      og_title,
-      og_description,
-      og_image,
-      twitter_title,
-      twitter_description,
-      twitter_image,
-    } = {},
-  },
-  slug,
-}: PageMetadataProps) => {
-  // We only care about canonical URL for production so ok to use the prod URL here
-  const { siteTitle, siteDescription, siteUrlProd: siteUrl } = config;
-  const heroPickerImage = heroPicker?.[0]?.content?.heroImage?.filename;
-  const heroPickerFocus = heroPicker?.[0]?.content?.heroImage?.focus;
+/**
+ * Get the page metadata for the story.
+ * Merge the story data with the global configuration to generate the metadata.
+ *
+ * @param story - The story data.
+ * @param sbConfig - The global configuration.
+ * @param slug - The slug of the story.
+ *
+ * @returns Metadata - The metadata for the page.
+ */
+export const getPageMetadata = ({ story, sbConfig, slug }: PageMetadataProps) => {
+  // Story explicit content.
+  const {
+    name,
+    content: {
+      noindex,
+      seo,
+      title,
+      canonicalUrl,
+    },
+  } = story;
 
-  const title = seoTitle || pageTitle;
-  const searchTitle = slug === 'home' ? 'Home' : title;
-  const description = seoDescription || dek || siteDescription;
-  const ogTitle = og_title || title;
-  const ogDescription = og_description || description;
-  const heroImageCropped = getProcessedImage(filename, '1200x630', focus) || getProcessedImage(bgFilename, '1200x630', bgFocus) || getProcessedImage(heroPickerImage, '1200x630', heroPickerFocus);
+  // Config component.
+  const {
+    content: {
+      seoOgType,
+      seoOgImage: {
+        filename,
+      },
+      seoSiteTitle,
+      seoSiteDescription,
+    },
+  } = sbConfig;
 
-  /**
-   * The og_image and twitter_image fields provided by the Storyblok SEO plugin has no image focus support
-   */
-  const ogCropped = getProcessedImage(og_image, '1200x630');
-  // Twitter card image has an aspect ratio of 2:1
-  const twitterCropped = getProcessedImage(twitter_image, '1200x600');
-  const ogImage = ogCropped || heroImageCropped;
+  // Default hardcoded values.
+  const {
+    siteUrlProd,
+    siteTitle,
+    siteDescription,
+  } = config;
 
-  const ogType = component === 'sbStoryMvp' ? 'article' : 'website';
+  // Canonical URL.
+  // Canonical priority: Story Canonical URL > Config Site URL + Slug
+  let canonical = `${siteUrlProd}${sbStripSlugURL(slug)}`;
+  if (canonicalUrl) {
+    switch (canonicalUrl.linktype) {
+      case 'story': {
+          if (canonicalUrl.cached_url && canonicalUrl.cached_url.length) {
+            canonical = `${siteUrlProd}${sbStripSlugURL(canonicalUrl.cached_url)}`;
+          }
+        }
+        break;
+      case 'url': {
+        if (canonicalUrl.url && canonicalUrl.url.length) {
+          canonical = canonicalUrl.url;
+        }
+      }
+      break;
+    }
+  }
 
-  // Self reference URL is the page's URL without any query params
-  const selfReferencingUrl = slug !== 'home' ? `${siteUrl}/${slug}` : siteUrl;
-  // If the canonical URL is entered in Storyblok, find the full URL for it
-  const canonicalNotSelf = canonicalUrl?.linktype === 'story' && canonicalUrl.cached_url
-    ? `${siteUrl}${sbStripSlugURL(canonicalUrl.cached_url)}`
-    : canonicalUrl?.url;
-  const canonical = canonicalNotSelf || selfReferencingUrl;
+  // Process the images.
+  // Use the explicitly set image from the SEO component if available,
+  // then use a known field if the CT has it,
+  // otherwise use the first image in the content.
+  const knownImageFields = ['heroImage']; // order of priority
+  const firstImage = getFirstImage(knownImageFields, story.content);
+  const firstImageProcessed = firstImage ? getProcessedImage(firstImage.filename, '1200x630', firstImage.focus) : undefined;
+  // Process the images. Use the explicitly set image if available, otherwise use the first image in the content.
+  const ogImage = seo?.og_image ? getProcessedImage(seo.og_image, '1200x630') : firstImageProcessed;
+  const twitterImage = seo?.twitter_image ? getProcessedImage(seo.twitter_image, '1200x600') : firstImageProcessed;
+  const defaultImage = filename ? getProcessedImage(filename, '1200x630') : firstImageProcessed;
 
+  // SEO metadata.
+  // Image priority: Story SEO > First Image > Config Blok Default Image
+  // Title priority: Story SEO > Story Title > Config Blok Site Title
+  // Description priority: Story SEO > Config Blok Site Description > Hardcoded Site Description
   return {
-    title: `${searchTitle} | ${siteTitle}`,
-    description: description,
-    metadataBase: new URL(config.siteUrlProd),
-    openGraph: {
-      title: ogTitle,
-      description: ogDescription,
-      images: ogImage,
-      type: ogType,
+    title: `${seo.title || title || name} | ${seoSiteTitle || siteTitle}`,
+    description: seo?.description || seoSiteDescription || siteDescription,
+    metadataBase: new URL(siteUrlProd),
+    openGraph:{
+      title: seo?.og_title || title || name,
+      description: seo?.og_description || seo?.description || seoSiteDescription || siteDescription,
+      images: ogImage || defaultImage,
+      type: seoOgType || 'website',
     },
     twitter: {
       card: 'summary_large_image',
-      title:  twitter_title,
-      description: twitter_description,
-      images: twitterCropped,
+      title: seo?.twitter_title || title || name,
+      description: seo?.twitter_description || seo?.description || seoSiteDescription || siteDescription,
+      images: twitterImage || defaultImage,
     },
     alternates: {
-      canonical: !noindex && canonical,
+      canonical,
     },
     robots: noindex && 'noindex',
   };

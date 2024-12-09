@@ -4,7 +4,7 @@ import { type SbLinkType } from '@/components/Storyblok/Storyblok.types';
 // Remove the slug prefix from a SbLinkType.
 export const sbStripSlugLinkType = (link:SbLinkType): SbLinkType => {
   const prefix = getSlugPrefix();
-  let linkCopy = { ...link };
+  const linkCopy = { ...link };
   const {
     linkType,
     cached_url,

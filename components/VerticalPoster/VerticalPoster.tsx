@@ -86,7 +86,7 @@ export const VerticalPoster = ({
               className={styles.contentWrapper(imageOnLeft, isParallax)}
             >
               <FlexBox className={styles.headingWrapper}>
-                <AnimateInView animation='slideUp'>
+                <AnimateInView animation="slideUp">
                   {/* Render all Druk font heading if custom heading is not entered */}
                   {heading && !customHeading?.length && (
                     <Heading

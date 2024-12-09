@@ -2,11 +2,12 @@ import type { getStoryDataProps, FilterQuery } from '@/utilities/data/types';
 import { ISbStoriesParams, getStoryblokApi, StoryblokClient } from '@storyblok/react/rsc';
 import { isProduction } from '../getActiveEnv';
 import { getSlugPrefix } from '../getSlugPrefix';
+import { unstable_cache } from 'next/cache';
 
 /**
  * Get a list of stories that are of component sbStoryMvp in reverse chronological order.
  */
-async function getStoryList({ path }: getStoryDataProps) {
+export async function getStoryList({ path }: getStoryDataProps) {
   const isProd = isProduction();
   const storyblokApi: StoryblokClient = getStoryblokApi();
   const fullslug = path.replace(/\/$/, '');
@@ -61,4 +62,13 @@ async function getStoryList({ path }: getStoryDataProps) {
   }
 }
 
-export default getStoryList;
+/**
+ * Get the data out of the Storyblok API for the page through the cache.
+ */
+export const getStoryListCached = unstable_cache(
+  getStoryList,
+  [],
+  {
+    tags: ['story', 'page', 'list'],
+  },
+);

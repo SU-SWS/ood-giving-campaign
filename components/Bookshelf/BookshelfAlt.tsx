@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { LayoutGroup } from 'framer-motion';
 import { Container } from '../Container';
 import { FlexBox } from '../FlexBox';
-import { Paragraph, Text } from '../Typography';
 import { BookAlt } from './BookAlt';
 
 export const BookshelfAlt = () => {

@@ -6,7 +6,6 @@ import { Heading, type HeadingType, Text } from '@/components/Typography';
 import {
   accentBgColors,
   type AccentColorType,
-  imageAspectRatios,
   type ImageAspectRatioType,
 } from '@/utilities/datasource';
 import { getProcessedImage } from '@/utilities/getProcessedImage';

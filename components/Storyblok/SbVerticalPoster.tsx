@@ -64,7 +64,7 @@ export const SbVerticalPoster = ({
 
   const Cta = !!getNumBloks(cta) ? <CreateBloks blokSection={cta} /> : undefined;
   const Body = hasRichText(body) ? <RichText textAlign="center" textColor={bgColor === 'black' ? 'white' : 'black'} wysiwyg={body} /> : undefined;
-  const Caption = hasRichText(caption) ? <RichText textColor='black-70' wysiwyg={caption} /> : undefined;
+  const Caption = hasRichText(caption) ? <RichText textColor="black-70" wysiwyg={caption} /> : undefined;
 
   return (
     <VerticalPoster

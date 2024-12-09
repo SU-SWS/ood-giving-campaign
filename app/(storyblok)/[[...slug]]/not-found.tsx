@@ -1,12 +1,16 @@
 import React from 'react';
 import StoryblokProvider from '@/components/StoryblokProvider';
 import {
-  ISbStoriesParams, getStoryblokApi, storyblokInit, apiPlugin, StoryblokStory, StoryblokClient,
+  storyblokInit, apiPlugin, StoryblokStory,
 } from '@storyblok/react/rsc';
 import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { ComponentNotFound } from '@/components/Storyblok/ComponentNotFound';
-import { isProduction } from '@/utilities/getActiveEnv';
+import { getStoryDataCached } from '@/utilities/data/getStoryData';
+import { getConfigBlokCached } from '@/utilities/data/getConfigBlok';
+import { getSlugPrefix } from '@/utilities/getSlugPrefix';
+import { getPageMetadata } from '@/utilities/getPageMetadata';
+import { Metadata } from 'next';
 
 // Storyblok bridge options.
 const bridgeOptions = {
@@ -31,34 +35,27 @@ storyblokInit({
 });
 
 /**
- * Get the data out of the Storyblok API for the page.
- *
- * Make sure to not export the below functions otherwise there will be a typescript error
- * https://github.com/vercel/next.js/discussions/48724
+ * Generate the SEO metadata for the page.
  */
-async function getStoryData(slug = 'momentum/page-not-found') {
-  const isProd = isProduction();
-  const storyblokApi: StoryblokClient = getStoryblokApi();
-  const sbParams: ISbStoriesParams = {
-    version: isProd ? 'published' : 'draft',
-    resolve_relations: resolveRelations,
-  };
+export async function generateMetadata(): Promise<Metadata> {
 
-  try {
-    const story = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
-    return story;
-  } catch (error: any) {
+  const slugPrefix = getSlugPrefix();
+  const prefixedSlug = slugPrefix + '/page-not-found';
+  const config = await getConfigBlokCached();
 
-    if (error && error.status && error.status === 404) {
-      return { data: 404 };
-    }
+  // Get the story data.
+  const { data: { story } } = await getStoryDataCached({ path: prefixedSlug });
 
-    throw error;
-  }
-};
+  // Generate the metadata.
+  const meta = getPageMetadata({ story, sbConfig: config, slug: prefixedSlug });
+  return meta;
+}
 
+/**
+ * Get the story data from the Storyblok API through the cache.
+ */
 export default async function PageNotFound() {
-  const { data } = await getStoryData();
+  const { data } = await getStoryDataCached({ path: 'momentum/page-not-found' });
 
   if (data === 404) {
     return (

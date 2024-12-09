@@ -102,5 +102,5 @@ export const LocalFooter = () => (
         </section>
       </div>
     </Grid>
-</Container>
+  </Container>
 );
