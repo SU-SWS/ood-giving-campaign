@@ -1,15 +1,14 @@
 'use client';
 import { cnb } from 'cnbuilder';
-import { useId, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import {
   Description, Dialog, DialogPanel, DialogTitle, Transition, TransitionChild,
 } from '@headlessui/react';
-import { useOnClickOutside, useToggle } from 'usehooks-ts';
+import { useOnClickOutside } from 'usehooks-ts';
 import { AnimateInView, type AnimationType } from '@/components/Animate';
 import { Heading, type HeadingType, Text } from '@/components/Typography';
 import { FlexBox } from '@/components/FlexBox';
 import { HeroIcon } from '@/components/HeroIcon';
-import useEscape from '@/hooks/useEscape';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import * as styles from './ChangemakerCard.styles';
 
@@ -111,17 +110,15 @@ export const ChangemakerCard = ({
                 </div>
               )}
               <FlexBox direction="col" className={styles.info(isHorizontal)}>
-                {heading && (
-                  <Heading
-                    as={headingLevel || 'h3'}
-                    leading="tight"
-                    align="center"
-                    color="white"
-                    className={styles.heading(isHorizontal)}
-                  >
-                    {heading}
-                  </Heading>
-                )}
+                <Heading
+                  as={headingLevel || 'h3'}
+                  leading="tight"
+                  align="center"
+                  color="white"
+                  className={styles.heading(isHorizontal)}
+                >
+                  {heading}
+                </Heading>
                 {subheading && (
                   <Text align="center" leading="display" color="white" className={styles.subhead}>{subheading}</Text>
                 )}
@@ -184,25 +181,13 @@ export const ChangemakerCard = ({
                     />
                   </button>
                   <div className={styles.modalTextWrapper}>
-                    {(heading || subheading) && (
-                      <div className={styles.modalHeader}>
-                        {heading &&
-                          <DialogTitle className={styles.modalHeading}>
-                            {heading}
-                          </DialogTitle>
-                        }
-                        {subheading &&
-                          <Description>
-                            <Text weight="semibold" variant="big" leading="tight" className={styles.modalSubhead}>
-                              {subheading}
-                            </Text>
-                          </Description>
-                        }
-                      </div>
-                    )}
-                    <div className="rs-pl-4">
-                      {children}
+                    <div className={styles.modalHeader}>
+                      <DialogTitle className={styles.modalHeading}>{heading}</DialogTitle>
+                      {subheading &&
+                        <Description className={styles.modalSubhead}>{subheading}</Description>
+                      }
                     </div>
+                    <div className={styles.nestedBloksWrapper}>{children}</div>
                   </div>
                 </div>
               </DialogPanel>
