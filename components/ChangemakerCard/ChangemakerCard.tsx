@@ -40,43 +40,23 @@ export const ChangemakerCard = ({
   className,
   ...props
 }: ChangemakerCardProps) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const contentId = useId();
-  const headingId = useId();
-  const [isShown, toggle, setIsShown] = useToggle();
-
-  // For the mobile modal
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
 
-  // If card content is shown, clicking outside it will dismiss it
-  useOnClickOutside(cardRef, () => {
-    if (isShown) {
-      setIsShown(false);
-    }
-  });
-
-  // If card content is shown, pressing escape will dismiss it
-  // and focus on the button
-  useEscape(() => {
-    if (isShown) {
-      setIsShown(false);
-      buttonRef.current?.focus();
-    }
+  useOnClickOutside(panelRef, () => {
+    setIsModalOpen(false);
   });
 
   return (
     <>
       <AnimateInView animation={animation} delay={delay}>
         <article
-          ref={cardRef}
           className={cnb('changemaker-card', styles.root(isHorizontal), className)}
           {...props}
         >
           <div className={styles.cardInner(isHorizontal)}>
             {/* Front of the card */}
-            <div aria-hidden={isShown} className={styles.cardFront}>
+            <div className={styles.cardFront}>
               {!!imageSrc && (
                 <div className={styles.imageWrapper(isHorizontal)}>
                   {/* No need to use different sources for vertical cards because
@@ -134,7 +114,6 @@ export const ChangemakerCard = ({
                 {heading && (
                   <Heading
                     as={headingLevel || 'h3'}
-                    id={headingId}
                     leading="tight"
                     align="center"
                     color="white"
@@ -149,7 +128,6 @@ export const ChangemakerCard = ({
               </FlexBox>
             </div>
             <button
-              ref={buttonRef}
               type="button"
               onClick={() => setIsModalOpen(true)}
               aria-label={`Read more about ${heading}`}
@@ -167,7 +145,7 @@ export const ChangemakerCard = ({
           </div>
         </article>
       </AnimateInView>
-      {/* Content is displayed in a modal for XS breakpoint only */}
+      {/* Content is displayed in a modal */}
       <Transition show={isModalOpen}>
         <Dialog onClose={() => setIsModalOpen(false)} className={styles.dialog}>
           <TransitionChild
@@ -190,25 +168,43 @@ export const ChangemakerCard = ({
           >
             <div className={styles.dialogWrapper}>
               <DialogPanel className={styles.dialogPanel}>
-                <button
-                  type="button"
-                  aria-label="Close modal"
-                  onClick={() => setIsModalOpen(false)}
-                  className={styles.modalClose}
-                >
-                  <HeroIcon
-                    noBaseStyle
-                    focusable="false"
-                    strokeWidth={2}
-                    icon='close'
-                    className={styles.modalIcon}
-                  />
-                </button>
-                <DialogTitle className={styles.srOnly}>{heading}</DialogTitle>
-                {subheading && (
-                  <Description className={styles.srOnly}>{subheading}</Description>
-                )}
-                {children}
+                <div ref={panelRef} className={styles.dialogContentWrapper}>
+                  <button
+                    type="button"
+                    aria-label="Close modal"
+                    onClick={() => setIsModalOpen(false)}
+                    className={styles.modalClose}
+                  >
+                    <HeroIcon
+                      noBaseStyle
+                      focusable="false"
+                      strokeWidth={2}
+                      icon='close'
+                      className={styles.modalIcon}
+                    />
+                  </button>
+                  <div className={styles.modalTextWrapper}>
+                    {(heading || subheading) && (
+                      <div className={styles.modalHeader}>
+                        {heading &&
+                          <DialogTitle className={styles.modalHeading}>
+                            {heading}
+                          </DialogTitle>
+                        }
+                        {subheading &&
+                          <Description>
+                            <Text weight="semibold" variant="big" leading="tight" className={styles.modalSubhead}>
+                              {subheading}
+                            </Text>
+                          </Description>
+                        }
+                      </div>
+                    )}
+                    <div className="rs-pl-4">
+                      {children}
+                    </div>
+                  </div>
+                </div>
               </DialogPanel>
             </div>
           </TransitionChild>

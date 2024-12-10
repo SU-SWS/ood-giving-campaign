@@ -44,8 +44,14 @@ export const icon = (isHorizontal: boolean) => cnb('absolute bottom-40 right-36 
 // Modal styles
 export const dialog = 'relative z-[100]';
 export const srOnly = 'sr-only';
-export const dialogOverlay = 'fixed inset-0 bg-gc-black/80 backdrop-blur-md w-screen';
-export const dialogWrapper = 'fixed inset-0 w-screen overflow-y-auto overscroll-contain';
-export const dialogPanel = 'relative cc w-screen min-h-screen inset-0 pt-20 pb-60 text-white';
-export const modalClose = 'block mr-0 ml-auto rs-mb-2 p-9 border-2 border-white rounded-full hocus:border-dashed transition-transform';
+export const dialogOverlay = 'fixed inset-0 bg-gc-black/60 backdrop-blur-lg w-screen';
+export const dialogWrapper = 'fixed inset-0 sm:py-30 w-screen overflow-y-auto overscroll-contain overflow-x-hidden';
+export const dialogPanel = 'relative sm:cc flex w-screen min-h-screen inset-0 break-words justify-center items-start sm:items-center';
+export const dialogContentWrapper = 'relative flex flex-col items-center justify-center max-w-prose-wide text-white bg-black-true/60';
+
+export const modalClose = 'block ml-auto rs-mb-4 mr-20 mt-20 p-9 border-2 border-white rounded-full hocus-visible:border-dashed hocus-visible:rotate-90 transition-transform';
 export const modalIcon = 'text-white size-26';
+export const modalTextWrapper = 'rs-pr-4 rs-pb-6 w-[75ch] max-w-[100vw] md:max-w-full';
+export const modalHeader = 'rs-mb-3 border-l-[1.2rem] md:border-l-[1.8rem] border-digital-red-light';
+export const modalHeading = 'mb-02em leading-tight ml-22 md:ml-40 2xl:ml-43 type-3 font-serif';
+export const modalSubhead = 'ml-22 md:ml-40 2xl:ml-43';
