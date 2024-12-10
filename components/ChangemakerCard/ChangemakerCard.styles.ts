@@ -47,5 +47,5 @@ export const modalIcon = 'text-white size-26';
 export const modalTextWrapper = 'rs-pr-4 rs-pb-6 w-[75ch] max-w-[100vw] md:max-w-full';
 export const modalHeader = 'rs-mb-3 border-l-[1.2rem] md:border-l-[1.8rem] border-digital-red-light';
 export const modalHeading = 'mb-02em leading-tight ml-22 md:ml-40 2xl:ml-43 type-3 font-serif';
-export const modalSubhead = 'ml-22 md:ml-40 2xl:ml-43';
+export const modalSubhead = 'block font-semibold big-paragraph leading-tight ml-22 md:ml-40 2xl:ml-43';
 export const nestedBloksWrapper = 'rs-pl-4';

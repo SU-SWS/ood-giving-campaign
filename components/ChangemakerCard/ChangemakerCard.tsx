@@ -181,12 +181,12 @@ export const ChangemakerCard = ({
                     />
                   </button>
                   <div className={styles.modalTextWrapper}>
-                    <div className={styles.modalHeader}>
+                    <header className={styles.modalHeader}>
                       <DialogTitle className={styles.modalHeading}>{heading}</DialogTitle>
                       {subheading &&
-                        <Description className={styles.modalSubhead}>{subheading}</Description>
+                        <Description as="span" className={styles.modalSubhead}>{subheading}</Description>
                       }
-                    </div>
+                    </header>
                     <div className={styles.nestedBloksWrapper}>{children}</div>
                   </div>
                 </div>
