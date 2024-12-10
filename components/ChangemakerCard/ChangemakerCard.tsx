@@ -128,7 +128,6 @@ export const ChangemakerCard = ({
               type="button"
               onClick={() => setIsModalOpen(true)}
               aria-label={`Read more about ${heading}`}
-              aria-expanded={isModalOpen}
               aria-haspopup="dialog"
               className={styles.button}
             >
