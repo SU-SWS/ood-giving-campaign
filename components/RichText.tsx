@@ -18,6 +18,7 @@ import {
  */
 
 export type RichTextBaseFontSizeType = 'default' | 'card' | 'changemaker' | 'changemakerHorizontal' | 'big';
+export type RichTextLinkColorType = 'unset' | 'white' | 'digital-red-xlight';
 
 export type RichTextProps = {
   wysiwyg: StoryblokRichtext;
@@ -28,7 +29,7 @@ export type RichTextProps = {
   type?: 'default' | 'card';
   baseFontSize?: RichTextBaseFontSizeType;
   textColor?: 'black' | 'white' | 'black-70';
-  linkColor?: 'unset' | 'white' | 'digital-red-xlight';
+  linkColor?: RichTextLinkColorType;
   bgColor?: 'black' | 'black-50' | 'black-60' | 'black-70' | 'white' | 'none';
   textAlign?: TextAlignType;
   className?: string;
