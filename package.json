@@ -40,7 +40,7 @@
     "@storyblok/react": "^3.0.15",
     "@typeform/embed-react": "^3.17.0",
     "cnbuilder": "^3.1.0",
-    "cookies-next": "^4.2.1",
+    "cookies-next": "^4.3.0",
     "framer-motion": "^11.11.9",
     "next": "^14.2.15",
     "react-loading-skeleton": "^3.5.0",
