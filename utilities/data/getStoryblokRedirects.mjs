@@ -51,7 +51,8 @@ const sanitizeRedirectCode = (code) => {
 const sanitizeSourcePath = (str) => {
   const parts = str.split('?');
   const path = parts[0];
-  return path;
+  // Replace '*' with '(.*)' to match dynamic routes
+  return path.replace(/\*/g, '(.*)');
 };
 
 /**

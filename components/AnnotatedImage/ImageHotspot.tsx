@@ -30,7 +30,6 @@ export const ImageHotspot = ({
   descriptionSize,
 }: SbImageHotspotType) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const buttonRef = useRef<HTMLButtonElement>(null);
   const [isClicked, setIsClicked] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -58,7 +57,6 @@ export const ImageHotspot = ({
         <div className={styles.hotspotWrapper} style={{ top: `${y * 100}%`, left: `${x * 100}%` }}>
           <button
             type="button"
-            ref={buttonRef}
             onClick={handleClick}
             aria-haspopup="dialog"
             aria-label={`Open modal ${ariaLabel || heading}`}
