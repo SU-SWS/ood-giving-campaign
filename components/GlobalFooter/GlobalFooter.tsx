@@ -1,6 +1,5 @@
 import { cnb } from 'cnbuilder';
 import { StanfordLogo } from '../StanfordLogo';
-import { SrOnlyText } from '../Typography';
 import { Container } from '../Container';
 import { FlexBox } from '../FlexBox';
 import * as styles from './GlobalFooter.styles';

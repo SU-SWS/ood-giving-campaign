@@ -75,7 +75,7 @@ export const InitiativeCard = ({
     <AnimateInView animation={animation} delay={delay}>
       <FlexBox
         as="article"
-        direction='col'
+        direction="col"
         className={cnb(styles.root(isHorizontal), className)}
         {...props}
       >

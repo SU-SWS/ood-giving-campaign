@@ -1,9 +1,7 @@
-import { m, AnimatePresence, useWillChange } from 'framer-motion';
 import { cnb } from 'cnbuilder';
 import { FlexBox } from '../FlexBox';
-import { Heading, Text, Paragraph } from '../Typography';
+import { Text, Paragraph } from '../Typography';
 import { HeroIcon } from '../HeroIcon';
-import { ImageOverlay } from '../ImageOverlay';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 
 type BookAltProps = {
@@ -24,15 +22,12 @@ export const BookAlt = ({
   expanded,
   setExpanded,
   buttonClassName,
-  contentClassName,
   imgSrc,
 }: BookAltProps) => {
-  const willChange = useWillChange();
   const isOpen = i === expanded;
 
   return (
-    <>
-      <button
+    <button
         aria-expanded={isOpen}
         onClick={() => setExpanded(isOpen ? false : i)}
         className={cnb(
@@ -42,13 +37,13 @@ export const BookAlt = ({
           buttonClassName,
         )}
       >
-        <img
+      <img
           src={getProcessedImage(imgSrc, '1600x1300')}
           alt=""
           className="size-full object-cover object-left-top"
         />
-        <span className="absolute block bottom-0 right-0 bg-gradient-to-t from-gc-black via-50% via-gc-black/50 w-full h-2/5 group-hocus-visible:h-1/2 transition-all" />
-        <Text
+      <span className="absolute block bottom-0 right-0 bg-gradient-to-t from-gc-black via-50% via-gc-black/50 w-full h-2/5 group-hocus-visible:h-1/2 transition-all" />
+      <Text
           as="span"
           color="white"
           size={3}
@@ -60,24 +55,23 @@ export const BookAlt = ({
             'block transition-transform origin-top-left relative z-10 group-hocus:no-underline',
           )}
         >
-          {title}
-        </Text>
-        <FlexBox direction="col" alignItems="center" className="absolute bottom-50 3xl:bottom-95 right-[5.3rem] text-white">
-          <HeroIcon
+        {title}
+      </Text>
+      <FlexBox direction="col" alignItems="center" className="absolute bottom-50 3xl:bottom-95 right-[5.3rem] text-white">
+        <HeroIcon
             noBaseStyle
             icon={isOpen ? 'minus' : 'plus'}
             className="w-75 h-75 border-2 border-white rounded-full p-19 mb-04em group-hocus-visible:border-dashed group-hocus-visible:bg-gc-black"
           />
-          <Text as="span" font="serif" color="white" variant="caption">
-            {isOpen ? 'minimize' : 'explore'}
-          </Text>
-        </FlexBox>
-        {isOpen && (
-          <Paragraph variant="card" color="white" leading="snug" className="absolute bottom-100 z-20 rs-px-3 max-w-[74rem]" align="left">
-            {body}
-          </Paragraph>
+        <Text as="span" font="serif" color="white" variant="caption">
+          {isOpen ? 'minimize' : 'explore'}
+        </Text>
+      </FlexBox>
+      {isOpen && (
+      <Paragraph variant="card" color="white" leading="snug" className="absolute bottom-100 z-20 rs-px-3 max-w-[74rem]" align="left">
+        {body}
+      </Paragraph>
         )}
-      </button>
-    </>
+    </button>
   );
 };

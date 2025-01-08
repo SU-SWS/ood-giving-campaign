@@ -4,8 +4,8 @@ import { components as Components } from '@/components/StoryblokProvider';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { notFound } from 'next/navigation';
 import { ComponentNotFound } from '@/components/Storyblok/ComponentNotFound';
-import getStoryData from '@/utilities/data/getStoryData';
-import getStoryList from '@/utilities/data/getStoryList';
+import { getStoryData } from '@/utilities/data/getStoryData';
+import { getStoryList } from '@/utilities/data/getStoryList';
 
 // Control what happens when a dynamic segment is visited that was not generated with generateStaticParams.
 export const dynamic = 'force-dynamic';

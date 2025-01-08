@@ -1,6 +1,6 @@
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { storyblokEditable } from '@storyblok/react/rsc';
-import { ChatBubble, paletteBubbleColors, type PaletteBubbleHexColorType  } from '@/components/Chat';
+import { ChatBubble, paletteBubbleColors, type PaletteBubbleHexColorType } from '@/components/Chat';
 import { RichText } from '@/components/RichText';
 import { hasRichText } from '@/utilities/hasRichText';
 import { type SbImageType } from './Storyblok.types';

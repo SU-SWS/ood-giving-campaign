@@ -87,7 +87,7 @@ const extractQueryParameters = (url) => {
 export const getStoryblokRedirects = async () => {
   const storyblokApi = getStoryblokApi();
   const isProd = isProduction();
-  const  sbParams = {
+  const sbParams = {
     version: isProd ? 'published' : 'draft',
     resolve_links: '0',
     resolve_assets: 0,
