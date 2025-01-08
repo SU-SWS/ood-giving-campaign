@@ -1,16 +1,14 @@
 'use client';
 import { cnb } from 'cnbuilder';
-import { useId, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import {
   Description, Dialog, DialogPanel, DialogTitle, Transition, TransitionChild,
 } from '@headlessui/react';
-import { useMediaQuery, useOnClickOutside, useToggle } from 'usehooks-ts';
+import { useOnClickOutside } from 'usehooks-ts';
 import { AnimateInView, type AnimationType } from '@/components/Animate';
 import { Heading, type HeadingType, Text } from '@/components/Typography';
 import { FlexBox } from '@/components/FlexBox';
 import { HeroIcon } from '@/components/HeroIcon';
-import useEscape from '@/hooks/useEscape';
-import { config } from '@/utilities/config';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import * as styles from './ChangemakerCard.styles';
 
@@ -41,58 +39,23 @@ export const ChangemakerCard = ({
   className,
   ...props
 }: ChangemakerCardProps) => {
-  const isNotPhone = useMediaQuery(`(min-width: ${config.breakpoints.sm}px)`);
-
-  const cardRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const contentId = useId();
-  const headingId = useId();
-  const [isShown, toggle, setIsShown] = useToggle();
-
-  // For the mobile modal
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
 
-  const handleClick = () => {
-    // If it's not XS breakpoint, toggle the card content and if it is shown, focus on contentRef
-    if (isNotPhone) {
-      toggle();
-      if (!isShown) {
-        contentRef.current?.focus();
-      }
-    } else {
-      // Open the modal if it's XS breakpoint
-      setIsModalOpen(true);
-    }
-  };
-
-  // If card content is shown, clicking outside it will dismiss it
-  useOnClickOutside(cardRef, () => {
-    if (isShown) {
-      setIsShown(false);
-    }
-  });
-
-  // If card content is shown, pressing escape will dismiss it
-  // and focus on the button
-  useEscape(() => {
-    if (isShown) {
-      setIsShown(false);
-      buttonRef.current?.focus();
-    }
+  useOnClickOutside(panelRef, () => {
+    setIsModalOpen(false);
   });
 
   return (
     <>
       <AnimateInView animation={animation} delay={delay}>
         <article
-          ref={cardRef}
           className={cnb('changemaker-card', styles.root(isHorizontal), className)}
           {...props}
         >
           <div className={styles.cardInner(isHorizontal)}>
             {/* Front of the card */}
-            <div aria-hidden={isShown} className={styles.cardFront}>
+            <div className={styles.cardFront}>
               {!!imageSrc && (
                 <div className={styles.imageWrapper(isHorizontal)}>
                   {/* No need to use different sources for vertical cards because
@@ -147,44 +110,25 @@ export const ChangemakerCard = ({
                 </div>
               )}
               <FlexBox direction="col" className={styles.info(isHorizontal)}>
-                {heading && (
-                  <Heading
-                    as={headingLevel || 'h3'}
-                    id={headingId}
-                    leading="tight"
-                    align="center"
-                    color="white"
-                    className={styles.heading(isHorizontal)}
-                  >
-                    {heading}
-                  </Heading>
-                )}
+                <Heading
+                  as={headingLevel || 'h3'}
+                  leading="tight"
+                  align="center"
+                  color="white"
+                  className={styles.heading(isHorizontal)}
+                >
+                  {heading}
+                </Heading>
                 {subheading && (
                   <Text align="center" leading="display" color="white" className={styles.subhead}>{subheading}</Text>
                 )}
               </FlexBox>
             </div>
-            {/* Content layer */}
-            {/* Content is displayed on an overlay over the card for all breakpoint except XS */}
-            <FlexBox
-              id={contentId}
-              aria-labelledby={headingId}
-              direction="col"
-              className={styles.cardContent(isHorizontal)}
-              aria-hidden={!isShown}
-            >
-              <div ref={contentRef} tabIndex={isShown ? 0 : -1} className={styles.contentWrapper(isHorizontal)}>
-                {children}
-              </div>
-            </FlexBox>
             <button
-              ref={buttonRef}
               type="button"
-              onClick={handleClick}
-              aria-label={isShown ? 'Dismiss' : `Read more about ${heading}`}
-              aria-controls={isNotPhone ? contentId : undefined}
-              aria-expanded={isShown || isModalOpen}
-              aria-haspopup={isNotPhone ? undefined : 'dialog'}
+              onClick={() => setIsModalOpen(true)}
+              aria-label={`Read more about ${heading}`}
+              aria-haspopup="dialog"
               className={styles.button}
             >
               <HeroIcon
@@ -197,7 +141,7 @@ export const ChangemakerCard = ({
           </div>
         </article>
       </AnimateInView>
-      {/* Content is displayed in a modal for XS breakpoint only */}
+      {/* Content is displayed in a modal */}
       <Transition show={isModalOpen}>
         <Dialog onClose={() => setIsModalOpen(false)} className={styles.dialog}>
           <TransitionChild
@@ -220,25 +164,31 @@ export const ChangemakerCard = ({
           >
             <div className={styles.dialogWrapper}>
               <DialogPanel className={styles.dialogPanel}>
-                <button
-                  type="button"
-                  aria-label="Close modal"
-                  onClick={() => setIsModalOpen(false)}
-                  className={styles.modalClose}
-                >
-                  <HeroIcon
-                    noBaseStyle
-                    focusable="false"
-                    strokeWidth={2}
-                    icon="close"
-                    className={styles.modalIcon}
-                  />
-                </button>
-                <DialogTitle className={styles.srOnly}>{heading}</DialogTitle>
-                {subheading && (
-                  <Description className={styles.srOnly}>{subheading}</Description>
-                )}
-                {children}
+                <div ref={panelRef} className={styles.dialogContentWrapper}>
+                  <button
+                    type="button"
+                    aria-label="Close modal"
+                    onClick={() => setIsModalOpen(false)}
+                    className={styles.modalClose}
+                  >
+                    <HeroIcon
+                      noBaseStyle
+                      focusable="false"
+                      strokeWidth={2}
+                      icon="close"
+                      className={styles.modalIcon}
+                    />
+                  </button>
+                  <div className={styles.modalTextWrapper}>
+                    <header className={styles.modalHeader}>
+                      <DialogTitle className={styles.modalHeading}>{heading}</DialogTitle>
+                      {subheading &&
+                        <Description as="span" className={styles.modalSubhead}>{subheading}</Description>
+                      }
+                    </header>
+                    <div className={styles.nestedBloksWrapper}>{children}</div>
+                  </div>
+                </div>
               </DialogPanel>
             </div>
           </TransitionChild>
