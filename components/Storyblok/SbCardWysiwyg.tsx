@@ -32,7 +32,7 @@ export const SbCardWysiwyg = ({
       type="card"
       wysiwyg={content}
       textColor={isLightText ? 'white' : 'black'}
-      linkColor={linkColor}
+      linkColor={linkColor || isLightText ? 'digital-red-xlight' : 'unset'}
     />
   </div>
 );

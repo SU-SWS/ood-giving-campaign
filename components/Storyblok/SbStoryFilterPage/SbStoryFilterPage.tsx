@@ -17,7 +17,7 @@ import * as styles from './SbStoryFilterPage.styles';
 
 type StoryPickerType = {
   uuid: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 type FaturedStoryType = SbBlokData & {
@@ -96,7 +96,7 @@ export const SbStoryFilterPage = ({
           </Skiplink>
           <CreateStories stories={storyListNavPicker} fullSlug={slug} name={name} />
           <Heading font="druk" size="f5" color="white" id="latest-stories" className={styles.heading(hasIntro)}>Latest stories</Heading>
-            {hasIntro && <RichText wysiwyg={intro} textColor="white" className={styles.intro} />}
+          {hasIntro && <RichText wysiwyg={intro} textColor="white" className={styles.intro} />}
           <CreateBloks blokSection={belowIntro} />
           {hasFeaturedStories && (
             <>
@@ -108,7 +108,7 @@ export const SbStoryFilterPage = ({
           )}
           {!!filteredStoryList?.length && (
             <>
-            {hasFeaturedStories && <Heading as="h3" srOnly>Other stories</Heading>}
+              {hasFeaturedStories && <Heading as="h3" srOnly>Other stories</Heading>}
               <Grid isList pt={6} className={styles.otherGrid}>
                 {storyListToDisplay.map((story, index) => {
                   const {
@@ -160,7 +160,7 @@ export const SbStoryFilterPage = ({
                       Back to top
                     </CtaLink>
                   ) : (
-                  <CtaButton
+                    <CtaButton
                     variant="ghost-swipe"
                     color="white"
                     size="large"
@@ -169,8 +169,8 @@ export const SbStoryFilterPage = ({
                     onClick={handleShowAll}
                     className={styles.showAllButton}
                   >
-                    Show all stories
-                  </CtaButton>
+                      Show all stories
+                    </CtaButton>
                   )}
                 </>
               )}

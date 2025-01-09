@@ -9,7 +9,7 @@ import { StoryblokComponent, type ISbStoryData } from '@storyblok/react/rsc';
 
 type CreateStoriesProps = {
   stories: ISbStoryData[];
-  [key: string]: any;
+  [key: string]: unknown;
 };
 
 export const CreateStories = ({ stories, ...props }: CreateStoriesProps) => {
@@ -20,6 +20,7 @@ export const CreateStories = ({ stories, ...props }: CreateStoriesProps) => {
         currentStory = story;
         return <StoryblokComponent key={story.content._uid} blok={story.content} {...props} />;
       });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       console.error('Could not create story', currentStory);
     }
