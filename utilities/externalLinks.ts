@@ -3,13 +3,16 @@
  * Esp for links that are used in multiple places and might change URL in the future
  */
 
+const isProd = process.env.CONTEXT === 'production';
+const giveBaseUrl = isProd ? 'https://give.stanford.edu' : 'https://dev--online-giving.netlify.app';
+const givingBaseUrl = isProd ? 'https://giving.stanford.edu' : 'https://dev--adapt-giving.stanford.edu';
+
 export const ood = {
-  give: 'https://give.stanford.edu/',
-  giving: 'https://giving.stanford.edu/',
-  contact: 'https://giving.stanford.edu/contact/',
-  leadership: 'https://TODO', // Alexis will make a new page on Giving
-  howToGive: 'https://giving.stanford.edu/how-to-make-a-gift/',
-  areasToSupport: 'https://giving.stanford.edu/areas-to-support/',
+  give: giveBaseUrl,
+  giving: givingBaseUrl,
+  contact: `${givingBaseUrl}/contact/`,
+  howToGive: `${givingBaseUrl}/how-to-make-a-gift/`,
+  areasToSupport: `${givingBaseUrl}/areas-to-support/`,
 };
 
 export const schools = {
