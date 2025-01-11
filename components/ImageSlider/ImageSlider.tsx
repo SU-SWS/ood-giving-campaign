@@ -29,9 +29,9 @@ export const ImageSlider = ({
   const [pagerOffset, setPagerOffset] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   const [showOverlay, setShowOverlay] = useState(true);
-  const pagerWindow = React.createRef();
-  const pager = React.createRef();
-  const expandButton = React.createRef();
+  const pagerWindow = useRef(null);
+  const pager = useRef(null);
+  const expandButton = useRef(null);
   const slideshow = useRef(null);
   const modalSlideshow = useRef(null);
 
@@ -41,7 +41,7 @@ export const ImageSlider = ({
     lazyLoad: true,
     // This provides the JSX template for the lower half of the slider.
     /* eslint-disable-next-line react/display-name */
-    appendDots: (dots) => {
+    appendDots: (dots: React.ReactNode) => {
       return (
         <div>
           <div className="gallery-slideshow--infobar">
@@ -106,7 +106,7 @@ export const ImageSlider = ({
       );
     },
     /* eslint-disable-next-line react/display-name */
-    customPaging: (i) => {
+    customPaging: (i: number) => {
       const slide = slides[i];
       return (
         <div className="gallery-slideshow--thumbnail" key={slide._uid}>
@@ -121,7 +121,7 @@ export const ImageSlider = ({
         </div>
       );
     },
-    afterChange: (i) => {
+    afterChange: (i: number) => {
       setActiveSlide(i);
       adjustPagerPosition();
     },
@@ -142,7 +142,7 @@ export const ImageSlider = ({
         <i className="fas fa-chevron-left" aria-hidden="true"></i>
       </button>
     ),
-    afterChange: (i) => {
+    afterChange: (i: number) => {
       setActiveSlide(i);
     },
     initialSlide: activeSlide,
@@ -193,15 +193,7 @@ export const ImageSlider = ({
   return (
     <>
       <div aria-label={ariaLabel}>
-        <div
-          className={`gallery-slideshow--inner su-mx-auto
-          ${
-            blok.containerWidth == 'constrain-max-width'
-              ? 'flex-md-10-of-12 flex-xl-8-of-12'
-              : ''
-          }
-        `}
-        >
+        <div>
           <Slider
             className="gallery-slideshow--slides"
             ref={slideshow}
@@ -233,7 +225,7 @@ export const ImageSlider = ({
         onClose={closeModal}
         outerContainerClasses="centered-container flex-container su-pt-1"
         innerContainerClasses="su-pt-2"
-        ariaLabel={blok.ariaLabel + ' full screen view'}
+        ariaLabel={ariaLabel + ' full screen view'}
       >
         <div className="gallery-slideshow--modal-wrapper">
           <Slider
@@ -241,11 +233,11 @@ export const ImageSlider = ({
             ref={modalSlideshow}
             {...modalSliderSettings}
           >
-            {blok.slides.map((slide, index) => {
+            {slides.map((slide, index) => {
               return (
                 <div
                   className="gallery-slideshow--slide"
-                  index={index}
+                  //index={index}
                   key={slide._uid}
                 >
                   <AspectRatioImage
@@ -263,12 +255,12 @@ export const ImageSlider = ({
           <div className="gallery-slideshow--infobar">
             <div
               className="gallery-slideshow--counter"
-              aria-label={`Slide ${activeSlide + 1} of ${blok.slides.length}`}
+              aria-label={`Slide ${activeSlide + 1} of ${slides.length}`}
             >
-              {`${activeSlide + 1}/${blok.slides.length}`}
+              {`${activeSlide + 1}/${slides.length}`}
             </div>
             <div className="gallery-slideshow--caption">
-              <RichTextField data={blok.slides[activeSlide]['caption']} />
+              <RichTextField data={slides[activeSlide]['caption']} />
             </div>
           </div>
         </div>
