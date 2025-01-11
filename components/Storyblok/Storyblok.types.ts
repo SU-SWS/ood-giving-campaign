@@ -100,3 +100,10 @@ export type SbImageHotspotType = {
   isVerticalCard: boolean;
   descriptionSize: SbImageHotspotDescriptionSizeType;
 };
+
+// Used for Image Slider component
+export type SbSliderImageType = {
+  _uid: string;
+  image: SbImageType;
+  caption?: StoryblokRichtext;
+};
