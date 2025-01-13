@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import { WidthBox, type WidthType } from '@/components/WidthBox';
+import { HeroIcon } from '@/components/HeroIcon';
 import { RichText } from '@/components/RichText';
 import { type MarginType } from '@/utilities/datasource';
 import { SbSliderImageType } from '@/components/Storyblok/Storyblok.types';
@@ -41,28 +42,40 @@ export const ImageSlider = ({
     accessibility: true,
     swipeToSlide: true,
     lazyLoad: 'ondemand' as const,
+    customPaging: (i: number) => {
+      const slide = slides[i];
+      return (
+        <button type="button" aria-label={`Go to image ${i + 1}`} className="gallery-slideshow--thumbnail w-100" key={slide._uid}>
+          <img
+            src={slide.image.filename}
+            alt={slide.image.alt || ''}
+          />
+        </button>
+      );
+    },
+    afterChange: (i: number) => {
+      setActiveSlide(i);
+      adjustPagerPosition();
+    },
     // This provides the JSX template for the lower half of the slider.
-    /* eslint-disable-next-line react/display-name */
     appendDots: (dots: React.ReactNode) => {
       return (
         <div>
-          <div className="gallery-slideshow--infobar">
+          <div className="gallery-slideshow--infobar flex justify-between">
             <div className="gallery-slideshow--counter">
               {`${activeSlide + 1}/${slides?.length}`}
-              <span className="sr-only">{`Slide ${activeSlide + 1} of ${
-                slides.length
-              }`}</span>
+              <span className="sr-only">{`Slide ${activeSlide + 1} of ${slides.length}`}</span>
             </div>
             {showExpandLink && (
               <div className="gallery-slideshow--expand">
                 <button
                   type="button"
                   onClick={openModal}
-                  className="gallery-slideshow--expand-btn"
+                  className="gallery-slideshow--expand-btn font-semibold text-digital-red-light"
                   aria-label="Expand gallery"
                   ref={expandButton}
                 >
-                  Expand <i className="fas fa-expand" aria-hidden="true" />
+                  Expand <HeroIcon icon="expand" className="inline-block" />
                 </button>
               </div>
             )}
@@ -79,7 +92,7 @@ export const ImageSlider = ({
               onClick={clickPrev}
             >
               <span className="sr-only">Previous Slide</span>
-              <i className="fas fa-chevron-left" aria-hidden="true"></i>
+              <HeroIcon icon="chevron-left" className="inline-block" />
             </button>
             <div
               className={`gallery-slideshow--pager-window ${
@@ -88,7 +101,7 @@ export const ImageSlider = ({
               ref={pagerWindow}
             >
               <ul
-                className="gallery-slideshow--pager"
+                className="gallery-slideshow--pager flex list-unstyled gap-10"
                 ref={pager}
                 style={{ transform: `translateX(${pagerOffset}px)` }}
               >
@@ -101,27 +114,11 @@ export const ImageSlider = ({
               onClick={clickNext}
             >
               <span className="sr-only">Next Slide</span>
-              <i className="fas fa-chevron-right" aria-hidden="true"></i>
+              <HeroIcon icon="chevron-right" className="inline-block" />
             </button>
           </div>
         </div>
       );
-    },
-    /* eslint-disable-next-line react/display-name */
-    customPaging: (i: number) => {
-      const slide = slides[i];
-      return (
-        <div className="gallery-slideshow--thumbnail" key={slide._uid}>
-          <img
-            src={slide.image.filename}
-            alt={slide.image.alt}
-          />
-        </div>
-      );
-    },
-    afterChange: (i: number) => {
-      setActiveSlide(i);
-      adjustPagerPosition();
     },
     dots: true,
     dotsClass: 'gallery-slideshow--bottom',
@@ -183,6 +180,7 @@ export const ImageSlider = ({
     }
     slideshow.current.slickGoTo(activeSlide, true);
   };
+
   const openModal = () => {
     modalSlideshow.current.slickGoTo(activeSlide, true);
     setModalOpen(true);
