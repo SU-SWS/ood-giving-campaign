@@ -2,15 +2,13 @@ import { storyblokEditable } from '@storyblok/react/rsc';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { ImageSlider } from '@/components/ImageSlider';
 import { type WidthType } from '@/components/WidthBox';
-import { RichText } from '@/components/RichText';
-import { hasRichText } from '@/utilities/hasRichText';
 import { type MarginType } from '@/utilities/datasource';
 import { type SbImageType } from './Storyblok.types';
 
 type SbImageSliderProps = {
   blok: {
     _uid: string;
-    slides: {
+    images: {
       _uid: string;
       image: SbImageType;
       caption?: StoryblokRichtext;
@@ -27,7 +25,7 @@ type SbImageSliderProps = {
 
 export const SbImageSlider = ({
   blok: {
-    slides,
+    images,
     ariaLabel,
     showExpandLink,
     boundingWidth = 'full',
@@ -46,7 +44,7 @@ export const SbImageSlider = ({
     <ImageSlider
       {...storyblokEditable(blok)}
       className="gallery-slideshow"
-      slides={slides}
+      slides={images}
       ariaLabel={ariaLabel}
       showExpandLink={showExpandLink}
       boundingWidth={boundingWidth}

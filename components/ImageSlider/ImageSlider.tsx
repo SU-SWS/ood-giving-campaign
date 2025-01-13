@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import { WidthBox, type WidthType } from '@/components/WidthBox';
+import { RichText } from '@/components/RichText';
 import { type MarginType } from '@/utilities/datasource';
 import { SbSliderImageType } from '@/components/Storyblok/Storyblok.types';
 
@@ -38,7 +39,8 @@ export const ImageSlider = ({
   const sliderSettings = {
     arrows: false,
     accessibility: true,
-    lazyLoad: true,
+    swipeToSlide: true,
+    lazyLoad: 'ondemand' as const,
     // This provides the JSX template for the lower half of the slider.
     /* eslint-disable-next-line react/display-name */
     appendDots: (dots: React.ReactNode) => {
@@ -46,7 +48,7 @@ export const ImageSlider = ({
         <div>
           <div className="gallery-slideshow--infobar">
             <div className="gallery-slideshow--counter">
-              {`${activeSlide + 1}/${slides.length}`}
+              {`${activeSlide + 1}/${slides?.length}`}
               <span className="sr-only">{`Slide ${activeSlide + 1} of ${
                 slides.length
               }`}</span>
@@ -60,14 +62,14 @@ export const ImageSlider = ({
                   aria-label="Expand gallery"
                   ref={expandButton}
                 >
-                  Expand <i className="fas fa-expand" aria-hidden="true"></i>
+                  Expand <i className="fas fa-expand" aria-hidden="true" />
                 </button>
               </div>
             )}
           </div>
 
           <div className="gallery-slideshow--caption">
-            <RichTextField data={slides[activeSlide]['caption']} />
+            <RichText wysiwyg={slides[activeSlide]['caption']} />
           </div>
 
           <div className="gallery-slideshow--controls">
@@ -110,13 +112,9 @@ export const ImageSlider = ({
       const slide = slides[i];
       return (
         <div className="gallery-slideshow--thumbnail" key={slide._uid}>
-          <AspectRatioImage
-            blok={blok}
-            filename={slide.image.filename}
+          <img
+            src={slide.image.filename}
             alt={slide.image.alt}
-            classPrefix={'ood-gallery-slide'}
-            aspectRatio="16x9"
-            imageSize="thumbnail"
           />
         </div>
       );
@@ -192,27 +190,22 @@ export const ImageSlider = ({
 
   return (
     <>
-      <div aria-label={ariaLabel}>
+      <div aria-label={ariaLabel} {...props}>
         <div>
           <Slider
             className="gallery-slideshow--slides"
             ref={slideshow}
             {...sliderSettings}
           >
-            {slides.map((slide, index) => {
+            {slides?.map((slide, index) => {
               return (
                 <div
                   className="gallery-slideshow--slide"
-                  index={index}
                   key={slide._uid}
                 >
-                  <AspectRatioImage
-                    blok={blok}
-                    filename={slide.image.filename}
+                  <img
+                    src={slide.image.filename}
                     alt={slide.image.alt}
-                    classPrefix={'ood-gallery-slide'}
-                    aspectRatio="16x9"
-                    imageSize="gallery-slide"
                   />
                 </div>
               );
@@ -220,7 +213,7 @@ export const ImageSlider = ({
           </Slider>
         </div>
       </div>
-      <Modal
+      {/* <Modal
         isOpen={modalOpen}
         onClose={closeModal}
         outerContainerClasses="centered-container flex-container su-pt-1"
@@ -240,13 +233,9 @@ export const ImageSlider = ({
                   //index={index}
                   key={slide._uid}
                 >
-                  <AspectRatioImage
-                    blok={blok}
-                    filename={slide.image.filename}
+                  <img
+                    src={slide.image.filename}
                     alt={slide.image.alt}
-                    classPrefix={'ood-gallery-slide'}
-                    aspectRatio="16x9"
-                    imageSize="gallery-slide"
                   />
                 </div>
               );
@@ -260,11 +249,11 @@ export const ImageSlider = ({
               {`${activeSlide + 1}/${slides.length}`}
             </div>
             <div className="gallery-slideshow--caption">
-              <RichTextField data={slides[activeSlide]['caption']} />
+              <RichText wysiwyg={slides[activeSlide]['caption']} />
             </div>
           </div>
         </div>
-      </Modal>
+      </Modal> */}
     </>
   );
 };
