@@ -44,6 +44,9 @@ export const ImageSlider = ({
     accessibility: true,
     swipeToSlide: true,
     lazyLoad: 'ondemand' as const,
+    slideToShow: 1,
+    adaptiveHeight: true,
+    spaceBetween: 15,
     customPaging: (i: number) => {
       const slide = slides[i];
       return (
@@ -96,14 +99,14 @@ export const ImageSlider = ({
           <div className="controls flex items-center rs-mt-1">
             <button
               type="button"
-              className="flex items-center justify-center size-55 rounded-full border-[3px] border-gc-black shrink-0 mr-10"
+              className="group flex items-center justify-center size-55 rounded-full border-[3px] border-gc-black shrink-0 hocus-visible:border-digital-red-light hocus-visible:bg-digital-red-light mr-10"
               onClick={clickPrev}
             >
               <span className="sr-only">Previous Slide</span>
-              <HeroIcon icon="chevron-left" className="inline-block stroke-2" />
+              <HeroIcon icon="chevron-left" className="inline-block stroke-2 group-hocus-visible:text-white" />
             </button>
             <div
-              className={`pager-window relative overflow-hidden grow ${
+              className={`pager-window relative hidden sm:block overflow-hidden grow ${
                 showOverlay ? 'overlay' : ''
               }`}
               ref={pagerWindowRef}
@@ -118,11 +121,11 @@ export const ImageSlider = ({
             </div>
             <button
               type="button"
-              className="flex items-center justify-center size-55 rounded-full border-[3px] border-gc-black shrink-0 ml-10"
+              className="group flex items-center justify-center size-55 rounded-full border-[3px] border-gc-black shrink-0 hocus-visible:border-digital-red-light hocus-visible:bg-digital-red-light ml-10"
               onClick={clickNext}
             >
               <span className="sr-only">Next Slide</span>
-              <HeroIcon icon="chevron-right" className="inline-block stroke-2" />
+              <HeroIcon icon="chevron-right" className="inline-block stroke-2 group-hocus-visible:text-white" />
             </button>
           </div>
         </div>
@@ -205,12 +208,13 @@ export const ImageSlider = ({
           {slides?.map((slide) => {
             return (
               <div
-                className="gallery-slideshow--slide"
+                className="gallery-slideshow--slide aspect-w-16 aspect-h-9"
                 key={slide._uid}
               >
                 <img
-                  src={getProcessedImage(slide?.image.filename, '1500x0')}
+                  src={getProcessedImage(slide?.image.filename, '0x900')}
                   alt={slide?.image.alt}
+                  className="object-contain"
                 />
               </div>
             );
