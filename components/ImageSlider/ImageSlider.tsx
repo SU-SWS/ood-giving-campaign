@@ -1,10 +1,12 @@
 import React, { useState, useRef } from 'react';
+import { cnb } from 'cnbuilder';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import { WidthBox, type WidthType } from '@/components/WidthBox';
 import { HeroIcon } from '@/components/HeroIcon';
 import { RichText } from '@/components/RichText';
 import { type MarginType } from '@/utilities/datasource';
+import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { SbSliderImageType } from '@/components/Storyblok/Storyblok.types';
 
 type ImageSliderProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -31,9 +33,9 @@ export const ImageSlider = ({
   const [pagerOffset, setPagerOffset] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   const [showOverlay, setShowOverlay] = useState(true);
-  const pagerWindow = useRef(null);
-  const pager = useRef(null);
-  const expandButton = useRef(null);
+  const pagerWindowRef = useRef<HTMLDivElement>(null);
+  const pagerRef = useRef<HTMLUListElement>(null);
+  const expandButtonRef = useRef<HTMLButtonElement>(null);
   const slideshow = useRef(null);
   const modalSlideshow = useRef(null);
 
@@ -45,10 +47,16 @@ export const ImageSlider = ({
     customPaging: (i: number) => {
       const slide = slides[i];
       return (
-        <button type="button" aria-label={`Go to image ${i + 1}`} className="gallery-slideshow--thumbnail w-100" key={slide._uid}>
+        <button
+          type="button"
+          key={slide._uid}
+          aria-label={`Go to slide ${i + 1}`}
+          aria-current={activeSlide === i ? true : undefined}
+          className={cnb('gallery-slideshow--thumbnail h-70 inline-block box-content hocus:opacity-100 transition-all border-b-[3px] py-6', activeSlide === i ? 'opacity-100 border-b-[3px] border-b-digital-red-light' : 'opacity-60 border-b-transparent')}
+        >
           <img
-            src={slide.image.filename}
-            alt={slide.image.alt || ''}
+            src={getProcessedImage(slide?.image.filename, '0x70')}
+            alt={slide?.image.alt || ''}
           />
         </button>
       );
@@ -61,48 +69,48 @@ export const ImageSlider = ({
     appendDots: (dots: React.ReactNode) => {
       return (
         <div>
-          <div className="gallery-slideshow--infobar flex justify-between">
-            <div className="gallery-slideshow--counter">
+          <div className="infobar flex justify-between mt-9">
+            <div className="counter">
               {`${activeSlide + 1}/${slides?.length}`}
               <span className="sr-only">{`Slide ${activeSlide + 1} of ${slides.length}`}</span>
             </div>
             {showExpandLink && (
-              <div className="gallery-slideshow--expand">
-                <button
-                  type="button"
-                  onClick={openModal}
-                  className="gallery-slideshow--expand-btn font-semibold text-digital-red-light"
-                  aria-label="Expand gallery"
-                  ref={expandButton}
-                >
-                  Expand <HeroIcon icon="expand" className="inline-block" />
-                </button>
-              </div>
+              <button
+                type="button"
+                onClick={openModal}
+                className="font-semibold text-digital-red-light"
+                aria-label="Expand gallery"
+                ref={expandButtonRef}
+              >
+                Expand <HeroIcon icon="expand" className="inline-block" />
+              </button>
             )}
           </div>
 
-          <div className="gallery-slideshow--caption">
-            <RichText wysiwyg={slides[activeSlide]['caption']} />
-          </div>
+          <RichText
+            textColor="black-70"
+            wysiwyg={slides[activeSlide]['caption']}
+            className="rs-mt-0 max-w-prose *:leading-display *:gc-caption"
+          />
 
-          <div className="gallery-slideshow--controls">
+          <div className="controls flex items-center rs-mt-1">
             <button
               type="button"
-              className="gallery-slideshow--prev"
+              className="flex items-center justify-center size-55 rounded-full border-[3px] border-gc-black shrink-0 mr-10"
               onClick={clickPrev}
             >
               <span className="sr-only">Previous Slide</span>
-              <HeroIcon icon="chevron-left" className="inline-block" />
+              <HeroIcon icon="chevron-left" className="inline-block stroke-2" />
             </button>
             <div
-              className={`gallery-slideshow--pager-window ${
+              className={`pager-window relative overflow-hidden grow ${
                 showOverlay ? 'overlay' : ''
               }`}
-              ref={pagerWindow}
+              ref={pagerWindowRef}
             >
               <ul
-                className="gallery-slideshow--pager flex list-unstyled gap-10"
-                ref={pager}
+                className="pager flex list-unstyled items-end *:mb-0 *:leading-[0] gap-10"
+                ref={pagerRef}
                 style={{ transform: `translateX(${pagerOffset}px)` }}
               >
                 {dots}
@@ -110,11 +118,11 @@ export const ImageSlider = ({
             </div>
             <button
               type="button"
-              className="gallery-slideshow--next"
+              className="flex items-center justify-center size-55 rounded-full border-[3px] border-gc-black shrink-0 ml-10"
               onClick={clickNext}
             >
               <span className="sr-only">Next Slide</span>
-              <HeroIcon icon="chevron-right" className="inline-block" />
+              <HeroIcon icon="chevron-right" className="inline-block stroke-2" />
             </button>
           </div>
         </div>
@@ -144,10 +152,10 @@ export const ImageSlider = ({
   };
 
   const adjustPagerPosition = () => {
-    const windowBox = pagerWindow.current.getBoundingClientRect();
-    const pagerBox = pager.current.getBoundingClientRect();
+    const windowBox = pagerWindowRef.current.getBoundingClientRect();
+    const pagerBox = pagerRef.current.getBoundingClientRect();
     const activeItem =
-      pagerWindow.current.getElementsByClassName('slick-active')[0];
+      pagerWindowRef.current.getElementsByClassName('slick-active')[0];
     const activeItemBox = activeItem.getBoundingClientRect();
 
     if (activeItemBox.right > windowBox.right) {
@@ -175,8 +183,8 @@ export const ImageSlider = ({
 
   const closeModal = () => {
     setModalOpen(false);
-    if (expandButton.current) {
-      expandButton.current.focus();
+    if (expandButtonRef.current) {
+      expandButtonRef.current.focus();
     }
     slideshow.current.slickGoTo(activeSlide, true);
   };
@@ -188,29 +196,27 @@ export const ImageSlider = ({
 
   return (
     <>
-      <div aria-label={ariaLabel} {...props}>
-        <div>
-          <Slider
-            className="gallery-slideshow--slides"
-            ref={slideshow}
-            {...sliderSettings}
-          >
-            {slides?.map((slide, index) => {
-              return (
-                <div
-                  className="gallery-slideshow--slide"
-                  key={slide._uid}
-                >
-                  <img
-                    src={slide.image.filename}
-                    alt={slide.image.alt}
-                  />
-                </div>
-              );
-            })}
-          </Slider>
-        </div>
-      </div>
+      <WidthBox boundingWidth={boundingWidth} width={width} aria-label={ariaLabel} {...props}>
+        <Slider
+          className="gallery-slideshow--slides leading-none"
+          ref={slideshow}
+          {...sliderSettings}
+        >
+          {slides?.map((slide) => {
+            return (
+              <div
+                className="gallery-slideshow--slide"
+                key={slide._uid}
+              >
+                <img
+                  src={getProcessedImage(slide?.image.filename, '1500x0')}
+                  alt={slide?.image.alt}
+                />
+              </div>
+            );
+          })}
+        </Slider>
+      </WidthBox>
       {/* <Modal
         isOpen={modalOpen}
         onClose={closeModal}
@@ -232,8 +238,8 @@ export const ImageSlider = ({
                   key={slide._uid}
                 >
                   <img
-                    src={slide.image.filename}
-                    alt={slide.image.alt}
+                    src={slide?.image.filename}
+                    alt={slide?.image.alt}
                   />
                 </div>
               );
