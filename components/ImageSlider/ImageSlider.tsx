@@ -44,9 +44,6 @@ export const ImageSlider = ({
     accessibility: true,
     swipeToSlide: true,
     lazyLoad: 'ondemand' as const,
-    slideToShow: 1,
-    adaptiveHeight: true,
-    spaceBetween: 15,
     customPaging: (i: number) => {
       const slide = slides[i];
       return (
@@ -55,7 +52,7 @@ export const ImageSlider = ({
           key={slide._uid}
           aria-label={`Go to slide ${i + 1}`}
           aria-current={activeSlide === i ? true : undefined}
-          className={cnb('gallery-slideshow--thumbnail h-70 inline-block box-content hocus:opacity-100 transition-all border-b-[3px] py-6', activeSlide === i ? 'opacity-100 border-b-[3px] border-b-digital-red-light' : 'opacity-60 border-b-transparent')}
+          className={cnb('gallery-slideshow--thumbnail h-70 inline-block box-content hocus:opacity-100 transition-all border-b-[3px] py-6', activeSlide === i ? 'opacity-100 border-b-[3px] border-b-digital-red-light' : 'opacity-70 border-b-transparent')}
         >
           <img
             src={getProcessedImage(slide?.image.filename, '0x70')}
@@ -96,10 +93,10 @@ export const ImageSlider = ({
             className="rs-mt-0 max-w-prose *:leading-display *:gc-caption"
           />
 
-          <div className="controls flex items-center rs-mt-1">
+          <div className="controls flex items-center justify-center rs-mt-0">
             <button
               type="button"
-              className="group flex items-center justify-center size-55 rounded-full border-[3px] border-gc-black shrink-0 hocus-visible:border-digital-red-light hocus-visible:bg-digital-red-light mr-10"
+              className="group flex items-center justify-center size-40 md:size-55 rounded-full border-[3px] border-gc-black shrink-0 hocus-visible:border-digital-red-light hocus-visible:bg-digital-red-light mr-10"
               onClick={clickPrev}
             >
               <span className="sr-only">Previous Slide</span>
@@ -121,7 +118,7 @@ export const ImageSlider = ({
             </div>
             <button
               type="button"
-              className="group flex items-center justify-center size-55 rounded-full border-[3px] border-gc-black shrink-0 hocus-visible:border-digital-red-light hocus-visible:bg-digital-red-light ml-10"
+              className="group flex items-center justify-center size-40 md:size-55 rounded-full border-[3px] border-gc-black shrink-0 hocus-visible:border-digital-red-light hocus-visible:bg-digital-red-light ml-10"
               onClick={clickNext}
             >
               <span className="sr-only">Next Slide</span>
@@ -139,13 +136,13 @@ export const ImageSlider = ({
     nextArrow: (
       <button type="button">
         <span className="sr-only">Next Slide</span>
-        <i className="fas fa-chevron-right" aria-hidden="true"></i>
+        <HeroIcon icon="chevron-right" className="inline-block stroke-2 group-hocus-visible:text-white" />
       </button>
     ),
     prevArrow: (
       <button type="button">
         <span className="sr-only">Previous Slide</span>
-        <i className="fas fa-chevron-left" aria-hidden="true"></i>
+        <HeroIcon icon="chevron-left" className="inline-block stroke-2 group-hocus-visible:text-white" />
       </button>
     ),
     afterChange: (i: number) => {
@@ -199,7 +196,7 @@ export const ImageSlider = ({
 
   return (
     <>
-      <WidthBox boundingWidth={boundingWidth} width={width} aria-label={ariaLabel} {...props}>
+      <div aria-label={ariaLabel} {...props}>
         <Slider
           className="gallery-slideshow--slides leading-none"
           ref={slideshow}
@@ -220,7 +217,7 @@ export const ImageSlider = ({
             );
           })}
         </Slider>
-      </WidthBox>
+      </div>
       {/* <Modal
         isOpen={modalOpen}
         onClose={closeModal}
