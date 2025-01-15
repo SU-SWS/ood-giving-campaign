@@ -7,6 +7,7 @@ import { HeroIcon } from '@/components/HeroIcon';
 import { RichText } from '@/components/RichText';
 import { type MarginType } from '@/utilities/datasource';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
+import { getIsSbImagePortrait } from '@/utilities/getIsSbImagePortrait';
 import { SbSliderImageType } from '@/components/Storyblok/Storyblok.types';
 
 type ImageSliderProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -49,14 +50,15 @@ export const ImageSlider = ({
       return (
         <button
           type="button"
-          key={slide._uid}
+          key={slide?._uid}
           aria-label={`Go to slide ${i + 1}`}
           aria-current={activeSlide === i ? true : undefined}
-          className={cnb('gallery-slideshow--thumbnail h-70 inline-block box-content hocus:opacity-100 transition-all border-b-[3px] py-6', activeSlide === i ? 'opacity-100 border-b-[3px] border-b-digital-red-light' : 'opacity-70 border-b-transparent')}
+          className={cnb('gallery-slideshow--thumbnail min-w-60 inline-block box-content hocus-visible:opacity-100 hocus-visible:border-b-digital-red-light transition-all border-b-[3px] py-6', activeSlide === i ? 'opacity-100 border-b-[3px] border-b-digital-red-light' : 'opacity-70 border-b-transparent')}
         >
           <img
-            src={getProcessedImage(slide?.image.filename, '0x70')}
+            src={getIsSbImagePortrait(slide?.image.filename) ? getProcessedImage(slide?.image.filename, '0x100') : getProcessedImage(slide?.image.filename, '100x0')}
             alt={slide?.image.alt || ''}
+            className=""
           />
         </button>
       );
@@ -70,19 +72,20 @@ export const ImageSlider = ({
       return (
         <div>
           <div className="infobar flex justify-between mt-9">
-            <div className="counter">
+            <div className="counter leading-none">
               {`${activeSlide + 1}/${slides?.length}`}
-              <span className="sr-only">{`Slide ${activeSlide + 1} of ${slides.length}`}</span>
+              <span className="sr-only">{`Slide ${activeSlide + 1} of ${slides?.length}`}</span>
             </div>
             {showExpandLink && (
               <button
                 type="button"
                 onClick={openModal}
-                className="font-semibold text-digital-red-light"
+                className="group font-semibold text-digital-red-light leading-none gc-card hocus-visible:text-gc-black hocus-visible:underline"
                 aria-label="Expand gallery"
                 ref={expandButtonRef}
               >
-                Expand <HeroIcon icon="expand" className="inline-block" />
+                Expand
+                <HeroIcon icon="expand" className="inline-block ml-02em group-hocus-visible:scale-110" />
               </button>
             )}
           </div>
@@ -96,11 +99,11 @@ export const ImageSlider = ({
           <div className="controls flex items-center justify-center rs-mt-0">
             <button
               type="button"
-              className="group flex items-center justify-center size-40 md:size-55 rounded-full border-[3px] border-gc-black shrink-0 hocus-visible:border-digital-red-light hocus-visible:bg-digital-red-light mr-10"
+              className="group flex items-center justify-center size-40 md:size-55 rounded-full border-[2px] border-gc-black shrink-0 hocus-visible:border-digital-red-light hocus-visible:bg-digital-red-light mr-10"
               onClick={clickPrev}
             >
               <span className="sr-only">Previous Slide</span>
-              <HeroIcon icon="chevron-left" className="inline-block stroke-2 group-hocus-visible:text-white" />
+              <HeroIcon icon="chevron-left" className="inline-block stroke-[3px] group-hocus-visible:text-white" />
             </button>
             <div
               className={`pager-window relative hidden sm:block overflow-hidden grow ${
@@ -118,11 +121,11 @@ export const ImageSlider = ({
             </div>
             <button
               type="button"
-              className="group flex items-center justify-center size-40 md:size-55 rounded-full border-[3px] border-gc-black shrink-0 hocus-visible:border-digital-red-light hocus-visible:bg-digital-red-light ml-10"
+              className="group flex items-center justify-center size-40 md:size-55 rounded-full border-[2px] border-gc-black shrink-0 hocus-visible:border-digital-red-light hocus-visible:bg-digital-red-light ml-10"
               onClick={clickNext}
             >
               <span className="sr-only">Next Slide</span>
-              <HeroIcon icon="chevron-right" className="inline-block stroke-2 group-hocus-visible:text-white" />
+              <HeroIcon icon="chevron-right" className="inline-block stroke-[3px] group-hocus-visible:text-white" />
             </button>
           </div>
         </div>
@@ -136,13 +139,13 @@ export const ImageSlider = ({
     nextArrow: (
       <button type="button">
         <span className="sr-only">Next Slide</span>
-        <HeroIcon icon="chevron-right" className="inline-block stroke-2 group-hocus-visible:text-white" />
+        <HeroIcon icon="chevron-right" className="inline-block stroke-[3px] group-hocus-visible:text-white" />
       </button>
     ),
     prevArrow: (
       <button type="button">
         <span className="sr-only">Previous Slide</span>
-        <HeroIcon icon="chevron-left" className="inline-block stroke-2 group-hocus-visible:text-white" />
+        <HeroIcon icon="chevron-left" className="inline-block stroke-[3px] group-hocus-visible:text-white" />
       </button>
     ),
     afterChange: (i: number) => {
@@ -196,7 +199,7 @@ export const ImageSlider = ({
 
   return (
     <>
-      <div aria-label={ariaLabel} {...props}>
+      <section aria-label={ariaLabel} {...props}>
         <Slider
           className="gallery-slideshow--slides leading-none"
           ref={slideshow}
@@ -211,13 +214,13 @@ export const ImageSlider = ({
                 <img
                   src={getProcessedImage(slide?.image.filename, '0x900')}
                   alt={slide?.image.alt}
-                  className="object-contain"
+                  className="object-contain object-bottom"
                 />
               </div>
             );
           })}
         </Slider>
-      </div>
+      </section>
       {/* <Modal
         isOpen={modalOpen}
         onClose={closeModal}
