@@ -267,9 +267,9 @@ export const ImageSlider = ({
                       className={styles.modalIcon}
                     />
                   </button>
-                  <section aria-label={`${ariaLabel} full screen view`} className="rs-mt-8 relative cc">
+                  <section aria-label={`${ariaLabel} full screen view`} className="mt-70 md:mt-100 relative cc">
                     <Slider
-                      className="relative gallery-slideshow--modal leading-none max-w-1000"
+                      className="relative gallery-slideshow--modal leading-none max-w-1500 mx-auto"
                       ref={modalSlideshow}
                       {...modalSliderSettings}
                     >
