@@ -1,4 +1,7 @@
 import React, { useState, useRef } from 'react';
+import {
+  Description, Dialog, DialogPanel, DialogTitle, Transition, TransitionChild,
+} from '@headlessui/react';
 import { cnb } from 'cnbuilder';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -9,6 +12,7 @@ import { type MarginType } from '@/utilities/datasource';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { getIsSbImagePortrait } from '@/utilities/getIsSbImagePortrait';
 import { SbSliderImageType } from '@/components/Storyblok/Storyblok.types';
+import * as styles from './ImageSlider.styles';
 
 type ImageSliderProps = React.HTMLAttributes<HTMLDivElement> & {
   slides: SbSliderImageType[];
@@ -32,13 +36,15 @@ export const ImageSlider = ({
 }: ImageSliderProps) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [pagerOffset, setPagerOffset] = useState(0);
-  const [modalOpen, setModalOpen] = useState(false);
   const [showOverlay, setShowOverlay] = useState(true);
   const pagerWindowRef = useRef<HTMLDivElement>(null);
   const pagerRef = useRef<HTMLUListElement>(null);
   const expandButtonRef = useRef<HTMLButtonElement>(null);
   const slideshow = useRef(null);
   const modalSlideshow = useRef(null);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   const sliderSettings = {
     arrows: false,
@@ -80,6 +86,7 @@ export const ImageSlider = ({
               <button
                 type="button"
                 onClick={openModal}
+                aria-haspopup="dialog"
                 className="group font-semibold text-digital-red-light leading-none gc-card hocus-visible:text-gc-black hocus-visible:underline"
                 aria-label="Expand gallery"
                 ref={expandButtonRef}
@@ -155,10 +162,10 @@ export const ImageSlider = ({
   };
 
   const adjustPagerPosition = () => {
-    const windowBox = pagerWindowRef.current.getBoundingClientRect();
-    const pagerBox = pagerRef.current.getBoundingClientRect();
+    const windowBox = pagerWindowRef.current?.getBoundingClientRect();
+    const pagerBox = pagerRef.current?.getBoundingClientRect();
     const activeItem =
-      pagerWindowRef.current.getElementsByClassName('slick-active')[0];
+      pagerWindowRef.current?.getElementsByClassName('slick-active')[0];
     const activeItemBox = activeItem.getBoundingClientRect();
 
     if (activeItemBox.right > windowBox.right) {
@@ -185,7 +192,7 @@ export const ImageSlider = ({
   };
 
   const closeModal = () => {
-    setModalOpen(false);
+    setIsModalOpen(false);
     if (expandButtonRef.current) {
       expandButtonRef.current.focus();
     }
@@ -193,8 +200,10 @@ export const ImageSlider = ({
   };
 
   const openModal = () => {
-    modalSlideshow.current.slickGoTo(activeSlide, true);
-    setModalOpen(true);
+    // if (modalSlideshow.current) {
+    //   modalSlideshow.current.slickGoTo(activeSlide, true);
+    // }
+    setIsModalOpen(true);
   };
 
   return (
@@ -205,20 +214,18 @@ export const ImageSlider = ({
           ref={slideshow}
           {...sliderSettings}
         >
-          {slides?.map((slide) => {
-            return (
-              <div
-                className="gallery-slideshow--slide aspect-w-16 aspect-h-9"
-                key={slide._uid}
-              >
-                <img
-                  src={getProcessedImage(slide?.image.filename, '0x900')}
-                  alt={slide?.image.alt}
-                  className="object-contain object-bottom"
-                />
-              </div>
-            );
-          })}
+          {slides?.map((slide) => (
+            <div
+              className="gallery-slideshow--slide aspect-w-16 aspect-h-9"
+              key={slide._uid}
+            >
+              <img
+                src={getProcessedImage(slide?.image.filename, '0x900')}
+                alt={slide?.image.alt}
+                className="object-contain object-bottom"
+              />
+            </div>
+          ))}
         </Slider>
       </section>
       {/* <Modal
@@ -262,6 +269,83 @@ export const ImageSlider = ({
           </div>
         </div>
       </Modal> */}
+      <Transition show={isModalOpen}>
+        <Dialog onClose={() => setIsModalOpen(false)} className={styles.dialog}>
+          <TransitionChild
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-300"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className={styles.dialogOverlay} />
+          </TransitionChild>
+          <TransitionChild
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+            <div className={styles.dialogWrapper}>
+              <DialogPanel className={styles.dialogPanel}>
+                <DialogTitle className={styles.srOnly}>{ariaLabel}</DialogTitle>
+                <div ref={panelRef} className={styles.contentWrapper}>
+                  <button
+                    type="button"
+                    aria-label="Close modal"
+                    onClick={() => setIsModalOpen(false)}
+                    className={styles.modalClose}
+                  >
+                    <HeroIcon
+                      noBaseStyle
+                      focusable="false"
+                      strokeWidth={2}
+                      icon="close"
+                      className={styles.modalIcon}
+                    />
+                  </button>
+                  <div className="cc max-w-1000">
+                    <Slider
+                      className="gallery-slideshow--modal"
+                      ref={modalSlideshow}
+                      {...modalSliderSettings}
+                    >
+                      {slides.map((slide, index) => {
+                        return (
+                          <div
+                            className="gallery-slideshow--slide"
+                            // index={index}
+                            key={slide._uid}
+                          >
+                            <img
+                              src={slide?.image.filename}
+                              alt={slide?.image.alt}
+                            />
+                          </div>
+                        );
+                      })}
+                    </Slider>
+                  </div>
+                  <div className="gallery-slideshow--infobar">
+                    <div
+                      className="gallery-slideshow--counter"
+                      aria-label={`Slide ${activeSlide + 1} of ${slides?.length}`}
+                    >
+                      {`${activeSlide + 1}/${slides?.length}`}
+                    </div>
+                    <div className="gallery-slideshow--caption">
+                      <RichText wysiwyg={slides[activeSlide]['caption']} />
+                    </div>
+                  </div>
+                </div>
+              </DialogPanel>
+            </div>
+          </TransitionChild>
+        </Dialog>
+      </Transition>
     </>
   );
 };
