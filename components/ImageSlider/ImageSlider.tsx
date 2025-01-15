@@ -143,6 +143,7 @@ export const ImageSlider = ({
   };
 
   const modalSliderSettings = {
+    swipeToSlide: true,
     nextArrow: (
       <button type="button">
         <span className="sr-only">Next Slide</span>
@@ -200,9 +201,9 @@ export const ImageSlider = ({
   };
 
   const openModal = () => {
-    // if (modalSlideshow.current) {
-    //   modalSlideshow.current.slickGoTo(activeSlide, true);
-    // }
+    if (modalSlideshow.current) {
+      modalSlideshow.current.slickGoTo(activeSlide, true);
+    }
     setIsModalOpen(true);
   };
 
@@ -228,49 +229,8 @@ export const ImageSlider = ({
           ))}
         </Slider>
       </section>
-      {/* <Modal
-        isOpen={modalOpen}
-        onClose={closeModal}
-        outerContainerClasses="centered-container flex-container su-pt-1"
-        innerContainerClasses="su-pt-2"
-        ariaLabel={ariaLabel + ' full screen view'}
-      >
-        <div className="gallery-slideshow--modal-wrapper">
-          <Slider
-            className="gallery-slideshow--modal"
-            ref={modalSlideshow}
-            {...modalSliderSettings}
-          >
-            {slides.map((slide, index) => {
-              return (
-                <div
-                  className="gallery-slideshow--slide"
-                  //index={index}
-                  key={slide._uid}
-                >
-                  <img
-                    src={slide?.image.filename}
-                    alt={slide?.image.alt}
-                  />
-                </div>
-              );
-            })}
-          </Slider>
-          <div className="gallery-slideshow--infobar">
-            <div
-              className="gallery-slideshow--counter"
-              aria-label={`Slide ${activeSlide + 1} of ${slides.length}`}
-            >
-              {`${activeSlide + 1}/${slides.length}`}
-            </div>
-            <div className="gallery-slideshow--caption">
-              <RichText wysiwyg={slides[activeSlide]['caption']} />
-            </div>
-          </div>
-        </div>
-      </Modal> */}
       <Transition show={isModalOpen}>
-        <Dialog onClose={() => setIsModalOpen(false)} className={styles.dialog}>
+        <Dialog onClose={closeModal} className={styles.dialog}>
           <TransitionChild
             enter="ease-out duration-300"
             enterFrom="opacity-0"
@@ -282,13 +242,13 @@ export const ImageSlider = ({
             <div className={styles.dialogOverlay} />
           </TransitionChild>
           <TransitionChild
-              enter="ease-out duration-300"
-              enterFrom="opacity-0 scale-95"
-              enterTo="opacity-100 scale-100"
-              leave="ease-in duration-200"
-              leaveFrom="opacity-100 scale-100"
-              leaveTo="opacity-0 scale-95"
-            >
+            enter="ease-out duration-300"
+            enterFrom="opacity-0 scale-95"
+            enterTo="opacity-100 scale-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100 scale-100"
+            leaveTo="opacity-0 scale-95"
+          >
             <div className={styles.dialogWrapper}>
               <DialogPanel className={styles.dialogPanel}>
                 <DialogTitle className={styles.srOnly}>{ariaLabel}</DialogTitle>
@@ -296,7 +256,7 @@ export const ImageSlider = ({
                   <button
                     type="button"
                     aria-label="Close modal"
-                    onClick={() => setIsModalOpen(false)}
+                    onClick={closeModal}
                     className={styles.modalClose}
                   >
                     <HeroIcon
@@ -307,38 +267,38 @@ export const ImageSlider = ({
                       className={styles.modalIcon}
                     />
                   </button>
-                  <div className="cc max-w-1000">
+                  <section aria-label={`${ariaLabel} full screen view`} className="rs-mt-8 relative cc">
                     <Slider
-                      className="gallery-slideshow--modal"
+                      className="relative gallery-slideshow--modal leading-none max-w-1000"
                       ref={modalSlideshow}
                       {...modalSliderSettings}
                     >
-                      {slides.map((slide, index) => {
-                        return (
-                          <div
-                            className="gallery-slideshow--slide"
-                            // index={index}
-                            key={slide._uid}
-                          >
-                            <img
-                              src={slide?.image.filename}
-                              alt={slide?.image.alt}
-                            />
-                          </div>
-                        );
-                      })}
+                      {slides.map((slide) => (
+                        <div
+                          className="gallery-slideshow--slide aspect-w-16 aspect-h-9"
+                          key={slide?._uid}
+                        >
+                          <img
+                            src={getProcessedImage(slide?.image.filename, '0x900')}
+                            alt={slide?.image.alt}
+                            className="object-contain object-bottom"
+                          />
+                        </div>
+                      ))}
                     </Slider>
-                  </div>
-                  <div className="gallery-slideshow--infobar">
+                  </section>
+                  <div className="relative infobar mt-9">
                     <div
-                      className="gallery-slideshow--counter"
+                      className="counter leading-none shrink-0"
                       aria-label={`Slide ${activeSlide + 1} of ${slides?.length}`}
                     >
                       {`${activeSlide + 1}/${slides?.length}`}
                     </div>
-                    <div className="gallery-slideshow--caption">
-                      <RichText wysiwyg={slides[activeSlide]['caption']} />
-                    </div>
+                    <RichText
+                      textColor="white"
+                      wysiwyg={slides[activeSlide]['caption']}
+                      className="rs-mt-0 max-w-prose *:leading-display *:gc-caption"
+                    />
                   </div>
                 </div>
               </DialogPanel>
