@@ -4,6 +4,7 @@ import {
 } from '@headlessui/react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
+import { useOnClickOutside } from 'usehooks-ts';
 import { type WidthType } from '@/components/WidthBox';
 import { HeroIcon } from '@/components/HeroIcon';
 import { NextPrevButton } from '@/components/ImageSlider/NextPrevButton';
@@ -47,6 +48,10 @@ export const ImageSlider = ({
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
+
+  useOnClickOutside(panelRef, () => {
+    setIsModalOpen(false);
+  });
 
   const sliderSettings = {
     arrows: false,
