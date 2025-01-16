@@ -4,7 +4,7 @@ import {
 } from '@headlessui/react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
-import { WidthBox, type WidthType } from '@/components/WidthBox';
+import { type WidthType } from '@/components/WidthBox';
 import { HeroIcon } from '@/components/HeroIcon';
 import { NextPrevButton } from '@/components/ImageSlider/NextPrevButton';
 import { RichText } from '@/components/RichText';
@@ -50,6 +50,18 @@ export const ImageSlider = ({
 
   const sliderSettings = {
     arrows: false,
+    nextArrow: (
+      <NextPrevButton
+        direction="next"
+        isLightText={isLightText}
+      />
+    ),
+    prevArrow: (
+      <NextPrevButton
+        direction="prev"
+        isLightText={isLightText}
+      />
+    ),
     accessibility: true,
     swipeToSlide: true,
     lazyLoad: 'ondemand' as const,
@@ -79,6 +91,18 @@ export const ImageSlider = ({
     appendDots: (dots: React.ReactNode) => {
       return (
         <div>
+          <NextPrevButton
+            direction="prev"
+            isLightText={isLightText}
+            onClick={clickPrev}
+            className="absolute -left-80 top-[-30cqw]"
+          />
+          <NextPrevButton
+            direction="next"
+            isLightText={isLightText}
+            onClick={clickNext}
+            className="absolute -right-80 top-[-30cqw]"
+          />
           <div className="infobar flex justify-between mt-9">
             <div aria-hidden="true" className="counter leading-none">
               {`${activeSlide + 1}/${slides?.length}`}
@@ -107,12 +131,6 @@ export const ImageSlider = ({
           />
 
           <div className="flex items-center justify-center rs-mt-0">
-            <NextPrevButton
-              direction="prev"
-              isLightText={isLightText}
-              className="mr-16 sm:mr-10"
-              onClick={clickPrev}
-            />
             <div
               className="relative hidden sm:block overflow-hidden grow"
               ref={pagerWindowRef}
@@ -124,20 +142,14 @@ export const ImageSlider = ({
               >
                 {dots}
               </ul>
-              <div aria-hidden="true" className={styles.thumbWindowOverlay(isLightText)} />
+              {/* <div aria-hidden="true" className={styles.thumbWindowOverlay(isLightText)} /> */}
             </div>
-            <NextPrevButton
-              direction="next"
-              isLightText={isLightText}
-              className=""
-              onClick={clickNext}
-            />
           </div>
         </div>
       );
     },
     dots: true,
-    dotsClass: 'gallery-slideshow--bottom',
+    dotsClass: 'relative gallery-slideshow--bottom @container',
   };
 
   const modalSliderSettings = {
@@ -217,9 +229,9 @@ export const ImageSlider = ({
 
   return (
     <>
-      <WidthBox boundingWidth={boundingWidth} width={width} aria-label={ariaLabel} {...props}>
+      <section aria-label={ariaLabel} {...props}>
         <Slider
-          className="leading-none"
+          className="leading-none grid grid-rows-2"
           ref={slideshow}
           {...sliderSettings}
         >
@@ -236,7 +248,7 @@ export const ImageSlider = ({
             </div>
           ))}
         </Slider>
-      </WidthBox>
+      </section>
       <Transition show={isModalOpen}>
         <Dialog onClose={closeModal} className={styles.dialog}>
           <TransitionChild
