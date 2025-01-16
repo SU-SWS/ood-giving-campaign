@@ -1,12 +1,12 @@
 import React, { useState, useRef } from 'react';
 import {
-  Description, Dialog, DialogPanel, DialogTitle, Transition, TransitionChild,
+  Dialog, DialogPanel, DialogTitle, Transition, TransitionChild,
 } from '@headlessui/react';
-import { cnb } from 'cnbuilder';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import { WidthBox, type WidthType } from '@/components/WidthBox';
 import { HeroIcon } from '@/components/HeroIcon';
+import { NextPrevButton } from '@/components/ImageSlider/NextPrevButton';
 import { RichText } from '@/components/RichText';
 import { type MarginType } from '@/utilities/datasource';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
@@ -16,6 +16,7 @@ import * as styles from './ImageSlider.styles';
 
 type ImageSliderProps = React.HTMLAttributes<HTMLDivElement> & {
   slides: SbSliderImageType[];
+  isLightText?: boolean;
   ariaLabel?: string;
   showExpandLink?: boolean;
   boundingWidth?: 'site' | 'full';
@@ -26,6 +27,7 @@ type ImageSliderProps = React.HTMLAttributes<HTMLDivElement> & {
 
 export const ImageSlider = ({
   slides,
+  isLightText,
   ariaLabel,
   showExpandLink,
   boundingWidth = 'site',
@@ -50,19 +52,21 @@ export const ImageSlider = ({
     arrows: false,
     accessibility: true,
     swipeToSlide: true,
+    slide: 'ul',
     lazyLoad: 'ondemand' as const,
     customPaging: (i: number) => {
       const slide = slides[i];
+      const isPortrait = getIsSbImagePortrait(slide?.image.filename);
       return (
         <button
           type="button"
           key={slide?._uid}
           aria-label={`Go to slide ${i + 1}`}
-          aria-current={activeSlide === i ? true : undefined}
-          className={cnb('gallery-slideshow--thumbnail min-w-60 inline-block box-content hocus-visible:opacity-100 hocus-visible:border-b-digital-red-light transition-all border-b-[3px] py-6', activeSlide === i ? 'opacity-100 border-b-[3px] border-b-digital-red-light' : 'opacity-70 border-b-transparent')}
+          aria-current={activeSlide === i ? 'true' : undefined}
+          className={styles.thumbButton(activeSlide === i, isPortrait)}
         >
           <img
-            src={getIsSbImagePortrait(slide?.image.filename) ? getProcessedImage(slide?.image.filename, '0x100') : getProcessedImage(slide?.image.filename, '100x0')}
+            src={isPortrait ? getProcessedImage(slide?.image.filename, '65x0') : getProcessedImage(slide?.image.filename, '100x0')}
             alt={slide?.image.alt || ''}
             className=""
           />
@@ -87,7 +91,7 @@ export const ImageSlider = ({
                 type="button"
                 onClick={openModal}
                 aria-haspopup="dialog"
-                className="group font-semibold text-digital-red-light leading-none gc-card hocus-visible:text-gc-black hocus-visible:underline"
+                className={styles.expandButton(isLightText)}
                 aria-label="Expand gallery"
                 ref={expandButtonRef}
               >
@@ -98,20 +102,18 @@ export const ImageSlider = ({
           </div>
 
           <RichText
-            textColor="black-70"
-            wysiwyg={slides[activeSlide]['caption']}
-            className="rs-mt-0 max-w-prose *:leading-display *:gc-caption"
+            textColor={isLightText ? 'white' : 'black-70'}
+            wysiwyg={slides[activeSlide]?.caption}
+            className="rs-mt-0 max-w-prose *:leading-snug *:gc-caption"
           />
 
           <div className="controls flex items-center justify-center rs-mt-0">
-            <button
-              type="button"
-              className="group flex items-center justify-center size-40 md:size-55 rounded-full border-[2px] border-gc-black shrink-0 hocus-visible:border-digital-red-light hocus-visible:bg-digital-red-light mr-10"
+            <NextPrevButton
+              direction="prev"
+              isLightText={isLightText}
+              className="mr-10"
               onClick={clickPrev}
-            >
-              <span className="sr-only">Previous Slide</span>
-              <HeroIcon icon="chevron-left" className="inline-block stroke-[3px] group-hocus-visible:text-white" />
-            </button>
+            />
             <div
               className={`pager-window relative hidden sm:block overflow-hidden grow ${
                 showOverlay ? 'overlay' : ''
@@ -126,14 +128,12 @@ export const ImageSlider = ({
                 {dots}
               </ul>
             </div>
-            <button
-              type="button"
-              className="group flex items-center justify-center size-40 md:size-55 rounded-full border-[2px] border-gc-black shrink-0 hocus-visible:border-digital-red-light hocus-visible:bg-digital-red-light ml-10"
+            <NextPrevButton
+              direction="next"
+              isLightText={isLightText}
+              className="ml-10"
               onClick={clickNext}
-            >
-              <span className="sr-only">Next Slide</span>
-              <HeroIcon icon="chevron-right" className="inline-block stroke-[3px] group-hocus-visible:text-white" />
-            </button>
+            />
           </div>
         </div>
       );
@@ -145,13 +145,13 @@ export const ImageSlider = ({
   const modalSliderSettings = {
     swipeToSlide: true,
     nextArrow: (
-      <button type="button">
+      <button type="button" className="group flex items-center justify-center size-40 md:size-55 rounded-full border-[2px] border-white shrink-0 hocus-visible:border-digital-red-light hocus-visible:bg-digital-red-light mr-10">
         <span className="sr-only">Next Slide</span>
         <HeroIcon icon="chevron-right" className="inline-block stroke-[3px] group-hocus-visible:text-white" />
       </button>
     ),
     prevArrow: (
-      <button type="button">
+      <button type="button" className="group flex items-center justify-center size-40 md:size-55 rounded-full border-[2px] border-white shrink-0 hocus-visible:border-digital-red-light hocus-visible:bg-digital-red-light ml-10">
         <span className="sr-only">Previous Slide</span>
         <HeroIcon icon="chevron-left" className="inline-block stroke-[3px] group-hocus-visible:text-white" />
       </button>
@@ -296,7 +296,7 @@ export const ImageSlider = ({
                     </div>
                     <RichText
                       textColor="white"
-                      wysiwyg={slides[activeSlide]['caption']}
+                      wysiwyg={slides[activeSlide]?.caption}
                       className="rs-mt-0 max-w-prose *:leading-display *:gc-caption"
                     />
                   </div>

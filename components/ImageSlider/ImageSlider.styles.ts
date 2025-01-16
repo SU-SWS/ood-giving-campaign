@@ -1,5 +1,14 @@
-import cnb from 'cnbuilder';
+import { cnb } from 'cnbuilder';
 
+export const thumbButton = (active: boolean, isPortrait: boolean) => cnb(
+  'inline-block  hocus-visible:opacity-100 hocus-visible:border-b-digital-red-light hocus-visible:-translate-y-9 transition-all border-b-[3px] pb-6 pt-9',
+  active ? 'opacity-100 border-b-[3px] border-b-digital-red-light -translate-y-8' : 'opacity-70 border-b-transparent',
+  isPortrait ? 'w-50 md:w-65' : 'w-80 md:w-100',
+);
+export const expandButton = (isLightText: boolean) => cnb(
+  'group font-semibold leading-none gc-card hocus-visible:underline',
+  isLightText ? 'text-digital-red-xlight hocus-visible:text-white' : 'text-digital-red-light hocus-visible:text-gc-black',
+);
 
 // Modal styles
 export const dialog = 'relative z-[150]';

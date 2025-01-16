@@ -13,6 +13,7 @@ type SbImageSliderProps = {
       image: SbImageType;
       caption?: StoryblokRichtext;
     }[];
+    isLightText?: boolean;
     ariaLabel?: string;
     showExpandLink?: boolean;
     boundingWidth?: 'site' | 'full';
@@ -27,6 +28,7 @@ export const SbImageSlider = ({
   blok: {
     images,
     ariaLabel,
+    isLightText,
     showExpandLink,
     boundingWidth = 'full',
     width,
@@ -43,8 +45,8 @@ export const SbImageSlider = ({
   return (
     <ImageSlider
       {...storyblokEditable(blok)}
-      className="gallery-slideshow"
       slides={images}
+      isLightText={isLightText}
       ariaLabel={ariaLabel}
       showExpandLink={showExpandLink}
       boundingWidth={boundingWidth}
