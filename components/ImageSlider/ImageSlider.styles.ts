@@ -10,6 +10,11 @@ export const expandButton = (isLightText: boolean) => cnb(
   isLightText ? 'text-digital-red-xlight hocus-visible:text-white' : 'text-digital-red-light hocus-visible:text-gc-black',
 );
 
+export const thumbWindowOverlay = (isLightText: boolean) => cnb(
+  'absolute inset-0 bg-gradient-to-l via-5% via-transparent pointer-events-none',
+  isLightText ? 'from-gc-black' : 'from-white',
+);
+
 // Modal styles
 export const dialog = 'relative z-[150]';
 export const srOnly = 'sr-only';

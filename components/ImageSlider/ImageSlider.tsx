@@ -103,11 +103,12 @@ export const ImageSlider = ({
 
           <RichText
             textColor={isLightText ? 'white' : 'black-70'}
+            linkColor={isLightText ? 'digital-red-xlight' : 'unset'}
             wysiwyg={slides[activeSlide]?.caption}
             className="rs-mt-0 max-w-prose *:leading-snug *:gc-caption"
           />
 
-          <div className="controls flex items-center justify-center rs-mt-0">
+          <div className="flex items-center justify-center rs-mt-0">
             <NextPrevButton
               direction="prev"
               isLightText={isLightText}
@@ -115,9 +116,7 @@ export const ImageSlider = ({
               onClick={clickPrev}
             />
             <div
-              className={`pager-window relative hidden sm:block overflow-hidden grow ${
-                showOverlay ? 'overlay' : ''
-              }`}
+              className="relative hidden sm:block overflow-hidden grow"
               ref={pagerWindowRef}
             >
               <ul
@@ -127,11 +126,12 @@ export const ImageSlider = ({
               >
                 {dots}
               </ul>
+              <div aria-hidden="true" className={styles.thumbWindowOverlay(isLightText)} />
             </div>
             <NextPrevButton
               direction="next"
               isLightText={isLightText}
-              className="ml-10"
+              className=""
               onClick={clickNext}
             />
           </div>
@@ -211,15 +211,15 @@ export const ImageSlider = ({
 
   return (
     <>
-      <section aria-label={ariaLabel} {...props}>
+      <WidthBox boundingWidth={boundingWidth} width={width} aria-label={ariaLabel} {...props}>
         <Slider
-          className="gallery-slideshow--slides leading-none"
+          className="leading-none"
           ref={slideshow}
           {...sliderSettings}
         >
           {slides?.map((slide) => (
             <div
-              className="gallery-slideshow--slide aspect-w-16 aspect-h-9"
+              className="aspect-w-16 aspect-h-9"
               key={slide._uid}
             >
               <img
@@ -230,7 +230,7 @@ export const ImageSlider = ({
             </div>
           ))}
         </Slider>
-      </section>
+      </WidthBox>
       <Transition show={isModalOpen}>
         <Dialog onClose={closeModal} className={styles.dialog}>
           <TransitionChild
@@ -253,7 +253,7 @@ export const ImageSlider = ({
           >
             <div className={styles.dialogWrapper}>
               <DialogPanel className={styles.dialogPanel}>
-                <DialogTitle className={styles.srOnly}>{ariaLabel}</DialogTitle>
+                <DialogTitle className={styles.srOnly}>{`${ariaLabel} full screen view`}</DialogTitle>
                 <div ref={panelRef} className={styles.contentWrapper}>
                   <button
                     type="button"
@@ -271,17 +271,17 @@ export const ImageSlider = ({
                   </button>
                   <section aria-label={`${ariaLabel} full screen view`} className="mt-90 md:mt-100 relative cc max-w-1500 mx-auto">
                     <Slider
-                      className="modal-slider relative !flex items-center gap-30 leading-none"
+                      className="relative !flex items-center gap-30 leading-none"
                       ref={modalSlideshow}
                       {...modalSliderSettings}
                     >
                       {slides.map((slide) => (
                         <div
-                          className="gallery-slideshow--slide aspect-w-16 aspect-h-9"
+                          className="aspect-w-16 aspect-h-9"
                           key={slide?._uid}
                         >
                           <img
-                            src={getProcessedImage(slide?.image.filename, '0x900')}
+                            src={getProcessedImage(slide?.image.filename, '0x800')}
                             alt={slide?.image.alt}
                             className="object-contain object-bottom"
                           />
@@ -289,17 +289,18 @@ export const ImageSlider = ({
                       ))}
                     </Slider>
                   </section>
-                  <div className="relative infobar mt-9">
-                    <div
-                      className="counter leading-none shrink-0"
+                  <div className="relative mt-9">
+                    <span
+                      className="block leading-none shrink-0 text-center"
                       aria-label={`Slide ${activeSlide + 1} of ${slides?.length}`}
                     >
                       {`${activeSlide + 1}/${slides?.length}`}
-                    </div>
+                    </span>
                     <RichText
                       textColor="white"
+                      linkColor="digital-red-xlight"
                       wysiwyg={slides[activeSlide]?.caption}
-                      className="rs-mt-0 max-w-prose *:leading-display *:gc-caption"
+                      className="rs-mt-0 max-w-prose mx-auto *:leading-snug *:gc-caption"
                     />
                   </div>
                 </div>
