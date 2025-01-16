@@ -38,7 +38,6 @@ export const ImageSlider = ({
 }: ImageSliderProps) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [pagerOffset, setPagerOffset] = useState(0);
-  const [showOverlay, setShowOverlay] = useState(true);
   const pagerWindowRef = useRef<HTMLDivElement>(null);
   const pagerRef = useRef<HTMLUListElement>(null);
   const expandButtonRef = useRef<HTMLButtonElement>(null);
@@ -52,7 +51,6 @@ export const ImageSlider = ({
     arrows: false,
     accessibility: true,
     swipeToSlide: true,
-    slide: 'ul',
     lazyLoad: 'ondemand' as const,
     customPaging: (i: number) => {
       const slide = slides[i];
@@ -112,7 +110,7 @@ export const ImageSlider = ({
             <NextPrevButton
               direction="prev"
               isLightText={isLightText}
-              className="mr-10"
+              className="mr-16 sm:mr-10"
               onClick={clickPrev}
             />
             <div
@@ -143,19 +141,21 @@ export const ImageSlider = ({
   };
 
   const modalSliderSettings = {
+    accessibility: true,
     swipeToSlide: true,
+    lazyLoad: 'ondemand' as const,
     nextArrow: (
       <NextPrevButton
-      direction="next"
-      isLightText
-      className="ml-10"
-    />
+        direction="next"
+        isLightText
+        isModalDesktopButton
+      />
     ),
     prevArrow: (
       <NextPrevButton
         direction="prev"
         isLightText
-        className="mr-10"
+        isModalDesktopButton
       />
     ),
     afterChange: (i: number) => {
@@ -177,22 +177,28 @@ export const ImageSlider = ({
       const newOffset =
         currentOffset + (windowBox.right - activeItemBox.right) - rightGutter;
       setPagerOffset(newOffset);
-      setShowOverlay(false);
     } else if (activeItemBox.left < windowBox.left) {
       const currentOffset = pagerBox.left - windowBox.left;
       const newOffset = currentOffset + (windowBox.left - activeItemBox.left);
       setPagerOffset(newOffset);
-      setShowOverlay(true);
     }
   };
 
   const clickPrev = () => {
-    slideshow.current.slickPrev();
+    slideshow.current?.slickPrev();
   };
 
   const clickNext = () => {
-    slideshow.current.slickNext();
+    slideshow.current?.slickNext();
   };
+
+  const clickModalPrev = () => {
+    modalSlideshow.current?.slickPrev();
+  }
+
+  const clickModalNext = () => {
+    modalSlideshow.current?.slickNext();
+  }
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -303,6 +309,20 @@ export const ImageSlider = ({
                       className="rs-mt-0 max-w-prose mx-auto *:leading-snug *:gc-caption"
                     />
                   </div>
+                </div>
+                <div className="flex gap-16 items-center justify-center mt-9">
+                  <NextPrevButton
+                    direction="prev"
+                    isLightText
+                    onClick={clickModalPrev}
+                    className="block sm:hidden"
+                  />
+                  <NextPrevButton
+                    direction="next"
+                    isLightText
+                    onClick={clickModalNext}
+                    className="block sm:hidden"
+                  />
                 </div>
               </DialogPanel>
             </div>
