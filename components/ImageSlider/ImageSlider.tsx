@@ -13,6 +13,7 @@ import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { getIsSbImagePortrait } from '@/utilities/getIsSbImagePortrait';
 import { SbSliderImageType } from '@/components/Storyblok/Storyblok.types';
 import * as styles from './ImageSlider.styles';
+import { SrOnlyText } from '../Typography';
 
 type ImageSliderProps = React.HTMLAttributes<HTMLDivElement> & {
   slides: SbSliderImageType[];
@@ -59,14 +60,13 @@ export const ImageSlider = ({
         <button
           type="button"
           key={slide?._uid}
-          aria-label={`Go to slide ${i + 1}`}
+          aria-label={`Go to slide ${i + 1} ${slide?.alt || ''}`}
           aria-current={activeSlide === i ? 'true' : undefined}
           className={styles.thumbButton(activeSlide === i, isPortrait)}
         >
           <img
             src={isPortrait ? getProcessedImage(slide?.image.filename, '65x0') : getProcessedImage(slide?.image.filename, '100x0')}
-            alt={slide?.image.alt || ''}
-            className=""
+            alt=""
           />
         </button>
       );
@@ -80,10 +80,10 @@ export const ImageSlider = ({
       return (
         <div>
           <div className="infobar flex justify-between mt-9">
-            <div className="counter leading-none">
+            <div aria-hidden="true" className="counter leading-none">
               {`${activeSlide + 1}/${slides?.length}`}
-              <span className="sr-only">{`Slide ${activeSlide + 1} of ${slides?.length}`}</span>
             </div>
+            <SrOnlyText>{`Slide ${activeSlide + 1} of ${slides?.length}`}</SrOnlyText>
             {showExpandLink && (
               <button
                 type="button"
@@ -296,12 +296,10 @@ export const ImageSlider = ({
                     </Slider>
                   </section>
                   <div className="relative mt-9">
-                    <span
-                      className="block leading-none shrink-0 text-center"
-                      aria-label={`Slide ${activeSlide + 1} of ${slides?.length}`}
-                    >
+                    <span aria-hidden="true" className="block leading-none shrink-0 text-center">
                       {`${activeSlide + 1}/${slides?.length}`}
                     </span>
+                    <SrOnlyText>{`Slide ${activeSlide + 1} of ${slides?.length}`}</SrOnlyText>
                     <RichText
                       textColor="white"
                       linkColor="digital-red-xlight"

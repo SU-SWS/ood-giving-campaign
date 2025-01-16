@@ -6,7 +6,7 @@ export const thumbButton = (active: boolean, isPortrait: boolean) => cnb(
   isPortrait ? 'w-50 md:w-65' : 'w-80 md:w-100',
 );
 export const expandButton = (isLightText: boolean) => cnb(
-  'group font-semibold leading-none gc-card hocus-visible:underline',
+  'group hidden sm:inline-block font-semibold leading-none gc-card hocus-visible:underline',
   isLightText ? 'text-digital-red-xlight hocus-visible:text-white' : 'text-digital-red-light hocus-visible:text-gc-black',
 );
 

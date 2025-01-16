@@ -104,6 +104,7 @@ export type SbImageHotspotType = {
 // Used for Image Slider component
 export type SbSliderImageType = {
   _uid: string;
-  image: SbImageType;
+  image?: SbImageType;
+  alt?: string;
   caption?: StoryblokRichtext;
 };
