@@ -145,16 +145,18 @@ export const ImageSlider = ({
   const modalSliderSettings = {
     swipeToSlide: true,
     nextArrow: (
-      <button type="button" className="group flex items-center justify-center size-40 md:size-55 rounded-full border-[2px] border-white shrink-0 hocus-visible:border-digital-red-light hocus-visible:bg-digital-red-light mr-10">
-        <span className="sr-only">Next Slide</span>
-        <HeroIcon icon="chevron-right" className="inline-block stroke-[3px] group-hocus-visible:text-white" />
-      </button>
+      <NextPrevButton
+      direction="next"
+      isLightText
+      className="ml-10"
+    />
     ),
     prevArrow: (
-      <button type="button" className="group flex items-center justify-center size-40 md:size-55 rounded-full border-[2px] border-white shrink-0 hocus-visible:border-digital-red-light hocus-visible:bg-digital-red-light ml-10">
-        <span className="sr-only">Previous Slide</span>
-        <HeroIcon icon="chevron-left" className="inline-block stroke-[3px] group-hocus-visible:text-white" />
-      </button>
+      <NextPrevButton
+        direction="prev"
+        isLightText
+        className="mr-10"
+      />
     ),
     afterChange: (i: number) => {
       setActiveSlide(i);
@@ -267,9 +269,9 @@ export const ImageSlider = ({
                       className={styles.modalIcon}
                     />
                   </button>
-                  <section aria-label={`${ariaLabel} full screen view`} className="mt-70 md:mt-100 relative cc">
+                  <section aria-label={`${ariaLabel} full screen view`} className="mt-90 md:mt-100 relative cc max-w-1500 mx-auto">
                     <Slider
-                      className="relative gallery-slideshow--modal leading-none max-w-1500 mx-auto"
+                      className="modal-slider relative !flex items-center gap-30 leading-none"
                       ref={modalSlideshow}
                       {...modalSliderSettings}
                     >
