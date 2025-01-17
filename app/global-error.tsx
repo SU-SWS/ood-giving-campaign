@@ -5,8 +5,8 @@ import { Masthead } from '@/components/Masthead';
 import { Container } from '@/components/Container';
 
 export default function Error({error, reset}: {
-  error: Error & { digest?: string }
-  reset: () => void
+  error: Error & { digest?: string };
+  reset: VoidFunction;
 }) {
   useEffect(() => {
     // Log the error to an error reporting service

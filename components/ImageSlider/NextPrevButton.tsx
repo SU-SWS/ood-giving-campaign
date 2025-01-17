@@ -8,7 +8,7 @@ type NextPrevButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
   direction: 'next' | 'prev';
   isModalDesktopButton?: boolean;
   isLightText?: boolean;
-  onClick?: () => void;
+  onClick?: VoidFunction;
 };
 
 export const NextPrevButton = ({

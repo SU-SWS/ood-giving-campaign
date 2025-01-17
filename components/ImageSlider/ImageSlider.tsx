@@ -42,16 +42,61 @@ export const ImageSlider = ({
   const [pagerOffset, setPagerOffset] = useState(0);
   const pagerWindowRef = useRef<HTMLDivElement>(null);
   const pagerRef = useRef<HTMLUListElement>(null);
-  const expandButtonRef = useRef<HTMLButtonElement>(null);
-  const slideshow = useRef(null);
-  const modalSlideshow = useRef(null);
+  const slideshow = useRef<Slider>(null);
 
+  // Modal states and refs
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const modalSlideshow = useRef<Slider>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
   useOnClickOutside(panelRef, () => {
     setIsModalOpen(false);
   });
+
+  const adjustPagerPosition = () => {
+    const windowBox = pagerWindowRef.current?.getBoundingClientRect();
+    const pagerBox = pagerRef.current?.getBoundingClientRect();
+    const activeItem =
+      pagerWindowRef.current?.getElementsByClassName('slick-active')[0];
+    const activeItemBox = activeItem.getBoundingClientRect();
+
+    if (activeItemBox.right > windowBox.right) {
+      const rightGutter = 26;
+      const currentOffset = pagerBox.left - windowBox.left;
+      const newOffset =
+        currentOffset + (windowBox.right - activeItemBox.right) - rightGutter;
+      setPagerOffset(newOffset);
+    } else if (activeItemBox.left < windowBox.left) {
+      const currentOffset = pagerBox.left - windowBox.left;
+      const newOffset = currentOffset + (windowBox.left - activeItemBox.left);
+      setPagerOffset(newOffset);
+    }
+  };
+
+  const clickPrev = () => {
+    slideshow.current?.slickPrev();
+  };
+
+  const clickNext = () => {
+    slideshow.current?.slickNext();
+  };
+
+  const clickModalPrev = () => {
+    modalSlideshow.current?.slickPrev();
+  };
+
+  const clickModalNext = () => {
+    modalSlideshow.current?.slickNext();
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    slideshow.current?.slickGoTo(activeSlide, true);
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
 
   const sliderSettings = {
     arrows: false,
@@ -92,7 +137,7 @@ export const ImageSlider = ({
       setActiveSlide(i);
       adjustPagerPosition();
     },
-    // This provides the JSX template for the lower half of the slider.
+    // This provides the template for the lower half of the slider.
     appendDots: (dots: React.ReactNode) => {
       return (
         <div>
@@ -120,7 +165,6 @@ export const ImageSlider = ({
                 aria-haspopup="dialog"
                 className={styles.expandButton(isLightText)}
                 aria-label="Expand gallery"
-                ref={expandButtonRef}
               >
                 Expand
                 <HeroIcon icon="expand" className="inline-block ml-02em group-hocus-visible:scale-110" />
@@ -179,57 +223,6 @@ export const ImageSlider = ({
       setActiveSlide(i);
     },
     initialSlide: activeSlide,
-  };
-
-  const adjustPagerPosition = () => {
-    const windowBox = pagerWindowRef.current?.getBoundingClientRect();
-    const pagerBox = pagerRef.current?.getBoundingClientRect();
-    const activeItem =
-      pagerWindowRef.current?.getElementsByClassName('slick-active')[0];
-    const activeItemBox = activeItem.getBoundingClientRect();
-
-    if (activeItemBox.right > windowBox.right) {
-      const rightGutter = 26;
-      const currentOffset = pagerBox.left - windowBox.left;
-      const newOffset =
-        currentOffset + (windowBox.right - activeItemBox.right) - rightGutter;
-      setPagerOffset(newOffset);
-    } else if (activeItemBox.left < windowBox.left) {
-      const currentOffset = pagerBox.left - windowBox.left;
-      const newOffset = currentOffset + (windowBox.left - activeItemBox.left);
-      setPagerOffset(newOffset);
-    }
-  };
-
-  const clickPrev = () => {
-    slideshow.current?.slickPrev();
-  };
-
-  const clickNext = () => {
-    slideshow.current?.slickNext();
-  };
-
-  const clickModalPrev = () => {
-    modalSlideshow.current?.slickPrev();
-  }
-
-  const clickModalNext = () => {
-    modalSlideshow.current?.slickNext();
-  }
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    if (expandButtonRef.current) {
-      expandButtonRef.current.focus();
-    }
-    slideshow.current.slickGoTo(activeSlide, true);
-  };
-
-  const openModal = () => {
-    if (modalSlideshow.current) {
-      modalSlideshow.current.slickGoTo(activeSlide, true);
-    }
-    setIsModalOpen(true);
   };
 
   return (
