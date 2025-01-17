@@ -9,12 +9,12 @@ import { type WidthType } from '@/components/WidthBox';
 import { HeroIcon } from '@/components/HeroIcon';
 import { NextPrevButton } from '@/components/ImageSlider/NextPrevButton';
 import { RichText } from '@/components/RichText';
+import { SrOnlyText } from '@/components/Typography';
 import { type MarginType } from '@/utilities/datasource';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { getIsSbImagePortrait } from '@/utilities/getIsSbImagePortrait';
 import { SbSliderImageType } from '@/components/Storyblok/Storyblok.types';
 import * as styles from './ImageSlider.styles';
-import { SrOnlyText } from '../Typography';
 
 type ImageSliderProps = React.HTMLAttributes<HTMLDivElement> & {
   slides: SbSliderImageType[];
@@ -69,13 +69,13 @@ export const ImageSlider = ({
   //   modalSlideshow.current?.slickNext();
   // };
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
   const closeModal = () => {
     setIsModalOpen(false);
     slideshow.current?.slickGoTo(activeSlide, true);
-  };
-
-  const openModal = () => {
-    setIsModalOpen(true);
   };
 
   const adjustPagerPosition = () => {
@@ -134,16 +134,16 @@ export const ImageSlider = ({
               direction="prev"
               isLightText={isLightText}
               onClick={clickPrev}
-              className="relative sm:absolute sm:-left-80 sm:top-[-30cqw]"
+              className="relative sm:absolute sm:-left-60 md:-left-80 sm:top-[-30cqw]"
             />
             <NextPrevButton
               direction="next"
               isLightText={isLightText}
               onClick={clickNext}
-              className="relative sm:absolute sm:-right-80 sm:top-[-30cqw]"
+              className="relative sm:absolute sm:-right-60 md:-right-80 sm:top-[-30cqw]"
             />
           </div>
-          <div className="infobar flex justify-between mt-9">
+          <div className="flex justify-between mt-9">
             <div aria-hidden="true" className="counter leading-none">
               {`${activeSlide + 1}/${slides?.length}`}
             </div>
@@ -154,7 +154,7 @@ export const ImageSlider = ({
                 onClick={openModal}
                 aria-haspopup="dialog"
                 className={styles.expandButton(isLightText)}
-                aria-label="Expand gallery"
+                aria-label="Expand gallery in full screen modal"
               >
                 Expand
                 <HeroIcon icon="expand" className="inline-block ml-02em group-hocus-visible:scale-110" />
@@ -181,7 +181,6 @@ export const ImageSlider = ({
               >
                 {dots}
               </ul>
-              {/* <div aria-hidden="true" className={styles.thumbWindowOverlay(isLightText)} /> */}
             </div>
           </div>
         </div>
@@ -217,7 +216,7 @@ export const ImageSlider = ({
 
   return (
     <>
-      <section aria-label={ariaLabel} {...props}>
+      <section className="mx-auto w-full sm:w-[calc(100%_-12rem)] md:w-[calc(100%_-17rem)]" aria-label={ariaLabel} {...props}>
         <Slider
           className="leading-none grid grid-rows-2"
           ref={slideshow}
@@ -277,7 +276,7 @@ export const ImageSlider = ({
                   </button>
                   <section aria-label={`${ariaLabel} full screen view`} className="mt-90 md:mt-100 relative cc max-w-1500 mx-auto">
                     <Slider
-                      className="relative !flex items-center gap-30 leading-none"
+                      className="relative !flex items-center gap-20 md:gap-30 leading-none"
                       ref={modalSlideshow}
                       {...modalSliderSettings}
                     >
