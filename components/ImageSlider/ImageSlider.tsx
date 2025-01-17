@@ -53,6 +53,31 @@ export const ImageSlider = ({
     setIsModalOpen(false);
   });
 
+  const clickPrev = () => {
+    slideshow.current?.slickPrev();
+  };
+
+  const clickNext = () => {
+    slideshow.current?.slickNext();
+  };
+
+  // const clickModalPrev = () => {
+  //   modalSlideshow.current?.slickPrev();
+  // };
+
+  // const clickModalNext = () => {
+  //   modalSlideshow.current?.slickNext();
+  // };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    slideshow.current?.slickGoTo(activeSlide, true);
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
   const adjustPagerPosition = () => {
     const windowBox = pagerWindowRef.current?.getBoundingClientRect();
     const pagerBox = pagerRef.current?.getBoundingClientRect();
@@ -73,45 +98,8 @@ export const ImageSlider = ({
     }
   };
 
-  const clickPrev = () => {
-    slideshow.current?.slickPrev();
-  };
-
-  const clickNext = () => {
-    slideshow.current?.slickNext();
-  };
-
-  const clickModalPrev = () => {
-    modalSlideshow.current?.slickPrev();
-  };
-
-  const clickModalNext = () => {
-    modalSlideshow.current?.slickNext();
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    slideshow.current?.slickGoTo(activeSlide, true);
-  };
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
   const sliderSettings = {
     arrows: false,
-    nextArrow: (
-      <NextPrevButton
-        direction="next"
-        isLightText={isLightText}
-      />
-    ),
-    prevArrow: (
-      <NextPrevButton
-        direction="prev"
-        isLightText={isLightText}
-      />
-    ),
     accessibility: true,
     swipeToSlide: true,
     lazyLoad: 'ondemand' as const,
@@ -141,18 +129,20 @@ export const ImageSlider = ({
     appendDots: (dots: React.ReactNode) => {
       return (
         <div>
-          <NextPrevButton
-            direction="prev"
-            isLightText={isLightText}
-            onClick={clickPrev}
-            className="absolute -left-80 top-[-30cqw]"
-          />
-          <NextPrevButton
-            direction="next"
-            isLightText={isLightText}
-            onClick={clickNext}
-            className="absolute -right-80 top-[-30cqw]"
-          />
+          <div className="flex gap-16 justify-center mt-10 sm:mt-0">
+            <NextPrevButton
+              direction="prev"
+              isLightText={isLightText}
+              onClick={clickPrev}
+              className="relative sm:absolute sm:-left-80 sm:top-[-30cqw]"
+            />
+            <NextPrevButton
+              direction="next"
+              isLightText={isLightText}
+              onClick={clickNext}
+              className="relative sm:absolute sm:-right-80 sm:top-[-30cqw]"
+            />
+          </div>
           <div className="infobar flex justify-between mt-9">
             <div aria-hidden="true" className="counter leading-none">
               {`${activeSlide + 1}/${slides?.length}`}
@@ -240,7 +230,7 @@ export const ImageSlider = ({
             >
               <img
                 src={getProcessedImage(slide?.image.filename, '0x900')}
-                alt={slide?.image.alt}
+                alt={slide?.alt || ''}
                 className="object-contain object-bottom"
               />
             </div>
@@ -298,7 +288,7 @@ export const ImageSlider = ({
                         >
                           <img
                             src={getProcessedImage(slide?.image.filename, '0x800')}
-                            alt={slide?.image.alt}
+                            alt={slide?.alt || ''}
                             className="object-contain object-bottom"
                           />
                         </div>
@@ -317,20 +307,6 @@ export const ImageSlider = ({
                       className="rs-mt-0 max-w-prose mx-auto *:leading-snug *:gc-caption"
                     />
                   </div>
-                </div>
-                <div className="flex gap-16 items-center justify-center mt-9">
-                  <NextPrevButton
-                    direction="prev"
-                    isLightText
-                    onClick={clickModalPrev}
-                    className="block sm:hidden"
-                  />
-                  <NextPrevButton
-                    direction="next"
-                    isLightText
-                    onClick={clickModalNext}
-                    className="block sm:hidden"
-                  />
                 </div>
               </DialogPanel>
             </div>
