@@ -1,18 +1,14 @@
 import { cnb } from 'cnbuilder';
 
+export const root = 'mx-auto w-full sm:w-[calc(100%_-12rem)] md:w-[calc(100%_-17rem)]';
 export const thumbButton = (active: boolean, isPortrait: boolean) => cnb(
-  'inline-block  hocus-visible:opacity-100 hocus-visible:border-b-digital-red-light hocus-visible:-translate-y-9 transition-all border-b-[3px] pb-6 pt-9',
-  active ? 'opacity-100 border-b-[3px] border-b-digital-red-light -translate-y-8' : 'opacity-70 border-b-transparent',
+  'inline-block  hocus-visible:opacity-100 hocus-visible:border-b-digital-red-light hocus-visible:-translate-y-9 transition-all border-b-[3px] pt-9 pb-6',
+  active ? 'opacity-100 border-b-[3px] border-b-digital-red-light -translate-y-9' : 'opacity-70 border-b-transparent',
   isPortrait ? 'w-50 md:w-65' : 'w-80 md:w-100',
 );
 export const expandButton = (isLightText: boolean) => cnb(
   'group hidden sm:inline-block font-semibold leading-none gc-card hocus-visible:underline',
   isLightText ? 'text-digital-red-xlight hocus-visible:text-white' : 'text-digital-red-light hocus-visible:text-gc-black',
-);
-
-export const thumbWindowOverlay = (isLightText: boolean) => cnb(
-  'absolute inset-0 bg-gradient-to-l via-5% via-transparent pointer-events-none',
-  isLightText ? 'from-gc-black' : 'from-white',
 );
 
 // Modal styles

@@ -8,6 +8,7 @@ import { useOnClickOutside } from 'usehooks-ts';
 import { type WidthType } from '@/components/WidthBox';
 import { HeroIcon } from '@/components/HeroIcon';
 import { NextPrevButton } from '@/components/ImageSlider/NextPrevButton';
+import { Slide } from '@/components/ImageSlider/Slide';
 import { RichText } from '@/components/RichText';
 import { SrOnlyText } from '@/components/Typography';
 import { type MarginType } from '@/utilities/datasource';
@@ -61,14 +62,6 @@ export const ImageSlider = ({
     slideshow.current?.slickNext();
   };
 
-  // const clickModalPrev = () => {
-  //   modalSlideshow.current?.slickPrev();
-  // };
-
-  // const clickModalNext = () => {
-  //   modalSlideshow.current?.slickNext();
-  // };
-
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -103,6 +96,8 @@ export const ImageSlider = ({
     accessibility: true,
     swipeToSlide: true,
     lazyLoad: 'ondemand' as const,
+    dots: true,
+    dotsClass: 'relative @container',
     customPaging: (i: number) => {
       const slide = slides[i];
       const isPortrait = getIsSbImagePortrait(slide?.image.filename);
@@ -161,14 +156,12 @@ export const ImageSlider = ({
               </button>
             )}
           </div>
-
           <RichText
             textColor={isLightText ? 'white' : 'black-70'}
             linkColor={isLightText ? 'digital-red-xlight' : 'unset'}
             wysiwyg={slides[activeSlide]?.caption}
             className="rs-mt-0 max-w-prose *:leading-snug *:gc-caption"
           />
-
           <div className="flex items-center justify-center rs-mt-0">
             <div
               className="relative hidden sm:block overflow-hidden grow"
@@ -186,8 +179,6 @@ export const ImageSlider = ({
         </div>
       );
     },
-    dots: true,
-    dotsClass: 'relative gallery-slideshow--bottom @container',
   };
 
   const modalSliderSettings = {
@@ -216,23 +207,18 @@ export const ImageSlider = ({
 
   return (
     <>
-      <section className="mx-auto w-full sm:w-[calc(100%_-12rem)] md:w-[calc(100%_-17rem)]" aria-label={ariaLabel} {...props}>
+      <section className={styles.root} aria-label={ariaLabel} {...props}>
         <Slider
           className="leading-none grid grid-rows-2"
           ref={slideshow}
           {...sliderSettings}
         >
           {slides?.map((slide) => (
-            <div
-              className="aspect-w-16 aspect-h-9"
+            <Slide
               key={slide._uid}
-            >
-              <img
-                src={getProcessedImage(slide?.image.filename, '0x900')}
-                alt={slide?.alt || ''}
-                className="object-contain object-bottom"
-              />
-            </div>
+              imageSrc={slide.image?.filename}
+              alt={slide.alt}
+            />
           ))}
         </Slider>
       </section>
@@ -280,17 +266,12 @@ export const ImageSlider = ({
                       ref={modalSlideshow}
                       {...modalSliderSettings}
                     >
-                      {slides.map((slide) => (
-                        <div
-                          className="aspect-w-16 aspect-h-9"
-                          key={slide?._uid}
-                        >
-                          <img
-                            src={getProcessedImage(slide?.image.filename, '0x800')}
-                            alt={slide?.alt || ''}
-                            className="object-contain object-bottom"
-                          />
-                        </div>
+                      {slides?.map((slide) => (
+                        <Slide
+                          key={slide._uid}
+                          imageSrc={slide.image?.filename}
+                          alt={slide.alt}
+                        />
                       ))}
                     </Slider>
                   </section>
