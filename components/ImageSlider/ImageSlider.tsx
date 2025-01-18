@@ -5,7 +5,7 @@ import {
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import { useOnClickOutside } from 'usehooks-ts';
-import { type WidthType } from '@/components/WidthBox';
+import { FlexBox } from '@/components/FlexBox';
 import { HeroIcon } from '@/components/HeroIcon';
 import { NextPrevButton } from '@/components/ImageSlider/NextPrevButton';
 import { Slide } from '@/components/ImageSlider/Slide';
@@ -22,8 +22,6 @@ type ImageSliderProps = React.HTMLAttributes<HTMLDivElement> & {
   isLightText?: boolean;
   ariaLabel?: string;
   showExpandLink?: boolean;
-  boundingWidth?: 'site' | 'full';
-  width?: WidthType;
   marginTop?: MarginType;
   marginBottom?: MarginType;
 }
@@ -33,8 +31,6 @@ export const ImageSlider = ({
   isLightText,
   ariaLabel,
   showExpandLink,
-  boundingWidth = 'site',
-  width,
   marginTop,
   marginBottom,
   ...props
@@ -43,23 +39,23 @@ export const ImageSlider = ({
   const [pagerOffset, setPagerOffset] = useState(0);
   const pagerWindowRef = useRef<HTMLDivElement>(null);
   const pagerRef = useRef<HTMLUListElement>(null);
-  const slideshow = useRef<Slider>(null);
+  const sliderRef = useRef<Slider>(null);
 
   // Modal states and refs
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const modalSlideshow = useRef<Slider>(null);
-  const panelRef = useRef<HTMLDivElement>(null);
+  const modalSliderRef = useRef<Slider>(null);
+  const modalContentRef = useRef<HTMLDivElement>(null);
 
-  useOnClickOutside(panelRef, () => {
+  useOnClickOutside(modalContentRef, () => {
     setIsModalOpen(false);
   });
 
   const clickPrev = () => {
-    slideshow.current?.slickPrev();
+    sliderRef.current?.slickPrev();
   };
 
   const clickNext = () => {
-    slideshow.current?.slickNext();
+    sliderRef.current?.slickNext();
   };
 
   const openModal = () => {
@@ -68,7 +64,7 @@ export const ImageSlider = ({
 
   const closeModal = () => {
     setIsModalOpen(false);
-    slideshow.current?.slickGoTo(activeSlide, true);
+    sliderRef.current?.slickGoTo(activeSlide, true);
   };
 
   const adjustPagerPosition = () => {
@@ -79,7 +75,7 @@ export const ImageSlider = ({
     const activeItemBox = activeItem.getBoundingClientRect();
 
     if (activeItemBox.right > windowBox.right) {
-      const rightGutter = 26;
+      const rightGutter = 10;
       const currentOffset = pagerBox.left - windowBox.left;
       const newOffset =
         currentOffset + (windowBox.right - activeItemBox.right) - rightGutter;
@@ -124,7 +120,7 @@ export const ImageSlider = ({
     appendDots: (dots: React.ReactNode) => {
       return (
         <div>
-          <div className="flex gap-16 justify-center mt-10 sm:mt-0">
+          <FlexBox justifyContent="center" className="gap-16 mt-10 sm:mt-0">
             <NextPrevButton
               direction="prev"
               isLightText={isLightText}
@@ -137,9 +133,9 @@ export const ImageSlider = ({
               onClick={clickNext}
               className="relative sm:absolute sm:-right-60 md:-right-80 sm:top-[-30cqw]"
             />
-          </div>
-          <div className="flex justify-between mt-9">
-            <div aria-hidden="true" className="counter leading-none">
+          </FlexBox>
+          <FlexBox justifyContent="center" className="sm:justify-between mt-9">
+            <div aria-hidden="true" className="counter leading-none text-center">
               {`${activeSlide + 1}/${slides?.length}`}
             </div>
             <SrOnlyText>{`Slide ${activeSlide + 1} of ${slides?.length}`}</SrOnlyText>
@@ -155,14 +151,14 @@ export const ImageSlider = ({
                 <HeroIcon icon="expand" className="inline-block ml-02em group-hocus-visible:scale-110" />
               </button>
             )}
-          </div>
+          </FlexBox>
           <RichText
             textColor={isLightText ? 'white' : 'black-70'}
             linkColor={isLightText ? 'digital-red-xlight' : 'unset'}
             wysiwyg={slides[activeSlide]?.caption}
             className="rs-mt-0 max-w-prose *:leading-snug *:gc-caption"
           />
-          <div className="flex items-center justify-center rs-mt-0">
+          <FlexBox alignItems="center" justifyContent="center" className="rs-mt-0">
             <div
               className="relative hidden sm:block overflow-hidden grow"
               ref={pagerWindowRef}
@@ -175,7 +171,7 @@ export const ImageSlider = ({
                 {dots}
               </ul>
             </div>
-          </div>
+          </FlexBox>
         </div>
       );
     },
@@ -209,8 +205,8 @@ export const ImageSlider = ({
     <>
       <section className={styles.root} aria-label={ariaLabel} {...props}>
         <Slider
-          className="leading-none grid grid-rows-2"
-          ref={slideshow}
+          className="leading-none"
+          ref={sliderRef}
           {...sliderSettings}
         >
           {slides?.map((slide) => (
@@ -245,7 +241,7 @@ export const ImageSlider = ({
             <div className={styles.dialogWrapper}>
               <DialogPanel className={styles.dialogPanel}>
                 <DialogTitle className={styles.srOnly}>{`${ariaLabel} full screen view`}</DialogTitle>
-                <div ref={panelRef} className={styles.contentWrapper}>
+                <div ref={modalContentRef} className={styles.contentWrapper}>
                   <button
                     type="button"
                     aria-label="Close modal"
@@ -263,7 +259,7 @@ export const ImageSlider = ({
                   <section aria-label={`${ariaLabel} full screen view`} className="mt-90 md:mt-100 relative cc max-w-1500 mx-auto">
                     <Slider
                       className="relative !flex items-center gap-20 md:gap-30 leading-none"
-                      ref={modalSlideshow}
+                      ref={modalSliderRef}
                       {...modalSliderSettings}
                     >
                       {slides?.map((slide) => (

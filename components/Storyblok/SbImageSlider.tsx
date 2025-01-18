@@ -1,6 +1,5 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { ImageSlider } from '@/components/ImageSlider';
-import { type WidthType } from '@/components/WidthBox';
 import { type MarginType } from '@/utilities/datasource';
 import { type SbSliderImageType } from '@/components/Storyblok/Storyblok.types';
 
@@ -11,8 +10,6 @@ type SbImageSliderProps = {
     isLightText?: boolean;
     ariaLabel?: string;
     showExpandLink?: boolean;
-    boundingWidth?: 'site' | 'full';
-    width?: WidthType;
     marginTop?: MarginType;
     marginBottom?: MarginType;
     isHidden?: boolean;
@@ -25,8 +22,6 @@ export const SbImageSlider = ({
     ariaLabel,
     isLightText,
     showExpandLink,
-    boundingWidth = 'full',
-    width,
     marginTop,
     marginBottom,
     isHidden,
@@ -44,8 +39,6 @@ export const SbImageSlider = ({
       isLightText={isLightText}
       ariaLabel={ariaLabel}
       showExpandLink={showExpandLink}
-      boundingWidth={boundingWidth}
-      width={width}
       marginTop={marginTop}
       marginBottom={marginBottom}
     />
