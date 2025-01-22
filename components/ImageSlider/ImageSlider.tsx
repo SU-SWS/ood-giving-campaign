@@ -5,6 +5,7 @@ import {
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import { useOnClickOutside } from 'usehooks-ts';
+import { Container } from '@/components/Container';
 import { FlexBox } from '@/components/FlexBox';
 import { HeroIcon } from '@/components/HeroIcon';
 import { NextPrevButton } from '@/components/ImageSlider/NextPrevButton';
@@ -203,7 +204,7 @@ export const ImageSlider = ({
 
   return (
     <>
-      <section className={styles.root} aria-label={ariaLabel} {...props}>
+      <Container as="section" width="full" mt={marginTop} mb={marginBottom} aria-label={ariaLabel} className={styles.root} {...props}>
         <Slider
           className="leading-none"
           ref={sliderRef}
@@ -217,7 +218,8 @@ export const ImageSlider = ({
             />
           ))}
         </Slider>
-      </section>
+        {/* Content from appendDots appears here */}
+      </Container>
       <Transition show={isModalOpen}>
         <Dialog onClose={closeModal} className={styles.dialog}>
           <TransitionChild
@@ -256,33 +258,35 @@ export const ImageSlider = ({
                       className={styles.modalIcon}
                     />
                   </button>
-                  <section aria-label={`${ariaLabel} full screen view`} className="mt-90 md:mt-100 relative cc max-w-1500 mx-auto">
-                    <Slider
-                      className="relative !flex items-center gap-20 md:gap-30 leading-none"
-                      ref={modalSliderRef}
-                      {...modalSliderSettings}
-                    >
-                      {slides?.map((slide) => (
-                        <Slide
-                          key={slide._uid}
-                          imageSrc={slide.image?.filename}
-                          alt={slide.alt}
-                        />
-                      ))}
-                    </Slider>
+                  <section aria-label={`${ariaLabel} full screen view`}>
+                    <Container className="mt-90 md:mt-100 relative max-w-1500 mx-auto">
+                      <Slider
+                        className="relative !flex items-center gap-20 md:gap-30 leading-none"
+                        ref={modalSliderRef}
+                        {...modalSliderSettings}
+                      >
+                        {slides?.map((slide) => (
+                          <Slide
+                            key={slide._uid}
+                            imageSrc={slide.image?.filename}
+                            alt={slide.alt}
+                          />
+                        ))}
+                      </Slider>
+                    </Container>
+                    <div className="relative mt-9">
+                      <span aria-hidden="true" className="block leading-none text-center">
+                        {`${activeSlide + 1}/${slides?.length}`}
+                      </span>
+                      <SrOnlyText>{`Slide ${activeSlide + 1} of ${slides?.length}`}</SrOnlyText>
+                      <RichText
+                        textColor="white"
+                        linkColor="digital-red-xlight"
+                        wysiwyg={slides[activeSlide]?.caption}
+                        className="rs-mt-0 max-w-prose mx-auto *:leading-snug *:gc-caption"
+                      />
+                    </div>
                   </section>
-                  <div className="relative mt-9">
-                    <span aria-hidden="true" className="block leading-none shrink-0 text-center">
-                      {`${activeSlide + 1}/${slides?.length}`}
-                    </span>
-                    <SrOnlyText>{`Slide ${activeSlide + 1} of ${slides?.length}`}</SrOnlyText>
-                    <RichText
-                      textColor="white"
-                      linkColor="digital-red-xlight"
-                      wysiwyg={slides[activeSlide]?.caption}
-                      className="rs-mt-0 max-w-prose mx-auto *:leading-snug *:gc-caption"
-                    />
-                  </div>
                 </div>
               </DialogPanel>
             </div>

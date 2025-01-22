@@ -12,7 +12,7 @@ export const expandButton = (isLightText: boolean) => cnb(
 );
 
 // Modal styles
-export const dialog = 'relative z-[150]';
+export const dialog = 'hidden sm:block relative z-[150]';
 export const srOnly = 'sr-only';
 export const dialogOverlay = 'fixed inset-0 bg-gc-black/90 backdrop-blur-lg w-screen';
 export const dialogWrapper = 'fixed inset-0 w-screen overflow-y-auto overscroll-contain overflow-x-hidden';
