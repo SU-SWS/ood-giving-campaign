@@ -11,7 +11,7 @@ import { HeroIcon } from '@/components/HeroIcon';
 import { NextPrevButton } from '@/components/ImageSlider/NextPrevButton';
 import { Slide } from '@/components/ImageSlider/Slide';
 import { RichText } from '@/components/RichText';
-import { SrOnlyText } from '@/components/Typography';
+import { SrOnlyText, Text } from '@/components/Typography';
 import { type MarginType } from '@/utilities/datasource';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { getIsSbImagePortrait } from '@/utilities/getIsSbImagePortrait';
@@ -68,6 +68,7 @@ export const ImageSlider = ({
     sliderRef.current?.slickGoTo(activeSlide, true);
   };
 
+  // This moves the thumbnail into view when the active slide changes.
   const adjustPagerPosition = () => {
     const windowBox = pagerWindowRef.current?.getBoundingClientRect();
     const pagerBox = pagerRef.current?.getBoundingClientRect();
@@ -121,24 +122,24 @@ export const ImageSlider = ({
     appendDots: (dots: React.ReactNode) => {
       return (
         <div>
-          <FlexBox justifyContent="center" className="gap-16 mt-10 sm:mt-0">
+          <FlexBox justifyContent="center" className={styles.buttonWrapper}>
             <NextPrevButton
               direction="prev"
               isLightText={isLightText}
               onClick={clickPrev}
-              className="relative sm:absolute sm:-left-60 md:-left-80 sm:top-[-30cqw]"
+              className={styles.nextButton}
             />
             <NextPrevButton
               direction="next"
               isLightText={isLightText}
               onClick={clickNext}
-              className="relative sm:absolute sm:-right-60 md:-right-80 sm:top-[-30cqw]"
+              className={styles.prevButton}
             />
           </FlexBox>
-          <FlexBox justifyContent="center" className="sm:justify-between mt-9">
-            <div aria-hidden="true" className="counter leading-none text-center">
+          <FlexBox justifyContent="center" className={styles.counterExpandWrapper}>
+            <Text as="span" aria-hidden="true" leading="none" align="center">
               {`${activeSlide + 1}/${slides?.length}`}
-            </div>
+            </Text>
             <SrOnlyText>{`Slide ${activeSlide + 1} of ${slides?.length}`}</SrOnlyText>
             {showExpandLink && (
               <button
@@ -149,7 +150,7 @@ export const ImageSlider = ({
                 aria-label="Expand gallery in full screen modal"
               >
                 Expand
-                <HeroIcon icon="expand" className="inline-block ml-02em group-hocus-visible:scale-110" />
+                <HeroIcon icon="expand" className={styles.expandIcon} />
               </button>
             )}
           </FlexBox>
@@ -157,22 +158,19 @@ export const ImageSlider = ({
             textColor={isLightText ? 'white' : 'black-70'}
             linkColor={isLightText ? 'digital-red-xlight' : 'unset'}
             wysiwyg={slides[activeSlide]?.caption}
-            className="rs-mt-0 max-w-prose *:leading-snug *:gc-caption"
+            className={styles.caption}
           />
-          <FlexBox alignItems="center" justifyContent="center" className="rs-mt-0">
-            <div
-              className="relative hidden sm:block overflow-hidden grow"
-              ref={pagerWindowRef}
+          <div ref={pagerWindowRef} className={styles.pagerWindow}>
+            <FlexBox
+              as="ul"
+              alignItems="end"
+              className={styles.pagerList}
+              ref={pagerRef}
+              style={{ transform: `translateX(${pagerOffset}px)` }}
             >
-              <ul
-                className="pager flex list-unstyled items-end *:mb-0 *:leading-[0] gap-10"
-                ref={pagerRef}
-                style={{ transform: `translateX(${pagerOffset}px)` }}
-              >
-                {dots}
-              </ul>
-            </div>
-          </FlexBox>
+              {dots}
+            </FlexBox>
+          </div>
         </div>
       );
     },
@@ -206,7 +204,7 @@ export const ImageSlider = ({
     <>
       <Container as="section" width="full" mt={marginTop} mb={marginBottom} aria-label={ariaLabel} className={styles.root} {...props}>
         <Slider
-          className="leading-none"
+          className={styles.slider}
           ref={sliderRef}
           {...sliderSettings}
         >
@@ -259,9 +257,9 @@ export const ImageSlider = ({
                     />
                   </button>
                   <section aria-label={`${ariaLabel} full screen view`}>
-                    <Container className="mt-90 md:mt-100 relative max-w-1500 mx-auto">
+                    <div className={styles.modalSliderWrapper}>
                       <Slider
-                        className="relative !flex items-center gap-20 md:gap-30 leading-none"
+                        className={styles.modalSlider}
                         ref={modalSliderRef}
                         {...modalSliderSettings}
                       >
@@ -273,17 +271,17 @@ export const ImageSlider = ({
                           />
                         ))}
                       </Slider>
-                    </Container>
-                    <div className="relative mt-9">
-                      <span aria-hidden="true" className="block leading-none text-center">
+                    </div>
+                    <div className={styles.belowModalSlider}>
+                      <Text as="span" leading="none" align="center" aria-hidden="true" className={styles.modalCounter}>
                         {`${activeSlide + 1}/${slides?.length}`}
-                      </span>
+                      </Text>
                       <SrOnlyText>{`Slide ${activeSlide + 1} of ${slides?.length}`}</SrOnlyText>
                       <RichText
                         textColor="white"
                         linkColor="digital-red-xlight"
                         wysiwyg={slides[activeSlide]?.caption}
-                        className="rs-mt-0 max-w-prose mx-auto *:leading-snug *:gc-caption"
+                        className={styles.modalCaption}
                       />
                     </div>
                   </section>
