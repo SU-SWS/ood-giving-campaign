@@ -15,7 +15,7 @@ import { SrOnlyText, Text } from '@/components/Typography';
 import { type MarginType } from '@/utilities/datasource';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { getIsSbImagePortrait } from '@/utilities/getIsSbImagePortrait';
-import { SbSliderImageType } from '@/components/Storyblok/Storyblok.types';
+import { type SbSliderImageType } from '@/components/Storyblok/Storyblok.types';
 import * as styles from './ImageSlider.styles';
 
 type ImageSliderProps = React.HTMLAttributes<HTMLDivElement> & {
