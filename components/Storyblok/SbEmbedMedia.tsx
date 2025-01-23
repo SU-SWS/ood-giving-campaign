@@ -1,11 +1,12 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { type MediaAspectRatioType } from '@/utilities/datasource';
-import { type WidthType } from '../WidthBox';
+import { type WidthType } from '@/components/WidthBox';
 import { type PaddingType } from '@/utilities/datasource';
 import { hasRichText } from '@/utilities/hasRichText';
-import { EmbedMedia } from '../EmbedMedia';
-import { RichText } from '../RichText';
+import { EmbedMedia } from '@/components/EmbedMedia';
+import { RichText } from '@/components/RichText';
+import { type SbImageType } from '@/components/Storyblok/Storyblok.types';
 
 type SbEmbedMediaProps = {
   blok: {
@@ -21,6 +22,7 @@ type SbEmbedMediaProps = {
     isCaptionInset?: boolean;
     isCaptionLight?: boolean;
     isPreview?: boolean;
+    previewImage?: SbImageType;
     previewAriaLabel?: string;
     isHidden?: boolean;
   };
@@ -39,6 +41,7 @@ export const SbEmbedMedia = ({
     isCaptionInset,
     isCaptionLight,
     isPreview,
+    previewImage: { filename } = {},
     previewAriaLabel = 'Play video',
     isHidden,
   },
@@ -63,6 +66,7 @@ export const SbEmbedMedia = ({
       spacingBottom={spacingBottom}
       isCaptionInset={isCaptionInset}
       isPreview={isPreview}
+      previewImageSrc={filename}
       previewAriaLabel={previewAriaLabel}
     />
   );
