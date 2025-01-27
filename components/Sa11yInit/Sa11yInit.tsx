@@ -7,7 +7,13 @@ export const Sa11yInit: React.FC = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       (async () => {
-        // Dynamically import Sa11y and related dependencies
+        /**
+         * Dynamically import the Sa11y library and dependencies to avoid "ReferenceError: HTMLElement is not defined".
+         * The error occurs because the Sa11y library or its imports rely on the HTMLElement API,
+         * which is not available in the Node.js runtime where the server-side rendering (SSR) of Next.js occurs.
+         * Simply using useEffect with the window !== 'undefined' check
+         * does not prevent the code from being imported during the SSR phase.
+         */
         const { Sa11y, Lang } = await import('sa11y/dist/js/sa11y.esm.js');
         const { default: Sa11yLangEn } = await import('sa11y/dist/js/lang/en.js');
 
