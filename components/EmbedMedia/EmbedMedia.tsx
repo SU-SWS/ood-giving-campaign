@@ -22,7 +22,6 @@ type EmbedMediaProps = React.HTMLAttributes<HTMLDivElement> & {
   isCaptionInset?: boolean;
   isPreview?: boolean;
   previewImageSrc?: string;
-  previewImageFocus?: string;
   previewAriaLabel?: string;
 };
 
