@@ -17,6 +17,7 @@ export const Sa11yInit: React.FC = () => {
         // Check if the custom element is already defined
         if (!customElements.get('sa11y-heading-label')) {
           // Instantiate and run Sa11y
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           const sa11y = new Sa11y({
             checkRoot: 'body',
           });
