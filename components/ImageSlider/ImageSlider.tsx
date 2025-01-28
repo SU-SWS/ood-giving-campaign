@@ -3,7 +3,6 @@ import {
   Dialog, DialogPanel, DialogTitle, Transition, TransitionChild,
 } from '@headlessui/react';
 import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
 import { useOnClickOutside } from 'usehooks-ts';
 import { Container } from '@/components/Container';
 import { FlexBox } from '@/components/FlexBox';
