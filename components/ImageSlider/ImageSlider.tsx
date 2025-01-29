@@ -1,5 +1,5 @@
 import React, {
-  useCallback, useMemo, useState, useRef,
+  useCallback, useEffect, useMemo, useState, useRef,
 } from 'react';
 import {
   Dialog, DialogPanel, DialogTitle, Transition, TransitionChild,
@@ -63,12 +63,13 @@ export const ImageSlider = ({
   // This moves the thumbnail into view when the active slide changes.
   const adjustPagerPosition = useCallback(() => {
     if (!pagerRef.current || !pagerWindowRef.current) return;
-    const activeItem = pagerWindowRef.current.getElementsByClassName('slick-active')[0];
+
+    const activeItem = pagerRef.current.children[activeSlide];
     if (!activeItem) return;
 
     const windowBox = pagerWindowRef.current.getBoundingClientRect();
     const pagerBox = pagerRef.current.getBoundingClientRect();
-    const activeItemBox = activeItem?.getBoundingClientRect();
+    const activeItemBox = activeItem.getBoundingClientRect();
 
     if (activeItemBox.right > windowBox.right) {
       const rightGutter = 10;
@@ -80,7 +81,11 @@ export const ImageSlider = ({
       const newOffset = currentOffset + (windowBox.left - activeItemBox.left);
       setPagerOffset(newOffset);
     }
-  }, []);
+  }, [activeSlide]);
+
+  useEffect(() => {
+    adjustPagerPosition();
+  }, [activeSlide, adjustPagerPosition]);
 
   const sliderSettings = useMemo(() => ({
     arrows: false,
@@ -98,7 +103,6 @@ export const ImageSlider = ({
     ),
     afterChange: (i: number) => {
       setActiveSlide(i);
-      adjustPagerPosition();
     },
     appendDots: (dots: React.ReactNode) => (
       <div>
@@ -153,17 +157,7 @@ export const ImageSlider = ({
         </div>
       </div>
     ),
-  }), [
-    activeSlide,
-    adjustPagerPosition,
-    clickNext,
-    clickPrev,
-    isLightText,
-    openModal,
-    pagerOffset,
-    showExpandLink,
-    slides,
-  ]);
+  }), [activeSlide, clickNext, clickPrev, isLightText, openModal, pagerOffset, showExpandLink, slides]);
 
   const modalSliderSettings = useMemo(() => ({
     accessibility: true,
