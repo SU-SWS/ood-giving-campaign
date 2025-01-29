@@ -38,14 +38,14 @@ export const ImageSlider = ({
 }: ImageSliderProps) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [pagerOffset, setPagerOffset] = useState(0);
-  const pagerWindowRef = useRef<HTMLDivElement>(null);
-  const pagerRef = useRef<HTMLUListElement>(null);
-  const sliderRef = useRef<Slider>(null);
+  const pagerWindowRef = useRef<HTMLDivElement | null>(null);
+  const pagerRef = useRef<HTMLUListElement | null>(null);
+  const sliderRef = useRef<Slider | null>(null);
 
   // Modal states and refs
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const modalSliderRef = useRef<Slider>(null);
-  const modalContentRef = useRef<HTMLDivElement>(null);
+  const modalSliderRef = useRef<Slider | null>(null);
+  const modalContentRef = useRef<HTMLDivElement | null>(null);
 
   useOnClickOutside(modalContentRef, () => {
     setIsModalOpen(false);
@@ -61,27 +61,28 @@ export const ImageSlider = ({
   }, [activeSlide]);
 
   // This moves the thumbnail into view when the active slide changes.
-  const adjustPagerPosition = useCallback(() => {
-    if (!pagerRef.current || !pagerWindowRef.current) return;
+  const adjustPagerPosition = useCallback(
+    (targetIndex?: number) => {
+      if (!pagerRef.current || !pagerWindowRef.current) return;
 
-    const activeItem = pagerRef.current.children[activeSlide];
-    if (!activeItem) return;
+      const index = targetIndex ?? activeSlide;
+      const targetItem = pagerRef.current.children[index];
+      if (!targetItem) return;
 
-    const windowBox = pagerWindowRef.current.getBoundingClientRect();
-    const pagerBox = pagerRef.current.getBoundingClientRect();
-    const activeItemBox = activeItem.getBoundingClientRect();
+      const windowBox = pagerWindowRef.current.getBoundingClientRect();
+      const pagerBox = pagerRef.current.getBoundingClientRect();
+      const targetItemBox = targetItem.getBoundingClientRect();
 
-    if (activeItemBox.right > windowBox.right) {
       const rightGutter = 10;
       const currentOffset = pagerBox.left - windowBox.left;
-      const newOffset = currentOffset + (windowBox.right - activeItemBox.right) - rightGutter;
-      setPagerOffset(newOffset);
-    } else if (activeItemBox.left < windowBox.left) {
-      const currentOffset = pagerBox.left - windowBox.left;
-      const newOffset = currentOffset + (windowBox.left - activeItemBox.left);
-      setPagerOffset(newOffset);
-    }
-  }, [activeSlide]);
+
+      if (targetItemBox.right > windowBox.right) {
+        setPagerOffset(currentOffset + (windowBox.right - targetItemBox.right) - rightGutter);
+      } else if (targetItemBox.left < windowBox.left) {
+        setPagerOffset(currentOffset + (windowBox.left - targetItemBox.left));
+      }
+    }, [activeSlide],
+  );
 
   useEffect(() => {
     adjustPagerPosition();
@@ -98,6 +99,7 @@ export const ImageSlider = ({
       <ThumbnailButton
         slide={slides[i]}
         isActive={activeSlide === i}
+        onFocus={() => adjustPagerPosition(i)}
         ariaLabel={`Go to slide ${i + 1} ${slides[i]?.alt || ''}`}
       />
     ),
@@ -157,7 +159,9 @@ export const ImageSlider = ({
         </div>
       </div>
     ),
-  }), [activeSlide, clickNext, clickPrev, isLightText, openModal, pagerOffset, showExpandLink, slides]);
+  }), [
+    activeSlide, adjustPagerPosition, clickNext, clickPrev, isLightText, openModal, pagerOffset, showExpandLink, slides,
+  ]);
 
   const modalSliderSettings = useMemo(() => ({
     accessibility: true,
