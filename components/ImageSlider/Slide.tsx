@@ -10,30 +10,36 @@ export const Slide = ({
   imageSrc,
   alt,
   ...props
-}: SlideProps) => (
-  <div className={styles.root} {...props}>
-    <picture>
-      <source
-        srcSet={getProcessedImage(imageSrc, '0x800')}
-        media="(min-width: 1200px)"
-      />
-      <source
-        srcSet={getProcessedImage(imageSrc, '0x500')}
-        media="(min-width: 992px)"
-      />
-      <source
-        srcSet={getProcessedImage(imageSrc, '0x410')}
-        media="(min-width: 768px)"
-      />
-      <source
-        srcSet={getProcessedImage(imageSrc, '0x340')}
-        media="(max-width: 767px)"
-      />
-      <img
-        src={getProcessedImage(imageSrc, '0x800')}
-        alt={alt || ''}
-        className={styles.image}
-      />
-    </picture>
-  </div>
-);
+}: SlideProps) => {
+  if (!imageSrc) {
+    return null;
+  }
+
+  return (
+    <div className={styles.root} {...props}>
+      <picture>
+        <source
+          srcSet={getProcessedImage(imageSrc, '0x800')}
+          media="(min-width: 1200px)"
+        />
+        <source
+          srcSet={getProcessedImage(imageSrc, '0x500')}
+          media="(min-width: 992px)"
+        />
+        <source
+          srcSet={getProcessedImage(imageSrc, '0x410')}
+          media="(min-width: 768px)"
+        />
+        <source
+          srcSet={getProcessedImage(imageSrc, '0x340')}
+          media="(max-width: 767px)"
+        />
+        <img
+          src={getProcessedImage(imageSrc, '0x800')}
+          alt={alt || ''}
+          className={styles.image}
+        />
+      </picture>
+    </div>
+  );
+};

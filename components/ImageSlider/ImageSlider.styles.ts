@@ -10,7 +10,7 @@ export const prevButton = `${buttonBase} sm:-right-60 md:-right-80`;
 export const counterExpandWrapper = 'sm:justify-between mt-9';
 
 export const pagerWindow = 'rs-mt-0 relative hidden sm:block overflow-hidden';
-export const pagerList = 'list-unstyled *:mb-0 *:leading-[0] gap-10';
+export const pagerList = 'list-unstyled *:mb-0 *:leading-[0] gap-10 transition-transform';
 export const thumbButton = (active: boolean, isPortrait: boolean) => cnb(
   'inline-block hocus-visible:opacity-100 hocus-visible:border-b-digital-red-light hocus-visible:-translate-y-9 transition-all border-b-[3px] pt-9 pb-6',
   active ? 'opacity-100 border-b-[3px] border-b-digital-red-light -translate-y-9' : 'opacity-70 border-b-transparent',
