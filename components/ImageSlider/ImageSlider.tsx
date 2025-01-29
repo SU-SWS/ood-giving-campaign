@@ -1,4 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, {
+  useCallback, useMemo, useState, useRef,
+} from 'react';
 import {
   Dialog, DialogPanel, DialogTitle, Transition, TransitionChild,
 } from '@headlessui/react';
@@ -8,12 +10,11 @@ import { Container } from '@/components/Container';
 import { FlexBox } from '@/components/FlexBox';
 import { HeroIcon } from '@/components/HeroIcon';
 import { NextPrevButton } from '@/components/ImageSlider/NextPrevButton';
+import { ThumbnailButton } from '@/components/ImageSlider/ThumbnailButton';
 import { Slide } from '@/components/ImageSlider/Slide';
 import { RichText } from '@/components/RichText';
 import { SrOnlyText, Text } from '@/components/Typography';
 import { type MarginType } from '@/utilities/datasource';
-import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { getIsSbImagePortrait } from '@/utilities/getIsSbImagePortrait';
 import { type SbSliderImageType } from '@/components/Storyblok/Storyblok.types';
 import * as styles from './ImageSlider.styles';
 
@@ -50,132 +51,121 @@ export const ImageSlider = ({
     setIsModalOpen(false);
   });
 
-  const clickPrev = () => {
-    sliderRef.current?.slickPrev();
-  };
+  const clickPrev = useCallback(() => sliderRef.current?.slickPrev(), []);
+  const clickNext = useCallback(() => sliderRef.current?.slickNext(), []);
 
-  const clickNext = () => {
-    sliderRef.current?.slickNext();
-  };
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
+  const openModal = useCallback(() => setIsModalOpen(true), []);
+  const closeModal = useCallback(() => {
     setIsModalOpen(false);
     sliderRef.current?.slickGoTo(activeSlide, true);
-  };
+  }, [activeSlide]);
 
   // This moves the thumbnail into view when the active slide changes.
-  const adjustPagerPosition = () => {
-    const windowBox = pagerWindowRef.current?.getBoundingClientRect();
-    const pagerBox = pagerRef.current?.getBoundingClientRect();
-    const activeItem =
-      pagerWindowRef.current?.getElementsByClassName('slick-active')[0];
-    const activeItemBox = activeItem.getBoundingClientRect();
+  const adjustPagerPosition = useCallback(() => {
+    if (!pagerRef.current || !pagerWindowRef.current) return;
+    const activeItem = pagerWindowRef.current.getElementsByClassName('slick-active')[0];
+    if (!activeItem) return;
+
+    const windowBox = pagerWindowRef.current.getBoundingClientRect();
+    const pagerBox = pagerRef.current.getBoundingClientRect();
+    const activeItemBox = activeItem?.getBoundingClientRect();
 
     if (activeItemBox.right > windowBox.right) {
       const rightGutter = 10;
       const currentOffset = pagerBox.left - windowBox.left;
-      const newOffset =
-        currentOffset + (windowBox.right - activeItemBox.right) - rightGutter;
+      const newOffset = currentOffset + (windowBox.right - activeItemBox.right) - rightGutter;
       setPagerOffset(newOffset);
     } else if (activeItemBox.left < windowBox.left) {
       const currentOffset = pagerBox.left - windowBox.left;
       const newOffset = currentOffset + (windowBox.left - activeItemBox.left);
       setPagerOffset(newOffset);
     }
-  };
+  }, []);
 
-  const sliderSettings = {
+  const sliderSettings = useMemo(() => ({
     arrows: false,
     accessibility: true,
     swipeToSlide: true,
     lazyLoad: 'ondemand' as const,
     dots: true,
     dotsClass: 'relative @container',
-    customPaging: (i: number) => {
-      const slide = slides[i];
-      const isPortrait = getIsSbImagePortrait(slide?.image.filename);
-      return (
-        <button
-          type="button"
-          key={slide?._uid}
-          aria-label={`Go to slide ${i + 1} ${slide?.alt || ''}`}
-          aria-current={activeSlide === i ? 'true' : undefined}
-          className={styles.thumbButton(activeSlide === i, isPortrait)}
-        >
-          <img
-            src={isPortrait ? getProcessedImage(slide?.image.filename, '65x0') : getProcessedImage(slide?.image.filename, '100x0')}
-            alt=""
-          />
-        </button>
-      );
-    },
+    customPaging: (i: number) => (
+      <ThumbnailButton
+        slide={slides[i]}
+        isActive={activeSlide === i}
+        ariaLabel={`Go to slide ${i + 1} ${slides[i]?.alt || ''}`}
+      />
+    ),
     afterChange: (i: number) => {
       setActiveSlide(i);
       adjustPagerPosition();
     },
-    // This provides the template for the lower half of the slider.
-    appendDots: (dots: React.ReactNode) => {
-      return (
-        <div>
-          <FlexBox justifyContent="center" className={styles.buttonWrapper}>
-            <NextPrevButton
-              direction="prev"
-              isLightText={isLightText}
-              onClick={clickPrev}
-              className={styles.nextButton}
-            />
-            <NextPrevButton
-              direction="next"
-              isLightText={isLightText}
-              onClick={clickNext}
-              className={styles.prevButton}
-            />
-          </FlexBox>
-          <FlexBox justifyContent="center" className={styles.counterExpandWrapper}>
-            <Text as="span" aria-hidden="true" leading="none" align="center">
-              {`${activeSlide + 1}/${slides?.length}`}
-            </Text>
-            <SrOnlyText>{`Slide ${activeSlide + 1} of ${slides?.length}`}</SrOnlyText>
-            {showExpandLink && (
-              <button
-                type="button"
-                onClick={openModal}
-                aria-haspopup="dialog"
-                className={styles.expandButton(isLightText)}
-                aria-label="Expand gallery in full screen modal"
-              >
-                Expand
-                <HeroIcon icon="expand" className={styles.expandIcon} />
-              </button>
-            )}
-          </FlexBox>
-          <RichText
-            textColor={isLightText ? 'white' : 'black-70'}
-            linkColor={isLightText ? 'digital-red-xlight' : 'unset'}
-            wysiwyg={slides[activeSlide]?.caption}
-            className={styles.caption}
+    appendDots: (dots: React.ReactNode) => (
+      <div>
+        <FlexBox justifyContent="center" className={styles.buttonWrapper}>
+          <NextPrevButton
+            direction="prev"
+            isLightText={isLightText}
+            onClick={clickPrev}
+            className={styles.nextButton}
           />
-          <div ref={pagerWindowRef} className={styles.pagerWindow}>
-            <FlexBox
-              as="ul"
-              alignItems="end"
-              className={styles.pagerList}
-              ref={pagerRef}
-              style={{ transform: `translateX(${pagerOffset}px)` }}
+          <NextPrevButton
+            direction="next"
+            isLightText={isLightText}
+            onClick={clickNext}
+            className={styles.prevButton}
+          />
+        </FlexBox>
+        <FlexBox justifyContent="center" className={styles.counterExpandWrapper}>
+          <Text as="span" aria-hidden="true" leading="none" align="center">
+            {`${activeSlide + 1}/${slides?.length}`}
+          </Text>
+          <SrOnlyText>{`Slide ${activeSlide + 1} of ${slides?.length}`}</SrOnlyText>
+          {showExpandLink && (
+            <button
+              type="button"
+              onClick={openModal}
+              aria-haspopup="dialog"
+              className={styles.expandButton(isLightText)}
+              aria-label="Expand gallery in full screen modal"
             >
-              {dots}
-            </FlexBox>
-          </div>
+              Expand
+              <HeroIcon icon="expand" className={styles.expandIcon} />
+            </button>
+          )}
+        </FlexBox>
+        <RichText
+          textColor={isLightText ? 'white' : 'black-70'}
+          linkColor={isLightText ? 'digital-red-xlight' : 'unset'}
+          wysiwyg={slides[activeSlide]?.caption}
+          className={styles.caption}
+        />
+        <div ref={pagerWindowRef} className={styles.pagerWindow}>
+          <FlexBox
+            as="ul"
+            alignItems="end"
+            className={styles.pagerList}
+            ref={pagerRef}
+            style={{ transform: `translateX(${pagerOffset}px)` }}
+          >
+            {dots}
+          </FlexBox>
         </div>
-      );
-    },
-  };
+      </div>
+    ),
+  }), [
+    activeSlide,
+    adjustPagerPosition,
+    clickNext,
+    clickPrev,
+    isLightText,
+    openModal,
+    pagerOffset,
+    showExpandLink,
+    slides,
+  ]);
 
-  const modalSliderSettings = {
+  const modalSliderSettings = useMemo(() => ({
     accessibility: true,
     swipeToSlide: true,
     lazyLoad: 'ondemand' as const,
@@ -193,11 +183,9 @@ export const ImageSlider = ({
         isModalDesktopButton
       />
     ),
-    afterChange: (i: number) => {
-      setActiveSlide(i);
-    },
+    afterChange: (i: number) => setActiveSlide(i),
     initialSlide: activeSlide,
-  };
+  }), [activeSlide]);
 
   return (
     <>
