@@ -20,6 +20,7 @@ import { SbGridAlternating } from '@/components/Storyblok/SbGridAlternating';
 import { SbFeatureMasonry } from '@/components/Storyblok/SbFeatureMasonry';
 import { SbHomepageMvp } from '@/components/Storyblok/SbHomepageMvp';
 import { SbHomepageThemeSection } from '@/components/Storyblok/SbHomepageThemeSection';
+import { SbImageSlider } from '@/components/Storyblok/SbImageSlider';
 import { SbInitiativeCard } from '@/components/Storyblok/SbInitiativeCard';
 import { SbMainNav } from '@/components/Storyblok/SbMainNav';
 import { SbMasthead } from '@/components/Storyblok/SbMasthead';
@@ -66,6 +67,7 @@ export const components = {
   sbFeatureMasonry: SbFeatureMasonry,
   sbHomepageMvp: SbHomepageMvp,
   sbHomepageThemeSection: SbHomepageThemeSection,
+  sbImageSlider: SbImageSlider,
   sbInitiativeCard: SbInitiativeCard,
   sbMainNav: SbMainNav,
   sbMasthead: SbMasthead,

@@ -1,10 +1,10 @@
-import React, { ReactNode, HTMLAttributes } from 'react';
+import React, { ReactNode, HTMLAttributes, forwardRef } from 'react';
 import { cnb } from 'cnbuilder';
 import * as styles from './FlexBox.styles';
 import * as types from './FlexBox.types';
 
 type FlexBoxProps = HTMLAttributes<HTMLElement> & {
-  as?: types.FlexElementType;
+  as?: React.ElementType;
   direction?: types.FlexDirectionType;
   wrap?: types.FlexWrapType;
   gap?: boolean;
@@ -14,7 +14,7 @@ type FlexBoxProps = HTMLAttributes<HTMLElement> & {
   children?: ReactNode;
 };
 
-export const FlexBox = ({
+export const FlexBox = forwardRef<HTMLElement, FlexBoxProps>(({
   as: AsComponent = 'div',
   direction,
   gap,
@@ -25,9 +25,10 @@ export const FlexBox = ({
   children,
   className,
   ...props
-}: FlexBoxProps) => (
+}, ref) => (
   <AsComponent
     {...props}
+    ref={ref}
     className={cnb(
       'flex',
       direction ? styles.flexDirection[direction] : '',
@@ -41,4 +42,5 @@ export const FlexBox = ({
   >
     {children}
   </AsComponent>
-);
+));
+
