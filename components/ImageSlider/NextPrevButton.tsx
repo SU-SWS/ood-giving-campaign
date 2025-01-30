@@ -6,21 +6,19 @@ import React from 'react';
 
 type NextPrevButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
   direction: 'next' | 'prev';
-  isModalDesktopButton?: boolean;
   isLightText?: boolean;
   onClick?: VoidFunction;
 };
 
 export const NextPrevButton = ({
   direction = 'next',
-  isModalDesktopButton,
   isLightText,
   onClick,
   className,
 }: NextPrevButtonProps) => (
   <button
     type="button"
-    className={cnb(styles.root(isLightText, isModalDesktopButton), className)}
+    className={cnb(styles.root(isLightText), className)}
     onClick={onClick}
   >
     <SrOnlyText>{`${direction === 'next' ? 'Next' : 'Previous'} slide`}</SrOnlyText>

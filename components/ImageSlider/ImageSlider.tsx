@@ -54,6 +54,12 @@ export const ImageSlider = ({
   const clickPrev = useCallback(() => sliderRef.current?.slickPrev(), []);
   const clickNext = useCallback(() => sliderRef.current?.slickNext(), []);
 
+  const focusLastThumb = useCallback(() => {
+    const lastThumb = pagerRef.current?.lastElementChild as HTMLElement;
+    const button = lastThumb?.querySelector('button') as HTMLButtonElement;
+    button?.focus();
+  }, []);
+
   const openModal = useCallback(() => setIsModalOpen(true), []);
   const closeModal = useCallback(() => {
     setIsModalOpen(false);
@@ -106,6 +112,7 @@ export const ImageSlider = ({
     afterChange: (i: number) => {
       setActiveSlide(i);
     },
+    // The bottom half of the Slider which includes the counter, expand button, caption and thumbnail nav.
     appendDots: (dots: React.ReactNode) => (
       <div>
         <FlexBox justifyContent="center" className={styles.buttonWrapper}>
@@ -146,7 +153,14 @@ export const ImageSlider = ({
           wysiwyg={slides[activeSlide]?.caption}
           className={styles.caption}
         />
-        <div ref={pagerWindowRef} className={styles.pagerWindow}>
+        <button
+          type="button"
+          onClick={focusLastThumb}
+          className={styles.skipButton}
+        >
+          {`Below is a navigation for ${slides?.length} total slides. Skip to the last item.`}
+        </button>
+        <nav aria-label={`${ariaLabel || 'Photo gallery'} thumbnail`} ref={pagerWindowRef} className={styles.pagerWindow}>
           <FlexBox
             as="ul"
             alignItems="end"
@@ -156,11 +170,21 @@ export const ImageSlider = ({
           >
             {dots}
           </FlexBox>
-        </div>
+        </nav>
       </div>
     ),
   }), [
-    activeSlide, adjustPagerPosition, clickNext, clickPrev, isLightText, openModal, pagerOffset, showExpandLink, slides,
+    activeSlide,
+    adjustPagerPosition,
+    ariaLabel,
+    clickNext,
+    clickPrev,
+    focusLastThumb,
+    isLightText,
+    openModal,
+    pagerOffset,
+    showExpandLink,
+    slides,
   ]);
 
   const modalSliderSettings = useMemo(() => ({
@@ -168,18 +192,10 @@ export const ImageSlider = ({
     swipeToSlide: true,
     lazyLoad: 'ondemand' as const,
     nextArrow: (
-      <NextPrevButton
-        direction="next"
-        isLightText
-        isModalDesktopButton
-      />
+      <NextPrevButton direction="next" isLightText />
     ),
     prevArrow: (
-      <NextPrevButton
-        direction="prev"
-        isLightText
-        isModalDesktopButton
-      />
+      <NextPrevButton direction="prev" isLightText />
     ),
     afterChange: (i: number) => setActiveSlide(i),
     initialSlide: activeSlide,
@@ -225,7 +241,7 @@ export const ImageSlider = ({
           >
             <div className={styles.dialogWrapper}>
               <DialogPanel className={styles.dialogPanel}>
-                <DialogTitle className={styles.srOnly}>{`${ariaLabel} full screen view`}</DialogTitle>
+                <DialogTitle className={styles.srOnly}>{`${ariaLabel || 'Photo gallery' } full screen view`}</DialogTitle>
                 <div ref={modalContentRef} className={styles.contentWrapper}>
                   <button
                     type="button"
@@ -241,7 +257,7 @@ export const ImageSlider = ({
                       className={styles.modalIcon}
                     />
                   </button>
-                  <section aria-label={`${ariaLabel} full screen view`}>
+                  <section aria-label={`${ariaLabel || 'Photo gallery'}`}>
                     <div className={styles.modalSliderWrapper}>
                       <Slider
                         className={styles.modalSlider}

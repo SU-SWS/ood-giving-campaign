@@ -21,6 +21,7 @@ export const expandButton = (isLightText: boolean) => cnb(
   isLightText ? 'text-digital-red-xlight hocus-visible:text-white' : 'text-digital-red-light hocus-visible:text-gc-black',
 );
 export const expandIcon = 'inline-block ml-02em group-hocus-visible:scale-110';
+export const skipButton = 'hidden sm:block skiplink focus:!relative left-0 -top-30 break-words type-0 whitespace-normal';
 export const caption = 'rs-mt-0 max-w-prose *:leading-snug *:gc-caption';
 
 // Modal styles
