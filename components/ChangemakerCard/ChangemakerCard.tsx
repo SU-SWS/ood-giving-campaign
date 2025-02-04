@@ -6,7 +6,7 @@ import {
 } from '@headlessui/react';
 import { useOnClickOutside } from 'usehooks-ts';
 import { AnimateInView, type AnimationType } from '@/components/Animate';
-import { Heading, type HeadingType, Text } from '@/components/Typography';
+import { Text } from '@/components/Typography';
 import { FlexBox } from '@/components/FlexBox';
 import { HeroIcon } from '@/components/HeroIcon';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
@@ -15,7 +15,6 @@ import * as styles from './ChangemakerCard.styles';
 
 export type ChangemakerCardProps = React.HTMLAttributes<HTMLDivElement> & {
   heading: string;
-  headingLevel?: HeadingType;
   subheading?: string;
   imageSrc?: string;
   imageFocus?: string;
@@ -28,7 +27,6 @@ export type ChangemakerCardProps = React.HTMLAttributes<HTMLDivElement> & {
 
 export const ChangemakerCard = ({
   heading,
-  headingLevel = 'h3',
   subheading,
   imageSrc,
   imageFocus,
@@ -49,7 +47,7 @@ export const ChangemakerCard = ({
   return (
     <>
       <AnimateInView animation={animation} delay={delay}>
-        <article
+        <div
           className={cnb('changemaker-card', styles.root(isHorizontal), className)}
           {...props}
         >
@@ -110,15 +108,16 @@ export const ChangemakerCard = ({
                 </div>
               )}
               <FlexBox direction="col" className={styles.info(isHorizontal)}>
-                <Heading
-                  as={headingLevel || 'h3'}
+                <Text
+                  font="serif"
                   leading="tight"
                   align="center"
                   color="white"
+                  weight="bold"
                   className={styles.heading(isHorizontal)}
                 >
                   {heading}
-                </Heading>
+                </Text>
                 {subheading && (
                   <Text align="center" leading="display" color="white" className={styles.subhead}>{subheading}</Text>
                 )}
@@ -139,7 +138,7 @@ export const ChangemakerCard = ({
               />
             </button>
           </div>
-        </article>
+        </div>
       </AnimateInView>
       {/* Content is displayed in a modal */}
       <Transition show={isModalOpen}>
