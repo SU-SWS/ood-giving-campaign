@@ -52,7 +52,7 @@ export const SbHomepageThemeSection = ({
     content,
     cta,
     isDarkTheme,
-    headingSize,
+    headingSize = 'md',
     bgImage: { filename, focus } = {},
     bgBlur,
     gradientTop,
@@ -149,7 +149,7 @@ export const SbHomepageThemeSection = ({
             uppercase
             font="druk"
             color={isDarkTheme ? 'white' : 'black'}
-            className={styles.heading(headingSize)}
+            className={styles.heading(headingSize || 'md')}
           >
             {superhead && <SrOnlyText>{`${superhead}:`}</SrOnlyText>}{heading}
           </Heading>
