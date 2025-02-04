@@ -24,7 +24,7 @@ export const overlay = 'absolute top-0 left-0 size-full bg-gradient-to-t via-bla
 export const info = (isHorizontal: boolean) => cnb('rs-px-1 pb-150 absolute size-full bottom-0 left-0 mb-0', {
   'px-20 md:px-45 sm:pb-200 xl:pb-130': isHorizontal,
 });
-export const heading = (isHorizontal: boolean) => cnb('mb-02em mt-auto text-30 whitespace-pre-line', {
+export const heading = (isHorizontal: boolean) => cnb('mb-02em mt-auto text-30 whitespace-pre-line tracking-tight', {
   '2xl:text-[3.6rem]': !isHorizontal,
   'sm:fluid-type-4 xl:max-w-[30ch] mx-auto': isHorizontal,
 });
