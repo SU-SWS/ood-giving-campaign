@@ -26,7 +26,7 @@ export const heading = (isSerifHeader: boolean, isSmallHeading: boolean, headerA
   'fluid-type-6': isSerifHeader,
   'md:fluid-type-7': isSerifHeader && !isSmallHeading,
   'fluid-type-7': !isSerifHeader,
-  'md:gc-splash': !isSerifHeader && !isSmallHeading,
+  'md:fluid-type-8': !isSerifHeader && !isSmallHeading,
 });
 export const subhead = (headerAlign?: AlignType) => cnb('relative z-10 rs-mt-3 text-balance', {
   'mr-0 ml-auto': headerAlign === 'right',
