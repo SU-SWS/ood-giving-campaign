@@ -33,6 +33,7 @@ type SbHomepageThemeSectionProps = {
     content?: SbBlokData[];
     cta?: SbBlokData[];
     isDarkTheme?: boolean;
+    headingSize?: styles.HeadingSizeType;
     bgImage?: SbImageType;
     bgBlur?: BgBlurType;
     gradientTop?: GradientToType;
@@ -51,6 +52,7 @@ export const SbHomepageThemeSection = ({
     content,
     cta,
     isDarkTheme,
+    headingSize,
     bgImage: { filename, focus } = {},
     bgBlur,
     gradientTop,
@@ -72,7 +74,7 @@ export const SbHomepageThemeSection = ({
       id={id}
       as="section"
       bgColor={isDarkTheme ? 'black' : 'white'}
-      py={10}
+      py={9}
       width="full"
       className={styles.root}
       {...storyblokEditable(blok)}
@@ -147,7 +149,7 @@ export const SbHomepageThemeSection = ({
             uppercase
             font="druk"
             color={isDarkTheme ? 'white' : 'black'}
-            className={styles.heading}
+            className={styles.heading(headingSize)}
           >
             {superhead && <SrOnlyText>{`${superhead}:`}</SrOnlyText>}{heading}
           </Heading>
