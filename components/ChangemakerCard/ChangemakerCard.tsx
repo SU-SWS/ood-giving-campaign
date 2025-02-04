@@ -6,7 +6,7 @@ import {
 } from '@headlessui/react';
 import { useOnClickOutside } from 'usehooks-ts';
 import { AnimateInView, type AnimationType } from '@/components/Animate';
-import { Text, type HeadingType } from '@/components/Typography';
+import { Text } from '@/components/Typography';
 import { FlexBox } from '@/components/FlexBox';
 import { HeroIcon } from '@/components/HeroIcon';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
@@ -15,7 +15,6 @@ import * as styles from './ChangemakerCard.styles';
 
 export type ChangemakerCardProps = React.HTMLAttributes<HTMLDivElement> & {
   heading: string;
-  headingLevel?: HeadingType;
   subheading?: string;
   imageSrc?: string;
   imageFocus?: string;
@@ -28,7 +27,6 @@ export type ChangemakerCardProps = React.HTMLAttributes<HTMLDivElement> & {
 
 export const ChangemakerCard = ({
   heading,
-  headingLevel = 'h3',
   subheading,
   imageSrc,
   imageFocus,
