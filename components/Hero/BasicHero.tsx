@@ -2,6 +2,7 @@ import { cnb } from 'cnbuilder';
 import { Container } from '@/components/Container';
 import { Heading, SrOnlyText, Text } from '@/components/Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
+import { getMaskedAsset } from '@/utilities/getMaskedAsset';
 import {
   gradientFroms,
   type GradientFromType,
@@ -25,6 +26,10 @@ type BasicHeroProps = {
   subheading?: string;
   imageSrc?: string;
   imageFocus?: string;
+  videoWebm?: string;
+  videoMp4?: string;
+  videoPosterSrc?: string;
+  videoPosterFocus?: string;
   gradientTop?: GradientToType;
   gradientBottom?: GradientFromType;
   gradientVia?: GradientViaType;
@@ -41,6 +46,10 @@ export const BasicHero = ({
   subheading,
   imageSrc,
   imageFocus,
+  videoWebm,
+  videoMp4,
+  videoPosterSrc,
+  videoPosterFocus,
   gradientTop,
   gradientBottom,
   gradientVia,
@@ -94,7 +103,19 @@ export const BasicHero = ({
           />
         </picture>
       )}
-      {!!imageSrc && (hasBgBlur || hasBgGradient) && (
+      {(!!videoWebm || !!videoMp4) && (
+        <video
+          autoPlay
+          loop
+          muted
+          poster={getProcessedImage(videoPosterSrc, '2000x1000', videoPosterFocus)}
+          className="z-10 absolute inset-0 w-full h-full object-cover"
+        >
+          {videoWebm && <source src={getMaskedAsset(videoWebm)} type="video/webm" />}
+          {videoMp4 && <source src={getMaskedAsset(videoMp4)} type="video/mp4" />}
+        </video>
+      )}
+      {(!!imageSrc || !!videoWebm || !!videoMp4) && (hasBgBlur || hasBgGradient) && (
         <div
           className={cnb(
             styles.overlay(hasBgGradient),
