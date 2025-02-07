@@ -1,8 +1,8 @@
 import { cnb } from 'cnbuilder';
 import { Container } from '@/components/Container';
 import { Heading, SrOnlyText, Text } from '@/components/Typography';
+import { Video } from '@/components/Video';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { getMaskedAsset } from '@/utilities/getMaskedAsset';
 import {
   gradientFroms,
   type GradientFromType,
@@ -104,16 +104,16 @@ export const BasicHero = ({
         </picture>
       )}
       {(!!videoWebm || !!videoMp4) && (
-        <video
+        <Video
+          webmSrc={videoWebm}
+          mp4Src={videoMp4}
           autoPlay
+          playsInline
           loop
           muted
-          poster={getProcessedImage(videoPosterSrc, '2000x1000', videoPosterFocus)}
-          className="z-10 absolute inset-0 w-full h-full object-cover"
-        >
-          {videoWebm && <source src={getMaskedAsset(videoWebm)} type="video/webm" />}
-          {videoMp4 && <source src={getMaskedAsset(videoMp4)} type="video/mp4" />}
-        </video>
+          poster={getProcessedImage(videoPosterSrc, '1600x900', videoPosterFocus)}
+          className="absolute inset-0 size-full object-cover"
+        />
       )}
       {(!!imageSrc || !!videoWebm || !!videoMp4) && (hasBgBlur || hasBgGradient) && (
         <div

@@ -27,6 +27,9 @@ export type StoryHeroMvpProps = {
   heroImage?: SbImageType;
   bgImage?: SbImageType;
   bgImageAlt?: string;
+  heroVideoWebm?: SbImageType;
+  heroVideoMp4?: SbImageType;
+  heroVideoPoster?: SbImageType;
   addBgBlur?: boolean;
   darkOverlay?: HeroOverlayType;
   alt?: string;
@@ -55,6 +58,9 @@ export const StoryHeroMvp = ({
   heroImage: { filename, focus } = {},
   bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
   bgImageAlt,
+  heroVideoWebm: { filename: webmFilename } = {},
+  heroVideoMp4: { filename: mp4Filename } = {},
+  heroVideoPoster: { filename: posterFilename, focus: posterFocus } = {},
   addBgBlur,
   darkOverlay,
   alt,
@@ -112,6 +118,10 @@ export const StoryHeroMvp = ({
           bgImageSrc={bgImageSrc}
           bgImageFocus={bgImageFocus}
           bgImageAlt={bgImageAlt}
+          videoWebm={webmFilename}
+          videoMp4={mp4Filename}
+          videoPosterSrc={posterFilename}
+          videoPosterFocus={posterFocus}
           bgColor={isLightHero ? 'white' : 'black'}
           addBgBlur={addBgBlur}
           darkOverlay={darkOverlay}

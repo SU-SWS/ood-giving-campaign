@@ -8,6 +8,7 @@ import { Grid } from '@/components/Grid';
 import {
   Heading, Paragraph, Text, type HeadingType, SrOnlyText,
 } from '@/components/Typography';
+import { Video } from '@/components/Video';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import {
   accentBorderColors,
@@ -33,6 +34,10 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   bgImageSrc?: string;
   bgImageFocus?: string;
   bgImageAlt?: string;
+  videoWebm?: string;
+  videoMp4?: string;
+  videoPosterSrc?: string;
+  videoPosterFocus?: string;
   bgColor?: 'black' | 'white';
   imageOnLeft?: boolean;
   superhead?: string;
@@ -64,6 +69,10 @@ export const BlurryPoster = ({
   bgImageSrc,
   bgImageFocus,
   bgImageAlt,
+  videoWebm,
+  videoMp4,
+  videoPosterSrc,
+  videoPosterFocus,
   bgColor = 'black',
   imageOnLeft,
   superhead,
@@ -135,6 +144,18 @@ export const BlurryPoster = ({
             fetchPriority={type === 'hero' ? 'high' : 'auto'}
           />
         </picture>
+      )}
+      {(!!videoWebm || !!videoMp4) && (
+        <Video
+          webmSrc={videoWebm}
+          mp4Src={videoMp4}
+          autoPlay
+          playsInline
+          loop
+          muted
+          poster={getProcessedImage(videoPosterSrc, '1600x900', videoPosterFocus)}
+          className="absolute inset-0 size-full object-cover"
+        />
       )}
       <div className={cnb(styles.blurWrapper(
         addBgBlur,
