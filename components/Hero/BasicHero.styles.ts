@@ -1,10 +1,10 @@
 import { cnb } from 'cnbuilder';
 
 export const heroPaddings = {
-  'balance-sm': 'py-[34vw] sm:py-[24vw] xl:py-[16vw] 3xl:py-[26rem]',
-  'balance-md': 'py-[36vw] sm:py-[26vw] xl:py-[17vw] 3xl:py-[30rem]',
-  'balance-lg': 'py-[40vw] sm:py-[28vw] xl:py-[19vw] 3xl:py-[36rem]',
-  top: 'pt-[45vw] pb-[15vw] sm:pt-[30vw] sm:pb-[12vw] xl:pt-[25vw] xl:pb-[8vw] 3xl:pt-[40rem] 3xl:pb-[14rem]',
+  'balance-sm': 'pt-[34vw] sm:pt-[24vw] xl:pt-[16vw] 3xl:pt-[26rem] rs-pb-1',
+  'balance-md': 'pt-[36vw] sm:pt-[26vw] xl:pt-[17vw] 3xl:pt-[30rem] rs-pb-1',
+  'balance-lg': 'pt-[40vw] sm:pt-[28vw] xl:pt-[19vw] 3xl:pt-[36rem] rs-pb-1',
+  top: 'pt-[45vw] pb-[15vw] sm:pt-[30vw] sm:pb-[12vw] xl:pt-[25vw] xl:pb-[8vw] 3xl:pt-[40rem] 3xl:pb-[14rem] rs-pb-2',
 };
 export type HeroPaddingType = keyof typeof heroPaddings;
 

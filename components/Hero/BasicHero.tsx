@@ -1,7 +1,8 @@
+import { useRef, useState } from 'react';
 import { cnb } from 'cnbuilder';
 import { Container } from '@/components/Container';
 import { Heading, SrOnlyText, Text } from '@/components/Typography';
-import { Video } from '@/components/Video';
+import { Video, VideoButton } from '@/components/Video';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import {
   gradientFroms,
@@ -61,6 +62,21 @@ export const BasicHero = ({
   const hasBgGradient = !!gradientTop && !!gradientBottom;
   const hasBgBlur = !!bgBlur && bgBlur !== 'none';
 
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(null);
+
+  // Toggle video play/pause
+  const toggleBgVideo = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
   return (
     <Container
       width="full"
@@ -105,14 +121,17 @@ export const BasicHero = ({
       )}
       {(!!videoWebm || !!videoMp4) && (
         <Video
+          ref={videoRef}
           webmSrc={videoWebm}
           mp4Src={videoMp4}
           autoPlay
           playsInline
           loop
           muted
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
           poster={getProcessedImage(videoPosterSrc, '1600x900', videoPosterFocus)}
-          className="absolute inset-0 size-full object-cover"
+          className="absolute inset-0 size-full object-cover pointer-events-none"
         />
       )}
       {(!!imageSrc || !!videoWebm || !!videoMp4) && (hasBgBlur || hasBgGradient) && (
@@ -169,6 +188,15 @@ export const BasicHero = ({
           </div>
         )}
       </Container>
+      {(!!videoWebm || !!videoMp4) && (
+        <Container className="relative">
+          <VideoButton
+            isPause={isPlaying}
+            onClick={toggleBgVideo}
+            className="relative block z-10 ml-auto mr-0"
+          />
+        </Container>
+      )}
     </Container>
   );
 };
