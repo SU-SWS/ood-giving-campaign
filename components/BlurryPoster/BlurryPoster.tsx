@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import { useRef, useState } from 'react';
 import { cnb } from 'cnbuilder';
 import { AnimateInView } from '@/components/Animate';
 import { Container } from '@/components/Container';
@@ -8,7 +8,7 @@ import { Grid } from '@/components/Grid';
 import {
   Heading, Paragraph, Text, type HeadingType, SrOnlyText,
 } from '@/components/Typography';
-import { Video } from '@/components/Video';
+import { Video, VideoButton } from '@/components/Video';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import {
   accentBorderColors,
@@ -25,7 +25,7 @@ import * as styles from './BlurryPoster.styles';
  * This is used for the BlurryPoster (featured story poster) and the StoryHeroMvp components.
  */
 
-type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
+type BlurryPosterProps = React.HTMLAttributes<HTMLDivElement> & {
   type?: 'hero' | 'poster';
   /**
    * Use two col layout except for story heroes with horizontal foreground image or no foreground image
@@ -112,14 +112,45 @@ export const BlurryPoster = ({
   } = formatDate(publishedDate);
 
   let i = 1;
-  // Foreground image/video conditionals
+  /**
+   * Foreground image/video
+   */
   const hasVideo = !!videoWebm || !!videoMp4;
   const hasMedia = !!imageSrc || hasVideo;
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(null);
 
-  // Background image/video conditionals
+  // Toggle foreground video play/pause
+  const toggleVideo = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  /**
+   * Background image/video
+   */
   const hasBgVideo = !!bgVideoWebm || !!bgVideoMp4;
-  const hasBgMedia = !!bgImageSrc || hasBgVideo;
+  // const hasBgMedia = !!bgImageSrc || hasBgVideo;
+  const bgVideoRef = useRef<HTMLVideoElement>(null);
+  const [isBgPlaying, setIsBgPlaying] = useState(null);
 
+  // Toggle background video play/pause
+  const toggleBgVideo = () => {
+    if (bgVideoRef.current) {
+      if (isPlaying) {
+        bgVideoRef.current.pause();
+      } else {
+        bgVideoRef.current.play();
+      }
+      setIsBgPlaying(!isBgPlaying);
+    }
+  };
 
   return (
     <Container {...props} bgColor={bgColor} width="full" className={styles.root}>
@@ -163,6 +194,7 @@ export const BlurryPoster = ({
       )}
       {hasBgVideo && (
         <Video
+          ref={bgVideoRef}
           webmSrc={bgVideoWebm}
           mp4Src={bgVideoMp4}
           autoPlay
@@ -279,20 +311,31 @@ export const BlurryPoster = ({
               )}
             </div>
           </div>
-          <Container width={isTwoCol ? 'full' : 'site'} className={styles.imageWrapper(imageOnLeft, isTwoCol, !!imageSrc)}>
+          {/* Foreground media */}
+          <Container width={isTwoCol ? 'full' : 'site'} className={styles.mediaWrapper(imageOnLeft, isTwoCol, hasMedia)}>
             {hasMedia && (
               <AnimateInView animation="zoomSharpen" duration={1} className={styles.imageInnerWrapper}>
                 {hasVideo && (
-                  <div className="aspect-w-3 aspect-h-4">
-                    <Video
-                      webmSrc={videoWebm}
-                      mp4Src={videoMp4}
-                      autoPlay
-                      playsInline
-                      loop
-                      muted
-                      poster={getProcessedImage(videoPosterSrc, '1600x900', videoPosterFocus)}
-                      className={styles.video}
+                  <div className={styles.videoWrapper}>
+                    <div className={styles.videoPlayerWrapper(isTwoCol)}>
+                      <Video
+                        ref={videoRef}
+                        webmSrc={videoWebm}
+                        mp4Src={videoMp4}
+                        autoPlay
+                        playsInline
+                        loop
+                        muted
+                        onPlay={() => setIsPlaying(true)}
+                        onPause={() => setIsPlaying(false)}
+                        poster={getProcessedImage(videoPosterSrc, '1600x900', videoPosterFocus)}
+                        className={styles.video}
+                      />
+                    </div>
+                    <VideoButton
+                      isPause={isPlaying}
+                      onClick={toggleVideo}
+                      className="absolute block z-10 bottom-20 right-20"
                     />
                   </div>
                 )}

@@ -98,12 +98,18 @@ export const taxonomy = 'gap-12 rs-mt-1 list-unstyled leading-display';
 export const taxonomyItem = 'inline-block mb-0';
 export const cta = 'rs-mt-4';
 
-export const imageWrapper = (imageOnLeft?: boolean, isTwoCol?: boolean, hasImage?: boolean) => cnb('w-full cc', {
+// Foreground image or video
+export const mediaWrapper = (imageOnLeft?: boolean, isTwoCol?: boolean, hasMedia?: boolean) => cnb('w-full cc', {
   'lg:order-first 3xl:pl-[calc(100%-750px)] lg:pr-0': imageOnLeft && isTwoCol,
   '3xl:pr-[calc(100%-750px)] lg:pl-0': !imageOnLeft && isTwoCol,
   'lg:mt-0' : isTwoCol,
-  'rs-mt-6' : hasImage,
+  'rs-mt-6' : hasMedia,
 });
 export const imageInnerWrapper = 'h-full w-full';
 export const image = 'h-full w-full object-cover object-center';
-export const video = 'h-full w-full object-cover object-center';
+
+export const videoWrapper = 'relative';
+export const videoPlayerWrapper = (isTwoCol: boolean) => cnb(
+  isTwoCol ? 'aspect-w-1 aspect-h-1 lg:aspect-w-3 lg:aspect-h-4' : 'aspect-w-16 aspect-h-9',
+);
+export const video = 'h-full w-full object-cover object-center pointer-events-none';

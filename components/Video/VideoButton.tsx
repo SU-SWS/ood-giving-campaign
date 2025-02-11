@@ -8,9 +8,15 @@ type VideoButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
    * if isPause is true, the button is a pause button, otherwise it's a play button
    */
   isPause?: boolean;
+  svgTitle?: string;
 }
 
-export const VideoButton = ({ isPause, className, ...props }: VideoButtonProps) => (
+export const VideoButton = ({
+  isPause,
+  svgTitle = `${isPause ? 'Pause' : 'Play'} video`,
+  className,
+  ...props
+}: VideoButtonProps) => (
   <FlexBox
     as="button"
     alignItems="center"
@@ -20,7 +26,7 @@ export const VideoButton = ({ isPause, className, ...props }: VideoButtonProps) 
   >
     <HeroIcon
       icon={isPause ? 'pause' : 'play'}
-      title={`${isPause ? 'Pause' : 'Play'} video`}
+      title={svgTitle}
       noBaseStyle
       className={styles.icon(isPause)}
     />
