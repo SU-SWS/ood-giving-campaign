@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 import { cnb } from 'cnbuilder';
 import { AnimateInView } from '@/components/Animate';
 import { Container } from '@/components/Container';
@@ -34,6 +34,10 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   bgImageSrc?: string;
   bgImageFocus?: string;
   bgImageAlt?: string;
+  bgVideoWebm?: string;
+  bgVideoMp4?: string;
+  bgVideoPosterSrc?: string;
+  bgVideoPosterFocus?: string;
   videoWebm?: string;
   videoMp4?: string;
   videoPosterSrc?: string;
@@ -69,6 +73,10 @@ export const BlurryPoster = ({
   bgImageSrc,
   bgImageFocus,
   bgImageAlt,
+  bgVideoWebm,
+  bgVideoMp4,
+  bgVideoPosterSrc,
+  bgVideoPosterFocus,
   videoWebm,
   videoMp4,
   videoPosterSrc,
@@ -104,6 +112,14 @@ export const BlurryPoster = ({
   } = formatDate(publishedDate);
 
   let i = 1;
+  // Foreground image/video conditionals
+  const hasVideo = !!videoWebm || !!videoMp4;
+  const hasMedia = !!imageSrc || hasVideo;
+
+  // Background image/video conditionals
+  const hasBgVideo = !!bgVideoWebm || !!bgVideoMp4;
+  const hasBgMedia = !!bgImageSrc || hasBgVideo;
+
 
   return (
     <Container {...props} bgColor={bgColor} width="full" className={styles.root}>
@@ -145,15 +161,15 @@ export const BlurryPoster = ({
           />
         </picture>
       )}
-      {(!!videoWebm || !!videoMp4) && (
+      {hasBgVideo && (
         <Video
-          webmSrc={videoWebm}
-          mp4Src={videoMp4}
+          webmSrc={bgVideoWebm}
+          mp4Src={bgVideoMp4}
           autoPlay
           playsInline
           loop
           muted
-          poster={getProcessedImage(videoPosterSrc, '1600x900', videoPosterFocus)}
+          poster={getProcessedImage(bgVideoPosterSrc, '1600x900', bgVideoPosterFocus)}
           className="absolute inset-0 size-full object-cover"
         />
       )}
@@ -264,37 +280,53 @@ export const BlurryPoster = ({
             </div>
           </div>
           <Container width={isTwoCol ? 'full' : 'site'} className={styles.imageWrapper(imageOnLeft, isTwoCol, !!imageSrc)}>
-            {imageSrc && (
+            {hasMedia && (
               <AnimateInView animation="zoomSharpen" duration={1} className={styles.imageInnerWrapper}>
-                <picture>
-                  <source
-                    srcSet={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '750x1000', imageFocus)}
-                    media="(min-width: 992px)"
-                    width={type === 'hero' && !isTwoCol ? 1800 : 750}
-                    height={type === 'hero' && !isTwoCol ? 900 : 1000}
-                  />
-                  <source
-                    srcSet={getProcessedImage(imageSrc, '900x900', imageFocus)}
-                    media="(min-width: 576px)"
-                    width={900}
-                    height={900}
-                  />
-                  <source
-                    srcSet={getProcessedImage(imageSrc, '600x600', imageFocus)}
-                    media="(max-width: 575px)"
-                    width={600}
-                    height={600}
-                  />
-                  <img
-                    src={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '750x1000', imageFocus)}
-                    alt={alt || ''}
-                    width={type === 'hero' && !isTwoCol ? 1800 : 750}
-                    height={type === 'hero' && !isTwoCol ? 900 : 1000}
-                    aria-describedby={hasCaption && !!alt ? 'story-hero-caption' : undefined}
-                    fetchPriority={type === 'hero' ? 'high' : 'auto'}
-                    className={styles.image}
-                  />
-                </picture>
+                {hasVideo && (
+                  <div className="aspect-w-3 aspect-h-4">
+                    <Video
+                      webmSrc={videoWebm}
+                      mp4Src={videoMp4}
+                      autoPlay
+                      playsInline
+                      loop
+                      muted
+                      poster={getProcessedImage(videoPosterSrc, '1600x900', videoPosterFocus)}
+                      className={styles.video}
+                    />
+                  </div>
+                )}
+                {imageSrc && (
+                  <picture>
+                    <source
+                      srcSet={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '750x1000', imageFocus)}
+                      media="(min-width: 992px)"
+                      width={type === 'hero' && !isTwoCol ? 1800 : 750}
+                      height={type === 'hero' && !isTwoCol ? 900 : 1000}
+                    />
+                    <source
+                      srcSet={getProcessedImage(imageSrc, '900x900', imageFocus)}
+                      media="(min-width: 576px)"
+                      width={900}
+                      height={900}
+                    />
+                    <source
+                      srcSet={getProcessedImage(imageSrc, '600x600', imageFocus)}
+                      media="(max-width: 575px)"
+                      width={600}
+                      height={600}
+                    />
+                    <img
+                      src={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '750x1000', imageFocus)}
+                      alt={alt || ''}
+                      width={type === 'hero' && !isTwoCol ? 1800 : 750}
+                      height={type === 'hero' && !isTwoCol ? 900 : 1000}
+                      aria-describedby={hasCaption && !!alt ? 'story-hero-caption' : undefined}
+                      fetchPriority={type === 'hero' ? 'high' : 'auto'}
+                      className={styles.image}
+                    />
+                  </picture>
+                )}
               </AnimateInView>
             )}
           </Container>

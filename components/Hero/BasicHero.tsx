@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { cnb } from 'cnbuilder';
+import { AnimateInView } from '@/components/Animate';
 import { Container } from '@/components/Container';
 import { Heading, SrOnlyText, Text } from '@/components/Typography';
 import { Video, VideoButton } from '@/components/Video';
@@ -17,7 +18,7 @@ import {
 import * as styles from './BasicHero.styles';
 
 /**
- * Basic page hero that allows for different hero styles (e.g., initiative landing and detailed pages)
+ * Basic Page hero that allows for different hero styles (e.g., initiative landing and detailed pages)
  */
 type BasicHeroProps = {
   title: string;
@@ -61,6 +62,9 @@ export const BasicHero = ({
   // To render a dark overlay, both a top and bottom gradient color must be selected
   const hasBgGradient = !!gradientTop && !!gradientBottom;
   const hasBgBlur = !!bgBlur && bgBlur !== 'none';
+
+  const hasVideo = !!videoWebm || !!videoMp4;
+  const hasMedia = !!imageSrc || hasVideo;
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(null);
@@ -115,11 +119,11 @@ export const BasicHero = ({
             alt=""
             width={2000}
             height={1000}
-            className={styles.bgImage}
+            className={styles.bgMedia}
           />
         </picture>
       )}
-      {(!!videoWebm || !!videoMp4) && (
+      {hasVideo && (
         <Video
           ref={videoRef}
           webmSrc={videoWebm}
@@ -131,10 +135,10 @@ export const BasicHero = ({
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
           poster={getProcessedImage(videoPosterSrc, '1600x900', videoPosterFocus)}
-          className="absolute inset-0 size-full object-cover pointer-events-none"
+          className={styles.bgMedia}
         />
       )}
-      {(!!imageSrc || !!videoWebm || !!videoMp4) && (hasBgBlur || hasBgGradient) && (
+      {hasMedia && (hasBgBlur || hasBgGradient) && (
         <div
           className={cnb(
             styles.overlay(hasBgGradient),
@@ -189,7 +193,7 @@ export const BasicHero = ({
         )}
       </Container>
       {(!!videoWebm || !!videoMp4) && (
-        <Container className="relative">
+        <Container width="wide" className="relative">
           <VideoButton
             isPause={isPlaying}
             onClick={toggleBgVideo}

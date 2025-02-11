@@ -27,6 +27,9 @@ export type StoryHeroMvpProps = {
   heroImage?: SbImageType;
   bgImage?: SbImageType;
   bgImageAlt?: string;
+  bgVideoWebm?: SbImageType;
+  bgVideoMp4?: SbImageType;
+  bgVideoPoster?: SbImageType;
   heroVideoWebm?: SbImageType;
   heroVideoMp4?: SbImageType;
   heroVideoPoster?: SbImageType;
@@ -58,6 +61,9 @@ export const StoryHeroMvp = ({
   heroImage: { filename, focus } = {},
   bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
   bgImageAlt,
+  bgVideoWebm: { filename: bgWebmFilename } = {},
+  bgVideoMp4: { filename: bgMp4Filename } = {},
+  bgVideoPoster: { filename: bgPosterFilename, focus: bgPosterFocus } = {},
   heroVideoWebm: { filename: webmFilename } = {},
   heroVideoMp4: { filename: mp4Filename } = {},
   heroVideoPoster: { filename: posterFilename, focus: posterFocus } = {},
@@ -118,6 +124,10 @@ export const StoryHeroMvp = ({
           bgImageSrc={bgImageSrc}
           bgImageFocus={bgImageFocus}
           bgImageAlt={bgImageAlt}
+          bgVideoWebm={bgWebmFilename}
+          bgVideoMp4={bgMp4Filename}
+          bgVideoPosterSrc={bgPosterFilename}
+          bgVideoPosterFocus={bgPosterFocus}
           videoWebm={webmFilename}
           videoMp4={mp4Filename}
           videoPosterSrc={posterFilename}

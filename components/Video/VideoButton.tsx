@@ -22,7 +22,7 @@ export const VideoButton = ({ isPause, className, ...props }: VideoButtonProps) 
       icon={isPause ? 'pause' : 'play'}
       title={`${isPause ? 'Pause' : 'Play'} video`}
       noBaseStyle
-      className={styles.icon}
+      className={styles.icon(isPause)}
     />
   </FlexBox>
 );

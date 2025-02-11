@@ -106,3 +106,4 @@ export const imageWrapper = (imageOnLeft?: boolean, isTwoCol?: boolean, hasImage
 });
 export const imageInnerWrapper = 'h-full w-full';
 export const image = 'h-full w-full object-cover object-center';
+export const video = 'h-full w-full object-cover object-center';
