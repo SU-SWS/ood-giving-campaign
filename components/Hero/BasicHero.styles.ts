@@ -10,7 +10,7 @@ export const root = (paddingType: HeroPaddingType, hasVideo: boolean) => cnb('re
   'py-[40vw] sm:py-[28vw] xl:py-[19vw] 3xl:py-[36rem]' : paddingType === 'balance-lg' && !hasVideo,
 
   // Has background video
-  'rs-pb-2': hasVideo,
+  'pb-20 md:pb-36': hasVideo,
   'pt-[45vw] sm:pt-[30vw] xl:pt-[25vw] 3xl:pt-[40rem]': paddingType === 'top' && hasVideo,
   'pt-[34vw] sm:pt-[24vw] xl:pt-[16vw] 3xl:pt-[26rem]': paddingType === 'balance-sm' && hasVideo,
   'pt-[36vw] sm:pt-[26vw] xl:pt-[17vw] 3xl:pt-[30rem]': paddingType === 'balance-md' && hasVideo,

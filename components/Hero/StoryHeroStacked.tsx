@@ -218,11 +218,13 @@ export const StoryHeroStacked = ({
                   className={styles.video}
                 />
               </div>
-              <VideoButton
-                isPause={isPlaying}
-                onClick={toggleVideo}
-                className="absolute block z-10 bottom-20 right-20"
-              />
+              <Container width="wide" className="absolute block z-10 bottom-0 right-0 pb-20 md:pb-36">
+                <VideoButton
+                  isPause={isPlaying}
+                  onClick={toggleVideo}
+                  className="relative"
+                />
+              </Container>
             </div>
           )}
         </AnimateInView>
