@@ -3,7 +3,7 @@ import { cnb } from 'cnbuilder';
 import { AnimateInView } from '@/components/Animate';
 import { Container } from '@/components/Container';
 import { Heading, SrOnlyText, Text } from '@/components/Typography';
-import { Video, VideoButton } from '@/components/Video';
+import { MutedVideoLoop, VideoButton } from '@/components/Video';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import {
   gradientFroms,
@@ -124,14 +124,10 @@ export const BasicHero = ({
         </picture>
       )}
       {hasVideo && (
-        <Video
+        <MutedVideoLoop
           ref={videoRef}
           webmSrc={videoWebm}
           mp4Src={videoMp4}
-          autoPlay
-          playsInline
-          loop
-          muted
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
           poster={getProcessedImage(videoPosterSrc, '1600x900', videoPosterFocus)}

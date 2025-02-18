@@ -8,7 +8,7 @@ import { Grid } from '@/components/Grid';
 import {
   Heading, Paragraph, Text, type HeadingType, SrOnlyText,
 } from '@/components/Typography';
-import { Video, VideoButton } from '@/components/Video';
+import { MutedVideoLoop, VideoButton } from '@/components/Video';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import {
   accentBorderColors,
@@ -193,14 +193,12 @@ export const BlurryPoster = ({
         </picture>
       )}
       {hasBgVideo && (
-        <Video
+        <MutedVideoLoop
           ref={bgVideoRef}
           webmSrc={bgVideoWebm}
           mp4Src={bgVideoMp4}
-          autoPlay
-          playsInline
-          loop
-          muted
+          onPlay={() => setIsBgPlaying(true)}
+          onPause={() => setIsBgPlaying(false)}
           poster={getProcessedImage(bgVideoPosterSrc, '1600x900', bgVideoPosterFocus)}
           className="absolute inset-0 size-full object-cover"
         />
@@ -318,14 +316,10 @@ export const BlurryPoster = ({
                 {hasVideo && (
                   <div className={styles.videoWrapper}>
                     <div className={styles.videoPlayerWrapper(isTwoCol)}>
-                      <Video
+                      <MutedVideoLoop
                         ref={videoRef}
                         webmSrc={videoWebm}
                         mp4Src={videoMp4}
-                        autoPlay
-                        playsInline
-                        loop
-                        muted
                         onPlay={() => setIsPlaying(true)}
                         onPause={() => setIsPlaying(false)}
                         poster={getProcessedImage(videoPosterSrc, '1600x900', videoPosterFocus)}
@@ -335,7 +329,7 @@ export const BlurryPoster = ({
                     <VideoButton
                       isPause={isPlaying}
                       onClick={toggleVideo}
-                      className="absolute block z-10 bottom-20 right-20"
+                      className="block z-10 bottom-20 right-20"
                     />
                   </div>
                 )}
