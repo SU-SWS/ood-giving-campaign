@@ -113,3 +113,4 @@ export const videoPlayerWrapper = (isTwoCol: boolean) => cnb(
   isTwoCol ? 'aspect-w-1 aspect-h-1 lg:aspect-w-3 lg:aspect-h-4' : 'aspect-w-16 aspect-h-9',
 );
 export const video = 'h-full w-full object-cover object-center pointer-events-none';
+export const videoButton = 'absolute block z-10 bottom-10 right-10 md:bottom-20 md:right-20';

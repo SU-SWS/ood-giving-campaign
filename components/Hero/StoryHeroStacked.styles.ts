@@ -26,4 +26,6 @@ export const caption = 'caption *:leading-display mt-08em max-w-prose-wide';
 export const videoWrapper = 'relative';
 export const videoPlayerWrapper = 'aspect-w-16 aspect-h-9';
 export const video = 'h-full w-full object-cover object-center pointer-events-none';
+export const videoBtnWrapper = 'absolute block z-10 bottom-0 right-0 pb-20 md:pb-36';
+export const videoButton = 'relative';
 

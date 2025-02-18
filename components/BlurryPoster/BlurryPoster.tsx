@@ -329,7 +329,7 @@ export const BlurryPoster = ({
                     <VideoButton
                       isPause={isPlaying}
                       onClick={toggleVideo}
-                      className="block z-10 bottom-20 right-20"
+                      className={styles.videoButton}
                     />
                   </div>
                 )}
