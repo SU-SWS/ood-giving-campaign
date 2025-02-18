@@ -85,7 +85,7 @@ export const BasicHero = ({
     <Container
       width="full"
       bgColor={imageSrc ? undefined : 'black'}
-      className={cnb(styles.root, styles.heroPaddings[paddingType])}
+      className={cnb(styles.root(paddingType, hasVideo))}
     >
       {!!imageSrc && (
         <picture>
@@ -193,7 +193,7 @@ export const BasicHero = ({
           <VideoButton
             isPause={isPlaying}
             onClick={toggleBgVideo}
-            className="relative block z-10 ml-auto mr-0"
+            className={styles.videoButton(paddingType)}
           />
         </Container>
       )}
