@@ -27,7 +27,6 @@ export type StoryHeroStackedProps = {
   videoWebm?: string;
   videoMp4?: string;
   videoPosterSrc?: string;
-  videoPosterFocus?: string;
   hasCaption?: boolean;
   isLightHero?: boolean;
   taxonomy?: TaxonomyType[];
@@ -48,7 +47,6 @@ export const StoryHeroStacked = ({
   videoWebm,
   videoMp4,
   videoPosterSrc,
-  videoPosterFocus,
   hasCaption,
   isLightHero = false,
   taxonomy,
@@ -214,7 +212,7 @@ export const StoryHeroStacked = ({
                   mp4Src={videoMp4}
                   onPlay={() => setIsPlaying(true)}
                   onPause={() => setIsPlaying(false)}
-                  poster={getProcessedImage(videoPosterSrc, '1600x900', videoPosterFocus)}
+                  posterSrc={videoPosterSrc}
                   className={styles.video}
                 />
               </div>

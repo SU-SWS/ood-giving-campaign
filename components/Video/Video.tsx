@@ -1,5 +1,6 @@
 import { VideoHTMLAttributes, forwardRef } from 'react';
 import { getMaskedAsset } from '@/utilities/getMaskedAsset';
+import { getProcessedImage } from '@/utilities/getProcessedImage';
 
 export type VideoProps = VideoHTMLAttributes<HTMLVideoElement> & {
   mp4Src?: string;
@@ -17,7 +18,7 @@ export const Video = forwardRef<HTMLVideoElement, VideoProps>(({
 }, ref) => (
   <video
     ref={ref}
-    poster={posterSrc}
+    poster={getProcessedImage(posterSrc)}
     className={className}
     {...props}
   >

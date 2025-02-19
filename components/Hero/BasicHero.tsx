@@ -31,7 +31,6 @@ type BasicHeroProps = {
   videoWebm?: string;
   videoMp4?: string;
   videoPosterSrc?: string;
-  videoPosterFocus?: string;
   gradientTop?: GradientToType;
   gradientBottom?: GradientFromType;
   gradientVia?: GradientViaType;
@@ -51,7 +50,6 @@ export const BasicHero = ({
   videoWebm,
   videoMp4,
   videoPosterSrc,
-  videoPosterFocus,
   gradientTop,
   gradientBottom,
   gradientVia,
@@ -130,7 +128,7 @@ export const BasicHero = ({
           mp4Src={videoMp4}
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
-          poster={getProcessedImage(videoPosterSrc, '1600x900', videoPosterFocus)}
+          posterSrc={videoPosterSrc}
           className={styles.bgMedia}
         />
       )}

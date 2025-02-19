@@ -37,11 +37,9 @@ type BlurryPosterProps = React.HTMLAttributes<HTMLDivElement> & {
   bgVideoWebm?: string;
   bgVideoMp4?: string;
   bgVideoPosterSrc?: string;
-  bgVideoPosterFocus?: string;
   videoWebm?: string;
   videoMp4?: string;
   videoPosterSrc?: string;
-  videoPosterFocus?: string;
   bgColor?: 'black' | 'white';
   imageOnLeft?: boolean;
   superhead?: string;
@@ -76,11 +74,9 @@ export const BlurryPoster = ({
   bgVideoWebm,
   bgVideoMp4,
   bgVideoPosterSrc,
-  bgVideoPosterFocus,
   videoWebm,
   videoMp4,
   videoPosterSrc,
-  videoPosterFocus,
   bgColor = 'black',
   imageOnLeft,
   superhead,
@@ -198,7 +194,7 @@ export const BlurryPoster = ({
           mp4Src={bgVideoMp4}
           onPlay={() => setIsBgPlaying(true)}
           onPause={() => setIsBgPlaying(false)}
-          poster={getProcessedImage(bgVideoPosterSrc, '1600x900', bgVideoPosterFocus)}
+          posterSrc={bgVideoPosterSrc}
           className="absolute inset-0 size-full object-cover"
         />
       )}
@@ -320,7 +316,7 @@ export const BlurryPoster = ({
                         mp4Src={videoMp4}
                         onPlay={() => setIsPlaying(true)}
                         onPause={() => setIsPlaying(false)}
-                        poster={getProcessedImage(videoPosterSrc, '1600x900', videoPosterFocus)}
+                        posterSrc={videoPosterSrc}
                         className={styles.video}
                       />
                     </div>

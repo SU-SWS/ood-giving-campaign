@@ -46,7 +46,7 @@ export const SbBasicPage = ({
     heroImage: { filename, focus } = {},
     heroVideoWebm: { filename: webmFilename } = {},
     heroVideoMp4: { filename: mp4Filename } = {},
-    heroVideoPoster: { filename: posterFilename, focus: posterFocus } = {},
+    heroVideoPoster: { filename: posterFilename } = {},
     gradientTop,
     gradientBottom,
     gradientVia,
@@ -81,7 +81,6 @@ export const SbBasicPage = ({
             videoWebm={webmFilename}
             videoMp4={mp4Filename}
             videoPosterSrc={posterFilename}
-            videoPosterFocus={posterFocus}
             gradientTop={gradientTop}
             gradientBottom={gradientBottom}
             gradientVia={gradientVia}
