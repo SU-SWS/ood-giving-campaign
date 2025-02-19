@@ -27,7 +27,7 @@ export const videoButton = (paddingType: HeroPaddingType) => cnb('relative block
   'mt-[40vw] sm:mt-[28vw] xl:mt-[19vw] 3xl:mt-[36rem]': paddingType === 'balance-lg',
 });
 
-export const contentWrapper = '*:mx-auto';
+export const contentWrapper = 'relative z-40 *:mx-auto';
 export const superhead = 'relative z-10 xl:max-w-900 mx-auto rs-mb-0 text-shadow-sm';
 export const heading = (isDrukHeading: boolean, isSmallHeading: boolean) => cnb('relative z-10 max-w-1200 mx-auto mb-0 text-balance', {
   'fluid-type-7 md:fluid-type-8': isDrukHeading && isSmallHeading,
