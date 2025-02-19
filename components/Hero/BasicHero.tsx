@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { cnb } from 'cnbuilder';
 import { AnimateInView } from '@/components/Animate';
 import { Container } from '@/components/Container';
@@ -65,17 +65,32 @@ export const BasicHero = ({
   const hasMedia = !!imageSrc || hasVideo;
 
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(null);
+  const [videoReady, setVideoReady] = useState<boolean>(false);
+  const [isPlaying, setIsPlaying] = useState<boolean>(null);
 
-  // Toggle video play/pause
+  const handleCanPlay = () => setVideoReady(true);
+  const handlePlay = () => setIsPlaying(true);
+  const handlePause = () => setIsPlaying(false);
+
+  // Check video state when returning to the tab after switching tabs
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+    if (!document.hidden && videoRef.current) {
+      setIsPlaying(!videoRef.current.paused);
+    }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () =>
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+  }, []);
+
+  // Toggle video playback when the user interacts with the VideoButton.
   const toggleBgVideo = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
+    if (!videoRef.current || !videoReady) return;
+    if (isPlaying) {
+      videoRef.current.pause();
+    } else {
+      videoRef.current.play();
     }
   };
 
@@ -126,8 +141,9 @@ export const BasicHero = ({
           ref={videoRef}
           webmSrc={videoWebm}
           mp4Src={videoMp4}
-          onPlay={() => setIsPlaying(true)}
-          onPause={() => setIsPlaying(false)}
+          onCanPlay={handleCanPlay}
+          onPlay={handlePlay}
+          onPause={handlePause}
           posterSrc={videoPosterSrc}
           className={styles.bgMedia}
         />
