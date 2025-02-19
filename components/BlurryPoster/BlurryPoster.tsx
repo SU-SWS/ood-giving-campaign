@@ -141,16 +141,16 @@ export const BlurryPoster = ({
   const [isBgPlaying, setIsBgPlaying] = useState(null);
 
   // Toggle background video play/pause
-  const toggleBgVideo = () => {
-    if (bgVideoRef.current) {
-      if (isPlaying) {
-        bgVideoRef.current.pause();
-      } else {
-        bgVideoRef.current.play();
-      }
-      setIsBgPlaying(!isBgPlaying);
-    }
-  };
+  // const toggleBgVideo = () => {
+  //   if (bgVideoRef.current) {
+  //     if (isPlaying) {
+  //       bgVideoRef.current.pause();
+  //     } else {
+  //       bgVideoRef.current.play();
+  //     }
+  //     setIsBgPlaying(!isBgPlaying);
+  //   }
+  // };
 
   return (
     <Container {...props} bgColor={bgColor} width="full" className={styles.root}>

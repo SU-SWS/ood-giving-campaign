@@ -1,7 +1,7 @@
 import { VideoHTMLAttributes, forwardRef } from 'react';
 import { getMaskedAsset } from '@/utilities/getMaskedAsset';
 
-type VideoProps = VideoHTMLAttributes<HTMLVideoElement> & {
+export type VideoProps = VideoHTMLAttributes<HTMLVideoElement> & {
   mp4Src?: string;
   webmSrc?: string;
   posterSrc?: string;

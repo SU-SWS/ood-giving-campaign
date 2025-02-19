@@ -147,40 +147,46 @@ export const BasicHero = ({
       )}
       <Container className={styles.contentWrapper}>
         {superhead && (
-          <Text
-            size={3}
-            font="serif"
-            weight="bold"
-            align="center"
-            leading="tight"
-            color="white"
-            aria-hidden
-            className={styles.superhead}
-          >
-            {superhead}
-          </Text>
+          <AnimateInView animation="slideUp">
+            <Text
+              size={3}
+              font="serif"
+              weight="bold"
+              align="center"
+              leading="tight"
+              color="white"
+              aria-hidden
+              className={styles.superhead}
+            >
+              {superhead}
+            </Text>
+          </AnimateInView>
         )}
-        <Heading
-          as="h1"
-          font={isDrukHeading ? 'druk' : 'serif'}
-          weight={isDrukHeading ? 'black' : 'bold'}
-          align="center"
-          leading={isDrukHeading ? 'none' : 'tight'}
-          color="white"
-          className={styles.heading(isDrukHeading, isSmallHeading)}
-        >
-          {superhead && <SrOnlyText>{`${superhead}: `}</SrOnlyText>}{title}
-        </Heading>
-        {subheading && (
-          <Text
-            size={2}
+        <AnimateInView animation="slideUp" delay={0.1}>
+          <Heading
+            as="h1"
+            font={isDrukHeading ? 'druk' : 'serif'}
+            weight={isDrukHeading ? 'black' : 'bold'}
             align="center"
-            leading="display"
+            leading={isDrukHeading ? 'none' : 'tight'}
             color="white"
-            className={styles.subhead}
+            className={styles.heading(isDrukHeading, isSmallHeading)}
           >
-            {subheading}
-          </Text>
+            {superhead && <SrOnlyText>{`${superhead}: `}</SrOnlyText>}{title}
+          </Heading>
+        </AnimateInView>
+        {subheading && (
+          <AnimateInView animation="slideUp" delay={0.2}>
+            <Text
+              size={2}
+              align="center"
+              leading="display"
+              color="white"
+              className={styles.subhead}
+            >
+              {subheading}
+            </Text>
+          </AnimateInView>
         )}
         {!!heroContent && (
           <div className={styles.content}>
