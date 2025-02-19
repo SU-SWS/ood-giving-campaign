@@ -136,21 +136,20 @@ export const BlurryPoster = ({
    * Background image/video
    */
   const hasBgVideo = !!bgVideoWebm || !!bgVideoMp4;
-  // const hasBgMedia = !!bgImageSrc || hasBgVideo;
   const bgVideoRef = useRef<HTMLVideoElement>(null);
   const [isBgPlaying, setIsBgPlaying] = useState(null);
 
   // Toggle background video play/pause
-  // const toggleBgVideo = () => {
-  //   if (bgVideoRef.current) {
-  //     if (isPlaying) {
-  //       bgVideoRef.current.pause();
-  //     } else {
-  //       bgVideoRef.current.play();
-  //     }
-  //     setIsBgPlaying(!isBgPlaying);
-  //   }
-  // };
+  const toggleBgVideo = () => {
+    if (bgVideoRef.current) {
+      if (isBgPlaying) {
+        bgVideoRef.current.pause();
+      } else {
+        bgVideoRef.current.play();
+      }
+      setIsBgPlaying(!isBgPlaying);
+    }
+  };
 
   return (
     <Container {...props} bgColor={bgColor} width="full" className={styles.root}>
@@ -203,13 +202,11 @@ export const BlurryPoster = ({
           className="absolute inset-0 size-full object-cover"
         />
       )}
-      <div className={cnb(styles.blurWrapper(
-        addBgBlur,
-        !!darkOverlay && darkOverlay !== 'none', type, bgColor,
-        ),
+      <div className={cnb(
+        styles.blurWrapper(addBgBlur, !!darkOverlay && darkOverlay !== 'none', type, bgColor),
         heroOverlays[darkOverlay])}
       >
-        <Grid lg={isTwoCol ? 2 : 1} pt={type === 'hero' ? 9 : 8} pb={8} className={styles.grid}>
+        <Grid lg={isTwoCol ? 2 : 1} pt={type === 'hero' ? 9 : 8} pb={hasBgVideo ? 4 : 8} className={styles.grid}>
           <div className={styles.contentWrapper(type, !!imageSrc, imageOnLeft, isTwoCol)}>
             {superhead && (
               <Text
@@ -302,6 +299,7 @@ export const BlurryPoster = ({
                   </FlexBox>
                 </>
               )}
+              {/* CTA is only for use as poster not as Story Hero */}
               {cta && (
                 <div className={styles.cta}>
                   {cta}
@@ -368,6 +366,15 @@ export const BlurryPoster = ({
             )}
           </Container>
         </Grid>
+        {hasBgVideo && (
+          <Container width="wide" className={styles.bgVideoBtnWrapper}>
+            <VideoButton
+              isPause={isBgPlaying}
+              onClick={toggleBgVideo}
+              className={styles.bgVideoButton(!!imageSrc)}
+            />
+          </Container>
+        )}
       </div>
     </Container>
   );

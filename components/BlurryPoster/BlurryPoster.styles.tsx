@@ -114,3 +114,10 @@ export const videoPlayerWrapper = (isTwoCol: boolean) => cnb(
 );
 export const video = 'h-full w-full object-cover object-center pointer-events-none';
 export const videoButton = 'absolute block z-10 bottom-10 right-10 md:bottom-20 md:right-20';
+
+// Background video
+export const bgVideoBtnWrapper = 'relative mb-20 md:mb-36';
+export const bgVideoButton = (hasForegroundImage: boolean) => cnb(
+  'block z-10 ml-auto mr-0',
+  hasForegroundImage && 'lg:bottom-0 lg:right-0',
+);
