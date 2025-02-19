@@ -1,6 +1,6 @@
 import { cnb } from 'cnbuilder';
 import { AnimateInView, type AnimationType } from '@/components/Animate';
-import { NumberCounter } from '@/components/NumberCounter';
+import { NumberCounter } from '@/components/DataCard/NumberCounter';
 import { Container } from '@/components/Container';
 import { FlexBox } from '@/components/FlexBox';
 import { Heading, type HeadingType } from '../Typography';
