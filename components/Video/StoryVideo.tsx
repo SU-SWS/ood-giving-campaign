@@ -2,10 +2,15 @@ import { useRef, useState } from 'react';
 import { cnb } from 'cnbuilder';
 import { type AnimationType } from '@/components/Animate';
 import { MediaWrapper, type MediaWrapperProps } from '@/components/Media';
-import { Parallax } from '@/components/Parallax';
 import { MutedVideoLoop, VideoButton } from '@/components/Video';
 import { type PaddingType } from '@/utilities/datasource';
 import * as styles from './StoryVideo.styles';
+
+/**
+ * Inline story Video component that comes with a play/pause button and layout/caption options
+ * similar to the StoryImage component.
+ * To be used for the SbVideo component in Storyblok.
+ */
 
 export type StoryVideoProps = React.HTMLAttributes<HTMLDivElement> & MediaWrapperProps & {
   videoWebm?: string;
@@ -38,7 +43,7 @@ export const StoryVideo = ({
 }: StoryVideoProps) => {
   const hasVideo = !!videoWebm || !!videoMp4;
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   // Toggle foreground video play/pause
   const toggleVideo = () => {

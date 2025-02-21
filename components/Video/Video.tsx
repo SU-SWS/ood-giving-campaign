@@ -2,6 +2,10 @@ import { VideoHTMLAttributes, forwardRef } from 'react';
 import { getMaskedAsset } from '@/utilities/getMaskedAsset';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 
+/**
+ * Simple Video component that allows for webm and mp4 sources and a poster image.
+ */
+
 export type VideoProps = VideoHTMLAttributes<HTMLVideoElement> & {
   mp4Src?: string;
   webmSrc?: string;

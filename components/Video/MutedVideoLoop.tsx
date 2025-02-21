@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import { Video, type VideoProps } from './Video';
 
 /**
- * This component is a more specific version of the Video component.
+ * This component is a more specific version of the Video component created for convenience.
  * It is used for decorative muted video loops.
  */
 export const MutedVideoLoop = forwardRef<HTMLVideoElement, VideoProps>((props, ref) => (
