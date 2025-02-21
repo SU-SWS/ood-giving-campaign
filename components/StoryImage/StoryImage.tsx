@@ -1,5 +1,3 @@
-import { cnb } from 'cnbuilder';
-import { type AnimationType } from '@/components/Animate';
 import { MediaWrapper, type MediaWrapperProps } from '@/components/Media';
 import { Parallax } from '@/components/Parallax';
 import { type PaddingType } from '@/utilities/datasource';
@@ -12,10 +10,8 @@ export type StoryImageProps = React.HTMLAttributes<HTMLDivElement> & MediaWrappe
   imageFocus?: string;
   isLoadingEager?: boolean;
   alt?: string;
-  spacingTop?: PaddingType;
-  spacingBottom?: PaddingType;
-  animation?: AnimationType;
-  delay?: number;
+  pt?: PaddingType;
+  pb?: PaddingType;
 };
 
 export const StoryImage = ({
@@ -29,14 +25,13 @@ export const StoryImage = ({
   isFullHeight,
   boundingWidth = 'full',
   width,
-  spacingTop,
-  spacingBottom,
+  pt,
+  pb,
   isCaptionInset,
   captionBgColor = 'transparent',
   animation = 'none',
   delay,
   children,
-  className,
   ...props
 }: StoryImageProps) => {
   const { width: originalWidth, height: originalHeight } = getSbImageSize(imageSrc);
@@ -60,11 +55,10 @@ export const StoryImage = ({
       isParallax={isParallax}
       boundingWidth={boundingWidth}
       width={width}
-      pt={spacingTop}
-      pb={spacingBottom}
+      pt={pt}
+      pb={pb}
       animation={animation}
       delay={delay}
-      className={cnb(className, styles.root(isFullHeight))}
       {...props}
     >
       {!!imageSrc && (

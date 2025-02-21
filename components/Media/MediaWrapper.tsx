@@ -1,6 +1,6 @@
 import { cnb } from 'cnbuilder';
 import { AnimateInView, type AnimationType } from '@/components/Animate';
-import { Caption } from './Caption';
+import { Caption, type CaptionProps } from './Caption';
 import { WidthBox, type WidthType } from '@/components/WidthBox';
 import { type PaddingType } from '@/utilities/datasource';
 import { imageAspectRatios, type ImageAspectRatioType } from '@/utilities/datasource';
@@ -11,10 +11,7 @@ import * as styles from './MediaWrapper.styles';
  * that provides a shared set of layout and caption options.
  */
 
-export type MediaWrapperProps = React.HTMLAttributes<HTMLDivElement> & {
-  caption?: React.ReactNode;
-  isCaptionInset?: boolean;
-  captionBgColor?: styles.CaptionBgColorType;
+export type MediaWrapperProps = React.HTMLAttributes<HTMLDivElement> & CaptionProps & {
   aspectRatio?: ImageAspectRatioType;
   isFullHeight?: boolean;
   isParallax?: boolean;
