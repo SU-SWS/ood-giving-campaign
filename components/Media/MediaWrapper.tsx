@@ -50,7 +50,7 @@ export const MediaWrapper = ({
       className={cnb(styles.root(isFullHeight), className)}
     >
       <AnimateInView animation={animation} delay={delay} className={styles.animateWrapper(isFullHeight)}>
-        <figure className={styles.figure(isFullHeight)}>
+        <figure className={styles.figure(isFullHeight, captionBgColor)}>
           <div className={cnb(imageAspectRatios[aspectRatio], styles.mediaWrapper(isFullHeight, isParallax))}>
             {children}
           </div>
