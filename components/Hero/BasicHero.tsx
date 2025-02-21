@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { cnb } from 'cnbuilder';
+import { useInView } from 'framer-motion';
 import { AnimateInView } from '@/components/Animate';
 import { Container } from '@/components/Container';
 import { Heading, SrOnlyText, Text } from '@/components/Typography';
@@ -68,6 +69,8 @@ export const BasicHero = ({
   const [videoReady, setVideoReady] = useState<boolean>(false);
   const [isPlaying, setIsPlaying] = useState<boolean>(null);
 
+  const isVideoInView = useInView(videoRef, { once: false });
+
   const handleCanPlay = () => setVideoReady(true);
   const handlePlay = () => setIsPlaying(true);
   const handlePause = () => setIsPlaying(false);
@@ -93,6 +96,18 @@ export const BasicHero = ({
       videoRef.current.play();
     }
   };
+
+  // If video goes out of view, pause it; resume when it comes back into view
+  useEffect(() => {
+    if (!videoRef.current) return;
+    if (!isVideoInView && isPlaying) {
+      videoRef.current.pause();
+    }
+    if (isVideoInView && !isPlaying) {
+      videoRef.current.play();
+    }
+  }
+  , [isVideoInView, isPlaying]);
 
   return (
     <Container
@@ -150,6 +165,7 @@ export const BasicHero = ({
       )}
       {hasMedia && (hasBgBlur || hasBgGradient) && (
         <div
+          aria-hidden="true"
           className={cnb(
             styles.overlay(hasBgGradient),
             bgBlurs[bgBlur],
