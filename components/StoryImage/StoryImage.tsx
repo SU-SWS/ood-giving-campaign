@@ -52,12 +52,20 @@ export const StoryImage = ({
 
   return (
     <MediaWrapper
-      {...props}
+      caption={caption}
+      isCaptionInset={isCaptionInset}
+      captionBgColor={captionBgColor}
+      aspectRatio={aspectRatio}
+      isFullHeight={isFullHeight}
+      isParallax={isParallax}
       boundingWidth={boundingWidth}
       width={width}
       pt={spacingTop}
       pb={spacingBottom}
+      animation={animation}
+      delay={delay}
       className={cnb(className, styles.root(isFullHeight))}
+      {...props}
     >
       {!!imageSrc && (
         <Parallax offset={isParallax ? 60 : 0}>
