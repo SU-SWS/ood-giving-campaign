@@ -21,7 +21,6 @@ export const StoryVideo = ({
   videoWebm,
   videoMp4,
   videoPosterSrc,
-  isParallax,
   caption,
   aspectRatio,
   isFullHeight,
@@ -63,8 +62,6 @@ export const StoryVideo = ({
       isCaptionInset={isCaptionInset}
       captionBgColor={captionBgColor}
       aspectRatio={aspectRatio}
-      isFullHeight={isFullHeight}
-      isParallax={isParallax}
       boundingWidth={boundingWidth}
       width={width}
       pt={spacingTop}
@@ -75,7 +72,7 @@ export const StoryVideo = ({
       {...props}
     >
       {hasVideo && (
-        <Parallax offset={isParallax ? 60 : 0}>
+        <div>
           <MutedVideoLoop
             ref={videoRef}
             webmSrc={videoWebm}
@@ -90,7 +87,7 @@ export const StoryVideo = ({
             onClick={toggleVideo}
             className={styles.videoButton}
           />
-        </Parallax>
+        </div>
       )}
       {children}
     </MediaWrapper>

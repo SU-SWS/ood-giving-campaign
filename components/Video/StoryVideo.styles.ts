@@ -21,5 +21,5 @@ export const caption = (captionBgColor: CaptionBgColorType) => cnb(
   '*:*:leading-display max-w-prose-wide first:*:*:mt-0',
   !!captionBgColor && captionBgColor !== 'transparent' ? 'px-1em py-08em' : 'pt-06em',
 );
-export const video = 'h-full w-full object-cover object-center pointer-events-none';
+export const video = 'size-full object-cover pointer-events-none';
 export const videoButton = 'absolute block z-10 bottom-10 right-10 md:bottom-20 md:right-20';
