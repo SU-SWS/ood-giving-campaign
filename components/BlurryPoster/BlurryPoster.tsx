@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react';
+import { useRef, useState } from 'react';
 import { cnb } from 'cnbuilder';
 import { AnimateInView } from '@/components/Animate';
 import { Container } from '@/components/Container';
@@ -8,6 +8,7 @@ import { Grid } from '@/components/Grid';
 import {
   Heading, Paragraph, Text, type HeadingType, SrOnlyText,
 } from '@/components/Typography';
+import { MutedVideoLoop, VideoButton } from '@/components/Video';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import {
   accentBorderColors,
@@ -24,7 +25,7 @@ import * as styles from './BlurryPoster.styles';
  * This is used for the BlurryPoster (featured story poster) and the StoryHeroMvp components.
  */
 
-type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
+type BlurryPosterProps = React.HTMLAttributes<HTMLDivElement> & {
   type?: 'hero' | 'poster';
   /**
    * Use two col layout except for story heroes with horizontal foreground image or no foreground image
@@ -33,6 +34,12 @@ type BlurryPosterProps = HTMLAttributes<HTMLDivElement> & {
   bgImageSrc?: string;
   bgImageFocus?: string;
   bgImageAlt?: string;
+  bgVideoWebm?: string;
+  bgVideoMp4?: string;
+  bgVideoPosterSrc?: string;
+  videoWebm?: string;
+  videoMp4?: string;
+  videoPosterSrc?: string;
   bgColor?: 'black' | 'white';
   imageOnLeft?: boolean;
   superhead?: string;
@@ -64,6 +71,12 @@ export const BlurryPoster = ({
   bgImageSrc,
   bgImageFocus,
   bgImageAlt,
+  bgVideoWebm,
+  bgVideoMp4,
+  bgVideoPosterSrc,
+  videoWebm,
+  videoMp4,
+  videoPosterSrc,
   bgColor = 'black',
   imageOnLeft,
   superhead,
@@ -95,6 +108,44 @@ export const BlurryPoster = ({
   } = formatDate(publishedDate);
 
   let i = 1;
+  /**
+   * Foreground image/video
+   */
+  const hasVideo = !!videoWebm || !!videoMp4;
+  const hasMedia = !!imageSrc || hasVideo;
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(null);
+
+  // Toggle foreground video play/pause
+  const toggleVideo = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  /**
+   * Background image/video
+   */
+  const hasBgVideo = !!bgVideoWebm || !!bgVideoMp4;
+  const bgVideoRef = useRef<HTMLVideoElement>(null);
+  const [isBgPlaying, setIsBgPlaying] = useState(null);
+
+  // Toggle background video play/pause
+  const toggleBgVideo = () => {
+    if (bgVideoRef.current) {
+      if (isBgPlaying) {
+        bgVideoRef.current.pause();
+      } else {
+        bgVideoRef.current.play();
+      }
+      setIsBgPlaying(!isBgPlaying);
+    }
+  };
 
   return (
     <Container {...props} bgColor={bgColor} width="full" className={styles.root}>
@@ -136,13 +187,22 @@ export const BlurryPoster = ({
           />
         </picture>
       )}
-      <div className={cnb(styles.blurWrapper(
-        addBgBlur,
-        !!darkOverlay && darkOverlay !== 'none', type, bgColor,
-        ),
+      {hasBgVideo && (
+        <MutedVideoLoop
+          ref={bgVideoRef}
+          webmSrc={bgVideoWebm}
+          mp4Src={bgVideoMp4}
+          onPlay={() => setIsBgPlaying(true)}
+          onPause={() => setIsBgPlaying(false)}
+          posterSrc={bgVideoPosterSrc}
+          className="absolute inset-0 size-full object-cover"
+        />
+      )}
+      <div className={cnb(
+        styles.blurWrapper(addBgBlur, !!darkOverlay && darkOverlay !== 'none', type, bgColor),
         heroOverlays[darkOverlay])}
       >
-        <Grid lg={isTwoCol ? 2 : 1} pt={type === 'hero' ? 9 : 8} pb={8} className={styles.grid}>
+        <Grid lg={isTwoCol ? 2 : 1} pt={type === 'hero' ? 9 : 8} pb={hasBgVideo ? 4 : 8} className={styles.grid}>
           <div className={styles.contentWrapper(type, !!imageSrc, imageOnLeft, isTwoCol)}>
             {superhead && (
               <Text
@@ -235,6 +295,7 @@ export const BlurryPoster = ({
                   </FlexBox>
                 </>
               )}
+              {/* CTA is only for use as poster not as Story Hero */}
               {cta && (
                 <div className={styles.cta}>
                   {cta}
@@ -242,42 +303,74 @@ export const BlurryPoster = ({
               )}
             </div>
           </div>
-          <Container width={isTwoCol ? 'full' : 'site'} className={styles.imageWrapper(imageOnLeft, isTwoCol, !!imageSrc)}>
-            {imageSrc && (
+          {/* Foreground media */}
+          <Container width={isTwoCol ? 'full' : 'site'} className={styles.mediaWrapper(imageOnLeft, isTwoCol, hasMedia)}>
+            {hasMedia && (
               <AnimateInView animation="zoomSharpen" duration={1} className={styles.imageInnerWrapper}>
-                <picture>
-                  <source
-                    srcSet={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '750x1000', imageFocus)}
-                    media="(min-width: 992px)"
-                    width={type === 'hero' && !isTwoCol ? 1800 : 750}
-                    height={type === 'hero' && !isTwoCol ? 900 : 1000}
-                  />
-                  <source
-                    srcSet={getProcessedImage(imageSrc, '900x900', imageFocus)}
-                    media="(min-width: 576px)"
-                    width={900}
-                    height={900}
-                  />
-                  <source
-                    srcSet={getProcessedImage(imageSrc, '600x600', imageFocus)}
-                    media="(max-width: 575px)"
-                    width={600}
-                    height={600}
-                  />
-                  <img
-                    src={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '750x1000', imageFocus)}
-                    alt={alt || ''}
-                    width={type === 'hero' && !isTwoCol ? 1800 : 750}
-                    height={type === 'hero' && !isTwoCol ? 900 : 1000}
-                    aria-describedby={hasCaption && !!alt ? 'story-hero-caption' : undefined}
-                    fetchPriority={type === 'hero' ? 'high' : 'auto'}
-                    className={styles.image}
-                  />
-                </picture>
+                {hasVideo && (
+                  <div className={styles.videoWrapper}>
+                    <div className={styles.videoPlayerWrapper(isTwoCol)}>
+                      <MutedVideoLoop
+                        ref={videoRef}
+                        webmSrc={videoWebm}
+                        mp4Src={videoMp4}
+                        onPlay={() => setIsPlaying(true)}
+                        onPause={() => setIsPlaying(false)}
+                        posterSrc={videoPosterSrc}
+                        className={styles.video}
+                      />
+                    </div>
+                    <VideoButton
+                      isPause={isPlaying}
+                      onClick={toggleVideo}
+                      className={styles.videoButton}
+                    />
+                  </div>
+                )}
+                {imageSrc && (
+                  <picture>
+                    <source
+                      srcSet={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '750x1000', imageFocus)}
+                      media="(min-width: 992px)"
+                      width={type === 'hero' && !isTwoCol ? 1800 : 750}
+                      height={type === 'hero' && !isTwoCol ? 900 : 1000}
+                    />
+                    <source
+                      srcSet={getProcessedImage(imageSrc, '900x900', imageFocus)}
+                      media="(min-width: 576px)"
+                      width={900}
+                      height={900}
+                    />
+                    <source
+                      srcSet={getProcessedImage(imageSrc, '600x600', imageFocus)}
+                      media="(max-width: 575px)"
+                      width={600}
+                      height={600}
+                    />
+                    <img
+                      src={getProcessedImage(imageSrc, type === 'hero' && !isTwoCol ? '1800x900' : '750x1000', imageFocus)}
+                      alt={alt || ''}
+                      width={type === 'hero' && !isTwoCol ? 1800 : 750}
+                      height={type === 'hero' && !isTwoCol ? 900 : 1000}
+                      aria-describedby={hasCaption && !!alt ? 'story-hero-caption' : undefined}
+                      fetchPriority={type === 'hero' ? 'high' : 'auto'}
+                      className={styles.image}
+                    />
+                  </picture>
+                )}
               </AnimateInView>
             )}
           </Container>
         </Grid>
+        {hasBgVideo && (
+          <Container width="wide" className={styles.bgVideoBtnWrapper}>
+            <VideoButton
+              isPause={isBgPlaying}
+              onClick={toggleBgVideo}
+              className={styles.bgVideoButton(!!imageSrc)}
+            />
+          </Container>
+        )}
       </div>
     </Container>
   );

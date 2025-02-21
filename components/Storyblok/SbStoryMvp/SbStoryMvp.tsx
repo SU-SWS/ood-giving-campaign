@@ -41,6 +41,12 @@ export const SbStoryMvp = ({
     heroImage,
     bgImage,
     bgImageAlt,
+    bgVideoWebm,
+    bgVideoMp4,
+    bgVideoPoster,
+    heroVideoWebm,
+    heroVideoMp4,
+    heroVideoPoster,
     addBgBlur,
     darkOverlay,
     alt,
@@ -84,6 +90,12 @@ export const SbStoryMvp = ({
             heroImage={heroImage}
             bgImage={bgImage}
             bgImageAlt={bgImageAlt}
+            bgVideoWebm={bgVideoWebm}
+            bgVideoMp4={bgVideoMp4}
+            bgVideoPoster={bgVideoPoster}
+            heroVideoMp4={heroVideoMp4}
+            heroVideoWebm={heroVideoWebm}
+            heroVideoPoster={heroVideoPoster}
             addBgBlur={addBgBlur}
             darkOverlay={darkOverlay}
             isLeftImage={isLeftImage}

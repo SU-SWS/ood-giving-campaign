@@ -18,13 +18,12 @@ import {
   LinkIcon,
   MapPinIcon,
   MinusIcon,
-  PauseCircleIcon,
   PlayCircleIcon,
   PlusIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 import { CheckIcon } from '@heroicons/react/16/solid';
-import { PlayIcon } from '@heroicons/react/20/solid';
+import { PlayIcon, PauseIcon } from '@heroicons/react/20/solid';
 
 export const iconMap = {
   action: ChevronRightIcon,
@@ -55,7 +54,7 @@ export const iconMap = {
   menu: Bars3Icon,
   minus: MinusIcon,
   more: ArrowRightIcon,
-  pause: PauseCircleIcon,
+  pause: PauseIcon,
   play: PlayIcon,
   'play-outline': PlayCircleIcon,
   plus: PlusIcon,
@@ -83,7 +82,6 @@ export const iconBaseStyle: IconBaseStyleType = {
   'triangle-down': 'w-09em scale-x-90 rotate-90 mt-01em',
   'triangle-up': 'w-09em scale-x-90 -rotate-90 mt-02em',
   download: 'w-09em',
-  email: 'w-1em',
   expand: 'w-1em -mt-02em',
   external: 'w-08em stroke-[2.5]',
   left: 'w-08em',

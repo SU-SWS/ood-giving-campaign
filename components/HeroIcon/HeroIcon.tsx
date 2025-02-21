@@ -25,6 +25,7 @@ export const HeroIcon = ({
   return (
     <Icon
       title={title}
+      role={!!title ? 'img' : null}
       // If a title for the SVG is provided, unhide the SVG from screen readers
       aria-hidden={!title}
       className={cnb(heroIconStyle, className)}
