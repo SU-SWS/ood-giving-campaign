@@ -6,6 +6,7 @@ import { AnimationMap, type AnimationType } from './AnimationMap';
 
 type AnimateInViewProps = {
   animation?: AnimationType;
+  id?: string;
   once?: boolean;
   duration?: number;
   delay?: number;
@@ -15,6 +16,7 @@ type AnimateInViewProps = {
 
 export const AnimateInView = ({
   animation = 'zoomIn',
+  id,
   once = true,
   duration = 0.6,
   delay,
@@ -28,7 +30,7 @@ export const AnimateInView = ({
 
   // Don't animate if the user has "reduced motion" enabled
   if (animation === 'none') {
-    return <div>{children}</div>;
+    return <div id={id}>{children}</div>;
   }
 
   const beforeAnimationState = prefersReducedMotion ? 'hiddenReduced' : 'hidden';
@@ -36,6 +38,7 @@ export const AnimateInView = ({
   return (
     <m.div
       ref={ref}
+      id={id}
       variants={AnimationMap[animation]}
       transition={{
         delay,
