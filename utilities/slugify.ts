@@ -4,6 +4,6 @@
  */
 export const slugify = (str: string = '') => str
   .toLowerCase()
-  .replace(/[^a-z0-9]+/i, '-')
-  .replace(/^-/, '')
-  .replace(/-$/, '');
+  .replace(/[\s]+/g, '-') // Replace any whitespace with a single dash
+  .replace(/[^a-z0-9-]+/ig, '') // Remove all non-alphanumeric characters except dashes
+  .replace(/^-+|-+$/g, ''); // Trim any leading or trailing dashes
