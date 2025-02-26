@@ -60,7 +60,7 @@ const TabContent = ({
     </Text>
     <Heading
       as={headingLevel}
-      font={isSerifHeading ? 'serif' : 'grotesk'}
+      font={isSerifHeading ? 'serif' : 'druk'}
       color={isLightText ? 'white' : 'black'}
       className={styles.heading(headingSize)}
     >
