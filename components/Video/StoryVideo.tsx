@@ -1,5 +1,6 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { cnb } from 'cnbuilder';
+import { useInView } from 'framer-motion';
 import { type AnimationType } from '@/components/Animate';
 import { MediaWrapper, type MediaWrapperProps } from '@/components/Media';
 import { MutedVideoLoop, VideoButton } from '@/components/Video';
@@ -43,19 +44,41 @@ export const StoryVideo = ({
 }: StoryVideoProps) => {
   const hasVideo = !!videoWebm || !!videoMp4;
   const videoRef = useRef<HTMLVideoElement>(null);
+  const isVideoInView = useInView(videoRef, { once: false, amount: 0.1 });
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isUserPaused, setIsUserPaused] = useState(false);
 
   // Toggle foreground video play/pause
   const toggleVideo = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
+    if (!videoRef.current) return;
+
+    setIsPlaying((prev) => {
+      if (prev) {
+        videoRef.current?.pause();
+        setIsUserPaused(true);
       } else {
-        videoRef.current.play();
+        videoRef.current?.play();
+        setIsUserPaused(false);
       }
-      setIsPlaying(!isPlaying);
-    }
+      return !prev;
+    });
   };
+
+  /**
+   * Pause video when it goes out of view,
+   * resume when it comes back into view if it was not manually paused by the user.
+   */
+  useEffect(() => {
+    if (!videoRef.current) return;
+    if (!isVideoInView && isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+    if (isVideoInView && !isPlaying && !isUserPaused) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
+  }, [isVideoInView, isPlaying, isUserPaused]);
 
   if (!hasVideo) {
     return null;
@@ -76,24 +99,22 @@ export const StoryVideo = ({
       className={cnb(className, styles.root(isFullHeight))}
       {...props}
     >
-      {hasVideo && (
-        <div>
-          <MutedVideoLoop
-            ref={videoRef}
-            webmSrc={videoWebm}
-            mp4Src={videoMp4}
-            onPlay={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
-            posterSrc={videoPosterSrc}
-            className={styles.video}
-          />
-          <VideoButton
-            isPause={isPlaying}
-            onClick={toggleVideo}
-            className={styles.videoButton}
-          />
-        </div>
-      )}
+      <div>
+        <MutedVideoLoop
+          ref={videoRef}
+          webmSrc={videoWebm}
+          mp4Src={videoMp4}
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+          posterSrc={videoPosterSrc}
+          className={styles.video}
+        />
+        <VideoButton
+          isPause={isPlaying}
+          onClick={toggleVideo}
+          className={styles.videoButton}
+        />
+      </div>
       {children}
     </MediaWrapper>
   );
