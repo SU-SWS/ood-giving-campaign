@@ -105,18 +105,13 @@ export const mediaWrapper = (imageOnLeft?: boolean, isTwoCol?: boolean, hasMedia
   'lg:mt-0' : isTwoCol,
   'rs-mt-6' : hasMedia,
 });
-export const imageInnerWrapper = 'h-full w-full';
+export const mediaInnerWrapper = 'h-full w-full';
 export const image = 'h-full w-full object-cover object-center';
-
-export const videoWrapper = 'relative';
-export const videoPlayerWrapper = (isTwoCol: boolean) => cnb(
-  isTwoCol ? 'aspect-w-1 aspect-h-1 lg:aspect-w-3 lg:aspect-h-4' : 'aspect-w-16 aspect-h-9',
-);
-export const video = 'h-full w-full object-cover object-center pointer-events-none';
-export const videoButton = 'absolute block z-10 bottom-10 right-10 md:bottom-20 md:right-20';
+export const video = 'lg:aspect-w-3 lg:aspect-h-4';
 
 // Background video
 export const bgVideoBtnWrapper = 'relative pb-20 md:pb-36';
+export const bgVideo = 'absolute inset-0 size-full object-cover';
 export const bgVideoButton = (hasForegroundImage: boolean) => cnb(
   'block z-10 ml-auto mr-0',
   hasForegroundImage && 'lg:bottom-0 lg:right-0',

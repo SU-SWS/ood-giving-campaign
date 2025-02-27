@@ -1,5 +1,6 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { cnb } from 'cnbuilder';
+import { useInView } from 'framer-motion';
 import { AnimateInView } from '@/components/Animate';
 import { Container } from '@/components/Container';
 import { CtaLink } from '@/components/Cta';
@@ -119,19 +120,42 @@ export const BlurryPoster = ({
    */
   const hasBgVideo = !!bgVideoWebm || !!bgVideoMp4;
   const bgVideoRef = useRef<HTMLVideoElement>(null);
-  const [isBgPlaying, setIsBgPlaying] = useState(null);
+  const isBgVideoInView = useInView(bgVideoRef, { once: false, amount: 0.1 });
+  const [isBgPlaying, setIsBgPlaying] = useState<boolean>(false);
+  const [isBgUserPaused, setIsBgUserPaused] = useState<boolean>(false);
 
-  // Toggle background video play/pause
+  // Toggle foreground video play/pause
   const toggleBgVideo = () => {
-    if (bgVideoRef.current) {
-      if (isBgPlaying) {
-        bgVideoRef.current.pause();
+    if (!bgVideoRef.current) return;
+
+    setIsBgPlaying((prev) => {
+      if (prev) {
+        bgVideoRef.current?.pause();
+        setIsBgUserPaused(true);
       } else {
-        bgVideoRef.current.play();
+        bgVideoRef.current
+          ?.play()
+          .catch(() => {});
+        setIsBgUserPaused(false);
       }
-      setIsBgPlaying(!isBgPlaying);
-    }
+      return !prev;
+    });
   };
+
+  /**
+   * Pause video when it goes out of view,
+   * resume when it comes back into view if it was not manually paused by the user.
+   */
+  useEffect(() => {
+    const video = bgVideoRef.current;
+    if (!video) return;
+
+    if (isBgVideoInView && !isBgUserPaused) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  }, [isBgVideoInView, isBgUserPaused]);
 
   return (
     <Container {...props} bgColor={bgColor} width="full" className={styles.root}>
@@ -181,7 +205,7 @@ export const BlurryPoster = ({
           onPlay={() => setIsBgPlaying(true)}
           onPause={() => setIsBgPlaying(false)}
           posterSrc={bgVideoPosterSrc}
-          className="absolute inset-0 size-full object-cover"
+          className={styles.bgVideo}
         />
       )}
       <div className={cnb(
@@ -292,17 +316,15 @@ export const BlurryPoster = ({
           {/* Foreground media */}
           <Container width={isTwoCol ? 'full' : 'site'} className={styles.mediaWrapper(imageOnLeft, isTwoCol, hasMedia)}>
             {hasMedia && (
-              <AnimateInView animation="zoomSharpen" duration={1} className={styles.imageInnerWrapper}>
+              <AnimateInView animation="zoomSharpen" duration={1} className={styles.mediaInnerWrapper}>
                 {hasVideo && (
-                  <div className={styles.videoPlayerWrapper(isTwoCol)}>
-                    <StoryVideo
-                      videoWebm={videoWebm}
-                      videoMp4={videoMp4}
-                      videoPosterSrc={videoPosterSrc}
-                      aspectRatio={isTwoCol ? '1x1' : '16x9'}
-                      aspectRatioClass="lg:aspect-w-3 lg:aspect-h-4"
-                    />
-                  </div>
+                  <StoryVideo
+                    videoWebm={videoWebm}
+                    videoMp4={videoMp4}
+                    videoPosterSrc={videoPosterSrc}
+                    aspectRatio={isTwoCol ? '1x1' : '16x9'}
+                    aspectRatioClass={styles.video}
+                  />
                 )}
                 {imageSrc && (
                   <picture>
