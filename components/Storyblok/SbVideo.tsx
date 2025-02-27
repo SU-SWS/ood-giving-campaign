@@ -19,12 +19,11 @@ type SbVideoProps = {
     isParallax?: boolean;
     caption?: StoryblokRichtext;
     aspectRatio?: ImageAspectRatioType;
-    isFullHeight?: boolean;
+    isFullScreen?: boolean;
     boundingWidth?: 'site' | 'full';
     width?: WidthType;
     spacingTop?: PaddingType;
     spacingBottom?: PaddingType;
-    isCaptionInset?: boolean;
     isCaptionLight?: boolean;
     captionBgColor?: CaptionBgColorType;
     animation?: AnimationType;
@@ -41,12 +40,11 @@ export const SbVideo = ({
     isParallax,
     caption,
     aspectRatio,
-    isFullHeight,
+    isFullScreen,
     boundingWidth = 'full',
     width,
     spacingTop,
     spacingBottom,
-    isCaptionInset,
     isCaptionLight,
     captionBgColor = 'transparent',
     animation = 'none',
@@ -76,12 +74,11 @@ export const SbVideo = ({
       isParallax={isParallax}
       caption={Caption}
       aspectRatio={aspectRatio}
-      isFullHeight={isFullHeight}
+      isFullScreen={isFullScreen}
       boundingWidth={boundingWidth}
       width={width}
       pt={spacingTop}
       pb={spacingBottom}
-      isCaptionInset={isCaptionInset}
       captionBgColor={captionBgColor}
       animation={animation}
       delay={delay}

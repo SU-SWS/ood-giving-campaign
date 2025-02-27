@@ -37,7 +37,6 @@ export const StoryVideo = ({
   isFullScreen,
   spacingTop,
   spacingBottom,
-  isCaptionInset,
   captionBgColor = 'transparent',
   animation = 'none',
   delay,
@@ -92,7 +91,7 @@ export const StoryVideo = ({
   return (
     <MediaWrapper
       caption={caption}
-      isCaptionInset={isCaptionInset}
+      isCaptionInset={isFullScreen}
       captionBgColor={captionBgColor}
       aspectRatio={aspectRatio}
       boundingWidth={boundingWidth}
