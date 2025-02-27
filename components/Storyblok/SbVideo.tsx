@@ -16,7 +16,6 @@ type SbVideoProps = {
     videoWebm: SbImageType;
     videoMp4: SbImageType;
     videoPoster: SbImageType;
-    isParallax?: boolean;
     caption?: StoryblokRichtext;
     aspectRatio?: ImageAspectRatioType;
     isFullScreen?: boolean;
@@ -37,7 +36,6 @@ export const SbVideo = ({
     videoWebm: { filename: webmSrc } = {},
     videoMp4: { filename: mp4Src } = {},
     videoPoster: { filename: posterSrc } = {},
-    isParallax,
     caption,
     aspectRatio,
     isFullScreen,
@@ -71,7 +69,6 @@ export const SbVideo = ({
       videoWebm={webmSrc}
       videoMp4={mp4Src}
       videoPosterSrc={posterSrc}
-      isParallax={isParallax}
       caption={Caption}
       aspectRatio={aspectRatio}
       isFullScreen={isFullScreen}
