@@ -18,6 +18,8 @@ export const mediaWrapper = (isFullHeight: boolean, isParallax: boolean) => cnb(
   isFullHeight ? 'h-full' : '',
   isParallax ? 'overflow-hidden' : '',
 );
+
+// Caption component styles
 export const captionWrapper = 'mt-0';
 export const caption = (captionBgColor: CaptionBgColorType) => cnb(
   '*:*:leading-display max-w-prose-wide first:*:*:mt-0',
