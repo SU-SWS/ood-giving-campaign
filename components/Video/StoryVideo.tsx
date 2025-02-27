@@ -70,15 +70,15 @@ export const StoryVideo = ({
    */
   useEffect(() => {
     if (!videoRef.current) return;
-    if (!isVideoInView && isPlaying) {
+
+    if (isVideoInView) {
+      if (!isUserPaused) {
+        videoRef.current.play();
+      }
+    } else {
       videoRef.current.pause();
-      setIsPlaying(false);
     }
-    if (isVideoInView && !isPlaying && !isUserPaused) {
-      videoRef.current.play();
-      setIsPlaying(true);
-    }
-  }, [isVideoInView, isPlaying, isUserPaused]);
+  }, [isVideoInView, isUserPaused]);
 
   if (!hasVideo) {
     return null;
