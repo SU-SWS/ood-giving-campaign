@@ -9,6 +9,7 @@ import * as styles from './MediaWrapper.styles';
 
 export type CaptionProps = React.HTMLAttributes<HTMLDivElement> & {
   caption?: React.ReactNode;
+  // Inset the caption to centered container width when the media is full screen width
   isCaptionInset?: boolean;
   captionBgColor?: styles.CaptionBgColorType;
 };

@@ -13,7 +13,7 @@ import * as styles from './StoryVideo.styles';
  * To be used for the SbVideo component in Storyblok.
  */
 
-export type StoryVideoProps = React.HTMLAttributes<HTMLDivElement> & MediaWrapperProps & {
+export type StoryVideoProps = React.HTMLAttributes<HTMLDivElement> & Omit<MediaWrapperProps, 'isFullHeight' | 'isParallax'> & {
   videoWebm?: string;
   videoMp4?: string;
   videoPosterSrc?: string;
@@ -31,7 +31,6 @@ export const StoryVideo = ({
   videoPosterSrc,
   caption,
   aspectRatio,
-  isFullHeight,
   boundingWidth = 'full',
   width,
   isFullScreen,
@@ -100,8 +99,8 @@ export const StoryVideo = ({
       pb={spacingBottom}
       animation={animation}
       delay={delay}
-      aspectRatioClass={aspectRatioClass}
-      className={cnb(className, styles.root(isFullHeight))}
+      aspectRatioClass={cnb(aspectRatioClass, styles.videoWrapper)}
+      className={className}
       {...props}
     >
       <div>
