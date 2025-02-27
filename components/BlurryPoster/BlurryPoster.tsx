@@ -8,7 +8,7 @@ import { Grid } from '@/components/Grid';
 import {
   Heading, Paragraph, Text, type HeadingType, SrOnlyText,
 } from '@/components/Typography';
-import { MutedVideoLoop, VideoButton } from '@/components/Video';
+import { MutedVideoLoop, StoryVideo, VideoButton } from '@/components/Video';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import {
   accentBorderColors,
@@ -113,20 +113,6 @@ export const BlurryPoster = ({
    */
   const hasVideo = !!videoWebm || !!videoMp4;
   const hasMedia = !!imageSrc || hasVideo;
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(null);
-
-  // Toggle foreground video play/pause
-  const toggleVideo = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
 
   /**
    * Background image/video
@@ -308,22 +294,13 @@ export const BlurryPoster = ({
             {hasMedia && (
               <AnimateInView animation="zoomSharpen" duration={1} className={styles.imageInnerWrapper}>
                 {hasVideo && (
-                  <div className={styles.videoWrapper}>
-                    <div className={styles.videoPlayerWrapper(isTwoCol)}>
-                      <MutedVideoLoop
-                        ref={videoRef}
-                        webmSrc={videoWebm}
-                        mp4Src={videoMp4}
-                        onPlay={() => setIsPlaying(true)}
-                        onPause={() => setIsPlaying(false)}
-                        posterSrc={videoPosterSrc}
-                        className={styles.video}
-                      />
-                    </div>
-                    <VideoButton
-                      isPause={isPlaying}
-                      onClick={toggleVideo}
-                      className={styles.videoButton}
+                  <div className={styles.videoPlayerWrapper(isTwoCol)}>
+                    <StoryVideo
+                      videoWebm={videoWebm}
+                      videoMp4={videoMp4}
+                      videoPosterSrc={videoPosterSrc}
+                      aspectRatio={isTwoCol ? '1x1' : '16x9'}
+                      aspectRatioClass="lg:aspect-w-3 lg:aspect-h-4"
                     />
                   </div>
                 )}

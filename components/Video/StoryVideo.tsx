@@ -22,7 +22,7 @@ export type StoryVideoProps = React.HTMLAttributes<HTMLDivElement> & MediaWrappe
   spacingBottom?: PaddingType;
   animation?: AnimationType;
   delay?: number;
-  buttonClass?: string;
+  aspectRatioClass?: string;
 };
 
 export const StoryVideo = ({
@@ -42,7 +42,7 @@ export const StoryVideo = ({
   delay,
   children,
   className,
-  buttonClass,
+  aspectRatioClass,
   ...props
 }: StoryVideoProps) => {
   const hasVideo = !!videoWebm || !!videoMp4;
@@ -100,6 +100,7 @@ export const StoryVideo = ({
       pb={spacingBottom}
       animation={animation}
       delay={delay}
+      aspectRatioClass={aspectRatioClass}
       className={cnb(className, styles.root(isFullHeight))}
       {...props}
     >
@@ -116,7 +117,7 @@ export const StoryVideo = ({
         <VideoButton
           isPause={isPlaying}
           onClick={toggleVideo}
-          className={cnb(styles.videoButton(isFullScreen), buttonClass)}
+          className={cnb(styles.videoButton(isFullScreen))}
         />
       </div>
       {children}

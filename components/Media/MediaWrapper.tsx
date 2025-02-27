@@ -21,6 +21,7 @@ export type MediaWrapperProps = React.HTMLAttributes<HTMLDivElement> & CaptionPr
   pb?: PaddingType;
   animation?: AnimationType;
   delay?: number;
+  aspectRatioClass?: string; // Additional eg, responsive aspect ratio classes
 };
 
 export const MediaWrapper = ({
@@ -36,6 +37,7 @@ export const MediaWrapper = ({
   captionBgColor = 'transparent',
   animation = 'none',
   delay,
+  aspectRatioClass,
   children,
   className,
   ...props
@@ -51,7 +53,11 @@ export const MediaWrapper = ({
     >
       <AnimateInView animation={animation} delay={delay} className={styles.animateWrapper(isFullHeight)}>
         <figure className={styles.figure(isFullHeight, captionBgColor)}>
-          <div className={cnb(imageAspectRatios[aspectRatio], styles.mediaWrapper(isFullHeight, isParallax))}>
+          <div className={cnb(
+            imageAspectRatios[aspectRatio],
+            styles.mediaWrapper(isFullHeight, isParallax),
+            aspectRatioClass)}
+          >
             {children}
           </div>
           {caption && (
