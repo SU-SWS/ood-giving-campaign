@@ -48,9 +48,6 @@ export const StoryVideo = ({
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isUserPaused, setIsUserPaused] = useState<boolean>(false);
 
-  const handlePlay = () => setIsPlaying(true);
-  const handlePause = () => setIsPlaying(false);
-
   // Toggle foreground video play/pause
   const toggleVideo = () => {
     if (!videoRef.current) return;
