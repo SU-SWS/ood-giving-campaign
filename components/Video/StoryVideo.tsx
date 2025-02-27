@@ -45,8 +45,11 @@ export const StoryVideo = ({
   const hasVideo = !!videoWebm || !!videoMp4;
   const videoRef = useRef<HTMLVideoElement>(null);
   const isVideoInView = useInView(videoRef, { once: false, amount: 0.1 });
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isUserPaused, setIsUserPaused] = useState(false);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [isUserPaused, setIsUserPaused] = useState<boolean>(false);
+
+  const handlePlay = () => setIsPlaying(true);
+  const handlePause = () => setIsPlaying(false);
 
   // Toggle foreground video play/pause
   const toggleVideo = () => {
@@ -57,7 +60,9 @@ export const StoryVideo = ({
         videoRef.current?.pause();
         setIsUserPaused(true);
       } else {
-        videoRef.current?.play();
+        videoRef.current
+          ?.play()
+          .catch(() => {});
         setIsUserPaused(false);
       }
       return !prev;
@@ -69,14 +74,13 @@ export const StoryVideo = ({
    * resume when it comes back into view if it was not manually paused by the user.
    */
   useEffect(() => {
-    if (!videoRef.current) return;
+    const video = videoRef.current;
+    if (!video) return;
 
-    if (isVideoInView) {
-      if (!isUserPaused) {
-        videoRef.current.play();
-      }
+    if (isVideoInView && !isUserPaused) {
+      video.play().catch(() => {});
     } else {
-      videoRef.current.pause();
+      video.pause();
     }
   }, [isVideoInView, isUserPaused]);
 

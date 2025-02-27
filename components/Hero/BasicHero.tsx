@@ -66,48 +66,42 @@ export const BasicHero = ({
   const hasMedia = !!imageSrc || hasVideo;
 
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoReady, setVideoReady] = useState<boolean>(false);
-  const [isPlaying, setIsPlaying] = useState<boolean>(null);
-
-  const isVideoInView = useInView(videoRef, { once: false });
-
-  const handleCanPlay = () => setVideoReady(true);
-  const handlePlay = () => setIsPlaying(true);
-  const handlePause = () => setIsPlaying(false);
-
-  // Check video state when returning to the tab after switching tabs
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-    if (!document.hidden && videoRef.current) {
-      setIsPlaying(!videoRef.current.paused);
-    }
-    };
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    return () =>
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-  }, []);
+  const isVideoInView = useInView(videoRef, { once: false, amount: 0.1 });
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [isUserPaused, setIsUserPaused] = useState<boolean>(false);
 
   // Toggle video playback when the user interacts with the VideoButton.
   const toggleBgVideo = () => {
-    if (!videoRef.current || !videoReady) return;
-    if (isPlaying) {
-      videoRef.current.pause();
-    } else {
-      videoRef.current.play();
-    }
+    if (!videoRef.current) return;
+
+    setIsPlaying((prev) => {
+      if (prev) {
+        videoRef.current?.pause();
+        setIsUserPaused(true);
+      } else {
+        videoRef.current
+          ?.play()
+          .catch(() => {});
+        setIsUserPaused(false);
+      }
+      return !prev;
+    });
   };
 
-  // If video goes out of view, pause it; resume when it comes back into view
+  /**
+   * Pause video when it goes out of view,
+   * resume when it comes back into view if it was not manually paused by the user.
+   */
   useEffect(() => {
-    if (!videoRef.current) return;
-    if (!isVideoInView && isPlaying) {
-      videoRef.current.pause();
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isVideoInView && !isUserPaused) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
     }
-    if (isVideoInView && !isPlaying) {
-      videoRef.current.play();
-    }
-  }
-  , [isVideoInView, isPlaying]);
+  }, [isVideoInView, isUserPaused]);
 
   return (
     <Container
@@ -156,9 +150,8 @@ export const BasicHero = ({
           ref={videoRef}
           webmSrc={videoWebm}
           mp4Src={videoMp4}
-          onCanPlay={handleCanPlay}
-          onPlay={handlePlay}
-          onPause={handlePause}
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
           posterSrc={videoPosterSrc}
           className={styles.bgMedia}
         />
