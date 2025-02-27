@@ -17,10 +17,12 @@ export type StoryVideoProps = React.HTMLAttributes<HTMLDivElement> & MediaWrappe
   videoWebm?: string;
   videoMp4?: string;
   videoPosterSrc?: string;
+  isFullScreen?: boolean; // Whether the video takes the full width of the device
   spacingTop?: PaddingType;
   spacingBottom?: PaddingType;
   animation?: AnimationType;
   delay?: number;
+  buttonClass?: string;
 };
 
 export const StoryVideo = ({
@@ -32,6 +34,7 @@ export const StoryVideo = ({
   isFullHeight,
   boundingWidth = 'full',
   width,
+  isFullScreen,
   spacingTop,
   spacingBottom,
   isCaptionInset,
@@ -40,6 +43,7 @@ export const StoryVideo = ({
   delay,
   children,
   className,
+  buttonClass,
   ...props
 }: StoryVideoProps) => {
   const hasVideo = !!videoWebm || !!videoMp4;
@@ -113,7 +117,7 @@ export const StoryVideo = ({
         <VideoButton
           isPause={isPlaying}
           onClick={toggleVideo}
-          className={styles.videoButton}
+          className={cnb(styles.videoButton(isFullScreen), buttonClass)}
         />
       </div>
       {children}

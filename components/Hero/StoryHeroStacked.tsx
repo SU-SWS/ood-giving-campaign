@@ -1,4 +1,3 @@
-import { useRef, useState } from 'react';
 import { AnimateInView } from '@/components/Animate';
 import { Container } from '@/components/Container';
 import { CtaLink } from '@/components/Cta';
@@ -6,7 +5,7 @@ import { FlexBox } from '@/components/FlexBox';
 import {
   Heading, Paragraph, Text, SrOnlyText,
 } from '@/components/Typography';
-import { MutedVideoLoop, VideoButton } from '@/components/Video';
+import { StoryVideo } from '@/components/Video';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { getSbImageSize } from '@/utilities/getSbImageSize';
 import { taxonomyMap, type TaxonomyType } from '@/utilities/taxonomyMaps';
@@ -69,19 +68,6 @@ export const StoryHeroStacked = ({
    */
   const hasVideo = !!videoWebm || !!videoMp4;
   const hasMedia = !!imageSrc || hasVideo;
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(null);
-
-  const toggleVideo = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
 
   return (
     <Container
@@ -204,26 +190,13 @@ export const StoryHeroStacked = ({
             </picture>
           )}
           {hasVideo && (
-            <div className={styles.videoWrapper}>
-              <div className={styles.videoPlayerWrapper}>
-                <MutedVideoLoop
-                  ref={videoRef}
-                  webmSrc={videoWebm}
-                  mp4Src={videoMp4}
-                  onPlay={() => setIsPlaying(true)}
-                  onPause={() => setIsPlaying(false)}
-                  posterSrc={videoPosterSrc}
-                  className={styles.video}
-                />
-              </div>
-              <Container width="wide" className={styles.videoBtnWrapper}>
-                <VideoButton
-                  isPause={isPlaying}
-                  onClick={toggleVideo}
-                  className={styles.videoButton}
-                />
-              </Container>
-            </div>
+            <StoryVideo
+              videoWebm={videoWebm}
+              videoMp4={videoMp4}
+              videoPosterSrc={videoPosterSrc}
+              aspectRatio="free"
+              isFullScreen
+            />
           )}
         </AnimateInView>
       )}
