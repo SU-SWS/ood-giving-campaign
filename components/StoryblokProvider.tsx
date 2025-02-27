@@ -37,6 +37,7 @@ import { SbStoryImage } from '@/components/Storyblok/SbStoryImage';
 import { SbStoryListHero } from '@/components/Storyblok/SbStoryListHero';
 import { SbStoryListNav } from '@/components/Storyblok/SbStoryListNav';
 import { SbStoryMvp } from '@/components/Storyblok/SbStoryMvp/SbStoryMvp';
+import { SbTabGroup } from '@/components/Storyblok/SbTabGroup';
 import { SbText } from '@/components/Storyblok/SbText';
 import { SbTextCard } from '@/components/Storyblok/SbTextCard';
 import { SbTexturedBar } from '@/components/Storyblok/SbTexturedBar';
@@ -84,6 +85,7 @@ export const components = {
   sbStoryListNav: SbStoryListNav,
   sbStoryMvp: SbStoryMvp,
   sbStoryImage: SbStoryImage,
+  sbTabGroup: SbTabGroup,
   sbText: SbText,
   sbTextCard: SbTextCard,
   sbTexturedBar: SbTexturedBar,

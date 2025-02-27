@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { type SbBlokData } from '@storyblok/react/rsc';
 import { type FontSizeType } from '@/components/Typography';
+import { type TabItemHeadingSizeType } from '@/components/Tabs';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 
 /**
@@ -107,4 +108,15 @@ export type SbSliderImageType = {
   image?: SbImageType;
   alt?: string;
   caption?: StoryblokRichtext;
+};
+
+// Used for SbTabGroup
+export type SbTabItemType = {
+  _uid: string;
+  label: string;
+  featuredMedia?: SbBlokData[];
+  heading?: string;
+  body?: StoryblokRichtext;
+  otherContent?: SbBlokData[];
+  headingSize?: TabItemHeadingSizeType;
 };
