@@ -37,12 +37,13 @@ import { SbStoryImage } from '@/components/Storyblok/SbStoryImage';
 import { SbStoryListHero } from '@/components/Storyblok/SbStoryListHero';
 import { SbStoryListNav } from '@/components/Storyblok/SbStoryListNav';
 import { SbStoryMvp } from '@/components/Storyblok/SbStoryMvp/SbStoryMvp';
+import { SbTabGroup } from '@/components/Storyblok/SbTabGroup';
 import { SbText } from '@/components/Storyblok/SbText';
 import { SbTextCard } from '@/components/Storyblok/SbTextCard';
 import { SbTexturedBar } from '@/components/Storyblok/SbTexturedBar';
-import { SbTriangle } from '@/components/Storyblok/SbTriangle';
 import { SbTypeform } from '@/components/Storyblok/SbTypeform';
 import { SbVerticalPoster } from './Storyblok/SbVerticalPoster';
+import { SbVideo } from '@/components/Storyblok/SbVideo';
 import { SbWysiwyg } from '@/components/Storyblok/SbWysiwyg';
 import { ComponentNotFound } from '@/components/Storyblok/ComponentNotFound';
 
@@ -84,11 +85,12 @@ export const components = {
   sbStoryListNav: SbStoryListNav,
   sbStoryMvp: SbStoryMvp,
   sbStoryImage: SbStoryImage,
+  sbTabGroup: SbTabGroup,
   sbText: SbText,
   sbTextCard: SbTextCard,
   sbTexturedBar: SbTexturedBar,
-  sbTriangle: SbTriangle,
   sbVerticalPoster: SbVerticalPoster,
+  sbVideo: SbVideo,
   sbWysiwyg: SbWysiwyg,
   sbTypeform: SbTypeform,
 };

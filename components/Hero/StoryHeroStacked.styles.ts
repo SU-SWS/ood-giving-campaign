@@ -2,7 +2,7 @@ import { cnb } from 'cnbuilder';
 
 export const root = 'relative';
 
-export const contentWrapper = 'mt-40 md:-mt-60 xl:mt-0';
+export const contentWrapper = (hasVideo: boolean) => cnb('mt-40 md:-mt-60 xl:mt-0', hasVideo && 'rs-pb-3');
 export const superhead = (isLightHero: boolean) => cnb('cc mb-04em w-full', !isLightHero && 'text-shadow-sm');
 export const heading = (
   isSmallHeading?: boolean,
@@ -22,4 +22,3 @@ export const image = 'rs-mt-4 w-full';
 export const mobileImage = 'size-full lg:hidden';
 export const captionWrapper = 'mt-06em';
 export const caption = 'caption *:leading-display mt-08em max-w-prose-wide';
-

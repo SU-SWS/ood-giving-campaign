@@ -1,29 +1,28 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
+import { RichText } from '@/components/RichText';
+import { StoryVideo } from '@/components/Video';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { type ImageAspectRatioType } from '@/utilities/datasource';
 import { type WidthType } from '@/components/WidthBox';
 import { type PaddingType } from '@/utilities/datasource';
-import { hasRichText } from '@/utilities/hasRichText';
-import { StoryImage, CaptionBgColorType } from '@/components/StoryImage';
-import { RichText } from '@/components/RichText';
+import { type CaptionBgColorType } from '@/components/StoryImage';
 import { type AnimationType } from '@/components/Animate';
 import { type SbImageType } from './Storyblok.types';
+import { hasRichText } from '@/utilities/hasRichText';
 
-type SbStoryImageProps = {
+type SbVideoProps = {
   blok: {
     _uid: string;
-    image: SbImageType;
-    alt?: string;
-    isLoadingEager?: boolean;
-    isParallax?: boolean;
+    videoWebm: SbImageType;
+    videoMp4: SbImageType;
+    videoPoster: SbImageType;
     caption?: StoryblokRichtext;
     aspectRatio?: ImageAspectRatioType;
-    isFullHeight?: boolean;
+    isFullScreen?: boolean;
     boundingWidth?: 'site' | 'full';
     width?: WidthType;
     spacingTop?: PaddingType;
     spacingBottom?: PaddingType;
-    isCaptionInset?: boolean;
     isCaptionLight?: boolean;
     captionBgColor?: CaptionBgColorType;
     animation?: AnimationType;
@@ -32,20 +31,18 @@ type SbStoryImageProps = {
   };
 };
 
-export const SbStoryImage = ({
+export const SbVideo = ({
   blok: {
-    image: { filename, focus } = {},
-    alt,
-    isLoadingEager,
-    isParallax,
+    videoWebm: { filename: webmSrc } = {},
+    videoMp4: { filename: mp4Src } = {},
+    videoPoster: { filename: posterSrc } = {},
     caption,
     aspectRatio,
-    isFullHeight,
+    isFullScreen,
     boundingWidth = 'full',
     width,
     spacingTop,
     spacingBottom,
-    isCaptionInset,
     isCaptionLight,
     captionBgColor = 'transparent',
     animation = 'none',
@@ -53,7 +50,7 @@ export const SbStoryImage = ({
     isHidden,
   },
   blok,
-}: SbStoryImageProps) => {
+}: SbVideoProps) => {
   if (isHidden) {
     return null;
   }
@@ -67,21 +64,18 @@ export const SbStoryImage = ({
     : undefined;
 
   return (
-    <StoryImage
+    <StoryVideo
       {...storyblokEditable(blok)}
-      imageSrc={filename}
-      imageFocus={focus}
-      alt={alt}
-      isLoadingEager={isLoadingEager}
-      isParallax={isParallax}
+      videoWebm={webmSrc}
+      videoMp4={mp4Src}
+      videoPosterSrc={posterSrc}
       caption={Caption}
       aspectRatio={aspectRatio}
-      isFullHeight={isFullHeight}
+      isFullScreen={isFullScreen}
       boundingWidth={boundingWidth}
       width={width}
       pt={spacingTop}
       pb={spacingBottom}
-      isCaptionInset={isCaptionInset}
       captionBgColor={captionBgColor}
       animation={animation}
       delay={delay}
