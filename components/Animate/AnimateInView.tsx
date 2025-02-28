@@ -28,7 +28,7 @@ export const AnimateInView = ({
   const prefersReducedMotion = useReducedMotion();
   const isInView = useInView(ref, { once });
 
-  // Don't animate if the user has "reduced motion" enabled
+  // Don't use Framer Motion m.div if animation is 'none'
   if (animation === 'none') {
     return <div id={id}>{children}</div>;
   }
@@ -45,7 +45,7 @@ export const AnimateInView = ({
         duration,
         ease: 'easeOut',
       }}
-      initial="hidden"
+      initial={beforeAnimationState}
       animate={isInView ? 'visible' : beforeAnimationState}
       className={className}
       {...props}

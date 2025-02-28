@@ -5,6 +5,7 @@ import { FlexBox } from '@/components/FlexBox';
 import {
   Heading, Paragraph, Text, SrOnlyText,
 } from '@/components/Typography';
+import { StoryVideo } from '@/components/Video';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { getSbImageSize } from '@/utilities/getSbImageSize';
 import { taxonomyMap, type TaxonomyType } from '@/utilities/taxonomyMaps';
@@ -22,6 +23,9 @@ export type StoryHeroStackedProps = {
   imageSrc?: string;
   imageFocus?: string;
   alt?: string;
+  videoWebm?: string;
+  videoMp4?: string;
+  videoPosterSrc?: string;
   hasCaption?: boolean;
   isLightHero?: boolean;
   taxonomy?: TaxonomyType[];
@@ -39,6 +43,9 @@ export const StoryHeroStacked = ({
   imageSrc,
   imageFocus,
   alt,
+  videoWebm,
+  videoMp4,
+  videoPosterSrc,
   hasCaption,
   isLightHero = false,
   taxonomy,
@@ -56,6 +63,12 @@ export const StoryHeroStacked = ({
   // We're using the date only (no time) version of the date picker so trimming the time off
   const date = publishedDate?.slice(0, 10);
 
+  /**
+   * Image/video
+   */
+  const hasVideo = !!videoWebm || !!videoMp4;
+  const hasMedia = !!imageSrc || hasVideo;
+
   return (
     <Container
       width="full"
@@ -63,7 +76,7 @@ export const StoryHeroStacked = ({
       pt={10}
       style={{ backgroundColor: heroBgColor || '#888' }}
     >
-      <Container className={styles.contentWrapper}>
+      <Container className={styles.contentWrapper(hasVideo)}>
         {superhead && (
           <AnimateInView animation="slideUp">
             <Text
@@ -141,39 +154,50 @@ export const StoryHeroStacked = ({
           </AnimateInView>
         )}
       </Container>
-      {imageSrc && (
+      {hasMedia && (
         <AnimateInView animation="zoomSharpen" duration={1}>
-          <picture>
-            <source
-              srcSet={getProcessedImage(imageSrc, '2000x0', imageFocus)}
-              media="(min-width: 1500px)"
+          {imageSrc && (
+            <picture>
+              <source
+                srcSet={getProcessedImage(imageSrc, '2000x0', imageFocus)}
+                media="(min-width: 1500px)"
+              />
+              <source
+                srcSet={getProcessedImage(imageSrc, '1500x0', imageFocus)}
+                media="(min-width: 1200px)"
+              />
+              <source
+                srcSet={getProcessedImage(imageSrc, '1200x0', imageFocus)}
+                media="(min-width: 768px)"
+              />
+              <source
+                srcSet={getProcessedImage(imageSrc, '800x0', imageFocus)}
+                media="(min-width: 576px)"
+              />
+              <source
+                srcSet={getProcessedImage(imageSrc, '600x0', imageFocus)}
+                media="(max-width: 575px)"
+              />
+              <img
+                src={getProcessedImage(imageSrc, '2000x0', imageFocus)}
+                alt={alt || ''}
+                aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
+                fetchPriority="high"
+                width={imageWidth}
+                height={imageHeight}
+                className={styles.image}
+              />
+            </picture>
+          )}
+          {hasVideo && (
+            <StoryVideo
+              videoWebm={videoWebm}
+              videoMp4={videoMp4}
+              videoPosterSrc={videoPosterSrc}
+              aspectRatio="free"
+              isFullScreen
             />
-            <source
-              srcSet={getProcessedImage(imageSrc, '1500x0', imageFocus)}
-              media="(min-width: 1200px)"
-            />
-            <source
-              srcSet={getProcessedImage(imageSrc, '1200x0', imageFocus)}
-              media="(min-width: 768px)"
-            />
-            <source
-              srcSet={getProcessedImage(imageSrc, '800x0', imageFocus)}
-              media="(min-width: 576px)"
-            />
-            <source
-              srcSet={getProcessedImage(imageSrc, '600x0', imageFocus)}
-              media="(max-width: 575px)"
-            />
-            <img
-              src={getProcessedImage(imageSrc, '2000x0', imageFocus)}
-              alt={alt || ''}
-              aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
-              fetchPriority="high"
-              width={imageWidth}
-              height={imageHeight}
-              className={styles.image}
-            />
-          </picture>
+          )}
         </AnimateInView>
       )}
     </Container>

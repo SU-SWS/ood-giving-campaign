@@ -1,14 +1,13 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { cnb } from 'cnbuilder';
 import ReactPlayer from 'react-player/lazy';
-import { Container } from '@/components/Container';
+import { Caption } from '@/components/Media/Caption';
 import { FlexBox } from '@/components/FlexBox';
+import { PreviewImage } from './PreviewImage';
 import { WidthBox, type WidthType } from '@/components/WidthBox';
 import { HeroIcon } from '@/components/HeroIcon';
 import { type PaddingType } from '@/utilities/datasource';
 import { type MediaAspectRatioType, mediaAspectRatios } from '@/utilities/datasource';
-import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { getSbImageSize } from '@/utilities/getSbImageSize';
 import * as styles from './EmbedMedia.styles';
 
 type EmbedMediaProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -57,44 +56,7 @@ export const EmbedMedia = ({
     }
   }, []);
 
-  let PreviewImage: ReactElement;
-  if (previewImageSrc) {
-    const { width: originalWidth, height: originalHeight } = getSbImageSize(previewImageSrc);
-    const cropHeight = Math.round(originalHeight * 1500 / originalWidth);
-
-    PreviewImage = (
-      <picture>
-        <source
-          srcSet={getProcessedImage(previewImageSrc, '1500x0')}
-          media="(min-width: 1200px)"
-        />
-        <source
-          srcSet={getProcessedImage(previewImageSrc, '1200x0')}
-          media="(min-width: 992px)"
-        />
-        <source
-          srcSet={getProcessedImage(previewImageSrc, '1000x0')}
-          media="(min-width: 768px)"
-        />
-        <source
-          srcSet={getProcessedImage(previewImageSrc, '800x0')}
-          media="(min-width: 576px)"
-        />
-        <source
-          srcSet={getProcessedImage(previewImageSrc, '600x0')}
-          media="(max-width: 575px)"
-        />
-        <img
-          src={getProcessedImage(previewImageSrc, '1500x0')}
-          loading="lazy"
-          width={1500}
-          height={cropHeight}
-          alt=""
-          className={styles.previewImage}
-        />
-      </picture>
-    );
-  }
+  const PreviewImg = previewImageSrc ? <PreviewImage previewImageSrc={previewImageSrc} /> : null;
 
   return (
     <WidthBox
@@ -115,8 +77,8 @@ export const EmbedMedia = ({
               url={mediaUrl}
               controls
               playsinline
-              light={previewImageSrc && isPreview ? PreviewImage : isPreview}
-              playing={isPreview ? true : false}
+              light={previewImageSrc && isPreview ? PreviewImg : isPreview}
+              playing={isPreview}
               playIcon={isPreview ? PlayPreviewIcon : undefined}
               // This previewAriaLabel prop is not documented but it is in the React Player source code
               previewAriaLabel={isPreview ? previewAriaLabel : undefined}
@@ -125,11 +87,7 @@ export const EmbedMedia = ({
           )}
         </div>
         {caption && (
-          <Container as="figcaption" width={isCaptionInset ? 'site' : 'full'}>
-            <div className={styles.caption}>
-              {caption}
-            </div>
-          </Container>
+          <Caption caption={caption} isCaptionInset={isCaptionInset} />
         )}
       </figure>
     </WidthBox>

@@ -20,6 +20,10 @@ type SbBasicPageProps = {
     isSmallHeading?: boolean;
     hero?: SbBlokData[];
     heroImage?: SbImageType;
+    heroVideoWebm?: SbImageType;
+    heroVideoMp4?: SbImageType;
+    heroVideoPoster?: SbImageType;
+    heroContent?: SbBlokData[];
     gradientTop?: GradientToType;
     gradientBottom?: GradientFromType;
     gradientVia?: GradientViaType;
@@ -27,7 +31,6 @@ type SbBasicPageProps = {
     paddingType?: HeroPaddingType;
     superhead?: string;
     subheading?: string;
-    heroContent?: SbBlokData[];
     content?: SbBlokData[];
     ankle?: SbBlokData[];
     mastheadPicker?: ISbStoryData[];
@@ -41,6 +44,9 @@ export const SbBasicPage = ({
     isSmallHeading,
     hero,
     heroImage: { filename, focus } = {},
+    heroVideoWebm: { filename: webmFilename } = {},
+    heroVideoMp4: { filename: mp4Filename } = {},
+    heroVideoPoster: { filename: posterFilename } = {},
     gradientTop,
     gradientBottom,
     gradientVia,
@@ -72,6 +78,9 @@ export const SbBasicPage = ({
             subheading={subheading}
             imageSrc={filename}
             imageFocus={focus}
+            videoWebm={webmFilename}
+            videoMp4={mp4Filename}
+            videoPosterSrc={posterFilename}
             gradientTop={gradientTop}
             gradientBottom={gradientBottom}
             gradientVia={gradientVia}

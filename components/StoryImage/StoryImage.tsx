@@ -1,31 +1,14 @@
-import { cnb } from 'cnbuilder';
-import { AnimateInView, type AnimationType } from '@/components/Animate';
-import { Container } from '@/components/Container';
+import { MediaWrapper, type MediaWrapperProps } from '@/components/Media';
 import { Parallax } from '@/components/Parallax';
-import { WidthBox, type WidthType } from '@/components/WidthBox';
-import { type PaddingType } from '@/utilities/datasource';
-import { imageAspectRatios, type ImageAspectRatioType } from '@/utilities/datasource';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { getSbImageSize } from '@/utilities/getSbImageSize';
 import * as styles from './StoryImage.styles';
 
-export type StoryImageProps = React.HTMLAttributes<HTMLDivElement> & {
+export type StoryImageProps = React.HTMLAttributes<HTMLDivElement> & MediaWrapperProps & {
   imageSrc: string;
   imageFocus?: string;
   isLoadingEager?: boolean;
-  isParallax?: boolean;
   alt?: string;
-  caption?: React.ReactNode;
-  isCaptionInset?: boolean;
-  captionBgColor?: styles.CaptionBgColorType;
-  aspectRatio?: ImageAspectRatioType;
-  isFullHeight?: boolean;
-  boundingWidth?: 'site' | 'full';
-  width?: WidthType;
-  spacingTop?: PaddingType;
-  spacingBottom?: PaddingType;
-  animation?: AnimationType;
-  delay?: number;
 };
 
 export const StoryImage = ({
@@ -39,14 +22,13 @@ export const StoryImage = ({
   isFullHeight,
   boundingWidth = 'full',
   width,
-  spacingTop,
-  spacingBottom,
+  pt,
+  pb,
   isCaptionInset,
   captionBgColor = 'transparent',
   animation = 'none',
   delay,
   children,
-  className,
   ...props
 }: StoryImageProps) => {
   const { width: originalWidth, height: originalHeight } = getSbImageSize(imageSrc);
@@ -61,62 +43,52 @@ export const StoryImage = ({
     : parseInt(cropSize?.split('x')[1], 10);
 
   return (
-    <WidthBox
-      {...props}
+    <MediaWrapper
+      caption={caption}
+      isCaptionInset={isCaptionInset}
+      captionBgColor={captionBgColor}
+      aspectRatio={aspectRatio}
+      isFullHeight={isFullHeight}
+      isParallax={isParallax}
       boundingWidth={boundingWidth}
       width={width}
-      pt={spacingTop}
-      pb={spacingBottom}
-      className={cnb(className, styles.root(isFullHeight))}
+      pt={pt}
+      pb={pb}
+      animation={animation}
+      delay={delay}
+      {...props}
     >
-      <AnimateInView animation={animation} delay={delay} className={styles.animateWrapper(isFullHeight)}>
-        <figure className={styles.figure(isFullHeight)}>
-          <div className={cnb(imageAspectRatios[aspectRatio], styles.imageWrapper(isFullHeight, isParallax))}>
-            {!!imageSrc && (
-              <Parallax offset={isParallax ? 60 : 0}>
-                <picture>
-                  <source
-                    srcSet={getProcessedImage(imageSrc, cropSize, imageFocus)}
-                    media="(min-width: 1500px)"
-                  />
-                  <source
-                    srcSet={getProcessedImage(imageSrc, styles.imageCropsSmallDesktop[aspectRatio], imageFocus)}
-                    media="(min-width: 992px)"
-                  />
-                  <source
-                    srcSet={getProcessedImage(imageSrc, styles.imageCropsTablet[aspectRatio], imageFocus)}
-                    media="(min-width: 576px)"
-                  />
-                  <source
-                    srcSet={getProcessedImage(imageSrc, styles.imageCropsMobile[aspectRatio], imageFocus)}
-                    media="(max-width: 575px)"
-                  />
-                  <img
-                    src={getProcessedImage(imageSrc, cropSize, imageFocus)}
-                    loading={isLoadingEager ? 'eager' : 'lazy'}
-                    width={cropWidth}
-                    height={cropHeight}
-                    alt={alt || ''}
-                    className={styles.image(isParallax)}
-                  />
-                </picture>
-              </Parallax>
-            )}
-            {children}
-          </div>
-          {caption && (
-            <Container
-              as="figcaption"
-              width={isCaptionInset ? 'site' : 'full'}
-              className={cnb(styles.captionWrapper, styles.captionBgColors[captionBgColor])}
-            >
-              <div className={styles.caption(captionBgColor)}>
-                {caption}
-              </div>
-            </Container>
-          )}
-        </figure>
-      </AnimateInView>
-    </WidthBox>
+      {!!imageSrc && (
+        <Parallax offset={isParallax ? 60 : 0}>
+          <picture>
+            <source
+              srcSet={getProcessedImage(imageSrc, cropSize, imageFocus)}
+              media="(min-width: 1500px)"
+            />
+            <source
+              srcSet={getProcessedImage(imageSrc, styles.imageCropsSmallDesktop[aspectRatio], imageFocus)}
+              media="(min-width: 992px)"
+            />
+            <source
+              srcSet={getProcessedImage(imageSrc, styles.imageCropsTablet[aspectRatio], imageFocus)}
+              media="(min-width: 576px)"
+            />
+            <source
+              srcSet={getProcessedImage(imageSrc, styles.imageCropsMobile[aspectRatio], imageFocus)}
+              media="(max-width: 575px)"
+            />
+            <img
+              src={getProcessedImage(imageSrc, cropSize, imageFocus)}
+              loading={isLoadingEager ? 'eager' : 'lazy'}
+              width={cropWidth}
+              height={cropHeight}
+              alt={alt || ''}
+              className={styles.image(isParallax)}
+            />
+          </picture>
+        </Parallax>
+      )}
+      {children}
+    </MediaWrapper>
   );
 };
