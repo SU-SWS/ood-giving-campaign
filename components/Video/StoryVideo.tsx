@@ -8,7 +8,7 @@ import * as styles from './StoryVideo.styles';
 /**
  * Inline story Video component that comes with a play/pause button and layout/caption options
  * similar to the StoryImage component.
- * To be used for the SbVideo component in Storyblok.
+ * To be used for the SbVideo component and the foreground looping video in Story page heroes.
  */
 
 export type StoryVideoProps = React.HTMLAttributes<HTMLDivElement> & Omit<MediaWrapperProps, 'isFullHeight' | 'isParallax'> & {
