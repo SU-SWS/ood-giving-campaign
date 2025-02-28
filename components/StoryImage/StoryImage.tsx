@@ -1,6 +1,5 @@
 import { MediaWrapper, type MediaWrapperProps } from '@/components/Media';
 import { Parallax } from '@/components/Parallax';
-import { type PaddingType } from '@/utilities/datasource';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { getSbImageSize } from '@/utilities/getSbImageSize';
 import * as styles from './StoryImage.styles';
@@ -10,8 +9,6 @@ export type StoryImageProps = React.HTMLAttributes<HTMLDivElement> & MediaWrappe
   imageFocus?: string;
   isLoadingEager?: boolean;
   alt?: string;
-  pt?: PaddingType;
-  pb?: PaddingType;
 };
 
 export const StoryImage = ({

@@ -1,10 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { cnb } from 'cnbuilder';
 import { useInView } from 'framer-motion';
-import { type AnimationType } from '@/components/Animate';
 import { MediaWrapper, type MediaWrapperProps } from '@/components/Media';
 import { MutedVideoLoop, VideoButton } from '@/components/Video';
-import { type PaddingType } from '@/utilities/datasource';
 import * as styles from './StoryVideo.styles';
 
 /**
@@ -18,11 +16,6 @@ export type StoryVideoProps = React.HTMLAttributes<HTMLDivElement> & Omit<MediaW
   videoMp4?: string;
   videoPosterSrc?: string;
   isFullScreen?: boolean; // Whether the video takes the full width of the device
-  spacingTop?: PaddingType;
-  spacingBottom?: PaddingType;
-  animation?: AnimationType;
-  delay?: number;
-  aspectRatioClass?: string;
 };
 
 export const StoryVideo = ({
@@ -33,9 +26,9 @@ export const StoryVideo = ({
   aspectRatio,
   boundingWidth = 'full',
   width,
+  pt,
+  pb,
   isFullScreen,
-  spacingTop,
-  spacingBottom,
   captionBgColor = 'transparent',
   animation = 'none',
   delay,
@@ -50,17 +43,17 @@ export const StoryVideo = ({
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isUserPaused, setIsUserPaused] = useState<boolean>(false);
 
-  // Toggle foreground video play/pause
+  // Toggle video play/pause
   const toggleVideo = () => {
     if (!videoRef.current) return;
 
     setIsPlaying((prev) => {
       if (prev) {
-        videoRef.current?.pause();
+        videoRef.current.pause();
         setIsUserPaused(true);
       } else {
         videoRef.current
-          ?.play()
+          .play()
           .catch(() => {});
         setIsUserPaused(false);
       }
@@ -77,7 +70,7 @@ export const StoryVideo = ({
     if (!video) return;
 
     if (isVideoInView && !isUserPaused) {
-      video.play().catch(() => {});
+      video.play().catch((error) => console.warn('Video playback prevented:', error));
     } else {
       video.pause();
     }
@@ -95,8 +88,8 @@ export const StoryVideo = ({
       aspectRatio={aspectRatio}
       boundingWidth={boundingWidth}
       width={width}
-      pt={spacingTop}
-      pb={spacingBottom}
+      pt={pt}
+      pb={pb}
       animation={animation}
       delay={delay}
       aspectRatioClass={cnb(aspectRatioClass, styles.videoWrapper)}

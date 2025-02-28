@@ -13,6 +13,11 @@ import * as styles from './MediaWrapper.styles';
 
 export type MediaWrapperProps = React.HTMLAttributes<HTMLDivElement> & CaptionProps & {
   aspectRatio?: ImageAspectRatioType;
+  /**
+   * If different aspect ratios at different breakpoints are needed, ie, using the AspectRatio prop is insufficient,
+   * pass custom classes into the aspect ratio container using this prop.
+   */
+  aspectRatioClass?: string;
   isFullHeight?: boolean;
   isParallax?: boolean;
   boundingWidth?: 'site' | 'full';
@@ -21,12 +26,12 @@ export type MediaWrapperProps = React.HTMLAttributes<HTMLDivElement> & CaptionPr
   pb?: PaddingType;
   animation?: AnimationType;
   delay?: number;
-  aspectRatioClass?: string; // Additional eg, responsive aspect ratio classes
 };
 
 export const MediaWrapper = ({
   caption,
   aspectRatio,
+  aspectRatioClass,
   isFullHeight,
   isParallax,
   boundingWidth = 'full',
@@ -37,7 +42,6 @@ export const MediaWrapper = ({
   captionBgColor = 'transparent',
   animation = 'none',
   delay,
-  aspectRatioClass,
   children,
   className,
   ...props
