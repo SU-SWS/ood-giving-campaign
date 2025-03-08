@@ -13,6 +13,6 @@ export const heading = 'mb-0';
 
 export const buttonWrapper = 'gap-6 md:gap-12 list-unstyled *:mb-0';
 
-export const copiedTextBubble = (isDark: boolean) => cnb('text-15 absolute -ml-36 aria-hidden:mt-0 -mt-80 py-6 px-12 rounded-full  transition-all aria-hidden:opacity-0 opacity-100 delay-300 pointer-events-none',
-  isDark ? 'bg-white text-gc-black' : 'bg-gc-black text-white',
+export const copiedTextBubble = (isDark: boolean) => cnb('text-15 absolute -ml-36 aria-hidden:mt-0 -mt-80 py-6 px-12 rounded-full transition-all aria-hidden:opacity-0 opacity-100 delay-300 pointer-events-none',
+  isDark ? 'bg-white' : 'bg-gc-black',
 );

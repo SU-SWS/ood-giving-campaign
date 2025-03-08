@@ -66,7 +66,7 @@ export const SocialSharing = ({
                 {buttonState === 'copied' ? <HeroIcon icon="copy" /> : <LinkIcon aria-hidden width="20" />}
               </SocialButton>
               <Text
-                color="white"
+                color={isDark ? 'black' : 'white'}
                 className={styles.copiedTextBubble(isDark)}
                 weight="semibold"
                 leading="none"
