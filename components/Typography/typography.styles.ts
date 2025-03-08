@@ -61,6 +61,7 @@ export const textColors = {
   'black-20': 'text-black-20',
   'black-40': 'text-black-40',
   'black-60': 'text-black-60',
+  'black-70': 'text-black-70',
   'black-80': 'text-black-80',
   'black-90': 'text-black-90',
 };

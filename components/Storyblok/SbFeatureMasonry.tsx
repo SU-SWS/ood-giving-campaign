@@ -15,6 +15,7 @@ export type SbFeatureMasonryProps = {
     videoUrl?: string;
     previewAriaLabel?: string;
     caption?: string;
+    isLightCaption?: boolean;
     isHidden?: boolean;
   };
 };
@@ -31,6 +32,7 @@ export const SbFeatureMasonry = ({
     videoUrl,
     previewAriaLabel = 'Play video',
     caption,
+    isLightCaption,
     isHidden,
   },
   blok,
@@ -55,6 +57,7 @@ export const SbFeatureMasonry = ({
       videoUrl={videoUrl}
       previewAriaLabel={previewAriaLabel}
       caption={caption}
+      isLightCaption={isLightCaption}
     />
   );
 };
