@@ -11,6 +11,7 @@ import { getNumBloks } from '@/utilities/getNumBloks';
 type SbStoryMvpProps = {
   blok: {
     _uid: string;
+    bgColor?: 'black' | 'white';
     hideTopSocial?: boolean;
     aboveSidebar?: SbBlokData[];
     intro?: SbBlokData[];
@@ -56,6 +57,7 @@ export const SbStoryMvp = ({
     isLightHero,
     tabColor,
     heroTexturedBar,
+    bgColor,
     // page regions
     hideTopSocial,
     aboveSidebar,
@@ -75,7 +77,7 @@ export const SbStoryMvp = ({
     <div {...storyblokEditable(blok)}>
       <CreateStories stories={mastheadPicker} isLight={isLightHero} />
       <main id="main-content">
-        <Container as="article" width="full" pb={9}>
+        <Container as="article" bgColor={bgColor} width="full" pb={9}>
           <StoryHeroMvp
             title={title}
             superhead={superhead}
@@ -101,18 +103,19 @@ export const SbStoryMvp = ({
             isLeftImage={isLeftImage}
             alt={alt}
             caption={caption}
+            isDarkCaptionBg={bgColor === 'black'}
             isLightHero={isLightHero}
             isVerticalHero={isVerticalHero}
             tabColor={tabColor}
             taxonomy={taxonomyArray}
             heroTexturedBar={heroTexturedBar}
           />
-          {!hideTopSocial && !!slug && <SocialSharing title={title} slug={slug} isTop />}
+          {!hideTopSocial && !!slug && <SocialSharing isDark={bgColor === 'black'} title={title} slug={slug} isTop />}
           {showAboveContent && (
             <SbAboveContent aboveSidebar={aboveSidebar} intro={intro} sidebar={sidebar} />
           )}
           <CreateBloks blokSection={content} />
-          {!!slug && <SocialSharing title={title} slug={slug} />}
+          {!!slug && <SocialSharing isDark={bgColor === 'black'} title={title} slug={slug} />}
         </Container>
         <CreateBloks blokSection={ankle} />
       </main>

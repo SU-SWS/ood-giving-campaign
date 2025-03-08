@@ -18,12 +18,14 @@ import * as styles from './SocialSharing.styles';
 type SocialSharingProps = React.HTMLAttributes<HTMLDivElement> & {
   slug: string;
   title?: string;
+  isDark?: boolean; // Use dark theme if true (light text and icons)
   isTop?: boolean; // The widget at the top of the story has different styles
 };
 
 export const SocialSharing = ({
   slug,
   title,
+  isDark,
   isTop,
   className,
 }: SocialSharingProps) => {
@@ -50,13 +52,14 @@ export const SocialSharing = ({
   return (
     <Container pt={8} className={className}>
       <WidthBox width="6">
-        <FlexBox alignItems="center" justifyContent="between" className={styles.flexbox(isTop)}>
-          <Heading as="h2" font="sans" size="base" weight="semibold" leading="none" className={styles.heading}>
+        <FlexBox alignItems="center" justifyContent="between" className={styles.flexbox(isTop, isDark)}>
+          <Heading color={isDark ? 'white' : 'black'} as="h2" font="sans" size="base" weight="semibold" leading="none" className={styles.heading}>
             Share this story
           </Heading>
           <FlexBox as="ul" className={styles.buttonWrapper}>
             <li>
               <SocialButton
+                isDark={isDark}
                 onClick={handleCopyClick}
                 aria-label={buttonState === 'copied' ? 'Story link has been copied' : 'Copy story link'}
               >
@@ -64,7 +67,7 @@ export const SocialSharing = ({
               </SocialButton>
               <Text
                 color="white"
-                className={styles.copiedTextBubble}
+                className={styles.copiedTextBubble(isDark)}
                 weight="semibold"
                 leading="none"
                 icon="check"
@@ -75,6 +78,7 @@ export const SocialSharing = ({
             </li>
             <li>
               <SocialButton
+                isDark={isDark}
                 aria-label="Share via email"
                 href={`mailto:?subject=${title ? safeTitle : 'Check out this story'}&body=${safeUrl}`}
               >
@@ -83,6 +87,7 @@ export const SocialSharing = ({
             </li>
             <li>
               <SocialButton
+                isDark={isDark}
                 aria-label="Share on Facebook"
                 href={`${facebookBaseURL}${safeUrl}`}
               >
@@ -91,6 +96,7 @@ export const SocialSharing = ({
             </li>
             <li>
               <SocialButton
+                isDark={isDark}
                 aria-label="Share on X (formerly Twitter)"
                 href={`${twitterBaseURL}${safeUrl}${title ? `&text=${safeTitle}` : ''}`}
               >
@@ -99,6 +105,7 @@ export const SocialSharing = ({
             </li>
             <li>
               <SocialButton
+                isDark={isDark}
                 aria-label="Share on LinkedIn"
                 href={`${linkedinBaseURL}${safeUrl}`}
               >
