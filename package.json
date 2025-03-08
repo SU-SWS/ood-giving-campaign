@@ -35,18 +35,18 @@
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
     "@netlify/functions": "^2.8.2",
-    "@netlify/plugin-nextjs": "^5.8.0",
-    "@next/third-parties": "^14.2.15",
+    "@netlify/plugin-nextjs": "^5.9.4",
+    "@next/third-parties": "^14.2.23",
     "@storyblok/react": "^3.0.15",
     "@typeform/embed-react": "^3.17.0",
     "cnbuilder": "^3.1.0",
     "cookies-next": "^4.2.1",
     "framer-motion": "^11.11.9",
-    "next": "^14.2.15",
+    "next": "^14.2.23",
     "react-loading-skeleton": "^3.5.0",
     "react-player": "^2.16.0",
     "react-slick": "^0.30.3",
-    "sa11y": "^4.0.2",
+    "sa11y": "^4.1.1",
     "storyblok-rich-text-react-renderer-ts": "^3.2.0",
     "usehooks-ts": "^3.1.0"
   },
@@ -63,11 +63,11 @@
     "autoprefixer": "^10.4.20",
     "decanter": "^7.3.1",
     "eslint": "^8.57.0",
-    "eslint-config-next": "^14.2.15",
+    "eslint-config-next": "^14.2.23",
     "netlify-cli": "^17.37.1",
     "netlify-plugin-vault-variables": "^3.0.0",
-    "postcss": "^8.5.2",
-    "typescript": "^5.6.2"
+    "postcss": "^8.5.3",
+    "typescript": "^5.8.2"
   },
   "optionalDependencies": {
     "local-ssl-proxy": "^2.0.5"
