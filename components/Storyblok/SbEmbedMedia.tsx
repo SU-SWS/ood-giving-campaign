@@ -1,12 +1,13 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
-import { type MediaAspectRatioType } from '@/utilities/datasource';
-import { type WidthType } from '@/components/WidthBox';
-import { type PaddingType } from '@/utilities/datasource';
-import { hasRichText } from '@/utilities/hasRichText';
 import { EmbedMedia } from '@/components/EmbedMedia';
 import { RichText } from '@/components/RichText';
+import { hasRichText } from '@/utilities/hasRichText';
+import { type CaptionBgColorType } from '@/components/Media';
+import { type MediaAspectRatioType } from '@/utilities/datasource';
+import { type PaddingType } from '@/utilities/datasource';
 import { type SbImageType } from '@/components/Storyblok/Storyblok.types';
+import { type WidthType } from '@/components/WidthBox';
 
 type SbEmbedMediaProps = {
   blok: {
@@ -21,6 +22,7 @@ type SbEmbedMediaProps = {
     spacingBottom?: PaddingType;
     isCaptionInset?: boolean;
     isCaptionLight?: boolean;
+    captionBgColor?: CaptionBgColorType;
     isPreview?: boolean;
     previewImage?: SbImageType;
     previewAriaLabel?: string;
@@ -39,6 +41,7 @@ export const SbEmbedMedia = ({
     spacingTop,
     spacingBottom,
     isCaptionInset,
+    captionBgColor,
     isCaptionLight,
     isPreview,
     previewImage: { filename } = {},
@@ -51,7 +54,12 @@ export const SbEmbedMedia = ({
     return null;
   }
 
-  const Caption = hasRichText(caption) ? <RichText textColor={isCaptionLight ? 'white' : 'black-70'} wysiwyg={caption} /> : undefined;
+  const Caption = hasRichText(caption) ?
+    <RichText
+      textColor={isCaptionLight ? 'white' : 'black-70'}
+      linkColor={isCaptionLight ? 'digital-red-xlight' : 'unset'}
+      wysiwyg={caption}
+    /> : undefined;
 
   return (
     <EmbedMedia
@@ -65,6 +73,7 @@ export const SbEmbedMedia = ({
       spacingTop={spacingTop}
       spacingBottom={spacingBottom}
       isCaptionInset={isCaptionInset}
+      captionBgColor={captionBgColor}
       isPreview={isPreview}
       previewImageSrc={filename}
       previewAriaLabel={previewAriaLabel}

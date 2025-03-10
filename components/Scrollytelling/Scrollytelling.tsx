@@ -3,6 +3,7 @@ import {
   m, useScroll, useTransform, useWillChange,
 } from 'framer-motion';
 import { AnimateInView } from '@/components/Animate';
+import { Caption } from '@/components/Media/Caption';
 import { Container } from '@/components/Container';
 import { Heading, Text, type HeadingType } from '@/components/Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
@@ -17,6 +18,7 @@ type ScrollytellingProps = React.HTMLAttributes<HTMLDivElement> & {
   subheading?: string;
   content?: React.ReactNode;
   caption?: React.ReactNode;
+  isLightCaption?: boolean;
   bgImageSrc?: string;
   bgImageFocus?: string;
   bgImageAlt?: string;
@@ -32,6 +34,7 @@ export const Scrollytelling = ({
   headingLevel = 'h2',
   subheading,
   caption,
+  isLightCaption,
   bgImageSrc,
   bgImageFocus,
   bgImageAlt,
@@ -143,9 +146,7 @@ export const Scrollytelling = ({
         </div>
       </Container>
       {caption && (
-        <Container className={styles.caption}>
-          {caption}
-        </Container>
+        <Caption caption={caption} isCaptionInset />
       )}
     </Container>
   );
