@@ -35,7 +35,6 @@
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
     "@netlify/functions": "^2.8.2",
-    "@netlify/plugin-nextjs": "^5.9.4",
     "@next/third-parties": "^14.2.23",
     "@storyblok/react": "^3.0.15",
     "@typeform/embed-react": "^3.17.0",
@@ -55,6 +54,7 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@netlify/plugin-nextjs": "^5.10.0",
     "@tailwindcss/container-queries": "^0.1.1",
     "@types/node": "^22.7.2",
     "@types/react": "^18.3.9",
