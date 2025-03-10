@@ -1,4 +1,5 @@
 import { cnb } from 'cnbuilder';
+import { type CaptionBgColorType } from '@/components/Media';
 
 // 2XL and up >= 1500px
 export const imageCropsDesktop = {
@@ -64,14 +65,6 @@ export const imageCropsMobile = {
   '16x9': '640x360',
   'free': '600x0',
 };
-
-export const captionBgColors = {
-  black: 'bg-gc-black',
-  'black-60': 'bg-black-true/60',
-  white: 'bg-white',
-  transparent: '',
-};
-export type CaptionBgColorType = keyof typeof captionBgColors;
 
 export const root = (isFullHeight?: boolean) => cnb(isFullHeight ? 'h-full' : '');
 export const animateWrapper = (isFullHeight?: boolean) => cnb(isFullHeight ? 'h-full' : '');

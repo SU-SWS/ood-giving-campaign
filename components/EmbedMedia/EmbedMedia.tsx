@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { cnb } from 'cnbuilder';
 import ReactPlayer from 'react-player/lazy';
-import { Caption } from '@/components/Media/Caption';
+import { Caption, type CaptionProps } from '@/components/Media/Caption';
 import { FlexBox } from '@/components/FlexBox';
 import { PreviewImage } from './PreviewImage';
 import { WidthBox, type WidthType } from '@/components/WidthBox';
@@ -10,15 +10,13 @@ import { type PaddingType } from '@/utilities/datasource';
 import { type MediaAspectRatioType, mediaAspectRatios } from '@/utilities/datasource';
 import * as styles from './EmbedMedia.styles';
 
-type EmbedMediaProps = React.HTMLAttributes<HTMLDivElement> & {
+type EmbedMediaProps = React.HTMLAttributes<HTMLDivElement> & CaptionProps &{
   mediaUrl: string;
-  caption?: React.ReactNode;
   aspectRatio?: MediaAspectRatioType;
   boundingWidth?: 'site' | 'full';
   width?: WidthType;
   spacingTop?: PaddingType;
   spacingBottom?: PaddingType;
-  isCaptionInset?: boolean;
   isPreview?: boolean;
   previewImageSrc?: string;
   previewAriaLabel?: string;
@@ -39,6 +37,7 @@ export const EmbedMedia = ({
   spacingTop,
   spacingBottom,
   isCaptionInset,
+  captionBgColor = 'transparent',
   isPreview,
   previewImageSrc,
   previewAriaLabel,
@@ -87,7 +86,7 @@ export const EmbedMedia = ({
           )}
         </div>
         {caption && (
-          <Caption caption={caption} isCaptionInset={isCaptionInset} />
+          <Caption caption={caption} isCaptionInset={isCaptionInset} captionBgColor={captionBgColor} />
         )}
       </figure>
     </WidthBox>

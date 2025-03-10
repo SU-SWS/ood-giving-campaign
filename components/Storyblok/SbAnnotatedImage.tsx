@@ -50,9 +50,13 @@ export const SbAnnotatedImage = ({
     return null;
   }
 
-  const Caption = hasRichText(caption) ? (
-    <RichText textColor={isCaptionLight ? 'white' : 'black-70'} wysiwyg={caption} />
-  ) : undefined;
+  const Caption = hasRichText(caption)
+    ? <RichText
+      textColor={isCaptionLight ? 'white' : 'black-70'}
+      linkColor={isCaptionLight ? 'digital-red-xlight' : 'unset'}
+      wysiwyg={caption}
+    />
+    : undefined;
 
   return (
     <AnnotatedImage
