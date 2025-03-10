@@ -22,6 +22,7 @@ type SbScrollytellingProps = {
     subheading?: string;
     content?: SbBlokData[];
     caption?: StoryblokRichtext;
+    isLightCaption?: boolean;
     bgImage?: SbImageType;
     bgImageAlt?: string;
     imageEntrance?: ImageEntranceType;
@@ -41,6 +42,7 @@ export const SbScrollytelling = ({
     subheading,
     content,
     caption,
+    isLightCaption,
     bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
     bgImageAlt,
     imageEntrance,
@@ -56,7 +58,12 @@ export const SbScrollytelling = ({
     return null;
   }
 
-  const Caption = hasRichText(caption) ? <RichText textColor="black-70" wysiwyg={caption} /> : undefined;
+  const Caption = hasRichText(caption) ?
+    <RichText
+      textColor={isLightCaption ? 'white' : 'black-70'}
+      linkColor={isLightCaption ? 'digital-red-xlight' : 'unset'}
+      wysiwyg={caption}
+    /> : undefined;
 
   return (
     <Scrollytelling
@@ -66,6 +73,7 @@ export const SbScrollytelling = ({
       headingLevel={headingLevel}
       subheading={subheading}
       caption={Caption}
+      isLightCaption={isLightCaption}
       bgImageSrc={bgImageSrc}
       bgImageFocus={bgImageFocus}
       bgImageAlt={bgImageAlt}

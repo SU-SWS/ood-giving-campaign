@@ -5,7 +5,7 @@ import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { type ImageAspectRatioType } from '@/utilities/datasource';
 import { type WidthType } from '@/components/WidthBox';
 import { type PaddingType } from '@/utilities/datasource';
-import { type CaptionBgColorType } from '@/components/StoryImage';
+import { type CaptionBgColorType } from '@/components/Media';
 import { type AnimationType } from '@/components/Animate';
 import { type SbImageType } from './Storyblok.types';
 import { hasRichText } from '@/utilities/hasRichText';

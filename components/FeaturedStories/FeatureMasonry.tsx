@@ -23,6 +23,7 @@ type FeatureMasonryProps = React.HTMLAttributes<HTMLDivElement> & {
   videoUrl?: string;
   previewAriaLabel?: string;
   caption?: string;
+  isLightCaption?: boolean;
 }
 
 export const FeatureMasonry = ({
@@ -39,6 +40,7 @@ export const FeatureMasonry = ({
   videoUrl,
   previewAriaLabel,
   caption,
+  isLightCaption,
   className,
   ...props
 }: FeatureMasonryProps) => {
@@ -102,7 +104,7 @@ export const FeatureMasonry = ({
           previewAriaLabel={previewAriaLabel}
         />
       </Grid>
-      <Text variant="caption" leading="display" className="text-black-70 max-w-prose-wide mt-06em whitespace-pre-line">
+      <Text variant="caption" color={isLightCaption ? 'white' : 'black-70'} leading="display" className="max-w-prose-wide mt-06em whitespace-pre-line">
         {caption}
       </Text>
     </Container>

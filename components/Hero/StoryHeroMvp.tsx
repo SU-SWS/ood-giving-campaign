@@ -1,4 +1,5 @@
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
+import { Caption } from '@/components/Media/Caption';
 import { Container } from '@/components/Container';
 import { BlurryPoster } from '@/components/BlurryPoster';
 import { CreateBloks } from '@/components/CreateBloks';
@@ -37,6 +38,7 @@ export type StoryHeroMvpProps = {
   darkOverlay?: HeroOverlayType;
   alt?: string;
   caption?: StoryblokRichtext;
+  isDarkCaptionBg?: boolean;
   isVerticalHero?: boolean;
   isLeftImage?: boolean;
   isLightHero?: boolean;
@@ -71,6 +73,7 @@ export const StoryHeroMvp = ({
   darkOverlay,
   alt,
   caption,
+  isDarkCaptionBg,
   isVerticalHero = false,
   isLeftImage = false,
   isLightHero = false,
@@ -80,7 +83,13 @@ export const StoryHeroMvp = ({
 }: StoryHeroMvpProps) => {
   const useTwoColLayout = isVerticalHero;
   const hasCaption = hasRichText(caption);
-  const Caption = hasCaption ? <RichText textColor="black-70" wysiwyg={caption} className={styles.caption} /> : undefined;
+  const CaptionText = hasCaption ?
+    <RichText
+      textColor={isDarkCaptionBg ? 'white' : 'black-70'}
+      linkColor={isDarkCaptionBg ? 'digital-red-xlight' : 'unset'}
+      wysiwyg={caption}
+    />
+    : undefined;
 
   return (
     <Container
@@ -146,13 +155,7 @@ export const StoryHeroMvp = ({
         <CreateBloks blokSection={heroTexturedBar} />
       )}
       {hasRichText(caption) && (
-        <Container
-          bgColor="white"
-          // id is for aria-describedby in the images since we can't use figcaption here
-          id="story-hero-caption"
-        >
-          {Caption}
-        </Container>
+        <Caption caption={CaptionText} isCaptionInset />
       )}
     </Container>
   );
