@@ -47,6 +47,7 @@ export const getPageMetadata = ({ story, sbConfig, slug }: PageMetadataProps) =>
       noindex,
       seo,
       title,
+      dek,
       canonicalUrl,
     },
   } = story;
@@ -108,7 +109,7 @@ export const getPageMetadata = ({ story, sbConfig, slug }: PageMetadataProps) =>
   // Description priority: Story SEO > Config Blok Site Description > Hardcoded Site Description
   return {
     title: `${seo.title || title || name} | ${seoSiteTitle || siteTitle}`,
-    description: seo?.description || seoSiteDescription || siteDescription,
+    description: seo?.description || dek || seoSiteDescription || siteDescription,
     metadataBase: new URL(siteUrlProd),
     openGraph:{
       title: seo?.og_title || title || name,
