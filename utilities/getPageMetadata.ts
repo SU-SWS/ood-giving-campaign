@@ -94,7 +94,7 @@ export const getPageMetadata = ({ story, sbConfig, slug }: PageMetadataProps) =>
   // Use the explicitly set image from the SEO component if available,
   // then use a known field if the CT has it,
   // otherwise use the first image in the content.
-  const knownImageFields = ['heroImage']; // order of priority
+  const knownImageFields = ['heroImage', 'bgImage']; // order of priority
   const firstImage = getFirstImage(knownImageFields, story.content);
   const firstImageProcessed = firstImage ? getProcessedImage(firstImage.filename, '1200x630', firstImage.focus) : undefined;
   // Process the images. Use the explicitly set image if available, otherwise use the first image in the content.

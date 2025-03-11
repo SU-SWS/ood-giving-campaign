@@ -1,8 +1,8 @@
 import { cnb } from 'cnbuilder';
-import { AnimateInView, type AnimationType } from '../Animate';
-import { Container } from '../Container';
-import { FlexBox } from '../FlexBox';
-import { Text } from '../Typography';
+import { AnimateInView, type AnimationType } from '@/components/Animate';
+import { Container } from '@/components/Container';
+import { RichText } from '@/components/RichText';
+import { Text } from '@/components/Typography';
 import {
   accentBorderColors,
   accentTextColors,
@@ -10,7 +10,6 @@ import {
   type AccentTextColorType,
 } from '@/utilities/datasource';
 import * as styles from './Quote.styles';
-import { RichText } from '../RichText';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 
 export type QuoteProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -23,7 +22,7 @@ export type QuoteProps = React.HTMLAttributes<HTMLDivElement> & {
   isMinimal?: boolean;
   barColor?: AccentBorderColorType;
   quoteColor?: AccentTextColorType;
-  quoteOnRight?: boolean;
+  barOnLeft?: boolean;
   verticalAlign?: styles.QuoteVerticalAlignType;
   animation?: AnimationType;
   delay?: number;
@@ -39,7 +38,7 @@ export const Quote = ({
   source,
   quoteColor,
   barColor,
-  quoteOnRight,
+  barOnLeft,
   verticalAlign = 'bottom',
   animation = 'slideUp',
   delay,
@@ -48,26 +47,31 @@ export const Quote = ({
   ...props
 }: QuoteProps) => {
   const content = typeof body === 'string' ? body : <RichText wysiwyg={body} />;
-  return (<AnimateInView animation={animation} delay={delay}>
-    <Container
-      width="full"
-      py={addDarkOverlay && !isMinimal ? 5 : undefined}
-      className={cnb(
-        styles.root(isMinimal, addDarkOverlay, quoteOnRight, !!barColor),
-        styles.verticalAlignments[verticalAlign],
-        className,
-      )}
-      {...props}
-    >
-      <blockquote className={cnb(styles.content(!!barColor, quoteOnRight), accentBorderColors[barColor])}>
-        {teaser && (
-          <FlexBox className={styles.teaserWrapper} direction={quoteOnRight ? 'row-reverse' : 'row'}>
-            <Text
-              font="druk"
-              className={cnb(styles.quoteMark(isLargeTeaser), accentTextColors[quoteColor])}
-            >
-              {quoteOnRight ? '”' : '“'}
-            </Text>
+  /**
+   * Before we add the boolean showQuoteMark toggle,
+   * user can add an empty space in the teaser field to trick it into displaying a quotation mark.
+   * This test whether a real teaser (not just empty space) is present.
+   */
+  const hasRealTeaser = !!teaser?.trim();
+  const displayQuoteMark = !!teaser;
+
+  return (
+    <AnimateInView animation={animation} delay={delay}>
+      <Container
+        width="full"
+        py={addDarkOverlay && !isMinimal ? 5 : undefined}
+        className={cnb(
+          styles.root(isMinimal, addDarkOverlay, barOnLeft, !!barColor),
+          styles.verticalAlignments[verticalAlign],
+          className,
+        )}
+        {...props}
+      >
+        <blockquote className={cnb(styles.content(!!barColor, barOnLeft), accentBorderColors[barColor])}>
+          {displayQuoteMark && (
+            <Text font="druk" className={cnb(styles.quoteMark(isLargeTeaser), accentTextColors[quoteColor])}>“</Text>
+          )}
+          {hasRealTeaser && (
             <Text
               size={isLargeTeaser ? 'f5' : 'f4'}
               leading="none"
@@ -76,24 +80,24 @@ export const Quote = ({
             >
               {teaser}
             </Text>
-          </FlexBox>
-        )}
-        {body && (
-          <Text
-            weight="semibold"
-            variant={isLargeBody ? undefined : 'big'}
-            leading="display"
-            size={isLargeBody ? 2 : undefined}
-            font="serif"
-            className={styles.body}
-          >
-            {content}
-          </Text>
-        )}
-        {source && (
-          <Text variant="card" className={styles.source}>{source}</Text>
-        )}
-      </blockquote>
-    </Container>
-  </AnimateInView>);
+          )}
+          {body && (
+            <Text
+              weight="semibold"
+              variant={isLargeBody ? undefined : 'big'}
+              leading="display"
+              size={isLargeBody ? 2 : undefined}
+              font="serif"
+              className={styles.body(hasRealTeaser)}
+            >
+              {content}
+            </Text>
+          )}
+          {source && (
+            <Text variant="card" className={styles.source}>{source}</Text>
+          )}
+        </blockquote>
+      </Container>
+    </AnimateInView>
+  );
 };
