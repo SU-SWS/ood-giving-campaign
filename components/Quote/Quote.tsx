@@ -1,7 +1,6 @@
 import { cnb } from 'cnbuilder';
 import { AnimateInView, type AnimationType } from '@/components/Animate';
 import { Container } from '@/components/Container';
-import { RichText } from '@/components/RichText';
 import { Text } from '@/components/Typography';
 import {
   accentBorderColors,
