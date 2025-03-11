@@ -10,11 +10,10 @@ import {
   type AccentTextColorType,
 } from '@/utilities/datasource';
 import * as styles from './Quote.styles';
-import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 
 export type QuoteProps = React.HTMLAttributes<HTMLDivElement> & {
   teaser?: string;
-  body?: string | StoryblokRichtext;
+  body?: string;
   source?: string;
   addDarkOverlay?: boolean;
   isLargeTeaser?: boolean;
@@ -46,7 +45,6 @@ export const Quote = ({
   className,
   ...props
 }: QuoteProps) => {
-  const content = typeof body === 'string' ? body : <RichText wysiwyg={body} />;
   /**
    * Before we add the boolean showQuoteMark toggle,
    * user can add an empty space in the teaser field to trick it into displaying a quotation mark.
@@ -90,7 +88,7 @@ export const Quote = ({
               font="serif"
               className={styles.body(hasRealTeaser)}
             >
-              {content}
+              {body}
             </Text>
           )}
           {source && (
