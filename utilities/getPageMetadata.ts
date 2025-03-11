@@ -113,14 +113,14 @@ export const getPageMetadata = ({ story, sbConfig, slug }: PageMetadataProps) =>
     metadataBase: new URL(siteUrlProd),
     openGraph:{
       title: seo?.og_title || title || name,
-      description: seo?.og_description || seo?.description || seoSiteDescription || siteDescription,
+      description: seo?.og_description || seo?.description || dek || seoSiteDescription || siteDescription,
       images: ogImage || defaultImage,
       type: seoOgType || 'website',
     },
     twitter: {
       card: 'summary_large_image',
       title: seo?.twitter_title || title || name,
-      description: seo?.twitter_description || seo?.description || seoSiteDescription || siteDescription,
+      description: seo?.twitter_description || seo?.description || dek || seoSiteDescription || siteDescription,
       images: twitterImage || defaultImage,
     },
     alternates: {
