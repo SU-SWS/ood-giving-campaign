@@ -6,33 +6,35 @@ import { cnb } from 'cnbuilder';
  * It caused a weird bug when you have the dialog open and click around sometimes
  * it will bring the body content under the dialog overlay to the front even though it is not focusable.
  */
-export const root = (isHorizontal: boolean) => cnb('relative w-full mx-auto break-words max-w-[29rem] bg-black', {
+export const root = (isHorizontal: boolean) => cnb('relative group @container w-full mx-auto break-words max-w-[29rem] bg-black', {
   'sm:max-w-300 lg:max-w-[35rem]': !isHorizontal,
-  'sm:max-w-550 md:max-w-600 xl:max-w-1000 2xl:max-w-1200': isHorizontal,
+  'sm:max-w-700 xl:max-w-1000 2xl:max-w-1200': isHorizontal,
 });
 export const cardInner = (isHorizontal: boolean) => cnb('relative size-full aspect-w-1 aspect-h-2', {
-  'sm:aspect-w-2 sm:aspect-h-3 xl:aspect-w-3 xl:aspect-h-2': isHorizontal,
+  'sm:aspect-w-3 sm:aspect-h-2': isHorizontal,
 });
 
 export const cardFront = 'absolute size-full top-0 left-0';
 export const imageWrapper = (isHorizontal: boolean) => cnb('overflow-hidden aspect-w-1 aspect-h-2', {
-  'sm:aspect-w-2 sm:aspect-h-3 xl:aspect-w-3 xl:aspect-h-2': isHorizontal,
+  'sm:aspect-w-3 sm:aspect-h-2': isHorizontal,
 });
-export const image = 'w-full h-full object-cover';
+export const image = 'w-full h-full object-cover group-hocus-within:scale-105 transition-transform will-change-transform';
 export const overlay = 'absolute top-0 left-0 size-full bg-gradient-to-t via-black-true/20 from-black-true/90';
 
 export const info = (isHorizontal: boolean) => cnb('rs-px-1 pb-150 absolute size-full bottom-0 left-0 mb-0', {
-  'px-20 md:px-45 sm:pb-200 xl:pb-130': isHorizontal,
+  'px-20 md:px-45 sm:pb-110 sm:@3xl:pb-130': isHorizontal,
 });
-export const heading = (isHorizontal: boolean) => cnb('mb-02em mt-auto text-30 whitespace-pre-line tracking-tight', {
-  '2xl:text-[3.6rem]': !isHorizontal,
-  'sm:fluid-type-4 xl:max-w-[30ch] mx-auto': isHorizontal,
+export const heading = (isHorizontal: boolean) => cnb('mb-02em mt-auto whitespace-pre-line tracking-tight', {
+  'text-28 md:text-30 2xl:text-[3.2rem]': !isHorizontal,
+  'text-28 sm:text-[clamp(2.8rem,3.11cqw+1.87rem,5.6rem)] xl:max-w-[30ch] mx-auto': isHorizontal,
 });
-export const subhead = 'text-19 md:text-21 xl:max-w-prose mx-auto whitespace-pre-line';
+export const subhead = (isHorizontal: boolean) => cnb('text-19 md:text-21 xl:max-w-prose mx-auto whitespace-pre-line',
+  isHorizontal && 'lg:@4xl:text-25',
+);
 
 export const button = 'group absolute size-full top-0 left-0';
 export const icon = (isHorizontal: boolean) => cnb('absolute bottom-40 right-36 text-white size-65 border-2 border-white rounded-full p-16 group-hocus-visible:border-dashed group-aria-expanded:rotate-45 transition-transform group-hocus-visible:bg-gc-black/80 transition-color', {
-  'md:bottom-58 2xl:bottom-61 md:right-45': isHorizontal,
+  '@4xl:bottom-58 @7xl:bottom-61 @4xl:right-45': isHorizontal,
 });
 
 // Modal styles

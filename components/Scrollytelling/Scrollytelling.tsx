@@ -10,8 +10,6 @@ import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { type MarginType } from '@/utilities/datasource';
 import * as styles from './Scrollytelling.styles';
 
-
-
 type ScrollytellingProps = React.HTMLAttributes<HTMLDivElement> & {
   heading?: string;
   headingLevel?: HeadingType;
