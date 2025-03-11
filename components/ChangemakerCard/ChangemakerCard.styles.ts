@@ -6,7 +6,7 @@ import { cnb } from 'cnbuilder';
  * It caused a weird bug when you have the dialog open and click around sometimes
  * it will bring the body content under the dialog overlay to the front even though it is not focusable.
  */
-export const root = (isHorizontal: boolean) => cnb('relative @container w-full mx-auto break-words max-w-[29rem] bg-black', {
+export const root = (isHorizontal: boolean) => cnb('relative group @container w-full mx-auto break-words max-w-[29rem] bg-black', {
   'sm:max-w-300 lg:max-w-[35rem]': !isHorizontal,
   'sm:max-w-700 xl:max-w-1000 2xl:max-w-1200': isHorizontal,
 });
@@ -18,7 +18,7 @@ export const cardFront = 'absolute size-full top-0 left-0';
 export const imageWrapper = (isHorizontal: boolean) => cnb('overflow-hidden aspect-w-1 aspect-h-2', {
   'sm:aspect-w-3 sm:aspect-h-2': isHorizontal,
 });
-export const image = 'w-full h-full object-cover';
+export const image = 'w-full h-full object-cover group-hocus-within:scale-105 transition-transform will-change-transform';
 export const overlay = 'absolute top-0 left-0 size-full bg-gradient-to-t via-black-true/20 from-black-true/90';
 
 export const info = (isHorizontal: boolean) => cnb('rs-px-1 pb-150 absolute size-full bottom-0 left-0 mb-0', {
