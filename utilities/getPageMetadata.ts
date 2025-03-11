@@ -47,6 +47,7 @@ export const getPageMetadata = ({ story, sbConfig, slug }: PageMetadataProps) =>
       noindex,
       seo,
       title,
+      dek,
       canonicalUrl,
     },
   } = story;
@@ -94,7 +95,7 @@ export const getPageMetadata = ({ story, sbConfig, slug }: PageMetadataProps) =>
   // Use the explicitly set image from the SEO component if available,
   // then use a known field if the CT has it,
   // otherwise use the first image in the content.
-  const knownImageFields = ['heroImage']; // order of priority
+  const knownImageFields = ['heroImage', 'bgImage']; // order of priority
   const firstImage = getFirstImage(knownImageFields, story.content);
   const firstImageProcessed = firstImage ? getProcessedImage(firstImage.filename, '1200x630', firstImage.focus) : undefined;
   // Process the images. Use the explicitly set image if available, otherwise use the first image in the content.
@@ -108,18 +109,18 @@ export const getPageMetadata = ({ story, sbConfig, slug }: PageMetadataProps) =>
   // Description priority: Story SEO > Config Blok Site Description > Hardcoded Site Description
   return {
     title: `${seo.title || title || name} | ${seoSiteTitle || siteTitle}`,
-    description: seo?.description || seoSiteDescription || siteDescription,
+    description: seo?.description || dek || seoSiteDescription || siteDescription,
     metadataBase: new URL(siteUrlProd),
     openGraph:{
       title: seo?.og_title || title || name,
-      description: seo?.og_description || seo?.description || seoSiteDescription || siteDescription,
+      description: seo?.og_description || seo?.description || dek || seoSiteDescription || siteDescription,
       images: ogImage || defaultImage,
       type: seoOgType || 'website',
     },
     twitter: {
       card: 'summary_large_image',
       title: seo?.twitter_title || title || name,
-      description: seo?.twitter_description || seo?.description || seoSiteDescription || siteDescription,
+      description: seo?.twitter_description || seo?.description || dek || seoSiteDescription || siteDescription,
       images: twitterImage || defaultImage,
     },
     alternates: {
