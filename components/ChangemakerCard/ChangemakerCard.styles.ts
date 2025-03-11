@@ -26,9 +26,11 @@ export const info = (isHorizontal: boolean) => cnb('rs-px-1 pb-150 absolute size
 });
 export const heading = (isHorizontal: boolean) => cnb('mb-02em mt-auto whitespace-pre-line tracking-tight', {
   'text-28 md:text-30 2xl:text-[3.2rem]': !isHorizontal,
-  'text-[clamp(2.8rem,3.11cqw+1.87rem,5.6rem)] xl:max-w-[30ch] mx-auto': isHorizontal,
+  'text-28 sm:text-[clamp(2.8rem,3.11cqw+1.87rem,5.6rem)] xl:max-w-[30ch] mx-auto': isHorizontal,
 });
-export const subhead = 'text-19 md:text-21 xl:max-w-prose mx-auto whitespace-pre-line';
+export const subhead = (isHorizontal: boolean) => cnb('text-19 md:text-21 xl:max-w-prose mx-auto whitespace-pre-line',
+  isHorizontal && 'lg:@4xl:text-25',
+);
 
 export const button = 'group absolute size-full top-0 left-0';
 export const icon = (isHorizontal: boolean) => cnb('absolute bottom-40 right-36 text-white size-65 border-2 border-white rounded-full p-16 group-hocus-visible:border-dashed group-aria-expanded:rotate-45 transition-transform group-hocus-visible:bg-gc-black/80 transition-color', {

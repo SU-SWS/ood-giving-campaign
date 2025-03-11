@@ -47,10 +47,7 @@ export const ChangemakerCard = ({
   return (
     <>
       <AnimateInView animation={animation} delay={delay}>
-        <div
-          className={cnb('changemaker-card', styles.root(isHorizontal), className)}
-          {...props}
-        >
+        <div className={cnb('changemaker-card', styles.root(isHorizontal), className)} {...props}>
           <div className={styles.cardInner(isHorizontal)}>
             {/* Front of the card */}
             <div className={styles.cardFront}>
@@ -68,7 +65,7 @@ export const ChangemakerCard = ({
                       />
                       <source
                         srcSet={getProcessedImage(imageSrc, '720x480', imageFocus)}
-                        media="(min-width: 768px)"
+                        media="(min-width: 576px)"
                         width={720}
                         height={480}
                       />
@@ -112,7 +109,7 @@ export const ChangemakerCard = ({
                   {heading}
                 </Text>
                 {subheading && (
-                  <Text align="center" leading="display" color="white" className={styles.subhead}>{subheading}</Text>
+                  <Text align="center" leading="display" color="white" className={styles.subhead(isHorizontal)}>{subheading}</Text>
                 )}
               </FlexBox>
             </div>
