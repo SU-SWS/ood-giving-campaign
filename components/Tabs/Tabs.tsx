@@ -9,6 +9,7 @@ import { useMediaQuery } from 'usehooks-ts';
 import { useKeyboard } from '@/hooks/useKeyboard';
 import { AnimateInView, type AnimationType } from '@/components/Animate';
 import { CreateBloks } from '@/components/CreateBloks';
+import { FlexBox } from '@/components/FlexBox';
 import { Grid } from '@/components/Grid';
 import { RichText } from '@/components/RichText';
 import {
@@ -40,42 +41,55 @@ const TabContent = ({
   isLightText,
   animation,
   label,
+  useLabelFor = 'superhead',
+  superhead,
   heading,
   featuredMedia,
   id,
   body,
   otherContent,
-}: TabContentProps) => (
-  <AnimateInView animation={animation} id={id}>
-    <CreateBloks blokSection={featuredMedia} />
-    <Text
-      size={1}
-      weight="semibold"
-      aria-hidden="true"
-      color={isLightText ? 'white' : 'black'}
-      leading="display"
-      className={styles.superhead}
-    >
-      {label}
-    </Text>
-    <Heading
-      as={headingLevel}
-      font={isSerifHeading ? 'serif' : 'druk'}
-      color={isLightText ? 'white' : 'black'}
-      className={styles.heading(headingSize)}
-    >
-      <SrOnlyText>{`${label}:`}</SrOnlyText>{heading}
-    </Heading>
-    {hasRichText(body) && (
-      <RichText
-        wysiwyg={body}
-        textColor={isLightText ? 'white' : 'black'}
-        linkColor={isLightText ? 'digital-red-xlight' : 'unset'}
-      />
-    )}
-    <CreateBloks blokSection={otherContent} />
-  </AnimateInView>
-);
+}: TabContentProps) => {
+  const visibleSuperhead = useLabelFor === 'superhead' ? label : superhead;
+
+  return (
+    <AnimateInView animation={animation} id={id}>
+      <FlexBox direction="col" className={styles.contentWrapper}>
+        <CreateBloks blokSection={featuredMedia} />
+        <div>
+          {visibleSuperhead && (
+            <Text
+              size={1}
+              weight="semibold"
+              aria-hidden="true"
+              color={isLightText ? 'white' : 'black'}
+              leading="display"
+              className={styles.superhead}
+            >
+              {visibleSuperhead}
+            </Text>
+          )}
+          <Heading
+            as={headingLevel}
+            font={isSerifHeading ? 'serif' : 'druk'}
+            color={isLightText ? 'white' : 'black'}
+            className={styles.heading(headingSize)}
+          >
+            {visibleSuperhead && <SrOnlyText>{`${visibleSuperhead}:`}</SrOnlyText>}
+            {useLabelFor === 'heading' ? label : heading}
+          </Heading>
+          {hasRichText(body) && (
+            <RichText
+              wysiwyg={body}
+              textColor={isLightText ? 'white' : 'black'}
+              linkColor={isLightText ? 'digital-red-xlight' : 'unset'}
+            />
+          )}
+          <CreateBloks blokSection={otherContent} />
+        </div>
+      </FlexBox>
+    </AnimateInView>
+  );
+};
 
 export const Tabs = ({
   tabItems,
@@ -167,6 +181,8 @@ export const Tabs = ({
             <TabPanel key={tabItem._uid}>
               <TabContent
                 label={tabItem.label}
+                useLabelFor={tabItem.useLabelFor || 'superhead'}
+                superhead={tabItem.superhead}
                 heading={tabItem.heading}
                 featuredMedia={tabItem.featuredMedia}
                 body={tabItem.body}
@@ -187,6 +203,8 @@ export const Tabs = ({
           <li key={tabItem._uid} id={`#${uniquePrefix}${slugify(tabItems[index].label)}`} className={styles.li}>
             <TabContent
               label={tabItem.label}
+              useLabelFor={tabItem.useLabelFor || 'superhead'}
+              superhead={tabItem.superhead}
               heading={tabItem.heading}
               featuredMedia={tabItem.featuredMedia}
               body={tabItem.body}

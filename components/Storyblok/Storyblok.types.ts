@@ -114,7 +114,9 @@ export type SbSliderImageType = {
 export type SbTabItemType = {
   _uid: string;
   label: string;
+  useLabelFor?: 'heading' | 'superhead';
   featuredMedia?: SbBlokData[];
+  superhead?: string;
   heading?: string;
   body?: StoryblokRichtext;
   otherContent?: SbBlokData[];

@@ -21,8 +21,8 @@ export const tabItemBar = (isLightText: boolean) => cnb('h-full w-20 absolute ri
 export const tabPanel = (isLightText: boolean) => cnb('border-l pl-20 lg:pl-30 xl:pl-36 col-span-8',
   isLightText ? 'border-black-50' : 'border-black-60',
 );
-
-export const superhead = 'rs-mt-2 first:mt-0 mb-04em';
+export const contentWrapper = 'gap-16 md:gap-26 xl:gap-36';
+export const superhead = 'mb-03em';
 export const heading = (headingSize: TabItemHeadingSizeType) => headingSizes[headingSize || 'medium'];
 export const mobileGrid = 'sm:hidden list-unstyled';
 export const li = 'scroll-mt-30';
