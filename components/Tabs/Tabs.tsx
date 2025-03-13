@@ -119,48 +119,54 @@ export const Tabs = ({
    */
   const uniquePrefix = `${id || tabGroupId}-`;
 
+  const tabItemsWithSlug = tabItems.map((tabItem) => ({
+    ...tabItem,
+    slug: slugify(tabItem.label),
+  }));
+
   const handleTabChange = (index: number) => {
     setSelectedIndex(index);
-    const tabHash = `#${uniquePrefix}${slugify(tabItems[index].label)}`;
+    const tabHash = `#${uniquePrefix}${tabItemsWithSlug[index].slug}`;
     window.history.replaceState(null, '', tabHash); // Update hash without adding to history
   };
 
   // Check URL hash on initial load, update the selected tab and scroll to the correct position
   useEffect(() => {
-    const pageHash = window.location.hash.slice(1); // Remove the "#" from the hash
+    // Remove the "#" from the hash
+    const pageHash = window.location.hash.slice(1);
 
     // Check if the current page hash starts with the unique prefix
     if (pageHash.startsWith(uniquePrefix)) {
-      // Remove the unique prefix from the page hash
       const strippedHash = pageHash.replace(uniquePrefix, '');
-
-      // Find the index of the tab item with a tab hash that matches the stripped page shash
-      const index = tabItems.findIndex(tabItem => slugify(tabItem.label) === strippedHash);
+      // Find the index of the tab item with a tab slug that matches the stripped page hash
+      const index = tabItemsWithSlug.findIndex(tabItem => tabItem.slug === strippedHash);
 
       if (index !== -1) {
-        /**
-         * For SM breakpoint and above, if the page hash matches a tab hash,
-         * set that tab as active and scroll to the top of the correct tab group
-         */
-        if (isRenderTabs) {
-          setSelectedIndex(index);
-          tabGroupRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-        // On mobile (XS), scroll to the id anchor at the top of the exposed item content
-        else {
-          const element = document.getElementById(`#${uniquePrefix}${slugify(tabItems[index].label)}`);
-          element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        setSelectedIndex(index);
+
+        setTimeout(() => {
+          /**
+           * For SM breakpoint and above, if the page hash matches a tab hash,
+           * set that tab as active and scroll to the top of the correct tab group
+           */
+          if (isRenderTabs) {
+            tabGroupRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else {
+            const element = document.getElementById(`${uniquePrefix}${tabItemsWithSlug[index].slug}`);
+            element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 0); // Ensures the DOM is fully loaded before scrolling
       }
     }
-  }, [isRenderTabs, tabItems, uniquePrefix]);
+    // Run only on mount
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div ref={tabGroupRef} className={styles.root} {...props} id={id}>
       {/* For SM breakpoint and above, display tab group */}
       <TabGroup vertical className={styles.tabGroup} selectedIndex={selectedIndex} onChange={handleTabChange}>
         <TabList className={styles.tabList(isKeyboardUser)}>
-          {tabItems?.map((tabItem) => (
+          {tabItemsWithSlug?.map((tabItem) => (
             <Tab as={Fragment} key={tabItem._uid}>
               {({ selected }) => (
                 <button className={styles.tabItem(isLightText)}>
@@ -177,7 +183,7 @@ export const Tabs = ({
           ))}
         </TabList>
         <TabPanels className={styles.tabPanel(isLightText)}>
-          {tabItems?.map((tabItem) => (
+          {tabItemsWithSlug?.map((tabItem) => (
             <TabPanel key={tabItem._uid}>
               <TabContent
                 label={tabItem.label}
@@ -199,8 +205,8 @@ export const Tabs = ({
       </TabGroup>
       {/* For mobile (XS only), display expanded list of all the tab item content */}
       <Grid as="ul" gap="card" className={styles.mobileGrid}>
-        {tabItems.map((tabItem, index) => (
-          <li key={tabItem._uid} id={`#${uniquePrefix}${slugify(tabItems[index].label)}`} className={styles.li}>
+        {tabItemsWithSlug.map((tabItem) => (
+          <li key={tabItem._uid} id={`#${uniquePrefix}${tabItem.slug}`} className={styles.li}>
             <TabContent
               label={tabItem.label}
               useLabelFor={tabItem.useLabelFor || 'superhead'}
