@@ -166,7 +166,7 @@ export const Tabs = ({
       {/* For SM breakpoint and above, display tab group */}
       <TabGroup vertical className={styles.tabGroup} selectedIndex={selectedIndex} onChange={handleTabChange}>
         <TabList className={styles.tabList(isKeyboardUser)}>
-          {tabItemsWithSlug?.map((tabItem) => (
+          {tabItemsWithSlug.map((tabItem) => (
             <Tab as={Fragment} key={tabItem._uid}>
               {({ selected }) => (
                 <button className={styles.tabItem(isLightText)}>
@@ -183,7 +183,7 @@ export const Tabs = ({
           ))}
         </TabList>
         <TabPanels className={styles.tabPanel(isLightText)}>
-          {tabItemsWithSlug?.map((tabItem) => (
+          {tabItemsWithSlug.map((tabItem) => (
             <TabPanel key={tabItem._uid}>
               <TabContent
                 label={tabItem.label}
@@ -206,7 +206,7 @@ export const Tabs = ({
       {/* For mobile (XS only), display expanded list of all the tab item content */}
       <Grid as="ul" gap="card" className={styles.mobileGrid}>
         {tabItemsWithSlug.map((tabItem) => (
-          <li key={tabItem._uid} id={`#${uniquePrefix}${tabItem.slug}`} className={styles.li}>
+          <li key={tabItem._uid} id={`${uniquePrefix}${tabItem.slug}`} className={styles.li}>
             <TabContent
               label={tabItem.label}
               useLabelFor={tabItem.useLabelFor || 'superhead'}
