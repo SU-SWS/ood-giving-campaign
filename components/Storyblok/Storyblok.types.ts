@@ -2,6 +2,7 @@
 import { type SbBlokData } from '@storyblok/react/rsc';
 import { type FontSizeType } from '@/components/Typography';
 import { type TabItemHeadingSizeType } from '@/components/Tabs';
+import { type HeadingType } from '@/components/Typography';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 
 /**
@@ -77,8 +78,19 @@ export type SbColorPickerType = {
   color?: string;
 };
 
+// This is the number input slider that's available as a Storyblok field via their plugin/app
+// Not to be confused with Image Slider
 export type SbSliderType = {
   value?: number;
+}
+
+// Used for Accordion component
+export type SbAccordionItemsTypes = {
+  _uid: string;
+  heading: string;
+  content?: StoryblokRichtext;
+  headingLevel?: HeadingType;
+  isDefaultExpanded?: boolean;
 }
 
 // Used for Annotated Image component
