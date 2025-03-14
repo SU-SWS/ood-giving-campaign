@@ -19,6 +19,17 @@ export const initiativesMap = {
 };
 export type InitiativesType = keyof typeof initiativesMap;
 
+export const schoolsMap = {
+  'graduate-school-of-business': 'Graduate School of Business',
+  'stanford-doerr-school-of-sustainability': 'Stanford Doerr School of Sustainability',
+  'graduate-school-of-education': 'Graduate School of Education',
+  'school-of-engineering': 'School of Engineering',
+  'school-of-humanities-and-sciences': 'School of Humanities and Sciences',
+  'school-of-law': 'School of Law',
+  'school-of-medicine': 'School of Medicine',
+};
+export type SchoolsType = keyof typeof schoolsMap;
+
 export const themesMap = {
   'accelerating-solutions': 'Accelerating Solutions',
   'catalyzing-discovery': 'Catalyzing Discovery',
@@ -30,6 +41,7 @@ export type ThemesType = keyof typeof themesMap;
 
 export const taxonomyMap = {
   ...initiativesMap,
+  ...schoolsMap,
   ...themesMap,
 };
 export type TaxonomyType = keyof typeof taxonomyMap;

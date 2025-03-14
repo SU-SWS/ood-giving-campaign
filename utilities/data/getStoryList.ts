@@ -31,6 +31,11 @@ export async function getStoryList({ path }: getStoryDataProps) {
         },
       },
       {
+        schools: {
+          in_array: slug,
+        },
+      },
+      {
         themes: {
           in_array: slug,
         },

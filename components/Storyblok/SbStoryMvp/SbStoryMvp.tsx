@@ -4,7 +4,7 @@ import { CreateStories } from '@/components/CreateStories';
 import { Container } from '@/components/Container';
 import { SocialSharing } from '@/components/SocialSharing';
 import { StoryHeroMvp, type StoryHeroMvpProps } from '@/components/Hero';
-import { type InitiativesType, type ThemesType } from '@/utilities/taxonomyMaps';
+import { type InitiativesType, type SchoolsType, type ThemesType } from '@/utilities/taxonomyMaps';
 import { SbAboveContent } from './SbAboveContent';
 import { getNumBloks } from '@/utilities/getNumBloks';
 
@@ -20,6 +20,7 @@ type SbStoryMvpProps = {
     ankle?: SbBlokData[];
     mastheadPicker?: ISbStoryData[];
     initiatives?: InitiativesType[];
+    schools?: SchoolsType[];
     themes?: ThemesType[];
   } & StoryHeroMvpProps;
   slug?: string;
@@ -35,8 +36,9 @@ export const SbStoryMvp = ({
     byline,
     dek,
     publishedDate,
-    initiatives,
-    themes,
+    initiatives = [],
+    schools = [],
+    themes = [],
     heroVariant,
     heroBgColor,
     heroImage,
@@ -71,7 +73,7 @@ export const SbStoryMvp = ({
   slug,
 }: SbStoryMvpProps) => {
   const showAboveContent = !!getNumBloks(aboveSidebar) || !!getNumBloks(intro) || !!getNumBloks(sidebar);
-  const taxonomyArray = [...initiatives, ...themes];
+  const taxonomyArray = [...initiatives, ...themes, ...schools];
 
   return (
     <div {...storyblokEditable(blok)}>

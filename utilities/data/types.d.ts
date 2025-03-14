@@ -23,6 +23,9 @@ export type FilterQuery = {
   initiatives?: {
     in_array: string;
   };
+  schools?: {
+    in_array: string;
+  };
   themes?: {
     in_array: string;
   };

@@ -3,7 +3,7 @@ import { type AnimationType } from '@/components/Animate';
 import { type HeadingType } from '@/components/Typography';
 import { StoryCard } from '@/components/StoryCard';
 import { type SbImageType, type SbLinkType } from './Storyblok.types';
-import { type InitiativesType, type ThemesType } from '@/utilities/taxonomyMaps';
+import { type InitiativesType, type SchoolsType, type ThemesType } from '@/utilities/taxonomyMaps';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
 
 export type SbStoryCardProps = {
@@ -14,6 +14,7 @@ export type SbStoryCardProps = {
         title?: string;
         dek?: string;
         initiatives?: InitiativesType[];
+        schools?: SchoolsType[];
         themes?: ThemesType[];
         heroImage?: SbImageType;
         bgImage?: SbImageType;
@@ -48,6 +49,7 @@ export const SbStoryCard = ({
         title = '',
         dek = '',
         initiatives = [],
+        schools = [],
         themes = [],
         heroImage: { filename: heroFilename = '', focus: heroFocus = '' } = {},
         bgImage: { filename: bgFilename = '', focus: bgFocus = '' } = {},
@@ -72,7 +74,7 @@ export const SbStoryCard = ({
   },
   blok,
 }: SbStoryCardProps) => {
-  const taxonomyArray = [...initiatives, ...themes];
+  const taxonomyArray = [...initiatives, ...themes, ...schools];
 
   return (
     <StoryCard
