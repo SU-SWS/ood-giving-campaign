@@ -1,1 +1,1 @@
-export const root = 'relative mx-auto max-w-1000';
+export const root = 'relative mx-auto';

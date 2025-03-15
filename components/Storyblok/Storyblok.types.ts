@@ -90,7 +90,7 @@ export type SbAccordionItemsTypes = {
   heading: string;
   content?: StoryblokRichtext;
   headingLevel?: HeadingType;
-  isDefaultExpanded?: boolean;
+  defaultOpen?: boolean;
 }
 
 // Used for Annotated Image component

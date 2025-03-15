@@ -36,23 +36,32 @@ export const Accordion = ({
 }: AccordionProps) => {
   return (
     <Container mt={marginTop} mb={marginBottom} className={styles.root} {...props}>
-      <Heading as={headingLevel}>{heading}</Heading>
+      <Heading size={3} as={headingLevel} className="text-pretty">{heading}</Heading>
       {intro && <div className="*:max-w-prose *:*:leading-snug">{intro}</div>}
-      <ul className="list-unstyled">
-        {items.map((item, index) => (
-          <Disclosure key={item._uid} as="li">
-            <Heading size={1} as={item.headingLevel} >
-              <DisclosureButton >
+      <ul className="list-unstyled rs-mt-2 max-w-1000">
+        {items?.map((item, index) => (
+          <Disclosure
+            key={item._uid}
+            as="li"
+            defaultOpen={item.defaultOpen}
+            className="border-b first:border-t border-black-60 pt-16 pb-18 pl-10 md:pl-20 pr-50"
+          >
+            <Heading variant="big" as={item.headingLevel} leading="tight" className="w-full mb-0">
+              <DisclosureButton className="w-full text-left hocus-visible:underline">
                 {item.heading}
               </DisclosureButton>
             </Heading>
-            <DisclosurePanel>
+            <DisclosurePanel
+              transition
+              className="origin-top transition duration-200 ease-out data-[closed]:-translate-y-6 data-[closed]:opacity-0"
+            >
               {hasRichText(item.content) ? (
                 <RichText
+                  type="card"
                   textColor={isDarkTheme ? 'white' : 'black'}
                   linkColor={isDarkTheme ? 'digital-red-xlight' : 'unset'}
                   wysiwyg={item.content}
-                  className="*:max-w-prose-wide"
+                  className="*:max-w-prose-wide rs-mt-2"
                 />
               ) : undefined}
             </DisclosurePanel>
