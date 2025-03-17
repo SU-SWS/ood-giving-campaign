@@ -143,19 +143,18 @@ export const Tabs = ({
 
       if (index !== -1) {
         setSelectedIndex(index);
-
-        setTimeout(() => {
-          /**
-           * For SM breakpoint and above, if the page hash matches a tab hash,
-           * set that tab as active and scroll to the top of the correct tab group
-           */
-          if (isRenderTabs) {
-            tabGroupRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          } else {
-            const element = document.getElementById(`${uniquePrefix}${tabItemsWithSlug[index].slug}`);
-            element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        }, 0); // Ensures the DOM is fully loaded before scrolling
+        /**
+         * For SM breakpoint and above, if the page hash matches a tab hash,
+         * set that tab as active and scroll to the top of the correct tab group
+         */
+        if (isRenderTabs) {
+          tabGroupRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        // On mobile (XS), scroll to the id anchor at the top of the exposed item content
+        else {
+          const element = document.getElementById(`#${uniquePrefix}${slugify(tabItems[index].label)}`);
+          element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       }
     }
     // Run only on mount

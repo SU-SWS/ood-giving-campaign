@@ -40,8 +40,8 @@ export const heading = (isHorizontal: boolean, isSmallHeading: boolean, isListVi
 export const headingLink = 'stretched-link no-underline !font-bold !leading-tight focus-visible:after:outline focus-visible:after:outline-offset-2';
 
 export const body = (isHorizontal: boolean, isListView: boolean) => cnb('max-w-prose', {
-  'big-paragraph leading-snug border-l-[1.2rem] sm:border-l-[1.8rem] rs-pl-1 xl:rs-pl-2' : isHorizontal && !isListView,
-  'text-09em md:type-0 2xl:text-26 leading-display 2xl:leading-snug border-l-[1.2rem] xl:border-l-[1.8rem] pl-20 xl:pl-38': isListView,
+  'md:big-paragraph leading-snug border-l-[1.2rem] sm:border-l-[1.8rem] rs-pl-1 xl:rs-pl-2 -mt-1' : isHorizontal && !isListView,
+  'text-09em md:type-0 2xl:text-26 leading-display 2xl:leading-snug border-l-[1.2rem] xl:border-l-[1.8rem] pl-20 xl:pl-38 -mt-1': isListView,
   'gc-card leading-display pl-12 xl:pl-21 @200:pl-12 @xs:pl-21 pr-20 xl:pr-24 @200:pr-20 @320:pr-24 ml-12 xl:ml-18 @200:ml-12 @xs:ml-18': !isHorizontal && !isListView,
 });
 
