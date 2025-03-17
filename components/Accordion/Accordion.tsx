@@ -106,16 +106,13 @@ export const Accordion = ({
               aria-hidden={!openItems[index]}
               animate={{
                 height: openItems[index] ? 'auto' : 0,
-                opacity: openItems[index] ? 1 : 0.4
+                opacity: openItems[index] ? 1 : 0.4,
               }}
               initial={false}
-              transition={{ duration: 0.3, ease: "easeIn" }}
-              style={{
-                overflow: 'hidden',
-                // visibility: openItems[index] ? 'visible' : 'hidden'
-              }}
+              transition={{ duration: 0.3, ease: 'easeIn' }}
+              className="overflow-clip"
             >
-              <div className="pt-16">
+              <div className="rs-pt-2">
                 {hasRichText(item.content) && (
                   <RichText
                     type="card"
