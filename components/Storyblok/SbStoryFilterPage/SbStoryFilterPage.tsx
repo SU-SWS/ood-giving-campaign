@@ -20,7 +20,7 @@ type StoryPickerType = {
   [key: string]: unknown;
 }
 
-type FaturedStoryType = SbBlokData & {
+type FeaturedStoryType = SbBlokData & {
   storyPicker: StoryPickerType;
 }
 
@@ -29,7 +29,7 @@ type SbStoryFilterPageProps = {
     _uid: string;
     intro?: StoryblokRichtext;
     belowIntro?: SbBlokData[];
-    featuredStories?: FaturedStoryType[];
+    featuredStories?: FeaturedStoryType[];
     ankle?: SbBlokData[];
     mastheadPicker?: ISbStoryData[];
     heroPicker?: ISbStoryData[];
@@ -121,6 +121,7 @@ export const SbStoryFilterPage = ({
                     bgImage,
                     tabColor,
                     initiatives,
+                    schools,
                     themes,
                   } = story.content;
 
@@ -139,7 +140,7 @@ export const SbStoryFilterPage = ({
                         tabColor={paletteAccentColors[tabColor?.value]}
                         href={`/${story.full_slug}`}
                         animation="slideUp"
-                        taxonomy={[...initiatives, ...themes]}
+                        taxonomy={[...initiatives, ...themes, ...schools]}
                       />
                     </li>
                   );
