@@ -27,7 +27,7 @@ const chipNav = 'bg-gc-black-90 text-gc-black-40 hocus-visible:bg-gradient-to-r 
 export const ctaVariants = {
   solid: 'block w-fit relative z-10 font-normal decoration-2 decoration-transparent underline-offset-4 hocus:decoration-white/80 leading-display bg-digital-red text-white hocus:text-white border-2 border-digital-red-light focus-visible:outline-none after:block after:content-[""] after:absolute after:top-0 after:left-0 after:w-0 after:h-full after:bg-gradient-to-r after:from-cardinal-red after:to-cardinal-red-dark after:transition-all after:z-[-1] hocus:after:w-full overflow-hidden',
   inline: 'inline underline decoration-1 hocus:decoration-2 underline-offset-2', // inline links in WYSIWYG for example
-  ghost: 'block w-fit font-normal leading-display bg-transparent border-2 border-current focus-visible:outline-none underline-offset-4 decoration-transparent hocus:decoration-current',
+  ghost: 'block w-fit font-normal leading-display bg-transparent border-2 border-current focus-visible:outline-none underline-offset-4 decoration-transparent hocus:decoration-current disabled:pointer-events-none disabled:border-black-20 disabled:text-black-70 disabled:bg-fog-light',
   'ghost-swipe': `${ghostSwipeBase} bg-transparent`,
   'ghost-swipe-overlay': `${ghostSwipeBase} bg-black-true/40`, // Use for split poster over images
   link: '!p-0 inline-block w-fit font-normal leading-display text-current hocus:text-current no-underline decoration-2 underline-offset-4 focus-visible:ring-2 focus-visible:ring-digital-red-light focus-visible:outline-none focus-visible:rounded',

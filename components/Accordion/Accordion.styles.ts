@@ -1,1 +1,1 @@
-export const root = 'relative mx-auto';
+export const root = 'relative mx-auto w-fit';

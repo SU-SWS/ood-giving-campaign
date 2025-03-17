@@ -14,7 +14,7 @@ type SbAccordionProps = {
     items: SbAccordionItemsTypes[];
     id?: string;
     isDarkTheme?: boolean;
-    showControls?: boolean;
+    hideControls?: boolean;
     marginTop?: MarginType;
     marginBottom?: MarginType;
     isHidden?: boolean;
@@ -28,7 +28,7 @@ export const SbAccordion = ({
     items,
     id,
     isDarkTheme,
-    showControls,
+    hideControls,
     marginTop,
     marginBottom,
     isHidden,
@@ -56,7 +56,7 @@ export const SbAccordion = ({
       items={items}
       id={id}
       isDarkTheme={isDarkTheme}
-      showControls={showControls}
+      hideControls={hideControls}
       marginTop={marginTop}
       marginBottom={marginBottom}
     />
