@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { m } from 'framer-motion';
 import { CtaButton } from '@/components/Cta';
 import { Container } from '@/components/Container';
 import { FlexBox } from '@/components/FlexBox';
@@ -86,33 +87,46 @@ export const Accordion = ({
           <li key={item._uid} className="mb-0 border-b first:border-t border-black-60 pt-16 pb-18 pl-10 md:px-20">
             <Heading variant="big" as={item.headingLevel} color={isDarkTheme ? 'white' : 'black'} leading="tight" className="w-full mb-0">
               <CtaButton
+                id={`heading-${item._uid}`}
                 onClick={() => toggleItem(index)}
                 variant="unset"
                 color={isDarkTheme ? 'white' : 'black'}
                 aria-expanded={openItems[index] || false}
-                aria-controls={`item-${item._uid}`}
+                aria-controls={`content-${item._uid}`}
                 className="relative w-full text-left pr-40"
               >
                 {item.heading}
                 <HeroIcon icon={openItems[index] ? 'minus' : 'plus'} className="shrink-0 grow-0 absolute right-0 w-30 h-30 border-black-60 border-2 p-3 rounded-full" />
               </CtaButton>
             </Heading>
-            <div
-              id={`item-${item._uid}`}
-              className={`origin-top transition duration-300 ease-out ${
-                openItems[index] ? 'translate-y-0 opacity-100 block' : '-translate-y-6 opacity-0 hidden'
-              }`}
+            <m.div
+              role="region"
+              aria-labelledby={`heading-${item._uid}`}
+              id={`content-${item._uid}`}
+              aria-hidden={!openItems[index]}
+              animate={{
+                height: openItems[index] ? 'auto' : 0,
+                opacity: openItems[index] ? 1 : 0.4
+              }}
+              initial={false}
+              transition={{ duration: 0.3, ease: "easeIn" }}
+              style={{
+                overflow: 'hidden',
+                // visibility: openItems[index] ? 'visible' : 'hidden'
+              }}
             >
-              {hasRichText(item.content) ? (
-                <RichText
-                  type="card"
-                  textColor={isDarkTheme ? 'white' : 'black'}
-                  linkColor={isDarkTheme ? 'digital-red-xlight' : 'unset'}
-                  wysiwyg={item.content}
-                  className="*:max-w-prose-wide rs-mt-2"
-                />
-              ) : undefined}
-            </div>
+              <div className="pt-16">
+                {hasRichText(item.content) && (
+                  <RichText
+                    type="card"
+                    textColor={isDarkTheme ? 'white' : 'black'}
+                    linkColor={isDarkTheme ? 'digital-red-xlight' : 'unset'}
+                    wysiwyg={item.content}
+                    className="*:max-w-prose-wide"
+                  />
+                )}
+              </div>
+            </m.div>
           </li>
         ))}
       </ul>
