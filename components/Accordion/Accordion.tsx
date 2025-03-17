@@ -95,6 +95,7 @@ export const Accordion = ({
                 aria-controls={`content-${item._uid}`}
                 className="relative w-full text-left pr-40"
               >
+                <span aria-hidden="true" className="absolute top-0 left-0 w-5 bottom-0 bg-digital-red-light" />
                 {item.heading}
                 <HeroIcon icon={openItems[index] ? 'minus' : 'plus'} className="shrink-0 grow-0 absolute right-0 w-30 h-30 border-black-60 border-2 p-3 rounded-full" />
               </CtaButton>
