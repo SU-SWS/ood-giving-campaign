@@ -48,6 +48,9 @@ export const Accordion = ({
     setOpenItems(prevState => prevState.map((item, i) => i === index ? !item : item));
   };
 
+  const allExpanded = openItems.every(item => item);
+  const allCollapsed = openItems.every(item => !item);
+
   const expandAll = () => {
     setOpenItems(items.map(() => true));
   };
@@ -56,57 +59,61 @@ export const Accordion = ({
     setOpenItems(items.map(() => false));
   };
 
+  const showControls = !hideControls && items?.length > 1;
+
   return (
     <Container mt={marginTop} mb={marginBottom} className={styles.root} {...props}>
-      {heading && <Heading size={3} as={headingLevel} className="text-pretty">{heading}</Heading>}
-      {intro && <div className="*:max-w-prose *:*:leading-cozy">{intro}</div>}
-      {!hideControls && (
-        <FlexBox justifyContent="end" className="mb-4 gap-20 rs-mt-2 first:mt-0">
+      {heading && <Heading size={3} as={headingLevel} className={styles.heading}>{heading}</Heading>}
+      {intro && <div className={styles.intro}>{intro}</div>}
+      {showControls && (
+        <FlexBox justifyContent="end" className={styles.controls}>
           <CtaButton
-            disabled={openItems.every(item => item)}
+            disabled={allExpanded}
             variant="ghost"
             size="small"
             color={isDarkTheme ? 'white' : 'black'}
             icon="plus"
-            iconProps={{ className: '-mt-01em'}}
+            iconProps={{ className: styles.expandAllIcon}}
             onClick={expandAll}
+            className={styles.controlButton(isDarkTheme)}
           >
             Expand All
           </CtaButton>
           <CtaButton
-            disabled={openItems.every(item => !item)}
+            disabled={allCollapsed}
             variant="ghost"
             size="small"
             color={isDarkTheme ? 'white' : 'black'}
             icon="minus"
-            iconProps={{ className: '-mt-02em'}}
+            iconProps={{ className: styles.collapseAllIcon}}
             onClick={collapseAll}
+            className={styles.controlButton(isDarkTheme)}
           >
             Collapse All
           </CtaButton>
         </FlexBox>
       )}
-      <ul className="list-unstyled rs-mt-1 max-w-1000">
+      <ul className={styles.list}>
         {items?.map((item, index) => (
-          <li key={item._uid} className="relative mb-0 border-b first:border-t border-black-60">
-            <Heading variant="big" as={item.headingLevel} color={isDarkTheme ? 'white' : 'black'} leading="tight" className="relative w-full mb-0">
+          <li key={item._uid} className={styles.listItem}>
+            <Heading as={item.headingLevel} color={isDarkTheme ? 'white' : 'black'} leading="tight" className={styles.itemHeading}>
               <CtaButton
-                id={`heading-${item._uid}`}
+                id={`button-${item._uid}`}
                 onClick={() => toggleItem(index)}
                 variant="unset"
                 color={isDarkTheme ? 'white' : 'black'}
                 aria-expanded={openItems[index] || false}
                 aria-controls={`content-${item._uid}`}
-                className="group relative w-full text-left pr-36 md:pr-50 pt-16 pb-18 pl-12 md:pl-22"
+                className={styles.button}
               >
-                <span aria-hidden="true" className="absolute top-0 left-0 group-hocus-visible:w-6 group-hocus-visible:md:w-8 scale-y-0 transition-transform group-hocus-visible:scale-y-100 bottom-0 bg-digital-red-light" />
+                <span aria-hidden="true" className={styles.bar} />
                 {item.heading}
-                <HeroIcon icon={openItems[index] ? 'minus' : 'plus'} className="shrink-0 grow-0 absolute right-0 md:right-20 w-24 h-24 md:w-28 md:h-28 border-black-50 border-2 group-hocus-visible:border-dashed p-2 md:p-3 rounded-full" />
+                <HeroIcon icon={openItems[index] ? 'minus' : 'plus'} className={styles.circleIcon} />
               </CtaButton>
             </Heading>
             <m.div
               role="region"
-              aria-labelledby={`heading-${item._uid}`}
+              aria-labelledby={`button-${item._uid}`}
               id={`content-${item._uid}`}
               aria-hidden={!openItems[index]}
               animate={{
@@ -115,16 +122,16 @@ export const Accordion = ({
               }}
               initial={false}
               transition={{ duration: 0.3, ease: 'easeIn' }}
-              className="overflow-clip"
+              className={styles.contentWrapper}
             >
-              <div className="rs-pt-0 rs-pb-2 pl-10 md:px-20">
+              <div className={styles.richtextWrapper}>
                 {hasRichText(item.content) && (
                   <RichText
                     type="card"
                     textColor={isDarkTheme ? 'white' : 'black'}
                     linkColor={isDarkTheme ? 'digital-red-xlight' : 'unset'}
                     wysiwyg={item.content}
-                    className="*:max-w-prose-wide"
+                    className={styles.richtext}
                   />
                 )}
               </div>
