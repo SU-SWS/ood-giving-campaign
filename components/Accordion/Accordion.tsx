@@ -65,8 +65,10 @@ export const Accordion = ({
           <CtaButton
             disabled={openItems.every(item => item)}
             variant="ghost"
+            size="small"
             color={isDarkTheme ? 'white' : 'black'}
             icon="plus"
+            iconProps={{ className: '-mt-01em'}}
             onClick={expandAll}
           >
             Expand All
@@ -74,15 +76,17 @@ export const Accordion = ({
           <CtaButton
             disabled={openItems.every(item => !item)}
             variant="ghost"
+            size="small"
             color={isDarkTheme ? 'white' : 'black'}
             icon="minus"
+            iconProps={{ className: '-mt-02em'}}
             onClick={collapseAll}
           >
             Collapse All
           </CtaButton>
         </FlexBox>
       )}
-      <ul className="list-unstyled rs-mt-2 max-w-1000">
+      <ul className="list-unstyled rs-mt-1 max-w-1000">
         {items?.map((item, index) => (
           <li key={item._uid} className="relative mb-0 border-b first:border-t border-black-60">
             <Heading variant="big" as={item.headingLevel} color={isDarkTheme ? 'white' : 'black'} leading="tight" className="relative w-full mb-0">
@@ -97,7 +101,7 @@ export const Accordion = ({
               >
                 <span aria-hidden="true" className="absolute top-0 left-0 group-hocus-visible:w-6 group-hocus-visible:md:w-8 scale-y-0 transition-transform group-hocus-visible:scale-y-100 bottom-0 bg-digital-red-light" />
                 {item.heading}
-                <HeroIcon icon={openItems[index] ? 'minus' : 'plus'} className="group-hocus-visible:rotate-180 shrink-0 grow-0 absolute right-0 md:right-20 w-24 h-24 md:w-30 md:h-30 border-black-60 border-2 p-2 md:p-3 rounded-full" />
+                <HeroIcon icon={openItems[index] ? 'minus' : 'plus'} className="shrink-0 grow-0 absolute right-0 md:right-20 w-24 h-24 md:w-28 md:h-28 border-black-50 border-2 group-hocus-visible:border-dashed p-2 md:p-3 rounded-full" />
               </CtaButton>
             </Heading>
             <m.div
