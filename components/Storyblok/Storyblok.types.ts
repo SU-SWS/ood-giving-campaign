@@ -2,7 +2,6 @@
 import { type SbBlokData } from '@storyblok/react/rsc';
 import { type FontSizeType } from '@/components/Typography';
 import { type TabItemHeadingSizeType } from '@/components/Tabs';
-import { type HeadingType } from '@/components/Typography';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 
 /**
