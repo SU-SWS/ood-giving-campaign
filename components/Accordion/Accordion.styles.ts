@@ -6,7 +6,7 @@ export const controls = 'mb-4 gap-20 rs-mt-2 first:mt-0';
 export const controlButton = (isDarkTheme: boolean) => cnb('disabled:hover:no-underline',
   isDarkTheme
   ? 'disabled:border-black-80 disabled:text-black-50 disabled:bg-black-90'
-  : 'disabled:border-black-20 disabled:text-black-50 disabled:bg-fog-light'
+  : 'disabled:border-black-20 disabled:text-black-50 disabled:bg-fog-light',
 );
 export const expandAllIcon = '-mt-01em';
 export const collapseAllIcon = '-mt-02em';
