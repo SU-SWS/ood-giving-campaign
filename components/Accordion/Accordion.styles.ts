@@ -1,8 +1,13 @@
+import { cnb } from 'cnbuilder';
 export const root = 'relative mx-auto w-fit';
 export const heading = 'text-pretty';
 export const intro = '*:max-w-prose *:*:leading-snug *:*:md:leading-cozy';
 export const controls = 'mb-4 gap-20 rs-mt-2 first:mt-0';
-export const controlButton = (isDarkTheme: boolean) => isDarkTheme ? 'disabled:border-black-80 disabled:text-black-30 disabled:bg-black-90' : 'disabled:border-black-20 disabled:text-black-70 disabled:bg-fog-light';
+export const controlButton = (isDarkTheme: boolean) => cnb('disabled:hover:no-underline',
+  isDarkTheme
+  ? 'disabled:border-black-80 disabled:text-black-50 disabled:bg-black-90'
+  : 'disabled:border-black-20 disabled:text-black-50 disabled:bg-fog-light'
+);
 export const expandAllIcon = '-mt-01em';
 export const collapseAllIcon = '-mt-02em';
 export const list = 'list-unstyled rs-mt-1 max-w-1000';
