@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { m } from 'framer-motion';
 import { CtaButton } from '@/components/Cta';
 import { Container } from '@/components/Container';
@@ -39,6 +39,7 @@ export const Accordion = ({
   ...props
 }: AccordionProps) => {
   const [openItems, setOpenItems] = useState<boolean[]>([]);
+  const firstItemRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!items?.length) return;
@@ -53,12 +54,17 @@ export const Accordion = ({
   const allExpanded = openItems.every(item => item);
   const allCollapsed = openItems.every(item => !item);
 
+  /**
+   * Focus on first accordion item after expanding/collapsing all
+   */
   const expandAll = () => {
     setOpenItems(items.map(() => true));
+    firstItemRef.current?.focus();
   };
 
   const collapseAll = () => {
     setOpenItems(items.map(() => false));
+    firstItemRef.current?.focus();
   };
 
   const showControls = !hideControls && items?.length > 1;
@@ -101,6 +107,7 @@ export const Accordion = ({
             <Heading as={itemHeadingLevel} color={isDarkTheme ? 'white' : 'black'} leading="tight" className={styles.itemHeading}>
               <CtaButton
                 id={`button-${item._uid}`}
+                ref={index === 0 ? firstItemRef : undefined}
                 onClick={() => toggleItem(index)}
                 variant="unset"
                 color={isDarkTheme ? 'white' : 'black'}
@@ -125,7 +132,11 @@ export const Accordion = ({
               initial={false}
               transition={{
                 height: { duration: 0.2, ease: 'easeIn' },
-                visibility: { duration: 0.1 }
+                /**
+                 * Use a shorter duration for visibility to prevent links in content being focusable
+                 * while the content is animating out while collapsing
+                 */
+                visibility: { duration: 0.1 },
               }}
               className={styles.contentWrapper}
             >
