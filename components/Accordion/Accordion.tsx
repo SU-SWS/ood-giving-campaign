@@ -28,7 +28,7 @@ type AccordionProps = React.HTMLAttributes<HTMLDivElement> & {
 export const Accordion = ({
   heading,
   headingLevel = 'h2',
-  itemHeadingLevel,
+  itemHeadingLevel = 'h3',
   intro,
   items,
   id,
