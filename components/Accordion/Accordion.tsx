@@ -15,6 +15,7 @@ import * as styles from './Accordion.styles';
 type AccordionProps = React.HTMLAttributes<HTMLDivElement> & {
   heading?: string;
   headingLevel?: HeadingType;
+  itemHeadingLevel?: HeadingType;
   intro?: React.ReactNode;
   items: SbAccordionItemsTypes[];
   id?: string;
@@ -27,6 +28,7 @@ type AccordionProps = React.HTMLAttributes<HTMLDivElement> & {
 export const Accordion = ({
   heading,
   headingLevel = 'h2',
+  itemHeadingLevel,
   intro,
   items,
   id,
@@ -62,7 +64,7 @@ export const Accordion = ({
   const showControls = !hideControls && items?.length > 1;
 
   return (
-    <Container mt={marginTop} mb={marginBottom} className={styles.root} {...props}>
+    <Container id={id} mt={marginTop} mb={marginBottom} className={styles.root} {...props}>
       {heading && <Heading size={3} as={headingLevel} className={styles.heading}>{heading}</Heading>}
       {intro && <div className={styles.intro}>{intro}</div>}
       {showControls && (
@@ -96,7 +98,7 @@ export const Accordion = ({
       <ul className={styles.list}>
         {items?.map((item, index) => (
           <li key={item._uid} className={styles.listItem}>
-            <Heading as={item.headingLevel} color={isDarkTheme ? 'white' : 'black'} leading="tight" className={styles.itemHeading}>
+            <Heading as={itemHeadingLevel} color={isDarkTheme ? 'white' : 'black'} leading="tight" className={styles.itemHeading}>
               <CtaButton
                 id={`button-${item._uid}`}
                 onClick={() => toggleItem(index)}

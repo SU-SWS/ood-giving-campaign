@@ -2,6 +2,7 @@ import { storyblokEditable } from '@storyblok/react/rsc';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { Accordion } from '@/components/Accordion';
 import { RichText } from '@/components/RichText';
+import { type HeadingType } from '@/components/Typography';
 import { hasRichText } from '@/utilities/hasRichText';
 import { type MarginType } from '@/utilities/datasource';
 import { type SbAccordionItemsTypes } from './Storyblok.types';
@@ -10,6 +11,8 @@ type SbAccordionProps = {
   blok: {
     _uid: string;
     heading?: string;
+    headingLevel?: HeadingType;
+    itemHeadingLevel?: HeadingType;
     intro?: StoryblokRichtext;
     items: SbAccordionItemsTypes[];
     id?: string;
@@ -24,6 +27,8 @@ type SbAccordionProps = {
 export const SbAccordion = ({
   blok: {
     heading,
+    headingLevel,
+    itemHeadingLevel,
     intro,
     items,
     id,
@@ -52,6 +57,8 @@ export const SbAccordion = ({
     <Accordion
       {...storyblokEditable(blok)}
       heading={heading}
+      headingLevel={headingLevel || 'h2'}
+      itemHeadingLevel={itemHeadingLevel || 'h3'}
       intro={Intro}
       items={items}
       id={id}
