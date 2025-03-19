@@ -123,7 +123,10 @@ export const Accordion = ({
                 visibility: openItems[index] ? 'visible' : 'hidden',
               }}
               initial={false}
-              transition={{ duration: 0.3, ease: 'easeIn' }}
+              transition={{
+                height: { duration: 0.2, ease: 'easeIn' },
+                visibility: { duration: 0.1 }
+              }}
               className={styles.contentWrapper}
             >
               <div className={styles.richtextWrapper}>
