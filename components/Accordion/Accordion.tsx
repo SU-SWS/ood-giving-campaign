@@ -130,17 +130,11 @@ export const Accordion = ({
                 visibility: openItems[index] ? 'visible' : 'hidden',
               }}
               initial={false}
-              transition={{
-                height: { duration: 0.2, ease: 'easeIn' },
-                /**
-                 * Use a shorter duration for visibility to prevent links in content being focusable
-                 * while the content is animating out while collapsing
-                 */
-                visibility: { duration: 0.1 },
-              }}
+              transition={{ duration: 0.3, ease: 'easeIn' }}
               className={styles.contentWrapper}
             >
-              <div className={styles.richtextWrapper}>
+              {/* @ts-expect-error Reason: inert not fully support in React 18. Using '' sets it to true */}
+              <div className={styles.richtextWrapper} {...(!openItems[index] ? { inert: '' } : {})}>
                 {hasRichText(item.content) && (
                   <RichText
                     type="card"
