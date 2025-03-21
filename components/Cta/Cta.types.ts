@@ -9,7 +9,7 @@ export type IconColorType = keyof typeof styles.iconColors;
 export type IconAnimationType = keyof typeof styles.iconAnimation | '';
 
 export type CtaSizeObjectType = Partial<{
-  [Key in CtaVariantType | 'default' | 'large']: string;
+  [Key in CtaVariantType | 'default' | 'large' | 'small']: string;
 }>;
 export type CtaSizeType = keyof CtaSizeObjectType;
 

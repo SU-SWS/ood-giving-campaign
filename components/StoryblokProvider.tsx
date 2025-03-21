@@ -1,6 +1,7 @@
 'use client';
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
-import { SbAnnotatedImage } from './Storyblok/SbAnnotatedImage';
+import { SbAccordion } from '@/components/Storyblok/SbAccordion';
+import { SbAnnotatedImage } from '@/components/Storyblok/SbAnnotatedImage';
 import { SbBanner } from '@/components/Storyblok/SbBanner';
 import { SbBasicCard } from '@/components/Storyblok/SbBasicCard';
 import { SbBasicPage } from '@/components/Storyblok/SbBasicPage';
@@ -42,12 +43,13 @@ import { SbText } from '@/components/Storyblok/SbText';
 import { SbTextCard } from '@/components/Storyblok/SbTextCard';
 import { SbTexturedBar } from '@/components/Storyblok/SbTexturedBar';
 import { SbTypeform } from '@/components/Storyblok/SbTypeform';
-import { SbVerticalPoster } from './Storyblok/SbVerticalPoster';
+import { SbVerticalPoster } from '@/components/Storyblok/SbVerticalPoster';
 import { SbVideo } from '@/components/Storyblok/SbVideo';
 import { SbWysiwyg } from '@/components/Storyblok/SbWysiwyg';
 import { ComponentNotFound } from '@/components/Storyblok/ComponentNotFound';
 
 export const components = {
+  sbAccordion: SbAccordion,
   sbAnnotatedImage: SbAnnotatedImage,
   sbBanner: SbBanner,
   sbBasicCard: SbBasicCard,
