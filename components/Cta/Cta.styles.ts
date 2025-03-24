@@ -7,7 +7,7 @@ import {
   type CtaIconLeftMarginType,
 } from './Cta.types';
 
-export const cta = 'group/cta hocus:underline transition-all';
+export const cta = 'group/cta hocus-visible:underline transition-all';
 
 const ghostSwipeBase = 'relative z-10 block w-fit decoration-2 decoration-transparent underline-offset-4 hocus:decoration-white/80 font-normal leading-display hocus:text-white border-2 border-current hocus:border-digital-red-light focus-visible:outline-none after:block after:content-[""] after:absolute after:top-0 after:left-0 after:w-0 after:h-full after:bg-gradient-to-r after:from-digital-red after:to-cardinal-red after:transition-all after:z-[-1] hocus:after:w-full overflow-hidden';
 
@@ -27,7 +27,7 @@ const chipNav = 'bg-gc-black-90 text-gc-black-40 hocus-visible:bg-gradient-to-r 
 export const ctaVariants = {
   solid: 'block w-fit relative z-10 font-normal decoration-2 decoration-transparent underline-offset-4 hocus:decoration-white/80 leading-display bg-digital-red text-white hocus:text-white border-2 border-digital-red-light focus-visible:outline-none after:block after:content-[""] after:absolute after:top-0 after:left-0 after:w-0 after:h-full after:bg-gradient-to-r after:from-cardinal-red after:to-cardinal-red-dark after:transition-all after:z-[-1] hocus:after:w-full overflow-hidden',
   inline: 'inline underline decoration-1 hocus:decoration-2 underline-offset-2', // inline links in WYSIWYG for example
-  ghost: 'block w-fit font-normal leading-display bg-transparent border-2 border-current focus-visible:outline-none underline-offset-4 decoration-transparent hocus:decoration-current',
+  ghost: 'block w-fit font-normal leading-display bg-transparent border-2 border-current underline-offset-4 decoration-transparent hocus:decoration-current disabled:pointer-events-none',
   'ghost-swipe': `${ghostSwipeBase} bg-transparent`,
   'ghost-swipe-overlay': `${ghostSwipeBase} bg-black-true/40`, // Use for split poster over images
   link: '!p-0 inline-block w-fit font-normal leading-display text-current hocus:text-current no-underline decoration-2 underline-offset-4 focus-visible:ring-2 focus-visible:ring-digital-red-light focus-visible:outline-none focus-visible:rounded',
@@ -38,8 +38,8 @@ export const ctaVariants = {
   close: 'inline-block font-semibold leading-none text-digital-red-light hocus:text-digital-red-xlight focus:outline-none',
   'close-x': 'leading-none',
   chip: 'inline-block leading-display no-underline text-current rounded-full border-2 border-current hocus:text-current font-normal underline-offset-4 decoration-transparent hocus-visible:decoration-current hocus-visible:decoration-2',
-  storyCardChip: `${chipBase} ${chipLight}`,
-  storyCardChipDark: `${chipBase} ${chipDark}`,
+  storyCardChip: `story-tag ${chipBase} ${chipLight}`,
+  storyCardChipDark: `story-tag ${chipBase} ${chipDark}`,
   storyListNav: `${chipBase} ${chipNav}`,
   brochure: `${brochureBase} ${brochureIlluminating}`,
   brochurePoppy: `${brochureBase} ${brochurePoppy}`,
@@ -82,6 +82,7 @@ export const ctaCurves = {
 export const ctaSizes: CtaSizeObjectType = {
   default: 'pt-9 pb-10 pl-18 pr-16 lg:pl-22 lg:pr-20 lg:pt-10 lg:pb-11 text-16 lg:text-20',
   large: 'pl-28 pr-26 pt-16 pb-17 lg:pr-40 lg:pl-44 lg:pt-20 lg:pb-22 text-18 lg:text-24',
+  small: 'py-7 pl-11 pr-10 lg:pl-16 lg:pr-15 lg:pt-8 lg:pb-9 text-15 lg:text-18',
   link: 'text-16 lg:text-20',
   mainNavLink: 'text-19 md:text-20 2xl:text-24',
   mastheadGiving: 'text-14 sm:text-15 md:text-16 lg:text-19',
