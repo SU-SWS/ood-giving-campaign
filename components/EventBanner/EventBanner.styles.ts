@@ -3,15 +3,13 @@ import { type EventBannerHeadingSizeType } from './EventBanner';
 
 export const root = 'relative overflow-hidden';
 export const wrapper = 'relative z-10';
-export const contentWrapper = 'sm:flex-row gap-26 sm:gap-30 md:gap-36 xl:gap-60 2xl:gap-95 rs-mt-8';
+export const contentWrapper = 'sm:flex-row gap-26 sm:gap-30 md:gap-36 xl:gap-60 2xl:gap-95 rs-mt-8 first:*:shrink-0 first:*:grow-0';
 
-export const dateWrapper = 'sm:flex-col shrink-0 gap-26 md:gap-36';
+export const dateWrapper = 'sm:flex-col shrink-0 gap-26 md:gap-36 sm:w-60 md:w-70 lg:w-90 xl:w-100';
 export const time = 'flex flex-col items-center';
 
 export const bgImage = 'absolute top-0 left-0 size-full object-cover';
 export const overlay = (hasBgGradient: boolean) => cnb('absolute top-0 left-0 size-full z-10', hasBgGradient ? 'bg-gradient-to-b via-50%' : '');
-
-
 
 export const heading = (headingSize: EventBannerHeadingSizeType, isSerifHeading: boolean) => cnb('rs-mb-1', {
   'fluid-type-5 font-bold leading-tight -mt-02em': isSerifHeading,

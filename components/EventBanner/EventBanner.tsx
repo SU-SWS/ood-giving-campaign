@@ -154,7 +154,12 @@ export const EventBanner = ({
           </AnimateInView>
           <div>
             <AnimateInView animation="slideUp">
-              <Text aria-hidden font={isSerifHeading ? 'serif' : 'druk'} leading="druk" className={styles.heading(headingSize, isSerifHeading)}>
+              <Text
+                aria-hidden="true"
+                font={isSerifHeading ? 'serif' : 'druk'}
+                leading="druk"
+                className={styles.heading(headingSize, isSerifHeading)}
+              >
                 {heading}
               </Text>
             </AnimateInView>
