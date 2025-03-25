@@ -125,10 +125,13 @@ export const EventBanner = ({
         />
       )}
       <Container className={styles.wrapper}>
-        {/* Attach SR only heading after superhead: at the beginning of the content for a11y */}
-        <Heading font="serif" weight="semibold" size={2} aria-hidden>
-          {superhead}<SrOnlyText>{`:${heading}`}</SrOnlyText>
-        </Heading>
+        {/* Attach SR only heading after superhead at the beginning of the content for a11y */}
+        {(superhead || heading) && (
+          <Heading as="h2" font="serif" weight="semibold" size={2}>
+            {superhead}
+            {heading && <SrOnlyText>{superhead ? `:${heading}` : heading}</SrOnlyText>}
+          </Heading>
+        )}
         <FlexBox direction="col" className={styles.contentWrapper}>
           <AnimateInView animation="slideInFromLeft" delay={0.1}>
             <FlexBox alignItems="center" className={styles.dateWrapper}>
