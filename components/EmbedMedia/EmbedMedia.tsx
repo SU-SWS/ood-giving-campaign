@@ -10,7 +10,7 @@ import { type PaddingType } from '@/utilities/datasource';
 import { type MediaAspectRatioType, mediaAspectRatios } from '@/utilities/datasource';
 import * as styles from './EmbedMedia.styles';
 
-type EmbedMediaProps = React.HTMLAttributes<HTMLDivElement> & CaptionProps &{
+type EmbedMediaProps = React.HTMLAttributes<HTMLDivElement> & CaptionProps & {
   mediaUrl: string;
   aspectRatio?: MediaAspectRatioType;
   boundingWidth?: 'site' | 'full';
