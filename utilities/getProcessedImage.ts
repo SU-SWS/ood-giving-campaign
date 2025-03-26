@@ -25,6 +25,9 @@ export const getProcessedImage = (
 ): string => {
   if (!imageSrc) {
     return '';
+  // Leave the SVGs alone since they don't need to be processed
+  } else if (imageSrc.endsWith('.svg')) {
+    return getMaskedAsset(imageSrc);
   }
 
   // Get the width and the height from the crop dimension
