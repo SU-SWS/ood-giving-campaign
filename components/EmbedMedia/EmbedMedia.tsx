@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { cnb } from 'cnbuilder';
 import ReactPlayer from 'react-player/lazy';
 import { Caption, type CaptionProps } from '@/components/Media/Caption';
@@ -56,6 +56,30 @@ export const EmbedMedia = ({
   }, []);
 
   const PreviewImg = previewImageSrc ? <PreviewImage previewImageSrc={previewImageSrc} /> : null;
+  const playerWrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isPreview) return;
+
+    const wrapper = playerWrapperRef.current;
+    if (!wrapper) return;
+
+    const observer = new MutationObserver(() => {
+      const preview = wrapper.querySelector('.react-player__preview');
+      if (preview) {
+        preview.setAttribute('role', 'button');
+        observer.disconnect(); // stop observing once done
+      }
+    });
+
+    observer.observe(wrapper, {
+      childList: true, // Look for added/removed child elements
+      subtree: true, // Look for added/removed elements in all descendants inside wrapper
+    });
+
+    // Cleanup on unmount
+    return () => observer.disconnect();
+  }, [isPreview]);
 
   return (
     <WidthBox
@@ -68,7 +92,7 @@ export const EmbedMedia = ({
     >
       <figure>
         {/* Extra classnames passed into wrapper for Vimeo responsive bug */}
-        <div className={cnb(mediaAspectRatios[aspectRatio], styles.mediaWrapper)}>
+        <div className={cnb(mediaAspectRatios[aspectRatio], styles.mediaWrapper)} ref={playerWrapperRef}>
           {hasWindow && (
             <ReactPlayer
               width="100%"
