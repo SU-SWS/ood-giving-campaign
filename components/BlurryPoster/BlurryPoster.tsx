@@ -60,10 +60,6 @@ type BlurryPosterProps = React.HTMLAttributes<HTMLDivElement> & {
   alt?: string;
   tabColor?: AccentColorType;
   cta?: React.ReactNode;
-  /**
-   * aria-describedby will be added to the images if a caption exists
-   */
-  hasCaption?: boolean;
 };
 
 export const BlurryPoster = ({
@@ -97,7 +93,6 @@ export const BlurryPoster = ({
   alt,
   tabColor,
   cta,
-  hasCaption,
   className,
   ...props
 }: BlurryPosterProps) => {
@@ -191,7 +186,6 @@ export const BlurryPoster = ({
             alt={bgImageAlt || ''}
             width={2000}
             height={1200}
-            aria-describedby={hasCaption && !!bgImageAlt ? 'story-hero-caption' : undefined}
             className={styles.bgImage}
             fetchPriority={type === 'hero' ? 'high' : 'auto'}
           />
@@ -351,7 +345,6 @@ export const BlurryPoster = ({
                       alt={alt || ''}
                       width={type === 'hero' && !isTwoCol ? 1800 : 750}
                       height={type === 'hero' && !isTwoCol ? 900 : 1000}
-                      aria-describedby={hasCaption && !!alt ? 'story-hero-caption' : undefined}
                       fetchPriority={type === 'hero' ? 'high' : 'auto'}
                       className={styles.image}
                     />
