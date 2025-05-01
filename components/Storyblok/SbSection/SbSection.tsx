@@ -17,7 +17,6 @@ import {
 import { Caption } from '@/components/Media/Caption';
 import { Container, type BgColorType } from '@/components/Container';
 import { RichText } from '@/components/RichText';
-import { WidthBox } from '@/components/WidthBox';
 import { accentBgColors, type PaddingType, type MarginType } from '@/utilities/datasource';
 import { paletteAccentColors, type PaletteAccentHexColorType } from '@/utilities/colorPalettePlugin';
 import { type SbImageType, type SbColorStopProps } from '../Storyblok.types';
