@@ -45,7 +45,7 @@ export const FeatureMasonry = ({
   ...props
 }: FeatureMasonryProps) => {
   return (
-    <Container {...props} width="full">
+    <Container as="figure" {...props} width="full">
       <Grid lg={12} gap="default">
         <FlexBox
           alignItems="center"
@@ -104,7 +104,13 @@ export const FeatureMasonry = ({
           previewAriaLabel={previewAriaLabel}
         />
       </Grid>
-      <Text variant="caption" color={isLightCaption ? 'white' : 'black-70'} leading="display" className="max-w-prose-wide mt-06em whitespace-pre-line">
+      <Text
+        as="figcaption"
+        variant="caption"
+        color={isLightCaption ? 'white' : 'black-70'}
+        leading="display"
+        className="max-w-prose-wide mt-06em whitespace-pre-line"
+      >
         {caption}
       </Text>
     </Container>

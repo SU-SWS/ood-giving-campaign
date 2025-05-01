@@ -14,6 +14,7 @@ import {
   Text,
   Paragraph,
 } from '@/components/Typography';
+import { Caption } from '@/components/Media/Caption';
 import { Container, type BgColorType } from '@/components/Container';
 import { RichText } from '@/components/RichText';
 import { WidthBox } from '@/components/WidthBox';
@@ -135,6 +136,13 @@ export const SbSection = ({
     bgColors.push('transparent');
   }
   const animatedBgColor = useTransform(scrollYProgress, stops, bgColors);
+
+  const CaptionRichText = hasRichText(caption) ?
+    <RichText
+      textColor={isLightCaption ? 'white' : 'black-70'}
+      linkColor={isLightCaption ? 'digital-red-xlight' : 'unset'}
+      wysiwyg={caption}
+    /> : undefined;
 
   if (isHidden) {
     return null;
@@ -267,16 +275,7 @@ export const SbSection = ({
           )}
         </Container>
       </m.div>
-      {hasRichText(caption) && (
-        <WidthBox boundingWidth="site" width={captionColumnWidth} bgColor={captionBgColor}>
-          <RichText
-            wysiwyg={caption}
-            textColor={isLightCaption ? 'white' : 'black-70'}
-            linkColor={isLightCaption ? 'digital-red-xlight' : 'unset'}
-            className={styles.caption}
-          />
-        </WidthBox>
-      )}
+      <Caption as="div" caption={CaptionRichText} isCaptionInset />
     </Container>
   );
 };

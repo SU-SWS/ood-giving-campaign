@@ -23,6 +23,8 @@ export const Caption = ({
   className,
   ...props
 }: CaptionProps) => {
+  if (!caption) return null;
+
   return (
     <Container
       as={as}
