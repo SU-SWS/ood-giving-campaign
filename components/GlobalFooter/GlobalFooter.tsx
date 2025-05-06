@@ -1,15 +1,10 @@
-import { cnb } from 'cnbuilder';
 import { StanfordLogo } from '@/components/Logo';
 import { Container } from '@/components/Container';
 import { FlexBox } from '@/components/FlexBox';
 import * as styles from './GlobalFooter.styles';
 
-type GlobalFooterProps = {
-  className?: string;
-};
-
-export const GlobalFooter = ({ className }: GlobalFooterProps) => (
-  <Container className={cnb(styles.root, className)}>
+export const GlobalFooter = () => (
+  <Container className={styles.root}>
     <FlexBox direction="col" className={styles.outerWrapper}>
       <div className={styles.logoWrapper}>
         <StanfordLogo isLink tabIndex={-1} aria-hidden className={styles.logo} type="stacked" color="white" />
