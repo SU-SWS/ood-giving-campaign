@@ -144,7 +144,7 @@ export const Scrollytelling = ({
         </div>
       </Container>
       {caption && (
-        <Caption caption={caption} isCaptionInset />
+        <Caption as="div" caption={caption} isCaptionInset />
       )}
     </Container>
   );
