@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
 import React from 'react';
@@ -32,9 +33,13 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
       email,
       target,
       anchor,
+      fieldtype,
       // External link in Storyblok can have additional custom attributes
       ...sbLinkProps
     } = sbLink || {};
+
+    // Keep only props with non empty values from sbLinkProps
+    const nonEmptySbLinkProps = Object.fromEntries(Object.entries(sbLinkProps).filter(([_, value]) => value !== '' && value !== null && value !== undefined));
 
     // Check for internal links
     const isInternal: boolean = linktype === 'story' || /^\/(?!\/)/.test(href);
@@ -69,7 +74,7 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
     return (
       <CtaExternalLink
         {...rest}
-        {...sbLinkProps}
+        {...nonEmptySbLinkProps}
         ref={ref}
         href={myLink}
         target={target || undefined}
