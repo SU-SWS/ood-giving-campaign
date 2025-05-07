@@ -33,7 +33,7 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
       email,
       target,
       anchor,
-      fieldtype,
+      fieldtype, // Extracted to prevent it from being included in sbLinkProps
       // External link in Storyblok can have additional custom attributes
       ...sbLinkProps
     } = sbLink || {};
