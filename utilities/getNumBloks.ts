@@ -7,7 +7,7 @@ import { type SbBlokData } from '@storyblok/react/rsc';
  */
 
 export const getNumBloks = (sbField: SbBlokData[]) => {
-  if (!!sbField?.length) {
+  if (sbField?.length) {
     return sbField.length;
   }
 
