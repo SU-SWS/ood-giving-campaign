@@ -1,13 +1,12 @@
-import React from 'react';
 import { Container } from '@/components/Container';
 import { Grid } from '@/components/Grid';
 import { FlexBox } from '@/components/FlexBox';
 import { EmbedMedia } from '@/components/EmbedMedia';
 import { ImageOverlay } from '@/components/ImageOverlay';
 import { Quote } from '@/components/Quote';
-import { Text } from '../Typography';
+import { Text } from '@/components/Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-
+import * as styles from './FeatureMasonry.styles';
 
 type FeatureMasonryProps = React.HTMLAttributes<HTMLDivElement> & {
   audioUrl?: string;
@@ -41,15 +40,15 @@ export const FeatureMasonry = ({
   previewAriaLabel,
   caption,
   isLightCaption,
-  className,
   ...props
 }: FeatureMasonryProps) => {
   return (
-    <Container as="figure" {...props} width="full">
+    <Container as="figure" width="full" {...props}>
       <Grid lg={12} gap="default">
+        {/* Audio player block */}
         <FlexBox
           alignItems="center"
-          className="relative lg:col-span-7 bg-black-70 overflow-hidden"
+          className={styles.audioWrapper}
         >
           <ImageOverlay
             imageSrc={getProcessedImage(
@@ -59,15 +58,18 @@ export const FeatureMasonry = ({
             )}
             overlay="black-10"
           />
-          <div className="absolute top-0 left-0 size-full backdrop-blur-sm" />
+          <div className={styles.blurOverlay} />
           <EmbedMedia
             mediaUrl={audioUrl}
-            className="relative z-10 rs-py-6 *:w-4/5 *:mx-auto lg:*:*:aspect-w-2 lg:*:*:aspect-h-1 xl:*:*:aspect-w-4 xl:*:*:aspect-h-1"
+            spacingTop={6}
+            spacingBottom={6}
+            className={styles.audio}
           />
         </FlexBox>
+        {/* Quote block */}
         <FlexBox
           justifyContent="center"
-          className="relative lg:col-span-5 rs-py-4 px-36 xl:px-58 2xl:px-76 bg-black-70 text-white"
+          className={styles.quoteWrapper}
         >
           <ImageOverlay
             imageSrc={getProcessedImage(
@@ -77,7 +79,7 @@ export const FeatureMasonry = ({
             )}
             overlay="black-60"
           />
-          <div className="place-self-center h-fit">
+          <div className={styles.quoteInnerWrapper}>
             <Quote
               teaser=" "
               animation="slideUp"
@@ -85,21 +87,23 @@ export const FeatureMasonry = ({
               body={quoteBody}
               isLargeBody
               source={quoteSource}
-              className="relative z-10 !pl-0"
+              className={styles.quote}
             />
           </div>
         </FlexBox>
-        <div className="lg:col-span-6 size-full">
+        {/* Image block */}
+        <div className={styles.imageWrapper}>
           <img
             src={getProcessedImage(imageSrc1, '800x450', imageFocus1)}
             alt={imageAlt1 || ''}
-            className="size-full object-cover"
+            className={styles.image}
           />
         </div>
+        {/* Video block */}
         <EmbedMedia
           mediaUrl={videoUrl}
           isPreview
-          className="lg:col-span-6 bg-black-70"
+          className={styles.video}
           aspectRatio="16x9"
           previewAriaLabel={previewAriaLabel}
         />
@@ -109,7 +113,7 @@ export const FeatureMasonry = ({
         variant="caption"
         color={isLightCaption ? 'white' : 'black-70'}
         leading="display"
-        className="max-w-prose-wide mt-06em whitespace-pre-line"
+        className={styles.caption}
       >
         {caption}
       </Text>
