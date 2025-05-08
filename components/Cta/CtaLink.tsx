@@ -33,13 +33,17 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
       email,
       target,
       anchor,
-      fieldtype, // Extracted to prevent it from being included in sbLinkProps
       // External link in Storyblok can have additional custom attributes
       ...sbLinkProps
     } = sbLink || {};
 
-    // Keep only props with non empty values from sbLinkProps
-    const nonEmptySbLinkProps = Object.fromEntries(Object.entries(sbLinkProps).filter(([_, value]) => value !== '' && value !== null && value !== undefined));
+    /**
+     * Filter out fieldtype and keep only props with non empty values from sbLinkProps.
+     * These include additional attributes such as rel, title and custom attributes that the user can pass in.
+     */
+    const sbLinkPropsToKeep = Object.fromEntries(
+      Object.entries(sbLinkProps).filter(([key, value]) => key !== 'fieldtype' && value !== '' && value !== null && value !== undefined),
+    );
 
     // Check for internal links
     const isInternal: boolean = linktype === 'story' || /^\/(?!\/)/.test(href);
@@ -74,7 +78,7 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
     return (
       <CtaExternalLink
         {...rest}
-        {...nonEmptySbLinkProps}
+        {...sbLinkPropsToKeep}
         ref={ref}
         href={myLink}
         target={target || undefined}
