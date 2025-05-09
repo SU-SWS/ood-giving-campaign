@@ -5,7 +5,7 @@
 
 const isProd = process.env.CONTEXT === 'production';
 const giveBaseUrl = isProd ? 'https://give.stanford.edu' : 'https://dev--online-giving.netlify.app';
-const givingBaseUrl = isProd ? 'https://giving.stanford.edu' : 'https://dev--adapt-giving.stanford.edu';
+const givingBaseUrl = isProd ? 'https://giving.stanford.edu' : 'https://dev--adapt-giving.netlify.app';
 
 export const ood = {
   give: giveBaseUrl,

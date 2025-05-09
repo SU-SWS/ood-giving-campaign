@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { cnb } from 'cnbuilder';
 import ReactPlayer from 'react-player/lazy';
 import { useEventListener } from 'usehooks-ts';
@@ -11,7 +11,7 @@ import { type PaddingType } from '@/utilities/datasource';
 import { type MediaAspectRatioType, mediaAspectRatios } from '@/utilities/datasource';
 import * as styles from './EmbedMedia.styles';
 
-type EmbedMediaProps = React.HTMLAttributes<HTMLDivElement> & CaptionProps & {
+type EmbedMediaProps = React.HTMLAttributes<HTMLDivElement> & Omit<CaptionProps, 'as'> & {
   mediaUrl: string;
   aspectRatio?: MediaAspectRatioType;
   boundingWidth?: 'site' | 'full';

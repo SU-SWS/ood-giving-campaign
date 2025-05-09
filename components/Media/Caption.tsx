@@ -8,6 +8,7 @@ import * as styles from './MediaWrapper.styles';
  */
 
 export type CaptionProps = React.HTMLAttributes<HTMLDivElement> & {
+  as?: 'figcaption' | 'div';
   caption?: React.ReactNode;
   // Inset the caption to centered container width when the media is full screen width
   isCaptionInset?: boolean;
@@ -15,15 +16,18 @@ export type CaptionProps = React.HTMLAttributes<HTMLDivElement> & {
 };
 
 export const Caption = ({
+  as = 'figcaption',
   caption,
   isCaptionInset,
   captionBgColor = 'transparent',
   className,
   ...props
 }: CaptionProps) => {
+  if (!caption) return null;
+
   return (
     <Container
-      as="figcaption"
+      as={as}
       width={isCaptionInset ? 'site' : 'full'}
       className={cnb(styles.captionWrapper, styles.captionBgColors[captionBgColor])}
       {...props}

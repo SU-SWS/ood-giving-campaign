@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
 import React from 'react';
@@ -36,6 +37,14 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
       ...sbLinkProps
     } = sbLink || {};
 
+    /**
+     * Filter out fieldtype and keep only props with non empty values from sbLinkProps.
+     * These include additional attributes such as rel, title and custom attributes that the user can pass in.
+     */
+    const sbLinkPropsToKeep = Object.fromEntries(
+      Object.entries(sbLinkProps).filter(([key, value]) => key !== 'fieldtype' && value !== '' && value !== null && value !== undefined),
+    );
+
     // Check for internal links
     const isInternal: boolean = linktype === 'story' || /^\/(?!\/)/.test(href);
 
@@ -69,7 +78,7 @@ export const CtaLink = React.forwardRef<HTMLAnchorElement, CtaLinkProps>(
     return (
       <CtaExternalLink
         {...rest}
-        {...sbLinkProps}
+        {...sbLinkPropsToKeep}
         ref={ref}
         href={myLink}
         target={target || undefined}

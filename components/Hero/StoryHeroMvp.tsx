@@ -82,8 +82,7 @@ export const StoryHeroMvp = ({
   taxonomy = [],
 }: StoryHeroMvpProps) => {
   const useTwoColLayout = isVerticalHero;
-  const hasCaption = hasRichText(caption);
-  const CaptionText = hasCaption ?
+  const CaptionText = hasRichText(caption) ?
     <RichText
       textColor={isDarkCaptionBg ? 'white' : 'black-70'}
       linkColor={isDarkCaptionBg ? 'digital-red-xlight' : 'unset'}
@@ -114,7 +113,6 @@ export const StoryHeroMvp = ({
           videoMp4={mp4Filename}
           videoPosterSrc={posterFilename}
           isLightHero={isLightHero}
-          hasCaption={hasCaption}
           taxonomy={taxonomy}
         />
       ) : (
@@ -147,7 +145,6 @@ export const StoryHeroMvp = ({
           darkOverlay={darkOverlay}
           imageOnLeft={isLeftImage}
           tabColor={paletteAccentColors[tabColorValue]}
-          hasCaption={hasCaption}
           taxonomy={taxonomy}
         />
       )}
@@ -155,7 +152,7 @@ export const StoryHeroMvp = ({
         <CreateBloks blokSection={heroTexturedBar} />
       )}
       {hasRichText(caption) && (
-        <Caption caption={CaptionText} isCaptionInset />
+        <Caption as="div" caption={CaptionText} isCaptionInset />
       )}
     </Container>
   );

@@ -26,7 +26,6 @@ export type StoryHeroStackedProps = {
   videoWebm?: string;
   videoMp4?: string;
   videoPosterSrc?: string;
-  hasCaption?: boolean;
   isLightHero?: boolean;
   taxonomy?: TaxonomyType[];
 };
@@ -46,7 +45,6 @@ export const StoryHeroStacked = ({
   videoWebm,
   videoMp4,
   videoPosterSrc,
-  hasCaption,
   isLightHero = false,
   taxonomy,
 }: StoryHeroStackedProps) => {
@@ -181,7 +179,6 @@ export const StoryHeroStacked = ({
               <img
                 src={getProcessedImage(imageSrc, '2000x0', imageFocus)}
                 alt={alt || ''}
-                aria-describedby={hasCaption ? 'story-hero-caption' : undefined}
                 fetchPriority="high"
                 width={imageWidth}
                 height={imageHeight}
