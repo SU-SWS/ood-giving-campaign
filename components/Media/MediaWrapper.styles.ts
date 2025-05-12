@@ -20,7 +20,7 @@ export const mediaWrapper = (isFullHeight: boolean, isParallax: boolean) => cnb(
 );
 
 // Caption component styles
-export const captionWrapper = 'mt-0';
+export const captionWrapper = 'mt-0 gc-caption';
 export const caption = (captionBgColor: CaptionBgColorType) => cnb(
   '*:*:leading-display *:*:xl:leading-snug max-w-prose-wide first:*:*:mt-0',
   !!captionBgColor && captionBgColor !== 'transparent' ? 'px-1em py-08em' : 'pt-06em',

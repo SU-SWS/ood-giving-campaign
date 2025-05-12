@@ -11,7 +11,7 @@ import * as styles from './MediaWrapper.styles';
  * that provides a shared set of layout and caption options.
  */
 
-export type MediaWrapperProps = React.HTMLAttributes<HTMLDivElement> & CaptionProps & {
+export type MediaWrapperProps = React.HTMLAttributes<HTMLDivElement> & Omit<CaptionProps, 'as'> & {
   aspectRatio?: ImageAspectRatioType;
   /**
    * If different aspect ratios at different breakpoints are needed, ie, using the AspectRatio prop is insufficient,
