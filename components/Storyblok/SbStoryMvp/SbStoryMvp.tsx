@@ -81,6 +81,7 @@ export const SbStoryMvp = ({
     <div {...storyblokEditable(blok)}>
       <CreateStories stories={mastheadPicker} isLight={isLightHero} />
       <main id="main-content">
+        <Container as="article" bgColor={bgColor} width="full" pb={9}>
           <StoryHeroMvp
             title={title}
             superhead={superhead}
