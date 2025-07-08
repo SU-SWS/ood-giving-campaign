@@ -1,5 +1,8 @@
 import { cnb } from 'cnbuilder';
 
+export type ImageAlignType = 'left' | 'right' | 'center';
+export type imageWidthType = '100%' | '50%' | '60%' | '40%';
+
 export const contentAligns = {
   left: 'items-start',
   center: 'items-center',
@@ -33,7 +36,13 @@ export type ImageEntranceType = keyof typeof imageEntrances;
 
 export const wrapper = 'relative overflow-clip';
 export const imageWrapper = 'sticky top-0 h-screen w-full z-0';
-export const image = 'absolute size-full object-cover top-0 left-0 z-0';
+export const image = (imageAlign: ImageAlignType) => cnb(
+  'absolute w-full h-screen object-cover object-top z-0 mx-auto', {
+    'right-0': imageAlign === 'right',
+    'left-0': imageAlign === 'left',
+    'inset-0': imageAlign === 'center',
+  },
+);
 
 export const overlayBase = 'absolute size-full top-0 left-0 z-0';
 export const imageOverlay = (overlay?: OverlayType) => cnb(overlayBase, overlays[overlay]);

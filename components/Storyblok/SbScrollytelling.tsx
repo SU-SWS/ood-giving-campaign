@@ -7,6 +7,8 @@ import {
   type OverlayType,
   type ContentAlignType,
   type ImageEntranceType,
+  type ImageAlignType,
+  type imageWidthType,
 } from '@/components/Scrollytelling';
 import { type SbImageType } from '@/components/Storyblok/Storyblok.types';
 import { type HeadingType } from '@/components/Typography';
@@ -26,6 +28,8 @@ type SbScrollytellingProps = {
     bgImage?: SbImageType;
     bgImageAlt?: string;
     imageEntrance?: ImageEntranceType;
+    imageWidth?: imageWidthType;
+    imageAlign?: ImageAlignType;
     overlay?: OverlayType;
     contentAlign?: ContentAlignType;
     spacingTop?: MarginType;
@@ -46,6 +50,8 @@ export const SbScrollytelling = ({
     bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
     bgImageAlt,
     imageEntrance,
+    imageWidth,
+    imageAlign,
     overlay,
     contentAlign,
     spacingTop,
@@ -78,6 +84,8 @@ export const SbScrollytelling = ({
       bgImageFocus={bgImageFocus}
       bgImageAlt={bgImageAlt}
       imageEntrance={imageEntrance}
+      imageWidth={imageWidth || '100%'}
+      imageAlign={imageAlign}
       overlay={overlay}
       contentAlign={contentAlign}
       spacingTop={spacingTop}

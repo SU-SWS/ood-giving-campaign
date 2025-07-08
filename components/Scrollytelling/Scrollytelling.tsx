@@ -2,12 +2,14 @@ import { useRef } from 'react';
 import {
   m, useScroll, useTransform, useWillChange,
 } from 'framer-motion';
+import { useWindowSize } from 'usehooks-ts';
 import { AnimateInView } from '@/components/Animate';
 import { Caption } from '@/components/Media/Caption';
 import { Container } from '@/components/Container';
 import { Heading, Text, type HeadingType } from '@/components/Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { type MarginType } from '@/utilities/datasource';
+import { config } from '@/utilities/config';
 import * as styles from './Scrollytelling.styles';
 
 type ScrollytellingProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -21,10 +23,19 @@ type ScrollytellingProps = React.HTMLAttributes<HTMLDivElement> & {
   bgImageFocus?: string;
   bgImageAlt?: string;
   imageEntrance?: styles.ImageEntranceType;
+  imageWidth?: styles.imageWidthType;
+  imageAlign?: styles.ImageAlignType;
   overlay?: styles.OverlayType;
   contentAlign?: styles.ContentAlignType;
   spacingTop?: MarginType;
   spacingBottom?: MarginType;
+};
+
+const cropImageWidths = {
+  '100%': '2000',
+  '50%': '1000',
+  '60%': '1200',
+  '40%': '800',
 };
 
 export const Scrollytelling = ({
@@ -37,6 +48,8 @@ export const Scrollytelling = ({
   bgImageFocus,
   bgImageAlt,
   imageEntrance,
+  imageWidth = '100%',
+  imageAlign = 'center',
   overlay,
   contentAlign = 'center',
   spacingTop,
@@ -44,8 +57,13 @@ export const Scrollytelling = ({
   children,
   ...props
 }: ScrollytellingProps) => {
+  const windowSize = useWindowSize();
+  const isDesktop = windowSize.width >= config.breakpoints.lg;
+
   const willChange = useWillChange();
   const contentRef = useRef<HTMLDivElement>(null);
+
+  const hasImageEntrance = !!imageEntrance && imageEntrance !== 'none';
   const { scrollYProgress } = useScroll({
     target: contentRef,
     offset: ['start center', 'end start'],
@@ -59,6 +77,7 @@ export const Scrollytelling = ({
   const animateDarkOverlayOpacity = useTransform(scrollYProgress, [0, 0.2], ['0%', '100%']);
   const animateImageScale = useTransform(scrollYProgress, [0, 0.3], [imageZoomStart, 1]);
   const animateFilterOpacity = useTransform(scrollYProgress, [0, 0.2], ['0', '100%']);
+  const animateImageWidth = useTransform(scrollYProgress, [0, 0.3], ['100%', isDesktop ? imageWidth : '100%']);
 
   return (
     <Container width="full" mt={spacingTop} mb={spacingBottom} {...props}>
@@ -72,9 +91,9 @@ export const Scrollytelling = ({
         >
           <picture>
             <source
-              srcSet={getProcessedImage(bgImageSrc, '2000x1200', bgImageFocus)}
+              srcSet={getProcessedImage(bgImageSrc, `${cropImageWidths[imageWidth]}x1200`, bgImageFocus)}
               media="(min-width: 992px) and (orientation: landscape)"
-              width={2000}
+              width={cropImageWidths[imageWidth]}
               height={1200}
             />
             <source
@@ -95,19 +114,20 @@ export const Scrollytelling = ({
               width={600}
               height={900}
             />
-            <img
-              src={getProcessedImage(bgImageSrc, '2000x1200', bgImageFocus)}
+            <m.img
+              src={getProcessedImage(bgImageSrc, `${cropImageWidths[imageWidth]}x1200`, bgImageFocus)}
               alt={bgImageAlt || ''}
-              width={2000}
+              width={cropImageWidths[imageWidth]}
               height={1200}
-              className={styles.image}
+              style={{ width: animateImageWidth, willChange }}
+              className={styles.image(imageAlign)}
             />
           </picture>
           <m.div
             className={styles.imageOverlay(overlay)}
             style={{ opacity: animateDarkOverlayOpacity, willChange }}
           />
-          {!!imageEntrance && !imageEntrance?.includes('zoom') && (
+          {hasImageEntrance && !imageEntrance?.includes('zoom') && (
             <m.div
               className={styles.filterOverlay(imageEntrance)}
               style={{ opacity: animateFilterOpacity, willChange }}
