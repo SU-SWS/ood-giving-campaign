@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import {
-  m, useInView, useScroll, useTransform, useWillChange,
+  m, useScroll, useTransform, useWillChange,
 } from 'framer-motion';
 import { useWindowSize } from 'usehooks-ts';
 import { AnimateInView } from '@/components/Animate';
@@ -11,6 +11,7 @@ import { MutedVideoLoop, VideoButton } from '@/components/Video';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { type MarginType } from '@/utilities/datasource';
 import { config } from '@/utilities/config';
+import { useVideoControl } from '@/hooks/useVideoControl';
 import * as styles from './Scrollytelling.styles';
 
 type ScrollytellingProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -93,46 +94,15 @@ export const Scrollytelling = ({
   const cropWidth = cropImageWidths[imageWidth].width;
   const cropHeight = cropImageWidths[imageWidth].height;
 
-  /**
-   * Background image/video
-   */
-  const bgVideoRef = useRef<HTMLVideoElement>(null);
-  const isBgVideoInView = useInView(bgVideoRef, { once: false, amount: 0.1 });
-  const [isBgPlaying, setIsBgPlaying] = useState<boolean>(false);
-  const [isBgUserPaused, setIsBgUserPaused] = useState<boolean>(false);
-
-  //Toggle foreground video play/pause
-  const toggleBgVideo = () => {
-    if (!bgVideoRef.current) return;
-
-    setIsBgPlaying((prev) => {
-      if (prev) {
-        bgVideoRef.current?.pause();
-        setIsBgUserPaused(true);
-      } else {
-        bgVideoRef.current
-          ?.play()
-          .catch(() => {});
-        setIsBgUserPaused(false);
-      }
-      return !prev;
-    });
-  };
-
-  /**
-   * Pause video when it goes out of view,
-   * resume when it comes back into view if it was not manually paused by the user.
-   */
-  useEffect(() => {
-    const video = bgVideoRef.current;
-    if (!video) return;
-
-    if (isBgVideoInView && !isBgUserPaused) {
-      video.play().catch(() => {});
-    } else {
-      video.pause();
-    }
-  }, [isBgVideoInView, isBgUserPaused]);
+  // Background video control using custom hook
+  const {
+    videoRef: bgVideoRef,
+    isPlaying: isBgPlaying,
+    toggleVideo: toggleBgVideo,
+    isVideoInView,
+    onPlay,
+    onPause,
+  } = useVideoControl();
 
   return (
     <Container width="full" mt={spacingTop} mb={spacingBottom} {...props}>
@@ -184,8 +154,8 @@ export const Scrollytelling = ({
             <MutedVideoLoop
               ref={bgVideoRef}
               mp4Src={bgVideoMp4}
-              onPlay={() => setIsBgPlaying(true)}
-              onPause={() => setIsBgPlaying(false)}
+              onPlay={onPlay}
+              onPause={onPause}
               posterSrc={bgVideoPosterSrc}
               className="object-cover w-screen h-screen"
             />
@@ -230,14 +200,12 @@ export const Scrollytelling = ({
           </div>
         </div>
         {bgVideoMp4 && (
-          <div className="w-fit sticky ml-auto bottom-0 right-20 sm:right-30 md:right-50 lg:right-80 xl:right-100 z-[1000] pb-60">
-            <div>
-              <VideoButton
-                isPause={isBgPlaying}
-                onClick={toggleBgVideo}
-                className=""
-              />
-            </div>
+          <div className="w-fit sticky ml-auto bottom-0 right-20 sm:right-30 md:right-50 lg:right-80 xl:right-100 z-[1000] pb-20 md:pb-36">
+            <VideoButton
+              isPause={isBgPlaying}
+              onClick={toggleBgVideo}
+              aria-disabled={!isVideoInView}
+            />
           </div>
         )}
       </Container>
