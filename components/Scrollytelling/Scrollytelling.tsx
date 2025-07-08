@@ -32,10 +32,10 @@ type ScrollytellingProps = React.HTMLAttributes<HTMLDivElement> & {
 };
 
 const cropImageWidths = {
-  '100%': '2000',
-  '50%': '1000',
-  '60%': '1200',
-  '40%': '800',
+  '100%': { width: 2000, height: 1200 },
+  '60%': { width: 2000, height: 2000 },
+  '50%': { width: 1800, height: 2000 },
+  '40%': { width: 1600, height: 2000 },
 };
 
 export const Scrollytelling = ({
@@ -79,6 +79,9 @@ export const Scrollytelling = ({
   const animateFilterOpacity = useTransform(scrollYProgress, [0, 0.2], ['0', '100%']);
   const animateImageWidth = useTransform(scrollYProgress, [0, 0.3], ['100%', isDesktop ? imageWidth : '100%']);
 
+  const cropWidth = cropImageWidths[imageWidth].width;
+  const cropHeight = cropImageWidths[imageWidth].height;
+
   return (
     <Container width="full" mt={spacingTop} mb={spacingBottom} {...props}>
       <Container width="full" bgColor="black" className={styles.wrapper} >
@@ -91,10 +94,10 @@ export const Scrollytelling = ({
         >
           <picture>
             <source
-              srcSet={getProcessedImage(bgImageSrc, `${cropImageWidths[imageWidth]}x1200`, bgImageFocus)}
+              srcSet={getProcessedImage(bgImageSrc, `${cropWidth}x${cropHeight}`, bgImageFocus)}
               media="(min-width: 992px) and (orientation: landscape)"
-              width={cropImageWidths[imageWidth]}
-              height={1200}
+              width={cropWidth}
+              height={cropHeight}
             />
             <source
               srcSet={getProcessedImage(bgImageSrc, '1200x1800', bgImageFocus)}
@@ -115,10 +118,10 @@ export const Scrollytelling = ({
               height={900}
             />
             <m.img
-              src={getProcessedImage(bgImageSrc, `${cropImageWidths[imageWidth]}x1200`, bgImageFocus)}
+              src={getProcessedImage(bgImageSrc, `${cropWidth}x${cropHeight}`, bgImageFocus)}
               alt={bgImageAlt || ''}
-              width={cropImageWidths[imageWidth]}
-              height={1200}
+              width={cropWidth}
+              height={cropHeight}
               style={{ width: animateImageWidth, willChange }}
               className={styles.image(imageAlign)}
             />

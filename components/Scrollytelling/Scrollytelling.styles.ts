@@ -56,6 +56,6 @@ export const contentWrapper = (contentAlign: ContentAlignType) => cnb('w-full mx
 export const header = 'rs-mb-6';
 export const heading = 'relative z-10 mb-02em whitespace-pre-line';
 export const subhead = 'sm:max-w-[40ch] mx-auto';
-export const children = 'grid gap-y-30 md:gap-y-40 xl:gap-y-60';
+export const children = 'grid gap-y-30 md:gap-y-40 xl:gap-y-60 mb-[120vh]';
 
 export const caption = 'relative *:*:leading-display first:*:*:mt-0 gc-caption mt-06em *:max-w-prose-wide ml-0';
