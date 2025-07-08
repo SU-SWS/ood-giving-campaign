@@ -43,6 +43,7 @@ export const image = (imageAlign: ImageAlignType) => cnb(
     'inset-0': imageAlign === 'center',
   },
 );
+export const bgVideo = 'object-cover w-screen h-screen';
 
 export const overlayBase = 'absolute size-full top-0 left-0 z-0';
 export const imageOverlay = (overlay?: OverlayType) => cnb(overlayBase, overlays[overlay]);
@@ -61,4 +62,5 @@ export const children = (addContentSpacing: boolean) => cnb(
   addContentSpacing && 'mb-[120vh]',
 );
 
+export const bgVideoButtonWrapper = 'w-fit sticky ml-auto bottom-0 right-20 sm:right-30 md:right-50 lg:right-80 xl:right-100 4xl:right-[calc((100%-1800px)/2)] z-40 pb-20 md:pb-36';
 export const caption = 'relative *:*:leading-display first:*:*:mt-0 gc-caption mt-06em *:max-w-prose-wide ml-0';

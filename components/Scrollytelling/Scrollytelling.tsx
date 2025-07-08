@@ -87,8 +87,8 @@ export const Scrollytelling = ({
     imageZoomStart = 1.1;
   }
   const animateDarkOverlayOpacity = useTransform(scrollYProgress, [0, 0.2], ['0%', '100%']);
-  const animateImageScale = useTransform(scrollYProgress, [0, 0.3], [imageZoomStart, 1]);
   const animateFilterOpacity = useTransform(scrollYProgress, [0, 0.2], ['0', '100%']);
+  const animateImageScale = useTransform(scrollYProgress, [0, 0.3], [imageZoomStart, 1]);
   const animateImageWidth = useTransform(scrollYProgress, [0, 0.3], ['100%', isDesktop ? imageWidth : '100%']);
 
   const cropWidth = cropImageWidths[imageWidth].width;
@@ -157,7 +157,7 @@ export const Scrollytelling = ({
               onPlay={onPlay}
               onPause={onPause}
               posterSrc={bgVideoPosterSrc}
-              className="object-cover w-screen h-screen"
+              className={styles.bgVideo}
             />
           )}
           <m.div
@@ -200,7 +200,7 @@ export const Scrollytelling = ({
           </div>
         </div>
         {bgVideoMp4 && (
-          <div className="w-fit sticky ml-auto bottom-0 right-20 sm:right-30 md:right-50 lg:right-80 xl:right-100 z-[1000] pb-20 md:pb-36">
+          <div className={styles.bgVideoButtonWrapper}>
             <VideoButton
               isPause={isBgPlaying}
               onClick={toggleBgVideo}
