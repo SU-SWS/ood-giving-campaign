@@ -27,11 +27,14 @@ type SbScrollytellingProps = {
     isLightCaption?: boolean;
     bgImage?: SbImageType;
     bgImageAlt?: string;
+    bgVideoMp4?: SbImageType;
+    bgVideoPoster?: SbImageType;
     imageEntrance?: ImageEntranceType;
     imageWidth?: imageWidthType;
     imageAlign?: ImageAlignType;
     overlay?: OverlayType;
     contentAlign?: ContentAlignType;
+    addContentSpacing?: boolean;
     spacingTop?: MarginType;
     spacingBottom?: MarginType;
     isHidden?: boolean;
@@ -49,11 +52,14 @@ export const SbScrollytelling = ({
     isLightCaption,
     bgImage: { filename: bgImageSrc, focus: bgImageFocus } = {},
     bgImageAlt,
+    bgVideoMp4: { filename: bgVideoMp4Src } = {},
+    bgVideoPoster: { filename: bgVideoPosterSrc } = {},
     imageEntrance,
     imageWidth,
     imageAlign,
     overlay,
     contentAlign,
+    addContentSpacing,
     spacingTop,
     spacingBottom,
     isHidden,
@@ -83,11 +89,14 @@ export const SbScrollytelling = ({
       bgImageSrc={bgImageSrc}
       bgImageFocus={bgImageFocus}
       bgImageAlt={bgImageAlt}
+      bgVideoMp4={bgVideoMp4Src}
+      bgVideoPosterSrc={bgVideoPosterSrc}
       imageEntrance={imageEntrance}
       imageWidth={imageWidth || '100%'}
       imageAlign={imageAlign}
       overlay={overlay}
       contentAlign={contentAlign}
+      addContentSpacing={addContentSpacing}
       spacingTop={spacingTop}
       spacingBottom={spacingBottom}
     >
