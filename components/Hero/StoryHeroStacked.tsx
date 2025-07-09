@@ -74,7 +74,7 @@ export const StoryHeroStacked = ({
       pt={10}
       style={{ backgroundColor: heroBgColor || '#888' }}
     >
-      <Container className={styles.contentWrapper(hasVideo)}>
+      <Container className={styles.contentWrapper(hasVideo, hasMedia)}>
         {superhead && (
           <AnimateInView animation="slideUp">
             <Text

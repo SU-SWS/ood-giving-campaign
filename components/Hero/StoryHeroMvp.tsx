@@ -45,6 +45,7 @@ export type StoryHeroMvpProps = {
   tabColor?: {
     value?: PaletteAccentHexColorType;
   }
+  belowHero?: SbBlokData[];
   heroTexturedBar?: SbBlokData[];
   taxonomy?: TaxonomyType[];
 };
@@ -78,6 +79,7 @@ export const StoryHeroMvp = ({
   isLeftImage = false,
   isLightHero = false,
   tabColor: { value: tabColorValue } = {},
+  belowHero,
   heroTexturedBar,
   taxonomy = [],
 }: StoryHeroMvpProps) => {
@@ -147,6 +149,9 @@ export const StoryHeroMvp = ({
           tabColor={paletteAccentColors[tabColorValue]}
           taxonomy={taxonomy}
         />
+      )}
+      {!!getNumBloks(belowHero) && (
+        <CreateBloks blokSection={belowHero} />
       )}
       {!!getNumBloks(heroTexturedBar) && (
         <CreateBloks blokSection={heroTexturedBar} />

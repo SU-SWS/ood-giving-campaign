@@ -2,12 +2,16 @@ import { useRef } from 'react';
 import {
   m, useScroll, useTransform, useWillChange,
 } from 'framer-motion';
+import { useWindowSize } from 'usehooks-ts';
 import { AnimateInView } from '@/components/Animate';
 import { Caption } from '@/components/Media/Caption';
 import { Container } from '@/components/Container';
 import { Heading, Text, type HeadingType } from '@/components/Typography';
+import { MutedVideoLoop, VideoButton } from '@/components/Video';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { type MarginType } from '@/utilities/datasource';
+import { config } from '@/utilities/config';
+import { useVideoControl } from '@/hooks/useVideoControl';
 import * as styles from './Scrollytelling.styles';
 
 type ScrollytellingProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -20,11 +24,27 @@ type ScrollytellingProps = React.HTMLAttributes<HTMLDivElement> & {
   bgImageSrc?: string;
   bgImageFocus?: string;
   bgImageAlt?: string;
+  bgVideoMp4?: string;
+  bgVideoPosterSrc?: string;
   imageEntrance?: styles.ImageEntranceType;
+  imageWidth?: styles.imageWidthType;
+  imageAlign?: styles.ImageAlignType;
   overlay?: styles.OverlayType;
   contentAlign?: styles.ContentAlignType;
+  /**
+   * Add bottom margin below content so users can keep on scrolling a bit before the last bit of content exit at the top
+   * Useful for when there is little content, e.g., a single block of text
+   */
+  addContentSpacing?: boolean;
   spacingTop?: MarginType;
   spacingBottom?: MarginType;
+};
+
+const cropImageWidths = {
+  '100%': { width: 2000, height: 1200 },
+  '60%': { width: 2000, height: 2000 },
+  '50%': { width: 1800, height: 2000 },
+  '40%': { width: 1600, height: 2000 },
 };
 
 export const Scrollytelling = ({
@@ -36,16 +56,26 @@ export const Scrollytelling = ({
   bgImageSrc,
   bgImageFocus,
   bgImageAlt,
+  bgVideoMp4,
+  bgVideoPosterSrc,
   imageEntrance,
+  imageWidth = '100%',
+  imageAlign = 'center',
   overlay,
   contentAlign = 'center',
+  addContentSpacing,
   spacingTop,
   spacingBottom,
   children,
   ...props
 }: ScrollytellingProps) => {
+  const windowSize = useWindowSize();
+  const isDesktop = windowSize.width >= config.breakpoints.lg;
+
   const willChange = useWillChange();
   const contentRef = useRef<HTMLDivElement>(null);
+
+  const hasImageEntrance = !!imageEntrance && imageEntrance !== 'none';
   const { scrollYProgress } = useScroll({
     target: contentRef,
     offset: ['start center', 'end start'],
@@ -57,8 +87,22 @@ export const Scrollytelling = ({
     imageZoomStart = 1.1;
   }
   const animateDarkOverlayOpacity = useTransform(scrollYProgress, [0, 0.2], ['0%', '100%']);
-  const animateImageScale = useTransform(scrollYProgress, [0, 0.3], [imageZoomStart, 1]);
   const animateFilterOpacity = useTransform(scrollYProgress, [0, 0.2], ['0', '100%']);
+  const animateImageScale = useTransform(scrollYProgress, [0, 0.3], [imageZoomStart, 1]);
+  const animateImageWidth = useTransform(scrollYProgress, [0, 0.3], ['100%', isDesktop ? imageWidth : '100%']);
+
+  const cropWidth = cropImageWidths[imageWidth].width;
+  const cropHeight = cropImageWidths[imageWidth].height;
+
+  // Background video control using custom hook
+  const {
+    videoRef: bgVideoRef,
+    isPlaying: isBgPlaying,
+    toggleVideo: toggleBgVideo,
+    isVideoInView,
+    onPlay,
+    onPause,
+  } = useVideoControl();
 
   return (
     <Container width="full" mt={spacingTop} mb={spacingBottom} {...props}>
@@ -70,44 +114,57 @@ export const Scrollytelling = ({
             willChange,
           }}
         >
-          <picture>
-            <source
-              srcSet={getProcessedImage(bgImageSrc, '2000x1200', bgImageFocus)}
-              media="(min-width: 992px) and (orientation: landscape)"
-              width={2000}
-              height={1200}
+          {bgImageSrc && (
+            <picture>
+              <source
+                srcSet={getProcessedImage(bgImageSrc, `${cropWidth}x${cropHeight}`, bgImageFocus)}
+                media="(min-width: 992px) and (orientation: landscape)"
+                width={cropWidth}
+                height={cropHeight}
+              />
+              <source
+                srcSet={getProcessedImage(bgImageSrc, '1200x1800', bgImageFocus)}
+                media="(max-width: 1199px) and (orientation: portrait)"
+                width={1200}
+                height={1800}
+              />
+              <source
+                srcSet={getProcessedImage(bgImageSrc, '900x1600', bgImageFocus)}
+                media="(min-width: 576px)"
+                width={900}
+                height={1600}
+              />
+              <source
+                srcSet={getProcessedImage(bgImageSrc, '600x900', bgImageFocus)}
+                media="(max-width: 575px)"
+                width={600}
+                height={900}
+              />
+              <m.img
+                src={getProcessedImage(bgImageSrc, `${cropWidth}x${cropHeight}`, bgImageFocus)}
+                alt={bgImageAlt || ''}
+                width={cropWidth}
+                height={cropHeight}
+                style={{ width: animateImageWidth, willChange }}
+                className={styles.image(imageAlign)}
+              />
+            </picture>
+          )}
+          {bgVideoMp4 && (
+            <MutedVideoLoop
+              ref={bgVideoRef}
+              mp4Src={bgVideoMp4}
+              onPlay={onPlay}
+              onPause={onPause}
+              posterSrc={bgVideoPosterSrc}
+              className={styles.bgVideo}
             />
-            <source
-              srcSet={getProcessedImage(bgImageSrc, '1200x1800', bgImageFocus)}
-              media="(max-width: 1199px) and (orientation: portrait)"
-              width={1200}
-              height={1800}
-            />
-            <source
-              srcSet={getProcessedImage(bgImageSrc, '900x1600', bgImageFocus)}
-              media="(min-width: 576px)"
-              width={900}
-              height={1600}
-            />
-            <source
-              srcSet={getProcessedImage(bgImageSrc, '600x900', bgImageFocus)}
-              media="(max-width: 575px)"
-              width={600}
-              height={900}
-            />
-            <img
-              src={getProcessedImage(bgImageSrc, '2000x1200', bgImageFocus)}
-              alt={bgImageAlt || ''}
-              width={2000}
-              height={1200}
-              className={styles.image}
-            />
-          </picture>
+          )}
           <m.div
             className={styles.imageOverlay(overlay)}
             style={{ opacity: animateDarkOverlayOpacity, willChange }}
           />
-          {!!imageEntrance && !imageEntrance?.includes('zoom') && (
+          {hasImageEntrance && !imageEntrance?.includes('zoom') && (
             <m.div
               className={styles.filterOverlay(imageEntrance)}
               style={{ opacity: animateFilterOpacity, willChange }}
@@ -137,11 +194,20 @@ export const Scrollytelling = ({
                 )}
               </AnimateInView>
             )}
-            <div className={styles.children}>
+            <div className={styles.children(addContentSpacing)}>
               {children}
             </div>
           </div>
         </div>
+        {bgVideoMp4 && (
+          <div className={styles.bgVideoButtonWrapper}>
+            <VideoButton
+              isPause={isBgPlaying}
+              onClick={toggleBgVideo}
+              aria-disabled={!isVideoInView}
+            />
+          </div>
+        )}
       </Container>
       {caption && (
         <Caption as="div" caption={caption} isCaptionInset />
