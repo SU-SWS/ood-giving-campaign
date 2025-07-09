@@ -13,6 +13,7 @@ type SbStoryMvpProps = {
     _uid: string;
     bgColor?: 'black' | 'white';
     hideTopSocial?: boolean;
+    belowHero?: SbBlokData[];
     aboveSidebar?: SbBlokData[];
     intro?: SbBlokData[];
     sidebar?: SbBlokData[];
@@ -61,6 +62,7 @@ export const SbStoryMvp = ({
     heroTexturedBar,
     bgColor,
     // page regions
+    belowHero,
     hideTopSocial,
     aboveSidebar,
     intro,
@@ -110,6 +112,7 @@ export const SbStoryMvp = ({
             isVerticalHero={isVerticalHero}
             tabColor={tabColor}
             taxonomy={taxonomyArray}
+            belowHero={belowHero}
             heroTexturedBar={heroTexturedBar}
           />
           {!hideTopSocial && !!slug && <SocialSharing isDark={bgColor === 'black'} title={title} slug={slug} isTop />}

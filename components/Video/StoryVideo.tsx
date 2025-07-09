@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
 import { cnb } from 'cnbuilder';
-import { useInView } from 'framer-motion';
 import { MediaWrapper, type MediaWrapperProps } from '@/components/Media';
 import { MutedVideoLoop, VideoButton } from '@/components/Video';
+import { useVideoControl } from '@/hooks/useVideoControl';
 import * as styles from './StoryVideo.styles';
 
 /**
@@ -38,43 +37,16 @@ export const StoryVideo = ({
   ...props
 }: StoryVideoProps) => {
   const hasVideo = !!videoWebm || !!videoMp4;
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const isVideoInView = useInView(videoRef, { once: false, amount: 0.1 });
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [isUserPaused, setIsUserPaused] = useState<boolean>(false);
 
-  // Toggle video play/pause
-  const toggleVideo = () => {
-    if (!videoRef.current) return;
-
-    setIsPlaying((prev) => {
-      if (prev) {
-        videoRef.current.pause();
-        setIsUserPaused(true);
-      } else {
-        videoRef.current
-          .play()
-          .catch(() => {});
-        setIsUserPaused(false);
-      }
-      return !prev;
-    });
-  };
-
-  /**
-   * Pause video when it goes out of view,
-   * resume when it comes back into view if it was not manually paused by the user.
-   */
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (isVideoInView && !isUserPaused) {
-      video.play().catch((error) => console.warn('Video playback prevented:', error));
-    } else {
-      video.pause();
-    }
-  }, [isVideoInView, isUserPaused]);
+  // Video control using custom hook
+  const {
+    videoRef,
+    isPlaying,
+    toggleVideo,
+    isVideoInView,
+    onPlay,
+    onPause,
+  } = useVideoControl();
 
   if (!hasVideo) {
     return null;
@@ -101,14 +73,16 @@ export const StoryVideo = ({
           ref={videoRef}
           webmSrc={videoWebm}
           mp4Src={videoMp4}
-          onPlay={() => setIsPlaying(true)}
-          onPause={() => setIsPlaying(false)}
+          onPlay={onPlay}
+          onPause={onPause}
           posterSrc={videoPosterSrc}
           className={styles.video}
         />
         <VideoButton
           isPause={isPlaying}
           onClick={toggleVideo}
+          // Use aria-disabled instead of disabled so tab order is preserved
+          aria-disabled={!isVideoInView}
           className={cnb(styles.videoButton(isFullScreen))}
         />
       </div>

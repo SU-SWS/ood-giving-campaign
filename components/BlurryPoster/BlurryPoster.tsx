@@ -1,6 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
 import { cnb } from 'cnbuilder';
-import { useInView } from 'framer-motion';
 import { AnimateInView } from '@/components/Animate';
 import { Container } from '@/components/Container';
 import { CtaLink } from '@/components/Cta';
@@ -20,6 +18,7 @@ import {
 import { type SbTypographyProps } from '@/components/Storyblok/Storyblok.types';
 import { taxonomyMap, type TaxonomyType } from '@/utilities/taxonomyMaps';
 import { formatDate } from '@/utilities/formatDate';
+import { useVideoControl } from '@/hooks/useVideoControl';
 import * as styles from './BlurryPoster.styles';
 
 /**
@@ -110,47 +109,16 @@ export const BlurryPoster = ({
   const hasVideo = !!videoWebm || !!videoMp4;
   const hasMedia = !!imageSrc || hasVideo;
 
-  /**
-   * Background image/video
-   */
+  // Background video control using custom hook
   const hasBgVideo = !!bgVideoWebm || !!bgVideoMp4;
-  const bgVideoRef = useRef<HTMLVideoElement>(null);
-  const isBgVideoInView = useInView(bgVideoRef, { once: false, amount: 0.1 });
-  const [isBgPlaying, setIsBgPlaying] = useState<boolean>(false);
-  const [isBgUserPaused, setIsBgUserPaused] = useState<boolean>(false);
-
-  // Toggle foreground video play/pause
-  const toggleBgVideo = () => {
-    if (!bgVideoRef.current) return;
-
-    setIsBgPlaying((prev) => {
-      if (prev) {
-        bgVideoRef.current?.pause();
-        setIsBgUserPaused(true);
-      } else {
-        bgVideoRef.current
-          ?.play()
-          .catch(() => {});
-        setIsBgUserPaused(false);
-      }
-      return !prev;
-    });
-  };
-
-  /**
-   * Pause video when it goes out of view,
-   * resume when it comes back into view if it was not manually paused by the user.
-   */
-  useEffect(() => {
-    const video = bgVideoRef.current;
-    if (!video) return;
-
-    if (isBgVideoInView && !isBgUserPaused) {
-      video.play().catch(() => {});
-    } else {
-      video.pause();
-    }
-  }, [isBgVideoInView, isBgUserPaused]);
+  const {
+    videoRef: bgVideoRef,
+    isPlaying: isBgPlaying,
+    toggleVideo: toggleBgVideo,
+    isVideoInView: isBgVideoInView,
+    onPlay,
+    onPause,
+  } = useVideoControl(0.1);
 
   return (
     <Container {...props} bgColor={bgColor} width="full" className={styles.root}>
@@ -196,8 +164,8 @@ export const BlurryPoster = ({
           ref={bgVideoRef}
           webmSrc={bgVideoWebm}
           mp4Src={bgVideoMp4}
-          onPlay={() => setIsBgPlaying(true)}
-          onPause={() => setIsBgPlaying(false)}
+          onPlay={onPlay}
+          onPause={onPause}
           posterSrc={bgVideoPosterSrc}
           className={styles.bgVideo}
         />
@@ -359,6 +327,7 @@ export const BlurryPoster = ({
             <VideoButton
               isPause={isBgPlaying}
               onClick={toggleBgVideo}
+              aria-disabled={!isBgVideoInView}
               className={styles.bgVideoButton(!!imageSrc)}
             />
           </Container>

@@ -2,7 +2,16 @@ import { cnb } from 'cnbuilder';
 
 export const root = 'relative';
 
-export const contentWrapper = (hasVideo: boolean) => cnb('mt-40 md:-mt-60 xl:mt-0', hasVideo && 'rs-pb-3');
+export const contentWrapper = (hasVideo: boolean, hasMedia: boolean) => cnb(
+  'mt-40 md:-mt-60 xl:mt-0',
+  /**
+   * Difficult to color match the top of the video using the eyedropper tool in Storyblok because it's in motion
+   * so we alwyas add a small padding between the bottom of the hero text content and the top of the video
+   */
+  hasVideo && 'rs-pb-3',
+  // If there is no image and no video, ie, hero is text-only, add a large bottom padding so it looks visually balanced
+  !hasMedia && 'rs-pb-9',
+);
 export const superhead = (isLightHero: boolean) => cnb('cc mb-04em w-full', !isLightHero && 'text-shadow-sm');
 export const heading = (
   isSmallHeading?: boolean,

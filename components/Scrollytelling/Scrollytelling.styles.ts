@@ -1,5 +1,8 @@
 import { cnb } from 'cnbuilder';
 
+export type ImageAlignType = 'left' | 'right' | 'center';
+export type imageWidthType = '100%' | '50%' | '60%' | '40%';
+
 export const contentAligns = {
   left: 'items-start',
   center: 'items-center',
@@ -33,7 +36,14 @@ export type ImageEntranceType = keyof typeof imageEntrances;
 
 export const wrapper = 'relative overflow-clip';
 export const imageWrapper = 'sticky top-0 h-screen w-full z-0';
-export const image = 'absolute size-full object-cover top-0 left-0 z-0';
+export const image = (imageAlign: ImageAlignType) => cnb(
+  'absolute w-full h-screen object-cover object-top z-0 mx-auto', {
+    'right-0': imageAlign === 'right',
+    'left-0': imageAlign === 'left',
+    'inset-0': imageAlign === 'center',
+  },
+);
+export const bgVideo = 'object-cover w-screen h-screen';
 
 export const overlayBase = 'absolute size-full top-0 left-0 z-0';
 export const imageOverlay = (overlay?: OverlayType) => cnb(overlayBase, overlays[overlay]);
@@ -47,6 +57,10 @@ export const contentWrapper = (contentAlign: ContentAlignType) => cnb('w-full mx
 export const header = 'rs-mb-6';
 export const heading = 'relative z-10 mb-02em whitespace-pre-line';
 export const subhead = 'sm:max-w-[40ch] mx-auto';
-export const children = 'grid gap-y-30 md:gap-y-40 xl:gap-y-60';
+export const children = (addContentSpacing: boolean) => cnb(
+  'grid gap-y-30 md:gap-y-40 xl:gap-y-60',
+  addContentSpacing && 'mb-[120vh]',
+);
 
+export const bgVideoButtonWrapper = 'w-fit sticky ml-auto bottom-0 right-20 sm:right-30 md:right-50 lg:right-80 xl:right-100 4xl:right-[calc((100%-1800px)/2)] z-40 pb-20 md:pb-36';
 export const caption = 'relative *:*:leading-display first:*:*:mt-0 gc-caption mt-06em *:max-w-prose-wide ml-0';

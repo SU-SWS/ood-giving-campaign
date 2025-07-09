@@ -1,6 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
 import { cnb } from 'cnbuilder';
-import { useInView } from 'framer-motion';
 import { AnimateInView } from '@/components/Animate';
 import { Container } from '@/components/Container';
 import { Heading, SrOnlyText, Text } from '@/components/Typography';
@@ -16,6 +14,7 @@ import {
   bgBlurs,
   type BgBlurType,
 } from '@/utilities/datasource';
+import { useVideoControl } from '@/hooks/useVideoControl';
 import * as styles from './BasicHero.styles';
 
 /**
@@ -65,43 +64,15 @@ export const BasicHero = ({
   const hasVideo = !!videoWebm || !!videoMp4;
   const hasMedia = !!imageSrc || hasVideo;
 
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const isVideoInView = useInView(videoRef, { once: false, amount: 0.1 });
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [isUserPaused, setIsUserPaused] = useState<boolean>(false);
-
-  // Toggle video playback when the user interacts with the VideoButton.
-  const toggleBgVideo = () => {
-    if (!videoRef.current) return;
-
-    setIsPlaying((prev) => {
-      if (prev) {
-        videoRef.current?.pause();
-        setIsUserPaused(true);
-      } else {
-        videoRef.current
-          ?.play()
-          .catch(() => {});
-        setIsUserPaused(false);
-      }
-      return !prev;
-    });
-  };
-
-  /**
-   * Pause video when it goes out of view,
-   * resume when it comes back into view if it was not manually paused by the user.
-   */
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (isVideoInView && !isUserPaused) {
-      video.play().catch(() => {});
-    } else {
-      video.pause();
-    }
-  }, [isVideoInView, isUserPaused]);
+  // Video control using custom hook
+  const {
+    videoRef,
+    isPlaying,
+    toggleVideo: toggleBgVideo,
+    isVideoInView,
+    onPlay,
+    onPause,
+  } = useVideoControl(0.1);
 
   return (
     <Container
@@ -150,8 +121,8 @@ export const BasicHero = ({
           ref={videoRef}
           webmSrc={videoWebm}
           mp4Src={videoMp4}
-          onPlay={() => setIsPlaying(true)}
-          onPause={() => setIsPlaying(false)}
+          onPlay={onPlay}
+          onPause={onPause}
           posterSrc={videoPosterSrc}
           className={styles.bgMedia}
         />
@@ -222,6 +193,7 @@ export const BasicHero = ({
           <VideoButton
             isPause={isPlaying}
             onClick={toggleBgVideo}
+            aria-disabled={!isVideoInView}
             className={styles.videoButton(paddingType)}
           />
         </Container>
