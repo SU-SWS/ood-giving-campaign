@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useCopyToClipboard } from 'usehooks-ts';
 import { Container } from '@/components/Container';
-import { Heading, SrOnlyText, Text } from '@/components/Typography';
+import { Heading, Text } from '@/components/Typography';
 import { FlexBox } from '@/components/FlexBox';
 import { TwitterX } from './TwitterX';
 import { FacebookF } from './FacebookF';
