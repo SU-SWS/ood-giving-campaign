@@ -1,17 +1,17 @@
+'use client';
 import { useState } from 'react';
 import { useCopyToClipboard } from 'usehooks-ts';
-import { Container } from '../Container';
-import { Heading } from '../Typography';
-import { FlexBox } from '../FlexBox';
+import { Container } from '@/components/Container';
+import { Heading, SrOnlyText, Text } from '@/components/Typography';
+import { FlexBox } from '@/components/FlexBox';
 import { TwitterX } from './TwitterX';
 import { FacebookF } from './FacebookF';
 import { LinkedinIn } from './LinkedinIn';
 import { EmailIcon } from './EmailIcon';
 import { LinkIcon } from './LinkIcon';
-import { WidthBox } from '../WidthBox';
 import { SocialButton } from './SocialButton';
-import { HeroIcon } from '../HeroIcon';
-import { Text } from '@/components/Typography/Text';
+import { WidthBox } from '@/components/WidthBox';
+import { HeroIcon } from '@/components/HeroIcon';
 import { config } from '@/utilities/config';
 import * as styles from './SocialSharing.styles';
 

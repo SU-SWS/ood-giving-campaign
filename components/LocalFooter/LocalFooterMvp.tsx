@@ -1,10 +1,11 @@
-import { Paragraph, Heading } from '../Typography';
-import { Container } from '../Container';
-import { Grid } from '../Grid';
-import { LogoLockup } from '../Logo';
-import { CtaLink } from '../Cta';
+import { Paragraph, Heading, SrOnlyText } from '@/components/Typography';
+import { Container } from '@/components/Container';
+import { FlexBox } from '@/components/FlexBox';
+import { Grid } from '@/components/Grid';
+import { LogoLockup } from '@/components/Logo';
+import { CtaLink } from '@/components/Cta';
+import { SquareFacebook, SquareInstagram, Linkedin } from '@/components/SocialMedia';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { FlexBox } from '../FlexBox';
 import * as links from '@/utilities/externalLinks';
 import * as routes from '@/utilities/routes';
 import * as styles from './LocalFooterMvp.styles';
@@ -18,7 +19,7 @@ export const LocalFooterMvp = () => (
     className={styles.root}
     style={{ backgroundImage: `url('${getProcessedImage('https://a-us.storyblok.com/f/1005200/3200x2134/f8433eac94/fdf67c168f2e36a6bc30c085eb392c13.jpg', '2000x0')}')` }}
   >
-    <div className={styles.overlay} />
+    <div className={styles.overlay} aria-hidden="true" />
     <FlexBox direction="col" className={styles.flexWrapper}>
       <LogoLockup text="Momentum" color="white" isLink className={styles.logo} />
       <FlexBox as="ul" wrap="wrap" className={styles.ul}>
@@ -60,6 +61,26 @@ export const LocalFooterMvp = () => (
             Find ways to give
           </CtaLink>
         </div>
+        <FlexBox as="ul" className={styles.socialList}>
+          <li>
+            <a href="https://www.instagram.com/stanfordgiving/" className={styles.socialInstagram}>
+              <SrOnlyText>Stanford Giving Instagram</SrOnlyText>
+              <SquareInstagram />
+            </a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/stanford.university.giving/" className={styles.socialFacebook}>
+              <SrOnlyText>Stanford University Giving Facebook</SrOnlyText>
+              <SquareFacebook />
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/school/stanford-giving/" className={styles.socialLinkedin}>
+              <SrOnlyText>Stanford Giving LinkedIn</SrOnlyText>
+              <Linkedin />
+            </a>
+          </li>
+        </FlexBox>
       </Grid>
     </FlexBox>
   </Container>

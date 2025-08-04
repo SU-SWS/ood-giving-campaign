@@ -5,3 +5,9 @@ export const logo = 'scale-125 origin-left sm:scale-100 text-[1.67em] md:text-[1
 export const ul = 'list-unstyled divide-x divide-white *:inline-block *:mb-0 *:px-16 md:*:px-30 xl:*:px-48 *:leading-display first:*:pl-0 last:*:pr-0 lg:mx-auto w-fit rs-mt-2 gap-y-10';
 export const grid = 'w-full lg:gap-x-[7vw] 3xl:gap-x-300';
 export const column2 = 'rs-mt-3 lg:mt-0';
+export const socialList = 'list-unstyled gap-x-20 rs-mt-3 *:mb-0';
+export const socialIcon = 'text-white transition-colors';
+export const socialInstagram = `${socialIcon} hocus:text-instagram transition-colors`;
+export const socialFacebook = `${socialIcon} hocus:text-facebook transition-colors`;
+export const socialLinkedin = `${socialIcon} hocus:text-linkedin transition-colors`;
+
