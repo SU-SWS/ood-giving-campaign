@@ -29,7 +29,7 @@ export const LocalFooterMvp = () => (
         <li><CtaLink color="white" href={routes.contactUs} size="large">Contact us</CtaLink></li>
       </FlexBox>
       <Grid lg={2} pt={8} gap="default" className={styles.grid}>
-        <div>
+        <section>
           <Heading as="h3" size={3} leading="tight">
             Get the latest in your inbox
           </Heading>
@@ -43,8 +43,8 @@ export const LocalFooterMvp = () => (
           >
             Sign up
           </CtaLink>
-        </div>
-        <div className={styles.column2}>
+        </section>
+        <section>
           <Heading as="h3" size={3} leading="tight">
             We can do this, together
           </Heading>
@@ -60,24 +60,24 @@ export const LocalFooterMvp = () => (
           >
             Find ways to give
           </CtaLink>
-        </div>
+        </section>
         <FlexBox as="ul" className={styles.socialList}>
           <li>
             <a href="https://www.instagram.com/stanfordgiving/" className={styles.socialInstagram}>
               <SrOnlyText>Stanford Giving Instagram</SrOnlyText>
-              <SquareInstagram />
+              <SquareInstagram aria-hidden="true" />
             </a>
           </li>
           <li>
             <a href="https://www.facebook.com/stanford.university.giving/" className={styles.socialFacebook}>
               <SrOnlyText>Stanford University Giving Facebook</SrOnlyText>
-              <SquareFacebook />
+              <SquareFacebook aria-hidden="true" />
             </a>
           </li>
           <li>
             <a href="https://www.linkedin.com/school/stanford-giving/" className={styles.socialLinkedin}>
               <SrOnlyText>Stanford Giving LinkedIn</SrOnlyText>
-              <Linkedin />
+              <Linkedin aria-hidden="true" />
             </a>
           </li>
         </FlexBox>
