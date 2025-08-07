@@ -63,19 +63,19 @@ export const LocalFooterMvp = () => (
         </section>
         <FlexBox as="ul" className={styles.socialList}>
           <li>
-            <a href="https://www.instagram.com/stanfordgiving/" className={styles.socialInstagram}>
+            <a href="https://www.instagram.com/stanfordgiving/" className={styles.socialIcon}>
               <SrOnlyText>Stanford Giving Instagram</SrOnlyText>
               <SquareInstagram aria-hidden="true" />
             </a>
           </li>
           <li>
-            <a href="https://www.facebook.com/stanford.university.giving/" className={styles.socialFacebook}>
+            <a href="https://www.facebook.com/stanford.university.giving/" className={styles.socialIcon}>
               <SrOnlyText>Stanford University Giving Facebook</SrOnlyText>
               <SquareFacebook aria-hidden="true" />
             </a>
           </li>
           <li>
-            <a href="https://www.linkedin.com/school/stanford-giving/" className={styles.socialLinkedin}>
+            <a href="https://www.linkedin.com/school/stanford-giving/" className={styles.socialIcon}>
               <SrOnlyText>Stanford Giving LinkedIn</SrOnlyText>
               <Linkedin aria-hidden="true" />
             </a>
