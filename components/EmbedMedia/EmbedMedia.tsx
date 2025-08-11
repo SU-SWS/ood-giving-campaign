@@ -41,7 +41,7 @@ export const EmbedMedia = ({
   captionBgColor = 'transparent',
   isPreview,
   previewImageSrc,
-  previewAriaLabel,
+  previewAriaLabel = 'Play video',
   className,
   ...props
 }: EmbedMediaProps) => {

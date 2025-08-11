@@ -2,7 +2,7 @@ import { storyblokEditable, type SbBlokData, type ISbStoryData } from '@storyblo
 import { CreateBloks } from '@/components/CreateBloks';
 import { CreateStories } from '@/components/CreateStories';
 import { Container } from '@/components/Container';
-import { SocialSharing } from '@/components/SocialSharing';
+import { SocialSharing } from '@/components/SocialMedia';
 import { StoryHeroMvp, type StoryHeroMvpProps } from '@/components/Hero';
 import { type InitiativesType, type SchoolsType, type ThemesType } from '@/utilities/taxonomyMaps';
 import { SbAboveContent } from './SbAboveContent';
