@@ -1,4 +1,4 @@
-import { storyblokEditable, type SbBlokData, type ISbStoryData } from '@storyblok/react/rsc';
+import { type SbBlokData, type ISbStoryData } from '@storyblok/react/rsc';
 import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { CreateBloks } from '@/components/CreateBloks';
 import { CreateStories } from '@/components/CreateStories';
@@ -46,13 +46,12 @@ export const SbHomepageMvp = ({
     ankle,
     mastheadPicker,
   },
-  blok,
 }: SbHomepageMvpProps) => {
   const ChangemakerCards = !!getNumBloks(changemakerCards) ? <CreateBloks blokSection={changemakerCards} /> : undefined;
   const ChangemakerCta = !!getNumBloks(changemakerCta) ? <CreateBloks blokSection={changemakerCta} /> : undefined;
 
   return (
-    <div {...storyblokEditable(blok)}>
+    <>
       <CreateStories stories={mastheadPicker} />
       <main id="main-content">
         <div>
@@ -73,6 +72,6 @@ export const SbHomepageMvp = ({
           <CreateBloks blokSection={ankle} />
         </div>
       </main>
-    </div>
+    </>
   );
 };

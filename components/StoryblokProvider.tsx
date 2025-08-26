@@ -19,7 +19,7 @@ import { SbEventBanner } from '@/components/Storyblok/SbEventBanner';
 import { SbGrid } from '@/components/Storyblok/SbGrid';
 import { SbGridAlternating } from '@/components/Storyblok/SbGridAlternating';
 import { SbFeatureMasonry } from '@/components/Storyblok/SbFeatureMasonry';
-import { SbHomepageMvp } from '@/components/Storyblok/SbHomepageMVP/SbHomepageMvp';
+import { SbHomepageMvp } from '@/components/Storyblok/SbHomepageMVP';
 import { SbHomepageThemeSection } from '@/components/Storyblok/SbHomepageThemeSection';
 import { SbImageSlider } from '@/components/Storyblok/SbImageSlider';
 import { SbInitiativeCard } from '@/components/Storyblok/SbInitiativeCard';

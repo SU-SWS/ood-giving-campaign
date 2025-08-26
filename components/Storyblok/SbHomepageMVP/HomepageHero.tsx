@@ -34,15 +34,15 @@ export const HomepageHero = ({
     <Container
       width="full"
       bgColor="black"
-      pt={8}
+      pt={9}
       mb={spacingBottom}
-      className="relative grid xl:grid-cols-2 overflow-hidden gap-50 ml-0 mr-auto"
+      className="relative grid xl:grid-cols-12 overflow-hidden gap-y-40 md:gap-y-60 lg:gap-y-80 ml-0 mr-auto"
     >
       {/* Content */}
-      <div className="max-w-prose ml-0 mr-auto">
+      <div className="pt-40 md:pt-0 xl:col-span-8 2xl:col-span-7 3xl:col-span-6 ml-0 mr-auto px-20 sm:px-30 md:px-50 lg:px-80 xl:pl-100 4xl:pl-[calc(100%-900px)]">
         {/* Heading with nested blocks */}
         {hasHeadingBloks && (
-          <AnimateInView animation="slideUp" delay={0.1} className="mb-8">
+          <AnimateInView animation="slideUp" delay={0.1} aria-hidden className="mb-8">
             <CreateBloks blokSection={heading} />
           </AnimateInView>
         )}
@@ -54,14 +54,14 @@ export const HomepageHero = ({
               wysiwyg={intro}
               textColor={imageSrc ? 'white' : 'black'}
               linkColor={imageSrc ? 'digital-red-xlight' : 'unset'}
-              className="rs-mt-4 font-semibold *:fluid-type-1 *:leading-cozy"
+              className="rs-mt-4 *:fluid-type-1 *:leading-cozy max-w-prose-wide xl:max-w-[50ch] ml-0 mr-auto *:text-pretty"
             />
           </AnimateInView>
         )}
       </div>
       {/* Background Image */}
       {imageSrc && (
-        <div className="relative aspect-[16/9]">
+        <div className="relative aspect-[16/9] ml-auto mr-0 max-w-[85%] sm:max-w-[80%] lg:max-w-[70%] xl:max-w-full xl:col-span-4 2xl:col-span-5 3xl:col-span-6">
           <picture>
             <source
               srcSet={getProcessedImage(imageSrc, '2000x1200', imageFocus)}
