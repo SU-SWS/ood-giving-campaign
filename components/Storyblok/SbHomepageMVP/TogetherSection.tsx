@@ -4,9 +4,9 @@ import { useRef } from 'react';
 import {
   m, useScroll, useTransform, useWillChange, useReducedMotion,
 } from 'framer-motion';
-import { AnimateInView } from '../Animate';
-import { Container } from '../Container';
-import { Heading, Paragraph, SrOnlyText } from '../Typography';
+import { AnimateInView } from '../../Animate';
+import { Container } from '../../Container';
+import { Heading, Paragraph, SrOnlyText } from '../../Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 
 export const TogetherSection = () => {

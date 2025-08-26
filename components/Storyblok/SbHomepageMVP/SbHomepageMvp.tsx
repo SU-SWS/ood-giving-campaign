@@ -4,8 +4,8 @@ import { CreateBloks } from '@/components/CreateBloks';
 import { CreateStories } from '@/components/CreateStories';
 import { HomepageHero } from './HomepageHero';
 import { Heading } from '@/components/Typography';
-import { TogetherSection } from '@/components/Homepage/TogetherSection';
-import { Changemaker } from '@/components/Homepage/Changemaker';
+import { TogetherSection } from '@/components/Storyblok/SbHomepageMVP/TogetherSection';
+import { Changemaker } from '@/components/Storyblok/SbHomepageMVP/Changemaker';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { type SbImageType } from '@/components/Storyblok/Storyblok.types';
 

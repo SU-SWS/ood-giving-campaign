@@ -27,23 +27,41 @@ export const HomepageHero = ({
   spacingBottom,
   isHidden,
 }: HomepageHeroProps) => {
-  if (isHidden) {
-    return null;
-  }
-
   const hasHeadingBloks = !!getNumBloks(heading);
   const hasIntroText = hasRichText(intro);
 
   return (
     <Container
       width="full"
-      mt={spacingTop}
+      bgColor="black"
+      pt={8}
       mb={spacingBottom}
-      className="relative overflow-hidden"
+      className="relative grid xl:grid-cols-2 overflow-hidden gap-50 ml-0 mr-auto"
     >
+      {/* Content */}
+      <div className="max-w-prose ml-0 mr-auto">
+        {/* Heading with nested blocks */}
+        {hasHeadingBloks && (
+          <AnimateInView animation="slideUp" delay={0.1} className="mb-8">
+            <CreateBloks blokSection={heading} />
+          </AnimateInView>
+        )}
+
+        {/* Intro Rich Text */}
+        {hasIntroText && (
+          <AnimateInView animation="slideUp" delay={0.2}>
+            <RichText
+              wysiwyg={intro}
+              textColor={imageSrc ? 'white' : 'black'}
+              linkColor={imageSrc ? 'digital-red-xlight' : 'unset'}
+              className="rs-mt-4 font-semibold *:fluid-type-1 *:leading-cozy"
+            />
+          </AnimateInView>
+        )}
+      </div>
       {/* Background Image */}
       {imageSrc && (
-        <div className="absolute inset-0 z-0">
+        <div className="relative aspect-[16/9]">
           <picture>
             <source
               srcSet={getProcessedImage(imageSrc, '2000x1200', imageFocus)}
@@ -71,35 +89,8 @@ export const HomepageHero = ({
               className="w-full h-full object-cover"
             />
           </picture>
-          {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-black/50" />
         </div>
       )}
-
-      {/* Content */}
-      <Container className="relative z-10 py-20 md:py-32 lg:py-40">
-        <div className="text-center max-w-4xl mx-auto">
-          {/* Heading with nested blocks */}
-          {hasHeadingBloks && (
-            <AnimateInView animation="slideUp" delay={0.1} className="mb-8">
-              <CreateBloks blokSection={heading} />
-            </AnimateInView>
-          )}
-
-          {/* Intro Rich Text */}
-          {hasIntroText && (
-            <AnimateInView animation="slideUp" delay={0.2} className="max-w-3xl mx-auto">
-              <RichText
-                wysiwyg={intro}
-                textColor={imageSrc ? 'white' : 'black'}
-                textAlign="center"
-                baseFontSize="big"
-                linkColor={imageSrc ? 'digital-red-xlight' : 'unset'}
-              />
-            </AnimateInView>
-          )}
-        </div>
-      </Container>
     </Container>
   );
 };
