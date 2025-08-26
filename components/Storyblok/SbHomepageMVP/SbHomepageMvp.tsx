@@ -1,8 +1,9 @@
 import { storyblokEditable, type SbBlokData, type ISbStoryData } from '@storyblok/react/rsc';
+import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { CreateBloks } from '@/components/CreateBloks';
 import { CreateStories } from '@/components/CreateStories';
+import { HomepageHero } from './HomepageHero';
 import { Heading } from '@/components/Typography';
-import { HomepageSplitHero } from '@/components/Homepage/HomepageSplitHero';
 import { TogetherSection } from '@/components/Homepage/TogetherSection';
 import { Changemaker } from '@/components/Homepage/Changemaker';
 import { getNumBloks } from '@/utilities/getNumBloks';
@@ -12,6 +13,9 @@ type SbHomepageMvpProps = {
   blok: {
     _uid: string;
     title?: string;
+    heading?: SbBlokData[];
+    intro?: StoryblokRichtext;
+    image?: SbImageType;
     content?: SbBlokData[];
     changemakerCards?: SbBlokData[];
     changemakerBgImage?: SbImageType;
@@ -28,6 +32,9 @@ type SbHomepageMvpProps = {
 export const SbHomepageMvp = ({
   blok: {
     title,
+    heading,
+    intro,
+    image,
     content,
     changemakerCards,
     changemakerBgImage: { filename: changemakerBgImageSrc, focus: changemakerBgImageFocus } = {},
@@ -50,7 +57,7 @@ export const SbHomepageMvp = ({
       <main id="main-content">
         <div>
           <Heading as="h1" srOnly>{title || 'Homepage'}</Heading>
-          <HomepageSplitHero />
+          <HomepageHero heading={heading} intro={intro} image={image} />
           <CreateBloks blokSection={content} />
           <Changemaker
             changemakerCards={ChangemakerCards}
