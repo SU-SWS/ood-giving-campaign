@@ -1,4 +1,4 @@
-import { config } from './config';
+import { siteConfig } from '@/utilities/siteConfig';
 
 /**
  * @param mediaSrc - The Storyblok URL of the asset
@@ -10,8 +10,8 @@ export const getMaskedAsset = (mediaSrc: string): string => {
     return '';
   }
 
-  const { imageService } = config;
-  const maskedUrl = mediaSrc.replace(imageService, `${config.assetCdn}a-us/`);
+  const { assetCdn, imageService } = siteConfig;
+  const maskedUrl = mediaSrc.replace(imageService, `${assetCdn}a-us/`);
 
   return maskedUrl;
 };

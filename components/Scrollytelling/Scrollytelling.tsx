@@ -10,7 +10,7 @@ import { Heading, Text, type HeadingType } from '@/components/Typography';
 import { MutedVideoLoop, VideoButton } from '@/components/Video';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { type MarginType } from '@/utilities/datasource';
-import { config } from '@/utilities/config';
+import { siteConfig } from '@/utilities/siteConfig';
 import { useVideoControl } from '@/hooks/useVideoControl';
 import * as styles from './Scrollytelling.styles';
 
@@ -70,7 +70,7 @@ export const Scrollytelling = ({
   ...props
 }: ScrollytellingProps) => {
   const windowSize = useWindowSize();
-  const isDesktop = windowSize.width >= config.breakpoints.lg;
+  const isDesktop = windowSize.width >= siteConfig.breakpoints.lg;
 
   const willChange = useWillChange();
   const contentRef = useRef<HTMLDivElement>(null);

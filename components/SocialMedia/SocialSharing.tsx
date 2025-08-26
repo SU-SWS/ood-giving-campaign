@@ -12,7 +12,7 @@ import { LinkIcon } from './LinkIcon';
 import { SocialButton } from './SocialButton';
 import { WidthBox } from '@/components/WidthBox';
 import { HeroIcon } from '@/components/HeroIcon';
-import { config } from '@/utilities/config';
+import { siteConfig } from '@/utilities/siteConfig';
 import * as styles from './SocialSharing.styles';
 
 type SocialSharingProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -34,7 +34,7 @@ export const SocialSharing = ({
   const [buttonState, setButtonState] = useState('default');
 
   const handleCopyClick = () => {
-    copy(`${config.siteUrlProd}/${slug}`);
+    copy(`${siteConfig.siteUrlProd}/${slug}`);
     setButtonState('copied');
 
     // Reset the button state after 5 seconds
@@ -43,7 +43,7 @@ export const SocialSharing = ({
     }, 5000);
   };
 
-  const safeUrl = encodeURIComponent(`${config.siteUrlProd}/${slug}`);
+  const safeUrl = encodeURIComponent(`${siteConfig.siteUrlProd}/${slug}`);
   const safeTitle = encodeURIComponent(title);
   const facebookBaseURL = 'https://www.facebook.com/sharer/sharer.php?u=';
   const twitterBaseURL = 'https://twitter.com/intent/tweet?url=';

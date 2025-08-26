@@ -1,7 +1,7 @@
 import { type ISbStoryData } from '@storyblok/react/rsc';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
 import { type SbLinkType } from '@/components/Storyblok/Storyblok.types';
-import { config } from './config';
+import { siteConfig } from '@/utilities/siteConfig';
 import { sbStripSlugURL } from './sbStripSlugUrl';
 import { getFirstImage } from './getFirstImage';
 
@@ -69,7 +69,7 @@ export const getPageMetadata = ({ story, sbConfig, slug }: PageMetadataProps) =>
     siteUrlProd,
     siteTitle,
     siteDescription,
-  } = config;
+  } = siteConfig;
 
   // Canonical URL.
   // Canonical priority: Story Canonical URL > Config Site URL + Slug

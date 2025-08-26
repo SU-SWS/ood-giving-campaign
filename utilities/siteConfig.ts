@@ -1,7 +1,7 @@
 /**
  * Global variables for this project.
  */
-export const config = {
+export const siteConfig = {
   siteUrlProd: 'https://momentum.stanford.edu',
   siteTitle: 'Stanford Momentum',
   siteDescription: 'Stories of Stanford’s impact, fueled by philanthropy.',
