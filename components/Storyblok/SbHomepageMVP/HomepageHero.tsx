@@ -44,7 +44,9 @@ export const HomepageHero = ({
       >
         {/* Content */}
         <div className={styles.contentWrapper}>
-          <CreateBloks blokSection={heading} />
+          <div aria-hidden="true">
+            <CreateBloks blokSection={heading} />
+          </div>
           {hasIntroText && (
             <AnimateInView animation="slideUp" delay={0.3}>
               <RichText
