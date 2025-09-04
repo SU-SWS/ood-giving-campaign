@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import 'decanter/src/css/index.css';
 
 @theme {
   --breakpoint-tf-sm: 658px;
