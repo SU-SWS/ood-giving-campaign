@@ -1,4 +1,6 @@
 @import "decanter/src/css/index.css";
+@source "../components";
+@source "../utilities";
 
 @theme {
   --breakpoint-tf-sm: 658px;
