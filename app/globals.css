@@ -1,7 +1,4 @@
 @import 'decanter';
-@source not '../node_modules';
-@source '../components';
-@source '../utilities';
 
 @theme {
   --breakpoint-tf-sm: 658px;
