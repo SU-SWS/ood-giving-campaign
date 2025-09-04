@@ -1,6 +1,32 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'decanter';
+
+@theme {
+  --breakpoint-tf-sm: 658px;
+
+  --color-aquamarine: #78DBE4;
+  --color-flamingo: #ECC7CD;
+  --color-fuchsia: #E31C79;
+  --color-lavender: #C5B4E3;
+  --color-lime: #DBE442;
+  --color-periwinkle: #485CC7;
+  --color-robins-egg: #77C5D5;
+  --color-sapphire: #005776;
+  --color-slate: #4E4B48;
+
+  --color-gc-black: #17171A;
+  --color-gc-black-10: #F3F3F9; /* For taxonomy chips */
+  --color-gc-black-40: #C4C4C7;
+  --color-gc-black-80: #5A5A68;
+  --color-gc-black-90: #393945;
+
+  --font-druk: var(--font-druk);
+  --font-druk-wide: var(--font-druk-wide);
+  --font-sans: var(--font-source-sans);
+  --font-serif: var(--font-source-serif);
+  --font-stanford: var(--font-stanford);
+
+  --leading-druk: 0.9;
+}
 
 .slick-track, .slick-list {
   @apply w-full;

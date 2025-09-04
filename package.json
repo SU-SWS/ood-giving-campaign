@@ -38,6 +38,7 @@
     "@typeform/embed-react": "^3.17.0",
     "cnbuilder": "^3.1.0",
     "cookies-next": "^4.2.1",
+    "decanter": "github:SU-SWS/decanter#v8",
     "framer-motion": "^11.11.9",
     "next": "^14.2.25",
     "react-loading-skeleton": "^3.5.0",
@@ -59,13 +60,12 @@
     "@types/react-dom": "^18.3.0",
     "@types/react-slick": "^0.23.13",
     "autoprefixer": "^10.4.20",
-    "decanter": "^7.4.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.25",
     "netlify-cli": "^17.37.1",
     "netlify-plugin-vault-variables": "^3.0.0",
-    "postcss": "^8.5.3",
-    "tailwindcss": "^3.4.17",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.13",
     "typescript": "^5.8.2"
   },
   "engines": {
