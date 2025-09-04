@@ -18,7 +18,7 @@ import {
 import { type SbTabItemType } from '@/components/Storyblok/Storyblok.types';
 import { hasRichText } from '@/utilities/hasRichText';
 import { slugify } from '@/utilities/slugify';
-import { config } from '@/utilities/config';
+import { siteConfig } from '@/utilities/siteConfig';
 import * as styles from './Tabs.styles';
 
 type TabsProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -103,7 +103,7 @@ export const Tabs = ({
   const isKeyboardUser = useKeyboard();
 
   // We only render the component as tabs on SM breakpoint and above
-  const isRenderTabs = useMediaQuery(`(min-width: ${config.breakpoints.sm}px)`);
+  const isRenderTabs = useMediaQuery(`(min-width: ${siteConfig.breakpoints.sm}px)`);
 
   /**
    * We need a unique id for each tab group when there are multiple

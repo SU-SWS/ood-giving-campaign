@@ -1,8 +1,7 @@
 /**
  * Momentum custom base styles extending Decanter 7 base
  */
-
-module.exports = function () {
+export const gcBase = () => {
   return function ({ addBase, config }) {
     addBase({
       html: {

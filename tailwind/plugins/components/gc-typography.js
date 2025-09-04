@@ -1,7 +1,7 @@
 /**
  * Momentum specific typography styles
  */
-module.exports = function () {
+export const gcTypography = () => {
   return function ({ addComponents, theme }) {
     const components = {
       '.overview': {

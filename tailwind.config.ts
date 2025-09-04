@@ -1,12 +1,23 @@
 /** @type {import('tailwindcss').Config} */
 
 import type { Config } from 'tailwindcss';
+import decanter from 'decanter';
+import tailwindContainerQueries from '@tailwindcss/container-queries';
 
-const path = require('path');
-const decanter = require('decanter');
+// Base imports
+import { gcBase } from './tailwind/plugins/base/gc-base';
 
-// Path to custom Tailwind plugins for Directory
-const dir = path.resolve(__dirname, 'tailwind/plugins');
+// Theme imports
+import { gcColors } from './tailwind/plugins/theme/gc-colors';
+import { gcScreens } from './tailwind/plugins/theme/gc-screens';
+import { gcFontFamily } from './tailwind/plugins/theme/gc-fontFamily';
+import { gcContainers } from './tailwind/plugins/theme/gc-containers';
+import { gcKeyframes } from './tailwind/plugins/theme/gc-keyframes';
+import { gcLineHeight } from './tailwind/plugins/theme/gc-lineHeight';
+
+// Component imports
+import { gcTypography } from './tailwind/plugins/components/gc-typography';
+import { gcTextShadow } from './tailwind/plugins/components/gc-text-shadow';
 
 export default {
   presets: [
@@ -18,20 +29,20 @@ export default {
     './utilities/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
-    containers: require(`${dir}/theme/gc-containers.js`)(),
+    containers: gcContainers(),
     // Momentum themes extending our Decanter ones
     extend: {
-      colors: require(`${dir}/theme/gc-colors.js`)(),
-      fontFamily: require(`${dir}/theme/gc-fontFamily.js`)(),
-      lineHeight: require(`${dir}/theme/gc-lineHeight.js`)(),
-      keyframes: require(`${dir}/theme/gc-keyframes.js`)(),
-      screens: require(`${dir}/theme/gc-screens.js`)(),
+      colors: gcColors(),
+      fontFamily: gcFontFamily(),
+      lineHeight: gcLineHeight(),
+      keyframes: gcKeyframes(),
+      screens: gcScreens(),
     },
   },
   plugins: [
-    require('@tailwindcss/container-queries'),
-    require(`${dir}/base/gc-base.js`)(),
-    require(`${dir}/components/gc-typography.js`)(),
-    require(`${dir}/components/gc-text-shadow.js`)(),
+    tailwindContainerQueries,
+    gcBase(),
+    gcTypography(),
+    gcTextShadow(),
   ],
 } satisfies Config;

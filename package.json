@@ -18,13 +18,11 @@
     "not dead"
   ],
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
+    "dev:https": "next dev --experimental-https --port 3010 --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint --max-warnings 0",
-    "hps": "local-ssl-proxy --cert ./dev/localhost.pem --key ./dev/localhost-key.pem",
-    "https-proxy-start": "local-ssl-proxy --source 3010 --target 3000 --cert ./dev/localhost.pem --key ./dev/localhost-key.pem",
-    "proxy": "npm run https-proxy-start",
     "vault": "netlify-plugin-vault-variables",
     "vault:local": "NODE_ENV=development netlify-plugin-vault-variables",
     "lint:fix": "next lint --fix",
@@ -61,18 +59,16 @@
     "@types/react-dom": "^18.3.0",
     "@types/react-slick": "^0.23.13",
     "autoprefixer": "^10.4.20",
-    "decanter": "^7.3.1",
+    "decanter": "^7.4.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.25",
     "netlify-cli": "^17.37.1",
     "netlify-plugin-vault-variables": "^3.0.0",
     "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
     "typescript": "^5.8.2"
   },
-  "optionalDependencies": {
-    "local-ssl-proxy": "^2.0.5"
-  },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=22.0.0"
   }
 }

@@ -1,7 +1,7 @@
 /**
  * Text shadow styles
  */
-module.exports = function () {
+export const gcTextShadow = () => {
   return function ({ addComponents }) {
     const components = {
       '.text-shadow-sm': {

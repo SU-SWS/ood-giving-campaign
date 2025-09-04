@@ -11,7 +11,7 @@ import {
   Heading, Text, type HeadingType,
 } from '@/components/Typography';
 import { getProcessedImage } from '@/utilities/getProcessedImage';
-import { config } from '@/utilities/config';
+import { siteConfig } from '@/utilities/siteConfig';
 import { type SbTypographyProps } from '@/components/Storyblok/Storyblok.types';
 import * as styles from './VerticalPoster.styles';
 
@@ -72,7 +72,7 @@ export const VerticalPoster = ({
   });
 
   let i = 1;
-  const isDesktop = useMediaQuery(`(min-width: ${config.breakpoints.lg}px)`);
+  const isDesktop = useMediaQuery(`(min-width: ${siteConfig.breakpoints.lg}px)`);
 
   return (
     <>

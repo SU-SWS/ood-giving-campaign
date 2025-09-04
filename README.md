@@ -37,18 +37,18 @@ https://github.com/SU-SWS/netlify-plugin-vault-variables/#environment-variable-s
 Using the Storyblok Editor on localhost
 ---
 
-Currently Storyblok v2 doesn't allow accessing the environment with http, so to make it work, https has to be added to localhost. For your convenience we have created the certificate and key but your system may not trust this self signed cert. Once you have localhost up and running you can visit the url in the browser and proceed past the warning or you can add the certificate to your trusted list.
-
-OSX:
-https://readwriteexercise.com/posts/trust-self-signed-certificates-macos/
+Currently Storyblok v2 doesn't allow accessing the environment with http, so to make it work, https has to be added to localhost.
 
 To start:
 
 1. Enter `nvm use` in the terminal to ensure that you are using the node version specified in .nvmrc.
 
-2. Do `npm run dev` in the same terminal. You'll be able to view the development build in your browser at http://localhost:3000/
+2. Do `npm run dev:https` in the same terminal. You'll be able to view the development build in your browser at https://localhost:3010/
 
-3. In another terminal, do `npm run https-proxy-start`
+3. Follow any prompts that may be required to install the self signed certificate. Once installed and running open the browser and go to https://localhost:3010. You may need to click past a browser warning to proceed to view the site.
+
+   - If you are using Safari, you may need to go to `Safari > Preferences > Privacy > Manage Website Data` and remove the localhost entry before proceeding.
+   - If you are using Chrome, you may need to go to `chrome://settings/certificates` and import the certificate into the "Authorities" tab.
 
 4. After that, you can go back to Storyblok and select the https://localhost:3010 URL in the visual editor. When you're doing this for the first time, you'll have to click the "Preview" button to pop the preview into its own tab out of the iframe and click past the browser warning to proceed to view the site.
 

@@ -35,7 +35,7 @@ type SbStoryImageProps = {
 
 export const SbStoryImage = ({
   blok: {
-    image: { filename, focus } = {},
+    image: { filename, focus, alt: imageAlt } = {},
     alt,
     isLoadingEager,
     isParallax,
@@ -72,7 +72,7 @@ export const SbStoryImage = ({
       {...storyblokEditable(blok)}
       imageSrc={filename}
       imageFocus={focus}
-      alt={alt}
+      alt={alt || imageAlt}
       isLoadingEager={isLoadingEager}
       isParallax={isParallax}
       caption={Caption}

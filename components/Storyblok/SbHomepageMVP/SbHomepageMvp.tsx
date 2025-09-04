@@ -1,10 +1,10 @@
-import { storyblokEditable, type SbBlokData, type ISbStoryData } from '@storyblok/react/rsc';
+import { type SbBlokData, type ISbStoryData } from '@storyblok/react/rsc';
+import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
 import { CreateBloks } from '@/components/CreateBloks';
 import { CreateStories } from '@/components/CreateStories';
-import { Heading } from '@/components/Typography';
-import { HomepageSplitHero } from '@/components/Homepage/HomepageSplitHero';
-import { TogetherSection } from '@/components/Homepage/TogetherSection';
-import { Changemaker } from '@/components/Homepage/Changemaker';
+import { HomepageHero, type HeadingBlokType } from './HomepageHero';
+import { TogetherSection } from '@/components/Storyblok/SbHomepageMVP/TogetherSection';
+import { Changemaker } from '@/components/Storyblok/SbHomepageMVP/Changemaker';
 import { getNumBloks } from '@/utilities/getNumBloks';
 import { type SbImageType } from '@/components/Storyblok/Storyblok.types';
 
@@ -12,6 +12,9 @@ type SbHomepageMvpProps = {
   blok: {
     _uid: string;
     title?: string;
+    heading?: HeadingBlokType[];
+    intro?: StoryblokRichtext;
+    image?: SbBlokData[];
     content?: SbBlokData[];
     changemakerCards?: SbBlokData[];
     changemakerBgImage?: SbImageType;
@@ -27,7 +30,9 @@ type SbHomepageMvpProps = {
 
 export const SbHomepageMvp = ({
   blok: {
-    title,
+    heading,
+    intro,
+    image,
     content,
     changemakerCards,
     changemakerBgImage: { filename: changemakerBgImageSrc, focus: changemakerBgImageFocus } = {},
@@ -39,33 +44,29 @@ export const SbHomepageMvp = ({
     ankle,
     mastheadPicker,
   },
-  blok,
 }: SbHomepageMvpProps) => {
   const ChangemakerCards = !!getNumBloks(changemakerCards) ? <CreateBloks blokSection={changemakerCards} /> : undefined;
   const ChangemakerCta = !!getNumBloks(changemakerCta) ? <CreateBloks blokSection={changemakerCta} /> : undefined;
 
   return (
-    <div {...storyblokEditable(blok)}>
+    <>
       <CreateStories stories={mastheadPicker} />
       <main id="main-content">
-        <div>
-          <Heading as="h1" srOnly>{title || 'Homepage'}</Heading>
-          <HomepageSplitHero />
-          <CreateBloks blokSection={content} />
-          <Changemaker
-            changemakerCards={ChangemakerCards}
-            changemakerBgImageSrc={changemakerBgImageSrc}
-            changemakerBgImageFocus={changemakerBgImageFocus}
-            changemakerHeading1={changemakerHeading1}
-            changemakerHeading2={changemakerHeading2}
-            changemakerHeading3={changemakerHeading3}
-            changemakerIntro={changemakerIntro}
-            changemakerCta={ChangemakerCta}
-          />
-          <TogetherSection />
-          <CreateBloks blokSection={ankle} />
-        </div>
+        <HomepageHero heading={heading} intro={intro} image={image} />
+        <CreateBloks blokSection={content} />
+        <Changemaker
+          changemakerCards={ChangemakerCards}
+          changemakerBgImageSrc={changemakerBgImageSrc}
+          changemakerBgImageFocus={changemakerBgImageFocus}
+          changemakerHeading1={changemakerHeading1}
+          changemakerHeading2={changemakerHeading2}
+          changemakerHeading3={changemakerHeading3}
+          changemakerIntro={changemakerIntro}
+          changemakerCta={ChangemakerCta}
+        />
+        <TogetherSection />
+        <CreateBloks blokSection={ankle} />
       </main>
-    </div>
+    </>
   );
 };
