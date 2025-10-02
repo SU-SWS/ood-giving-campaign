@@ -10,7 +10,7 @@ export type TabItemHeadingSizeType = keyof typeof headingSizes;
 export const root = 'relative cc break-words scroll-mt-80';
 export const tabGroup = 'hidden sm:grid grid-cols-12';
 export const tabList = (isKeyboardUser: boolean) => cnb('flex flex-col col-span-4', isKeyboardUser && 'focus-within:outline focus-within:outline-digital-blue');
-export const tabItem = (isLightText: boolean) => cnb('relative data-[hover]:underline data-[hover]:underline-offset-4 data-[selected]:outline-none text-left lg:pl-20 pr-30 xl:pl-26 xl:pr-40 py-20 lg:py-26 type-1 lg:text-[2.7rem] xl:text-[3.4rem] font-normal data-[selected]:underline data-[selected]:underline-offset-4 leading-display transition-colors',
+export const tabItem = (isLightText: boolean) => cnb('relative data-[hover]:underline data-[hover]:underline-offset-4 data-[selected]:outline-none text-left lg:pl-20 pr-30 xl:pl-26 xl:pr-40 py-20 lg:py-26 type-1 lg:text-27 xl:text-34 font-normal data-[selected]:underline data-[selected]:underline-offset-4 leading-display transition-colors',
   isLightText ?
     'text-black-30 data-[selected]:text-white hover:text-white'
     : 'text-black/60 data-[selected]:text-gc-black hover:text-gc-black',

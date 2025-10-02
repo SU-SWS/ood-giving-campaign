@@ -46,8 +46,8 @@ export const body = (isHorizontal: boolean, isListView: boolean) => cnb('max-w-p
 });
 
 export const taxonomy = (isHorizontal: boolean, isListView: boolean) => cnb('gap-10 list-unstyled leading-display', {
-  'rs-mt-2 xl:rs-mt-4 ml-32 sm:ml-38 md:ml-44 xl:ml-[5.4rem] 2xl:ml-[5.6rem]': isHorizontal && !isListView,
-  'mt-18 lg:mt-36 2xl:mt-38 ml-32 xl:ml-[5.6rem]': isListView,
+  'rs-mt-2 xl:rs-mt-4 ml-32 sm:ml-38 md:ml-44 xl:ml-54 2xl:ml-56': isHorizontal && !isListView,
+  'mt-18 lg:mt-36 2xl:mt-38 ml-32 xl:ml-56': isListView,
   'rs-mt-0 mr-20 ml-24 xl:ml-39 @200:ml-24 @xs:ml-39': !isHorizontal && !isListView,
 });
 export const taxonomyItem = 'inline-block mb-0';
