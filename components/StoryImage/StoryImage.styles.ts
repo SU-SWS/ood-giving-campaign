@@ -76,6 +76,6 @@ export const imageWrapper = (isFullHeight: boolean, isParallax: boolean) => cnb(
 export const image = (isParallax: boolean) => cnb('w-full object-cover', isParallax ? 'h-[calc(100%_+_12rem)] -mt-60' : 'h-full');
 export const captionWrapper = 'mt-0';
 export const caption = (captionBgColor: CaptionBgColorType) => cnb(
-  '*:*:leading-display max-w-prose-wide first:*:*:mt-0',
+  '*:*:leading-display max-w-prose-wide *:first:*:mt-0',
   !!captionBgColor && captionBgColor !== 'transparent' ? 'px-1em py-08em' : 'pt-06em',
 );

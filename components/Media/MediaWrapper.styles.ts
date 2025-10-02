@@ -16,12 +16,12 @@ export const figure = (isFullHeight: boolean, captionBgColor: CaptionBgColorType
 );
 export const mediaWrapper = (isFullHeight: boolean, isParallax: boolean) => cnb('relative',
   isFullHeight ? 'h-full' : '',
-  isParallax ? 'overflow-hidden' : '',
+  isParallax ? 'overflow-hidden *:size-full' : '',
 );
 
 // Caption component styles
 export const captionWrapper = 'mt-0 gc-caption';
 export const caption = (captionBgColor: CaptionBgColorType) => cnb(
-  '*:*:leading-display *:*:xl:leading-snug max-w-prose-wide first:*:*:mt-0',
+  '*:*:leading-display *:*:xl:leading-snug max-w-prose-wide *:first:*:mt-0',
   !!captionBgColor && captionBgColor !== 'transparent' ? 'px-1em py-08em' : 'pt-06em',
 );

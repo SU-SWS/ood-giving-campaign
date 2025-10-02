@@ -49,7 +49,7 @@ export const ImageHotspot = ({
   : undefined;
 
   const Caption = hasRichText(caption)
-  ? <RichText wysiwyg={caption} textColor="white" linkColor="digital-red-xlight" className="first:*:mt-0 *:leading-display" />
+  ? <RichText wysiwyg={caption} textColor="white" linkColor="digital-red-xlight" className="*:first:mt-0 *:leading-display" />
   : undefined;
 
   return (

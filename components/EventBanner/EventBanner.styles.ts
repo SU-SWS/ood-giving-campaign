@@ -3,7 +3,7 @@ import { type EventBannerHeadingSizeType } from './EventBanner';
 
 export const root = 'relative overflow-hidden';
 export const wrapper = 'relative z-10';
-export const contentWrapper = 'sm:flex-row gap-26 sm:gap-30 md:gap-36 xl:gap-60 2xl:gap-95 rs-mt-8 first:*:shrink-0 first:*:grow-0';
+export const contentWrapper = 'sm:flex-row gap-26 sm:gap-30 md:gap-36 xl:gap-60 2xl:gap-95 rs-mt-8 *:first:shrink-0 *:first:grow-0';
 
 export const dateWrapper = 'sm:flex-col shrink-0 gap-26 md:gap-36 sm:w-60 md:w-70 lg:w-90 xl:w-100';
 export const time = 'flex flex-col items-center';

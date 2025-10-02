@@ -63,4 +63,4 @@ export const children = (addContentSpacing: boolean) => cnb(
 );
 
 export const bgVideoButtonWrapper = 'w-fit sticky ml-auto bottom-0 right-20 sm:right-30 md:right-50 lg:right-80 xl:right-100 4xl:right-[calc((100%-1800px)/2)] z-40 pb-20 md:pb-36';
-export const caption = 'relative *:*:leading-display first:*:*:mt-0 gc-caption mt-06em *:max-w-prose-wide ml-0';
+export const caption = 'relative *:*:leading-display *:first:*:mt-0 gc-caption mt-06em *:max-w-prose-wide ml-0';

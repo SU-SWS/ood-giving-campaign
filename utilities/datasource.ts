@@ -152,50 +152,32 @@ export const gradientVias = {
 export type GradientViaType = keyof typeof gradientVias;
 
 export const imageAspectRatios = {
-  '1x1': 'aspect-w-1 aspect-h-1',
-  '1x2': 'aspect-w-1 aspect-h-2',
-  '2x1': 'aspect-w-2 aspect-h-1',
-  '2x3': 'aspect-w-2 aspect-h-3',
-  '3x2': 'aspect-w-3 aspect-h-2',
-  '3x4': 'aspect-w-3 aspect-h-4',
-  '4x3': 'aspect-w-4 aspect-h-3',
-  '5x8': 'aspect-w-5 aspect-h-8',
-  '8x5': 'aspect-w-8 aspect-h-5',
-  '9x16': 'aspect-w-9 aspect-h-16',
-  '16x9': 'aspect-w-16 aspect-h-9',
+  '1x1': 'aspect-square',
+  '1x2': 'aspect-[1/2]',
+  '2x1': 'aspect-[2]',
+  '2x3': 'aspect-[2/3]',
+  '3x2': 'aspect-[3/2]',
+  '3x4': 'aspect-[3/4]',
+  '4x3': 'aspect-[4/3]',
+  '5x8': 'aspect-[5/8]',
+  '8x5': 'aspect-[8/5]',
+  '9x16': 'aspect-[9/16]',
+  '16x9': 'aspect-[16/9]',
   free: '',
 };
 export type ImageAspectRatioType = keyof typeof imageAspectRatios;
 
-// TODO: We might be not need this
-export const storyHeroAspectRatios = {
-  '1x1': 'aspect-w-1 aspect-h-1',
-  '2x1': 'aspect-w-2 aspect-h-1',
-  '5x8': 'aspect-w-5 aspect-h-8',
-  '16x9': 'aspect-w-16 aspect-h-9',
-  'free': '',
-};
-export type StoryHeroAspectRatioType = keyof typeof storyHeroAspectRatios;
-
-export const storyHeroAspectRatiosDesktop = {
-  '1x1': 'lg:aspect-w-1 lg:aspect-h-1',
-  '2x1': 'lg:aspect-w-2 lg:aspect-h-1',
-  '5x8': 'lg:aspect-w-5 lg:aspect-h-8',
-  '16x9': 'lg:aspect-w-16 lg:aspect-h-9',
-  free: '',
-};
-
 export const mediaAspectRatios = {
-  '1x1': 'aspect-w-1 aspect-h-1',
-  '3x1': 'aspect-w-3 aspect-h-1',
-  '3x2': 'aspect-w-3 aspect-h-2',
-  '4x1': 'aspect-w-4 aspect-h-1',
-  '4x2.77': 'aspect-w-4 aspect-h-[2.77]', // Videos shot by agency
-  '4x3': 'aspect-w-4 aspect-h-3',
-  '4x5': 'aspect-w-4 aspect-h-5',
-  '5x2': 'aspect-w-5 aspect-h-2',
-  '9x16': 'aspect-w-9 aspect-h-16',
-  '16x9': 'aspect-w-16 aspect-h-9',
+  '1x1': 'aspect-square',
+  '3x1': 'aspect-[3]',
+  '3x2': 'aspect-[3/2]',
+  '4x1': 'aspect-[4]',
+  '4x2.77': 'aspect-[4/2.77]', // Videos shot by agency
+  '4x3': 'aspect-[4/3]',
+  '4x5': 'aspect-[4/5]',
+  '5x2': 'aspect-[5/2]',
+  '9x16': 'aspect-[9/16]',
+  '16x9': 'aspect-[16/9]',
 };
 export type MediaAspectRatioType = keyof typeof mediaAspectRatios;
 
