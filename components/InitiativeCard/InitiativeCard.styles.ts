@@ -11,8 +11,8 @@ export const topWrapper = (isHorizontal: boolean) => cnb('relative @320:text-18 
   'xl:basis-1/2': isHorizontal,
 });
 
-export const imageWrapper = (imageAspectRatio: InitiativeCardImageAspectRatio) => cnb('bg-gc-black aspect-w-1 aspect-h-1 size-full overflow-hidden', {
-  'sm:aspect-w-3 sm:aspect-h-4': imageAspectRatio === '3x4',
+export const imageWrapper = (imageAspectRatio: InitiativeCardImageAspectRatio) => cnb('bg-gc-black aspect-square size-full overflow-hidden', {
+  'sm:aspect-[3/4]': imageAspectRatio === '3x4',
 });
 
 export const image = 'object-cover backface-hidden size-full group-hocus-within:scale-105 transition-transform will-change-transform';

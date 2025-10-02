@@ -57,7 +57,7 @@ export const caption = (imageOnLeft: boolean) => cnb('relative mt-06em gc-captio
 );
 
 // Parallax enabled styles
-export const parallaxWrapper = 'relative aspect-w-3 aspect-h-4';
+export const parallaxWrapper = 'relative aspect-[3/4]';
 export const parallaxBgImage = (prefersReducedMotion: boolean) => cnb('relative w-full object-cover', {
   'lg:h-[120%] lg:-mt-[10%]': !prefersReducedMotion, // No background image parallax for < LG
 });

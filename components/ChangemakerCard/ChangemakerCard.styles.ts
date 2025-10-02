@@ -10,13 +10,13 @@ export const root = (isHorizontal: boolean) => cnb('relative group @container w-
   'sm:max-w-300 lg:max-w-[35rem]': !isHorizontal,
   'sm:max-w-700 xl:max-w-1000 2xl:max-w-1200': isHorizontal,
 });
-export const cardInner = (isHorizontal: boolean) => cnb('relative size-full aspect-w-1 aspect-h-2', {
-  'sm:aspect-w-3 sm:aspect-h-2': isHorizontal,
+export const cardInner = (isHorizontal: boolean) => cnb('relative size-full aspect-[1/2]', {
+  'sm:aspect-[3/2]': isHorizontal,
 });
 
 export const cardFront = 'absolute size-full top-0 left-0';
-export const imageWrapper = (isHorizontal: boolean) => cnb('overflow-hidden aspect-w-1 aspect-h-2', {
-  'sm:aspect-w-3 sm:aspect-h-2': isHorizontal,
+export const imageWrapper = (isHorizontal: boolean) => cnb('overflow-hidden aspect-[1/2]', {
+  'sm:aspect-[3/2]': isHorizontal,
 });
 export const image = 'w-full h-full object-cover group-hocus-within:scale-105 transition-transform will-change-transform';
 export const overlay = 'absolute top-0 left-0 size-full bg-gradient-to-t via-black-true/20 from-black-true/90';

@@ -3,6 +3,23 @@
 @theme {
   --breakpoint-tf-sm: 658px;
 
+  /* Container query breakpoints */
+  --container-200: 20rem;
+  --container-250: 25rem;
+  --container-280: 28rem;
+  --container-320: 32rem;
+  --container-xs: 36rem;
+  --container-sm: 38.4rem;
+  --container-md: 44.8rem;
+  --container-lg: 51.2rem;
+  --container-xl: 57.6rem;
+  --container-2xl: 67.2rem;
+  --container-3xl: 76.8rem;
+  --container-4xl: 89.6rem;
+  --container-5xl: 102.4rem;
+  --container-6xl: 115.2rem;
+  --container-7xl: 128rem;
+
   --color-aquamarine: #78DBE4;
   --color-flamingo: #ECC7CD;
   --color-fuchsia: #E31C79;
