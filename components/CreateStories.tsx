@@ -1,4 +1,4 @@
-import { StoryblokComponent, type ISbStoryData } from '@storyblok/react/rsc';
+import { StoryblokServerComponent, type ISbStoryData } from '@storyblok/react/rsc';
 
 /**
  * Use this component with the references (or the multiple/single option) field type
@@ -18,7 +18,7 @@ export const CreateStories = ({ stories, ...props }: CreateStoriesProps) => {
     try {
       return stories.map((story) => {
         currentStory = story;
-        return <StoryblokComponent key={story.content._uid} blok={story.content} {...props} />;
+        return <StoryblokServerComponent key={story.content._uid} blok={story.content} {...props} />;
       });
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {

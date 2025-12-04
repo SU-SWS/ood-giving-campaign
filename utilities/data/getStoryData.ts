@@ -3,13 +3,24 @@ import type { ISbStoriesParams, ISbResult } from '@storyblok/react';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { getStoryblokApi, StoryblokClient } from '@storyblok/react/rsc';
 import { isProduction } from '../getActiveEnv';
-import { unstable_cache } from 'next/cache';
 
 /**
  * Get the data out of the Storyblok API for the page.
+ *
+ * **Version Strategy (Next.js 16)**:
+ * - Production builds: Always fetches `version: 'published'` content
+ * - Visual editor: Uses `version: 'draft'` when isEditor=true
+ * - Separate dev/prod Storyblok spaces ensure correct content per environment
+ *
+ * **Caching Strategy**:
+ * - Relies on Next.js 16's automatic fetch caching with cacheComponents enabled
+ * - Storyblok SDK uses built-in rate limiting (6 RPS) and fetch-based caching
+ * - No explicit 'use cache' due to large response sizes causing memory issues
+ * - Static generation with on-demand revalidation via webhooks
  */
-export const getStoryData =
-  async ({ path, isEditor = false }: getStoryDataProps): Promise<ISbResult | { data: 404 }> => {
+export async function getStoryData(
+  { path, isEditor = false }: getStoryDataProps
+): Promise<ISbResult | { data: 404 }> {
     const storyblokApi: StoryblokClient = getStoryblokApi();
     const isProd = isProduction();
 
@@ -32,15 +43,4 @@ export const getStoryData =
       }
       throw error;
     }
-  };
-
-/**
- * Get the data out of the Storyblok API for the page through the cache.
- */
-export const getStoryDataCached = unstable_cache(
-  getStoryData,
-  [],
-  {
-    tags: ['story', 'page'],
-  },
-);
+}

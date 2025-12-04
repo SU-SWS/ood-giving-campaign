@@ -123,6 +123,8 @@ export default function StoryblokProvider({ children, isEditor = false }: Provid
     use: [apiPlugin],
     apiOptions: {
       region: 'us',
+      rateLimit: 6,
+      maxRetries: 5,
     },
     components,
     enableFallbackComponent: true,

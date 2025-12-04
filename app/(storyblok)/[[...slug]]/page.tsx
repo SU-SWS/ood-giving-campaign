@@ -7,8 +7,8 @@ import { resolveRelations } from '@/utilities/resolveRelations';
 import { getPageMetadata } from '@/utilities/getPageMetadata';
 import { ComponentNotFound } from '@/components/Storyblok/ComponentNotFound';
 import { notFound } from 'next/navigation';
-import { getStoryDataCached, getConfigBlokCached, getAllStoriesCached } from '@/utilities/data/';
-import { getStoryListCached } from '@/utilities/data/getStoryList';
+import { getStoryData, getConfigBlok, getAllStories } from '@/utilities/data/';
+import { getStoryList } from '@/utilities/data/getStoryList';
 import { isProduction } from '@/utilities/getActiveEnv';
 import { getSlugPrefix } from '@/utilities/getSlugPrefix';
 
@@ -25,16 +25,6 @@ const bridgeOptions = {
   resolveRelations,
   resolveLinks: 'story',
 };
-
-// Force the 404 page for anything that isn't statically generated.
-export const dynamicParams = false;
-
-// Cache for one year.
-// I have no concrete evidence but this seems to work best with Netlify's edge caching over caching for infinity.
-export const revalidate = 31536000;
-
-// Force static rendering.
-export const dynamic = 'force-static';
 
 /**
  * Init on the server.
@@ -59,7 +49,7 @@ export async function generateStaticParams() {
   const isProd = isProduction();
 
   // Get all the stories.
-  let stories = await getAllStoriesCached();
+  let stories = await getAllStories();
   // Filter out folders.
   stories = stories.filter((link) => link.is_folder === false);
   // Filter out test content by filtering out the `test` folder.
@@ -102,10 +92,10 @@ export async function generateMetadata({ params }: ParamsType): Promise<Metadata
   const slugPrefix = getSlugPrefix();
   const slugPath = slug ? slug.join('/') : '';
   const prefixedSlug = slugPrefix + '/' + slugPath;
-  const config = await getConfigBlokCached();
+  const config = await getConfigBlok();
 
   // Get the story data.
-  const { data: { story } } = await getStoryDataCached({ path: prefixedSlug });
+  const { data: { story } } = await getStoryData({ path: prefixedSlug });
 
   // Generate the metadata.
   const meta = getPageMetadata({ story, sbConfig: config, slug: slugPath });
@@ -125,7 +115,7 @@ export default async function Page({ params }: ParamsType) {
   const prefixedSlug = getSlugPrefix() + '/' + slugPath;
 
   // Get data out of the API.
-  const { data } = await getStoryDataCached({ path: prefixedSlug });
+  const { data } = await getStoryData({ path: prefixedSlug });
 
   // Define an additional data container to pass through server data fetch to client components.
   // as everything below the `StoryblokStory` is a client side component.
@@ -133,7 +123,7 @@ export default async function Page({ params }: ParamsType) {
 
   // Get additional data for those stories that need it.
   if (data?.story?.content?.component === 'sbStoryFilterPage') {
-    extra = await getStoryListCached({ path: prefixedSlug });
+    extra = await getStoryList({ path: prefixedSlug });
   }
 
   // Failed to fetch from API because story slug was not found.

@@ -2,10 +2,18 @@ import type { getStoryDataProps, FilterQuery } from '@/utilities/data/types';
 import { ISbStoriesParams, getStoryblokApi, StoryblokClient } from '@storyblok/react/rsc';
 import { isProduction } from '../getActiveEnv';
 import { getSlugPrefix } from '../getSlugPrefix';
-import { unstable_cache } from 'next/cache';
 
 /**
  * Get a list of stories that are of component sbStoryMvp in reverse chronological order.
+ *
+ * **Version Strategy (Next.js 16)**:
+ * - Always fetches `version: 'published'` or 'draft' based on environment
+ * - Filters stories by component type and optional taxonomy filters
+ *
+ * **Caching Strategy**:
+ * - Uses Next.js 16's `use cache` directive for automatic caching
+ * - Storyblok SDK uses built-in rate limiting (6 RPS)
+ * - Cache entries are stored in-memory and respect the default cacheLife profile
  */
 export async function getStoryList({ path }: getStoryDataProps) {
   const isProd = isProduction();
@@ -66,14 +74,3 @@ export async function getStoryList({ path }: getStoryDataProps) {
     return [];
   }
 }
-
-/**
- * Get the data out of the Storyblok API for the page through the cache.
- */
-export const getStoryListCached = unstable_cache(
-  getStoryList,
-  [],
-  {
-    tags: ['story', 'page', 'list'],
-  },
-);

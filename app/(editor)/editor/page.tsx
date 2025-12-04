@@ -7,9 +7,6 @@ import { ComponentNotFound } from '@/components/Storyblok/ComponentNotFound';
 import { getStoryData } from '@/utilities/data/getStoryData';
 import { getStoryList } from '@/utilities/data/getStoryList';
 
-// Control what happens when a dynamic segment is visited that was not generated with generateStaticParams.
-export const dynamic = 'force-dynamic';
-
 // Storyblok bridge options.
 const bridgeOptions = {
   resolveRelations,

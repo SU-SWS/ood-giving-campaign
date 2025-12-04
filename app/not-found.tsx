@@ -9,8 +9,8 @@ import { ComponentNotFound } from '@/components/Storyblok/ComponentNotFound';
 import { isProduction } from '@/utilities/getActiveEnv';
 import { getSlugPrefix } from '@/utilities/getSlugPrefix';
 import { Metadata } from 'next';
-import { getStoryDataCached } from '@/utilities/data/getStoryData';
-import { getConfigBlokCached } from '@/utilities/data/getConfigBlok';
+import { getStoryData } from '@/utilities/data/getStoryData';
+import { getConfigBlok } from '@/utilities/data/getConfigBlok';
 import { getPageMetadata } from '@/utilities/getPageMetadata';
 
 // Storyblok bridge options.
@@ -41,7 +41,7 @@ storyblokInit({
  * Make sure to not export the below functions otherwise there will be a typescript error
  * https://github.com/vercel/next.js/discussions/48724
  */
-async function getStoryData(slug = 'momentum/page-not-found') {
+async function getLocalStoryData(slug = 'momentum/page-not-found') {
   const isProd = isProduction();
   const storyblokApi: StoryblokClient = getStoryblokApi();
   const sbParams: ISbStoriesParams = {
@@ -70,11 +70,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
   const slugPrefix = getSlugPrefix();
   const prefixedSlug = slugPrefix + '/page-not-found';
-  const config = await getConfigBlokCached();
+  const config = await getConfigBlok();
 
 
   // Get the story data.
-  const { data: { story } } = await getStoryDataCached({ path: prefixedSlug });
+  const { data: { story } } = await getStoryData({ path: prefixedSlug });
 
   // Generate the metadata.
   const meta = getPageMetadata({ story, sbConfig: config, slug: prefixedSlug });
@@ -82,7 +82,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function PageNotFound() {
-  const { data } = await getStoryData();
+  const { data } = await getLocalStoryData();
 
   if (data === 404) {
     return (

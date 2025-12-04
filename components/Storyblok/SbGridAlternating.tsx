@@ -1,4 +1,4 @@
-import { storyblokEditable, StoryblokComponent, type SbBlokData } from '@storyblok/react/rsc';
+import { storyblokEditable, StoryblokServerComponent, type SbBlokData } from '@storyblok/react/rsc';
 import { GridAlternating, type GridWidthType } from '../Grid';
 import { type PaddingType } from '@/utilities/datasource';
 
@@ -38,6 +38,6 @@ export const SbGridAlternating = ({
     pt={paddingTop}
     pb={paddingBottom}
   >
-    {items.map((item) => <StoryblokComponent blok={item} key={item._uid} isDarkTheme={isDarkTheme} />)}
+    {items.map((item) => <StoryblokServerComponent blok={item} key={item._uid} isDarkTheme={isDarkTheme} />)}
   </GridAlternating>
 );

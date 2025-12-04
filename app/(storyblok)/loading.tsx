@@ -1,3 +1,5 @@
+'use client';
+
 import { FlexBox } from '@/components/FlexBox';
 import { Masthead } from '@/components/Masthead';
 import DynamicLoad from 'next/dynamic';

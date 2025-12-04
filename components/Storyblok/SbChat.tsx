@@ -1,4 +1,4 @@
-import { storyblokEditable, StoryblokComponent, type SbBlokData } from '@storyblok/react/rsc';
+import { storyblokEditable, StoryblokServerComponent, type SbBlokData } from '@storyblok/react/rsc';
 import { Chat } from '@/components/Chat';
 import { WidthBox, type WidthType } from '@/components/WidthBox';
 import { type MarginType } from '@/utilities/datasource';
@@ -58,7 +58,7 @@ export const SbChat = ({
     >
       <Chat>
         {messages.map((message, index) => (
-          <StoryblokComponent blok={message} key={message._uid} delay={delays[index]} />
+          <StoryblokServerComponent blok={message} key={message._uid} delay={delays[index]} />
         ))}
       </Chat>
     </WidthBox>
