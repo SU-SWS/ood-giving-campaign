@@ -125,6 +125,10 @@ export default function StoryblokProvider({ children, isEditor = false }: Provid
       region: 'us',
       rateLimit: 6,
       maxRetries: 5,
+      cache: {
+        type: 'memory',
+        clear: 'auto',
+      },
     },
     components,
     enableFallbackComponent: true,
