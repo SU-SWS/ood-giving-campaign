@@ -1,7 +1,7 @@
 import { cnb } from 'cnbuilder';
 import { AnimateInView } from '@/components/Animate';
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
-import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
+import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer';
 import { CreateBloks } from '@/components/CreateBloks';
 import { FlexBox } from '@/components/FlexBox';
 import { Heading, SrOnlyText, Text } from '@/components/Typography';

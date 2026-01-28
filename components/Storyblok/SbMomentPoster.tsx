@@ -1,5 +1,5 @@
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
-import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
+import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer';
 import { MomentPoster } from '@/components/MomentPoster';
 import { CreateBloks } from '@/components/CreateBloks';
 import { RichText } from '@/components/RichText';

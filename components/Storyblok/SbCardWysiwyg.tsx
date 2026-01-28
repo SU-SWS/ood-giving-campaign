@@ -1,4 +1,4 @@
-import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
+import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer';
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { RichText, type RichTextLinkColorType } from '../RichText';
 

@@ -1,5 +1,5 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
-import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
+import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer';
 import { AnnotatedImage } from '@/components/AnnotatedImage';
 import { type WidthType } from '@/components/WidthBox';
 import { RichText } from '@/components/RichText';

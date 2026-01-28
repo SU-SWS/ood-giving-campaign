@@ -1,5 +1,5 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
-import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
+import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer';
 import { EmbedMedia } from '@/components/EmbedMedia';
 import { RichText } from '@/components/RichText';
 import { hasRichText } from '@/utilities/hasRichText';

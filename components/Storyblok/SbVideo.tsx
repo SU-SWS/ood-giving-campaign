@@ -1,7 +1,7 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { RichText } from '@/components/RichText';
 import { StoryVideo } from '@/components/Video';
-import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
+import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer';
 import { type ImageAspectRatioType } from '@/utilities/datasource';
 import { type WidthType } from '@/components/WidthBox';
 import { type PaddingType } from '@/utilities/datasource';

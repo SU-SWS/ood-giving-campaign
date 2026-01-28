@@ -1,4 +1,4 @@
-import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
+import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer';
 import { Caption } from '@/components/Media/Caption';
 import { Container } from '@/components/Container';
 import { BlurryPoster } from '@/components/BlurryPoster';

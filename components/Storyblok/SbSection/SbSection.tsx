@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import { cnb } from 'cnbuilder';
 import { useScroll, m, useTransform } from 'framer-motion';
 import { storyblokEditable, type SbBlokData } from '@storyblok/react/rsc';
-import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
+import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer';
 import { CreateBloks } from '@/components/CreateBloks';
 import { FlexBox } from '@/components/FlexBox';
 import {

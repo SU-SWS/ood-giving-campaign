@@ -1,5 +1,5 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
-import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
+import { type StoryblokRichtext } from 'storyblok-rich-text-react-renderer';
 import { Accordion } from '@/components/Accordion';
 import { RichText } from '@/components/RichText';
 import { type HeadingType } from '@/components/Typography';
