@@ -1,23 +1,20 @@
-import { Metadata } from 'next';
-import {
-  storyblokInit, apiPlugin, StoryblokStory,
-} from '@storyblok/react/rsc';
-import { components as Components } from '@/components/StoryblokProvider';
+import { type Metadata } from 'next';
+import { cacheLife } from 'next/cache';
+import { StoryblokStory } from '@storyblok/react/rsc';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { getPageMetadata } from '@/utilities/getPageMetadata';
-import { ComponentNotFound } from '@/components/Storyblok/ComponentNotFound';
 import { notFound } from 'next/navigation';
-import { getStoryDataCached, getConfigBlokCached, getAllStoriesCached } from '@/utilities/data/';
-import { getStoryListCached } from '@/utilities/data/getStoryList';
+import { getStoryData, getAllStories } from '@/utilities/data';
 import { isProduction } from '@/utilities/getActiveEnv';
+import { validateSlugPath, slugArrayToPath } from '@/utilities/validateSlugPath';
+import { getStoryblokClient } from '@/utilities/storyblok';
+import { logError } from '@/utilities/logger';
+import { getStoryListCached, getConfigBlok } from '@/utilities/data';
 import { getSlugPrefix } from '@/utilities/getSlugPrefix';
 
-type PathsType = {
-  slug: string[];
-};
-
-type ParamsType = {
-  params: PathsType;
+type PropsType = {
+  params: Promise<{ slug: string[] }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 // Storyblok bridge options.
@@ -26,31 +23,8 @@ const bridgeOptions = {
   resolveLinks: 'story',
 };
 
-// Force the 404 page for anything that isn't statically generated.
-export const dynamicParams = false;
-
-// Cache for one year.
-// I have no concrete evidence but this seems to work best with Netlify's edge caching over caching for infinity.
-export const revalidate = 31536000;
-
-// Force static rendering.
-export const dynamic = 'force-static';
-
-/**
- * Init on the server.
- */
-storyblokInit({
-  accessToken: process.env.STORYBLOK_ACCESS_TOKEN, // Preview token because this is in server side.
-  use: [apiPlugin],
-  apiOptions: {
-    region: 'us',
-  },
-  components: Components,
-  enableFallbackComponent: true,
-  customFallbackComponent: (component) => {
-    return <ComponentNotFound component={component} />;
-  },
-});
+// Initialize Storyblok client.
+getStoryblokClient();
 
 /**
  * Generate the list of stories to statically render.
@@ -59,7 +33,7 @@ export async function generateStaticParams() {
   const isProd = isProduction();
 
   // Get all the stories.
-  let stories = await getAllStoriesCached();
+  let stories = await getAllStories();
   // Filter out folders.
   stories = stories.filter((link) => link.is_folder === false);
   // Filter out test content by filtering out the `test` folder.
@@ -69,10 +43,9 @@ export async function generateStaticParams() {
   // Filter out globals by filtering out the `global-components` folder.
   stories = stories.filter((link) => !link.slug.startsWith(getSlugPrefix() + '/global-components'));
 
-  const paths: PathsType[] = [];
+  const paths: { slug: string[] }[] = [];
 
   stories.forEach((story) => {
-
     const slug = story.slug;
     const splitSlug = slug.split('/');
 
@@ -82,12 +55,12 @@ export async function generateStaticParams() {
     // Remove the first element which is the prefix.
     cleanSlug.shift();
 
-    // Ensure there is at least one element
-    if (cleanSlug.length === 0) {
-      cleanSlug.push('');
+    if (cleanSlug.length === 1 && cleanSlug[0] === 'home') {
+      // Pass an empty array for the home slug
+      paths.push({ slug: [] });
+    } else {
+      paths.push({ slug: cleanSlug });
     }
-
-    paths.push({ slug: cleanSlug });
 
   });
 
@@ -97,35 +70,86 @@ export async function generateStaticParams() {
 /**
  * Generate the SEO metadata for the page.
  */
-export async function generateMetadata({ params }: ParamsType): Promise<Metadata> {
-  const { slug } = params;
+export const generateMetadata = async (props: PropsType): Promise<Metadata> => {
+  const { params } = props;
+  const config = await getConfigBlok();
+  const { slug } = await params;
   const slugPrefix = getSlugPrefix();
   const slugPath = slug ? slug.join('/') : '';
   const prefixedSlug = slugPrefix + '/' + slugPath;
-  const config = await getConfigBlokCached();
 
-  // Get the story data.
-  const { data: { story } } = await getStoryDataCached({ path: prefixedSlug });
+  // Ensure Storyblok client is initialized before any cached data access
+  getStoryblokClient();
 
-  // Generate the metadata.
-  const meta = getPageMetadata({ story, sbConfig: config, slug: slugPath });
-  return meta;
-}
+  try {
+    // Validate the slug path before making any API calls
+    const isValidPath = await validateSlugPath(slug || []);
+    if (!isValidPath) {
+      // Return minimal metadata for 404 pages
+      return {
+        title: 'Page Not Found',
+        description: 'The requested page could not be found.',
+      };
+    }
+
+    // Get the story data.
+    const { data } = await getStoryData({ path: prefixedSlug });
+
+    if (data === 404 || !data.story) {
+      // Return minimal metadata for 404 pages
+      return {
+        title: 'Page Not Found',
+        description: 'The requested page could not be found.',
+      };
+    }
+
+    const story = data.story;
+
+    // Generate the metadata.
+    const meta = getPageMetadata({ story, sbConfig: config, slug: slugPath });
+    return meta;
+  } catch (error) {
+    logError('Error generating metadata', error, { slug });
+    return {
+      title: 'Metadata Error',
+      description: 'The requested page could not get metadata.',
+    };
+  }
+};
 
 /**
  * Fetch the path data for the page and render it.
+ * Cached for the maximum duration - rebuilds will clear the cache.
  */
-export default async function Page({ params }: ParamsType) {
-  const { slug } = params;
+const Page = async (props: PropsType) => {
+  'use cache';
 
-  // Convert the slug to a path.
-  const slugPath = slug ? slug.join('/') : '';
+  // Cache this page with 1 month stale time, 1 year revalidate. Each build creates fresh cache.
+  cacheLife({
+    stale: 2592000, // 1 month in seconds
+    revalidate: 31536000, // 1 year in seconds
+    expire: 31536000, // 1 year in seconds
+  });
+
+  const { params } = props;
+  const { slug } = await params;
+  const slugPath = slugArrayToPath(slug || []);
+
+  // Validate the slug path before making any API calls
+  const isValidPath = await validateSlugPath(slug || []);
+  if (!isValidPath) {
+    // Return 404 immediately for invalid paths without hitting Storyblok API
+    notFound();
+  }
 
   // Construct the slug for Storyblok.
   const prefixedSlug = getSlugPrefix() + '/' + slugPath;
 
+  // Initialize Storyblok client. Belt. Suspenders.
+  getStoryblokClient();
+
   // Get data out of the API.
-  const { data } = await getStoryDataCached({ path: prefixedSlug });
+  const { data } = await getStoryData({ path: prefixedSlug });
 
   // Define an additional data container to pass through server data fetch to client components.
   // as everything below the `StoryblokStory` is a client side component.
@@ -137,8 +161,14 @@ export default async function Page({ params }: ParamsType) {
   }
 
   // Failed to fetch from API because story slug was not found.
-  if (data === 404) {
+  if (data && data === 404) {
     notFound();
+  }
+
+  // Ensure there is a story in the data.
+  if (!data || !data.story) {
+    logError('Page: no story in response data', undefined, { slugPath, data });
+    throw new Error(`No story found for slugPath: ${slugPath}`);
   }
 
   // Return the story.
@@ -153,3 +183,4 @@ export default async function Page({ params }: ParamsType) {
   );
 };
 
+export default Page;

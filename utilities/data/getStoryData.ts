@@ -1,46 +1,68 @@
 import type { getStoryDataProps } from '@/utilities/data/types';
-import type { ISbStoriesParams, ISbResult } from '@storyblok/react';
+import { cacheLife } from 'next/cache';
+import { type ISbStoriesParams, type ISbResult } from '@storyblok/react/rsc';
 import { resolveRelations } from '@/utilities/resolveRelations';
-import { getStoryblokApi, StoryblokClient } from '@storyblok/react/rsc';
+import { getStoryblokClient } from '@/utilities/storyblok';
+import { logError, logInfo } from '@/utilities/logger';
 import { isProduction } from '../getActiveEnv';
-import { unstable_cache } from 'next/cache';
 
 /**
  * Get the data out of the Storyblok API for the page.
+ *
+ * **Version Strategy (Next.js 16)**:
+ * - Production builds: Always fetches `version: 'published'` content
+ * - Visual editor: Uses `version: 'draft'` (handled in EditorClient.tsx client-side)
+ * - Separate dev/prod Storyblok spaces ensure correct content per environment
+ *
+ * **Caching Strategy**:
+ * - Uses Next.js 16's `use cache` directive for automatic caching
+ * - Storyblok SDK uses built-in memory cache with automatic clearing
+ * - Cache entries are stored in-memory and respect the default cacheLife profile
+ * - No post-build revalidation (static-first with webhook-triggered rebuilds)
+ *
+ * **Error Handling**:
+ * - Storyblok SDK handles retries internally
+ * - Returns { data: 404 } for not found responses
+ * - Re-throws other errors for error boundary handling
  */
 export const getStoryData =
   async ({ path, isEditor = false }: getStoryDataProps): Promise<ISbResult | { data: 404 }> => {
-    const storyblokApi: StoryblokClient = getStoryblokApi();
-    const isProd = isProduction();
+  'use cache';
 
-    const sbParams: ISbStoriesParams = {
-      version: isProd && !isEditor ? 'published' : 'draft',
-      cv: isEditor ? Date.now() : undefined,
-      resolve_relations: resolveRelations,
-      token: isEditor ? process.env.STORYBLOK_PREVIEW_EDITOR_TOKEN : process.env.STORYBLOK_ACCESS_TOKEN,
-    };
+  cacheLife({
+    stale: 2592000, // 1 month in seconds
+    revalidate: 31536000, // 1 year in seconds
+    expire: 31536000, // 1 year in seconds
+  });
 
-    const slug = path.replace(/\/$/, ''); // Remove trailing slash.
+  logInfo('Fetching StoryData at runtime', { path, timestamp: new Date().toISOString() });
 
-    try {
-      const story: ISbResult = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
-      return story;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      if (error && error.status && error.status === 404) {
-        return { data: 404 };
-      }
-      throw error;
-    }
+  const storyblokApi = getStoryblokClient();
+  const isProd = isProduction();
+
+  const sbParams: ISbStoriesParams = {
+    version: isProd && !isEditor ? 'published' : 'draft',
+    resolve_relations: resolveRelations,
+    resolve_links: 'url',
+    token: isEditor ? process.env.STORYBLOK_PREVIEW_EDITOR_TOKEN : process.env.STORYBLOK_ACCESS_TOKEN,
+    // Let Storyblok handle cache invalidation automatically
   };
 
-/**
- * Get the data out of the Storyblok API for the page through the cache.
- */
-export const getStoryDataCached = unstable_cache(
-  getStoryData,
-  [],
-  {
-    tags: ['story', 'page'],
-  },
-);
+  const slug = path.replace(/\/$/, ''); // Remove trailing slash.
+
+  try {
+    const story: ISbResult = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
+    return story;
+  } catch (error: unknown) {
+    const err = error as { status?: number };
+
+    // Handle 404 gracefully
+    if (err?.status === 404) {
+      return { data: 404 };
+    }
+
+    // Log and re-throw other errors for error boundary handling
+    logError('Failed to fetch story from Storyblok API', error, { path, status: err?.status });
+    throw error;
+  }
+};
