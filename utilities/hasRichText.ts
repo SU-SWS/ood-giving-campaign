@@ -1,4 +1,4 @@
-import { render, type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
+import { render, type StoryblokRichtext } from 'storyblok-rich-text-react-renderer';
 
 /**
  * Returns a boolean if the Storyblok rich text field (wysiwyg) has any content.

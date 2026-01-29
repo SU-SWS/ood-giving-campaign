@@ -18,13 +18,13 @@
     "not dead"
   ],
   "scripts": {
-    "dev": "next dev --turbo --experimental-https",
+    "dev": "next dev --experimental-https --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --max-warnings 0",
     "vault": "netlify-plugin-vault-variables",
     "vault:local": "NODE_ENV=development netlify-plugin-vault-variables",
-    "lint:fix": "next lint --fix",
+    "lint": "eslint --max-warnings=0 .",
+    "lint:fix": "eslint --fix .",
     "typecheck": "tsc --noEmit",
     "tsc": "tsc"
   },
@@ -54,6 +54,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@netlify/plugin-nextjs": "^5.15.6",
+    "@stylistic/eslint-plugin": "^5.7.1",
     "@tailwindcss/container-queries": "^0.1.1",
     "@types/node": "^22.13.13",
     "@types/react": "^18.3.9",

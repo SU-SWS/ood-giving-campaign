@@ -1,4 +1,4 @@
-import { render, type StoryblokRichtext } from 'storyblok-rich-text-react-renderer-ts';
+import { render, type StoryblokRichtext } from 'storyblok-rich-text-react-renderer';
 import { cnb } from 'cnbuilder';
 import { CtaLink } from './Cta';
 import { SbCta } from './Storyblok/SbCta';
@@ -124,12 +124,12 @@ export const RichText = ({
       ),
     },
     blokResolvers: {
-      sbCta: (props) => (
-        <SbCta blok={props} />
-      ),
-      sbText: (props) => (
-        <SbText blok={props} />
-      ),
+      // sbCta: (props) => (
+      //   <SbCta blok={props} />
+      // ),
+      // sbText: (props) => (
+      //   <SbText blok={props} />
+      // ),
     },
     defaultBlokResolver: (name) => (
       <Paragraph weight="bold" variant={type === 'card' ? 'card' : 'none'}>

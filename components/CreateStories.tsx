@@ -1,4 +1,5 @@
-import { StoryblokComponent, type ISbStoryData } from '@storyblok/react/rsc';
+import { StoryblokServerComponent, type ISbStoryData } from '@storyblok/react/rsc';
+import { logError } from '@/utilities/logger';
 
 /**
  * Use this component with the references (or the multiple/single option) field type
@@ -7,22 +8,24 @@ import { StoryblokComponent, type ISbStoryData } from '@storyblok/react/rsc';
  * https://github.com/SU-SWS/saa_alumni/pull/563
  */
 
-type CreateStoriesProps = {
+export type CreateStoriesProps = {
   stories: ISbStoryData[];
   [key: string]: unknown;
 };
 
 export const CreateStories = ({ stories, ...props }: CreateStoriesProps) => {
-  let currentStory;
+  let currentStory: ISbStoryData | undefined;
   if (stories) {
     try {
       return stories.map((story) => {
         currentStory = story;
-        return <StoryblokComponent key={story.content._uid} blok={story.content} {...props} />;
+        return <StoryblokServerComponent key={story.content._uid} blok={story.content} {...props} />;
       });
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      console.error('Could not create story', currentStory);
+      const context = currentStory
+        ? { storyId: currentStory.id, storyUid: currentStory.content?._uid }
+        : { error: 'Story data unavailable' };
+      logError('Failed to create story component', error, context);
     }
   }
 
