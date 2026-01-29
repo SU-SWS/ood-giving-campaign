@@ -1,5 +1,3 @@
-/** @type {import('tailwindcss').Config} */
-
 import type { Config } from 'tailwindcss';
 import decanter from 'decanter';
 import tailwindContainerQueries from '@tailwindcss/container-queries';
@@ -41,7 +39,7 @@ export default {
   },
   plugins: [
     tailwindContainerQueries,
-    gcBase(),
+    gcBase,
     gcTypography(),
     gcTextShadow(),
   ],

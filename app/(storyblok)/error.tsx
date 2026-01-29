@@ -3,14 +3,14 @@
 import { useEffect } from 'react';
 import { Masthead } from '@/components/Masthead';
 import { Container } from '@/components/Container';
+import { logError } from '@/utilities/logger';
 
-export default function Error({error, reset}: {
+const Error = ({error}: {
   error: Error & { digest?: string };
-  reset: VoidFunction;
-}) {
+}) => {
   useEffect(() => {
     // Log the error to an error reporting service
-    console.error('Segment error', error);
+    logError('Storyblok segment error boundary caught exception', error, { digest: error.digest });
   }, [error]);
 
   return (
@@ -24,4 +24,6 @@ export default function Error({error, reset}: {
       </main>
     </div>
   );
-}
+};
+
+export default Error;

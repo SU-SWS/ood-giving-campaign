@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { cnb } from 'cnbuilder';
 import Link from 'next/link';

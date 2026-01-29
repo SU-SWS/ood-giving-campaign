@@ -10,6 +10,6 @@ const robots = (): MetadataRoute.Robots => {
     },
     sitemap: CurrentURL + '/sitemap.xml',
   };
-}
+};
 
 export default robots;

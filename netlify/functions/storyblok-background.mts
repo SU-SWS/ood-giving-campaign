@@ -23,7 +23,7 @@ export const config: Config = {
  * @throws Error if the build could not be triggered.
  * @returns void
  */
-const triggerNetlifyBuild = async (hookID) => {
+const triggerNetlifyBuild = async (hookID: string) => {
   console.log('Triggering deploy for:', hookID);
   const deployUrl = `https://api.netlify.com/build_hooks/${hookID}`;
   const res = await fetch(deployUrl, {
@@ -36,7 +36,7 @@ const triggerNetlifyBuild = async (hookID) => {
   }
 
   console.log('Deploy triggered for:', hookID);
-}
+};
 
 /**
  * Pings a Slack webhook with a message.
@@ -82,9 +82,9 @@ const pingSlack = async (message: string) => {
                 type: 'mrkdwn',
                 text: `*URL:* ${URL}`,
               },
-            }
+            },
           ],
-        }
+        },
       ),
     });
 
@@ -94,7 +94,7 @@ const pingSlack = async (message: string) => {
   } catch (error) {
     console.error('Failed to ping Slack:', error);
   }
-}
+};
 
 /**
  * Fetches a story from Storyblok.
@@ -109,13 +109,13 @@ const fetchStory = async (storyID: string) => {
 
   const sbConfig = {
     accessToken: sbToken,
-    region: 'us'
+    region: 'us',
   };
   const sbParams = {
     version: 'draft' as ISbStoryParams['version'],
     cv: Date.now(),
-    by_ids: storyID
-  }
+    by_ids: storyID,
+  };
   const sbClient = new StoryblokClient(sbConfig);
   const { data } = await sbClient.getStories(sbParams);
 
@@ -125,7 +125,7 @@ const fetchStory = async (storyID: string) => {
   }
 
   throw new Error('Story not found');
-}
+};
 
 /**
  * Validates the request.
@@ -163,7 +163,7 @@ const validateRequest = async (req: Request, netlifyHookID:string, webhookSecret
   }
   console.log('Request validated');
   return true;
-}
+};
 
 // NETLIFY FUNCTION HANDLER.
 // ---------------------------------------------------

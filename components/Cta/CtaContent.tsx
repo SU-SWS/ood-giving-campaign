@@ -1,3 +1,5 @@
+'use client';
+
 import { cnb } from 'cnbuilder';
 import { FlexBox } from '../FlexBox';
 import { HeroIcon } from '../HeroIcon';
