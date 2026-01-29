@@ -9,7 +9,7 @@ import { isProduction } from '@/utilities/getActiveEnv';
 import { validateSlugPath, slugArrayToPath } from '@/utilities/validateSlugPath';
 import { getStoryblokClient } from '@/utilities/storyblok';
 import { logError } from '@/utilities/logger';
-import { getStoryListCached, getConfigBlok } from '@/utilities/data';
+import { getStoryList, getConfigBlok } from '@/utilities/data';
 import { getSlugPrefix } from '@/utilities/getSlugPrefix';
 
 type PropsType = {
@@ -157,7 +157,7 @@ const Page = async (props: PropsType) => {
 
   // Get additional data for those stories that need it.
   if (data?.story?.content?.component === 'sbStoryFilterPage') {
-    extra = await getStoryListCached({ path: prefixedSlug });
+    extra = await getStoryList({ path: prefixedSlug });
   }
 
   // Failed to fetch from API because story slug was not found.

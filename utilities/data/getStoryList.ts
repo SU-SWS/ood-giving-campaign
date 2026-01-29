@@ -1,15 +1,31 @@
-import type { getStoryDataProps, FilterQuery } from '@/utilities/data/types';
-import { ISbStoriesParams, getStoryblokApi, StoryblokClient } from '@storyblok/react/rsc';
-import { isProduction } from '../getActiveEnv';
-import { getSlugPrefix } from '../getSlugPrefix';
-import { unstable_cache } from 'next/cache';
+import type { FilterQuery } from '@/utilities/data/types';
+import { cacheLife } from 'next/cache';
+import { ISbStoriesParams, ISbStoryData } from '@storyblok/react/rsc';
+import { isProduction } from '@/utilities/getActiveEnv';
+import { getSlugPrefix } from '@/utilities/getSlugPrefix';
+import { getStoryblokClient } from '@/utilities/storyblok';
+import { logError, logInfo } from '@/utilities/logger';
 
 /**
  * Get a list of stories that are of component sbStoryMvp in reverse chronological order.
  */
-export async function getStoryList({ path }: getStoryDataProps) {
+export const getStoryList =
+  async ({ path }: { path: string }):
+  Promise<ISbStoryData[]> => {
+  'use cache';
+
+  cacheLife({
+    stale: 2592000, // 1 month in seconds
+    revalidate: 31536000, // 1 year in seconds
+    expire: 31536000, // 1 year in seconds
+  });
+
+  logInfo('Fetching Story List at runtime', { timestamp: new Date().toISOString() });
+
+  const storyblokApi = getStoryblokClient();
+
   const isProd = isProduction();
-  const storyblokApi: StoryblokClient = getStoryblokApi();
+  // const storyblokApi: StoryblokClient = getStoryblokApi();
   const fullslug = path.replace(/\/$/, '');
 
   // Get the last part of the path.
@@ -43,7 +59,6 @@ export async function getStoryList({ path }: getStoryDataProps) {
     ];
   }
 
-  // For more related documentation see app/(storyblok)/[[...slug]]/page.tsx
   const sbParams: ISbStoriesParams = {
     version: isProd ? 'published' : 'draft',
     starts_with: `${getSlugPrefix()}/stories/`,
@@ -61,19 +76,8 @@ export async function getStoryList({ path }: getStoryDataProps) {
     const storyList = await storyblokApi.getAll('cdn/stories', sbParams);
     return storyList;
   }
-  catch (error) {
-    console.error('Error fetching stories:', error);
+  catch (error: unknown) {
+    logError('Failed to fetch story list from Storyblok API', error);
     return [];
   }
-}
-
-/**
- * Get the data out of the Storyblok API for the page through the cache.
- */
-export const getStoryListCached = unstable_cache(
-  getStoryList,
-  [],
-  {
-    tags: ['story', 'page', 'list'],
-  },
-);
+};
