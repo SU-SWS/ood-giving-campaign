@@ -20,7 +20,7 @@ export const getStoryList =
     expire: 31536000, // 1 year in seconds
   });
 
-  logInfo('Fetching Story List at runtime', { timestamp: new Date().toISOString() });
+  logInfo('Fetching story list for story filter page at runtime', { timestamp: new Date().toISOString() });
 
   const storyblokApi = getStoryblokClient();
 
@@ -77,7 +77,7 @@ export const getStoryList =
     return storyList;
   }
   catch (error: unknown) {
-    logError('Failed to fetch story list from Storyblok API', error);
+    logError('Failed to fetch story list for story filter page from Storyblok API', error);
     return [];
   }
 };
