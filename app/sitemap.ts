@@ -5,14 +5,10 @@ import { isProduction } from '@/utilities/getActiveEnv';
 import { getSlugPrefix } from '@/utilities/getSlugPrefix';
 import { sbStripSlugURL } from '@/utilities/sbStripSlugUrl';
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-
-  const storyblokClient = new StoryblokClient({
+const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
+  // Use direct Storyblok client to avoid component mapping overhead
+  const storyblokApi = new StoryblokClient({
     accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
-    cache: {
-      clear: 'auto',
-      type: 'memory',
-    },
     region: 'us',
   });
 
@@ -28,7 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Fetch all the stories from SB.
   // We use the `cdn/stories` endpoint because it has the last published time which `cdn/links` does not.
-  const response = await storyblokClient.getAll('cdn/stories', sbParams);
+  const response = await storyblokApi.getAll('cdn/stories', sbParams);
 
   // Exclude any stories with noindex set to true and those inside the Global Components or Test folders in Storyblok
   const indexStories = response.filter(
@@ -57,4 +53,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
 
   return ret;
-}
+};
+
+export default sitemap;
