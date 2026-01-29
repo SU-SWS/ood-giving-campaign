@@ -24,12 +24,15 @@
     roleId = 'VAULT_ROLE_ID'
 
 [[plugins]]
-  package = '/plugins/netlify-plugin-contextual-auth'
+  package = '/netlify/build-plugins/netlify-plugin-contextual-auth'
   [plugins.inputs]
     username = 'Stanford'
     password = 'OnPurpose'
     context = ['branch-deploy', 'deploy-preview']
     file = '.next/_headers'
+
+[[plugins]]
+  package = '/netlify/build-plugins/netlify-plugin-storyblok-redirects/index.mjs'
 
 # HEADERS
 # ##############################################################################
