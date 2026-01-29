@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef, useState } from 'react';
 import { cnb } from 'cnbuilder';
 import ReactPlayer from 'react-player/lazy';

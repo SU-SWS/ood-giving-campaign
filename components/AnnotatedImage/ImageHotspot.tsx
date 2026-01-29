@@ -1,3 +1,5 @@
+'use client';
+
 import { useRef, useState } from 'react';
 import {
   Description, Dialog, DialogPanel, DialogTitle, Transition, TransitionChild,

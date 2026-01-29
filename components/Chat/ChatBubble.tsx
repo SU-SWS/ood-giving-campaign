@@ -1,3 +1,5 @@
+'use client';
+
 import {
   HTMLAttributes, useState, useEffect, useRef,
 } from 'react';

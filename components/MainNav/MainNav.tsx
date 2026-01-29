@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Popover, PopoverButton, PopoverPanel, Transition,
 } from '@headlessui/react';

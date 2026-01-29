@@ -3,6 +3,7 @@ import { StoryblokProvider } from '@/components/StoryblokProvider';
 import { StoryblokStory } from '@storyblok/react/rsc';
 import { resolveRelations } from '@/utilities/resolveRelations';
 import { getStoryData } from '@/utilities/data';
+import { getSlugPrefix } from '@/utilities/getSlugPrefix';
 
 export const dynamic = 'force-static';
 
@@ -16,7 +17,9 @@ const bridgeOptions = {
  * Get the story data from the Storyblok API through the cache.
  */
 const PageNotFound = async () => {
-  const { data } = await getStoryData({ path: 'momentum/404-page-page-not-found' });
+  const slugPrefix = getSlugPrefix();
+  const prefixedSlug = slugPrefix + '/page-not-found';
+  const { data } = await getStoryData({ path: prefixedSlug });
 
   if (data === 404) {
     return (

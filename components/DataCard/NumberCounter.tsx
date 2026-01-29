@@ -1,5 +1,6 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+
+import { useState, useEffect, useRef } from 'react';
 import { m, useInView } from 'framer-motion';
 
 type NumberCounterProps = {

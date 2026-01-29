@@ -1,3 +1,9 @@
+'use client';
+
+import React, { useRef, useEffect } from 'react';
+import { WidthBox, type WidthType } from '../WidthBox';
+import { type PaddingType } from '@/utilities/datasource';
+
 /**
  * A NextJS Embed Component
  *
@@ -8,10 +14,6 @@
  * is also not good practice to inject and manipulate the page outside of
  * REACT as that can lead to irregularities and troubles.
  */
-import React, { useRef, useEffect } from 'react';
-import { WidthBox, type WidthType } from '../WidthBox';
-import { type PaddingType } from '@/utilities/datasource';
-
 export interface EmbedProps extends React.HTMLAttributes<HTMLDivElement> {
   id?: string;
   src?: string;

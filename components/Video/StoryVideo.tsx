@@ -1,3 +1,5 @@
+'use client';
+
 import { cnb } from 'cnbuilder';
 import { MediaWrapper, type MediaWrapperProps } from '@/components/Media';
 import { MutedVideoLoop, VideoButton } from '@/components/Video';

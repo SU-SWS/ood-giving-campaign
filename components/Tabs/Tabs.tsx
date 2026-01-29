@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Fragment, useEffect, useId, useRef, useState,
 } from 'react';

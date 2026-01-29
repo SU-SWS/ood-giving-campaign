@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useEffect, useState } from 'react';
 import { cnb } from 'cnbuilder';
 import { CtaContent } from './CtaContent';

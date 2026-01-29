@@ -1,4 +1,3 @@
-'use client';
 import { apiPlugin, storyblokInit, StoryblokClient } from '@storyblok/react/rsc';
 import { ComponentNotFound } from '@/components/Storyblok/ComponentNotFound';
 import { SbAccordion } from '@/components/Storyblok/SbAccordion';
