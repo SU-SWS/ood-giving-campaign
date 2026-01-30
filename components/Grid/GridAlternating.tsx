@@ -62,7 +62,6 @@ export const GridAlternating = ({
       <Grid as={as} gap="split" md={2} py={py} pt={pt} pb={pb} {...props}>
         {startOnRight && <div />}
         {childrenArray?.map((item, index) => (
-          // eslint-disable-next-line react/no-array-index-key
           <React.Fragment key={index}>
             <m.div
               className={cnb(

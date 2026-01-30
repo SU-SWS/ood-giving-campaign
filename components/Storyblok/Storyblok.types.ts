@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { type SbBlokData } from '@storyblok/react/rsc';
 import { type FontSizeType } from '@/components/Typography';
 import { type TabItemHeadingSizeType } from '@/components/Tabs';

@@ -29,7 +29,6 @@ export const CtaButton = React.forwardRef<HTMLButtonElement, CtaButtonProps>(
     return (
       <button
         {...rest}
-        // eslint-disable-next-line react/button-has-type
         type={type}
         ref={ref as React.ForwardedRef<HTMLButtonElement>}
         className={cnb(
