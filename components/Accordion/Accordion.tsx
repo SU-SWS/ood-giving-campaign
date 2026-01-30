@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { m } from 'framer-motion';
 import { CtaButton } from '@/components/Cta';
 import { Container } from '@/components/Container';
@@ -40,14 +40,10 @@ export const Accordion = ({
   marginBottom,
   ...props
 }: AccordionProps) => {
-  const [openItems, setOpenItems] = useState<boolean[]>([]);
+  const [openItems, setOpenItems] = useState<boolean[]>(() => items?.map(item => item.defaultOpen) || []);
   const firstItemRef = useRef<HTMLButtonElement>(null);
 
-  useEffect(() => {
-    if (!items?.length) return;
-    const initialState = items.map(item => item.defaultOpen);
-    setOpenItems(initialState);
-  }, [items]);
+  if (!items?.length) return null;
 
   const toggleItem = (index: number) => {
     setOpenItems(prevState => prevState.map((item, i) => i === index ? !item : item));
