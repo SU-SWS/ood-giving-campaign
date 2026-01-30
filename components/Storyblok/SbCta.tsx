@@ -12,7 +12,7 @@ import { type IconType } from '@/components/HeroIcon';
 import { type SbLinkType } from '@/components/Storyblok/Storyblok.types';
 import { type MarginType } from '@/utilities/datasource';
 
-type SbCtaType = {
+export type SbCtaType = {
   blok: {
     _uid: string;
     link: SbLinkType;

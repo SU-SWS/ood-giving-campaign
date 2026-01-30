@@ -1,8 +1,19 @@
-import { render, type StoryblokRichtext } from 'storyblok-rich-text-react-renderer';
+import {
+  render,
+  type StoryblokRichtext,
+  MARK_BOLD,
+  MARK_ITALIC,
+  MARK_STYLED,
+  MARK_LINK,
+  MARK_STRIKE,
+  MARK_TEXT_STYLE,
+  NODE_HEADING,
+  NODE_PARAGRAPH,
+} from 'storyblok-rich-text-react-renderer';
 import { cnb } from 'cnbuilder';
 import { CtaLink } from './Cta';
-import { SbCta } from './Storyblok/SbCta';
-import { SbText } from './Storyblok/SbText';
+import { SbCta, type SbCtaType } from '@/components/Storyblok/SbCta';
+import { SbText, type SbTextProps } from '@/components/Storyblok/SbText';
 import {
   Heading,
   type FontSizeType,
@@ -63,12 +74,15 @@ export const RichText = ({
 
   const rendered = render(wysiwyg, {
     markResolvers: {
-      styled: (children, props) => (
+      [MARK_STYLED]: (children, props) => (
         <span className={props.class}>{children}</span>
       ),
-      bold: (children) => <strong>{children}</strong>,
-      italic: (children) => <em>{children}</em>,
-      link: (children, props) => {
+      [MARK_BOLD]: (children) => <strong>{children}</strong>,
+      [MARK_ITALIC]: (children) => <em>{children}</em>,
+      [MARK_STRIKE]: (children) => <del>{children}</del>,
+      // This get rid of inline CSS text colors that are being copied and pasted
+      [MARK_TEXT_STYLE]: (children, { color }) => <>{children}</>,
+      [MARK_LINK]: (children, props) => {
         const {
           href,
           target,
@@ -102,7 +116,7 @@ export const RichText = ({
       },
     },
     nodeResolvers: {
-      heading: (children, props) => {
+      [NODE_HEADING]: (children, props) => {
         const { level } = props;
         /**
          * All heading sizes are type-1 if using the "card" type WYSIWYG (SbCardWysiwyg)
@@ -117,19 +131,19 @@ export const RichText = ({
           </Heading>
         );
       },
-      paragraph: (children) => (
+      [NODE_PARAGRAPH]: (children) => (
         <Paragraph variant={baseFontSize === 'default' ? undefined : baseFontSize}>
           {children}
         </Paragraph>
       ),
     },
     blokResolvers: {
-      // sbCta: (props) => (
-      //   <SbCta blok={props} />
-      // ),
-      // sbText: (props) => (
-      //   <SbText blok={props} />
-      // ),
+      ['sbCta:']: (props) => (
+        <SbCta blok={props as SbCtaType['blok']} />
+      ),
+      ['sbText']: (props) => (
+        <SbText blok={props as SbTextProps['blok']} />
+      ),
     },
     defaultBlokResolver: (name) => (
       <Paragraph weight="bold" variant={type === 'card' ? 'card' : 'none'}>
