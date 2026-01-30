@@ -167,7 +167,7 @@ const validateRequest = async (req: Request, netlifyHookID:string, webhookSecret
 
 // NETLIFY FUNCTION HANDLER.
 // ---------------------------------------------------
-export default async (req: Request) => {
+const handler = async (req: Request) => {
   console.log('++++++++ START WEBHOOK ++++++++');
   const slugPrefix = process.env.STORYBLOK_SLUG_PREFIX ?? 'momentum';
   const netlifyHookID = process.env.NETLIFY_DEPLOY_HOOK_ID ?? '';
@@ -245,5 +245,7 @@ export default async (req: Request) => {
 
   console.log('++++++++ END WEBHOOK ++++++++');
 };
+
+export default handler;
 
 

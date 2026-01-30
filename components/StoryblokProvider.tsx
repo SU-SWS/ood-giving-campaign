@@ -12,8 +12,8 @@ type ProviderProps = {
 export const StoryblokProvider = ({ children, isEditor = false }: ProviderProps) => {
   const searchParams = useSearchParams();
   const accessToken = useMemo(() => (
-    isEditor && searchParams?.has('access_key')
-      ? searchParams.get('access_key')
+    isEditor && searchParams?.has('accessToken')
+      ? searchParams.get('accessToken')
       : 'thisisnotarealtokenasitisontheclientsideandgoesintothecode'
   ), [isEditor, searchParams]);
 

@@ -19,6 +19,7 @@ const nextConfig: NextConfig = {
     CONTEXT: process.env.CONTEXT || 'development',
     URL: process.env.URL || '',
     BUILD_ID: process.env.BUILD_ID || '',
+    STORYBLOK_SLUG_PREFIX: process.env.STORYBLOK_SLUG_PREFIX || 'momentum',
   },
 };
 
