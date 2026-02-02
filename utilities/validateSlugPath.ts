@@ -1,6 +1,7 @@
 import { getAllStories } from '@/utilities/data/';
 import { isProduction } from '@/utilities/getActiveEnv';
 import { cacheLife } from 'next/cache';
+import { getSlugPrefix } from '@/utilities/getSlugPrefix';
 
 /**
  * Get the array of all valid slug paths for runtime validation
@@ -8,6 +9,7 @@ import { cacheLife } from 'next/cache';
  */
 const getValidSlugs = async (): Promise<string[]> => {
   const isProd = isProduction();
+  const slugPrefix = getSlugPrefix();
 
   // Get all the stories.
   let stories = await getAllStories();
@@ -16,10 +18,10 @@ const getValidSlugs = async (): Promise<string[]> => {
   stories = stories.filter((link) => link.is_folder === false);
   // Filter out test content by filtering out the `test` folder.
   if (isProd) {
-    stories = stories.filter((link) => !link.slug.startsWith('test'));
+    stories = stories.filter((link) => !link.slug.startsWith(`${slugPrefix}/test`));
   }
   // Filter out globals by filtering out the `global-components` folder.
-  stories = stories.filter((link) => !link.slug.startsWith('global-components'));
+  stories = stories.filter((link) => !link.slug.startsWith(`${slugPrefix}/global-components`));
 
   const validSlugs: string[] = [];
 
