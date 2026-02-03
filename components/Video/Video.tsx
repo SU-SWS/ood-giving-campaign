@@ -1,3 +1,5 @@
+'use client';
+
 import { VideoHTMLAttributes, forwardRef } from 'react';
 import { getMaskedAsset } from '@/utilities/getMaskedAsset';
 import { getProcessedImage } from '@/utilities/getProcessedImage';

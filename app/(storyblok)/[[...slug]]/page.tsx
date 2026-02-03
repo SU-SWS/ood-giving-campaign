@@ -8,9 +8,10 @@ import { getStoryData, getAllStories } from '@/utilities/data';
 import { isProduction } from '@/utilities/getActiveEnv';
 import { validateSlugPath, slugArrayToPath } from '@/utilities/validateSlugPath';
 import { getStoryblokClient } from '@/utilities/storyblok';
-import { logError } from '@/utilities/logger';
+import { logError, logInfo } from '@/utilities/logger';
 import { getStoryList, getConfigBlok } from '@/utilities/data';
 import { getSlugPrefix } from '@/utilities/getSlugPrefix';
+import { log } from 'console';
 
 type PropsType = {
   params: Promise<{ slug: string[] }>;
@@ -136,11 +137,12 @@ const Page = async (props: PropsType) => {
   const slugPath = slugArrayToPath(slug || []);
 
   // Validate the slug path before making any API calls
-  const isValidPath = await validateSlugPath(slug || []);
-  if (!isValidPath) {
-    // Return 404 immediately for invalid paths without hitting Storyblok API
-    notFound();
-  }
+  // const isValidPath = await validateSlugPath(slug || []);
+  // if (!isValidPath) {
+  //   logInfo('Page: invalid slug path, returning 404', { slugPath });
+  //   // Return 404 immediately for invalid paths without hitting Storyblok API
+  //   notFound();
+  // }
 
   // Construct the slug for Storyblok.
   const prefixedSlug = getSlugPrefix() + '/' + slugPath;

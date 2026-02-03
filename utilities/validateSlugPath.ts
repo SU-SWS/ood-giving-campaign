@@ -84,5 +84,5 @@ export const validateSlugPath = async (slugArray: string[]): Promise<boolean> =>
  */
 export const slugArrayToPath = (slugArray: string[]): string => {
   // Empty array or undefined means home page
-  return slugArray && slugArray.length > 0 ? slugArray.join('/') : 'home';
+  return slugArray && slugArray.length > 0 ? slugArray.join('/') : '';
 };

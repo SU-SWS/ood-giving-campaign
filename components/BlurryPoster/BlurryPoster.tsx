@@ -1,3 +1,5 @@
+'use client';
+
 import { cnb } from 'cnbuilder';
 import { AnimateInView } from '@/components/Animate';
 import { Container } from '@/components/Container';
