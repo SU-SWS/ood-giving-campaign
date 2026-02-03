@@ -8,10 +8,9 @@ import { getStoryData, getAllStories } from '@/utilities/data';
 import { isProduction } from '@/utilities/getActiveEnv';
 import { validateSlugPath, slugArrayToPath } from '@/utilities/validateSlugPath';
 import { getStoryblokClient } from '@/utilities/storyblok';
-import { logError, logInfo } from '@/utilities/logger';
+import { logError } from '@/utilities/logger';
 import { getStoryList, getConfigBlok } from '@/utilities/data';
 import { getSlugPrefix } from '@/utilities/getSlugPrefix';
-import { log } from 'console';
 
 type PropsType = {
   params: Promise<{ slug: string[] }>;
