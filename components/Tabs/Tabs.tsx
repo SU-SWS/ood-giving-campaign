@@ -113,7 +113,6 @@ export const Tabs = ({
    */
   const tabGroupId = encodeURIComponent(useId());
   const tabGroupRef = useRef<HTMLDivElement>(null);
-  const [selectedIndex, setSelectedIndex] = useState(0);
 
   /**
    * We need a unique prefix for each tab group to set the hash in the URL
@@ -126,35 +125,44 @@ export const Tabs = ({
     slug: slugify(tabItem.label),
   }));
 
+  // Calculate initial selected index from URL hash
+  const getInitialIndex = () => {
+    if (typeof window === 'undefined') return 0;
+    const pageHash = window.location.hash.slice(1);
+    if (pageHash.startsWith(uniquePrefix)) {
+      const strippedHash = pageHash.replace(uniquePrefix, '');
+      const index = tabItemsWithSlug.findIndex(tabItem => tabItem.slug === strippedHash);
+      return index !== -1 ? index : 0;
+    }
+    return 0;
+  };
+
+  const [selectedIndex, setSelectedIndex] = useState(getInitialIndex);
+
   const handleTabChange = (index: number) => {
     setSelectedIndex(index);
     const tabHash = `#${uniquePrefix}${tabItemsWithSlug[index].slug}`;
     window.history.replaceState(null, '', tabHash); // Update hash without adding to history
   };
 
-  // Check URL hash on initial load, update the selected tab and scroll to the correct position
+  // Scroll to the correct position on initial load if there's a matching hash
   useEffect(() => {
-    // Remove the "#" from the hash
     const pageHash = window.location.hash.slice(1);
-
-    // Check if the current page hash starts with the unique prefix
     if (pageHash.startsWith(uniquePrefix)) {
       const strippedHash = pageHash.replace(uniquePrefix, '');
-      // Find the index of the tab item with a tab slug that matches the stripped page hash
       const index = tabItemsWithSlug.findIndex(tabItem => tabItem.slug === strippedHash);
 
       if (index !== -1) {
-        setSelectedIndex(index);
         /**
          * For SM breakpoint and above, if the page hash matches a tab hash,
-         * set that tab as active and scroll to the top of the correct tab group
+         * scroll to the top of the correct tab group
          */
         if (isRenderTabs) {
           tabGroupRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
         // On mobile (XS), scroll to the id anchor at the top of the exposed item content
         else {
-          const element = document.getElementById(`#${uniquePrefix}${slugify(tabItems[index].label)}`);
+          const element = document.getElementById(`${uniquePrefix}${tabItemsWithSlug[index].slug}`);
           element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }

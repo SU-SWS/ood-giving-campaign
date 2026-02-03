@@ -51,18 +51,25 @@ export const ChatBubble = ({
 
   useEffect(() => {
     if (isInView && showTyping) {
-      setShowDots(true);
+
+      // Wrapped both state updates in setTimeout to schedule them asynchronously, which prevents the synchronous setState warning.
+      const showTimer = setTimeout(() => {
+        setShowDots(true);
+      }, 0);
 
       /**
        * The 2 corresponds to the 2 second typing animation.
        * The delay is the calculated cumulative delay depending on the position of the message in the chat,
        * and whether the message has the typing animation enabled.
        */
-      const timer = setTimeout(() => {
+      const hideTimer = setTimeout(() => {
         setShowDots(false);
-      }, (2 + delay) * 1000);
+      }, (2 + (delay || 0)) * 1000);
 
-      return () => clearTimeout(timer);
+      return () => {
+        clearTimeout(showTimer);
+        clearTimeout(hideTimer);
+      };
     }
   }, [isInView, showTyping, delay]);
 
