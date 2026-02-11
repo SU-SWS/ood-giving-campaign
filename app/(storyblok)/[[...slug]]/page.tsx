@@ -9,7 +9,7 @@ import { isProduction } from '@/utilities/getActiveEnv';
 // import { validateSlugPath, slugArrayToPath } from '@/utilities/validateSlugPath';
 import { slugArrayToPath } from '@/utilities/validateSlugPath';
 import { logError } from '@/utilities/logger';
-import { getStoryList, getConfigBlok } from '@/utilities/data';
+import { getStoryList, getConfigBlokCached } from '@/utilities/data';
 import { getSlugPrefix } from '@/utilities/getSlugPrefix';
 import '@/utilities/storyblok'; // Initialize API at module load
 import '@/utilities/storyblok-components'; // Register components at module load
@@ -71,7 +71,7 @@ export async function generateStaticParams() {
  */
 export const generateMetadata = async (props: PropsType): Promise<Metadata> => {
   const { params } = props;
-  const config = await getConfigBlok();
+  const config = await getConfigBlokCached();
   const { slug } = await params;
   const slugPrefix = getSlugPrefix();
   const slugPath = slug ? slug.join('/') : '';
