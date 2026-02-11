@@ -9,12 +9,6 @@ import { FlexBox } from '@/components/FlexBox';
 import { LocalFooterMvp } from '@/components/LocalFooter';
 import { GlobalFooter } from '@/components/GlobalFooter';
 import GAProvider, { GTAG } from '@/components/GAProvider';
-import { getStoryblokClient } from '@/utilities/storyblok';
-
-// Initialize Storyblok client at module level to ensure components are registered
-// before any cached data is rendered. This prevents race conditions with 'use cache'
-// where cached story data could be returned before storyblokInit runs.
-getStoryblokClient();
 
 type LayoutProps = {
   children: React.ReactNode,

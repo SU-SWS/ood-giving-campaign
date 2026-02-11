@@ -1,9 +1,14 @@
 import type { FilterQuery } from '@/utilities/data/types';
 import { cacheLife } from 'next/cache';
-import { ISbStoriesParams, ISbStoryData } from '@storyblok/react/rsc';
+import {
+  getStoryblokApi,
+  StoryblokClient,
+  type ISbStoriesParams,
+//  type ISbResult,
+  type ISbStoryData,
+} from '@storyblok/react/rsc';
 import { isProduction } from '@/utilities/getActiveEnv';
 import { getSlugPrefix } from '@/utilities/getSlugPrefix';
-import { getStoryblokClient } from '@/utilities/storyblok';
 import { logError, logInfo } from '@/utilities/logger';
 
 /**
@@ -22,7 +27,7 @@ export const getStoryList =
 
   logInfo('Fetching story list for story filter page at runtime', { timestamp: new Date().toISOString() });
 
-  const storyblokApi = getStoryblokClient();
+  const storyblokApi: StoryblokClient = getStoryblokApi();
 
   const isProd = isProduction();
   // const storyblokApi: StoryblokClient = getStoryblokApi();

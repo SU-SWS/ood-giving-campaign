@@ -1,5 +1,3 @@
-'use client';
-
 import { StoryblokProvider } from '@/components/StoryblokProvider';
 import { Sa11yInit } from '@/components/Sa11yInit';
 

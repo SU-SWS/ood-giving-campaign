@@ -6,11 +6,13 @@ import { getPageMetadata } from '@/utilities/getPageMetadata';
 import { notFound } from 'next/navigation';
 import { getStoryData, getAllStories } from '@/utilities/data';
 import { isProduction } from '@/utilities/getActiveEnv';
-import { validateSlugPath, slugArrayToPath } from '@/utilities/validateSlugPath';
-import { getStoryblokClient } from '@/utilities/storyblok';
+// import { validateSlugPath, slugArrayToPath } from '@/utilities/validateSlugPath';
+import { slugArrayToPath } from '@/utilities/validateSlugPath';
 import { logError } from '@/utilities/logger';
 import { getStoryList, getConfigBlok } from '@/utilities/data';
 import { getSlugPrefix } from '@/utilities/getSlugPrefix';
+import '@/utilities/storyblok'; // Initialize API at module load
+import '@/utilities/storyblok-components'; // Register components at module load
 
 type PropsType = {
   params: Promise<{ slug: string[] }>;
@@ -22,9 +24,6 @@ const bridgeOptions = {
   resolveRelations,
   resolveLinks: 'story',
 };
-
-// Initialize Storyblok client.
-getStoryblokClient();
 
 /**
  * Generate the list of stories to statically render.
@@ -78,19 +77,16 @@ export const generateMetadata = async (props: PropsType): Promise<Metadata> => {
   const slugPath = slug ? slug.join('/') : '';
   const prefixedSlug = slugPrefix + '/' + slugPath;
 
-  // Ensure Storyblok client is initialized before any cached data access
-  getStoryblokClient();
-
   try {
     // Validate the slug path before making any API calls
-    const isValidPath = await validateSlugPath(slug || []);
-    if (!isValidPath) {
-      // Return minimal metadata for 404 pages
-      return {
-        title: 'Page Not Found',
-        description: 'The requested page could not be found.',
-      };
-    }
+    // const isValidPath = await validateSlugPath(slug || []);
+    // if (!isValidPath) {
+    //   // Return minimal metadata for 404 pages
+    //   return {
+    //     title: 'Page Not Found',
+    //     description: 'The requested page could not be found.',
+    //   };
+    // }
 
     // Get the story data.
     const { data } = await getStoryData({ path: prefixedSlug });
@@ -145,9 +141,6 @@ const Page = async (props: PropsType) => {
 
   // Construct the slug for Storyblok.
   const prefixedSlug = getSlugPrefix() + '/' + slugPath;
-
-  // Initialize Storyblok client. Belt. Suspenders.
-  getStoryblokClient();
 
   // Get data out of the API.
   const { data } = await getStoryData({ path: prefixedSlug });

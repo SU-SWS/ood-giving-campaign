@@ -1,6 +1,7 @@
-import { type ISbStoriesParams } from '@storyblok/react/rsc';
+import {
+  ISbStoriesParams, getStoryblokApi, StoryblokClient,
+} from '@storyblok/react/rsc';
 import { cacheLife } from 'next/cache';
-import { getStoryblokClient } from '@/utilities/storyblok';
 import { getSlugPrefix } from '@/utilities/getSlugPrefix';
 import { logError, logInfo } from '@/utilities/logger';
 import { isProduction } from '@/utilities/getActiveEnv';
@@ -35,7 +36,7 @@ export const getAllStories = async () => {
 
   logInfo('Fetching AllStories at runtime', { timestamp: new Date().toISOString() });
 
-  const storyblokApi = getStoryblokClient();
+  const storyblokApi: StoryblokClient = getStoryblokApi();
   const isProd = isProduction();
 
   const sbParams: ISbStoriesParams = {

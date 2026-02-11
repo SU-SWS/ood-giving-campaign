@@ -1,8 +1,12 @@
 import type { getStoryDataProps } from '@/utilities/data/types';
 import { cacheLife } from 'next/cache';
-import { type ISbStoriesParams, type ISbResult } from '@storyblok/react/rsc';
+import {
+  getStoryblokApi,
+  StoryblokClient,
+  type ISbStoriesParams,
+  type ISbResult,
+} from '@storyblok/react/rsc';
 import { resolveRelations } from '@/utilities/resolveRelations';
-import { getStoryblokClient } from '@/utilities/storyblok';
 import { logError, logInfo } from '@/utilities/logger';
 import { isProduction } from '../getActiveEnv';
 
@@ -37,7 +41,7 @@ export const getStoryData =
 
   logInfo('Fetching StoryData at runtime', { path, timestamp: new Date().toISOString() });
 
-  const storyblokApi = getStoryblokClient();
+  const storyblokApi: StoryblokClient = getStoryblokApi();
   const isProd = isProduction();
 
   const sbParams: ISbStoriesParams = {
